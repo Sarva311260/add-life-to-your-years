@@ -33,3 +33,5 @@
 - [x] Verify unauthenticated teaser flow end-to-end: complete questionnaire while logged out, submit, confirm /teaser-results shows overall score plus gated sections (logic verified via tests; authenticated auto-submit confirmed in browser; user to verify unauthenticated view)
 - [x] Add automated tests for teaser flow branches (no data, unauthenticated display, authenticated auto-submit)
 - [x] Fix: All "Sign In" buttons should say "Sign In or Register" consistently across the app (Home, Dashboard, DashboardLayout, Results pages)
+- [x] Owner notification: Notify owner (sarva) when a new user registers (name, email, timestamp)
+- [x] User welcome notification: Send owner notification when a user completes their first evaluation (overall score summary, cardiac flag, coaching prompt)

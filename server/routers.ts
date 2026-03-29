@@ -4,6 +4,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, protectedProcedure, router } from "./_core/trpc";
 import { z } from "zod";
 import { invokeLLM } from "./_core/llm";
+import { notifyOwner } from "./_core/notification";
 import {
   createEvaluation,
   getUserEvaluations,
@@ -11,7 +12,7 @@ import {
   createRecommendations,
   getRecommendationsByEvaluation,
 } from "./db";
-import { CATEGORIES, calculateOverallScore, hasCardiacFlag } from "../shared/questionnaire";
+import { CATEGORIES, calculateOverallScore, hasCardiacFlag, getScoreLevelLabel } from "../shared/questionnaire";
 
 export const appRouter = router({
   system: systemRouter,
@@ -78,6 +79,25 @@ export const appRouter = router({
               actionSteps: r.actionSteps,
             }))
           );
+        }
+
+        // Send notifications (fire-and-forget, don't block the response)
+        const userName = ctx.user.name || "User";
+        const userEmail = ctx.user.email || "No email";
+        const scoreLevelLabel = getScoreLevelLabel(overallScore);
+
+        // Check if this is the user's first evaluation
+        const previousEvals = await getUserEvaluations(ctx.user.id);
+        const isFirstEvaluation = previousEvals.length <= 1; // includes the one just created
+
+        if (isFirstEvaluation) {
+          // Welcome notification to owner about new evaluation
+          notifyOwner({
+            title: `First Evaluation Completed: ${userName}`,
+            content: `${userName} (${userEmail}) has completed their first wellness evaluation!\n\nOverall Score: ${Math.round(overallScore)}% (${scoreLevelLabel})\n${cardiacFlag ? "⚠️ Cardiac flag detected\n" : ""}\nThis is a great opportunity to reach out and offer personalised coaching support.`,
+          }).catch((err) => {
+            console.warn("[Notification] Failed to send first evaluation notification:", err);
+          });
         }
 
         return { evaluationId, overallScore, cardiacFlag };

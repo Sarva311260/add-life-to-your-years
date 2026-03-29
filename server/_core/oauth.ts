@@ -2,6 +2,7 @@ import { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
 import type { Express, Request, Response } from "express";
 import * as db from "../db";
 import { getSessionCookieOptions } from "./cookies";
+import { notifyOwner } from "./notification";
 import { sdk } from "./sdk";
 
 function getQueryParam(req: Request, key: string): string | undefined {
@@ -53,13 +54,27 @@ export function registerOAuthRoutes(app: Express) {
         return;
       }
 
-      await db.upsertUser({
+      const { isNewUser } = await db.upsertUser({
         openId: userInfo.openId,
         name: userInfo.name || null,
         email: userInfo.email ?? null,
         loginMethod: userInfo.loginMethod ?? userInfo.platform ?? null,
         lastSignedIn: new Date(),
       });
+
+      // Notify owner when a new user registers
+      if (isNewUser) {
+        const userName = userInfo.name || "Unknown";
+        const userEmail = userInfo.email || "No email provided";
+        const loginMethod = userInfo.loginMethod ?? userInfo.platform ?? "unknown";
+        const registeredAt = new Date().toLocaleString("en-AU", { timeZone: "Australia/Sydney" });
+        notifyOwner({
+          title: `New User Registration: ${userName}`,
+          content: `A new user has registered on Health, Wellness & Vitality.\n\nName: ${userName}\nEmail: ${userEmail}\nLogin Method: ${loginMethod}\nRegistered: ${registeredAt}`,
+        }).catch((err) => {
+          console.warn("[OAuth] Failed to send new user notification:", err);
+        });
+      }
 
       const sessionToken = await sdk.createSessionToken(userInfo.openId, {
         name: userInfo.name || "",
