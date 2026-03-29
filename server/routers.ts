@@ -170,6 +170,8 @@ async function generateRecommendations(
 
 Overall Wellness Score: ${overallScore}%
 ${cardiacFlag ? "⚠️ CARDIAC FLAG: The user has indicated personal or family history of heart disease. Include appropriate cardiac-related recommendations and note the importance of consulting a healthcare provider." : ""}
+${responses["trauma_amalgam"] && responses["trauma_amalgam"] <= 3 ? "⚠️ DENTAL HEALTH FLAG: The user has indicated they have amalgam fillings and/or root canal treatments. In the Physical Trauma recommendation, strongly suggest having amalgam fillings removed by a qualified bio-compatible dentist who follows safe mercury removal protocols. Explain that amalgam fillings contain mercury which can affect overall health and wellbeing." : ""}
+${responses["trauma_implants"] && responses["trauma_implants"] <= 3 ? "⚠️ IMPLANT FLAG: The user has indicated they have medical implants. In the Physical Trauma recommendation, include advice about monitoring implant health, regular check-ups with relevant specialists, and being aware of any symptoms that may be related to implant materials." : ""}
 
 Category Scores and Responses:
 ${categoryDetails}

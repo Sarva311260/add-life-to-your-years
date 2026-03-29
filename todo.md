@@ -38,3 +38,11 @@
 - [x] Enhance owner notification: Include individual category scores and question responses in first-evaluation notification
 - [ ] Future: Set up custom analytics (questionnaire completion rates, average scores by category, common areas needing attention) once site content is finalised
 - [x] Bug fix: Page navigations maintain scroll position from previous page — should scroll to top on every route change
+- [x] Lifestyle Q1: Change "minimal animal products" to "no animal products"
+- [x] Lifestyle: Add new question "How much water do you drink daily?" (4 options)
+- [x] Lifestyle: Add new question "What water do you drink?" (5 options)
+- [x] Lifestyle: Add new question "What percentage of daily food intake is raw?" (4 options, 75% weighted highest)
+- [x] Genetics Q6: Add new option "Family history but healthy lifestyle supports wellness"
+- [x] Physical Trauma: Add new question "Do you have amalgam fillings or root canal?"
+- [x] Physical Trauma: Add new question "Do you have any implants in your body?"
+- [x] AI Recommendations: If amalgam fillings detected, suggest removal by qualified bio-compatible dentist
