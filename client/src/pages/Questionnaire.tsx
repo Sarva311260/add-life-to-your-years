@@ -109,7 +109,7 @@ export default function Questionnaire() {
   const handleSubmit = async () => {
     if (!isAuthenticated) {
       toast.error("Please sign in to save your evaluation.");
-      window.location.href = getLoginUrl();
+      window.location.href = getLoginUrl("/questionnaire");
       return;
     }
 
@@ -413,7 +413,7 @@ export default function Questionnaire() {
                     <p className="text-sm text-orange-800 mb-3">
                       Sign in to save your evaluation results and track your progress over time.
                     </p>
-                    <a href={getLoginUrl()}>
+                    <a href={getLoginUrl("/questionnaire")}>
                       <Button size="sm" variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-100">
                         Sign In to Save Results
                       </Button>
