@@ -37,3 +37,4 @@
 - [x] User welcome notification: Send owner notification when a user completes their first evaluation (overall score summary, cardiac flag, coaching prompt)
 - [x] Enhance owner notification: Include individual category scores and question responses in first-evaluation notification
 - [ ] Future: Set up custom analytics (questionnaire completion rates, average scores by category, common areas needing attention) once site content is finalised
+- [x] Bug fix: Page navigations maintain scroll position from previous page — should scroll to top on every route change
