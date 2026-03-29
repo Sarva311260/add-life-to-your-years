@@ -9,10 +9,12 @@ import {
   Heart, Building2, Dna, Shield, Brain, Compass, Users, Activity,
   ArrowLeft, ArrowRight, CheckCircle2, AlertTriangle, Leaf, Loader2
 } from "lucide-react";
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import { useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
+
+const STORAGE_KEY = "wellness-eval-responses";
 
 const CATEGORY_ICONS: Record<string, React.ReactNode> = {
   lifestyle: <Heart className="w-5 h-5" />,
@@ -25,18 +27,38 @@ const CATEGORY_ICONS: Record<string, React.ReactNode> = {
   physical_trauma: <Activity className="w-5 h-5" />,
 };
 
+function loadSavedResponses(): Record<string, number> {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (typeof parsed === "object" && parsed !== null) return parsed;
+    }
+  } catch {}
+  return {};
+}
+
 export default function Questionnaire() {
   const { user, isAuthenticated, loading: authLoading } = useAuth();
   const [, navigate] = useLocation();
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
-  const [responses, setResponses] = useState<Record<string, number>>({});
+  const [responses, setResponses] = useState<Record<string, number>>(loadSavedResponses);
   const [submitting, setSubmitting] = useState(false);
+  const [showIncomplete, setShowIncomplete] = useState(false);
 
   const submitMutation = trpc.evaluation.submit.useMutation();
+
+  // Persist responses to localStorage whenever they change
+  useEffect(() => {
+    if (Object.keys(responses).length > 0) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(responses));
+    }
+  }, [responses]);
 
   const currentCategory = CATEGORIES[currentCategoryIndex];
   const totalQuestions = CATEGORIES.reduce((sum, cat) => sum + cat.questions.length, 0);
   const answeredQuestions = Object.keys(responses).length;
+  const remainingQuestions = totalQuestions - answeredQuestions;
   const progressPercent = Math.round((answeredQuestions / totalQuestions) * 100);
 
   const currentCategoryAnswered = useMemo(() => {
@@ -56,6 +78,14 @@ export default function Questionnaire() {
       }
     });
     return scores;
+  }, [responses]);
+
+  // Find first incomplete category for navigation help
+  const firstIncompleteCategory = useMemo(() => {
+    return CATEGORIES.findIndex((cat) => {
+      const answered = cat.questions.filter((q) => responses[q.id] !== undefined).length;
+      return answered < cat.questions.length;
+    });
   }, [responses]);
 
   const handleAnswer = useCallback((questionId: string, value: number) => {
@@ -88,7 +118,13 @@ export default function Questionnaire() {
       cat.questions.filter((q) => responses[q.id] === undefined)
     );
     if (unanswered.length > 0) {
-      toast.error(`Please answer all questions. ${unanswered.length} remaining.`);
+      setShowIncomplete(true);
+      // Navigate to first incomplete category
+      if (firstIncompleteCategory >= 0) {
+        setCurrentCategoryIndex(firstIncompleteCategory);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      toast.error(`Please answer all questions. ${unanswered.length} question${unanswered.length > 1 ? "s" : ""} remaining.`);
       return;
     }
 
@@ -98,17 +134,29 @@ export default function Questionnaire() {
         responses,
         categoryScores,
       });
+      // Clear saved responses on successful submit
+      localStorage.removeItem(STORAGE_KEY);
       toast.success("Evaluation submitted successfully!");
       navigate(`/results/${result.evaluationId}`);
-    } catch (error) {
-      toast.error("Failed to submit evaluation. Please try again.");
-      console.error(error);
+    } catch (error: any) {
+      console.error("Submission error:", error);
+      const errorMessage = error?.message || "Unknown error";
+      toast.error(`Failed to submit evaluation: ${errorMessage}. Please try again.`);
     } finally {
       setSubmitting(false);
     }
   };
 
   const allComplete = Object.keys(categoryScores).length === CATEGORIES.length;
+
+  // Clear saved responses helper
+  const handleClearResponses = () => {
+    setResponses({});
+    localStorage.removeItem(STORAGE_KEY);
+    setCurrentCategoryIndex(0);
+    setShowIncomplete(false);
+    toast.success("All responses cleared. Start fresh!");
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50/30 to-white">
@@ -120,9 +168,19 @@ export default function Questionnaire() {
               <ArrowLeft className="w-4 h-4" />
               Back to Home
             </button>
-            <div className="flex items-center gap-2 text-sm">
-              <Leaf className="w-4 h-4 text-primary" />
-              <span className="font-medium">{answeredQuestions}/{totalQuestions} answered</span>
+            <div className="flex items-center gap-3 text-sm">
+              {answeredQuestions > 0 && (
+                <button
+                  onClick={handleClearResponses}
+                  className="text-xs text-muted-foreground hover:text-red-500 transition-colors"
+                >
+                  Clear All
+                </button>
+              )}
+              <div className="flex items-center gap-2">
+                <Leaf className="w-4 h-4 text-primary" />
+                <span className="font-medium">{answeredQuestions}/{totalQuestions} answered</span>
+              </div>
             </div>
           </div>
           <Progress value={progressPercent} className="h-2" />
@@ -139,6 +197,7 @@ export default function Questionnaire() {
                 const catAnswered = cat.questions.filter((q) => responses[q.id] !== undefined).length;
                 const catComplete = catAnswered === cat.questions.length;
                 const isCurrent = i === currentCategoryIndex;
+                const hasIncomplete = showIncomplete && !catComplete;
 
                 return (
                   <button
@@ -149,6 +208,8 @@ export default function Questionnaire() {
                         ? "bg-primary/10 text-primary font-medium"
                         : catComplete
                         ? "text-foreground hover:bg-accent"
+                        : hasIncomplete
+                        ? "text-red-600 bg-red-50/50 hover:bg-red-50"
                         : "text-muted-foreground hover:bg-accent"
                     }`}
                   >
@@ -156,6 +217,8 @@ export default function Questionnaire() {
                     <span className="flex-1 truncate">{cat.name}</span>
                     {catComplete ? (
                       <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
+                    ) : hasIncomplete ? (
+                      <AlertTriangle className="w-4 h-4 text-red-500 flex-shrink-0" />
                     ) : (
                       <span className="text-xs text-muted-foreground flex-shrink-0">
                         {catAnswered}/{cat.questions.length}
@@ -174,6 +237,7 @@ export default function Questionnaire() {
                 const catAnswered = cat.questions.filter((q) => responses[q.id] !== undefined).length;
                 const catComplete = catAnswered === cat.questions.length;
                 const isCurrent = i === currentCategoryIndex;
+                const hasIncomplete = showIncomplete && !catComplete;
 
                 return (
                   <button
@@ -184,10 +248,12 @@ export default function Questionnaire() {
                         ? "bg-primary text-white"
                         : catComplete
                         ? "bg-primary/10 text-primary"
+                        : hasIncomplete
+                        ? "bg-red-100 text-red-600"
                         : "bg-accent text-muted-foreground"
                     }`}
                   >
-                    {catComplete && <CheckCircle2 className="w-3 h-3" />}
+                    {catComplete ? <CheckCircle2 className="w-3 h-3" /> : hasIncomplete ? <AlertTriangle className="w-3 h-3" /> : null}
                     {cat.name.split(" ")[0]}
                   </button>
                 );
@@ -226,18 +292,32 @@ export default function Questionnaire() {
                   {currentCategory.questions.map((question, qi) => {
                     const options = getOptionsForQuestion(question);
                     const selectedValue = responses[question.id];
+                    const isUnanswered = showIncomplete && selectedValue === undefined;
 
                     return (
-                      <Card key={question.id} className={`border transition-all ${selectedValue !== undefined ? "border-primary/30 bg-primary/[0.02]" : "border-border/60"}`}>
+                      <Card key={question.id} className={`border transition-all ${
+                        selectedValue !== undefined
+                          ? "border-primary/30 bg-primary/[0.02]"
+                          : isUnanswered
+                          ? "border-red-300 bg-red-50/30 ring-1 ring-red-200"
+                          : "border-border/60"
+                      }`}>
                         <CardContent className="p-6">
                           <div className="flex items-start gap-3 mb-4">
-                            <span className="flex-shrink-0 w-7 h-7 rounded-full bg-primary/10 text-primary text-sm font-semibold flex items-center justify-center">
+                            <span className={`flex-shrink-0 w-7 h-7 rounded-full text-sm font-semibold flex items-center justify-center ${
+                              isUnanswered
+                                ? "bg-red-100 text-red-600"
+                                : "bg-primary/10 text-primary"
+                            }`}>
                               {qi + 1}
                             </span>
                             <div>
                               <h3 className="font-medium text-foreground leading-snug">{question.text}</h3>
                               {question.description && (
                                 <p className="text-sm text-muted-foreground mt-1">{question.description}</p>
+                              )}
+                              {isUnanswered && (
+                                <p className="text-xs text-red-500 mt-1 font-medium">Please answer this question</p>
                               )}
                               {question.isFlag && (
                                 <div className="flex items-center gap-2 mt-2 text-xs text-orange-600 bg-orange-50 px-3 py-1.5 rounded-md">
@@ -300,23 +380,30 @@ export default function Questionnaire() {
                       <ArrowRight className="w-4 h-4" />
                     </Button>
                   ) : (
-                    <Button
-                      onClick={handleSubmit}
-                      disabled={!allComplete || submitting}
-                      className="gap-2"
-                    >
-                      {submitting ? (
-                        <>
-                          <Loader2 className="w-4 h-4 animate-spin" />
-                          Submitting...
-                        </>
-                      ) : (
-                        <>
-                          Submit Evaluation
-                          <CheckCircle2 className="w-4 h-4" />
-                        </>
+                    <div className="flex flex-col items-end gap-2">
+                      <Button
+                        onClick={handleSubmit}
+                        disabled={submitting}
+                        className="gap-2"
+                      >
+                        {submitting ? (
+                          <>
+                            <Loader2 className="w-4 h-4 animate-spin" />
+                            Submitting...
+                          </>
+                        ) : (
+                          <>
+                            Submit Evaluation
+                            <CheckCircle2 className="w-4 h-4" />
+                          </>
+                        )}
+                      </Button>
+                      {!allComplete && remainingQuestions > 0 && (
+                        <p className="text-xs text-orange-600 font-medium">
+                          {remainingQuestions} question{remainingQuestions > 1 ? "s" : ""} still unanswered
+                        </p>
                       )}
-                    </Button>
+                    </div>
                   )}
                 </div>
 
