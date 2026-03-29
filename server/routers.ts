@@ -137,14 +137,16 @@ ${cardiacFlag ? "⚠️ CARDIAC FLAG: The user has indicated personal or family 
 Category Scores and Responses:
 ${categoryDetails}
 
-Generate 6-10 recommendations. For each recommendation, provide:
-- category: The category ID it relates to (one of: ${CATEGORIES.map((c) => c.id).join(", ")})
+Generate EXACTLY 8 recommendations — one for EACH of these categories: ${CATEGORIES.map((c) => c.id).join(", ")}. Every category MUST have a recommendation, even high-scoring ones (for those, provide maintenance tips).
+
+For each recommendation, provide:
+- category: The category ID (MUST be one of: ${CATEGORIES.map((c) => c.id).join(", ")})
 - title: A concise, actionable title
 - description: A detailed explanation (2-3 sentences) of why this matters and what to do
 - priority: "high" (score < 40%), "medium" (40-69%), or "low" (70%+) based on urgency
 - actionSteps: An array of 3-5 specific, concrete action steps
 
-Focus on the lowest-scoring categories first. Be encouraging, practical, and specific. Reference whole food plant-based nutrition where relevant. Prioritize recommendations by urgency.`;
+For high-scoring categories (70%+), provide encouraging maintenance recommendations. For lower-scoring categories, focus on improvement strategies. Be encouraging, practical, and specific. Reference whole food plant-based nutrition where relevant.`;
 
   const result = await invokeLLM({
     messages: [
@@ -198,13 +200,33 @@ Focus on the lowest-scoring categories first. Be encouraging, practical, and spe
   }
 
   const parsed = JSON.parse(content);
-  return parsed.recommendations as Array<{
+  let recs = parsed.recommendations as Array<{
     category: string;
     title: string;
     description: string;
     priority: string;
     actionSteps: string[];
   }>;
+
+  // Ensure all 8 categories have a recommendation — fill gaps with fallback
+  const coveredCategories = new Set(recs.map((r) => r.category));
+  for (const cat of CATEGORIES) {
+    if (!coveredCategories.has(cat.id)) {
+      const fallback = FALLBACK_ADVICE[cat.id];
+      if (fallback) {
+        const score = categoryScores[cat.id] ?? 0;
+        recs.push({
+          category: cat.id,
+          title: fallback.title,
+          description: fallback.description,
+          priority: score < 40 ? "high" : score < 70 ? "medium" : "low",
+          actionSteps: fallback.actionSteps,
+        });
+      }
+    }
+  }
+
+  return recs;
 }
 
 

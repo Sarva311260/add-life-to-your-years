@@ -1,0 +1,52 @@
+{
+  "query": "SELECT id, evaluationId, category, priority, title FROM recommendations WHERE evaluationId = 2 ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute SELECT id, evaluationId, category, priority, title FROM recommendations WHERE evaluationId = 2 ORDER BY id;",
+  "rows": [
+    {
+      "id": "9",
+      "evaluationId": "2",
+      "category": "stress",
+      "priority": "low",
+      "title": "Enhance Stress Management Techniques"
+    },
+    {
+      "id": "10",
+      "evaluationId": "2",
+      "category": "relationships",
+      "priority": "low",
+      "title": "Strengthen Relationship Boundaries"
+    },
+    {
+      "id": "11",
+      "evaluationId": "2",
+      "category": "genetic",
+      "priority": "low",
+      "title": "Deepen Genetic Health Awareness & Screening"
+    },
+    {
+      "id": "12",
+      "evaluationId": "2",
+      "category": "lifestyle",
+      "priority": "low",
+      "title": "Increase Physical Activity Frequency"
+    },
+    {
+      "id": "13",
+      "evaluationId": "2",
+      "category": "structural",
+      "priority": "low",
+      "title": "Optimize Healthcare Accessibility"
+    },
+    {
+      "id": "14",
+      "evaluationId": "2",
+      "category": "physical_trauma",
+      "priority": "low",
+      "title": "Maintain and Enhance Physical Resilience"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tevaluationId\tcategory\tpriority\ttitle\n9\t2\tstress\tlow\tEnhance Stress Management Techniques\n10\t2\trelationships\tlow\tStrengthen Relationship Boundaries\n11\t2\tgenetic\tlow\tDeepen Genetic Health Awareness & Screening\n12\t2\tlifestyle\tlow\tIncrease Physical Activity Frequency\n13\t2\tstructural\tlow\tOptimize Healthcare Accessibility\n14\t2\tphysical_trauma\tlow\tMaintain and Enhance Physical Resilience\n",
+  "stderr": "",
+  "execution_time_ms": 1534
+}

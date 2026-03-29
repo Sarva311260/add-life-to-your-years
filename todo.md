@@ -23,3 +23,4 @@
 - [x] Bug: Questionnaire shows 42/41 questions answered — was stale localStorage data from testing, not an actual code bug
 - [x] Bug: Overall score shows 87% Strong but individual category scores show as low — was actually a label confusion issue, not a scoring bug. Fixed labels.
 - [x] Fix: Recommendation priority labels (LOW/MEDIUM/HIGH) are confusing — reads as "LOW Stress Levels" instead of priority level. Changed to MAINTAIN/ROOM TO GROW/PRIORITY FOCUS with explanation.
+- [x] Bug: Only 6 out of 8 recommendations showing on results page — fixed by requiring 8 recs in AI prompt + fallback gap-filling
