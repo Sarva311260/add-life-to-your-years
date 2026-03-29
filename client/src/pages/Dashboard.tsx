@@ -44,7 +44,7 @@ export default function Dashboard() {
             <h2 className="text-xl font-bold mb-2">Sign In to Access Dashboard</h2>
             <p className="text-muted-foreground mb-6">Track your wellness journey by signing in.</p>
             <a href={getLoginUrl()}>
-              <Button className="gap-2">Sign In</Button>
+              <Button className="gap-2">Sign In or Register</Button>
             </a>
           </CardContent>
         </Card>

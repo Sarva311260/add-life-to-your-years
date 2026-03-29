@@ -1,6 +1,7 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getLoginUrl } from "@/const";
 import { trpc } from "@/lib/trpc";
 import { CATEGORIES, getScoreLevel, getScoreLevelLabel } from "@shared/questionnaire";
 import {
@@ -49,11 +50,11 @@ export default function Results() {
         <Card className="max-w-md w-full mx-4">
           <CardContent className="p-8 text-center">
             <Leaf className="w-12 h-12 text-primary mx-auto mb-4" />
-            <h2 className="text-xl font-bold mb-2">Sign In Required</h2>
-            <p className="text-muted-foreground mb-6">Please sign in to view your evaluation results.</p>
-            <Link href="/">
-              <Button>Go to Home</Button>
-            </Link>
+            <h2 className="text-xl font-bold mb-2">Sign In or Register</h2>
+            <p className="text-muted-foreground mb-6">Please sign in or create a free account to view your evaluation results.</p>
+            <a href={getLoginUrl()}>
+              <Button className="gap-2">Sign In or Register</Button>
+            </a>
           </CardContent>
         </Card>
       </div>

@@ -96,7 +96,7 @@ export default function Home() {
               </div>
             ) : (
               <a href={getLoginUrl()}>
-                <Button size="sm" className="gap-2">Sign In</Button>
+                <Button size="sm" className="gap-2">Sign In or Register</Button>
               </a>
             )}
           </div>
@@ -130,7 +130,7 @@ export default function Home() {
                 {isAuthenticated ? (
                   <Button variant="outline" size="sm" onClick={() => { logout(); setMobileMenuOpen(false); }}>Sign Out</Button>
                 ) : (
-                  <a href={getLoginUrl()}><Button size="sm" className="w-full">Sign In</Button></a>
+                  <a href={getLoginUrl()}><Button size="sm" className="w-full">Sign In or Register</Button></a>
                 )}
               </nav>
             </motion.div>
