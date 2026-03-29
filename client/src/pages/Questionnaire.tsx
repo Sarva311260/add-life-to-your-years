@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { getLoginUrl } from "@/const";
 import { trpc } from "@/lib/trpc";
-import { CATEGORIES, getOptionsForQuestion, calculateCategoryScore } from "@shared/questionnaire";
+import { CATEGORIES, getOptionsForQuestion, calculateCategoryScore, calculateOverallScore, hasCardiacFlag } from "@shared/questionnaire";
 import {
   Heart, Building2, Dna, Shield, Brain, Compass, Users, Activity,
   ArrowLeft, ArrowRight, CheckCircle2, AlertTriangle, Leaf, Loader2
@@ -16,6 +16,7 @@ import { toast } from "sonner";
 
 const STORAGE_KEY = "wellness-eval-responses";
 const CATEGORY_INDEX_KEY = "wellness-eval-category-index";
+const TEASER_STORAGE_KEY = "wellness-eval-teaser-data";
 
 const CATEGORY_ICONS: Record<string, React.ReactNode> = {
   lifestyle: <Heart className="w-5 h-5" />,
@@ -64,29 +65,6 @@ export default function Questionnaire() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(responses));
     }
   }, [responses]);
-
-  // Auto-submit after login: if user just logged in and all questions are answered, submit automatically
-  const [autoSubmitAttempted, setAutoSubmitAttempted] = useState(false);
-  useEffect(() => {
-    if (autoSubmitAttempted) return;
-    if (authLoading) return;
-    if (!isAuthenticated) return;
-    // Check if we have a pending submit flag
-    const pendingSubmit = localStorage.getItem("wellness-eval-pending-submit");
-    if (pendingSubmit !== "true") return;
-    // Check all questions are answered
-    const savedResponses = loadSavedResponses();
-    const allQuestionIds = CATEGORIES.flatMap((cat) => cat.questions.map((q) => q.id));
-    const allAnswered = allQuestionIds.every((id) => savedResponses[id] !== undefined);
-    if (!allAnswered) {
-      localStorage.removeItem("wellness-eval-pending-submit");
-      return;
-    }
-    setAutoSubmitAttempted(true);
-    localStorage.removeItem("wellness-eval-pending-submit");
-    // Trigger auto-submit
-    handleSubmit();
-  }, [authLoading, isAuthenticated, autoSubmitAttempted]);
 
   const currentCategory = CATEGORIES[currentCategoryIndex];
   const totalQuestions = CATEGORIES.reduce((sum, cat) => sum + cat.questions.length, 0);
@@ -145,14 +123,6 @@ export default function Questionnaire() {
   };
 
   const handleSubmit = async () => {
-    if (!isAuthenticated) {
-      // Set pending submit flag so we auto-submit after login
-      localStorage.setItem("wellness-eval-pending-submit", "true");
-      toast.info("Please sign in or register to save your evaluation.");
-      window.location.href = getLoginUrl("/questionnaire");
-      return;
-    }
-
     // Check all questions are answered
     const unanswered = CATEGORIES.flatMap((cat) =>
       cat.questions.filter((q) => responses[q.id] === undefined)
@@ -168,6 +138,25 @@ export default function Questionnaire() {
       return;
     }
 
+    // If NOT authenticated, calculate scores client-side and go to teaser results
+    if (!isAuthenticated) {
+      const overallScore = calculateOverallScore(categoryScores);
+      const cardiacFlag = hasCardiacFlag(responses);
+
+      // Save teaser data to localStorage for the teaser results page
+      const teaserData = {
+        responses,
+        categoryScores,
+        overallScore,
+        cardiacFlag,
+        timestamp: Date.now(),
+      };
+      localStorage.setItem(TEASER_STORAGE_KEY, JSON.stringify(teaserData));
+      navigate("/teaser-results");
+      return;
+    }
+
+    // If authenticated, submit directly to the server
     setSubmitting(true);
     try {
       const result = await submitMutation.mutateAsync({
@@ -178,6 +167,7 @@ export default function Questionnaire() {
       localStorage.removeItem(STORAGE_KEY);
       localStorage.removeItem(CATEGORY_INDEX_KEY);
       localStorage.removeItem("wellness-eval-pending-submit");
+      localStorage.removeItem(TEASER_STORAGE_KEY);
       toast.success("Evaluation submitted successfully!");
       navigate(`/results/${result.evaluationId}`);
     } catch (error: any) {
@@ -197,6 +187,7 @@ export default function Questionnaire() {
     localStorage.removeItem(STORAGE_KEY);
     localStorage.removeItem(CATEGORY_INDEX_KEY);
     localStorage.removeItem("wellness-eval-pending-submit");
+    localStorage.removeItem(TEASER_STORAGE_KEY);
     setCurrentCategoryIndex(0);
     setShowIncomplete(false);
     toast.success("All responses cleared. Start fresh!");

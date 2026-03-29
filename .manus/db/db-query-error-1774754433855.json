@@ -1,0 +1,8 @@
+{
+  "query": "\n-- First find the user\nSELECT id, name, email FROM user WHERE email = 'sarva1960@gmail.com';\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute \n-- First find the user\nSELECT id, name, email FROM user WHERE email = 'sarva1960@gmail.com';\n",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1146 (42S02) at line 3: Table '2y96gvwurj9qkkdn4hxary.user' doesn't exist"
+  ]
+}

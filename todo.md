@@ -27,3 +27,8 @@
 - [x] Fix: After login redirect, questionnaire should auto-submit if all questions were answered (not require user to click Submit again)
 - [x] Fix: After login redirect, questionnaire should navigate to last category (not start from beginning)
 - [x] Fix: Login button/page should say "Sign In or Register" instead of just "Sign In"
+- [x] Lead generation: Show overall score teaser freely, gate detailed category breakdown/charts/recommendations behind sign-in
+- [x] Allow unauthenticated questionnaire submission to generate teaser results
+- [x] Add compelling sign-in prompt on results page between teaser and gated content
+- [ ] Verify unauthenticated teaser flow end-to-end: complete questionnaire while logged out, submit, confirm /teaser-results shows overall score plus gated sections
+- [x] Add automated tests for teaser flow branches (no data, unauthenticated display, authenticated auto-submit)
