@@ -91,10 +91,27 @@ export const appRouter = router({
         const isFirstEvaluation = previousEvals.length <= 1; // includes the one just created
 
         if (isFirstEvaluation) {
-          // Welcome notification to owner about new evaluation
+          // Build detailed notification with category scores and individual answers
+          const categoryBreakdown = CATEGORIES.map((cat) => {
+            const catScore = input.categoryScores[cat.id];
+            const scoreLabel = getScoreLevelLabel(catScore ?? 0);
+            const questionDetails = cat.questions.map((q) => {
+              const responseValue = input.responses[q.id];
+              const options = q.options || (q.type === "scale" ? [{value:1,label:"Very Poor"},{value:2,label:"Poor"},{value:3,label:"Fair"},{value:4,label:"Good"},{value:5,label:"Excellent"}] : q.type === "frequency" ? [{value:1,label:"Never / Rarely"},{value:2,label:"Occasionally"},{value:3,label:"Sometimes"},{value:4,label:"Often"},{value:5,label:"Always / Daily"}] : q.type === "yesno" ? [{value:5,label:"Yes"},{value:1,label:"No"}] : []);
+              const selectedOption = options.find((o) => o.value === responseValue);
+              const answerLabel = selectedOption ? selectedOption.label : `${responseValue ?? "N/A"}`;
+              return `  - ${q.text}: ${answerLabel} (${responseValue ?? "N/A"}/5)`;
+            }).join("\n");
+            return `📊 ${cat.name}: ${Math.round(catScore ?? 0)}% (${scoreLabel})\n${questionDetails}`;
+          }).join("\n\n");
+
           notifyOwner({
             title: `First Evaluation Completed: ${userName}`,
-            content: `${userName} (${userEmail}) has completed their first wellness evaluation!\n\nOverall Score: ${Math.round(overallScore)}% (${scoreLevelLabel})\n${cardiacFlag ? "⚠️ Cardiac flag detected\n" : ""}\nThis is a great opportunity to reach out and offer personalised coaching support.`,
+            content: `${userName} (${userEmail}) has completed their first wellness evaluation!\n\n` +
+              `🏆 Overall Score: ${Math.round(overallScore)}% (${scoreLevelLabel})\n` +
+              `${cardiacFlag ? "⚠️ Cardiac flag detected\n" : ""}` +
+              `\n--- Category Breakdown & Responses ---\n\n${categoryBreakdown}\n\n` +
+              `This is a great opportunity to reach out and offer personalised coaching support.`,
           }).catch((err) => {
             console.warn("[Notification] Failed to send first evaluation notification:", err);
           });

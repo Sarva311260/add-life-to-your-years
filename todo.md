@@ -35,3 +35,5 @@
 - [x] Fix: All "Sign In" buttons should say "Sign In or Register" consistently across the app (Home, Dashboard, DashboardLayout, Results pages)
 - [x] Owner notification: Notify owner (sarva) when a new user registers (name, email, timestamp)
 - [x] User welcome notification: Send owner notification when a user completes their first evaluation (overall score summary, cardiac flag, coaching prompt)
+- [x] Enhance owner notification: Include individual category scores and question responses in first-evaluation notification
+- [ ] Future: Set up custom analytics (questionnaire completion rates, average scores by category, common areas needing attention) once site content is finalised
