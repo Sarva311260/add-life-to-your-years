@@ -18,3 +18,4 @@
 - [x] Fix: Improve error handling and user feedback during submission
 - [x] Validate: Test full submit flow end-to-end and confirm evaluation saves to database
 - [x] Validate: Verify dashboard shows the saved evaluation after submission
+- [x] Bug: TypeError Failed to fetch dynamically imported module Questionnaire.js in Microsoft Edge on published site
