@@ -1,11 +1,10 @@
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { InsertUser, users, evaluations, recommendations, InsertEvaluation, InsertRecommendation } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
-// Lazily create the drizzle instance so local tooling can run without a DB.
 export async function getDb() {
   if (!_db && process.env.DATABASE_URL) {
     try {
@@ -89,4 +88,47 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
-// TODO: add feature queries here as your schema grows.
+// ---- Evaluation helpers ----
+
+export async function createEvaluation(data: InsertEvaluation) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.insert(evaluations).values(data);
+  return result[0].insertId;
+}
+
+export async function getUserEvaluations(userId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  return db.select().from(evaluations).where(eq(evaluations.userId, userId)).orderBy(desc(evaluations.completedAt));
+}
+
+export async function getEvaluationById(evaluationId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.select().from(evaluations).where(eq(evaluations.id, evaluationId)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+// ---- Recommendation helpers ----
+
+export async function createRecommendations(data: InsertRecommendation[]) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  if (data.length === 0) return;
+  await db.insert(recommendations).values(data);
+}
+
+export async function getRecommendationsByEvaluation(evaluationId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  return db.select().from(recommendations).where(eq(recommendations.evaluationId, evaluationId));
+}
+
+export async function getLatestRecommendations(userId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const latestEval = await db.select().from(evaluations).where(eq(evaluations.userId, userId)).orderBy(desc(evaluations.completedAt)).limit(1);
+  if (latestEval.length === 0) return [];
+  return db.select().from(recommendations).where(eq(recommendations.evaluationId, latestEval[0].id));
+}

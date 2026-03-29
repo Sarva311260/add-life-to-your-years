@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS `evaluations` (\n\t`id` int AUTO_INCREMENT NOT NULL,\n\t`userId` int NOT NULL,\n\t`categoryScores` json NOT NULL,\n\t`responses` json NOT NULL,\n\t`overallScore` decimal(5,2) NOT NULL,\n\t`cardiacFlag` int NOT NULL DEFAULT 0,\n\t`completedAt` timestamp NOT NULL DEFAULT (now()),\n\tCONSTRAINT `evaluations_id` PRIMARY KEY(`id`)\n);\n\nCREATE TABLE IF NOT EXISTS `recommendations` (\n\t`id` int AUTO_INCREMENT NOT NULL,\n\t`evaluationId` int NOT NULL,\n\t`userId` int NOT NULL,\n\t`category` varchar(64) NOT NULL,\n\t`title` varchar(255) NOT NULL,\n\t`description` text NOT NULL,\n\t`priority` enum('high','medium','low') NOT NULL,\n\t`actionSteps` json NOT NULL,\n\t`createdAt` timestamp NOT NULL DEFAULT (now()),\n\tCONSTRAINT `recommendations_id` PRIMARY KEY(`id`)\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute CREATE TABLE IF NOT EXISTS `evaluations` (\n\t`id` int AUTO_INCREMENT NOT NULL,\n\t`userId` int NOT NULL,\n\t`categoryScores` json NOT NULL,\n\t`responses` json NOT NULL,\n\t`overallScore` decimal(5,2) NOT NULL,\n\t`cardiacFlag` int NOT NULL DEFAULT 0,\n\t`completedAt` timestamp NOT NULL DEFAULT (now()),\n\tCONSTRAINT `evaluations_id` PRIMARY KEY(`id`)\n);\n\nCREATE TABLE IF NOT EXISTS `recommendations` (\n\t`id` int AUTO_INCREMENT NOT NULL,\n\t`evaluationId` int NOT NULL,\n\t`userId` int NOT NULL,\n\t`category` varchar(64) NOT NULL,\n\t`title` varchar(255) NOT NULL,\n\t`description` text NOT NULL,\n\t`priority` enum('high','medium','low') NOT NULL,\n\t`actionSteps` json NOT NULL,\n\t`createdAt` timestamp NOT NULL DEFAULT (now()),\n\tCONSTRAINT `recommendations_id` PRIMARY KEY(`id`)\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 2287
+}
