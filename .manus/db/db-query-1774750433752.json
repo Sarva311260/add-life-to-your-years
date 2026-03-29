@@ -1,0 +1,28 @@
+{
+  "query": "SELECT * FROM evaluations ORDER BY id DESC LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute SELECT * FROM evaluations ORDER BY id DESC LIMIT 5;",
+  "rows": [
+    {
+      "id": "2",
+      "userId": "30055",
+      "categoryScores": "{\"environmental\": 96, \"genetic\": 80, \"lifestyle\": 88, \"physical_trauma\": 92, \"purpose\": 100, \"relationships\": 76, \"stress\": 76, \"structural\": 84}",
+      "responses": "{\"env_1\": 5, \"env_2\": 5, \"env_3\": 5, \"env_4\": 5, \"env_5\": 4, \"gen_1\": 3, \"gen_2\": 3, \"gen_3\": 5, \"gen_4\": 3, \"gen_5\": 5, \"gen_6\": 5, \"lifestyle_1\": 5, \"lifestyle_2\": 3, \"lifestyle_3\": 4, \"lifestyle_4\": 5, \"lifestyle_5\": 5, \"purpose_1\": 5, \"purpose_2\": 5, \"purpose_3\": 5, \"purpose_4\": 5, \"purpose_5\": 5, \"rel_1\": 4, \"rel_2\": 4, \"rel_3\": 4, \"rel_4\": 3, \"rel_5\": 4, \"stress_1\": 3, \"stress_2\": 4, \"stress_3\": 3, \"stress_4\": 4, \"stress_5\": 5, \"struct_1\": 4, \"struct_2\": 5, \"struct_3\": 4, \"struct_4\": 4, \"struct_5\": 4, \"trauma_1\": 5, \"trauma_2\": 5, \"trauma_3\": 3, \"trauma_4\": 5, \"trauma_5\": 5}",
+      "overallScore": "87.00",
+      "cardiacFlag": "0",
+      "completedAt": "2026-03-29 02:11:02"
+    },
+    {
+      "id": "1",
+      "userId": "1",
+      "categoryScores": "{\"environmental\": 60, \"genetic\": 60, \"lifestyle\": 60, \"physical_trauma\": 60, \"purpose\": 60, \"relationships\": 60, \"stress\": 60, \"structural\": 60}",
+      "responses": "{\"env_1\": 3, \"env_2\": 3, \"env_3\": 3, \"env_4\": 3, \"env_5\": 3, \"gen_1\": 3, \"gen_2\": 3, \"gen_3\": 3, \"gen_4\": 3, \"gen_5\": 3, \"gen_6\": 3, \"lifestyle_1\": 3, \"lifestyle_2\": 3, \"lifestyle_3\": 3, \"lifestyle_4\": 3, \"lifestyle_5\": 3, \"purpose_1\": 3, \"purpose_2\": 3, \"purpose_3\": 3, \"purpose_4\": 3, \"purpose_5\": 3, \"rel_1\": 3, \"rel_2\": 3, \"rel_3\": 3, \"rel_4\": 3, \"rel_5\": 3, \"stress_1\": 3, \"stress_2\": 3, \"stress_3\": 3, \"stress_4\": 3, \"stress_5\": 3, \"struct_1\": 3, \"struct_2\": 3, \"struct_3\": 3, \"struct_4\": 3, \"struct_5\": 3, \"trauma_1\": 3, \"trauma_2\": 3, \"trauma_3\": 3, \"trauma_4\": 3, \"trauma_5\": 3}",
+      "overallScore": "60.00",
+      "cardiacFlag": "1",
+      "completedAt": "2026-03-29 01:26:31"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tuserId\tcategoryScores\tresponses\toverallScore\tcardiacFlag\tcompletedAt\n2\t30055\t{\"environmental\": 96, \"genetic\": 80, \"lifestyle\": 88, \"physical_trauma\": 92, \"purpose\": 100, \"relationships\": 76, \"stress\": 76, \"structural\": 84}\t{\"env_1\": 5, \"env_2\": 5, \"env_3\": 5, \"env_4\": 5, \"env_5\": 4, \"gen_1\": 3, \"gen_2\": 3, \"gen_3\": 5, \"gen_4\": 3, \"gen_5\": 5, \"gen_6\": 5, \"lifestyle_1\": 5, \"lifestyle_2\": 3, \"lifestyle_3\": 4, \"lifestyle_4\": 5, \"lifestyle_5\": 5, \"purpose_1\": 5, \"purpose_2\": 5, \"purpose_3\": 5, \"purpose_4\": 5, \"purpose_5\": 5, \"rel_1\": 4, \"rel_2\": 4, \"rel_3\": 4, \"rel_4\": 3, \"rel_5\": 4, \"stress_1\": 3, \"stress_2\": 4, \"stress_3\": 3, \"stress_4\": 4, \"stress_5\": 5, \"struct_1\": 4, \"struct_2\": 5, \"struct_3\": 4, \"struct_4\": 4, \"struct_5\": 4, \"trauma_1\": 5, \"trauma_2\": 5, \"trauma_3\": 3, \"trauma_4\": 5, \"trauma_5\": 5}\t87.00\t0\t2026-03-29 02:11:02\n1\t1\t{\"environmental\": 60, \"genetic\": 60, \"lifestyle\": 60, \"physical_trauma\": 60, \"purpose\": 60, \"relationships\": 60, \"stress\": 60, \"structural\": 60}\t{\"env_1\": 3, \"env_2\": 3, \"env_3\": 3, \"env_4\": 3, \"env_5\": 3, \"gen_1\": 3, \"gen_2\": 3, \"gen_3\": 3, \"gen_4\": 3, \"gen_5\": 3, \"gen_6\": 3, \"lifestyle_1\": 3, \"lifestyle_2\": 3, \"lifestyle_3\": 3, \"lifestyle_4\": 3, \"lifestyle_5\": 3, \"purpose_1\": 3, \"purpose_2\": 3, \"purpose_3\": 3, \"purpose_4\": 3, \"purpose_5\": 3, \"rel_1\": 3, \"rel_2\": 3, \"rel_3\": 3, \"rel_4\": 3, \"rel_5\": 3, \"stress_1\": 3, \"stress_2\": 3, \"stress_3\": 3, \"stress_4\": 3, \"stress_5\": 3, \"struct_1\": 3, \"struct_2\": 3, \"struct_3\": 3, \"struct_4\": 3, \"struct_5\": 3, \"trauma_1\": 3, \"trauma_2\": 3, \"trauma_3\": 3, \"trauma_4\": 3, \"trauma_5\": 3}\t60.00\t1\t2026-03-29 01:26:31\n",
+  "stderr": "",
+  "execution_time_ms": 1520
+}

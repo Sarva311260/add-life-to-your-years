@@ -19,6 +19,12 @@ const PRIORITY_COLORS = {
   low: { bg: "bg-green-50", text: "text-green-700", border: "border-green-200", badge: "bg-green-100 text-green-700" },
 };
 
+const PRIORITY_LABELS: Record<string, string> = {
+  high: "PRIORITY FOCUS",
+  medium: "ROOM TO GROW",
+  low: "MAINTAIN",
+};
+
 const SCORE_COLORS = ["#ef4444", "#ef4444", "#f97316", "#f97316", "#22c55e", "#22c55e", "#16a34a", "#16a34a"];
 
 export default function Results() {
@@ -128,8 +134,10 @@ export default function Results() {
       lines.push("--- RECOMMENDATIONS ---");
       sortedRecs.forEach((rec, i) => {
         lines.push("");
-        lines.push(`${i + 1}. [${rec.priority.toUpperCase()}] ${rec.title}`);
-        lines.push(`   Category: ${rec.category}`);
+        const exportLabel = PRIORITY_LABELS[rec.priority] || rec.priority.toUpperCase();
+        lines.push(`${i + 1}. [${exportLabel}] ${rec.title}`);
+        const catName = CATEGORIES.find((c) => c.id === rec.category)?.name || rec.category;
+        lines.push(`   Category: ${catName}`);
         lines.push(`   ${rec.description}`);
         const steps = rec.actionSteps as string[];
         if (steps?.length) {
@@ -303,10 +311,13 @@ export default function Results() {
 
         {/* Recommendations */}
         <div className="mb-10">
-          <h2 className="font-serif text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+          <h2 className="font-serif text-2xl font-bold text-foreground mb-2 flex items-center gap-2">
             <CheckCircle2 className="w-6 h-6 text-primary" />
             Personalised Recommendations
           </h2>
+          <p className="text-sm text-muted-foreground mb-6 ml-8">
+            Recommendations are grouped by action level: <span className="font-medium text-red-600">Priority Focus</span> areas need the most attention, <span className="font-medium text-orange-600">Room to Grow</span> areas have good potential for improvement, and <span className="font-medium text-green-600">Maintain</span> areas are already strong — keep up the great work.
+          </p>
 
           {sortedRecs.length === 0 ? (
             <Card>
@@ -327,11 +338,11 @@ export default function Results() {
                       <div className="flex items-start justify-between gap-4 mb-3">
                         <div>
                           <div className="flex items-center gap-2 mb-1">
-                            <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${colors.badge}`}>
-                              {rec.priority.toUpperCase()}
-                            </span>
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-xs font-medium text-muted-foreground">
                               {CATEGORIES.find((c) => c.id === rec.category)?.name || rec.category}
+                            </span>
+                            <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${colors.badge}`}>
+                              {PRIORITY_LABELS[rec.priority] || rec.priority.toUpperCase()}
                             </span>
                           </div>
                           <h3 className="font-semibold text-foreground">{rec.title}</h3>

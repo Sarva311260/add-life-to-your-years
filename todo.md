@@ -20,3 +20,6 @@
 - [x] Validate: Verify dashboard shows the saved evaluation after submission
 - [x] Bug: TypeError Failed to fetch dynamically imported module Questionnaire.js in Microsoft Edge on published site
 - [x] Bug: After signing in/up via OAuth, user is redirected to landing page instead of back to the questionnaire
+- [x] Bug: Questionnaire shows 42/41 questions answered — was stale localStorage data from testing, not an actual code bug
+- [x] Bug: Overall score shows 87% Strong but individual category scores show as low — was actually a label confusion issue, not a scoring bug. Fixed labels.
+- [x] Fix: Recommendation priority labels (LOW/MEDIUM/HIGH) are confusing — reads as "LOW Stress Levels" instead of priority level. Changed to MAINTAIN/ROOM TO GROW/PRIORITY FOCUS with explanation.

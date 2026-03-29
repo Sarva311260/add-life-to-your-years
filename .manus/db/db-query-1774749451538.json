@@ -1,0 +1,21 @@
+{
+  "query": "SELECT * FROM users WHERE email LIKE '%sarva1960%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute SELECT * FROM users WHERE email LIKE '%sarva1960%';",
+  "rows": [
+    {
+      "id": "30040",
+      "openId": "GHEADA39VJNXBSsgCN3VJM",
+      "name": "sarva1960",
+      "email": "sarva1960@gmail.com",
+      "loginMethod": "email",
+      "role": "user",
+      "createdAt": "2026-03-29 01:43:27",
+      "updatedAt": "2026-03-29 01:43:34",
+      "lastSignedIn": "2026-03-29 01:43:34"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\topenId\tname\temail\tloginMethod\trole\tcreatedAt\tupdatedAt\tlastSignedIn\n30040\tGHEADA39VJNXBSsgCN3VJM\tsarva1960\tsarva1960@gmail.com\temail\tuser\t2026-03-29 01:43:27\t2026-03-29 01:43:34\t2026-03-29 01:43:34\n",
+  "stderr": "",
+  "execution_time_ms": 1688
+}
