@@ -15,6 +15,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 
 const STORAGE_KEY = "wellness-eval-responses";
+const CATEGORY_INDEX_KEY = "wellness-eval-category-index";
 
 const CATEGORY_ICONS: Record<string, React.ReactNode> = {
   lifestyle: <Heart className="w-5 h-5" />,
@@ -41,7 +42,16 @@ function loadSavedResponses(): Record<string, number> {
 export default function Questionnaire() {
   const { user, isAuthenticated, loading: authLoading } = useAuth();
   const [, navigate] = useLocation();
-  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
+  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(() => {
+    try {
+      const saved = localStorage.getItem(CATEGORY_INDEX_KEY);
+      if (saved) {
+        const idx = parseInt(saved, 10);
+        if (!isNaN(idx) && idx >= 0 && idx < CATEGORIES.length) return idx;
+      }
+    } catch {}
+    return 0;
+  });
   const [responses, setResponses] = useState<Record<string, number>>(loadSavedResponses);
   const [submitting, setSubmitting] = useState(false);
   const [showIncomplete, setShowIncomplete] = useState(false);
@@ -54,6 +64,29 @@ export default function Questionnaire() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(responses));
     }
   }, [responses]);
+
+  // Auto-submit after login: if user just logged in and all questions are answered, submit automatically
+  const [autoSubmitAttempted, setAutoSubmitAttempted] = useState(false);
+  useEffect(() => {
+    if (autoSubmitAttempted) return;
+    if (authLoading) return;
+    if (!isAuthenticated) return;
+    // Check if we have a pending submit flag
+    const pendingSubmit = localStorage.getItem("wellness-eval-pending-submit");
+    if (pendingSubmit !== "true") return;
+    // Check all questions are answered
+    const savedResponses = loadSavedResponses();
+    const allQuestionIds = CATEGORIES.flatMap((cat) => cat.questions.map((q) => q.id));
+    const allAnswered = allQuestionIds.every((id) => savedResponses[id] !== undefined);
+    if (!allAnswered) {
+      localStorage.removeItem("wellness-eval-pending-submit");
+      return;
+    }
+    setAutoSubmitAttempted(true);
+    localStorage.removeItem("wellness-eval-pending-submit");
+    // Trigger auto-submit
+    handleSubmit();
+  }, [authLoading, isAuthenticated, autoSubmitAttempted]);
 
   const currentCategory = CATEGORIES[currentCategoryIndex];
   const totalQuestions = CATEGORIES.reduce((sum, cat) => sum + cat.questions.length, 0);
@@ -92,6 +125,11 @@ export default function Questionnaire() {
     setResponses((prev) => ({ ...prev, [questionId]: value }));
   }, []);
 
+  // Persist current category index so it survives login redirects
+  useEffect(() => {
+    localStorage.setItem(CATEGORY_INDEX_KEY, String(currentCategoryIndex));
+  }, [currentCategoryIndex]);
+
   const handleNext = () => {
     if (currentCategoryIndex < CATEGORIES.length - 1) {
       setCurrentCategoryIndex((prev) => prev + 1);
@@ -108,7 +146,9 @@ export default function Questionnaire() {
 
   const handleSubmit = async () => {
     if (!isAuthenticated) {
-      toast.error("Please sign in to save your evaluation.");
+      // Set pending submit flag so we auto-submit after login
+      localStorage.setItem("wellness-eval-pending-submit", "true");
+      toast.info("Please sign in or register to save your evaluation.");
       window.location.href = getLoginUrl("/questionnaire");
       return;
     }
@@ -134,8 +174,10 @@ export default function Questionnaire() {
         responses,
         categoryScores,
       });
-      // Clear saved responses on successful submit
+      // Clear saved responses and category index on successful submit
       localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(CATEGORY_INDEX_KEY);
+      localStorage.removeItem("wellness-eval-pending-submit");
       toast.success("Evaluation submitted successfully!");
       navigate(`/results/${result.evaluationId}`);
     } catch (error: any) {
@@ -153,6 +195,8 @@ export default function Questionnaire() {
   const handleClearResponses = () => {
     setResponses({});
     localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(CATEGORY_INDEX_KEY);
+    localStorage.removeItem("wellness-eval-pending-submit");
     setCurrentCategoryIndex(0);
     setShowIncomplete(false);
     toast.success("All responses cleared. Start fresh!");
@@ -411,11 +455,11 @@ export default function Questionnaire() {
                 {!authLoading && !isAuthenticated && (
                   <div className="mt-6 p-4 bg-orange-50 border border-orange-200 rounded-lg text-center">
                     <p className="text-sm text-orange-800 mb-3">
-                      Sign in to save your evaluation results and track your progress over time.
+                      Sign in or register to save your evaluation results and track your progress over time.
                     </p>
                     <a href={getLoginUrl("/questionnaire")}>
                       <Button size="sm" variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-100">
-                        Sign In to Save Results
+                        Sign In or Register
                       </Button>
                     </a>
                   </div>

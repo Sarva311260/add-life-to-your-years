@@ -1,0 +1,9 @@
+{
+  "query": "DELETE FROM recommendations WHERE evaluationId IN (SELECT id FROM evaluations WHERE userId = 30055); DELETE FROM evaluations WHERE userId = 30055; DELETE FROM users WHERE id = 30055;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute DELETE FROM recommendations WHERE evaluationId IN (SELECT id FROM evaluations WHERE userId = 30055); DELETE FROM evaluations WHERE userId = 30055; DELETE FROM users WHERE id = 30055;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 2048
+}
