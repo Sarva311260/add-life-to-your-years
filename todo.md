@@ -64,3 +64,5 @@
 - [x] Add BMI explanation text on demographics form and results page so users understand what BMI is
 - [x] Split combined alcohol/caffeine/tobacco question into 3 separate questions
 - [x] Increase alcohol negative weighting to be almost as damaging as tobacco (tobacco 2.0x, alcohol 1.8x)
+- [x] Bug: Preventive health screenings question selects both option 5 and 6 simultaneously — duplicate value (both had value:5), fixed by giving healthy lifestyle option value:6
+- [x] Create dedicated printable report page (separate route /report/:id) with download/print button, matching the results page visual layout with individual responses

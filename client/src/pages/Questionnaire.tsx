@@ -129,7 +129,11 @@ export default function Questionnaire() {
         .filter((v): v is number => v !== undefined);
       if (catResponses.length === cat.questions.length) {
         const weights = cat.questions.map((q) => q.weight ?? 1.0);
-        scores[cat.id] = calculateCategoryScore(catResponses, weights);
+        const maxValues = cat.questions.map((q) => {
+          const opts = getOptionsForQuestion(q);
+          return opts.length > 0 ? Math.max(...opts.map(o => o.value)) : 5;
+        });
+        scores[cat.id] = calculateCategoryScore(catResponses, weights, maxValues);
       }
     });
     return scores;

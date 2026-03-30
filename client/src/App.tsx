@@ -10,6 +10,7 @@ import Questionnaire from "./pages/Questionnaire";
 import Results from "./pages/Results";
 import TeaserResults from "./pages/TeaserResults";
 import Dashboard from "./pages/Dashboard";
+import Report from "./pages/Report";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -26,6 +27,7 @@ function Router() {
       <Route path={"/questionnaire"} component={Questionnaire} />
       <Route path={"/teaser-results"} component={TeaserResults} />
       <Route path={"/results/:id"} component={Results} />
+      <Route path={"/report/:id"} component={Report} />
       <Route path={"/dashboard"} component={Dashboard} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />

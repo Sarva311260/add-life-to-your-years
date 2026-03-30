@@ -5,12 +5,10 @@ import { getLoginUrl } from "@/const";
 import { trpc } from "@/lib/trpc";
 import { CATEGORIES, getScoreLevel, getScoreLevelLabel, getBMICategory } from "@shared/questionnaire";
 import {
-  ArrowLeft, Download, AlertTriangle, CheckCircle2, ArrowRight,
-  Leaf, TrendingUp, Target, Loader2, FileDown
+  ArrowLeft, AlertTriangle, CheckCircle2, ArrowRight,
+  Leaf, TrendingUp, Target, Loader2, FileText
 } from "lucide-react";
 import { useLocation, useParams, Link } from "wouter";
-import { useState } from "react";
-import { toast } from "sonner";
 import {
   Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell
@@ -46,28 +44,7 @@ export default function Results() {
     { enabled: evaluationId > 0 && isAuthenticated }
   );
 
-  const generatePDF = trpc.evaluation.generatePDF.useMutation();
-  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
-  const [generatingPdf, setGeneratingPdf] = useState(false);
 
-  const handleDownloadPDF = async () => {
-    if (pdfUrl) {
-      window.open(pdfUrl, "_blank");
-      return;
-    }
-    setGeneratingPdf(true);
-    try {
-      const result = await generatePDF.mutateAsync({ evaluationId });
-      setPdfUrl(result.url);
-      window.open(result.url, "_blank");
-      toast.success("PDF report generated successfully!");
-    } catch (error) {
-      console.error("PDF generation error:", error);
-      toast.error("Failed to generate PDF report. Please try again.");
-    } finally {
-      setGeneratingPdf(false);
-    }
-  };
 
   if (!isAuthenticated) {
     return (
@@ -140,51 +117,7 @@ export default function Results() {
     return (order[a.priority as keyof typeof order] ?? 2) - (order[b.priority as keyof typeof order] ?? 2);
   });
 
-  const handleExport = () => {
-    const lines: string[] = [];
-    lines.push("=== WELLNESS EVALUATION REPORT ===");
-    lines.push(`Date: ${new Date(evaluation.completedAt).toLocaleDateString()}`);
-    lines.push(`Overall Score: ${overallScore}% (${scoreLevelLabel})`);
-    lines.push("");
-    lines.push("--- CATEGORY SCORES ---");
-    CATEGORIES.forEach((cat) => {
-      const score = categoryScores[cat.id] ?? 0;
-      lines.push(`${cat.name}: ${score}% (${getScoreLevelLabel(score)})`);
-    });
-    if (evaluation.cardiacFlag) {
-      lines.push("");
-      lines.push("⚠️ CARDIAC FLAG: Personal or family history of heart disease indicated.");
-    }
-    if (sortedRecs.length > 0) {
-      lines.push("");
-      lines.push("--- RECOMMENDATIONS ---");
-      sortedRecs.forEach((rec, i) => {
-        lines.push("");
-        const exportLabel = PRIORITY_LABELS[rec.priority] || rec.priority.toUpperCase();
-        lines.push(`${i + 1}. [${exportLabel}] ${rec.title}`);
-        const catName = CATEGORIES.find((c) => c.id === rec.category)?.name || rec.category;
-        lines.push(`   Category: ${catName}`);
-        lines.push(`   ${rec.description}`);
-        const steps = rec.actionSteps as string[];
-        if (steps?.length) {
-          lines.push("   Action Steps:");
-          steps.forEach((step, j) => {
-            lines.push(`     ${j + 1}. ${step}`);
-          });
-        }
-      });
-    }
-    lines.push("");
-    lines.push("=== END OF REPORT ===");
 
-    const blob = new Blob([lines.join("\n")], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `wellness-report-${new Date(evaluation.completedAt).toISOString().split("T")[0]}.txt`;
-    a.click();
-    URL.revokeObjectURL(url);
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50/30 to-white">
@@ -195,10 +128,12 @@ export default function Results() {
             <ArrowLeft className="w-4 h-4" />
             Back to Dashboard
           </button>
-          <Button variant="outline" size="sm" onClick={handleExport} className="gap-2">
-            <Download className="w-4 h-4" />
-            Export Report
-          </Button>
+          <Link href={`/report/${evaluationId}`}>
+            <Button variant="outline" size="sm" className="gap-2">
+              <FileText className="w-4 h-4" />
+              View Full Report
+            </Button>
+          </Link>
         </div>
       </div>
 
@@ -437,19 +372,12 @@ export default function Results() {
 
         {/* Actions */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center pb-10">
-          <Button
-            variant="outline"
-            className="gap-2"
-            onClick={handleDownloadPDF}
-            disabled={generatingPdf || sortedRecs.length === 0}
-          >
-            {generatingPdf ? (
-              <Loader2 className="w-4 h-4 animate-spin" />
-            ) : (
-              <FileDown className="w-4 h-4" />
-            )}
-            {generatingPdf ? "Generating PDF..." : pdfUrl ? "Download PDF Report" : "Generate PDF Report"}
-          </Button>
+          <Link href={`/report/${evaluationId}`}>
+            <Button variant="outline" className="gap-2">
+              <FileText className="w-4 h-4" />
+              View Full Report
+            </Button>
+          </Link>
           <Link href="/questionnaire">
             <Button variant="outline" className="gap-2">
               Retake Evaluation

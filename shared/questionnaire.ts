@@ -410,8 +410,8 @@ export const CATEGORIES: Category[] = [
           { value: 2, label: "Only when something feels wrong" },
           { value: 3, label: "Occasionally \u2014 every few years" },
           { value: 4, label: "Regularly \u2014 annual check-ups" },
-           { value: 5, label: "Very regularly — proactive and thorough" },
-          { value: 5, label: "My preventative health screening is a very healthy lifestyle" },
+          { value: 5, label: "Very regularly — proactive and thorough" },
+          { value: 6, label: "My preventative health screening is a very healthy lifestyle" },
         ],
       },
       {
@@ -867,20 +867,27 @@ export function getCategoryById(id: string): Category | undefined {
   return CATEGORIES.find((c) => c.id === id);
 }
 
-export function calculateCategoryScore(scores: number[], weights?: number[]): number {
+export function calculateCategoryScore(scores: number[], weights?: number[], maxValues?: number[]): number {
   if (scores.length === 0) return 0;
   if (weights && weights.length === scores.length) {
     // Weighted average: sum(score * weight) / sum(maxScore * weight)
     let weightedSum = 0;
     let weightedMax = 0;
     for (let i = 0; i < scores.length; i++) {
-      weightedSum += scores[i] * weights[i];
-      weightedMax += 5 * weights[i];
+      const maxVal = maxValues?.[i] ?? 5;
+      weightedSum += Math.min(scores[i], maxVal) * weights[i];
+      weightedMax += maxVal * weights[i];
     }
     return Math.round((weightedSum / weightedMax) * 100);
   }
-  const sum = scores.reduce((a, b) => a + b, 0);
-  return Math.round((sum / (scores.length * 5)) * 100);
+  let totalScore = 0;
+  let totalMax = 0;
+  for (let i = 0; i < scores.length; i++) {
+    const maxVal = maxValues?.[i] ?? 5;
+    totalScore += Math.min(scores[i], maxVal);
+    totalMax += maxVal;
+  }
+  return Math.round((totalScore / totalMax) * 100);
 }
 
 export function calculateOverallScore(categoryScores: Record<string, number>): number {
