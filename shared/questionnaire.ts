@@ -298,7 +298,8 @@ export const CATEGORIES: Category[] = [
           { value: 2, label: "Only when something feels wrong" },
           { value: 3, label: "Occasionally \u2014 every few years" },
           { value: 4, label: "Regularly \u2014 annual check-ups" },
-          { value: 5, label: "Very regularly \u2014 proactive and thorough" },
+           { value: 5, label: "Very regularly — proactive and thorough" },
+          { value: 5, label: "My preventative health screening is a very healthy lifestyle" },
         ],
       },
       {

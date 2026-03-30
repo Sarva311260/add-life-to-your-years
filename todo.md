@@ -46,3 +46,4 @@
 - [x] Physical Trauma: Add new question "Do you have amalgam fillings or root canal?"
 - [x] Physical Trauma: Add new question "Do you have any implants in your body?"
 - [x] AI Recommendations: If amalgam fillings detected, suggest removal by qualified bio-compatible dentist
+- [x] Genetics Q4 (preventive health screenings): Add new option "My preventative health screening is a very healthy lifestyle"
