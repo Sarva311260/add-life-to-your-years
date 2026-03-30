@@ -184,7 +184,7 @@ export default function TeaserResults() {
               <div className="text-left">
                 <p className="text-sm font-medium text-red-800">Cardiac Health Flag</p>
                 <p className="text-sm text-red-700 mt-1">
-                  You indicated a personal or family history of heart disease. We recommend consulting with a healthcare provider.
+                  You indicated a personal or family history of heart disease. You might like to consider contacting your healthcare provider for appropriate screening and preventive care.
                 </p>
               </div>
             </div>

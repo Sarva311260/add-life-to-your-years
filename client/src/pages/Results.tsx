@@ -215,8 +215,8 @@ export default function Results() {
               <div className="text-left">
                 <p className="text-sm font-medium text-red-800">Cardiac Health Flag</p>
                 <p className="text-sm text-red-700 mt-1">
-                  You indicated a personal or family history of heart disease. Please consult with a healthcare
-                  provider for appropriate screening and preventive care.
+                  You indicated a personal or family history of heart disease. You might like to consider contacting
+                  your healthcare provider for appropriate screening and preventive care.
                 </p>
               </div>
             </div>
