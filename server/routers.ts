@@ -154,11 +154,16 @@ export const appRouter = router({
             return `📊 ${cat.name}: ${Math.round(catScore ?? 0)}% (${scoreLabel})\n${questionDetails}`;
           }).join("\n\n");
 
+          // Build report link using the origin from the request
+          const origin = ctx.req.headers.origin || ctx.req.headers.referer?.replace(/\/[^/]*$/, '') || '';
+          const reportLink = `${origin}/report/${evaluationId}`;
+
           notifyOwner({
             title: `First Evaluation Completed: ${userName}`,
             content: `${userName} (${userEmail}) has completed their first wellness evaluation!\n\n` +
               `🏆 Overall Score: ${Math.round(overallScore)}% (${scoreLevelLabel})\n` +
               `${cardiacFlag ? "⚠️ Cardiac flag detected\n" : ""}` +
+              `📄 View Full Report: ${reportLink}\n` +
               `\n--- Category Breakdown & Responses ---\n\n${categoryBreakdown}\n\n` +
               `This is a great opportunity to reach out and offer personalised coaching support.`,
           }).catch((err) => {
