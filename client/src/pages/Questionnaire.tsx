@@ -128,7 +128,8 @@ export default function Questionnaire() {
         .map((q) => responses[q.id])
         .filter((v): v is number => v !== undefined);
       if (catResponses.length === cat.questions.length) {
-        scores[cat.id] = calculateCategoryScore(catResponses);
+        const weights = cat.questions.map((q) => q.weight ?? 1.0);
+        scores[cat.id] = calculateCategoryScore(catResponses, weights);
       }
     });
     return scores;

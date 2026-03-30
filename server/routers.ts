@@ -15,7 +15,7 @@ import {
 } from "./db";
 import { generateEvaluationPDF } from "./pdfReport";
 import { storagePut } from "./storage";
-import { CATEGORIES, calculateOverallScore, hasCardiacFlag, getScoreLevelLabel } from "../shared/questionnaire";
+import { CATEGORIES, calculateOverallScore, hasCardiacFlag, getScoreLevelLabel, getOptionsForQuestion } from "../shared/questionnaire";
 
 export const appRouter = router({
   system: systemRouter,
@@ -146,7 +146,7 @@ export const appRouter = router({
             const scoreLabel = getScoreLevelLabel(catScore ?? 0);
             const questionDetails = cat.questions.map((q) => {
               const responseValue = input.responses[q.id];
-              const options = q.options || (q.type === "scale" ? [{value:1,label:"Very Poor"},{value:2,label:"Poor"},{value:3,label:"Fair"},{value:4,label:"Good"},{value:5,label:"Excellent"}] : q.type === "frequency" ? [{value:1,label:"Never / Rarely"},{value:2,label:"Occasionally"},{value:3,label:"Sometimes"},{value:4,label:"Often"},{value:5,label:"Always / Daily"}] : q.type === "yesno" ? [{value:5,label:"Yes"},{value:1,label:"No"}] : []);
+              const options = getOptionsForQuestion(q);
               const selectedOption = options.find((o) => o.value === responseValue);
               const answerLabel = selectedOption ? selectedOption.label : `${responseValue ?? "N/A"}`;
               return `  - ${q.text}: ${answerLabel} (${responseValue ?? "N/A"}/5)`;

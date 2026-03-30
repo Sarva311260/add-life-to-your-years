@@ -196,9 +196,9 @@ describe("New Lifestyle Questions", () => {
     expect(q!.options!.length).toBe(4);
   });
 
-  it("should have 50 total questions across all categories", () => {
+  it("should have 52 total questions across all categories", () => {
     const totalQuestions = CATEGORIES.reduce((sum, cat) => sum + cat.questions.length, 0);
-    expect(totalQuestions).toBe(50);
+    expect(totalQuestions).toBe(52);
   });
 });
 
@@ -224,7 +224,7 @@ describe("PDF Report - Data Preparation", () => {
     expect(evaluationData.id).toBeDefined();
     expect(evaluationData.overallScore).toBeDefined();
     expect(Object.keys(evaluationData.categoryScores).length).toBe(8);
-    expect(Object.keys(evaluationData.responses).length).toBe(50);
+    expect(Object.keys(evaluationData.responses).length).toBe(52);
     expect(evaluationData.gender).toBeDefined();
     expect(evaluationData.age).toBeDefined();
     expect(evaluationData.bmi).toBeDefined();

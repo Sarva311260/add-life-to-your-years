@@ -62,3 +62,5 @@
 - [x] Update home page question count stat
 - [x] Bug: Demographics form won't let user proceed even when all fields are filled — heightUnit/weightUnit defaulted to undefined instead of 'metric'
 - [x] Add BMI explanation text on demographics form and results page so users understand what BMI is
+- [x] Split combined alcohol/caffeine/tobacco question into 3 separate questions
+- [x] Increase alcohol negative weighting to be almost as damaging as tobacco (tobacco 2.0x, alcohol 1.8x)

@@ -55,10 +55,12 @@ export interface Question {
   id: string;
   text: string;
   description?: string;
-  type: QuestionType;
+  type: "choice" | "scale" | "frequency" | "yesno";
   options?: ChoiceOption[];
   isFlag?: boolean;
   flagTriggerValues?: number[];
+  /** Scoring weight multiplier. Defaults to 1.0 if not specified. Higher = more impact on category score. */
+  weight?: number;
 }
 
 export interface Category {
@@ -97,7 +99,7 @@ export function getOptionsForQuestion(question: Question): ChoiceOption[] {
     case "scale": return SCALE_OPTIONS;
     case "frequency": return FREQUENCY_OPTIONS;
     case "yesno": return YESNO_OPTIONS;
-    case "choice": return question.options || SCALE_OPTIONS;
+    case "choice": return SCALE_OPTIONS;
     default: return SCALE_OPTIONS;
   }
 }
@@ -187,16 +189,44 @@ export const CATEGORIES: Category[] = [
         ],
       },
       {
-        id: "lifestyle_4",
-        text: "How well do you manage substance intake (alcohol, caffeine, tobacco)?",
-        description: "Moderate or no use, awareness of effects on health.",
+        id: "lifestyle_4a",
+        text: "How would you describe your tobacco use?",
+        description: "Tobacco use includes cigarettes, cigars, pipes, vaping, and chewing tobacco.",
+        type: "choice",
+        weight: 2.0,
+        options: [
+          { value: 1, label: "Heavy daily smoker or tobacco user" },
+          { value: 2, label: "Regular smoker or tobacco user" },
+          { value: 3, label: "Occasional or social smoker" },
+          { value: 4, label: "Former smoker — successfully quit" },
+          { value: 5, label: "Never used tobacco" },
+        ],
+      },
+      {
+        id: "lifestyle_4b",
+        text: "How would you describe your alcohol consumption?",
+        description: "Consider all types of alcoholic beverages including beer, wine, and spirits.",
+        type: "choice",
+        weight: 1.8,
+        options: [
+          { value: 1, label: "Heavy daily drinker" },
+          { value: 2, label: "Regular drinker — several times a week" },
+          { value: 3, label: "Occasional or social drinker" },
+          { value: 4, label: "Rarely drink — a few times a year" },
+          { value: 5, label: "Never consume alcohol" },
+        ],
+      },
+      {
+        id: "lifestyle_4c",
+        text: "How would you describe your caffeine consumption?",
+        description: "Caffeine is found in coffee, tea, energy drinks, and some soft drinks.",
         type: "choice",
         options: [
-          { value: 1, label: "Heavy regular use of one or more substances" },
-          { value: 2, label: "Frequent use that I'd like to reduce" },
-          { value: 3, label: "Moderate use \u2014 mostly under control" },
-          { value: 4, label: "Minimal use \u2014 occasional and mindful" },
-          { value: 5, label: "No substance use or fully managed" },
+          { value: 1, label: "Heavy daily caffeine use (5+ cups or energy drinks)" },
+          { value: 2, label: "Moderate to high daily use (3–4 cups)" },
+          { value: 3, label: "Moderate use (1–2 cups daily)" },
+          { value: 4, label: "Minimal use — occasional only" },
+          { value: 5, label: "No caffeine or only herbal teas" },
         ],
       },
       {
@@ -538,7 +568,14 @@ export const CATEGORIES: Category[] = [
         id: "stress_3",
         text: "How often does stress interfere with your sleep?",
         description: "Racing thoughts, difficulty falling asleep, waking due to worry.",
-        type: "frequency",
+        type: "choice",
+        options: [
+          { value: 1, label: "Almost every night" },
+          { value: 2, label: "Several times a week" },
+          { value: 3, label: "Occasionally" },
+          { value: 4, label: "Rarely" },
+          { value: 5, label: "Never — I sleep peacefully" },
+        ],
       },
       {
         id: "stress_4",
@@ -557,7 +594,14 @@ export const CATEGORIES: Category[] = [
         id: "stress_5",
         text: "How often do you practise intentional stress-relief activities?",
         description: "Meditation, deep breathing, nature walks, journaling, hobbies.",
-        type: "frequency",
+        type: "choice",
+        options: [
+          { value: 1, label: "Never" },
+          { value: 2, label: "Rarely — a few times a year" },
+          { value: 3, label: "Sometimes — a few times a month" },
+          { value: 4, label: "Often — several times a week" },
+          { value: 5, label: "Daily — it's part of my routine" },
+        ],
       },
     ],
   },
@@ -611,7 +655,14 @@ export const CATEGORIES: Category[] = [
         id: "purpose_4",
         text: "How often do you set and work toward meaningful personal goals?",
         description: "Goal-setting, planning, and consistent follow-through.",
-        type: "frequency",
+        type: "choice",
+        options: [
+          { value: 1, label: "Never — I don't set goals" },
+          { value: 2, label: "Rarely — I set goals but rarely follow through" },
+          { value: 3, label: "Sometimes — I set goals and occasionally achieve them" },
+          { value: 4, label: "Often — I regularly set and work toward goals" },
+          { value: 5, label: "Consistently — goal-setting is a core part of my life" },
+        ],
       },
       {
         id: "purpose_5",
@@ -665,7 +716,14 @@ export const CATEGORIES: Category[] = [
         id: "rel_3",
         text: "How often do you engage in meaningful social interactions?",
         description: "Beyond transactional exchanges; genuine connection and vulnerability.",
-        type: "frequency",
+        type: "choice",
+        options: [
+          { value: 1, label: "Never — I avoid social interaction" },
+          { value: 2, label: "Rarely — a few times a year" },
+          { value: 3, label: "Sometimes — a few times a month" },
+          { value: 4, label: "Often — several times a week" },
+          { value: 5, label: "Daily — meaningful connections are part of my life" },
+        ],
       },
       {
         id: "rel_4",
@@ -771,7 +829,14 @@ export const CATEGORIES: Category[] = [
         id: "trauma_4",
         text: "How consistently do you engage in appropriate physical rehabilitation or maintenance?",
         description: "Stretching, physiotherapy exercises, mobility work.",
-        type: "frequency",
+        type: "choice",
+        options: [
+          { value: 1, label: "Never — I don't do any rehabilitation or maintenance" },
+          { value: 2, label: "Rarely — only when in pain" },
+          { value: 3, label: "Sometimes — inconsistent effort" },
+          { value: 4, label: "Often — regular routine with occasional gaps" },
+          { value: 5, label: "Consistently — it's a daily practice" },
+        ],
       },
       {
         id: "trauma_5",
@@ -802,8 +867,18 @@ export function getCategoryById(id: string): Category | undefined {
   return CATEGORIES.find((c) => c.id === id);
 }
 
-export function calculateCategoryScore(scores: number[]): number {
+export function calculateCategoryScore(scores: number[], weights?: number[]): number {
   if (scores.length === 0) return 0;
+  if (weights && weights.length === scores.length) {
+    // Weighted average: sum(score * weight) / sum(maxScore * weight)
+    let weightedSum = 0;
+    let weightedMax = 0;
+    for (let i = 0; i < scores.length; i++) {
+      weightedSum += scores[i] * weights[i];
+      weightedMax += 5 * weights[i];
+    }
+    return Math.round((weightedSum / weightedMax) * 100);
+  }
   const sum = scores.reduce((a, b) => a + b, 0);
   return Math.round((sum / (scores.length * 5)) * 100);
 }
