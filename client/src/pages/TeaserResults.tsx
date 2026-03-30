@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getLoginUrl } from "@/const";
 import { trpc } from "@/lib/trpc";
-import { CATEGORIES, getScoreLevel, getScoreLevelLabel, calculateOverallScore, hasCardiacFlag } from "@shared/questionnaire";
+import { CATEGORIES, getScoreLevel, getScoreLevelLabel, calculateOverallScore, hasCardiacFlag, getBMICategory } from "@shared/questionnaire";
 import {
   ArrowRight, AlertTriangle, Leaf, Lock, Loader2,
   Target, TrendingUp, CheckCircle2, BarChart3, Sparkles, UserPlus
@@ -20,6 +20,8 @@ interface TeaserData {
   categoryScores: Record<string, number>;
   overallScore: number;
   cardiacFlag: boolean;
+  demographics?: any;
+  bmi?: { value: number; label: string; score: number } | null;
   timestamp: number;
 }
 
@@ -60,12 +62,14 @@ export default function TeaserResults() {
     submitMutation.mutateAsync({
       responses: teaserData.responses,
       categoryScores: teaserData.categoryScores,
+      demographics: teaserData.demographics || undefined,
     }).then((result) => {
       // Clear teaser data and questionnaire responses
       localStorage.removeItem(TEASER_STORAGE_KEY);
       localStorage.removeItem(STORAGE_KEY);
       localStorage.removeItem("wellness-eval-category-index");
       localStorage.removeItem("wellness-eval-pending-submit");
+      localStorage.removeItem("wellness-eval-demographics");
       toast.success("Evaluation saved! Viewing your full results...");
       navigate(`/results/${result.evaluationId}`);
     }).catch((error) => {
@@ -177,6 +181,34 @@ export default function TeaserResults() {
               {scoreLevelLabel}
             </span>
           </div>
+
+          {/* BMI Display — Visible */}
+          {teaserData.bmi && (() => {
+            const bmiInfo = getBMICategory(teaserData.bmi.value);
+            return (
+              <div className="mt-6 max-w-lg mx-auto">
+                <Card className="border-border/60">
+                  <CardContent className="p-4">
+                    <div className="flex items-center gap-4">
+                      <div className={`w-14 h-14 rounded-full flex items-center justify-center ${
+                        bmiInfo.score >= 4 ? "bg-green-100" : bmiInfo.score >= 3 ? "bg-yellow-100" : "bg-red-100"
+                      }`}>
+                        <span className={`text-xl font-bold ${
+                          bmiInfo.score >= 4 ? "text-green-700" : bmiInfo.score >= 3 ? "text-yellow-700" : "text-red-700"
+                        }`}>{teaserData.bmi.value}</span>
+                      </div>
+                      <div className="text-left">
+                        <p className="text-sm font-medium text-foreground">Body Mass Index (BMI)</p>
+                        <p className={`text-sm font-medium ${
+                          bmiInfo.score >= 4 ? "text-green-600" : bmiInfo.score >= 3 ? "text-yellow-600" : "text-red-600"
+                        }`}>{bmiInfo.label}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            );
+          })()}
 
           {cardiacFlag && (
             <div className="mt-6 max-w-lg mx-auto p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">

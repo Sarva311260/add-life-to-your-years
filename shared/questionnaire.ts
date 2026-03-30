@@ -1,5 +1,51 @@
 export type QuestionType = "scale" | "yesno" | "choice" | "frequency";
 
+export interface Demographics {
+  gender: "male" | "female";
+  age: number;
+  heightUnit: "metric" | "imperial";
+  heightCm?: number;
+  heightFt?: number;
+  heightIn?: number;
+  weightUnit: "metric" | "imperial";
+  weightKg?: number;
+  weightLbs?: number;
+}
+
+export function calculateBMI(demographics: Demographics): number | null {
+  let heightM: number;
+  let weightKg: number;
+
+  if (demographics.heightUnit === "metric") {
+    if (!demographics.heightCm || demographics.heightCm <= 0) return null;
+    heightM = demographics.heightCm / 100;
+  } else {
+    if (demographics.heightFt === undefined || demographics.heightFt <= 0) return null;
+    const inches = (demographics.heightFt * 12) + (demographics.heightIn || 0);
+    heightM = inches * 0.0254;
+  }
+
+  if (demographics.weightUnit === "metric") {
+    if (!demographics.weightKg || demographics.weightKg <= 0) return null;
+    weightKg = demographics.weightKg;
+  } else {
+    if (!demographics.weightLbs || demographics.weightLbs <= 0) return null;
+    weightKg = demographics.weightLbs * 0.453592;
+  }
+
+  const bmi = weightKg / (heightM * heightM);
+  return Math.round(bmi * 10) / 10;
+}
+
+export function getBMICategory(bmi: number): { label: string; score: number } {
+  if (bmi < 16) return { label: "Severely Underweight", score: 1 };
+  if (bmi < 18.5) return { label: "Underweight", score: 3 };
+  if (bmi < 25) return { label: "Healthy Weight", score: 5 };
+  if (bmi < 30) return { label: "Overweight", score: 3 };
+  if (bmi < 35) return { label: "Obese (Class I)", score: 2 };
+  return { label: "Obese (Class II+)", score: 1 };
+}
+
 export interface ChoiceOption {
   value: number;
   label: string;
@@ -151,6 +197,42 @@ export const CATEGORIES: Category[] = [
           { value: 3, label: "Moderate use \u2014 mostly under control" },
           { value: 4, label: "Minimal use \u2014 occasional and mindful" },
           { value: 5, label: "No substance use or fully managed" },
+        ],
+      },
+      {
+        id: "lifestyle_fried_food",
+        text: "Do you consume deep fried food?",
+        description: "Deep fried foods contain harmful trans fats and advanced glycation end products that accelerate ageing and disease.",
+        type: "choice",
+        options: [
+          { value: 5, label: "Never" },
+          { value: 4, label: "Rarely" },
+          { value: 2, label: "Sometimes" },
+          { value: 1, label: "Often" },
+        ],
+      },
+      {
+        id: "lifestyle_sweets",
+        text: "How often do you eat sweets like cakes, pies, etc.?",
+        description: "Excess refined sugar contributes to inflammation, weight gain, and chronic disease.",
+        type: "choice",
+        options: [
+          { value: 5, label: "Never" },
+          { value: 4, label: "Rarely" },
+          { value: 2, label: "Sometimes" },
+          { value: 1, label: "Often" },
+        ],
+      },
+      {
+        id: "lifestyle_soft_drinks",
+        text: "How often do you consume soft drinks or cordials?",
+        description: "Sugary beverages are a major source of empty calories and contribute to metabolic issues.",
+        type: "choice",
+        options: [
+          { value: 5, label: "Never" },
+          { value: 4, label: "Rarely" },
+          { value: 2, label: "Sometimes" },
+          { value: 1, label: "Often" },
         ],
       },
       {

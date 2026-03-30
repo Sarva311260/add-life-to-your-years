@@ -11,7 +11,10 @@ import {
   getEvaluationById,
   createRecommendations,
   getRecommendationsByEvaluation,
+  getUserByOpenId,
 } from "./db";
+import { generateEvaluationPDF } from "./pdfReport";
+import { storagePut } from "./storage";
 import { CATEGORIES, calculateOverallScore, hasCardiacFlag, getScoreLevelLabel } from "../shared/questionnaire";
 
 export const appRouter = router({
@@ -31,11 +34,52 @@ export const appRouter = router({
         z.object({
           responses: z.record(z.string(), z.number()),
           categoryScores: z.record(z.string(), z.number()),
+          demographics: z.object({
+            gender: z.enum(["male", "female"]),
+            age: z.number().min(1).max(150),
+            heightUnit: z.enum(["metric", "imperial"]),
+            heightCm: z.number().optional(),
+            heightFt: z.number().optional(),
+            heightIn: z.number().optional(),
+            weightUnit: z.enum(["metric", "imperial"]),
+            weightKg: z.number().optional(),
+            weightLbs: z.number().optional(),
+          }).optional(),
         })
       )
       .mutation(async ({ ctx, input }) => {
         const overallScore = calculateOverallScore(input.categoryScores);
         const cardiacFlag = hasCardiacFlag(input.responses) ? 1 : 0;
+
+        // Calculate BMI and convert to metric for storage
+        let gender: string | undefined;
+        let age: number | undefined;
+        let heightCm: number | undefined;
+        let weightKg: number | undefined;
+        let bmi: number | undefined;
+
+        if (input.demographics) {
+          gender = input.demographics.gender;
+          age = input.demographics.age;
+
+          if (input.demographics.heightUnit === "metric") {
+            heightCm = input.demographics.heightCm;
+          } else if (input.demographics.heightFt) {
+            const totalInches = (input.demographics.heightFt * 12) + (input.demographics.heightIn || 0);
+            heightCm = Math.round(totalInches * 2.54 * 10) / 10;
+          }
+
+          if (input.demographics.weightUnit === "metric") {
+            weightKg = input.demographics.weightKg;
+          } else if (input.demographics.weightLbs) {
+            weightKg = Math.round(input.demographics.weightLbs * 0.453592 * 10) / 10;
+          }
+
+          if (heightCm && weightKg) {
+            const heightM = heightCm / 100;
+            bmi = Math.round((weightKg / (heightM * heightM)) * 10) / 10;
+          }
+        }
 
         const evaluationId = await createEvaluation({
           userId: ctx.user.id,
@@ -43,6 +87,11 @@ export const appRouter = router({
           categoryScores: input.categoryScores,
           overallScore: overallScore.toString(),
           cardiacFlag,
+          gender: gender || null,
+          age: age || null,
+          heightCm: heightCm?.toString() || null,
+          weightKg: weightKg?.toString() || null,
+          bmi: bmi?.toString() || null,
         });
 
         // Generate AI recommendations, with fallback to rule-based if LLM fails
@@ -117,7 +166,7 @@ export const appRouter = router({
           });
         }
 
-        return { evaluationId, overallScore, cardiacFlag };
+        return { evaluationId, overallScore, cardiacFlag, bmi: bmi || null };
       }),
 
     history: protectedProcedure.query(async ({ ctx }) => {
@@ -142,6 +191,64 @@ export const appRouter = router({
           return [];
         }
         return getRecommendationsByEvaluation(input.evaluationId);
+      }),
+
+    generatePDF: protectedProcedure
+      .input(z.object({ evaluationId: z.number() }))
+      .mutation(async ({ ctx, input }) => {
+        const evaluation = await getEvaluationById(input.evaluationId);
+        if (!evaluation || evaluation.userId !== ctx.user.id) {
+          throw new Error("Evaluation not found");
+        }
+
+        const recs = await getRecommendationsByEvaluation(input.evaluationId);
+        const recsData = recs.map((r) => ({
+          category: r.category,
+          title: r.title,
+          description: r.description,
+          priority: r.priority,
+          actionSteps: (r.actionSteps as string[]) || [],
+        }));
+
+        const user = await getUserByOpenId(ctx.user.openId);
+
+        const pdfBuffer = await generateEvaluationPDF(
+          {
+            id: evaluation.id,
+            overallScore: evaluation.overallScore,
+            categoryScores: evaluation.categoryScores as Record<string, number>,
+            responses: evaluation.responses as Record<string, number>,
+            cardiacFlag: evaluation.cardiacFlag,
+            gender: evaluation.gender,
+            age: evaluation.age,
+            heightCm: evaluation.heightCm,
+            weightKg: evaluation.weightKg,
+            bmi: evaluation.bmi,
+            completedAt: evaluation.completedAt,
+          },
+          recsData,
+          user ? { name: user.name, email: user.email } : undefined
+        );
+
+        // Upload to S3
+        const timestamp = Date.now();
+        const fileKey = `reports/wellness-report-${evaluation.id}-${timestamp}.pdf`;
+        const { url } = await storagePut(fileKey, pdfBuffer, "application/pdf");
+
+        // Notify owner with the PDF link
+        const userName = ctx.user.name || "User";
+        const userEmail = ctx.user.email || "No email";
+        const overallScore = typeof evaluation.overallScore === "string" ? parseFloat(evaluation.overallScore) : evaluation.overallScore;
+        notifyOwner({
+          title: `PDF Report Generated: ${userName}`,
+          content: `${userName} (${userEmail}) has downloaded their wellness evaluation report.\n\n` +
+            `Overall Score: ${Math.round(overallScore)}%\n` +
+            `Report Link: ${url}`,
+        }).catch((err) => {
+          console.warn("[Notification] Failed to send PDF notification:", err);
+        });
+
+        return { url };
       }),
   }),
 });

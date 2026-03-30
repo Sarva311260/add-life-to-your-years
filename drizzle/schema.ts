@@ -32,6 +32,16 @@ export const evaluations = mysqlTable("evaluations", {
   overallScore: decimal("overallScore", { precision: 5, scale: 2 }).notNull(),
   /** Whether cardiac flag was triggered */
   cardiacFlag: int("cardiacFlag").default(0).notNull(),
+  /** Demographics: gender */
+  gender: varchar("gender", { length: 10 }),
+  /** Demographics: age */
+  age: int("age"),
+  /** Demographics: height in cm (stored in metric) */
+  heightCm: decimal("heightCm", { precision: 5, scale: 1 }),
+  /** Demographics: weight in kg (stored in metric) */
+  weightKg: decimal("weightKg", { precision: 5, scale: 1 }),
+  /** Calculated BMI */
+  bmi: decimal("bmi", { precision: 4, scale: 1 }),
   completedAt: timestamp("completedAt").defaultNow().notNull(),
 });
 

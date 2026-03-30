@@ -48,3 +48,15 @@
 - [x] AI Recommendations: If amalgam fillings detected, suggest removal by qualified bio-compatible dentist
 - [x] Genetics Q4 (preventive health screenings): Add new option "My preventative health screening is a very healthy lifestyle"
 - [x] Change cardiac flag message to softer language: "You might like to consider contacting your healthcare provider" instead of "Please consult"
+- [x] Add gender question (Male/Female) at the start of the evaluation
+- [x] Add age question at the start of the evaluation
+- [x] Add height/weight inputs with metric/imperial dropdown toggle, calculate BMI
+- [x] Factor BMI into Lifestyle Choices category score
+- [x] Display BMI in evaluation results
+- [x] New Lifestyle question: "Do you consume deep fried food?" (Never, Rarely, Sometimes, Often)
+- [x] New Lifestyle question: "How often do you eat sweets like cakes, pies, etc.?"
+- [x] New Lifestyle question: "How often do you consume soft drinks or cordials?"
+- [x] Generate PDF report of evaluation results with download link for visitors
+- [x] Include PDF download link in owner notification (in-app)
+- [x] Update database schema to store gender, age, height, weight, BMI
+- [x] Update home page question count stat

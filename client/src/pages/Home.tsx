@@ -41,7 +41,7 @@ const COACHING_STEPS = [
 
 const STATS = [
   { value: "8", label: "Dimensions" },
-  { value: "47", label: "Questions" },
+  { value: "50", label: "Questions" },
   { value: "1:1", label: "Coaching" },
   { value: "100%", label: "Plant-Based" },
 ];

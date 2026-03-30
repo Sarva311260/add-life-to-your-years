@@ -1,0 +1,8 @@
+{
+  "query": "DELETE FROM recommendations WHERE evaluation_id IN (SELECT id FROM evaluations WHERE user_id IN (SELECT id FROM users WHERE email = 'sarva1960@gmail.com')); DELETE FROM evaluations WHERE user_id IN (SELECT id FROM users WHERE email = 'sarva1960@gmail.com'); DELETE FROM users WHERE email = 'sarva1960@gmail.com';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute DELETE FROM recommendations WHERE evaluation_id IN (SELECT id FROM evaluations WHERE user_id IN (SELECT id FROM users WHERE email = 'sarva1960@gmail.com')); DELETE FROM evaluations WHERE user_id IN (SELECT id FROM users WHERE email = 'sarva1960@gmail.com'); DELETE FROM users WHERE email = 'sarva1960@gmail.com';",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'evaluation_id' in 'where clause'"
+  ]
+}

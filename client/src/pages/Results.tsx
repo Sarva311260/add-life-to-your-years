@@ -3,12 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getLoginUrl } from "@/const";
 import { trpc } from "@/lib/trpc";
-import { CATEGORIES, getScoreLevel, getScoreLevelLabel } from "@shared/questionnaire";
+import { CATEGORIES, getScoreLevel, getScoreLevelLabel, getBMICategory } from "@shared/questionnaire";
 import {
   ArrowLeft, Download, AlertTriangle, CheckCircle2, ArrowRight,
-  Leaf, TrendingUp, Target, Loader2
+  Leaf, TrendingUp, Target, Loader2, FileDown
 } from "lucide-react";
 import { useLocation, useParams, Link } from "wouter";
+import { useState } from "react";
+import { toast } from "sonner";
 import {
   Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell
@@ -43,6 +45,29 @@ export default function Results() {
     { evaluationId },
     { enabled: evaluationId > 0 && isAuthenticated }
   );
+
+  const generatePDF = trpc.evaluation.generatePDF.useMutation();
+  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+  const [generatingPdf, setGeneratingPdf] = useState(false);
+
+  const handleDownloadPDF = async () => {
+    if (pdfUrl) {
+      window.open(pdfUrl, "_blank");
+      return;
+    }
+    setGeneratingPdf(true);
+    try {
+      const result = await generatePDF.mutateAsync({ evaluationId });
+      setPdfUrl(result.url);
+      window.open(result.url, "_blank");
+      toast.success("PDF report generated successfully!");
+    } catch (error) {
+      console.error("PDF generation error:", error);
+      toast.error("Failed to generate PDF report. Please try again.");
+    } finally {
+      setGeneratingPdf(false);
+    }
+  };
 
   if (!isAuthenticated) {
     return (
@@ -208,6 +233,40 @@ export default function Results() {
               {scoreLevelLabel}
             </span>
           </div>
+
+          {/* BMI Display */}
+          {evaluation.bmi && (() => {
+            const bmiVal = parseFloat(evaluation.bmi);
+            const bmiInfo = getBMICategory(bmiVal);
+            return (
+              <div className="mt-6 max-w-lg mx-auto">
+                <Card className="border-border/60">
+                  <CardContent className="p-4">
+                    <div className="flex items-center gap-4">
+                      <div className={`w-14 h-14 rounded-full flex items-center justify-center ${
+                        bmiInfo.score >= 4 ? "bg-green-100" : bmiInfo.score >= 3 ? "bg-yellow-100" : "bg-red-100"
+                      }`}>
+                        <span className={`text-xl font-bold ${
+                          bmiInfo.score >= 4 ? "text-green-700" : bmiInfo.score >= 3 ? "text-yellow-700" : "text-red-700"
+                        }`}>{bmiVal}</span>
+                      </div>
+                      <div className="text-left">
+                        <p className="text-sm font-medium text-foreground">Body Mass Index (BMI)</p>
+                        <p className={`text-sm font-medium ${
+                          bmiInfo.score >= 4 ? "text-green-600" : bmiInfo.score >= 3 ? "text-yellow-600" : "text-red-600"
+                        }`}>{bmiInfo.label}</p>
+                        {evaluation.gender && evaluation.age && (
+                          <p className="text-xs text-muted-foreground mt-0.5">
+                            {evaluation.gender === "male" ? "Male" : "Female"}, Age {evaluation.age}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            );
+          })()}
 
           {evaluation.cardiacFlag === 1 && (
             <div className="mt-6 max-w-lg mx-auto p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
@@ -375,6 +434,19 @@ export default function Results() {
 
         {/* Actions */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center pb-10">
+          <Button
+            variant="outline"
+            className="gap-2"
+            onClick={handleDownloadPDF}
+            disabled={generatingPdf || sortedRecs.length === 0}
+          >
+            {generatingPdf ? (
+              <Loader2 className="w-4 h-4 animate-spin" />
+            ) : (
+              <FileDown className="w-4 h-4" />
+            )}
+            {generatingPdf ? "Generating PDF..." : pdfUrl ? "Download PDF Report" : "Generate PDF Report"}
+          </Button>
           <Link href="/questionnaire">
             <Button variant="outline" className="gap-2">
               Retake Evaluation

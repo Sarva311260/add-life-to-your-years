@@ -127,7 +127,7 @@ describe("Teaser Results - Data Structure Validation", () => {
     };
 
     expect(teaserData.responses).toBeDefined();
-    expect(Object.keys(teaserData.responses).length).toBe(47); // 47 total questions (41 original + 3 lifestyle + 1 genetics + 2 physical trauma)
+    expect(Object.keys(teaserData.responses).length).toBe(50); // 50 total questions (41 original + 6 lifestyle + 1 genetics + 2 physical trauma)
     expect(teaserData.categoryScores).toBeDefined();
     expect(Object.keys(teaserData.categoryScores).length).toBe(8);
     expect(teaserData.overallScore).toBeGreaterThan(0);
