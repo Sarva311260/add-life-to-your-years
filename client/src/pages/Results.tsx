@@ -260,6 +260,9 @@ export default function Results() {
                             {evaluation.gender === "male" ? "Male" : "Female"}, Age {evaluation.age}
                           </p>
                         )}
+                        <p className="text-xs text-muted-foreground mt-1">
+                          BMI is a measure of body fat based on height and weight. A healthy range is 18.5–24.9.
+                        </p>
                       </div>
                     </div>
                   </CardContent>

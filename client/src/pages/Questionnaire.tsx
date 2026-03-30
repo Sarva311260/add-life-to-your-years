@@ -48,9 +48,15 @@ function loadSavedResponses(): Record<string, number> {
 function loadSavedDemographics(): Partial<Demographics> {
   try {
     const saved = localStorage.getItem(DEMOGRAPHICS_KEY);
-    if (saved) return JSON.parse(saved);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      // Ensure unit defaults are always set
+      if (!parsed.heightUnit) parsed.heightUnit = "metric";
+      if (!parsed.weightUnit) parsed.weightUnit = "metric";
+      return parsed;
+    }
   } catch {}
-  return {};
+  return { heightUnit: "metric", weightUnit: "metric" };
 }
 
 // Step index: -1 = demographics, 0..N = category indices
@@ -631,7 +637,7 @@ function DemographicsForm({ demographics, setDemographics, bmiResult, showIncomp
           </div>
         </div>
         <p className="text-muted-foreground mt-2">
-          This information helps us calculate your BMI and provide more personalised wellness recommendations.
+          This information helps us calculate your <strong>BMI (Body Mass Index)</strong> and provide more personalised wellness recommendations. BMI is a simple measure that uses your height and weight to estimate whether your body weight is within a healthy range. It is widely used as a general indicator of overall health.
         </p>
       </div>
 
@@ -863,7 +869,7 @@ function DemographicsForm({ demographics, setDemographics, bmiResult, showIncomp
                     {bmiResult.label}
                   </p>
                   <p className="text-xs text-muted-foreground mt-1">
-                    BMI is factored into your Lifestyle Choices score
+                    Body Mass Index (BMI) is a measure of body fat based on your height and weight. A healthy BMI typically falls between 18.5 and 24.9. This is factored into your Lifestyle Choices score.
                   </p>
                 </div>
               </div>

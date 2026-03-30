@@ -60,3 +60,5 @@
 - [x] Include PDF download link in owner notification (in-app)
 - [x] Update database schema to store gender, age, height, weight, BMI
 - [x] Update home page question count stat
+- [x] Bug: Demographics form won't let user proceed even when all fields are filled — heightUnit/weightUnit defaulted to undefined instead of 'metric'
+- [x] Add BMI explanation text on demographics form and results page so users understand what BMI is
