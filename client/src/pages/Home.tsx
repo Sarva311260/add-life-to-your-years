@@ -1,12 +1,15 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription,
+} from "@/components/ui/dialog";
 import { getLoginUrl } from "@/const";
 import { Link } from "wouter";
 import {
   Heart, Building2, Dna, Shield, Brain, Compass, Users, Activity,
   BookOpen, ArrowRight, Star, Leaf, ChevronDown, Menu, X, LogOut, User,
-  Play, Gift, HeartHandshake
+  Play, Gift, HeartHandshake, ExternalLink
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -22,15 +25,41 @@ const CATEGORY_ICONS: Record<string, React.ReactNode> = {
   physical_trauma: <Activity className="w-6 h-6" />,
 };
 
+const BOOK_LINK = "#book"; // Placeholder — update when book purchase link is available
+
 const CATEGORIES = [
-  { id: "lifestyle", name: "Lifestyle Choices", desc: "Diet, exercise, sleep, and daily habits", color: "bg-green-100 text-green-700" },
-  { id: "environmental", name: "Environmental Factors", desc: "Air, water, housing, and neighbourhood", color: "bg-blue-100 text-blue-700" },
-  { id: "genetic", name: "Genetic & Epigenetic", desc: "Family history and gene expression", color: "bg-orange-100 text-orange-700" },
-  { id: "structural", name: "Structural Barriers", desc: "Income, access, and systemic factors", color: "bg-green-100 text-green-700" },
-  { id: "stress", name: "Stress Management", desc: "Coping, boundaries, and resilience", color: "bg-blue-100 text-blue-700" },
-  { id: "purpose", name: "Purpose & Direction", desc: "Meaning, values, and motivation", color: "bg-orange-100 text-orange-700" },
-  { id: "relationships", name: "Relationships", desc: "Social bonds and community", color: "bg-green-100 text-green-700" },
-  { id: "physical_trauma", name: "Physical Trauma", desc: "Injuries, pain, and recovery", color: "bg-blue-100 text-blue-700" },
+  {
+    id: "lifestyle", name: "Lifestyle Choices", desc: "Diet, exercise, sleep, and daily habits", color: "bg-green-100 text-green-700",
+    detail: "The choices you make every day \u2014 what you eat, how much you move, and the habits you keep \u2014 have the greatest influence on your long-term health. A whole food plant-based diet, regular physical activity, adequate hydration, and avoiding harmful substances like tobacco and alcohol form the foundation of wellness and disease prevention.",
+  },
+  {
+    id: "environmental", name: "Environmental Factors", desc: "Air, water, housing, and neighbourhood", color: "bg-blue-100 text-blue-700",
+    detail: "Your surroundings shape your health more than you might realise. Air and water quality, exposure to chemicals and pollutants, the safety of your neighbourhood, and even access to green spaces all play a role. Understanding and improving your environment is a practical step toward better wellbeing.",
+  },
+  {
+    id: "genetic", name: "Genetic & Epigenetic", desc: "Family history and gene expression", color: "bg-orange-100 text-orange-700",
+    detail: "Your genes provide a blueprint, but they are not your destiny. While hereditary factors can predispose you to certain conditions, lifestyle and environment determine whether those genes are expressed. Epigenetics shows us that healthy choices can influence gene behaviour across generations.",
+  },
+  {
+    id: "structural", name: "Structural Barriers", desc: "Income, access, and systemic factors", color: "bg-green-100 text-green-700",
+    detail: "The systems and structures around you \u2014 healthcare access, education, employment, housing, and social policy \u2014 directly affect your ability to live a healthy life. These broader conditions create the context in which personal health choices are made, and recognising them is the first step toward change.",
+  },
+  {
+    id: "stress", name: "Stress Management", desc: "Coping, boundaries, and resilience", color: "bg-blue-100 text-blue-700",
+    detail: "Chronic stress is one of the most underestimated threats to health. It disrupts sleep, weakens immunity, and contributes to conditions ranging from heart disease to mental health challenges. Learning to manage stress through mindfulness, connection, and purposeful living is essential for lasting vitality.",
+  },
+  {
+    id: "purpose", name: "Purpose & Direction", desc: "Meaning, values, and motivation", color: "bg-orange-100 text-orange-700",
+    detail: "Having a clear sense of meaning \u2014 whether through work, relationships, creativity, or service \u2014 is strongly linked to better health outcomes and longer life. People who feel purposeful tend to make healthier choices, recover faster from illness, and experience greater resilience.",
+  },
+  {
+    id: "relationships", name: "Relationships", desc: "Social bonds and community", color: "bg-green-100 text-green-700",
+    detail: "Strong social connections are as vital to health as nutrition and exercise. Loneliness and isolation carry health risks comparable to smoking, while supportive relationships reduce stress, boost immunity, and promote emotional wellbeing. Quality matters more than quantity.",
+  },
+  {
+    id: "physical_trauma", name: "Physical Trauma", desc: "Injuries, pain, and recovery", color: "bg-blue-100 text-blue-700",
+    detail: "Past injuries, surgeries, dental work such as amalgam fillings or root canals, and structural differences in the body can have lasting effects on overall health. Recognising and addressing these physical factors \u2014 including the impact of implants and accumulated trauma \u2014 is an important part of the wellness picture.",
+  },
 ];
 
 const COACHING_STEPS = [
@@ -214,23 +243,52 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {CATEGORIES.map((cat, i) => (
-              <motion.div
-                key={cat.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-              >
-                <Card className="h-full hover:shadow-md transition-shadow border-border/60 group">
-                  <CardContent className="p-6">
-                    <div className={`w-12 h-12 rounded-xl ${cat.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                      {CATEGORY_ICONS[cat.id]}
+              <Dialog key={cat.id}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                >
+                  <DialogTrigger asChild>
+                    <Card className="h-full hover:shadow-md transition-shadow border-border/60 group cursor-pointer">
+                      <CardContent className="p-6">
+                        <div className={`w-12 h-12 rounded-xl ${cat.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                          {CATEGORY_ICONS[cat.id]}
+                        </div>
+                        <h3 className="font-semibold text-foreground mb-2">{cat.name}</h3>
+                        <p className="text-sm text-muted-foreground">{cat.desc}</p>
+                      </CardContent>
+                    </Card>
+                  </DialogTrigger>
+                </motion.div>
+                <DialogContent className="sm:max-w-lg">
+                  <DialogHeader>
+                    <div className="flex items-center gap-3 mb-1">
+                      <div className={`w-10 h-10 rounded-xl ${cat.color} flex items-center justify-center shrink-0`}>
+                        {CATEGORY_ICONS[cat.id]}
+                      </div>
+                      <DialogTitle className="font-serif text-xl">{cat.name}</DialogTitle>
                     </div>
-                    <h3 className="font-semibold text-foreground mb-2">{cat.name}</h3>
-                    <p className="text-sm text-muted-foreground">{cat.desc}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
+                  </DialogHeader>
+                  <DialogDescription className="text-muted-foreground leading-relaxed text-[0.95rem]">
+                    {cat.detail}
+                  </DialogDescription>
+                  <div className="mt-4 pt-4 border-t border-border/50">
+                    <p className="text-sm text-muted-foreground">
+                      There is much more detail on this topic in the{" "}
+                      <a
+                        href={BOOK_LINK}
+                        className="text-primary font-medium hover:underline inline-flex items-center gap-1"
+                      >
+                        Add Life to Your Years
+                        <ExternalLink className="w-3 h-3" />
+                      </a>{" "}
+                      book.
+                    </p>
+                  </div>
+                </DialogContent>
+              </Dialog>
             ))}
           </div>
         </div>

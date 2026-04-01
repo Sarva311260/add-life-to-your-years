@@ -77,3 +77,4 @@
 - [x] Add Media page (placeholder/coming soon) with route and navigation link after Products
 - [x] Add "Free Access & Donations" section to the home page communicating that all digital content is free, with optional donation support
 - [x] Embed YouTube video (https://youtu.be/AOvV9m7feKo) on Media page replacing the "Content Coming Soon" placeholder
+- [x] Make 8 health factor icons clickable with popup dialog showing concise description from the book
