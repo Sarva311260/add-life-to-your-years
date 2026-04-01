@@ -137,7 +137,7 @@ export default function TeaserResults() {
           <Link href="/">
             <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
               <Leaf className="w-4 h-4 text-primary" />
-              Health, Wellness & Vitality
+              Add Life to Your Years
             </button>
           </Link>
         </div>

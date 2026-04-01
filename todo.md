@@ -67,3 +67,6 @@
 - [x] Bug: Preventive health screenings question selects both option 5 and 6 simultaneously — duplicate value (both had value:5), fixed by giving healthy lifestyle option value:6
 - [x] Create dedicated printable report page (separate route /report/:id) with download/print button, matching the results page visual layout with individual responses
 - [x] Include report page link in owner notification when user completes evaluation
+- [x] Replace "Health, wellness and vitality" with "Add Life to Your Years" (top left logo/brand, footer, TeaserResults, Report, PDF, notifications)
+- [x] Replace "Transform your health naturally" with "Proven Strategies for Health, Wellness & Vitality"
+- [x] Replace "Whole Food Plant-Based Wellness" with "Your Personal Blueprint"

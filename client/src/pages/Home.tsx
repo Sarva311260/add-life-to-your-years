@@ -64,7 +64,7 @@ export default function Home() {
         <div className="container flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2">
             <Leaf className="w-7 h-7 text-primary" />
-            <span className="font-serif text-lg font-semibold text-foreground">Health, Wellness & Vitality</span>
+            <span className="font-serif text-lg font-semibold text-foreground">Add Life to Your Years</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -153,11 +153,11 @@ export default function Home() {
             >
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
                 <Leaf className="w-4 h-4" />
-                Whole Food Plant-Based Wellness
+                Your Personal Blueprint
               </span>
               <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground leading-tight mb-6">
-                Transform Your Health,{" "}
-                <span className="text-primary">Naturally</span>
+                Proven Strategies for{" "}
+                <span className="text-primary">Health, Wellness & Vitality</span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
                 Assess your wellbeing across 8 key dimensions, uncover your strengths and challenges,
@@ -433,7 +433,7 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <Leaf className="w-5 h-5 text-primary" />
-                <span className="font-serif font-semibold text-white">Health, Wellness & Vitality</span>
+                <span className="font-serif font-semibold text-white">Add Life to Your Years</span>
               </div>
               <p className="text-sm leading-relaxed">
                 Empowering individuals to take control of their health through evidence-based
@@ -458,7 +458,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-white/10 pt-8 text-center text-sm">
-            <p>&copy; {new Date().getFullYear()} Health, Wellness & Vitality. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Add Life to Your Years. All rights reserved.</p>
           </div>
         </div>
       </footer>

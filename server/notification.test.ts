@@ -11,13 +11,13 @@ describe("Owner Notification - New User Registration", () => {
     const registeredAt = new Date().toLocaleString("en-AU", { timeZone: "Australia/Sydney" });
 
     const title = `New User Registration: ${userName}`;
-    const content = `A new user has registered on Health, Wellness & Vitality.\n\nName: ${userName}\nEmail: ${userEmail}\nLogin Method: ${loginMethod}\nRegistered: ${registeredAt}`;
+    const content = `A new user has registered on Add Life to Your Years.\n\nName: ${userName}\nEmail: ${userEmail}\nLogin Method: ${loginMethod}\nRegistered: ${registeredAt}`;
 
     expect(title).toBe("New User Registration: Jane Smith");
     expect(content).toContain("Jane Smith");
     expect(content).toContain("jane@example.com");
     expect(content).toContain("google");
-    expect(content).toContain("Health, Wellness & Vitality");
+    expect(content).toContain("Add Life to Your Years");
   });
 
   it("should handle missing name gracefully", () => {
@@ -28,7 +28,7 @@ describe("Owner Notification - New User Registration", () => {
 
   it("should handle missing email gracefully", () => {
     const userEmail = "No email provided";
-    const content = `A new user has registered on Health, Wellness & Vitality.\n\nName: Test\nEmail: ${userEmail}\nLogin Method: email\nRegistered: now`;
+    const content = `A new user has registered on Add Life to Your Years.\n\nName: Test\nEmail: ${userEmail}\nLogin Method: email\nRegistered: now`;
     expect(content).toContain("No email provided");
   });
 });

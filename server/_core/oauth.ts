@@ -70,7 +70,7 @@ export function registerOAuthRoutes(app: Express) {
         const registeredAt = new Date().toLocaleString("en-AU", { timeZone: "Australia/Sydney" });
         notifyOwner({
           title: `New User Registration: ${userName}`,
-          content: `A new user has registered on Health, Wellness & Vitality.\n\nName: ${userName}\nEmail: ${userEmail}\nLogin Method: ${loginMethod}\nRegistered: ${registeredAt}`,
+          content: `A new user has registered on Add Life to Your Years.\n\nName: ${userName}\nEmail: ${userEmail}\nLogin Method: ${loginMethod}\nRegistered: ${registeredAt}`,
         }).catch((err) => {
           console.warn("[OAuth] Failed to send new user notification:", err);
         });
