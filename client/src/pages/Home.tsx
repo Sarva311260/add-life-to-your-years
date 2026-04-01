@@ -156,7 +156,7 @@ export default function Home() {
                 Your Personal Blueprint
               </span>
               <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground leading-tight mb-6">
-                Proven Strategies for{" "}
+                Proven Strategies for<br />
                 <span className="text-primary">Health, Wellness & Vitality</span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">

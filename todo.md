@@ -70,3 +70,4 @@
 - [x] Replace "Health, wellness and vitality" with "Add Life to Your Years" (top left logo/brand, footer, TeaserResults, Report, PDF, notifications)
 - [x] Replace "Transform your health naturally" with "Proven Strategies for Health, Wellness & Vitality"
 - [x] Replace "Whole Food Plant-Based Wellness" with "Your Personal Blueprint"
+- [x] Fix hero headline: "Proven Strategies for" on first line, "Health, Wellness & Vitality" on second line in green accent color
