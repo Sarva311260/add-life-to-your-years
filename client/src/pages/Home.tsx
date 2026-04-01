@@ -33,14 +33,14 @@ const CATEGORIES = [
 ];
 
 const COACHING_STEPS = [
-  { step: "01", title: "Assessment", desc: "Complete the 8-dimension self-evaluation to establish your baseline wellness profile." },
+  { step: "01", title: "Assessment", desc: "Complete the 8-factor self-evaluation to establish your baseline wellness profile." },
   { step: "02", title: "Action Plan", desc: "Receive a personalised action plan based on your results, prioritised by urgency." },
   { step: "03", title: "Ongoing Support", desc: "Regular check-ins and progress tracking to keep you on course." },
   { step: "04", title: "Plant-Based Guidance", desc: "Expert guidance on whole food plant-based nutrition for optimal health." },
 ];
 
 const STATS = [
-  { value: "8", label: "Dimensions" },
+  { value: "8", label: "Factors" },
   { value: "52", label: "Questions" },
   { value: "1:1", label: "Coaching" },
   { value: "100%", label: "Plant-Based" },
@@ -160,7 +160,7 @@ export default function Home() {
                 <span className="text-primary">Health, Wellness & Vitality</span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-                Assess your wellbeing across 8 key dimensions, uncover your strengths and challenges,
+                Assess your wellbeing across 8 key areas, uncover your strengths,
                 and receive personalised, evidence-based recommendations to add life to your years.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -197,16 +197,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8 Health Challenge Categories */}
+      {/* 8 Health Factors */}
       <section id="about" className="py-20 bg-white">
         <div className="container">
           <div className="text-center mb-14">
             <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
-              8 Health Challenge Categories
+              8 Health Factors
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              Your wellbeing is shaped by multiple interconnected factors. Our evaluation assesses each dimension
-              to give you a complete picture of your health landscape.
+              Your health and vitality are influenced by many areas of life, often in ways you might not expect. Our evaluation explores each one to reveal a complete picture of your wellness.
             </p>
           </div>
 
@@ -284,7 +283,7 @@ export default function Home() {
                 food plant-based approach can address the root causes that a 15-minute GP consultation cannot.
               </p>
               <ul className="space-y-3 mb-8">
-                {["Part 1: How Our Body Works — Cells, Microbiome & Communication", "Part 2: The 8 Categories of Health Challenges", "Part 3: Solutions for Health, Wellness & Vitality"].map((item) => (
+                {["Part 1: How Our Body Works — Cells, Microbiome & Communication", "Part 2: The 8 Health Factors", "Part 3: Solutions for Health, Wellness & Vitality"].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-foreground">
                     <Star className="w-4 h-4 text-primary flex-shrink-0" />
                     <span className="text-sm font-medium">{item}</span>

@@ -155,7 +155,7 @@ export default function TeaserResults() {
             Your Overall Wellness Score
           </h1>
           <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-            Based on your responses across 8 health dimensions, here is your overall wellness assessment.
+            Based on your responses across 8 key health areas, here is your overall wellness assessment.
           </p>
 
           <div className="inline-flex flex-col items-center">
@@ -333,7 +333,7 @@ export default function TeaserResults() {
                 <ul className="text-sm text-muted-foreground space-y-2 mb-6 text-left max-w-xs mx-auto">
                   <li className="flex items-start gap-2">
                     <BarChart3 className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Detailed scores for all 8 health dimensions</span>
+                    <span>Detailed scores for all 8 health factors</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Target className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />

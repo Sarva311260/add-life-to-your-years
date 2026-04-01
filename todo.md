@@ -71,3 +71,6 @@
 - [x] Replace "Transform your health naturally" with "Proven Strategies for Health, Wellness & Vitality"
 - [x] Replace "Whole Food Plant-Based Wellness" with "Your Personal Blueprint"
 - [x] Fix hero headline: "Proven Strategies for" on first line, "Health, Wellness & Vitality" on second line in green accent color
+- [x] Replace "8 key dimensions" with "8 key factors" across the entire site
+- [x] Replace "8 health challenges" with "8 health factors" across the entire site
+- [x] Rewrite the "wellbeing is shaped by multiple interconnected factors" sentence with better wording
