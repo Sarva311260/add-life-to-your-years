@@ -5,7 +5,8 @@ import { getLoginUrl } from "@/const";
 import { Link } from "wouter";
 import {
   Heart, Building2, Dna, Shield, Brain, Compass, Users, Activity,
-  BookOpen, ArrowRight, Star, Leaf, ChevronDown, Menu, X, LogOut, User
+  BookOpen, ArrowRight, Star, Leaf, ChevronDown, Menu, X, LogOut, User,
+  Play, Gift, HeartHandshake
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -73,6 +74,7 @@ export default function Home() {
             <a href="#book" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">The Book</a>
             <a href="#coaching" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Coaching</a>
             <a href="#products" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Products</a>
+            <Link href="/media" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Media</Link>
             {isAuthenticated && (
               <>
                 <Link href="/dashboard" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Dashboard</Link>
@@ -121,6 +123,7 @@ export default function Home() {
                 <a href="#book" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">The Book</a>
                 <a href="#coaching" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Coaching</a>
                 <a href="#products" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Products</a>
+                <Link href="/media" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Media</Link>
                 {isAuthenticated && (
                   <>
                     <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Dashboard</Link>
@@ -399,6 +402,71 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Free Access & Donations */}
+      <section className="py-20 bg-white">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="max-w-3xl mx-auto text-center">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6">
+                <HeartHandshake className="w-4 h-4" />
+                Our Philosophy
+              </span>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-6">
+                Freely Given, Freely Shared
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-4">
+                We believe that access to good health information should never depend on your
+                ability to pay. That is why our self-evaluation, educational content, media library,
+                and digital resources are completely free — no subscriptions, no paywalls, no
+                hidden fees.
+              </p>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-10">
+                Physical products and in-person consultations are offered separately, but
+                everything you need to begin understanding and improving your health is
+                available to you right now, at no cost.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+              <Card className="border-border/60 hover:shadow-md transition-shadow">
+                <CardContent className="p-8 text-center">
+                  <div className="w-14 h-14 rounded-xl bg-green-100 text-green-700 flex items-center justify-center mx-auto mb-5">
+                    <Leaf className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-semibold text-foreground text-lg mb-3">Free Access</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Self-evaluation, personalised results, educational articles, videos,
+                    and the full media library — all free, always.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-border/60 hover:shadow-md transition-shadow">
+                <CardContent className="p-8 text-center">
+                  <div className="w-14 h-14 rounded-xl bg-orange-100 text-orange-700 flex items-center justify-center mx-auto mb-5">
+                    <Gift className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-semibold text-foreground text-lg mb-3">Support Our Work</h3>
+                  <p className="text-sm text-muted-foreground mb-5">
+                    If this platform has been helpful to you, a voluntary donation helps us
+                    keep it running and reach more people. Every contribution is appreciated.
+                  </p>
+                  <Button variant="outline" size="sm" className="gap-2" onClick={() => { import("sonner").then(m => m.toast.info("Donation page coming soon — thank you for your generosity!")); }}>
+                    <Gift className="w-4 h-4" />
+                    Make a Donation
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-primary to-emerald-600 text-white">
         <div className="container text-center">
@@ -446,6 +514,7 @@ export default function Home() {
                 <li><a href="#book" className="hover:text-white transition-colors">The Book</a></li>
                 <li><a href="#coaching" className="hover:text-white transition-colors">Coaching</a></li>
                 <li><a href="#products" className="hover:text-white transition-colors">Products</a></li>
+                <li><Link href="/media" className="hover:text-white transition-colors">Media</Link></li>
               </ul>
             </div>
             <div>

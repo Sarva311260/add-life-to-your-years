@@ -74,3 +74,5 @@
 - [x] Replace "8 key dimensions" with "8 key factors" across the entire site
 - [x] Replace "8 health challenges" with "8 health factors" across the entire site
 - [x] Rewrite the "wellbeing is shaped by multiple interconnected factors" sentence with better wording
+- [x] Add Media page (placeholder/coming soon) with route and navigation link after Products
+- [x] Add "Free Access & Donations" section to the home page communicating that all digital content is free, with optional donation support
