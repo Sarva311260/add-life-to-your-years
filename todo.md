@@ -79,3 +79,10 @@
 - [x] Embed YouTube video (https://youtu.be/AOvV9m7feKo) on Media page replacing the "Content Coming Soon" placeholder
 - [x] Make 8 health factor icons clickable with popup dialog showing concise description from the book
 - [x] Add subtle fade-in and slide-up animation to health factor popup dialogs
+- [x] Add "Read More" button inside each health factor popup dialog
+- [x] Create dedicated pages for each of the 8 health factors with expanded content from the book
+- [x] Register routes for all 8 factor pages in App.tsx
+- [x] Add Store page and navigation link in menu
+- [x] Add Contact page and navigation link in menu
+- [x] Add a link to the book from each of the 8 dedicated factor pages
+- [x] Add share button on each of the 8 dedicated factor pages

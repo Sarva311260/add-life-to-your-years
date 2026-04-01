@@ -9,7 +9,7 @@ import { Link } from "wouter";
 import {
   Heart, Building2, Dna, Shield, Brain, Compass, Users, Activity,
   BookOpen, ArrowRight, Star, Leaf, ChevronDown, Menu, X, LogOut, User,
-  Play, Gift, HeartHandshake, ExternalLink
+  Play, Gift, HeartHandshake, ExternalLink, ShoppingBag, MessageCircle
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -104,6 +104,8 @@ export default function Home() {
             <a href="#coaching" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Coaching</a>
             <a href="#products" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Products</a>
             <Link href="/media" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Media</Link>
+            <Link href="/store" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Store</Link>
+            <Link href="/contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Contact</Link>
             {isAuthenticated && (
               <>
                 <Link href="/dashboard" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Dashboard</Link>
@@ -153,6 +155,8 @@ export default function Home() {
                 <a href="#coaching" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Coaching</a>
                 <a href="#products" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Products</a>
                 <Link href="/media" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Media</Link>
+                <Link href="/store" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Store</Link>
+                <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Contact</Link>
                 {isAuthenticated && (
                   <>
                     <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Dashboard</Link>
@@ -274,7 +278,7 @@ export default function Home() {
                   <DialogDescription className="text-muted-foreground leading-relaxed text-[0.95rem]">
                     {cat.detail}
                   </DialogDescription>
-                  <div className="mt-4 pt-4 border-t border-border/50">
+                  <div className="mt-4 pt-4 border-t border-border/50 space-y-4">
                     <p className="text-sm text-muted-foreground">
                       There is much more detail on this topic in the{" "}
                       <a
@@ -286,6 +290,12 @@ export default function Home() {
                       </a>{" "}
                       book.
                     </p>
+                    <Link href={`/factor/${cat.id}`}>
+                      <Button className="w-full gap-2">
+                        Read More
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
                   </div>
                 </DialogContent>
               </Dialog>
@@ -573,6 +583,8 @@ export default function Home() {
                 <li><a href="#coaching" className="hover:text-white transition-colors">Coaching</a></li>
                 <li><a href="#products" className="hover:text-white transition-colors">Products</a></li>
                 <li><Link href="/media" className="hover:text-white transition-colors">Media</Link></li>
+                <li><Link href="/store" className="hover:text-white transition-colors">Store</Link></li>
+                <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
               </ul>
             </div>
             <div>
