@@ -76,3 +76,4 @@
 - [x] Rewrite the "wellbeing is shaped by multiple interconnected factors" sentence with better wording
 - [x] Add Media page (placeholder/coming soon) with route and navigation link after Products
 - [x] Add "Free Access & Donations" section to the home page communicating that all digital content is free, with optional donation support
+- [x] Embed YouTube video (https://youtu.be/AOvV9m7feKo) on Media page replacing the "Content Coming Soon" placeholder

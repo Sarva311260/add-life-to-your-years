@@ -93,34 +93,30 @@ export default function Media() {
             ))}
           </div>
 
-          {/* Coming Soon */}
+          {/* Featured Video */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-center"
           >
-            <Card className="max-w-xl mx-auto border-dashed border-2 border-border/60">
-              <CardContent className="p-12">
-                <div className="w-16 h-16 rounded-full bg-green-100 text-green-700 flex items-center justify-center mx-auto mb-6">
-                  <Play className="w-7 h-7" />
-                </div>
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-3">
-                  Content Coming Soon
-                </h3>
-                <p className="text-muted-foreground mb-6">
-                  We are preparing a library of videos, podcasts, and curated resources to support
-                  your wellness journey. All media content will be freely available — no subscriptions,
-                  no paywalls.
-                </p>
-                <Link href="/">
-                  <Button variant="outline" className="gap-2">
-                    Explore the Site
-                    <ArrowLeft className="w-4 h-4" />
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
+            <div className="max-w-3xl mx-auto">
+              <h3 className="font-serif text-2xl font-bold text-foreground mb-6 text-center">
+                Featured Video
+              </h3>
+              <div className="relative w-full rounded-xl overflow-hidden shadow-lg" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/AOvV9m7feKo"
+                  title="Featured wellness video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+              <p className="text-muted-foreground text-center mt-6">
+                More videos, podcasts, and curated resources are on the way. All media content
+                will be freely available — no subscriptions, no paywalls.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
