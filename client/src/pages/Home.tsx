@@ -25,7 +25,7 @@ const CATEGORY_ICONS: Record<string, React.ReactNode> = {
   physical_trauma: <Activity className="w-6 h-6" />,
 };
 
-const BOOK_LINK = "#book"; // Placeholder — update when book purchase link is available
+const BOOK_LINK = "/book";
 
 const CATEGORIES = [
   {
@@ -100,7 +100,7 @@ export default function Home() {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
             <a href="#about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">About</a>
-            <a href="#book" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">The Book</a>
+            <Link href="/book" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">The Book</Link>
             <a href="#coaching" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Coaching</a>
             <a href="#products" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Products</a>
             <Link href="/media" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Media</Link>
@@ -151,7 +151,7 @@ export default function Home() {
             >
               <nav className="container py-4 flex flex-col gap-3">
                 <a href="#about" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">About</a>
-                <a href="#book" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">The Book</a>
+                <Link href="/book" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">The Book</Link>
                 <a href="#coaching" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Coaching</a>
                 <a href="#products" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Products</a>
                 <Link href="/media" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Media</Link>

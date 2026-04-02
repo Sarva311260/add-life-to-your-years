@@ -14,7 +14,8 @@ import Report from "./pages/Report";
 import Media from "./pages/Media";
 import Store from "./pages/Store";
 import Contact from "./pages/Contact";
-import FactorDetail from "./pages/FactorDetail";
+import FactorDetail from "@/pages/FactorDetail";
+import Book from "@/pages/Book";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -36,6 +37,7 @@ function Router() {
       <Route path={"/store"} component={Store} />
       <Route path={"/contact"} component={Contact} />
       <Route path={"/factor/:id"} component={FactorDetail} />
+      <Route path={"/book"} component={Book} />
       <Route path={"/dashboard"} component={Dashboard} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
