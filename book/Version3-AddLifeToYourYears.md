@@ -147,7 +147,7 @@ This is not merely an academic curiosity. The microbiome plays a direct and meas
 
 What Shapes the Microbiome
 
-The composition of the microbiome is not fixed. It is shaped by diet, environment, medication use, stress, sleep, physical activity, and early-life exposures. Of all these factors, diet is the most powerful daily influence.
+The composition of the microbiome is not fixed. It is shaped by what we eat, environment, medication use, stress, sleep, physical activity, and early-life exposures. Of all these factors, what we eat is the most powerful daily influence.
 Whole plant foods — rich in diverse fibres, resistant starches, and polyphenols — nourish beneficial microbial species and promote a diverse, resilient microbial community. By contrast, diets low in fibre and high in processed foods, sugar, and animal products tend to reduce microbial diversity and favour species associated with inflammation.
 This means that every meal is not just feeding you — it is feeding your microbial partners.
 The health of the microbiome and the health of the host are inseparable.

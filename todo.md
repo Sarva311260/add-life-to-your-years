@@ -92,3 +92,4 @@
 - [x] Add Bhramari Pranayama (Bee Breath) to the breathing recommendation in Part 4 with nitric oxide research, step-by-step instructions, and John's experience
 - [x] Fix Introduction: "14 recommendations" should be "15 recommendations" for John
 - [x] Fix broken paragraph splits throughout manuscript caused by removed form-feed characters (sentences split mid-thought across two paragraphs)
+- [x] Replace "diet" with "what we eat" in microbiome section (two instances: "shaped by diet, environment..." and "Of all these factors, diet...")
