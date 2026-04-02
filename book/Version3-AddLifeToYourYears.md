@@ -4,11 +4,6 @@ Proven Strategies for Health, Wellness and Vitality
 # Introduction
 
 ![Introduction — The Wellness Ecosystem](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-intro-ey4xNkBYLPvsaFpPcKghYd.webp)
-
-
-![Introduction — The Wellness Ecosystem](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-intro-ey4xNkBYLPvsaFpPcKghYd.webp)
-
-
 This book is about one simple but profound idea: you have far more influence over your
 health than you may realise.
 We live in a time of extraordinary medical advancement, yet chronic disease continues to
