@@ -1586,7 +1586,7 @@ shape what is available and affordable, and advocacy for better systems is itsel
 
 health intervention
 
-## Chapter 11: Financial Safety — The Modern Prerequisite
+## Chapter 10: Financial Safety — The Modern Prerequisite
 for Wellbeing
 
 In the ancestral world, safety meant physical protection — shelter from predators,
@@ -1645,7 +1645,7 @@ The Lancet. 1991;337(8754):1387–1393.
 1977;196(4286):129–136.
 
 Tier Three: Love and Belonging
-## Chapter 12: Meaningful Connection — The Biology of
+## Chapter 11: Meaningful Connection — The Biology of
 Belonging
 
 Once the body is fed, sheltered, and feels reasonably safe, a new and equally profound
@@ -1711,7 +1711,7 @@ underlying links to disease outcomes. Journal of Behavioral Medicine. 2006;29(4)
 4. Porges SW. The Polyvagal Theory. New York: W.W. Norton & Company; 2011.
 
 Tier Four: Esteem
-## Chapter 13: Self-Respect and Autonomy — The
+## Chapter 12: Self-Respect and Autonomy — The
 Architecture of Confidence
 
 Once we feel a secure sense of belonging, the next human need is to feel valued — by
@@ -1771,7 +1771,7 @@ development, and health. Canadian Psychology. 2008;49(3):182–185.
 Review. 1977;84(2):191–215.
 
 Tier Five: Self-Actualisation
-## Chapter 14: Purpose, Meaning, and the Fullest Expression
+## Chapter 13: Purpose, Meaning, and the Fullest Expression
 of Health
 
 At the peak of Maslow's hierarchy is self-actualisation — the desire to become the most that
