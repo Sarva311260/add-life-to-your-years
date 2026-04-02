@@ -5,9 +5,9 @@ import { Leaf, ArrowLeft, BookOpen, Download, FileText, CheckCircle2 } from "luc
 import { motion } from "framer-motion";
 
 const PDF_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_d7f956be.pdf";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_bcb0898c.pdf";
 const MD_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_65022b26.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_5e5ba7c0.md";
 
 const CONTENTS = [
   "Introduction — The Wellness Ecosystem",
@@ -74,6 +74,27 @@ export default function Book() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="grid md:grid-cols-2 gap-6 mb-16"
           >
+            {/* Read Online */}
+            <Card className="border-2 border-emerald-300 shadow-lg hover:shadow-xl transition-shadow md:col-span-2">
+              <CardContent className="p-8 flex flex-col md:flex-row items-center gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-emerald-100 flex items-center justify-center shrink-0">
+                  <BookOpen className="w-8 h-8 text-emerald-700" />
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <h2 className="font-serif text-xl font-bold text-foreground mb-1">Read Online</h2>
+                  <p className="text-muted-foreground text-sm">
+                    Read the full book directly on this website — with chapter navigation. No download required.
+                  </p>
+                </div>
+                <Link href="/book/read">
+                  <Button className="bg-emerald-700 hover:bg-emerald-800 text-white gap-2 px-8" size="lg">
+                    <BookOpen className="w-4 h-4" />
+                    Read Now
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
             {/* PDF Download */}
             <Card className="border-2 border-green-200 shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-8 flex flex-col items-center text-center gap-4">
@@ -88,7 +109,7 @@ export default function Book() {
                     Best for reading on screen, printing, or sharing. Opens in any PDF viewer.
                   </p>
                 </div>
-                <p className="text-xs text-muted-foreground">98 pages · ~870 KB</p>
+                <p className="text-xs text-muted-foreground">103 pages · ~900 KB</p>
                 <a href={PDF_URL} download="AddLifeToYourYears.pdf" className="w-full">
                   <Button className="w-full bg-green-700 hover:bg-green-800 text-white gap-2" size="lg">
                     <Download className="w-4 h-4" />
