@@ -55,16 +55,17 @@ If you complete the self-evaluation and find that your results raise questions y
 [QR CODE PLACEHOLDER — Coaching and Consultation]
 [website URL placeholder]/coaching
 
-How to Get the Most from This Ecosystem
-
-The most effective way to use these resources is not to consume them passively, but to engage with them actively and in sequence:
-1. Complete the self-evaluation first — establish your baseline and identify your priority areas
-
-2. Read the book — use the QR codes to explore specific topics in more depth on the website as you go
-3. Explore the media library — watch, listen, and let the ideas settle in different ways
-4. Return to the self-evaluation — after implementing changes, re-evaluate to track your progress over time
-5. Reach out for support — if you want personalised guidance, coaching is available
-Knowledge without application changes nothing. This ecosystem is designed to close that gap — to take you from understanding to action, and from action to measurable, lasting improvement.
+> ### How to Get the Most from This Ecosystem
+>
+> The most effective way to use these resources is not to consume them passively, but to engage with them actively and in sequence:
+>
+> 1. **Complete the self-evaluation first** — establish your baseline and identify your priority areas
+> 2. **Read the book** — use the QR codes to explore specific topics in more depth on the website as you go
+> 3. **Explore the media library** — watch, listen, and let the ideas settle in different ways
+> 4. **Return to the self-evaluation** — after implementing changes, re-evaluate to track your progress over time
+> 5. **Reach out for support** — if you want personalised guidance, coaching is available
+>
+> *Knowledge without application changes nothing. This ecosystem is designed to close that gap — to take you from understanding to action, and from action to measurable, lasting improvement.*
 
 A Note on Supporting This Work
 
