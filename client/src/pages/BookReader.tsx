@@ -6,7 +6,9 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 const PDF_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_bcb0898c.pdf";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_8b3927eb.pdf";
+const MD_CDN_URL =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_22031fd2.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -101,7 +103,7 @@ export default function BookReader() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
-    fetch("/book-content.md")
+    fetch(MD_CDN_URL)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch");
         return res.text();

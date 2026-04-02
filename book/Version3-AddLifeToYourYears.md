@@ -1,7 +1,7 @@
 Add Life to Your Years
 
 Proven Strategies for Health, Wellness and Vitality
-Introduction
+# Introduction
 
 This book is about one simple but profound idea: you have far more influence over your
 health than you may realise.
@@ -121,7 +121,7 @@ position to contribute, donations are warmly welcomed and genuinely appreciated.
 help keep everything free for those who need it most.
 [QR CODE PLACEHOLDER — Support / Donation Page]
 [website URL placeholder]/support
-Part One: How Our Body Works
+# Part One: How Our Body Works
 
 Before exploring what can go wrong with our health, it is worth pausing to appreciate what
 goes right. The human body is one of the most complex and elegant systems in the known
@@ -131,7 +131,7 @@ Part One provides this foundation. It covers three interconnected themes: the ex
 nature of human cells, the microbial ecosystem that lives within and upon us, and the
 communication systems that coordinate it all.
 
-Chapter 1: The Human Body — A Universe of Cells
+## Chapter 1: The Human Body — A Universe of Cells
 
 The human body is composed of approximately 30 to 37 trillion cells. Each of these cells is
 a living entity in its own right — taking in nutrients, producing energy, responding to
@@ -193,7 +193,7 @@ drink, and breathe. In a very real sense, you are what you absorb.
 This also means that the body has a remarkable capacity for repair — provided it receives
 the right inputs and is not overwhelmed by harmful ones.
 
-Chapter 2: The Microbiome — Our Microbial Partners
+## Chapter 2: The Microbiome — Our Microbial Partners
 
 One of the most important scientific discoveries of recent decades is that we are not purely
 human. Living in and on the human body is a vast community of microorganisms —
@@ -249,7 +249,7 @@ The health of the microbiome and the health of the host are inseparable.
 ![The Biological Hybrid: Human vs. Microbial Cells & Genes](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/human_microbial_infographic_8c3b9a20.webp)
 *Figure 1: The Biological Hybrid — Understanding our composition as a partnership of human and microbial elements. Human cells number 30–37 trillion; microbial cells approximately 38 trillion. Our microbial genes outnumber human genes by 100 to 1,000 times.*
 
-Chapter 3: Cell Communication — The Body's Internal
+## Chapter 3: Cell Communication — The Body's Internal
 Language
 
 For trillions of cells and trillions of microbes to function as a coherent whole, they must
@@ -332,7 +332,7 @@ Investigation. 2015;125(3):926–938.
 7. Alberts B, Johnson A, Lewis J, et al. Molecular Biology of the Cell. 6th ed. New York:
 
 Garland Science; 2014.
-Part Two: The 8 Factors of Health and
+# Part Two: The 8 Factors of Health and
 Disease
 
 Most people, when they think about health, think about individual habits — what they eat,
@@ -398,7 +398,7 @@ With that picture in mind, let us now examine each of the eight factors in turn.
 | 7. Meaningful Relationships | Quality of social connection and support | Strained marriage, social isolation |
 | 8. Physical Conditions | Existing medical conditions and physiological state | Compromised gut microbiome, poor metabolic health |
 
-Factor 1: Lifestyle
+## Factor 1: Lifestyle
 
 Lifestyle is both the largest contributor to chronic health challenges and the area in which
 we have the most capacity to make meaningful change. It encompasses what and when we
@@ -468,7 +468,7 @@ is under strain, even well-designed strategies in other areas struggle to take h
 Three, we will translate these pressure points into simple, sustainable adjustments that fit
 the realities of everyday life.
 
-Factor 2: Environment
+## Factor 2: Environment
 
 Environmental factors shape the background conditions of daily life — the air we breathe,
 the water we drink, the spaces we inhabit, and the neighbourhoods we move through. They
@@ -541,7 +541,7 @@ unsafe, even strong intentions struggle to translate into sustained action. Smal
 environmental improvements often yield disproportionately large gains in sleep, energy,
 mood, and respiratory health.
 
-Factor 3: Genetic Make-up
+## Factor 3: Genetic Make-up
 
 Your genetic make-up influences how your body is wired from the start — shaping
 tendencies in metabolism, immunity, hormones, brain chemistry, sleep, and responses to
@@ -613,7 +613,7 @@ wasted effort. In Part Three, we will explore practical steps including building
 health history, deciding when genetic testing or specialist input is worthwhile, and tailoring
 nutrition, training, sleep, and medical care to your biology.
 
-Factor 4: Structural Conditions
+## Factor 4: Structural Conditions
 
 Structural conditions are the systems, policies, institutions, and power dynamics that
 shape what is available, affordable, safe, legal, and culturally expected. They sit upstream
@@ -666,7 +666,7 @@ rights and accommodations, community resources, employer policy changes, and
 collective advocacy. In Part Three, we will explore practical steps for navigating these
 systems with less friction while working toward fairer conditions.
 
-Factor 5: Stress Levels
+## Factor 5: Stress Levels
 
 Stress is the load placed on the mind and body by demands, uncertainty, and perceived
 threat. It includes acute spikes — the sudden pressure of a deadline or a difficult
@@ -735,7 +735,7 @@ relationships — undermining every other change a person tries to make. Reducin
 sleep, and medical care. In Part Three, we will explore practical approaches to reducing
 baseline arousal and building genuine resilience.
 
-Factor 6: Purpose or Direction
+## Factor 6: Purpose or Direction
 
 Purpose is the sense of meaning, direction, and contribution that organises time and effort.
 It need not be a grand life calling — it can be a combination of values, roles, relationships,
@@ -789,7 +789,7 @@ remain inconsistent. In Part Three, we will explore practical approaches to valu
 clarification, low-risk experimentation, and building weekly structures that translate
 purpose into action.
 
-Factor 7: Meaningful Relationships
+## Factor 7: Meaningful Relationships
 
 Meaningful relationships are supportive, reciprocal connections that offer belonging,
 validation, and practical help. They include close ties — partners, family, and close friends
@@ -850,7 +850,7 @@ satisfaction — and they make goals stick by adding accountability, joy, and sh
 In Part Three, we will explore practical steps for mapping your current network, rebuilding
 connections, and finding or forming communities that genuinely support your wellbeing.
 
-Factor 8: Physical Conditions
+## Factor 8: Physical Conditions
 
 Physical trauma — including injuries, surgeries, and burns — as well as congenital or
 structural differences present from birth or arising through developmental variation, can
@@ -1122,7 +1122,7 @@ Washington DC: World Bank; 2006.
 publications; available at https://www.nih.gov
 10.Cleveland Clinic. Endothelial dysfunction and cardiovascular disease. Available at:
 https://my.clevelandclinic.org/health/diseases/23051-endothelial-dysfunction
-Part Three: Wellness Strategies
+# Part Three: Wellness Strategies
 
 Understanding the factors that shape health is the first step. The second is knowing what to
 do about them. Part Three translates the insights from Parts One and Two into practical,
@@ -1148,7 +1148,7 @@ body requires simply to function. Without adequate air, water, sleep, food, and 
 amount of effort at higher levels can produce lasting health. These are not optional extras;
 they are the foundation upon which everything else is built.
 
-Chapter 4: Air — The First Breath
+## Chapter 4: Air — The First Breath
 
 Of all the physiological inputs the body requires, air is the most immediate. We can survive
 weeks without food, days without water, but only minutes without oxygen. Yet air quality —
@@ -1220,7 +1220,7 @@ Human Neuroscience. 2018;12:353.
 Attachment, Communication, and Self-regulation. New York: W.W. Norton & Company;
 2011.
 
-Chapter 5: Water — The Medium of Life
+## Chapter 5: Water — The Medium of Life
 
 Water is the medium in which virtually every biochemical reaction in the body takes place.
 It constitutes approximately sixty per cent of total body weight, and even mild dehydration
@@ -1299,7 +1299,7 @@ American College of Nutrition. 2007;26(5 Suppl):549S–554S.
 cross-sectional study of adolescents. Environmental Health Perspectives.
 2017;125(9):097002.
 
-Chapter 6: Sleep — The Master Repair Phase
+## Chapter 6: Sleep — The Master Repair Phase
 
 Sleep is not passive downtime. It is the body's most intensive period of maintenance,
 repair, and consolidation. During sleep, the brain clears metabolic waste products,
@@ -1389,7 +1389,7 @@ Immunology. 2019;19(11):702–715.
 6. Panda S. The Circadian Code: Lose Weight, Supercharge Your Energy, and Transform
 Your Health from Morning to Midnight. New York: Rodale Books; 2019.
 
-Chapter 7: Food — Building the Body from the Inside Out
+## Chapter 7: Food — Building the Body from the Inside Out
 
 Food is the most powerful daily lever we have for influencing our health. Every meal is an
 opportunity to either nourish or burden the body — to feed the microbiome, regulate
@@ -1478,7 +1478,7 @@ Commission on healthy diets from sustainable food systems. The Lancet.
 metabolism. Nature. 2016;535(7610):56–64.
 7. Panda S. Circadian physiology of metabolism. Science. 2016;354(6315):1008–1015.
 
-Chapter 8: Shelter — The Environment We Come Home To
+## Chapter 8: Shelter — The Environment We Come Home To
 Shelter is the built environment we inhabit — our homes, workplaces, and the spaces in
 which we spend the majority of our time. While shelter is often thought of in purely
 structural terms (a roof, four walls, a door), its influence on health extends far beyond basic
@@ -1549,7 +1549,7 @@ conditions that determine how much control a person has over their own life. Whe
 needs are chronically unmet, the body remains in a state of low-grade biological alert that
 undermines health at every level.
 
-Chapter 9: Security and Stability — The Nervous System's
+## Chapter 9: Security and Stability — The Nervous System's
 First Request
 The human nervous system evolved in a world of immediate, physical threats. Today, the
 threats are largely chronic and psychological — financial pressure, housing insecurity,
@@ -1652,7 +1652,7 @@ shape what is available and affordable, and advocacy for better systems is itsel
 
 health intervention
 
-Chapter 11: Financial Safety — The Modern Prerequisite
+## Chapter 11: Financial Safety — The Modern Prerequisite
 for Wellbeing
 
 In the ancestral world, safety meant physical protection — shelter from predators,
@@ -1711,7 +1711,7 @@ The Lancet. 1991;337(8754):1387–1393.
 1977;196(4286):129–136.
 
 Tier Three: Love and Belonging
-Chapter 12: Meaningful Connection — The Biology of
+## Chapter 12: Meaningful Connection — The Biology of
 Belonging
 
 Once the body is fed, sheltered, and feels reasonably safe, a new and equally profound
@@ -1777,7 +1777,7 @@ underlying links to disease outcomes. Journal of Behavioral Medicine. 2006;29(4)
 4. Porges SW. The Polyvagal Theory. New York: W.W. Norton & Company; 2011.
 
 Tier Four: Esteem
-Chapter 13: Self-Respect and Autonomy — The
+## Chapter 13: Self-Respect and Autonomy — The
 Architecture of Confidence
 
 Once we feel a secure sense of belonging, the next human need is to feel valued — by
@@ -1837,7 +1837,7 @@ development, and health. Canadian Psychology. 2008;49(3):182–185.
 Review. 1977;84(2):191–215.
 
 Tier Five: Self-Actualisation
-Chapter 14: Purpose, Meaning, and the Fullest Expression
+## Chapter 14: Purpose, Meaning, and the Fullest Expression
 of Health
 
 At the peak of Maslow's hierarchy is self-actualisation — the desire to become the most that
@@ -1904,7 +1904,7 @@ Longest. Washington DC: National Geographic; 2008.
 6. Marmot MG, et al. Health inequalities among British civil servants: the Whitehall II study.
 The Lancet. 1991;337(8754):1387–1393.
 
-Conclusion: Adding Life to Your Years
+# Conclusion: Adding Life to Your Years
 
 We began this book with a simple but profound idea: you have far more influence over
 your health than you may realise.

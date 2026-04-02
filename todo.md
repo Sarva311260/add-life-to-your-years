@@ -86,4 +86,4 @@
 - [x] Add Contact page and navigation link in menu
 - [x] Add a link to the book from each of the 8 dedicated factor pages
 - [x] Add share button on each of the 8 dedicated factor pages
-- [ ] Write John's healing story chapter with all practical recommendations (WFPB lifestyle, water, sleep/melatonin, glycine, five seeds, B12/D, Japanese 6 movements, breathing, PEMF, meditation, relationships, second income, location)
+- [x] Write John's healing story chapter with all practical recommendations (WFPB lifestyle, water, sleep/melatonin, glycine, five seeds, B12/D, Japanese 6 movements, breathing, PEMF, meditation, relationships, second income, location)

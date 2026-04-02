@@ -5,9 +5,9 @@ import { Leaf, ArrowLeft, BookOpen, Download, FileText, CheckCircle2 } from "luc
 import { motion } from "framer-motion";
 
 const PDF_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_6dd7e03b.pdf";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_8b3927eb.pdf";
 const MD_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_cc25ab66.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_22031fd2.md";
 
 const CONTENTS = [
   "Introduction — The Wellness Ecosystem",
