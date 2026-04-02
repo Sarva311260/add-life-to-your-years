@@ -103,3 +103,5 @@
 - [x] Bug: Arrow characters appearing at the start of paragraphs in the book manuscript — find and remove all instances
 - [x] Bug: Chapter header image appears after infographic in Part Three, Part Four, and Chapter 3 — fix order so header image comes first
 - [x] Fix Introduction "How to Get the Most from This Ecosystem" numbered list — format as proper numbered list with each step on its own line in a styled callout box
+- [x] Generate book cover illustration for homepage display
+- [x] Update homepage "Coming Soon" button to "Click to Read" and link to book reader

@@ -314,17 +314,16 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="relative">
-                <div className="bg-gradient-to-br from-primary/10 to-emerald-100 rounded-2xl p-8 md:p-12 flex items-center justify-center">
-                  <div className="bg-white rounded-lg shadow-xl p-6 w-56 md:w-64 transform -rotate-3 hover:rotate-0 transition-transform duration-300">
-                    <div className="bg-gradient-to-br from-primary to-emerald-600 rounded-md p-4 mb-4 text-white text-center">
-                      <Leaf className="w-8 h-8 mx-auto mb-2" />
-                      <div className="font-serif text-sm font-bold leading-tight">Add Life to<br />Your Years</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-xs text-muted-foreground mb-1">A Guide to</div>
-                      <div className="font-serif text-sm font-semibold text-foreground leading-tight">Health, Wellness<br />& Vitality</div>
-                    </div>
+              <div className="relative flex items-center justify-center">
+                <div className="relative">
+                  <img
+                    src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-cover-UsuL2YkEq9DNQMFM4uAv7v.webp"
+                    alt="Add Life to Your Years book cover"
+                    className="w-56 md:w-72 rounded-lg shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-300 cursor-pointer"
+                    onClick={() => window.location.href = '/book'}
+                  />
+                  <div className="absolute -bottom-3 -right-3 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg">
+                    144 Pages
                   </div>
                 </div>
               </div>
@@ -361,9 +360,13 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <Button variant="outline" size="lg" className="gap-2" disabled>
-                Coming Soon
-              </Button>
+              <Link href="/book">
+                <Button size="lg" className="gap-2">
+                  <BookOpen className="w-5 h-5" />
+                  Click to Read
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+              </Link>
             </motion.div>
           </div>
         </div>
