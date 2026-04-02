@@ -1545,7 +1545,7 @@ safe; set boundaries with those who bring chronic volatility
 • If anxiety or a trauma history is driving hypervigilance, consider working with a
 therapist trained in somatic or nervous system approaches
 
-Chapter 10: The Importance of Health as a Safety Need
+The Importance of Health as a Safety Need
 
 Health itself sits within Maslow's safety tier — not as a luxury or a personal achievement,
 but as the biological buffer that protects long-term viability. When health is absent or
