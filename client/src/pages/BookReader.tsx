@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { Download, Menu, X, ArrowLeft } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Download, Menu, X, ArrowLeft, Search, ChevronUp, ChevronDown } from "lucide-react";
 import { Link } from "wouter";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -8,7 +9,7 @@ import remarkGfm from "remark-gfm";
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_e8d0da6f.pdf";
 const MD_CDN_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_173fdb02.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_dcf7918d.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -24,6 +25,7 @@ const chapters = [
   { id: "chapter-7", label: "Ch 7: Food" },
   { id: "chapter-8", label: "Ch 8: Shelter" },
   { id: "chapter-9", label: "Ch 9: Security & Stability" },
+  { id: "chapter-10", label: "Ch 10: Stability" },
   { id: "chapter-11", label: "Ch 11: Financial Safety" },
   { id: "chapter-12", label: "Ch 12: Meaningful Connection" },
   { id: "chapter-13", label: "Ch 13: Self-Respect" },
@@ -50,27 +52,14 @@ const chapters = [
   { id: "a-note", label: "A Note on the Journey" },
 ];
 
-// Map heading text to anchor IDs
+// Map heading text to anchor IDs — longer keys first to prevent false prefix matches
 const headingIdMap: Record<string, string> = {
-  "Introduction": "introduction",
-  "Part One: How Our Body Works": "part-one",
-  "Chapter 1": "chapter-1",
-  "Chapter 2": "chapter-2",
-  "Chapter 3": "chapter-3",
-  "Part Two": "part-two",
-  "Part Three": "part-three",
-  "Chapter 4": "chapter-4",
-  "Chapter 5": "chapter-5",
-  "Chapter 6": "chapter-6",
-  "Chapter 7": "chapter-7",
-  "Chapter 8": "chapter-8",
-  "Chapter 9": "chapter-9",
-  "Chapter 11": "chapter-11",
-  "Chapter 12": "chapter-12",
-  "Chapter 13": "chapter-13",
-  "Chapter 14": "chapter-14",
-  "Conclusion": "conclusion",
-  "Part Four": "part-four",
+  "Recommendation 10": "rec-10",
+  "Recommendation 11": "rec-11",
+  "Recommendation 12": "rec-12",
+  "Recommendation 13": "rec-13",
+  "Recommendation 14": "rec-14",
+  "Recommendation 15": "rec-15",
   "Recommendation 1": "rec-1",
   "Recommendation 2": "rec-2",
   "Recommendation 3": "rec-3",
@@ -80,19 +69,35 @@ const headingIdMap: Record<string, string> = {
   "Recommendation 7": "rec-7",
   "Recommendation 8": "rec-8",
   "Recommendation 9": "rec-9",
-  "Recommendation 10": "rec-10",
-  "Recommendation 11": "rec-11",
-  "Recommendation 12": "rec-12",
-  "Recommendation 13": "rec-13",
-  "Recommendation 14": "rec-14",
-  "Recommendation 15": "rec-15",
+  "Chapter 10": "chapter-10",
+  "Chapter 11": "chapter-11",
+  "Chapter 12": "chapter-12",
+  "Chapter 13": "chapter-13",
+  "Chapter 14": "chapter-14",
+  "Chapter 1": "chapter-1",
+  "Chapter 2": "chapter-2",
+  "Chapter 3": "chapter-3",
+  "Chapter 4": "chapter-4",
+  "Chapter 5": "chapter-5",
+  "Chapter 6": "chapter-6",
+  "Chapter 7": "chapter-7",
+  "Chapter 8": "chapter-8",
+  "Chapter 9": "chapter-9",
+  "Introduction": "introduction",
+  "Part One": "part-one",
+  "Part Two": "part-two",
+  "Part Three": "part-three",
+  "Part Four": "part-four",
+  "Conclusion": "conclusion",
   "John, Six Months Later": "john-6-months",
   "John, Twelve Months Later": "john-12-months",
   "A Note on the Journey": "a-note",
 };
 
+// Sort keys by length descending so longer keys match first
+const sortedHeadingKeys = Object.keys(headingIdMap).sort((a, b) => b.length - a.length);
+
 function getHeadingId(children: React.ReactNode): string {
-  // Flatten all child text recursively
   const extractText = (node: React.ReactNode): string => {
     if (typeof node === "string") return node;
     if (typeof node === "number") return String(node);
@@ -103,10 +108,58 @@ function getHeadingId(children: React.ReactNode): string {
     return "";
   };
   const text = extractText(children);
-  for (const [key, id] of Object.entries(headingIdMap)) {
-    if (text.includes(key)) return id;
+  for (const key of sortedHeadingKeys) {
+    if (text.includes(key)) return headingIdMap[key];
   }
   return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+// Highlight search terms in text
+function highlightText(text: string, query: string): React.ReactNode {
+  if (!query || query.length < 2) return text;
+  const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "gi");
+  const parts = text.split(regex);
+  return parts.map((part, i) =>
+    regex.test(part) ? (
+      <mark key={i} className="bg-yellow-200 text-yellow-900 rounded px-0.5 search-highlight">
+        {part}
+      </mark>
+    ) : (
+      part
+    )
+  );
+}
+
+interface SearchResult {
+  lineIndex: number;
+  lineText: string;
+  context: string;
+  matchIndex: number;
+}
+
+function buildSearchResults(content: string, query: string): SearchResult[] {
+  if (!query || query.length < 2) return [];
+  const lines = content.split("\n");
+  const results: SearchResult[] = [];
+  const lowerQuery = query.toLowerCase();
+  lines.forEach((line, idx) => {
+    if (line.toLowerCase().includes(lowerQuery)) {
+      // Get surrounding context (strip markdown markers)
+      const clean = line.replace(/^#+\s*/, "").replace(/[*_`>]/g, "");
+      const contextStart = Math.max(0, idx - 1);
+      const contextLines = lines.slice(contextStart, idx + 2)
+        .map(l => l.replace(/^#+\s*/, "").replace(/[*_`>]/g, "").trim())
+        .filter(Boolean)
+        .join(" ");
+      results.push({
+        lineIndex: idx,
+        lineText: clean,
+        context: contextLines.slice(0, 120) + (contextLines.length > 120 ? "…" : ""),
+        matchIndex: results.length,
+      });
+    }
+  });
+  return results.slice(0, 50); // cap at 50 results
 }
 
 export default function BookReader() {
@@ -114,6 +167,13 @@ export default function BookReader() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [currentResultIndex, setCurrentResultIndex] = useState(0);
+  const [highlightQuery, setHighlightQuery] = useState("");
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetch(MD_CDN_URL)
@@ -131,6 +191,51 @@ export default function BookReader() {
       });
   }, []);
 
+  // Keyboard shortcut: Ctrl+F / Cmd+F to open search
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === "f") {
+        e.preventDefault();
+        setSearchOpen(true);
+        setTimeout(() => searchInputRef.current?.focus(), 100);
+      }
+      if (e.key === "Escape") {
+        setSearchOpen(false);
+        setHighlightQuery("");
+        setSearchResults([]);
+        setSearchQuery("");
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
+
+  const handleSearch = useCallback(() => {
+    const results = buildSearchResults(bookContent, searchQuery);
+    setSearchResults(results);
+    setCurrentResultIndex(0);
+    setHighlightQuery(searchQuery);
+    // Scroll to first result
+    if (results.length > 0) {
+      setTimeout(() => {
+        const highlights = document.querySelectorAll(".search-highlight");
+        if (highlights[0]) {
+          highlights[0].scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 150);
+    }
+  }, [bookContent, searchQuery]);
+
+  const navigateResult = (direction: "next" | "prev") => {
+    const highlights = document.querySelectorAll(".search-highlight");
+    if (highlights.length === 0) return;
+    let next = direction === "next"
+      ? (currentResultIndex + 1) % highlights.length
+      : (currentResultIndex - 1 + highlights.length) % highlights.length;
+    setCurrentResultIndex(next);
+    highlights[next]?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
   const scrollToChapter = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -138,6 +243,17 @@ export default function BookReader() {
       setSidebarOpen(false);
     }
   };
+
+  // Wrap text renderer to highlight search matches
+  const makeTextRenderer = (query: string) => {
+    if (!query || query.length < 2) return undefined;
+    return ({ children }: { children: React.ReactNode }) => {
+      if (typeof children === "string") return <>{highlightText(children, query)}</>;
+      return <>{children}</>;
+    };
+  };
+
+  const totalHighlights = document.querySelectorAll(".search-highlight").length;
 
   return (
     <div className="min-h-screen bg-[#fafaf8]">
@@ -163,14 +279,112 @@ export default function BookReader() {
               Add Life to Your Years
             </span>
           </div>
-          <a href={PDF_URL} download="Add-Life-to-Your-Years.pdf">
-            <Button size="sm" className="gap-2 bg-green-700 hover:bg-green-800 text-white">
-              <Download className="h-4 w-4" />
-              <span className="hidden sm:inline">Download PDF</span>
-              <span className="sm:hidden">PDF</span>
+          <div className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => {
+                setSearchOpen(!searchOpen);
+                if (!searchOpen) setTimeout(() => searchInputRef.current?.focus(), 100);
+              }}
+              className="text-stone-600 hover:text-stone-900"
+              title="Search (Ctrl+F)"
+            >
+              <Search className="h-4 w-4" />
             </Button>
-          </a>
+            <a href={PDF_URL} download="Add-Life-to-Your-Years.pdf">
+              <Button size="sm" className="gap-2 bg-green-700 hover:bg-green-800 text-white">
+                <Download className="h-4 w-4" />
+                <span className="hidden sm:inline">Download PDF</span>
+                <span className="sm:hidden">PDF</span>
+              </Button>
+            </a>
+          </div>
         </div>
+
+        {/* Search bar — slides down below header */}
+        {searchOpen && (
+          <div className="border-t border-stone-200 bg-white px-4 py-2 flex items-center gap-2">
+            <Search className="h-4 w-4 text-stone-400 shrink-0" />
+            <Input
+              ref={searchInputRef}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleSearch();
+                if (e.key === "Escape") {
+                  setSearchOpen(false);
+                  setHighlightQuery("");
+                  setSearchResults([]);
+                  setSearchQuery("");
+                }
+              }}
+              placeholder="Search the book… (Enter to search)"
+              className="flex-1 h-8 text-sm border-0 shadow-none focus-visible:ring-0 bg-transparent"
+            />
+            {searchResults.length > 0 && (
+              <span className="text-xs text-stone-500 shrink-0 whitespace-nowrap">
+                {totalHighlights > 0 ? `${currentResultIndex + 1} / ${totalHighlights}` : `${searchResults.length} results`}
+              </span>
+            )}
+            {searchResults.length > 0 && (
+              <>
+                <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => navigateResult("prev")}>
+                  <ChevronUp className="h-3 w-3" />
+                </Button>
+                <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => navigateResult("next")}>
+                  <ChevronDown className="h-3 w-3" />
+                </Button>
+              </>
+            )}
+            {searchQuery && (
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-7 px-2 text-xs text-stone-500"
+                onClick={handleSearch}
+              >
+                Search
+              </Button>
+            )}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-7 w-7 text-stone-400"
+              onClick={() => {
+                setSearchOpen(false);
+                setHighlightQuery("");
+                setSearchResults([]);
+                setSearchQuery("");
+              }}
+            >
+              <X className="h-3 w-3" />
+            </Button>
+          </div>
+        )}
+
+        {/* Search results dropdown */}
+        {searchOpen && searchResults.length > 0 && (
+          <div className="absolute top-full left-0 right-0 bg-white border-b border-stone-200 shadow-lg z-50 max-h-64 overflow-y-auto">
+            {searchResults.map((result, i) => (
+              <button
+                key={i}
+                className="w-full text-left px-4 py-2.5 hover:bg-stone-50 border-b border-stone-100 last:border-0"
+                onClick={() => {
+                  setCurrentResultIndex(i);
+                  const highlights = document.querySelectorAll(".search-highlight");
+                  // Find the i-th group of highlights
+                  if (highlights[i]) {
+                    highlights[i].scrollIntoView({ behavior: "smooth", block: "center" });
+                  }
+                  setSearchOpen(false);
+                }}
+              >
+                <p className="text-xs text-stone-500 mb-0.5 truncate">{result.context}</p>
+              </button>
+            ))}
+          </div>
+        )}
       </header>
 
       <div className="max-w-7xl mx-auto flex">
@@ -225,7 +439,7 @@ export default function BookReader() {
             </div>
           )}
           {!loading && !error && (
-            <div className="max-w-3xl mx-auto book-content">
+            <div ref={contentRef} className="max-w-3xl mx-auto book-content">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{
@@ -236,7 +450,11 @@ export default function BookReader() {
                         id={id}
                         className="font-serif text-3xl font-bold text-stone-900 mt-12 mb-6 pb-3 border-b border-stone-200 scroll-mt-20"
                       >
-                        {children}
+                        {highlightQuery ? highlightText(
+                          typeof children === "string" ? children :
+                          Array.isArray(children) ? children.join("") : String(children),
+                          highlightQuery
+                        ) : children}
                       </h1>
                     );
                   },
@@ -247,7 +465,11 @@ export default function BookReader() {
                         id={id}
                         className="font-serif text-2xl font-bold text-stone-800 mt-10 mb-4 scroll-mt-20"
                       >
-                        {children}
+                        {highlightQuery ? highlightText(
+                          typeof children === "string" ? children :
+                          Array.isArray(children) ? children.join("") : String(children),
+                          highlightQuery
+                        ) : children}
                       </h2>
                     );
                   },
@@ -259,9 +481,12 @@ export default function BookReader() {
                   h4: ({ children }) => (
                     <h4 className="font-semibold text-stone-700 mt-6 mb-2">{children}</h4>
                   ),
-                  p: ({ children }) => (
-                    <p className="text-stone-700 leading-relaxed mb-4 text-base">{children}</p>
-                  ),
+                  p: ({ children }) => {
+                    if (highlightQuery && typeof children === "string") {
+                      return <p className="text-stone-700 leading-relaxed mb-4 text-base">{highlightText(children, highlightQuery)}</p>;
+                    }
+                    return <p className="text-stone-700 leading-relaxed mb-4 text-base">{children}</p>;
+                  },
                   strong: ({ children }) => (
                     <strong className="font-semibold text-stone-900">{children}</strong>
                   ),
@@ -304,6 +529,21 @@ export default function BookReader() {
                     <code className="bg-stone-100 text-stone-800 px-1.5 py-0.5 rounded text-sm font-mono">
                       {children}
                     </code>
+                  ),
+                  img: ({ src, alt }) => (
+                    <figure className="my-8 text-center">
+                      <img
+                        src={src}
+                        alt={alt || ""}
+                        className="max-w-full mx-auto rounded-lg shadow-md"
+                        loading="lazy"
+                      />
+                      {alt && (
+                        <figcaption className="mt-2 text-sm text-stone-500 italic">
+                          {alt}
+                        </figcaption>
+                      )}
+                    </figure>
                   ),
                 }}
               >

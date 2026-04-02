@@ -94,3 +94,9 @@
 - [x] Fix broken paragraph splits throughout manuscript caused by removed form-feed characters (sentences split mid-thought across two paragraphs)
 - [x] Replace "diet" with "what we eat" in microbiome section (two instances: "shaped by diet, environment..." and "Of all these factors, diet...")
 - [x] Bug: Introduction "How to Get the Most" callout box lost its styling after paragraph reflow — restore the blockquote/box formatting
+- [ ] Add full-text search facility to online book reader (search bar, highlight matches, jump to results)
+- [ ] Write Key Takeaway boxes for all 14 chapters and embed them in the manuscript
+- [ ] Fix remaining broken paragraph joins throughout manuscript (e.g. "Reducing\nunnecessary load" should be one sentence to "genuine resilience")
+- [ ] Format all "Common Early Signals" sections throughout the book as styled callout boxes (matching the Introduction "How to Get the Most" box style)
+- [x] Bold all recurring section subheadings throughout the book (Important Context, Common Early Signals, Where Physical Conditions Commonly Create Challenges, Where [X] Commonly Creates Challenges, Key Takeaways, etc.) for easier reading
+- [x] Recreate Top 6 Lifestyle Factors chart with Excessive Alcohol at position 2 (score ~9.2, just below tobacco 9.5), insert into manuscript in Part Two section
