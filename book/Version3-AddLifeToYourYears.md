@@ -261,6 +261,9 @@ The health of the microbiome and the health of the host are inseparable.
 
 ## Chapter 3: Cell Communication — The Body's Internal
 
+
+![How Cells Communicate — Signalling Pathways and Receptor Function](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/infographic-cell-communication-n6JG7xggv4BjdYU27QZWbU.webp)
+*Figure: How cells communicate through chemical signalling molecules and receptor proteins.*
 ![Chapter 3:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-03-T9DmCtXKhdjxxqt8sqgZq3.webp)
 
 Language
@@ -347,6 +350,9 @@ Investigation. 2015;125(3):926–938.
 Garland Science; 2014.
 # Part Two: The 8 Factors of Health and
 
+
+![The 8 Factors of Health — A Framework for Understanding Disease and Vitality](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/infographic-8-factors-wheel-cr6SncJnJCqL66dvn5yv9G.webp)
+*Figure: The 8 Factors of Health — the interconnected pillars that determine our wellbeing.*
 ![Part Two: The 8 Factors of Health](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-part2-79AHbgtthgLWZyuLsK6F8j.webp)
 
 Disease
@@ -1074,6 +1080,9 @@ publications; available at https://www.nih.gov
 https://my.clevelandclinic.org/health/diseases/23051-endothelial-dysfunction
 # Part Three: Wellness Strategies
 
+
+![Maslow's Hierarchy of Needs — The Foundation of Wellness](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/infographic-maslow-hierarchy-K6js7c9teop2uMYp69cqbY.webp)
+*Figure: Maslow's Hierarchy of Needs adapted for wellness — from physiological foundations to self-actualisation.*
 ![Part Three: Wellness Strategies](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-part3-4Foy2w4MST64WjM6xshBGi.webp)
 
 
@@ -2023,6 +2032,9 @@ companion resources available at [website placeholder].
 
 # Part Four: John's Path Forward — A Healing Story
 
+
+![John's 12-Month Healing Journey — From Metabolic Syndrome to Thriving](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/infographic-johns-timeline-gJJqnjN5QWghTmBFBqSCyg.webp)
+*Figure: John's 12-month healing journey — from metabolic syndrome to restored vitality.*
 ![Part Four:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-part4-hiCUGJzuE6pXLiock9VE69.webp)
 
 
