@@ -102,3 +102,4 @@
 - [x] Recreate Top 6 Lifestyle Factors chart with Excessive Alcohol at position 2 (score ~9.2, just below tobacco 9.5), insert into manuscript in Part Two section
 - [ ] Fix missing references 2 and 7 in Chapter 4 notes section; audit all chapter reference sections for numbering gaps
 - [x] Remove all 'Chapter Notes — ...' heading labels from manuscript (keep numbered references)
+- [ ] Full audit and fix of all broken/truncated/empty/split references across all chapter notes sections
