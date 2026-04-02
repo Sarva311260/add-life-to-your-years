@@ -1,6 +1,27 @@
 Add Life to Your Years
 
 Proven Strategies for Health, Wellness and Vitality
+
+---
+
+## Medical Disclaimer
+
+The information contained in this book is intended for general educational and informational purposes only. It is not intended to constitute medical advice, diagnosis, or treatment, and should not be relied upon as a substitute for professional medical advice from a qualified healthcare provider.
+
+**This book does not replace the advice of your doctor.** Always seek the guidance of your physician or other qualified health professional with any questions you may have regarding a medical condition, a prescribed medication, or a health and wellness programme. Never disregard professional medical advice or delay in seeking it because of something you have read in this book.
+
+The author is a wellness coach, not a licensed medical practitioner. The content presented here reflects current research, evidence-based wellness principles, and the author's professional experience in health coaching. It does not represent the views of any medical institution or regulatory body.
+
+**Individual results vary.** Health outcomes depend on a wide range of personal, genetic, environmental, and lifestyle factors. Nothing in this book guarantees specific results, and readers are encouraged to approach any health changes gradually and in consultation with their healthcare team.
+
+**Dietary information** in this book is general in nature. People with specific medical conditions — including but not limited to diabetes, kidney disease, eating disorders, food allergies, or those who are pregnant or breastfeeding — should consult a qualified dietitian or physician before making significant dietary changes.
+
+**Third-party references** to studies, organisations, products, or practitioners are provided for informational purposes only and do not constitute endorsement.
+
+By reading this book, you acknowledge that you are responsible for your own health decisions and that the author and publisher accept no liability for any outcomes arising from the application of information contained herein.
+
+---
+
 # Introduction
 
 This book is about one simple but profound idea: you have far more influence over your health than you may realise.

@@ -111,3 +111,4 @@
 - [x] Connect 'Explore the Book' buttons on all 8 factor detail pages to the correct book reader chapters
 - [x] Create splash hero image for homepage matching book cover style
 - [x] Add book cover to online reader and PDF
+- [x] Add medical disclaimer to manuscript (before introduction)
