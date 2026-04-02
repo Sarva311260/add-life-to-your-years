@@ -37,6 +37,7 @@
 - [x] User welcome notification: Send owner notification when a user completes their first evaluation (overall score summary, cardiac flag, coaching prompt)
 - [x] Enhance owner notification: Include individual category scores and question responses in first-evaluation notification
 - [ ] Future: Set up custom analytics (questionnaire completion rates, average scores by category, common areas needing attention) once site content is finalised
+- [x] Add page numbers to PDF footer and clickable Table of Contents with all chapters and recommendations
 - [x] Bug fix: Page navigations maintain scroll position from previous page — should scroll to top on every route change
 - [x] Lifestyle Q1: Change "minimal animal products" to "no animal products"
 - [x] Lifestyle: Add new question "How much water do you drink daily?" (4 options)
@@ -96,3 +97,6 @@
 - [x] Fix TOC scrolling for all chapters and recommendations in online reader
 - [x] Add image renderer to online reader so infographics display
 - [x] Update microbiome infographic CDN URL to latest upload
+- [ ] Generate chapter header illustrations for all parts and chapters (consistent design style)
+- [ ] Generate key infographics: 8 Factors wheel, Maslow hierarchy, and chapter-specific diagrams
+- [ ] Embed all illustrations in the online reader and regenerated PDF

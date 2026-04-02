@@ -3,6 +3,12 @@ Add Life to Your Years
 Proven Strategies for Health, Wellness and Vitality
 # Introduction
 
+![Introduction — The Wellness Ecosystem](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-intro-ey4xNkBYLPvsaFpPcKghYd.webp)
+
+
+![Introduction — The Wellness Ecosystem](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-intro-ey4xNkBYLPvsaFpPcKghYd.webp)
+
+
 This book is about one simple but profound idea: you have far more influence over your
 health than you may realise.
 We live in a time of extraordinary medical advancement, yet chronic disease continues to
@@ -123,6 +129,9 @@ help keep everything free for those who need it most.
 [website URL placeholder]/support
 # Part One: How Our Body Works
 
+![Part One: How Our Body Works](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-part1-4JBuQAYvy3s5bPvnPjb8ZH.webp)
+
+
 Before exploring what can go wrong with our health, it is worth pausing to appreciate what
 goes right. The human body is one of the most complex and elegant systems in the known
 universe. Understanding even a fraction of how it works can change the way we think about
@@ -132,6 +141,9 @@ nature of human cells, the microbial ecosystem that lives within and upon us, an
 communication systems that coordinate it all.
 
 ## Chapter 1: The Human Body — A Universe of Cells
+
+![Chapter 1:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-01-SryDFu8y5LjH284Wf59pw6.webp)
+
 
 The human body is composed of approximately 30 to 37 trillion cells. Each of these cells is
 a living entity in its own right — taking in nutrients, producing energy, responding to
@@ -195,6 +207,9 @@ the right inputs and is not overwhelmed by harmful ones.
 
 ## Chapter 2: The Microbiome — Our Microbial Partners
 
+![Chapter 2:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-02-5CaoV4C7Jwb9q2GXFHzLKb.webp)
+
+
 One of the most important scientific discoveries of recent decades is that we are not purely
 human. Living in and on the human body is a vast community of microorganisms —
 bacteria, viruses, fungi, and archaea — collectively known as the microbiome.
@@ -250,6 +265,9 @@ The health of the microbiome and the health of the host are inseparable.
 *Figure 1: The Biological Hybrid — Understanding our composition as a partnership of human and microbial elements. Human cells number 30–37 trillion; microbial cells approximately 38 trillion. Our microbial genes outnumber human genes by 100 to 1,000 times.*
 
 ## Chapter 3: Cell Communication — The Body's Internal
+
+![Chapter 3:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-03-T9DmCtXKhdjxxqt8sqgZq3.webp)
+
 Language
 
 For trillions of cells and trillions of microbes to function as a coherent whole, they must
@@ -333,6 +351,9 @@ Investigation. 2015;125(3):926–938.
 
 Garland Science; 2014.
 # Part Two: The 8 Factors of Health and
+
+![Part Two: The 8 Factors of Health](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-part2-79AHbgtthgLWZyuLsK6F8j.webp)
+
 Disease
 
 Most people, when they think about health, think about individual habits — what they eat,
@@ -1058,6 +1079,9 @@ publications; available at https://www.nih.gov
 https://my.clevelandclinic.org/health/diseases/23051-endothelial-dysfunction
 # Part Three: Wellness Strategies
 
+![Part Three: Wellness Strategies](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-part3-4Foy2w4MST64WjM6xshBGi.webp)
+
+
 Understanding the factors that shape health is the first step. The second is knowing what to
 do about them. Part Three translates the insights from Parts One and Two into practical,
 evidence-based strategies for building a life that supports health from the ground up.
@@ -1083,6 +1107,9 @@ amount of effort at higher levels can produce lasting health. These are not opti
 they are the foundation upon which everything else is built.
 
 ## Chapter 4: Air — The First Breath
+
+![Chapter 4:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-04-KBiuTRhydwsL33L9Y7Qjnm.webp)
+
 
 Of all the physiological inputs the body requires, air is the most immediate. We can survive
 weeks without food, days without water, but only minutes without oxygen. Yet air quality —
@@ -1155,6 +1182,9 @@ Attachment, Communication, and Self-regulation. New York: W.W. Norton & Company;
 2011.
 
 ## Chapter 5: Water — The Medium of Life
+
+![Chapter 5:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-05-BPqctP73r5WUBeS6YFeKSg.webp)
+
 
 Water is the medium in which virtually every biochemical reaction in the body takes place.
 It constitutes approximately sixty per cent of total body weight, and even mild dehydration
@@ -1234,6 +1264,9 @@ cross-sectional study of adolescents. Environmental Health Perspectives.
 2017;125(9):097002.
 
 ## Chapter 6: Sleep — The Master Repair Phase
+
+![Chapter 6:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-06-3NE3YvyEhxK5QPdjcHdYR9.webp)
+
 
 Sleep is not passive downtime. It is the body's most intensive period of maintenance,
 repair, and consolidation. During sleep, the brain clears metabolic waste products,
@@ -1325,6 +1358,9 @@ Your Health from Morning to Midnight. New York: Rodale Books; 2019.
 
 ## Chapter 7: Food — Building the Body from the Inside Out
 
+![Chapter 7:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-07-JJaCXuohsTfH2KAGgfnWW2.webp)
+
+
 Food is the most powerful daily lever we have for influencing our health. Every meal is an
 opportunity to either nourish or burden the body — to feed the microbiome, regulate
 inflammation, support hormonal balance, and provide the raw materials for cellular repair.
@@ -1413,6 +1449,9 @@ metabolism. Nature. 2016;535(7610):56–64.
 7. Panda S. Circadian physiology of metabolism. Science. 2016;354(6315):1008–1015.
 
 ## Chapter 8: Shelter — The Environment We Come Home To
+
+![Chapter 8:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-08-g6JbQPXA255AJoabAkx6UZ.webp)
+
 Shelter is the built environment we inhabit — our homes, workplaces, and the spaces in
 which we spend the majority of our time. While shelter is often thought of in purely
 structural terms (a roof, four walls, a door), its influence on health extends far beyond basic
@@ -1484,6 +1523,9 @@ needs are chronically unmet, the body remains in a state of low-grade biological
 undermines health at every level.
 
 ## Chapter 9: Security — The Nervous System's First Request
+
+![Chapter 9:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-09-9H5vmDcVvgNpM54ohvej5J.webp)
+
 The human nervous system evolved in a world of immediate, physical threats. Today, the
 threats are largely chronic and psychological — financial pressure, housing insecurity,
 relationship conflict, job uncertainty — but the biological response is identical. The body
@@ -1587,6 +1629,9 @@ shape what is available and affordable, and advocacy for better systems is itsel
 
 ## Chapter 10: Stability — Moving from Survival to Predictability
 
+![Chapter 10:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-10-4jFrBKgSbont6xs4dJoYAw.webp)
+
+
 If basic survival requires food, water, and shelter, and basic security requires physical and emotional safety, then the next crucial layer of human health is stability.
 
 While security is about knowing you are safe from immediate harm, stability is about knowing what to expect. It is the presence of rhythm, predictability, and consistency in your daily life. We live in an increasingly chaotic, fast-paced modern world, characterised by shifting schedules, endless digital interruptions, and rapid global changes. While humans are highly adaptable, living in a constant state of unpredictability exacts a heavy biological toll.
@@ -1675,6 +1720,9 @@ When the nervous system is repeatedly assured that tomorrow will follow a predic
 True health is not just about giving the body the right food or shelter; it is about giving the body the consistent, rhythmic stability it needs to thrive.
 
 ## Chapter 11: Financial Safety — The Modern Prerequisite
+
+![Chapter 11:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-11-A7neNTxjZLU8nNNUeTTxyg.webp)
+
 for Wellbeing
 
 In the ancestral world, safety meant physical protection — shelter from predators,
@@ -1734,6 +1782,9 @@ The Lancet. 1991;337(8754):1387–1393.
 
 Tier Three: Love and Belonging
 ## Chapter 12: Meaningful Connection — The Biology of
+
+![Chapter 12:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-12-SgSQmC2fpJDvEAZUSrj92K.webp)
+
 Belonging
 
 Once the body is fed, sheltered, and feels reasonably safe, a new and equally profound
@@ -1800,6 +1851,9 @@ underlying links to disease outcomes. Journal of Behavioral Medicine. 2006;29(4)
 
 Tier Four: Esteem
 ## Chapter 13: Self-Respect and Autonomy — The
+
+![Chapter 13:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-13-MAZcSDQF2R3qCiw6nGeQuB.webp)
+
 Architecture of Confidence
 
 Once we feel a secure sense of belonging, the next human need is to feel valued — by
@@ -1860,6 +1914,9 @@ Review. 1977;84(2):191–215.
 
 Tier Five: Self-Actualisation
 ## Chapter 14: Purpose, Meaning, and the Fullest Expression
+
+![Chapter 14:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-14-UFfhGkjVe5BoA3Vm8h2Ray.webp)
+
 of Health
 
 At the peak of Maslow's hierarchy is self-actualisation — the desire to become the most that
@@ -1928,6 +1985,12 @@ The Lancet. 1991;337(8754):1387–1393.
 
 # Conclusion: Adding Life to Your Years
 
+![Conclusion — Adding Life to Your Years](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-conclusion-bQ2Qq8S4Y5sajfiuKXPQrf.webp)
+
+
+![Conclusion — Adding Life to Your Years](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-conclusion-bQ2Qq8S4Y5sajfiuKXPQrf.webp)
+
+
 We began this book with a simple but profound idea: you have far more influence over
 your health than you may realise.
 We have covered a great deal of ground. We have explored the extraordinary complexity of
@@ -1964,6 +2027,9 @@ companion resources available at [website placeholder].
 ---
 
 # Part Four: John's Path Forward — A Healing Story
+
+![Part Four:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-part4-hiCUGJzuE6pXLiock9VE69.webp)
+
 
 ---
 
