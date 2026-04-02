@@ -112,3 +112,4 @@
 - [x] Create splash hero image for homepage matching book cover style
 - [x] Add book cover to online reader and PDF
 - [x] Add medical disclaimer to manuscript (before introduction)
+- [x] Create comprehensive glossary and add to manuscript, PDF, and TOC

@@ -7,9 +7,9 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 const PDF_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears-final_8454e48d.pdf";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_954eab9d.pdf";
 const MD_CDN_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_82b93cbb.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_6b76350d.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -50,6 +50,7 @@ const chapters = [
   { id: "john-6-months", label: "John, Six Months Later" },
   { id: "john-12-months", label: "John, Twelve Months Later" },
   { id: "a-note", label: "A Note on the Journey" },
+  { id: "glossary", label: "Glossary" },
 ];
 
 // Map heading text to anchor IDs — longer keys first to prevent false prefix matches
@@ -92,6 +93,7 @@ const headingIdMap: Record<string, string> = {
   "John, Six Months Later": "john-6-months",
   "John, Twelve Months Later": "john-12-months",
   "A Note on the Journey": "a-note",
+  "Glossary": "glossary",
 };
 
 // Sort keys by length descending so longer keys match first
