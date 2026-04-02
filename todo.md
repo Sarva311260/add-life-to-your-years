@@ -107,3 +107,4 @@
 - [x] Update PEMF section to highlight its role in redox signalling and redox biochemistry
 - [x] Add section on supplementing redox signalling molecules (10% decline per decade after age 16)
 - [x] Fix Chapter 9 and 10 heading text merging into body text (renders as huge header)
+- [x] Fix hardcoded table of contents to reflect new chapter numbering (Ch 4 = Redox, Ch 5 = Air, etc.)

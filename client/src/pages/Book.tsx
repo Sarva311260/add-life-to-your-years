@@ -11,9 +11,9 @@ const MD_URL =
 
 const CONTENTS = [
   "Introduction — The Wellness Ecosystem",
-  "Part One: How Our Body Works (Chapters 1–3)",
+  "Part One: How Our Body Works (Chapters 1–4)",
   "Part Two: The 8 Factors of Health and Disease",
-  "Part Three: Wellness Strategies (Chapters 4–14)",
+  "Part Three: Wellness Strategies (Chapters 5–14)",
   "Part Four: John's Path Forward — A Healing Story",
   "All 15 Recommendations with Clinical Evidence (incl. Methylene Blue)",
   "Chapter Notes and References",
