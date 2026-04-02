@@ -173,6 +173,21 @@ export default function Book() {
           </motion.div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="border-t bg-white py-8">
+        <div className="container text-center text-sm text-muted-foreground space-y-2">
+          <p className="text-xs max-w-2xl mx-auto leading-relaxed">
+            The information in this book is for educational purposes only and does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before making changes to your health regimen.
+          </p>
+          <p>
+            © {new Date().getFullYear()} Add Life to Your Years · Sarva ·{" "}
+            <Link href="/disclaimer" className="underline hover:text-foreground transition-colors">
+              Medical Disclaimer
+            </Link>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }

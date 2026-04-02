@@ -105,3 +105,4 @@
 - [x] Fix Introduction "How to Get the Most from This Ecosystem" numbered list — format as proper numbered list with each step on its own line in a styled callout box
 - [x] Generate book cover illustration for homepage display
 - [x] Update homepage "Coming Soon" button to "Click to Read" and link to book reader
+- [x] Create medical/educational disclaimer page and add to footer and book reader

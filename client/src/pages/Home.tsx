@@ -598,8 +598,15 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="border-t border-white/10 pt-8 text-center text-sm">
-            <p>&copy; {new Date().getFullYear()} Add Life to Your Years. All rights reserved.</p>
+          <div className="border-t border-white/10 pt-8 text-center text-sm space-y-3">
+            <p className="text-white/50 text-xs max-w-2xl mx-auto leading-relaxed">
+              The information on this website is for educational purposes only and does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before making changes to your health regimen.
+            </p>
+            <p>&copy; {new Date().getFullYear()} Add Life to Your Years · Sarva ·{" "}
+              <Link href="/disclaimer" className="underline hover:text-white transition-colors">
+                Medical Disclaimer
+              </Link>
+            </p>
           </div>
         </div>
       </footer>
