@@ -100,3 +100,5 @@
 - [ ] Format all "Common Early Signals" sections throughout the book as styled callout boxes (matching the Introduction "How to Get the Most" box style)
 - [x] Bold all recurring section subheadings throughout the book (Important Context, Common Early Signals, Where Physical Conditions Commonly Create Challenges, Where [X] Commonly Creates Challenges, Key Takeaways, etc.) for easier reading
 - [x] Recreate Top 6 Lifestyle Factors chart with Excessive Alcohol at position 2 (score ~9.2, just below tobacco 9.5), insert into manuscript in Part Two section
+- [ ] Fix missing references 2 and 7 in Chapter 4 notes section; audit all chapter reference sections for numbering gaps
+- [x] Remove all 'Chapter Notes — ...' heading labels from manuscript (keep numbered references)

@@ -208,7 +208,6 @@ The gut-brain axis reinforces a central theme of this book: the body is an integ
 The human body is not a machine with independent parts. It is a living, self-regulating ecosystem of extraordinary complexity. Trillions of human cells and trillions of microbial cells work together, communicating through chemical and electrical signals, constantly adapting to maintain balance.
 This understanding has profound implications for how we approach health. If the body is an integrated system, then health cannot be reduced to a single organ, a single nutrient, or a single treatment. It must be understood — and supported — holistically.
 With this foundation in place, we can now turn to the factors that most commonly disrupt this balance and drive the chronic health challenges of our time.
-Chapter Notes — Part One
 1. Sender R, Fuchs S, Milo R. Revised estimates for the number of human and bacteria cells
 in the body. Cell. 2016;164(3):337–340.
 2. Bianconi E, Piovesan A, Facchin F, et al. An estimation of the number of cells in the
@@ -616,7 +615,6 @@ it was primarily a statistical artefact caused by including former heavy drinker
 These factors overlap substantially. Poor diet and physical inactivity together drive excess body fat. Smoking and alcohol frequently act together to raise cancer risk. Chronic stress and poor sleep form a self-reinforcing cycle. Understanding these interactions is essential for designing interventions that address root causes rather than managing symptoms in isolation.
 With the challenges clearly mapped, we are now ready to turn to what we can do about them.
 
-Chapter Notes — Part Two
 1. Holt-Lunstad J, Smith TB, Layton JB. Social relationships and mortality risk: a metaanalytic review. PLoS Medicine. 2010;7(7):e1000316.
 2. McEwen BS. Protective and damaging effects of stress mediators. New England Journal of Medicine. 1998;338(3):171–179.
 3. Porges SW. The Polyvagal Theory: Neurophysiological Foundations of Emotions, Attachment, Communication, and Self-regulation. New York: W.W. Norton & Company; 2011.
@@ -675,7 +673,6 @@ Slow, diaphragmatic breathing activates the parasympathetic nervous system, redu
 • Practise nasal breathing during rest, sleep, and light exercise
 • Incorporate five to ten minutes of slow, diaphragmatic breathing daily — particularly before sleep or during stressful periods
 • If you live near a busy road, consider keeping windows closed during peak traffic hours and using filtered ventilation
-Chapter Notes — Chapter 4
 
 1. Lelieveld J, Evans JS, Fnais M, Giannadaki D, Pozzer A. The contribution of outdoor air
 pollution sources to premature mortality on a global scale. Nature. 2015;525(7569):367–
@@ -745,7 +742,6 @@ Filtering tap water through a certified carbon block or reverse osmosis filter a
 • Eat water-rich whole foods — cucumbers, tomatoes, leafy greens, and fruit — which contribute meaningfully to hydration
 • If your tap water is from an older building or a region with known contamination, use a certified filter
 • Limit alcohol and excess caffeine, both of which have diuretic effects
-Chapter Notes — Chapter 5
 1. Popkin BM, D'Anci KE, Rosenberg IH. Water, hydration, and health. Nutrition Reviews.
 2010;68(8):439–458.
 2. Ganio MS, Armstrong LE, Casa DJ, et al. Mild dehydration impairs cognitive performance
@@ -815,7 +811,6 @@ Manage light exposure. Morning sunlight — ideally within thirty minutes of wak
 anchors the circadian clock and promotes alertness during the day. Evening light, particularly blue-spectrum light from screens, delays melatonin release. Dimming lights and using warm-toned lighting after sunset supports natural sleep onset.
 Create a wind-down routine. The nervous system needs a transition period between the demands of the day and sleep. A consistent thirty to sixty minute routine — reading, light stretching, a warm bath, or calm conversation — signals safety and readiness to the brain.
 Limit stimulants and alcohol. Caffeine has a half-life of five to seven hours, meaning half of a 3 pm coffee is still active at 9 pm. Alcohol, while sedating initially, fragments sleep architecture in the second half of the night and suppresses REM sleep.
-Chapter Notes — Chapter 6
 1. Walker M. Why We Sleep: Unlocking the Power of Sleep and Dreams. New York:
 Scribner; 2017.
 2. Xie L, Kang H, Xu Q, et al. Sleep drives metabolite clearance from the adult brain.
@@ -889,7 +884,6 @@ Beyond what we eat, when and how we eat also matters. Key evidence-based princip
 • Avoid eating within two to three hours of sleep — late eating disrupts sleep quality and metabolic processing
 • Eat slowly and mindfully — satiety signals take approximately twenty minutes to reach the brain; eating quickly consistently leads to overconsumption
 • Prioritise whole foods over supplements — nutrients in whole foods come packaged with fibre, water, and thousands of phytonutrients that supplements cannot replicate
-Chapter Notes — Chapter 7
 1. Ornish D, Brown SE, Scherwitz LW, et al. Can lifestyle changes reverse coronary heart
 disease? The Lifestyle Heart Trial. The Lancet. 1990;336(8708):129–133.
 2. Esselstyn CB Jr, Gendy G, Doyle J, Golubic M, Roizen MF. A way to reverse CAD? Journal
@@ -941,7 +935,6 @@ Clutter and organisation have measurable psychological effects. Chronically clut
 • Optimise the sleep environment: cool, dark, and quiet (see Chapter 6)
 • Create order in key spaces: a tidy bedroom, kitchen, and workspace reduces cognitive load and supports better habits
 • If housing is unsafe or insecure, seek support through local housing services, tenancy advocacy, or community organisations — housing stability is a health intervention
-Chapter Notes — Chapter 8
 1. World Health Organization. WHO Housing and Health Guidelines. Geneva: WHO; 2018.
 2. Frumkin H, Bratman GN, Breslow SJ, et al. Nature contact and human health: a research
 agenda. Environmental Health Perspectives. 2017;125(7):075001.
@@ -1056,7 +1049,6 @@ Behavioural economists Sendhil Mullainathan and Eldar Shafir have demonstrated t
 
 • Eliminate high-interest debt as a health priority, not just a financial one • Automate savings and bill payments to reduce decision fatigue and ensure baseline needs are met predictably
 • Seek financial counselling or community support if debt or insecurity feels overwhelming — financial stress is a health issue and deserves the same attention
-Chapter Notes — Chapters 9–11
 1. Friston K. The free-energy principle: a unified brain theory? Nature Reviews Neuroscience. 2010;11(2):127–138.
 2. McEwen BS. Protective and damaging effects of stress mediators. New England Journal of Medicine. 1998;338(3):171–179.
 3. Sapolsky RM. Why Zebras Don't Get Ulcers: The Acclaimed Guide to Stress, StressRelated Diseases, and Coping. 3rd ed. New York: Holt Paperbacks; 2004.
@@ -1110,7 +1102,6 @@ The key variables are authenticity, reciprocity, and felt safety — the sense t
 
 • Build micro-communities: a small, reliable group — a running club, a book group, a volunteer organisation, a faith community — fulfils the biological need for a tribe
 • If loneliness is persistent, consider it a health issue deserving the same attention as any physical symptom
-Chapter Notes — Chapter 12
 1. Holt-Lunstad J, Smith TB, Layton JB. Social relationships and mortality risk: a metaanalytic review. PLoS Medicine. 2010;7(7):e1000316.
 2. Cacioppo JT, Hawkley LC. Perceived social isolation and cognition. Trends in Cognitive
 Sciences. 2009;13(10):447–454.
@@ -1163,7 +1154,6 @@ When you lack a sense of competence and autonomy, the brain registers this as a 
 • Set firm boundaries: asserting your limits proves to your own nervous system that your wellbeing matters
 • Shift from external to internal validation: recognise that chasing status through consumerism or social media is a bottomless pit; true esteem is knowing your worth independent of outside opinion
 • Celebrate genuine progress, not just outcomes
-Chapter Notes — Chapter 13
 1. Marmot MG, et al. Health inequalities among British civil servants: the Whitehall II study. The Lancet. 1991;337(8754):1387–1393.
 2. Deci EL, Ryan RM. Self-determination theory: a macrotheory of human motivation,
 development, and health. Canadian Psychology. 2008;49(3):182–185.
@@ -1215,7 +1205,6 @@ Curiosity is the breadcrumb trail to your potential
 • Revisit John's story: recall John from the beginning of this book — the 47-year-old whose health was being quietly eroded by ten overlapping factors. A holistic approach to his wellness would not begin with a prescription. It would begin with understanding which tier of his needs was most depleted, and building from there — better sleep, reduced financial stress, reconnection with purpose, and the support of a community.
 That is what a better approach looks like.
 
-Chapter Notes — Chapter 14
 1. Blackburn E, Epel E. The Telomere Effect: A Revolutionary Approach to Living Younger,
 Healthier, Longer. New York: Grand Central Publishing; 2017.
 2. Csikszentmihalyi M. Flow: The Psychology of Optimal Experience. New York: Harper &
@@ -1339,7 +1328,6 @@ The second most common objection is taste and practicality. This is legitimate. 
 > **[QR CODE — WFPB Starter Guide, Recipe Resources, and Recommended Reading]**
 > *[website URL placeholder]/wfpb*
 
-**Chapter Notes — Recommendation 1**
 
 1. Esselstyn CB Jr. Updating a 12-year experience with arrest and reversal therapy for coronary heart disease. *American Journal of Cardiology*. 1999;84(3):339–341.
 2. Esselstyn CB Jr, Gendy G, Doyle J, Golubic M, Roizen MF. A way to reverse CAD? *Journal of Family Practice*. 2014;63(7):356–364.
@@ -1382,7 +1370,6 @@ One practical note: the habit of drinking a large glass of water first thing in 
 > **[QR CODE — Recommended Water Filtration Systems and Suppliers]**
 > *[website URL placeholder]/store/water*
 
-**Chapter Notes — Recommendation 2**
 
 1. Grandjean AC, Grandjean NR. Dehydration and cognitive performance. *Journal of the American College of Nutrition*. 2007;26(5 Suppl):549S–554S.
 2. Environmental Working Group. *EWG's Tap Water Database*. 2021. Available at: www.ewg.org/tapwater
@@ -1438,7 +1425,6 @@ For John, melatonin supplementation — combined with improved sleep hygiene and
 > **[QR CODE — Sleep Resources, Melatonin Research, and Recommended Suppliers]**
 > *[website URL placeholder]/sleep*
 
-**Chapter Notes — Recommendation 3**
 
 1. Reiter RJ, Tan DX, Rosales-Corral S, Manchester LC. The universal nature, unequal distribution and antioxidant functions of melatonin and its derivatives. *Mini Reviews in Medicinal Chemistry*. 2013;13(3):373–384.
 2. Reiter RJ, Mayo JC, Tan DX, Sainz RM, Alatorre-Jimenez M, Qin L. Melatonin as an antioxidant: under promises but over delivers. *Journal of Pineal Research*. 2016;61(3):253–278.
@@ -1482,7 +1468,6 @@ Glycine supplementation is exceptionally safe. It has been studied at doses far 
 
 For John, whose liver is under stress from chronic alcohol use, whose gut integrity is compromised, whose sleep is poor, and whose metabolic markers are elevated, glycine supplementation is a straightforward and well-supported addition to his programme.
 
-**Chapter Notes — Recommendation 4**
 
 1. Meléndez-Hevia E, De Paz-Lugo P, Cornish-Bowden A, Cárdenas ML. A weak link in metabolism: the metabolic capacity for glycine biosynthesis does not satisfy the need for collagen synthesis. *Journal of Biosciences*. 2009;34(6):853–872.
 2. Razak MA, Begum PS, Viswanath B, Rajagopal S. Multifarious beneficial effect of nonessential amino acid, glycine: a review. *Oxidative Medicine and Cellular Longevity*. 2017;2017:1716701.
@@ -1644,7 +1629,6 @@ For John, this principle does not require perfection. On days when he travels, w
 > **[QR CODE — The 75% Raw Food Principle — Meal Ideas and Weekly Planner]**
 > *[website URL placeholder]/raw-food-principle*
 
-**Chapter Notes — Recommendation 5**
 
 1. Shoba G, Joy D, Joseph T, Majeed M, Rajendran R, Srinivas PS. Influence of piperine on the pharmacokinetics of curcumin in animals and human volunteers. *Planta Medica*. 1998;64(4):353–356.
 2. de Lorgeril M, Salen P, Martin JL, et al. Mediterranean diet, traditional risk factors, and the rate of cardiovascular complications after myocardial infarction. *Circulation*. 1999;99(6):779–785.
@@ -1687,7 +1671,6 @@ A blood test is the only way to know your current level and to monitor the respo
 
 John, who commutes before sunrise and works in a fluorescent-lit office, is almost certainly Vitamin D deficient. A blood test will confirm this. Supplementation is a straightforward correction with a well-established safety profile.
 
-**Chapter Notes — Recommendation 6**
 
 1. Watanabe F. Vitamin B12 sources and bioavailability. *Experimental Biology and Medicine*. 2007;232(10):1266–1274.
 2. Holick MF. Vitamin D deficiency. *New England Journal of Medicine*. 2007;357(3):266–281.
@@ -1759,7 +1742,6 @@ Grip strength deserves particular mention. It is one of the most consistently st
 > **[QR CODE — Six Movements Video Demonstrations]**
 > *[website URL placeholder]/six-movements*
 
-**Chapter Notes — Recommendation 7**
 
 1. Brito LB, Ricardo DR, Araújo DS, Ramos PS, Myers J, Araújo CG. Ability to sit and rise from the floor as a predictor of all-cause mortality. *European Journal of Preventive Cardiology*. 2014;21(7):892–898.
 2. Bohannon RW. Grip strength: an indispensable biomarker for older adults. *Clinical Interventions in Aging*. 2019;14:1681–1691.
@@ -1838,7 +1820,6 @@ He practiced it sitting on the edge of his bed, with his thumbs gently blocking 
 > **[QR CODE — Guided Breathing Exercises and Resources]**
 > *[website URL placeholder]/breathing*
 
-**Chapter Notes — Recommendation 8**
 
 1. Zaccaro A, Piarulli A, Laurino M, et al. How breath-control can change your life: a systematic review on psycho-physiological correlates of slow breathing. *Frontiers in Human Neuroscience*. 2018;12:353.
 2. Lehrer PM, Gevirtz R. Heart rate variability biofeedback: how and why does it work? *Frontiers in Psychology*. 2014;5:756.
@@ -1895,7 +1876,6 @@ For John, a combination of daily earthing and periodic PEMF therapy represents a
 > **[QR CODE — PEMF and Earthing Research, Recommended Devices and Suppliers]**
 > *[website URL placeholder]/pemf*
 
-**Chapter Notes — Recommendation 9**
 
 1. Chevalier G, Sinatra ST, Oschman JL, Sokal K, Sokal P. Earthing: health implications of reconnecting the human body to the Earth's surface electrons. *Journal of Environmental and Public Health*. 2012;2012:291541.
 2. Funk RH. Endogenous electric fields as guiding cue for cell migration. *Frontiers in Physiology*. 2015;6:143.
@@ -1942,7 +1922,6 @@ This resistance is worth noting, because it points to something important: the t
 > **[QR CODE — Guided Meditation Resources and MBSR Programme Information]**
 > *[website URL placeholder]/meditation*
 
-**Chapter Notes — Recommendation 10**
 
 1. Holzel BK, Carmody J, Vangel M, et al. Mindfulness practice leads to increases in regional brain gray matter density. *Psychiatry Research: Neuroimaging*. 2011;191(1):36–43.
 2. Davidson RJ, Kabat-Zinn J, Schumacher J, et al. Alterations in brain and immune function produced by mindfulness meditation. *Psychosomatic Medicine*. 2003;65(4):564–570.
@@ -1980,7 +1959,6 @@ The combination of this recommendation with Recommendation 7 (walking) and Recom
 > **[QR CODE — Nature Therapy Resources and Local Green Space Finder]**
 > *[website URL placeholder]/nature*
 
-**Chapter Notes — Recommendation 11**
 
 1. Li Q, Morimoto K, Kobayashi M, et al. Visiting a forest, but not a city, increases human natural killer activity and expression of anti-cancer proteins. *International Journal of Immunopathology and Pharmacology*. 2008;21(1):117–127.
 2. Bratman GN, Hamilton JP, Hahn KS, Daily GC, Gross JJ. Nature experience reduces rumination and subgenual prefrontal cortex activation. *Proceedings of the National Academy of Sciences*. 2015;112(28):8567–8572.
@@ -2021,7 +1999,6 @@ It is also worth noting that many of the other changes in this programme will, i
 > **[QR CODE — Relationship Resources and Therapist Finder]**
 > *[website URL placeholder]/relationships*
 
-**Chapter Notes — Recommendation 12**
 
 1. Gottman JM, Silver N. *The Seven Principles for Making Marriage Work*. New York: Harmony Books; 1999.
 2. Holt-Lunstad J, Smith TB, Layton JB. Social relationships and mortality risk: a meta-analytic review. *PLoS Medicine*. 2010;7(7):e1000316.
@@ -2059,7 +2036,6 @@ For John, who has spent years feeling trapped by financial pressure and disconne
 > **[QR CODE — Second Income Resources and Community]**
 > *[website URL placeholder]/second-income*
 
-**Chapter Notes — Recommendation 13**
 
 1. Csikszentmihalyi M. *Flow: The Psychology of Optimal Experience*. New York: Harper & Row; 1990.
 2. Mullainathan S, Shafir E. *Scarcity: Why Having Too Little Means So Much*. New York: Times Books; 2013.
@@ -2097,7 +2073,6 @@ This does not mean uprooting everything immediately. It means holding the questi
 > **[QR CODE — Environmental Health Resources and Assessment Tools]**
 > *[website URL placeholder]/environment*
 
-**Chapter Notes — Recommendation 14**
 
 1. Landrigan PJ, Fuller R, Acosta NJ, et al. The Lancet Commission on pollution and health. *The Lancet*. 2018;391(10119):462–512.
 2. Gascon M, Triguero-Mas M, Martínez D, et al. Mental health benefits of long-term exposure to residential green and blue spaces: a systematic review. *International Journal of Environmental Research and Public Health*. 2015;12(4):4354–4379.
@@ -2178,7 +2153,6 @@ For John, methylene blue was not a magic bullet. No single intervention in this 
 
 **[QR CODE — Methylene Blue: Research, Sourcing, and Protocols]** *[website URL placeholder]/methylene-blue*
 
-**Chapter Notes — Recommendation 15**
 1. Rojas JC, Bruchey AK, Gonzalez-Lima F. Neurometabolic mechanisms for memory enhancement and neuroprotection of methylene blue. *Progress in Neurobiology*. 2012;96(1):32–45.
 2. Naylor GJ, Smith AH, Connelly P. A controlled trial of methylene blue in severe depressive illness. *Biological Psychiatry*. 1987;22(5):657–659.
 3. González-Lima F, Barksdale BR, Rojas JC. Mitochondrial respiration as a target for neuroprotection and cognitive enhancement. *Biochemical Pharmacology*. 2014;88(4):584–593.
