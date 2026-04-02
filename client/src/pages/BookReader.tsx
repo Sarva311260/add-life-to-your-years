@@ -91,7 +91,18 @@ const headingIdMap: Record<string, string> = {
   "A Note on the Journey": "a-note",
 };
 
-function getHeadingId(text: string): string {
+function getHeadingId(children: React.ReactNode): string {
+  // Flatten all child text recursively
+  const extractText = (node: React.ReactNode): string => {
+    if (typeof node === "string") return node;
+    if (typeof node === "number") return String(node);
+    if (Array.isArray(node)) return node.map(extractText).join("");
+    if (node && typeof node === "object" && "props" in (node as React.ReactElement)) {
+      return extractText((node as React.ReactElement<{ children?: React.ReactNode }>).props.children);
+    }
+    return "";
+  };
+  const text = extractText(children);
   for (const [key, id] of Object.entries(headingIdMap)) {
     if (text.includes(key)) return id;
   }
@@ -219,8 +230,7 @@ export default function BookReader() {
                 remarkPlugins={[remarkGfm]}
                 components={{
                   h1: ({ children }) => {
-                    const text = String(children);
-                    const id = getHeadingId(text);
+                    const id = getHeadingId(children);
                     return (
                       <h1
                         id={id}
@@ -231,8 +241,7 @@ export default function BookReader() {
                     );
                   },
                   h2: ({ children }) => {
-                    const text = String(children);
-                    const id = getHeadingId(text);
+                    const id = getHeadingId(children);
                     return (
                       <h2
                         id={id}
