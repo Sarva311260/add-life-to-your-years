@@ -94,7 +94,7 @@ export default function Home() {
         <div className="container flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2">
             <Leaf className="w-7 h-7 text-primary" />
-            <span className="font-serif text-lg font-semibold text-foreground">Add Life to Your Years</span>
+            <span className={`font-serif text-lg font-semibold ${scrolled ? "text-foreground" : "text-white"}`}>Add Life to Your Years</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -213,7 +213,7 @@ export default function Home() {
                   </Button>
                 </Link>
                 <a href="#about">
-                  <Button variant="outline" size="lg" className="gap-2 text-base px-8 py-6">
+                  <Button variant="outline" size="lg" className="gap-2 text-base px-8 py-6 border-white/70 text-white hover:bg-white/20 hover:text-white bg-transparent">
                     Learn More
                     <ChevronDown className="w-5 h-5" />
                   </Button>
