@@ -37,7 +37,6 @@
 - [x] User welcome notification: Send owner notification when a user completes their first evaluation (overall score summary, cardiac flag, coaching prompt)
 - [x] Enhance owner notification: Include individual category scores and question responses in first-evaluation notification
 - [ ] Future: Set up custom analytics (questionnaire completion rates, average scores by category, common areas needing attention) once site content is finalised
-- [x] Add page numbers to PDF footer and clickable Table of Contents with all chapters and recommendations
 - [x] Bug fix: Page navigations maintain scroll position from previous page — should scroll to top on every route change
 - [x] Lifestyle Q1: Change "minimal animal products" to "no animal products"
 - [x] Lifestyle: Add new question "How much water do you drink daily?" (4 options)
@@ -91,18 +90,5 @@
 - [x] Add Methylene Blue as Recommendation 15 in Part 4 with full clinical detail, mechanisms, dosing, red light/sun synergy, and references
 - [x] Fix two tables in Factor 8 that are not rendering properly
 - [x] Add Bhramari Pranayama (Bee Breath) to the breathing recommendation in Part 4 with nitric oxide research, step-by-step instructions, and John's experience
-- [x] Insert new Chapter 10: Stability — Moving from Survival to Predictability
-- [x] Rename Chapter 9 to "Security" (remove "and Stability" from title)
-- [x] Renumber old Chapters 10-13 to 11-14
-- [x] Fix TOC scrolling for all chapters and recommendations in online reader
-- [x] Add image renderer to online reader so infographics display
-- [x] Update microbiome infographic CDN URL to latest upload
-- [x] Generate chapter header illustrations for all parts and chapters (consistent design style)
-- [x] Generate key infographics: 8 Factors wheel, Maslow hierarchy, and chapter-specific diagrams
-- [x] Embed all illustrations in the online reader and regenerated PDF
-- [x] Bug: Arrow characters appearing at the start of paragraphs in the book manuscript — find and remove all instances
-- [x] Bug: Chapter header image appears after infographic in Part Three, Part Four, and Chapter 3 — fix order so header image comes first
-- [x] Fix Introduction "How to Get the Most from This Ecosystem" numbered list — format as proper numbered list with each step on its own line in a styled callout box
-- [x] Generate book cover illustration for homepage display
-- [x] Update homepage "Coming Soon" button to "Click to Read" and link to book reader
-- [x] Create medical/educational disclaimer page and add to footer and book reader
+- [x] Fix Introduction: "14 recommendations" should be "15 recommendations" for John
+- [x] Fix broken paragraph splits throughout manuscript caused by removed form-feed characters (sentences split mid-thought across two paragraphs)

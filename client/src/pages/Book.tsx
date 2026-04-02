@@ -5,9 +5,9 @@ import { Leaf, ArrowLeft, BookOpen, Download, FileText, CheckCircle2 } from "luc
 import { motion } from "framer-motion";
 
 const PDF_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_27b891d7.pdf";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_e8d0da6f.pdf";
 const MD_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears-1775135193_a7ec33cf.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_779a10ed.md";
 
 const CONTENTS = [
   "Introduction — The Wellness Ecosystem",
@@ -109,7 +109,7 @@ export default function Book() {
                     Best for reading on screen, printing, or sharing. Opens in any PDF viewer.
                   </p>
                 </div>
-                <p className="text-xs text-muted-foreground">144 pages · ~3.2 MB</p>
+                <p className="text-xs text-muted-foreground">118 pages · ~3.5 MB</p>
                 <a href={PDF_URL} download="AddLifeToYourYears.pdf" className="w-full">
                   <Button className="w-full bg-green-700 hover:bg-green-800 text-white gap-2" size="lg">
                     <Download className="w-4 h-4" />
@@ -173,21 +173,6 @@ export default function Book() {
           </motion.div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="border-t bg-white py-8">
-        <div className="container text-center text-sm text-muted-foreground space-y-2">
-          <p className="text-xs max-w-2xl mx-auto leading-relaxed">
-            The information in this book is for educational purposes only and does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before making changes to your health regimen.
-          </p>
-          <p>
-            © {new Date().getFullYear()} Add Life to Your Years · Sarva ·{" "}
-            <Link href="/disclaimer" className="underline hover:text-foreground transition-colors">
-              Medical Disclaimer
-            </Link>
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }

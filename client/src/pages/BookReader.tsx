@@ -6,9 +6,9 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 const PDF_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_27b891d7.pdf";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_e8d0da6f.pdf";
 const MD_CDN_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears-1775135193_a7ec33cf.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_779a10ed.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -23,8 +23,7 @@ const chapters = [
   { id: "chapter-6", label: "Ch 6: Sleep" },
   { id: "chapter-7", label: "Ch 7: Food" },
   { id: "chapter-8", label: "Ch 8: Shelter" },
-  { id: "chapter-9", label: "Ch 9: Security" },
-  { id: "chapter-10", label: "Ch 10: Stability" },
+  { id: "chapter-9", label: "Ch 9: Security & Stability" },
   { id: "chapter-11", label: "Ch 11: Financial Safety" },
   { id: "chapter-12", label: "Ch 12: Meaningful Connection" },
   { id: "chapter-13", label: "Ch 13: Self-Respect" },
@@ -55,39 +54,38 @@ const chapters = [
 const headingIdMap: Record<string, string> = {
   "Introduction": "introduction",
   "Part One: How Our Body Works": "part-one",
-  "Chapter 1: The Human Body": "chapter-1",
-  "Chapter 2: The Microbiome": "chapter-2",
-  "Chapter 3: Cell Communication": "chapter-3",
-  "Part Two: The 8 Factors of Health": "part-two",
-  "Part Three: Wellness Strategies": "part-three",
-  "Chapter 4: Air": "chapter-4",
-  "Chapter 5: Water": "chapter-5",
-  "Chapter 6: Sleep": "chapter-6",
-  "Chapter 7: Food": "chapter-7",
-  "Chapter 8: Shelter": "chapter-8",
-  "Chapter 9: Security": "chapter-9",
-  "Chapter 10: Stability": "chapter-10",
-  "Chapter 11: Financial Safety": "chapter-11",
-  "Chapter 12: Meaningful Connection": "chapter-12",
-  "Chapter 13: Self-Respect and Autonomy": "chapter-13",
-  "Chapter 14: Purpose, Meaning, and the Fullest Expression": "chapter-14",
-  "Conclusion: Adding Life to Your Years": "conclusion",
-  "Part Four: John's Path Forward": "part-four",
-  "Recommendation 1: Adopt a Whole Food Plant-Based Lifestyle": "rec-1",
-  "Recommendation 2: Drink Distilled or Reverse Osmosis Water": "rec-2",
-  "Recommendation 3: Prioritise Sleep": "rec-3",
-  "Recommendation 4: Supplement with Glycine": "rec-4",
-  "Recommendation 5: The Five Seeds of Life": "rec-5",
-  "Recommendation 6: Vitamin B12 and Vitamin D": "rec-6",
-  "Recommendation 7: The Six Movements": "rec-7",
-  "Recommendation 8: Breathing": "rec-8",
-  "Recommendation 9: PEMF Therapy and Earthing": "rec-9",
-  "Recommendation 10: Meditation and Relaxation": "rec-10",
-  "Recommendation 11: Time in Nature": "rec-11",
-  "Recommendation 12: Repairing the Relationship": "rec-12",
-  "Recommendation 13: Develop a Second Stream of Income": "rec-13",
-  "Recommendation 14: Consider Your Environment": "rec-14",
-  "Recommendation 15: Methylene Blue": "rec-15",
+  "Chapter 1": "chapter-1",
+  "Chapter 2": "chapter-2",
+  "Chapter 3": "chapter-3",
+  "Part Two": "part-two",
+  "Part Three": "part-three",
+  "Chapter 4": "chapter-4",
+  "Chapter 5": "chapter-5",
+  "Chapter 6": "chapter-6",
+  "Chapter 7": "chapter-7",
+  "Chapter 8": "chapter-8",
+  "Chapter 9": "chapter-9",
+  "Chapter 11": "chapter-11",
+  "Chapter 12": "chapter-12",
+  "Chapter 13": "chapter-13",
+  "Chapter 14": "chapter-14",
+  "Conclusion": "conclusion",
+  "Part Four": "part-four",
+  "Recommendation 1": "rec-1",
+  "Recommendation 2": "rec-2",
+  "Recommendation 3": "rec-3",
+  "Recommendation 4": "rec-4",
+  "Recommendation 5": "rec-5",
+  "Recommendation 6": "rec-6",
+  "Recommendation 7": "rec-7",
+  "Recommendation 8": "rec-8",
+  "Recommendation 9": "rec-9",
+  "Recommendation 10": "rec-10",
+  "Recommendation 11": "rec-11",
+  "Recommendation 12": "rec-12",
+  "Recommendation 13": "rec-13",
+  "Recommendation 14": "rec-14",
+  "Recommendation 15": "rec-15",
   "John, Six Months Later": "john-6-months",
   "John, Twelve Months Later": "john-12-months",
   "A Note on the Journey": "a-note",
@@ -105,10 +103,7 @@ function getHeadingId(children: React.ReactNode): string {
     return "";
   };
   const text = extractText(children);
-  // Sort keys by length descending so longer/more specific keys match first
-  // This prevents "Recommendation 1" from matching "Recommendation 10"
-  const sortedEntries = Object.entries(headingIdMap).sort((a, b) => b[0].length - a[0].length);
-  for (const [key, id] of sortedEntries) {
+  for (const [key, id] of Object.entries(headingIdMap)) {
     if (text.includes(key)) return id;
   }
   return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
@@ -305,21 +300,6 @@ export default function BookReader() {
                   ),
                   li: ({ children }) => <li className="leading-relaxed">{children}</li>,
                   hr: () => <hr className="my-10 border-stone-200" />,
-                  img: ({ src, alt }) => (
-                    <figure className="my-8 text-center">
-                      <img
-                        src={src}
-                        alt={alt || ""}
-                        className="mx-auto max-w-full rounded-xl shadow-md border border-stone-200"
-                        style={{ maxHeight: "480px", objectFit: "contain" }}
-                      />
-                      {alt && (
-                        <figcaption className="mt-3 text-sm text-stone-500 italic">
-                          {alt}
-                        </figcaption>
-                      )}
-                    </figure>
-                  ),
                   code: ({ children }) => (
                     <code className="bg-stone-100 text-stone-800 px-1.5 py-0.5 rounded text-sm font-mono">
                       {children}
