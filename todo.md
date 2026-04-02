@@ -97,6 +97,6 @@
 - [x] Fix TOC scrolling for all chapters and recommendations in online reader
 - [x] Add image renderer to online reader so infographics display
 - [x] Update microbiome infographic CDN URL to latest upload
-- [ ] Generate chapter header illustrations for all parts and chapters (consistent design style)
-- [ ] Generate key infographics: 8 Factors wheel, Maslow hierarchy, and chapter-specific diagrams
-- [ ] Embed all illustrations in the online reader and regenerated PDF
+- [x] Generate chapter header illustrations for all parts and chapters (consistent design style)
+- [x] Generate key infographics: 8 Factors wheel, Maslow hierarchy, and chapter-specific diagrams
+- [x] Embed all illustrations in the online reader and regenerated PDF
