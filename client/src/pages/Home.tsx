@@ -99,17 +99,17 @@ export default function Home() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
-            <a href="#about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">About</a>
-            <Link href="/book" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">The Book</Link>
-            <a href="#coaching" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Coaching</a>
-            <a href="#products" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Products</a>
-            <Link href="/media" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Media</Link>
-            <Link href="/store" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Store</Link>
-            <Link href="/contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Contact</Link>
+            <a href="#about" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>About</a>
+            <Link href="/book" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>The Book</Link>
+            <a href="#coaching" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Coaching</a>
+            <a href="#products" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Products</a>
+            <Link href="/media" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Media</Link>
+            <Link href="/store" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Store</Link>
+            <Link href="/contact" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Contact</Link>
             {isAuthenticated && (
               <>
-                <Link href="/dashboard" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Dashboard</Link>
-                <Link href="/questionnaire" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Self-Evaluation</Link>
+                <Link href="/dashboard" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Dashboard</Link>
+                <Link href="/questionnaire" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Self-Evaluation</Link>
               </>
             )}
           </nav>
@@ -118,18 +118,18 @@ export default function Home() {
             {isAuthenticated ? (
               <div className="flex items-center gap-3">
                 <Link href="/dashboard">
-                  <Button variant="outline" size="sm" className="gap-2">
+                  <Button variant="outline" size="sm" className={`gap-2 ${!scrolled ? "border-white/70 text-white hover:bg-white/20 hover:text-white bg-transparent" : ""}`}>
                     <User className="w-4 h-4" />
                     {user?.name || "Dashboard"}
                   </Button>
                 </Link>
-                <Button variant="ghost" size="sm" onClick={() => logout()} className="gap-2 text-muted-foreground">
+                <Button variant="ghost" size="sm" onClick={() => logout()} className={`gap-2 ${!scrolled ? "text-white/80 hover:text-white hover:bg-white/10" : "text-muted-foreground"}`}>
                   <LogOut className="w-4 h-4" />
                 </Button>
               </div>
             ) : (
               <a href={getLoginUrl()}>
-                <Button size="sm" className="gap-2">Sign In or Register</Button>
+                <Button size="sm" className={`gap-2 ${!scrolled ? "bg-white text-green-900 hover:bg-white/90" : ""}`}>Sign In or Register</Button>
               </a>
             )}
           </div>
