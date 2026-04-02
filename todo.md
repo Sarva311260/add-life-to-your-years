@@ -89,3 +89,4 @@
 - [x] Write John's healing story chapter with all practical recommendations (WFPB lifestyle, water, sleep/melatonin, glycine, five seeds, B12/D, Japanese 6 movements, breathing, PEMF, meditation, relationships, second income, location)
 - [ ] Add Methylene Blue as Recommendation 15 in Part 4 with full clinical detail, mechanisms, dosing, red light/sun synergy, and references
 - [ ] Fix two tables in Factor 8 that are not rendering properly
+- [ ] Add Bhramari Pranayama (Bee Breath) to the breathing recommendation in Part 4 with nitric oxide research, step-by-step instructions, and John's experience

@@ -2424,6 +2424,44 @@ This pattern — sometimes called coherent breathing or resonance frequency brea
 
 For John, whose nervous system has been in chronic sympathetic activation for years, breathing practice is not a luxury. It is a physiological reset — one of the most direct and accessible tools available for shifting the body out of chronic stress mode, without medication, without cost, and without any equipment.
 
+### Bhramari Pranayama: The Bee Breath
+
+One additional breathing practice that deserves specific mention is **Bhramari Pranayama**, often called "Bee Breath" — a traditional yogic breathing technique in which a soft humming sound is made during exhalation. The name comes from the Sanskrit word for bee, as the exhalation resembles the low, steady hum of a bee.
+
+While Bhramari has been used in Hatha Yoga for centuries to quiet mental agitation, reduce stress, and draw awareness inward, modern research has revealed a particularly interesting physiological mechanism that explains some of its effects: **humming dramatically increases nasal nitric oxide production**.
+
+**The Nitric Oxide Connection**
+
+Nitric oxide (NO) is a naturally occurring gas produced in the body, including in the paranasal sinuses. It plays important roles in airway function, circulation, immune defence, and the regulation of inflammation. Research has shown that humming during exhalation can increase nasal nitric oxide levels by approximately **fifteen-fold or more** compared with quiet exhalation.
+
+This dramatic increase appears to occur because humming creates vibrations and enhanced air exchange between the sinuses and the nasal cavity, facilitating the release of nitric oxide that is continuously produced in the sinus mucosa. Once released into the nasal airway, nitric oxide is inhaled into the lungs, where it acts as a bronchodilator (opening the airways), a vasodilator (improving blood flow), and an antimicrobial agent.
+
+For someone like John — whose chronic stress, poor sleep, and alcohol use have compromised his immune function and respiratory health — this is not a trivial effect. The increased nitric oxide from humming supports nasal breathing, sinus ventilation, and airway health in a way that quiet breathing does not.
+
+**The Practice: Step by Step**
+
+1. **Sit comfortably** with the spine upright — on the floor cross-legged, on a cushion, or in a chair with feet flat on the ground. Relax the shoulders, jaw, and face.
+
+2. **Close the eyes** if comfortable, and take a few slow, natural breaths through the nose to settle the body and mind.
+
+3. **Position the hands** — for a simple version, rest the hands on the knees or lap. For a more traditional variation, gently place the thumbs lightly on the cartilage of the ears to block external sound. Do not force or create pressure.
+
+4. **Inhale slowly through the nose**, allowing the breath to fill comfortably, expanding the diaphragm and ribcage rather than lifting the shoulders.
+
+5. **Exhale through the nose while humming** — make a soft, steady humming sound: "mmmmmmm" or "AUM." Keep the mouth closed and the jaw relaxed. Feel the vibration in the throat, face, skull, and chest. The sound should be smooth and comfortable — not loud or strained.
+
+6. **Repeat for 5–10 rounds** — at the end of the exhale, inhale gently through the nose again and repeat the humming exhale. Begin with 5 rounds and gradually increase to 7–10 rounds if comfortable.
+
+7. **Rest and observe** — when finished, sit quietly for a minute or two. Notice the effects in the body and mind. Many people experience a sense of calm, quiet, and inward focus.
+
+Bhramari is particularly helpful in the morning, before meditation, or in the evening to unwind. If you feel dizzy, strained, or uncomfortable at any point, stop and return to normal breathing. Use care if you have an active ear infection, severe nasal blockage, or acute migraine triggered by sound or vibration.
+
+**John's Experience**
+
+John found Bhramari particularly helpful in the evening, as part of his wind-down routine before bed. The humming created a physical sensation — a vibration in the skull and chest — that gave his mind something concrete to focus on, which he found easier than simply following the breath. The practice also had an immediate calming effect that he could feel within a few rounds: a slowing of the heart rate, a softening of the tension in the jaw and shoulders, and a sense of the mind becoming quieter.
+
+He practiced it sitting on the edge of his bed, with his thumbs gently blocking his ears, for five to seven rounds. The external silence created by blocking the ears amplified the internal sound of the hum, which he found deeply absorbing. After finishing, he would sit quietly for a minute, then lie down and transition into the 4-7-8 breath to facilitate sleep. The combination — Bhramari followed by 4-7-8 — became one of the most reliable tools in his toolkit for shifting out of the agitated, racing-mind state that had made falling asleep so difficult for years.
+
 > **[QR CODE — Guided Breathing Exercises and Resources]**
 > *[website URL placeholder]/breathing*
 

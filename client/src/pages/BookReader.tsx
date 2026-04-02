@@ -6,9 +6,9 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 const PDF_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_8b3927eb.pdf";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_e8d0da6f.pdf";
 const MD_CDN_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_22031fd2.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_a1e831b5.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -44,6 +44,7 @@ const chapters = [
   { id: "rec-12", label: "Rec 12: Repairing the Relationship" },
   { id: "rec-13", label: "Rec 13: Second Income Stream" },
   { id: "rec-14", label: "Rec 14: Your Environment" },
+  { id: "rec-15", label: "Rec 15: Methylene Blue" },
   { id: "john-6-months", label: "John, Six Months Later" },
   { id: "john-12-months", label: "John, Twelve Months Later" },
   { id: "a-note", label: "A Note on the Journey" },
@@ -84,6 +85,7 @@ const headingIdMap: Record<string, string> = {
   "Recommendation 12": "rec-12",
   "Recommendation 13": "rec-13",
   "Recommendation 14": "rec-14",
+  "Recommendation 15": "rec-15",
   "John, Six Months Later": "john-6-months",
   "John, Twelve Months Later": "john-12-months",
   "A Note on the Journey": "a-note",
