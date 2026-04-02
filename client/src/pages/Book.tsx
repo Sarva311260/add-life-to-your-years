@@ -5,9 +5,9 @@ import { Leaf, ArrowLeft, BookOpen, Download, FileText, CheckCircle2 } from "luc
 import { motion } from "framer-motion";
 
 const PDF_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_8b3927eb.pdf";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_218258c6.pdf";
 const MD_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_22031fd2.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_d84c692d.md";
 
 const CONTENTS = [
   "Introduction — The Wellness Ecosystem",
@@ -15,7 +15,7 @@ const CONTENTS = [
   "Part Two: The 8 Factors of Health and Disease",
   "Part Three: Wellness Strategies (Chapters 4–14)",
   "Part Four: John's Path Forward — A Healing Story",
-  "All 14 Recommendations with Clinical Evidence",
+  "All 15 Recommendations with Clinical Evidence (incl. Methylene Blue)",
   "Chapter Notes and References",
 ];
 
@@ -109,7 +109,7 @@ export default function Book() {
                     Best for reading on screen, printing, or sharing. Opens in any PDF viewer.
                   </p>
                 </div>
-                <p className="text-xs text-muted-foreground">109 pages · ~3.4 MB</p>
+                <p className="text-xs text-muted-foreground">116 pages · ~3.4 MB</p>
                 <a href={PDF_URL} download="AddLifeToYourYears.pdf" className="w-full">
                   <Button className="w-full bg-green-700 hover:bg-green-800 text-white gap-2" size="lg">
                     <Download className="w-4 h-4" />
