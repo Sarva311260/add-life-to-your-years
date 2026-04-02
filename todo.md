@@ -103,3 +103,7 @@
 - [ ] Fix missing references 2 and 7 in Chapter 4 notes section; audit all chapter reference sections for numbering gaps
 - [x] Remove all 'Chapter Notes — ...' heading labels from manuscript (keep numbered references)
 - [ ] Full audit and fix of all broken/truncated/empty/split references across all chapter notes sections
+- [x] Add dedicated Redox Biochemistry and Redox Signalling section to Part One of the manuscript (Chapter 4)
+- [x] Update PEMF section to highlight its role in redox signalling and redox biochemistry
+- [x] Add section on supplementing redox signalling molecules (10% decline per decade after age 16)
+- [x] Fix Chapter 9 and 10 heading text merging into body text (renders as huge header)
