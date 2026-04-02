@@ -21,22 +21,15 @@ shape whether we move toward vitality or toward illness. It is built on a growin
 evidence showing that most chronic disease is not random misfortune. It is the predictable
 result of how we live, what we eat, how we breathe, how we sleep, what we are exposed to,
 and how supported we feel.
-The book is organised into three parts.
-Part One: How Our Body Works provides a foundation. Before we can understand what
-goes wrong, we need to appreciate the remarkable intelligence of the human body — from
-the trillions of cells that compose us, to the microbial ecosystem that lives within us, to the
-intricate communication systems that keep everything in balance.
-Part Two: The 8 Factors of Health and Disease examines the major areas that influence
-whether we thrive or decline. These are not isolated categories; they are deeply
-interconnected, and most real-life health challenges sit at their intersections.
-Understanding these factors helps us see the full picture rather than chasing symptoms one
-at a time.
+The book is organised into four parts.
 
-Part Three: Wellness Strategies is the heart of the book. Using Abraham Maslow's
-hierarchy of human needs as a practical framework, it lays out evidence-based strategies
-for building a life that supports health from the ground up — starting with the most
-fundamental physiological needs and working upward through safety, connection,
-purpose, and self-actualisation.
+**Part One: How Our Body Works** provides a foundation. Before we can understand what goes wrong, we need to appreciate the remarkable intelligence of the human body — from the trillions of cells that compose us, to the microbial ecosystem that lives within us, to the intricate communication systems that keep everything in balance.
+
+**Part Two: The 8 Factors of Health and Disease** examines the major areas that influence whether we thrive or decline. These are not isolated categories; they are deeply interconnected, and most real-life health challenges sit at their intersections. Understanding these factors helps us see the full picture rather than chasing symptoms one at a time.
+
+**Part Three: Wellness Strategies** is the heart of the book. Using Abraham Maslow’s hierarchy of human needs as a practical framework, it lays out evidence-based strategies for building a life that supports health from the ground up — starting with the most fundamental physiological needs and working upward through safety, connection, purpose, and self-actualisation.
+
+**Part Four: John’s Path Forward** brings everything together through a single, extended case study. John — the man introduced in Part Two — returns here, and we follow his journey step by step as he implements the fourteen evidence-based recommendations that form the practical programme at the heart of this book. His story is not a miracle. It is a carefully guided, realistic account of what change actually looks like — with all its difficulty, setbacks, and gradual, cumulative progress. It is offered as both a practical guide and a source of encouragement for anyone who has ever wondered whether it is too late to begin.
 Throughout, the emphasis is on long-term strategies and lifestyle changes that allow the
 body to return to balance, rather than simply treating or managing symptoms. The body
 has a remarkable capacity to heal when we stop injuring it and start supporting it.
