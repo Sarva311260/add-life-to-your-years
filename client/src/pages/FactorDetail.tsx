@@ -9,14 +9,14 @@ import { motion } from "framer-motion";
 import { toast } from "sonner";
 
 const FACTOR_BOOK_CHAPTER: Record<string, string> = {
-  lifestyle: "/book-reader#part-two",
-  environmental: "/book-reader#chapter-5",
-  genetic: "/book-reader#part-one",
-  structural: "/book-reader#chapter-10",
-  stress: "/book-reader#chapter-10",
-  purpose: "/book-reader#chapter-14",
-  relationships: "/book-reader#chapter-12",
-  physical_trauma: "/book-reader#part-two",
+  lifestyle: "/book/read#part-two",
+  environmental: "/book/read#chapter-5",
+  genetic: "/book/read#part-one",
+  structural: "/book/read#chapter-10",
+  stress: "/book/read#chapter-10",
+  purpose: "/book/read#chapter-14",
+  relationships: "/book/read#chapter-12",
+  physical_trauma: "/book/read#part-two",
 };
 
 interface FactorData {
@@ -466,7 +466,7 @@ export default function FactorDetail() {
                   There is much more detail on {factor.name.toLowerCase()} and all 8 health factors in the{" "}
                   <strong>Add Life to Your Years</strong> book, including practical strategies and real-world examples.
                 </p>
-                <Link href={FACTOR_BOOK_CHAPTER[factorId] || "/book-reader"}>
+                <Link href={FACTOR_BOOK_CHAPTER[factorId] || "/book/read"}>
                   <Button className="gap-2">
                     <BookOpen className="w-4 h-4" />
                     Explore the Book
