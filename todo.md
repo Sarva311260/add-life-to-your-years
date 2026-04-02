@@ -109,3 +109,5 @@
 - [x] Fix Chapter 9 and 10 heading text merging into body text (renders as huge header)
 - [x] Fix hardcoded table of contents to reflect new chapter numbering (Ch 4 = Redox, Ch 5 = Air, etc.)
 - [x] Connect 'Explore the Book' buttons on all 8 factor detail pages to the correct book reader chapters
+- [x] Create splash hero image for homepage matching book cover style
+- [x] Add book cover to online reader and PDF

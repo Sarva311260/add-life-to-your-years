@@ -176,9 +176,15 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-emerald-50/50 to-white" />
-        <div className="absolute top-20 right-0 w-96 h-96 bg-green-200/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-100/40 rounded-full blur-3xl" />
+        {/* Splash background image */}
+        <div className="absolute inset-0">
+          <img
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/homepage_splash_hero-k75ERSHXrCb53wbbii2uGm.webp"
+            alt=""
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
+        </div>
 
         <div className="container relative">
           <div className="max-w-3xl mx-auto text-center">
@@ -187,15 +193,15 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 text-white text-sm font-medium mb-6">
                 <Leaf className="w-4 h-4" />
                 Your Personal Blueprint
               </span>
-              <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground leading-tight mb-6">
+              <h1 className="font-serif text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
                 Proven Strategies for<br />
-                <span className="text-primary">Health, Wellness & Vitality</span>
+                <span className="text-emerald-300">Health, Wellness & Vitality</span>
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-white/85 mb-8 max-w-2xl mx-auto leading-relaxed">
                 Assess your wellbeing across 8 key areas, uncover your strengths,
                 and receive personalised, evidence-based recommendations to add life to your years.
               </p>
@@ -314,17 +320,17 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="relative">
-                <div className="bg-gradient-to-br from-primary/10 to-emerald-100 rounded-2xl p-8 md:p-12 flex items-center justify-center">
-                  <div className="bg-white rounded-lg shadow-xl p-6 w-56 md:w-64 transform -rotate-3 hover:rotate-0 transition-transform duration-300">
-                    <div className="bg-gradient-to-br from-primary to-emerald-600 rounded-md p-4 mb-4 text-white text-center">
-                      <Leaf className="w-8 h-8 mx-auto mb-2" />
-                      <div className="font-serif text-sm font-bold leading-tight">Add Life to<br />Your Years</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-xs text-muted-foreground mb-1">A Guide to</div>
-                      <div className="font-serif text-sm font-semibold text-foreground leading-tight">Health, Wellness<br />& Vitality</div>
-                    </div>
+              <div className="flex items-center justify-center">
+                <div className="relative bg-gradient-to-br from-primary/10 to-emerald-100 rounded-2xl p-6 md:p-10 inline-block">
+                  <Link href="/book">
+                    <img
+                      src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-cover-UsuL2YkEq9DNQMFM4uAv7v.webp"
+                      alt="Add Life to Your Years book cover"
+                      className="w-56 md:w-72 rounded-lg shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-300 cursor-pointer block"
+                    />
+                  </Link>
+                  <div className="absolute -bottom-3 -right-3 bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md z-10">
+                    128 Pages
                   </div>
                 </div>
               </div>
@@ -361,9 +367,12 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <Button variant="outline" size="lg" className="gap-2" disabled>
-                Coming Soon
-              </Button>
+              <Link href="/book">
+                <Button size="lg" className="gap-2">
+                  <BookOpen className="w-4 h-4" />
+                  Click to Read
+                </Button>
+              </Link>
             </motion.div>
           </div>
         </div>

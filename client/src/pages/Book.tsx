@@ -5,7 +5,7 @@ import { Leaf, ArrowLeft, BookOpen, Download, FileText, CheckCircle2 } from "luc
 import { motion } from "framer-motion";
 
 const PDF_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_e8d0da6f.pdf";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears-new_2a17be07.pdf";
 const MD_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_4932d2fb.md";
 
@@ -40,28 +40,42 @@ export default function Book() {
 
       {/* Hero */}
       <section className="py-20 bg-gradient-to-b from-green-50/50 to-white">
-        <div className="container text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6">
-              <BookOpen className="w-4 h-4" />
-              Free Download
-            </span>
-            <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Add Life to Your Years
-            </h1>
-            <p className="text-xl text-muted-foreground mb-2 font-medium">
-              Proven Strategies for Health, Wellness and Vitality
-            </p>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-base mt-4">
-              A comprehensive, evidence-based guide to understanding how your body works, what
-              drives chronic disease, and the practical strategies that can help you reclaim your
-              health — starting today.
-            </p>
-          </motion.div>
+        <div className="container">
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="shrink-0"
+            >
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-cover-UsuL2YkEq9DNQMFM4uAv7v.webp"
+                alt="Add Life to Your Years book cover"
+                className="w-52 md:w-64 rounded-xl shadow-2xl"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6">
+                <BookOpen className="w-4 h-4" />
+                Free Download
+              </span>
+              <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">
+                Add Life to Your Years
+              </h1>
+              <p className="text-xl text-muted-foreground mb-2 font-medium">
+                Proven Strategies for Health, Wellness and Vitality
+              </p>
+              <p className="text-muted-foreground max-w-2xl text-base mt-4">
+                A comprehensive, evidence-based guide to understanding how your body works, what
+                drives chronic disease, and the practical strategies that can help you reclaim your
+                health — starting today.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -109,7 +123,7 @@ export default function Book() {
                     Best for reading on screen, printing, or sharing. Opens in any PDF viewer.
                   </p>
                 </div>
-                <p className="text-xs text-muted-foreground">118 pages · ~3.5 MB</p>
+                <p className="text-xs text-muted-foreground">128 pages · ~3.6 MB</p>
                 <a href={PDF_URL} download="AddLifeToYourYears.pdf" className="w-full">
                   <Button className="w-full bg-green-700 hover:bg-green-800 text-white gap-2" size="lg">
                     <Download className="w-4 h-4" />

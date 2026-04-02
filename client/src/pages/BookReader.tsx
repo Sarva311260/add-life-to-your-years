@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 const PDF_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_e8d0da6f.pdf";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears-new_2a17be07.pdf";
 const MD_CDN_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_4932d2fb.md";
 
@@ -440,6 +440,20 @@ export default function BookReader() {
           )}
           {!loading && !error && (
             <div ref={contentRef} className="max-w-3xl mx-auto book-content">
+              {/* Book cover at the top of the reader */}
+              <div className="flex flex-col items-center mb-12 pb-10 border-b border-stone-200">
+                <img
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-cover-UsuL2YkEq9DNQMFM4uAv7v.webp"
+                  alt="Add Life to Your Years book cover"
+                  className="w-48 md:w-64 rounded-xl shadow-2xl mb-6"
+                />
+                <h2 className="font-serif text-2xl font-bold text-stone-800 text-center mb-1">Add Life to Your Years</h2>
+                <p className="text-stone-500 text-sm text-center">Proven Strategies for Health, Wellness and Vitality</p>
+                <div className="mt-4 flex gap-3">
+                  <span className="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-medium">128 Pages</span>
+                  <span className="text-xs bg-stone-100 text-stone-600 px-3 py-1 rounded-full font-medium">Free to Read</span>
+                </div>
+              </div>
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{
