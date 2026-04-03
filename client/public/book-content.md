@@ -242,16 +242,11 @@ being is not a single organism but a composite entity, a biological hybrid of hu
 microbial life. We are, in effect, a walking ecosystem.
 This is not merely an academic curiosity. The microbiome plays a direct and measurable
 role in:
-- Digestion and nutrient absorption — gut bacteria break down fibres and produce
-essential nutrients, including certain B vitamins and vitamin K
-- Immune regulation — an estimated 70 to 80 per cent of the immune system is
-associated with the gut
-- Metabolism and weight regulation — microbial composition influences how
-efficiently we extract energy from food
-- Mental health — the gut-brain axis allows microbial metabolites to influence mood,
-anxiety, and cognitive function
-- Inflammation — a healthy microbiome helps keep systemic inflammation in check; an
-imbalanced one can promote it
+- Digestion and nutrient absorption — gut bacteria break down fibres and produce essential nutrients, including certain B vitamins and vitamin K
+- Immune regulation — an estimated 70 to 80 per cent of the immune system is associated with the gut
+- Metabolism and weight regulation — microbial composition influences how efficiently we extract energy from food
+- Mental health — the gut-brain axis allows microbial metabolites to influence mood, anxiety, and cognitive function
+- Inflammation — a healthy microbiome helps keep systemic inflammation in check; an imbalanced one can promote it
 
 **What Shapes the Microbiome**
 
@@ -632,18 +627,12 @@ genetic tendencies.
 
 The following patterns may suggest that genetic factors are a meaningful contributor to
 health challenges:
-- A strong family clustering of conditions, particularly at younger ages — early heart
-disease, certain cancers, autoimmune disorders, or persistently high cholesterol
-- Unusual reactions to standard medication doses, or side effects across multiple
-different drugs
-- Jitteriness, palpitations, or insomnia with modest caffeine intake; facial flushing or
-severe hangovers with small amounts of alcohol
-- Clear lactose intolerance, or marked reactions to gluten consistent with coeliac disease
-in oneself or close relatives
-- Joint hypermobility with recurrent sprains or pain, or early-onset osteoarthritis in the
-family
-- A distinct lifelong chronotype causing persistent mismatch with school or work
-schedules
+- A strong family clustering of conditions, particularly at younger ages — early heart disease, certain cancers, autoimmune disorders, or persistently high cholesterol
+- Unusual reactions to standard medication doses, or side effects across multiple different drugs
+- Jitteriness, palpitations, or insomnia with modest caffeine intake; facial flushing or severe hangovers with small amounts of alcohol
+- Clear lactose intolerance, or marked reactions to gluten consistent with coeliac disease in oneself or close relatives
+- Joint hypermobility with recurrent sprains or pain, or early-onset osteoarthritis in the family
+- A distinct lifelong chronotype causing persistent mismatch with school or work schedules
 
 #### Why This Matters
 
@@ -811,11 +800,8 @@ meaningful.
 
 #### Common Early Signals
 
-- Frequent "what's the point?" self-talk; feeling numb or chronically unfulfilled despite
-
-being busy
-- Starting many projects and finishing few; constant resets without accumulating
-progress
+- Frequent "what's the point?" self-talk; feeling numb or chronically unfulfilled despite being busy
+- Starting many projects and finishing few; constant resets without accumulating progress
 - Difficulty articulating top priorities for the next six to twelve months, or why they matter
 - Working hard but feeling directionless; no clear definition of what success looks like
 - Inconsistent self-care and routines that collapse when motivation dips
@@ -873,13 +859,10 @@ physiologically healing.
 
 #### Common Early Signals
 
-- Realising there is no one you would comfortably call in a crisis or list as an emergency
-
-contact
+- Realising there is no one you would comfortably call in a crisis or list as an emergency contact
 - Going weeks without a shared meal, in-person meeting, or meaningful conversation
 - Feeling invisible in groups; leaving social situations more drained than energised
-- Mostly transactional interactions — work, errands — with little warmth, play, or genuine
-exchange
+- Mostly transactional interactions — work, errands — with little warmth, play, or genuine exchange
 - Important milestones passing unmarked — birthdays, achievements, difficult moments
 
 #### Why This Matters
@@ -938,14 +921,11 @@ intervention.
 
 #### Common Early Signals
 
-- Pain, numbness, tingling, weakness, or clumsiness persisting beyond six to twelve
-
-weeks after injury or surgery
+- Pain, numbness, tingling, weakness, or clumsiness persisting beyond six to twelve weeks after injury or surgery
 - Joints giving way, frequent sprains, or new reliance on walls or rails for stability
 - Headaches, dizziness, or light and noise sensitivity following head or neck injury
 - Significant fatigue after modest exertion, requiring prolonged recovery
-- Heightened fear of movement, intrusive memories, or avoidance of activities or
-locations associated with the trauma
+- Heightened fear of movement, intrusive memories, or avoidance of activities or locations associated with the trauma
 
 #### Why This Matters
 
@@ -1627,51 +1607,26 @@ adults — is associated with:
 - Increased perception of task difficulty and fatigue
 - Headaches and reduced pain threshold
 - Constipation and reduced kidney filtration efficiency
-- Higher risk of urinary tract infections and kidney stones
-Thirst is a lagging indicator of hydration status. By the time you feel thirsty, mild
-dehydration may already be affecting your function. Monitoring urine colour — aiming for
-pale straw yellow — is a more reliable real-time guide.
+- Higher risk of urinary tract infections and kidney stones Thirst is a lagging indicator of hydration status. By the time you feel thirsty, mild dehydration may already be affecting your function. Monitoring urine colour — aiming for pale straw yellow — is a more reliable real-time guide.
 
 **Water Quality**
 
 Not all water is equal. Tap water quality varies considerably by location, infrastructure age,
 and treatment methods. Common concerns include:
 - Lead — from older pipes and plumbing fittings, particularly in pre-1986 buildings
-- PFAS (per- and polyfluoroalkyl substances) — industrial chemicals linked to
-hormonal disruption and cancer, found in some groundwater supplies
+- PFAS (per- and polyfluoroalkyl substances) — industrial chemicals linked to hormonal disruption and cancer, found in some groundwater supplies
 - Nitrates — from agricultural runoff, associated with health risks particularly for infants
-- Chlorine and chloramine — used in disinfection; generally safe at regulated levels but
-affect taste and may alter gut microbiome composition with long-term exposure
-- Microplastics — increasingly detected in tap and bottled water; long-term health
-effects are under investigation
-Filtering tap water through a certified carbon block or reverse osmosis filter addresses most
-of these concerns and is generally more environmentally responsible than bottled water.
+- Chlorine and chloramine — used in disinfection; generally safe at regulated levels but affect taste and may alter gut microbiome composition with long-term exposure
+- Microplastics — increasingly detected in tap and bottled water; long-term health effects are under investigation Filtering tap water through a certified carbon block or reverse osmosis filter addresses most of these concerns and is generally more environmentally responsible than bottled water.
 
 **Practical Strategies**
 
-- Aim for approximately 2 to 2.5 litres of total fluid intake daily for most adults, adjusting
-
-for body size, climate, and activity level
-- Begin the day with a large glass of water before caffeine — overnight fasting creates a
-mild fluid deficit
+- Aim for approximately 2 to 2.5 litres of total fluid intake daily for most adults, adjusting for body size, climate, and activity level
+- Begin the day with a large glass of water before caffeine — overnight fasting creates a mild fluid deficit
 - Carry a reusable water bottle as a visual prompt
-- Eat water-rich whole foods — cucumbers, tomatoes, leafy greens, and fruit — which
-contribute meaningfully to hydration
-- If your tap water is from an older building or a region with known contamination, use a
-certified filter
-- Limit alcohol and excess caffeine, both of which have diuretic effects
-Chapter Notes — Chapter 5
-1. Popkin BM, D'Anci KE, Rosenberg IH. Water, hydration, and health. Nutrition Reviews.
-2010;68(8):439–458.
-2. Ganio MS, Armstrong LE, Casa DJ, et al. Mild dehydration impairs cognitive performance
-and mood of men. British Journal of Nutrition. 2011;106(10):1535–1543.
-3. Armstrong LE, Ganio MS, Casa DJ, et al. Mild dehydration affects mood in healthy young
-women. Journal of Nutrition. 2012;142(2):382–388.
-4. Grandjean AC, Grandjean NR. Dehydration and cognitive performance. Journal of the
-American College of Nutrition. 2007;26(5 Suppl):549S–554S.
-5. Olson SW, et al. Associations of perfluoroalkyl substances with kidney function in a
-cross-sectional study of adolescents. Environmental Health Perspectives.
-2017;125(9):097002.
+- Eat water-rich whole foods — cucumbers, tomatoes, leafy greens, and fruit — which contribute meaningfully to hydration
+- If your tap water is from an older building or a region with known contamination, use a certified filter
+- Limit alcohol and excess caffeine, both of which have diuretic effects Chapter Notes — Chapter 5 1. Popkin BM, D'Anci KE, Rosenberg IH. Water, hydration, and health. Nutrition Reviews. 2010;68(8):439–458. 2. Ganio MS, Armstrong LE, Casa DJ, et al. Mild dehydration impairs cognitive performance and mood of men. British Journal of Nutrition. 2011;106(10):1535–1543. 3. Armstrong LE, Ganio MS, Casa DJ, et al. Mild dehydration affects mood in healthy young women. Journal of Nutrition. 2012;142(2):382–388. 4. Grandjean AC, Grandjean NR. Dehydration and cognitive performance. Journal of the American College of Nutrition. 2007;26(5 Suppl):549S–554S. 5. Olson SW, et al. Associations of perfluoroalkyl substances with kidney function in a cross-sectional study of adolescents. Environmental Health Perspectives. 2017;125(9):097002.
 
 
 > **Key Takeaways**
@@ -1849,32 +1804,10 @@ products), added sugars and sweetened beverages, processed meats, and excess alc
 
 Beyond what we eat, when and how we eat also matters. Key evidence-based principles
 include:
-- Eat within a consistent daily window — aligning food intake with daylight hours
-supports circadian metabolism and improves insulin sensitivity
-- Avoid eating within two to three hours of sleep — late eating disrupts sleep quality
-and metabolic processing
-- Eat slowly and mindfully — satiety signals take approximately twenty minutes to reach
-the brain; eating quickly consistently leads to overconsumption
-- Prioritise whole foods over supplements — nutrients in whole foods come packaged
-with fibre, water, and thousands of phytonutrients that supplements cannot replicate
-Chapter Notes — Chapter 7
-1. Ornish D, Brown SE, Scherwitz LW, et al. Can lifestyle changes reverse coronary heart
-disease? The Lifestyle Heart Trial. The Lancet. 1990;336(8708):129–133.
-2. Esselstyn CB Jr, Gendy G, Doyle J, Golubic M, Roizen MF. A way to reverse CAD? Journal
-of Family Practice. 2014;63(7):356–364b.
-
-3. Satija A, Bhupathiraju SN, Rimm EB, et al. Plant-based dietary patterns and incidence of
-type 2 diabetes in US men and women: results from three prospective cohort studies.
-PLoS Medicine. 2016;13(6):e1002039.
-4. Barnard ND, Cohen J, Jenkins DJ, et al. A low-fat vegan diet improves glycemic control
-and cardiovascular risk factors in a randomized clinical trial in individuals with type 2
-diabetes. Diabetes Care. 2006;29(8):1777–1783.
-5. Willett W, Rockström J, Loken B, et al. Food in the Anthropocene: the EAT–Lancet
-Commission on healthy diets from sustainable food systems. The Lancet.
-2019;393(10170):447–492.
-6. Sonnenburg JL, Bäckhed F. Diet-microbiota interactions as moderators of human
-metabolism. Nature. 2016;535(7610):56–64.
-7. Panda S. Circadian physiology of metabolism. Science. 2016;354(6315):1008–1015.
+- Eat within a consistent daily window — aligning food intake with daylight hours supports circadian metabolism and improves insulin sensitivity
+- Avoid eating within two to three hours of sleep — late eating disrupts sleep quality and metabolic processing
+- Eat slowly and mindfully — satiety signals take approximately twenty minutes to reach the brain; eating quickly consistently leads to overconsumption
+- Prioritise whole foods over supplements — nutrients in whole foods come packaged with fibre, water, and thousands of phytonutrients that supplements cannot replicate Chapter Notes — Chapter 7 1. Ornish D, Brown SE, Scherwitz LW, et al. Can lifestyle changes reverse coronary heart disease? The Lifestyle Heart Trial. The Lancet. 1990;336(8708):129–133. 2. Esselstyn CB Jr, Gendy G, Doyle J, Golubic M, Roizen MF. A way to reverse CAD? Journal of Family Practice. 2014;63(7):356–364b. 3. Satija A, Bhupathiraju SN, Rimm EB, et al. Plant-based dietary patterns and incidence of type 2 diabetes in US men and women: results from three prospective cohort studies. PLoS Medicine. 2016;13(6):e1002039. 4. Barnard ND, Cohen J, Jenkins DJ, et al. A low-fat vegan diet improves glycemic control and cardiovascular risk factors in a randomized clinical trial in individuals with type 2 diabetes. Diabetes Care. 2006;29(8):1777–1783. 5. Willett W, Rockström J, Loken B, et al. Food in the Anthropocene: the EAT–Lancet Commission on healthy diets from sustainable food systems. The Lancet. 2019;393(10170):447–492. 6. Sonnenburg JL, Bäckhed F. Diet-microbiota interactions as moderators of human metabolism. Nature. 2016;535(7610):56–64. 7. Panda S. Circadian physiology of metabolism. Science. 2016;354(6315):1008–1015.
 
 
 > **Key Takeaways**
@@ -1925,30 +1858,13 @@ background sense of incompleteness or overwhelm.
 
 **Practical Strategies**
 
-- Prioritise ventilation: open windows daily, use exhaust fans when cooking, and consider
-
-a HEPA air purifier in bedrooms
-- Maximise natural light: arrange workspaces near windows; use full-spectrum lighting in
-darker rooms
-- Address dampness promptly: repair leaks, use dehumidifiers in persistently damp
-areas, and ensure adequate bathroom ventilation
-- Reduce chemical exposure: switch to fragrance-free, plant-based cleaning products;
-allow new furniture and carpets to off-gas before use
+- Prioritise ventilation: open windows daily, use exhaust fans when cooking, and consider a HEPA air purifier in bedrooms
+- Maximise natural light: arrange workspaces near windows; use full-spectrum lighting in darker rooms
+- Address dampness promptly: repair leaks, use dehumidifiers in persistently damp areas, and ensure adequate bathroom ventilation
+- Reduce chemical exposure: switch to fragrance-free, plant-based cleaning products; allow new furniture and carpets to off-gas before use
 - Optimise the sleep environment: cool, dark, and quiet (see Chapter 6)
-- Create order in key spaces: a tidy bedroom, kitchen, and workspace reduces cognitive
-load and supports better habits
-- If housing is unsafe or insecure, seek support through local housing services, tenancy
-advocacy, or community organisations — housing stability is a health intervention
-Chapter Notes — Chapter 8
-1. World Health Organization. WHO Housing and Health Guidelines. Geneva: WHO; 2018.
-2. Frumkin H, Bratman GN, Breslow SJ, et al. Nature contact and human health: a research
-agenda. Environmental Health Perspectives. 2017;125(7):075001.
-3. Stansfeld SA, Matheson MP. Noise pollution: non-auditory effects on health. British
-Medical Bulletin. 2003;68(1):243–257.
-4. Heschong L. Daylighting in Schools: An Investigation into the Relationship Between
-Daylighting and Human Performance. Fair Oaks, CA: Heschong Mahone Group; 1999.
-5. Saxbe DE, Repetti R. No place like home: home tours correlate with daily patterns of
-mood and cortisol. Personality and Social Psychology Bulletin. 2010;36(1):71–81.
+- Create order in key spaces: a tidy bedroom, kitchen, and workspace reduces cognitive load and supports better habits
+- If housing is unsafe or insecure, seek support through local housing services, tenancy advocacy, or community organisations — housing stability is a health intervention Chapter Notes — Chapter 8 1. World Health Organization. WHO Housing and Health Guidelines. Geneva: WHO; 2018. 2. Frumkin H, Bratman GN, Breslow SJ, et al. Nature contact and human health: a research agenda. Environmental Health Perspectives. 2017;125(7):075001. 3. Stansfeld SA, Matheson MP. Noise pollution: non-auditory effects on health. British Medical Bulletin. 2003;68(1):243–257. 4. Heschong L. Daylighting in Schools: An Investigation into the Relationship Between Daylighting and Human Performance. Fair Oaks, CA: Heschong Mahone Group; 1999. 5. Saxbe DE, Repetti R. No place like home: home tours correlate with daily patterns of mood and cortisol. Personality and Social Psychology Bulletin. 2010;36(1):71–81.
 
 **Tier Two: Safety Needs**
 
@@ -2019,19 +1935,12 @@ so, reduce the physiological cost of simply existing.
 
 **Practical Strategies**
 
-- Anchor your day with consistent sleep and wake times, regular mealtimes, and a
-
-predictable morning routine
-- Reduce digital chaos: turn off non-essential notifications and limit reactive checking of
-email and social media
-- Organise your physical environment: visual order in living and working spaces reduces
-background cognitive load
-- Identify the primary sources of unpredictability in your life and take one concrete step
-toward reducing each
-- Nurture reliable relationships: invest in people who are consistent and emotionally
-safe; set boundaries with those who bring chronic volatility
-- If anxiety or a trauma history is driving hypervigilance, consider working with a
-therapist trained in somatic or nervous system approaches
+- Anchor your day with consistent sleep and wake times, regular mealtimes, and a predictable morning routine
+- Reduce digital chaos: turn off non-essential notifications and limit reactive checking of email and social media
+- Organise your physical environment: visual order in living and working spaces reduces background cognitive load
+- Identify the primary sources of unpredictability in your life and take one concrete step toward reducing each
+- Nurture reliable relationships: invest in people who are consistent and emotionally safe; set boundaries with those who bring chronic volatility
+- If anxiety or a trauma history is driving hypervigilance, consider working with a therapist trained in somatic or nervous system approaches
 
 **The Importance of Health as a Safety Need**
 
@@ -2047,31 +1956,18 @@ understood more fully, is a dynamic state of vitality, resilience, and biologica
 Because health is the product of an interconnected system, it cannot be reliably improved
 by targeting a single variable. The most effective approach is to tend to the whole
 ecosystem:
-- Physiological foundations — clean air, clean water, adequate sleep, whole food
-nutrition, and a safe, stable shelter provide the raw materials
-- Safety and stability — a predictable environment, financial security, and freedom from
-chronic threat allow the body to shift from defence to repair
-- Social connection — supportive relationships buffer stress, regulate the nervous
-system, and improve immune and cardiovascular function
-- Purpose and meaning — a sense of direction and contribution reduces allostatic load
-and supports long-term motivation for self-care
-When facing a health challenge, the most productive question is not "which supplement
-should I take?" but "which tier of my needs is most depleted, and what is the highestleverage intervention I can make there?"
+- Physiological foundations — clean air, clean water, adequate sleep, whole food nutrition, and a safe, stable shelter provide the raw materials
+- Safety and stability — a predictable environment, financial security, and freedom from chronic threat allow the body to shift from defence to repair
+- Social connection — supportive relationships buffer stress, regulate the nervous system, and improve immune and cardiovascular function
+- Purpose and meaning — a sense of direction and contribution reduces allostatic load and supports long-term motivation for self-care When facing a health challenge, the most productive question is not "which supplement should I take?" but "which tier of my needs is most depleted, and what is the highestleverage intervention I can make there?"
 
 **Practical Principles**
 
 - Treat your health as a relationship to be maintained, not a problem to be fixed
-- When symptoms arise, look upstream: consider sleep, stress, diet, relationships, and
-
-environment before reaching for a remedy
-- Build a healthcare team that looks at the whole person — not just the presenting
-symptom
-- Prioritise prevention: the lifestyle habits that prevent chronic disease are the same ones
-that support recovery from it
-- Recognise that health is not purely an individual responsibility — structural conditions
-shape what is available and affordable, and advocacy for better systems is itself a
-
-health intervention
+- When symptoms arise, look upstream: consider sleep, stress, diet, relationships, and environment before reaching for a remedy
+- Build a healthcare team that looks at the whole person — not just the presenting symptom
+- Prioritise prevention: the lifestyle habits that prevent chronic disease are the same ones that support recovery from it
+- Recognise that health is not purely an individual responsibility — structural conditions shape what is available and affordable, and advocacy for better systems is itself a health intervention
 
 
 > **Key Takeaways**
@@ -2203,46 +2099,20 @@ that this response, when chronic, produces the same downstream damage as repeate
 physical trauma.
 When financial insecurity is persistent, the body remains in a state of chronic sympathetic
 activation:
-- Cortisol and adrenaline remain elevated, disrupting sleep, digestion, and immune
-function
-- The prefrontal cortex — responsible for planning, impulse control, and long-term
-thinking — is functionally suppressed
+- Cortisol and adrenaline remain elevated, disrupting sleep, digestion, and immune function
+- The prefrontal cortex — responsible for planning, impulse control, and long-term thinking — is functionally suppressed
 - Decision-making shifts toward short-term relief over long-term benefit
-- Dietary choices deteriorate as cognitive bandwidth narrows and willpower is depleted
-Behavioural economists Sendhil Mullainathan and Eldar Shafir have demonstrated that
-scarcity — whether of money, time, or social connection — creates a cognitive tunnel vision
-that makes it harder to think clearly, plan ahead, or maintain healthy habits. Financial
-insecurity does not just feel bad; it measurably impairs the cognitive resources needed to
-address it.
+- Dietary choices deteriorate as cognitive bandwidth narrows and willpower is depleted Behavioural economists Sendhil Mullainathan and Eldar Shafir have demonstrated that scarcity — whether of money, time, or social connection — creates a cognitive tunnel vision that makes it harder to think clearly, plan ahead, or maintain healthy habits. Financial insecurity does not just feel bad; it measurably impairs the cognitive resources needed to address it.
 
 **Practical Strategies**
 
 - Reframe wealth as freedom and nervous system regulation, not status
-- Build an emergency buffer: even a modest reserve fundamentally changes how the
-
-brain processes unexpected expenses
+- Build an emergency buffer: even a modest reserve fundamentally changes how the brain processes unexpected expenses
 - Create a gap between income and expenditure: financial safety lives in that gap
 
 - Eliminate high-interest debt as a health priority, not just a financial one
-- Automate savings and bill payments to reduce decision fatigue and ensure baseline
-
-needs are met predictably
-- Seek financial counselling or community support if debt or insecurity feels
-overwhelming — financial stress is a health issue and deserves the same attention
-Chapter Notes — Chapters 9–11
-1. Friston K. The free-energy principle: a unified brain theory? Nature Reviews
-Neuroscience. 2010;11(2):127–138.
-2. McEwen BS. Protective and damaging effects of stress mediators. New England Journal
-of Medicine. 1998;338(3):171–179.
-3. Sapolsky RM. Why Zebras Don't Get Ulcers: The Acclaimed Guide to Stress, StressRelated Diseases, and Coping. 3rd ed. New York: Holt Paperbacks; 2004.
-4. Mullainathan S, Shafir E. Scarcity: Why Having Too Little Means So Much. New York:
-Times Books; 2013.
-5. Marmot MG, et al. Health inequalities among British civil servants: the Whitehall II study.
-The Lancet. 1991;337(8754):1387–1393.
-6. Panda S. Circadian physiology of metabolism. Science. 2016;354(6315):1008–1015.
-7. Porges SW. The Polyvagal Theory. New York: W.W. Norton & Company; 2011.
-8. Engel GL. The need for a new medical model: a challenge for biomedicine. Science.
-1977;196(4286):129–136.
+- Automate savings and bill payments to reduce decision fatigue and ensure baseline needs are met predictably
+- Seek financial counselling or community support if debt or insecurity feels overwhelming — financial stress is a health issue and deserves the same attention Chapter Notes — Chapters 9–11 1. Friston K. The free-energy principle: a unified brain theory? Nature Reviews Neuroscience. 2010;11(2):127–138. 2. McEwen BS. Protective and damaging effects of stress mediators. New England Journal of Medicine. 1998;338(3):171–179. 3. Sapolsky RM. Why Zebras Don't Get Ulcers: The Acclaimed Guide to Stress, StressRelated Diseases, and Coping. 3rd ed. New York: Holt Paperbacks; 2004. 4. Mullainathan S, Shafir E. Scarcity: Why Having Too Little Means So Much. New York: Times Books; 2013. 5. Marmot MG, et al. Health inequalities among British civil servants: the Whitehall II study. The Lancet. 1991;337(8754):1387–1393. 6. Panda S. Circadian physiology of metabolism. Science. 2016;354(6315):1008–1015. 7. Porges SW. The Polyvagal Theory. New York: W.W. Norton & Company; 2011. 8. Engel GL. The need for a new medical model: a challenge for biomedicine. Science. 1977;196(4286):129–136.
 
 **Tier Three: Love and Belonging**
 
@@ -2300,27 +2170,12 @@ be genuinely seen and accepted.
 
 **Practical Strategies**
 
-- Prioritise face-to-face interaction: shared meals, walks, and group activities synchronise
+- Prioritise face-to-face interaction: shared meals, walks, and group activities synchronise nervous systems more effectively than digital communication
+- Practise vulnerability: belonging requires being seen. Sharing genuine thoughts and struggles — rather than a curated image — builds the foundation of real intimacy
+- Engage in active listening: full, undivided attention sends a profound biological signal of value and safety to the other person
 
-nervous systems more effectively than digital communication
-- Practise vulnerability: belonging requires being seen. Sharing genuine thoughts and
-struggles — rather than a curated image — builds the foundation of real intimacy
-- Engage in active listening: full, undivided attention sends a profound biological signal
-of value and safety to the other person
-
-- Build micro-communities: a small, reliable group — a running club, a book group, a
-
-volunteer organisation, a faith community — fulfils the biological need for a tribe
-- If loneliness is persistent, consider it a health issue deserving the same attention as any
-physical symptom
-Chapter Notes — Chapter 12
-1. Holt-Lunstad J, Smith TB, Layton JB. Social relationships and mortality risk: a metaanalytic review. PLoS Medicine. 2010;7(7):e1000316.
-2. Cacioppo JT, Hawkley LC. Perceived social isolation and cognition. Trends in Cognitive
-Sciences. 2009;13(10):447–454.
-3. Uchino BN. Social support and health: a review of physiological processes potentially
-underlying links to disease outcomes. Journal of Behavioral Medicine. 2006;29(4):377–
-387.
-4. Porges SW. The Polyvagal Theory. New York: W.W. Norton & Company; 2011.
+- Build micro-communities: a small, reliable group — a running club, a book group, a volunteer organisation, a faith community — fulfils the biological need for a tribe
+- If loneliness is persistent, consider it a health issue deserving the same attention as any physical symptom Chapter Notes — Chapter 12 1. Holt-Lunstad J, Smith TB, Layton JB. Social relationships and mortality risk: a metaanalytic review. PLoS Medicine. 2010;7(7):e1000316. 2. Cacioppo JT, Hawkley LC. Perceived social isolation and cognition. Trends in Cognitive Sciences. 2009;13(10):447–454. 3. Uchino BN. Social support and health: a review of physiological processes potentially underlying links to disease outcomes. Journal of Behavioral Medicine. 2006;29(4):377– 387. 4. Porges SW. The Polyvagal Theory. New York: W.W. Norton & Company; 2011.
 
 **Tier Four: Esteem**
 
@@ -2375,24 +2230,11 @@ associated with:
 
 **Practical Strategies**
 
-- Keep promises to yourself: self-trust is built through consistent follow-through on small
-
-commitments
-- Pursue mastery: deep engagement in a skill, craft, or domain builds unshakeable
-internal confidence
-- Set firm boundaries: asserting your limits proves to your own nervous system that your
-wellbeing matters
-- Shift from external to internal validation: recognise that chasing status through
-consumerism or social media is a bottomless pit; true esteem is knowing your worth
-independent of outside opinion
-- Celebrate genuine progress, not just outcomes
-Chapter Notes — Chapter 13
-1. Marmot MG, et al. Health inequalities among British civil servants: the Whitehall II study.
-The Lancet. 1991;337(8754):1387–1393.
-2. Deci EL, Ryan RM. Self-determination theory: a macrotheory of human motivation,
-development, and health. Canadian Psychology. 2008;49(3):182–185.
-3. Bandura A. Self-efficacy: toward a unifying theory of behavioral change. Psychological
-Review. 1977;84(2):191–215.
+- Keep promises to yourself: self-trust is built through consistent follow-through on small commitments
+- Pursue mastery: deep engagement in a skill, craft, or domain builds unshakeable internal confidence
+- Set firm boundaries: asserting your limits proves to your own nervous system that your wellbeing matters
+- Shift from external to internal validation: recognise that chasing status through consumerism or social media is a bottomless pit; true esteem is knowing your worth independent of outside opinion
+- Celebrate genuine progress, not just outcomes Chapter Notes — Chapter 13 1. Marmot MG, et al. Health inequalities among British civil servants: the Whitehall II study. The Lancet. 1991;337(8754):1387–1393. 2. Deci EL, Ryan RM. Self-determination theory: a macrotheory of human motivation, development, and health. Canadian Psychology. 2008;49(3):182–185. 3. Bandura A. Self-efficacy: toward a unifying theory of behavioral change. Psychological Review. 1977;84(2):191–215.
 
 **Tier Five: Self-Actualisation**
 
@@ -2448,19 +2290,10 @@ purposeful, self-actualising behaviours is also associated with:
 - Follow your curiosity: you do not need a grand, world-changing purpose immediately.
 
 Curiosity is the breadcrumb trail to your potential
-- Engage in creative expression: create something that did not exist before — art, music,
-writing, a garden, a well-crafted meal
-- Embrace lifelong learning: continuously challenge your brain with new ideas, skills, and
-perspectives
-- Contribute to others: the highest form of self-actualisation often evolves naturally into
-service — using your unique gifts to improve the lives of others and the world around
-you
-- Revisit John's story: recall John from the beginning of this book — the 47-year-old
-whose health was being quietly eroded by ten overlapping factors. A holistic approach
-to his wellness would not begin with a prescription. It would begin with understanding
-which tier of his needs was most depleted, and building from there — better sleep,
-reduced financial stress, reconnection with purpose, and the support of a community.
-That is what a better approach looks like.
+- Engage in creative expression: create something that did not exist before — art, music, writing, a garden, a well-crafted meal
+- Embrace lifelong learning: continuously challenge your brain with new ideas, skills, and perspectives
+- Contribute to others: the highest form of self-actualisation often evolves naturally into service — using your unique gifts to improve the lives of others and the world around you
+- Revisit John's story: recall John from the beginning of this book — the 47-year-old whose health was being quietly eroded by ten overlapping factors. A holistic approach to his wellness would not begin with a prescription. It would begin with understanding which tier of his needs was most depleted, and building from there — better sleep, reduced financial stress, reconnection with purpose, and the support of a community. That is what a better approach looks like.
 
 **Chapter Notes — Chapter 14**
 1. Blackburn E, Epel E. The Telomere Effect: A Revolutionary Approach to Living Younger,
@@ -3624,4 +3457,3 @@ That is what it means to add life to your years.
 > [![Join the Community](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-community_6eb3161a.png)](https://addlifetoyouryears.org/community)
 >
 > **[Join the Community](https://addlifetoyouryears.org/community)**
-
