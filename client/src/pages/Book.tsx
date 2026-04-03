@@ -111,48 +111,21 @@ export default function Book() {
             </Card>
 
             {/* PDF Download */}
-            <Card className="border-2 border-green-200 shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-8 flex flex-col items-center text-center gap-4">
-                <div className="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center">
+            <Card className="border-2 border-green-200 shadow-lg hover:shadow-xl transition-shadow md:col-span-2">
+              <CardContent className="p-8 flex flex-col md:flex-row items-center gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center shrink-0">
                   <Download className="w-8 h-8 text-green-700" />
                 </div>
-                <div>
-                  <h2 className="font-serif text-xl font-bold text-foreground mb-1">
-                    Download PDF
-                  </h2>
+                <div className="flex-1 text-center md:text-left">
+                  <h2 className="font-serif text-xl font-bold text-foreground mb-1">Download PDF</h2>
                   <p className="text-muted-foreground text-sm">
-                    Best for reading on screen, printing, or sharing. Opens in any PDF viewer.
+                    Best for reading on screen, printing, or sharing. Opens in any PDF viewer. 136 pages · ~3.6 MB
                   </p>
                 </div>
-                <p className="text-xs text-muted-foreground">136 pages · ~3.6 MB</p>
-                <a href={PDF_URL} download="AddLifeToYourYears.pdf" className="w-full">
-                  <Button className="w-full bg-green-700 hover:bg-green-800 text-white gap-2" size="lg">
+                <a href={PDF_URL} download="AddLifeToYourYears.pdf">
+                  <Button className="bg-green-700 hover:bg-green-800 text-white gap-2 px-8" size="lg">
                     <Download className="w-4 h-4" />
                     Download PDF
-                  </Button>
-                </a>
-              </CardContent>
-            </Card>
-
-            {/* Markdown Download */}
-            <Card className="border-2 border-blue-200 shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-8 flex flex-col items-center text-center gap-4">
-                <div className="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center">
-                  <FileText className="w-8 h-8 text-blue-700" />
-                </div>
-                <div>
-                  <h2 className="font-serif text-xl font-bold text-foreground mb-1">
-                    Download Markdown
-                  </h2>
-                  <p className="text-muted-foreground text-sm">
-                    Editable format. Open in Word, Google Docs, Notion, or any text editor. Easy to convert.
-                  </p>
-                </div>
-                <p className="text-xs text-muted-foreground">Plain text · ~220 KB</p>
-                <a href={MD_URL} download="AddLifeToYourYears.md" className="w-full">
-                  <Button className="w-full bg-blue-700 hover:bg-blue-800 text-white gap-2" size="lg">
-                    <FileText className="w-4 h-4" />
-                    Download Markdown
                   </Button>
                 </a>
               </CardContent>

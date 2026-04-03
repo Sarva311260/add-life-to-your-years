@@ -113,3 +113,4 @@
 - [x] Add book cover to online reader and PDF
 - [x] Add medical disclaimer to manuscript (before introduction)
 - [x] Create comprehensive glossary and add to manuscript, PDF, and TOC
+- [x] Remove non-PDF download button from Book page, keep only PDF
