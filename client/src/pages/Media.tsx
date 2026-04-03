@@ -286,8 +286,15 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     title: "Methylene Blue & Photobiomodulation",
     description:
       "Emerging therapies at the frontier of mitochondrial medicine — the science behind methylene blue and red/near-infrared light therapy.",
-    color: "bg-rose-100 text-rose-800 border-rose-200",
-    videos: [],
+    color: "bg-indigo-100 text-indigo-800 border-indigo-200",
+    videos: [
+      {
+        youtubeId: "KvASX2yp0zU",
+        title: "Methylene Blue — Mitochondrial Medicine & Photobiomodulation",
+        description:
+          "The science behind methylene blue and red/near-infrared light therapy at the frontier of mitochondrial medicine.",
+      },
+    ],
   },
 ];
 
