@@ -50,7 +50,17 @@ For those who want more than information — who want guidance, accountability, 
 If you complete the self-evaluation and find that your results raise questions you would like to explore with a professional, or if you simply want support in translating the strategies in Part Three into a programme that fits your specific life, coaching is available through the website.
 [QR CODE PLACEHOLDER — Coaching and Consultation] [website URL placeholder]/coaching
 
-> **How to Get the Most from This Ecosystem** The most effective way to use these resources is not to consume them passively, but to engage with them actively and in sequence: 1. Complete the self-evaluation first — establish your baseline and identify your priority areas 2. Read the book — use the QR codes to explore specific topics in more depth on the website as you go 3. Explore the media library — watch, listen, and let the ideas settle in different ways 4. Return to the self-evaluation — after implementing changes, re-evaluate to track your progress over time 5. Reach out for support — if you want personalised guidance, coaching is available Knowledge without application changes nothing. This ecosystem is designed to close that gap — to take you from understanding to action, and from action to measurable, lasting improvement. 
+> **How to Get the Most from This Ecosystem**
+>
+> The most effective way to use these resources is not to consume them passively, but to engage with them actively and in sequence:
+>
+> 1. Complete the self-evaluation first — establish your baseline and identify your priority areas
+> 2. Read the book — use the QR codes to explore specific topics in more depth on the website as you go
+> 3. Explore the media library — watch, listen, and let the ideas settle in different ways
+> 4. Return to the self-evaluation — after implementing changes, re-evaluate to track your progress over time
+> 5. Reach out for support — if you want personalised guidance, coaching is available
+>
+> Knowledge without application changes nothing. This ecosystem is designed to close that gap — to take you from understanding to action, and from action to measurable, lasting improvement. 
 **A Note on Supporting This Work**
 
 Creating and maintaining these resources takes considerable time and effort. If you find value in what you discover here — in the book, the website, or the tools — and you are in a position to contribute, donations are warmly welcomed and genuinely appreciated. They help keep everything free for those who need it most.
@@ -103,7 +113,9 @@ This ongoing renewal means that the body you have today is not the same body you
 This also means that the body has a remarkable capacity for repair — provided it receives the right inputs and is not overwhelmed by harmful ones.
 
 
-> **Key Takeaways** > - The human body is composed of 30–37 trillion cells, each a living, self-regulating entity capable of energy production, communication, repair, and self-sacrifice for the greater whole.
+> **Key Takeaways**
+>
+> - The human body is composed of 30–37 trillion cells, each a living, self-regulating entity capable of energy production, communication, repair, and self-sacrifice for the greater whole.
 > - Health is not the absence of disease — it is the emergent outcome of trillions of cells functioning in coordinated harmony.
 > - Cells respond to their environment. What you eat, breathe, drink, think, and feel directly shapes how your cells behave.
 > - Chronic cellular dysfunction, driven by poor inputs and unresolved stress, is the common upstream cause of most modern disease.
@@ -149,7 +161,9 @@ The health of the microbiome and the health of the host are inseparable.
 *Figure 1: The Biological Hybrid — Understanding our composition as a partnership of human and microbial elements. Human cells number 30–37 trillion; microbial cells approximately 38 trillion. Our microbial genes outnumber human genes by 100 to 1,000 times.*
 
 
-> **Key Takeaways** > - The human microbiome — trillions of bacteria, viruses, fungi, and archaea — is not a passenger in the body. It is an active partner in digestion, immunity, mood regulation, and metabolic health.
+> **Key Takeaways**
+>
+> - The human microbiome — trillions of bacteria, viruses, fungi, and archaea — is not a passenger in the body. It is an active partner in digestion, immunity, mood regulation, and metabolic health.
 > - Diversity is the hallmark of a healthy microbiome. The greater the variety of plant foods in what we eat, the richer and more resilient the microbial community.
 > - The gut-brain axis means that microbiome health directly influences mental health, stress reactivity, and cognitive function.
 > - Antibiotics, ultra-processed foods, chronic stress, and sleep disruption are among the most damaging influences on microbial diversity.
@@ -198,7 +212,32 @@ The gut-brain axis reinforces a central theme of this book: the body is an integ
 The human body is not a machine with independent parts. It is a living, self-regulating ecosystem of extraordinary complexity. Trillions of human cells and trillions of microbial cells work together, communicating through chemical and electrical signals, constantly adapting to maintain balance.
 This understanding has profound implications for how we approach health. If the body is an integrated system, then health cannot be reduced to a single organ, a single nutrient, or a single treatment. It must be understood — and supported — holistically.
 With this foundation in place, we can now turn to the factors that most commonly disrupt this balance and drive the chronic health challenges of our time.
-Chapter Notes — Part One 1. Sender R, Fuchs S, Milo R. Revised estimates for the number of human and bacteria cells in the body. Cell. 2016;164(3):337–340. 2. Bianconi E, Piovesan A, Facchin F, et al. An estimation of the number of cells in the human body. Annals of Human Biology. 2013;40(6):463–471. 3. Qin J, Li R, Raes J, et al. A human gut microbial gene catalogue established by metagenomic sequencing. Nature. 2010;464(7285):59–65. 4. Gilbert JA, Blaser MJ, Caporaso JG, et al. Current understanding of the human microbiome. Nature Medicine. 2018;24(4):392–400. 5. Cryan JF, Dinan TG. Mind-altering microorganisms: the impact of the gut microbiota on brain and behaviour. Nature Reviews Neuroscience. 2012;13(10):701–712. 6. Mayer EA, Tillisch K, Gupta A. Gut/brain axis and the microbiota. Journal of Clinical Investigation. 2015;125(3):926–938. 7. Alberts B, Johnson A, Lewis J, et al. Molecular Biology of the Cell. 6th ed. New York:
+Chapter Notes — Part One
+
+1. Sender R, Fuchs S, Milo R. Revised estimates for the number of human and bacteria cells in the body. Cell. 2016;164(3):337–
+3
+4
+0.
+2. Bianconi E, Piovesan A, Facchin F, et al. An estimation of the number of cells in the human body. Annals of Human Biology. 2013;40(6):463–
+4
+7
+1.
+3. Qin J, Li R, Raes J, et al. A human gut microbial gene catalogue established by metagenomic sequencing. Nature. 2010;464(7285):59–
+6
+5.
+4. Gilbert JA, Blaser MJ, Caporaso JG, et al. Current understanding of the human microbiome. Nature Medicine. 2018;24(4):392–
+4
+0
+0.
+5. Cryan JF, Dinan TG. Mind-altering microorganisms: the impact of the gut microbiota on brain and behaviour. Nature Reviews Neuroscience. 2012;13(10):701–
+7
+1
+2.
+6. Mayer EA, Tillisch K, Gupta A. Gut/brain axis and the microbiota. Journal of Clinical Investigation. 2015;125(3):926–
+9
+3
+8.
+7. Alberts B, Johnson A, Lewis J, et al. Molecular Biology of the Cell. 6th ed. New York:
 
 Garland Science; 2014.
 # Part Two: The 8 Factors of Health and
@@ -549,8 +588,46 @@ Beyond cancer, alcohol is directly neurotoxic: a 2022 study of over 36,000 adult
 These factors overlap substantially. Poor diet and physical inactivity together drive excess body fat. Smoking and alcohol frequently act together to raise cancer risk. Chronic stress and poor sleep form a self-reinforcing cycle. Understanding these interactions is essential for designing interventions that address root causes rather than managing symptoms in isolation.
 With the challenges clearly mapped, we are now ready to turn to what we can do about them.
 
-**Chapter Notes — Part Two** 1. Holt-Lunstad J, Smith TB, Layton JB. Social relationships and mortality risk: a metaanalytic review. PLoS Medicine. 2010;7(7):e1000316. 2. McEwen BS. Protective and damaging effects of stress mediators. New England Journal of Medicine. 1998;338(3):171–179. 3. Porges SW. The Polyvagal Theory: Neurophysiological Foundations of Emotions, Attachment, Communication, and Self-regulation. New York: W.W. Norton & Company; 2011. 4. Sapolsky RM. Why Zebras Don't Get Ulcers: The Acclaimed Guide to Stress, StressRelated Diseases, and Coping. 3rd ed. New York: Holt Paperbacks; 2004. 5. Marmot MG, et al. Health inequalities among British civil servants: the Whitehall II study.
-The Lancet. 1991;337(8754):1387–1393. 6. Friston K. The free-energy principle: a unified brain theory? Nature Reviews Neuroscience. 2010;11(2):127–138. 7. Panda S. Circadian physiology of metabolism. Science. 2016;354(6315):1008–1015. 8. Willett WC, et al. Prevention of chronic disease by means of diet and lifestyle changes.
+**Chapter Notes — Part Two**
+
+1. Holt-Lunstad J, Smith TB, Layton JB. Social relationships and mortality risk: a metaanalytic review. PLoS Medicine. 2010;7(7):e
+1
+0
+0
+0
+3
+1
+6.
+2. McEwen BS. Protective and damaging effects of stress mediators. New England Journal of Medicine. 1998;338(3):171–
+1
+7
+9.
+3. Porges SW. The Polyvagal Theory: Neurophysiological Foundations of Emotions, Attachment, Communication, and Self-regulation. New York: W.W. Norton & Company;
+2
+0
+1
+1.
+4. Sapolsky RM. Why Zebras Don't Get Ulcers: The Acclaimed Guide to Stress, StressRelated Diseases, and Coping. 3rd ed. New York: Holt Paperbacks;
+2
+0
+0
+4.
+5. Marmot MG, et al. Health inequalities among British civil servants: the Whitehall II study.
+The Lancet. 1991;337(8754):1387–
+1
+3
+9
+3.
+6. Friston K. The free-energy principle: a unified brain theory? Nature Reviews Neuroscience. 2010;11(2):127–
+1
+3
+8.
+7. Panda S. Circadian physiology of metabolism. Science. 2016;354(6315):1008–
+1
+0
+1
+5.
+8. Willett WC, et al. Prevention of chronic disease by means of diet and lifestyle changes.
 In: Jamison DT, et al., eds. Disease Control Priorities in Developing Countries. 2nd ed.
 Washington DC: World Bank; 2006. 9. National Institutes of Health. Lifestyle factors and chronic disease prevention. Various publications; available at https://www.nih.gov 10.Cleveland Clinic. Endothelial dysfunction and cardiovascular disease. Available at: https://my.clevelandclinic.org/health/diseases/23051-endothelial-dysfunction
 # Part Three: Wellness Strategies
@@ -570,7 +647,9 @@ The chapters in Part Three follow this structure. We begin with the most fundame
 The physiological tier encompasses the raw materials of biological survival: the inputs the body requires simply to function. Without adequate air, water, sleep, food, and shelter, no amount of effort at higher levels can produce lasting health. These are not optional extras; they are the foundation upon which everything else is built.
 
 
-> **Key Takeaways** > - Trillions of cells and microbes coordinate through an extraordinarily sophisticated network of biochemical, electrical, and mechanical signals.
+> **Key Takeaways**
+>
+> - Trillions of cells and microbes coordinate through an extraordinarily sophisticated network of biochemical, electrical, and mechanical signals.
 > - The nervous system, endocrine system, immune system, and microbiome are not separate — they form one integrated communication network.
 > - Chronic stress, poor nutrition, environmental toxins, and sleep deprivation disrupt cellular signalling, creating the conditions for inflammation and disease.
 > - Inflammation is a normal and necessary response — but when it becomes chronic and low-grade, it is a driver of virtually every major modern disease.
@@ -627,13 +706,35 @@ The decline in redox signalling capacity is not caused by any single factor. It 
 
 Redox biochemistry is not a standalone topic. It is the biochemical substrate upon which every other health intervention operates. The benefits of exercise, sleep, nutrition, stress management, and therapeutic technologies such as PEMF therapy are all mediated — at least in part — through their effects on cellular redox balance. Understanding this gives us a more coherent picture of why these interventions work, and why their effects compound when combined.
 
-> **Key Takeaways** > - Redox biochemistry — the continuous transfer of electrons between molecules — is the foundational language of cellular life, governing energy production, immune function, tissue repair, and gene expression.
+> **Key Takeaways**
+>
+> - Redox biochemistry — the continuous transfer of electrons between molecules — is the foundational language of cellular life, governing energy production, immune function, tissue repair, and gene expression.
 > - Reactive oxygen species (ROS) are not simply damaging free radicals; at physiological concentrations, they are precision signalling molecules that activate antioxidant defences and coordinate cellular communication.
 > - Antioxidants do not work unless activated by redox signalling molecules — making the balance of the redox system more important than antioxidant intake alone.
 > - From approximately age sixteen, the body's production of redox signalling molecules declines by an estimated 10 per cent per decade — a gradual loss that underlies many of the hallmarks of ageing.
 > - Every major health intervention in this book — exercise, sleep, nutrition, PEMF therapy, and others — works in part by supporting or restoring healthy redox balance.
 
-1. Sies H, Belousov VV, Chandel NS, et al. Defining roles of specific reactive oxygen species (ROS) in cell biology and physiology. *Nature Reviews Molecular Cell Biology*. 2022;23(7):499–515. 2. Lennicke C, Cochemé HM. Redox metabolism: ROS as specific molecular regulators of cell signaling and function. *Molecular Cell*. 2021;81(18):3691–3707. 3. Forman HJ. Redox signaling: an evolution from free radicals to aging. *Free Radical Biology and Medicine*. 2016;97:398–407. 4. Jones DP. Redox theory of aging. *Redox Biology*. 2015;5:71–79. 5. Atayik MC, Çakatay U. Redox signaling and modulation in ageing. *Biogerontology*. 2023;24(5):727–745. 6. Li B, et al. Redox regulation: mechanisms, biology and therapeutic targets in diseases. *Signal Transduction and Targeted Therapy*. 2025;10(1):72.
+1. Sies H, Belousov VV, Chandel NS, et al. Defining roles of specific reactive oxygen species (ROS) in cell biology and physiology. *Nature Reviews Molecular Cell Biology*. 2022;23(7):499–
+5
+1
+5.
+2. Lennicke C, Cochemé HM. Redox metabolism: ROS as specific molecular regulators of cell signaling and function. *Molecular Cell*. 2021;81(18):3691–
+3
+7
+0
+7.
+3. Forman HJ. Redox signaling: an evolution from free radicals to aging. *Free Radical Biology and Medicine*. 2016;97:398–
+4
+0
+7.
+4. Jones DP. Redox theory of aging. *Redox Biology*. 2015;5:71–
+7
+9.
+5. Atayik MC, Çakatay U. Redox signaling and modulation in ageing. *Biogerontology*. 2023;24(5):727–
+7
+4
+5.
+6. Li B, et al. Redox regulation: mechanisms, biology and therapeutic targets in diseases. *Signal Transduction and Targeted Therapy*. 2025;10(1):72.
 
 # Part Two: The 8 Factors of Health and Disease
 
@@ -940,7 +1041,48 @@ Beyond cancer, alcohol is directly neurotoxic: a 2022 study of over 36,000 adult
 These factors overlap substantially. Poor diet and physical inactivity together drive excess body fat. Smoking and alcohol frequently act together to raise cancer risk. Chronic stress and poor sleep form a self-reinforcing cycle. Understanding these interactions is essential for designing interventions that address root causes rather than managing symptoms in isolation.
 With the challenges clearly mapped, we are now ready to turn to what we can do about them.
 
-1. Holt-Lunstad J, Smith TB, Layton JB. Social relationships and mortality risk: a metaanalytic review. PLoS Medicine. 2010;7(7):e1000316. 2. McEwen BS. Protective and damaging effects of stress mediators. New England Journal of Medicine. 1998;338(3):171–179. 3. Porges SW. The Polyvagal Theory: Neurophysiological Foundations of Emotions, Attachment, Communication, and Self-regulation. New York: W.W. Norton & Company; 2011. 4. Sapolsky RM. Why Zebras Don't Get Ulcers: The Acclaimed Guide to Stress, StressRelated Diseases, and Coping. 3rd ed. New York: Holt Paperbacks; 2004. 5. Marmot MG, et al. Health inequalities among British civil servants: the Whitehall II study. The Lancet. 1991;337(8754):1387–1393. 6. Friston K. The free-energy principle: a unified brain theory? Nature Reviews Neuroscience. 2010;11(2):127–138. 7. Panda S. Circadian physiology of metabolism. Science. 2016;354(6315):1008–1015. 8. Willett WC, et al. Prevention of chronic disease by means of diet and lifestyle changes. In: Jamison DT, et al., eds. Disease Control Priorities in Developing Countries. 2nd ed. Washington DC: World Bank; 2006. 9. National Institutes of Health. Lifestyle factors and chronic disease prevention. Various publications; available at https://www.nih.gov 10.Cleveland Clinic. Endothelial dysfunction and cardiovascular disease. Available at: https://my.clevelandclinic.org/health/diseases/23051-endothelial-dysfunction
+1. Holt-Lunstad J, Smith TB, Layton JB. Social relationships and mortality risk: a metaanalytic review. PLoS Medicine. 2010;7(7):e
+1
+0
+0
+0
+3
+1
+6.
+2. McEwen BS. Protective and damaging effects of stress mediators. New England Journal of Medicine. 1998;338(3):171–
+1
+7
+9.
+3. Porges SW. The Polyvagal Theory: Neurophysiological Foundations of Emotions, Attachment, Communication, and Self-regulation. New York: W.W. Norton & Company;
+2
+0
+1
+1.
+4. Sapolsky RM. Why Zebras Don't Get Ulcers: The Acclaimed Guide to Stress, StressRelated Diseases, and Coping. 3rd ed. New York: Holt Paperbacks;
+2
+0
+0
+4.
+5. Marmot MG, et al. Health inequalities among British civil servants: the Whitehall II study. The Lancet. 1991;337(8754):1387–
+1
+3
+9
+3.
+6. Friston K. The free-energy principle: a unified brain theory? Nature Reviews Neuroscience. 2010;11(2):127–
+1
+3
+8.
+7. Panda S. Circadian physiology of metabolism. Science. 2016;354(6315):1008–
+1
+0
+1
+5.
+8. Willett WC, et al. Prevention of chronic disease by means of diet and lifestyle changes. In: Jamison DT, et al., eds. Disease Control Priorities in Developing Countries. 2nd ed. Washington DC: World Bank;
+2
+0
+0
+6.
+9. National Institutes of Health. Lifestyle factors and chronic disease prevention. Various publications; available at https://www.nih.gov 10.Cleveland Clinic. Endothelial dysfunction and cardiovascular disease. Available at: https://my.clevelandclinic.org/health/diseases/23051-endothelial-dysfunction
 # Part Three: Wellness Strategies
 
 Understanding the factors that shape health is the first step. The second is knowing what to do about them. Part Three translates the insights from Parts One and Two into practical, evidence-based strategies for building a life that supports health from the ground up.
@@ -1000,10 +1142,28 @@ Not all water is equal. Tap water quality varies considerably by location, infra
 - Carry a reusable water bottle as a visual prompt
 - Eat water-rich whole foods — cucumbers, tomatoes, leafy greens, and fruit — which contribute meaningfully to hydration
 - If your tap water is from an older building or a region with known contamination, use a certified filter
-- Limit alcohol and excess caffeine, both of which have diuretic effects Chapter Notes — Chapter 5 1. Popkin BM, D'Anci KE, Rosenberg IH. Water, hydration, and health. Nutrition Reviews. 2010;68(8):439–458. 2. Ganio MS, Armstrong LE, Casa DJ, et al. Mild dehydration impairs cognitive performance and mood of men. British Journal of Nutrition. 2011;106(10):1535–1543. 3. Armstrong LE, Ganio MS, Casa DJ, et al. Mild dehydration affects mood in healthy young women. Journal of Nutrition. 2012;142(2):382–388. 4. Grandjean AC, Grandjean NR. Dehydration and cognitive performance. Journal of the American College of Nutrition. 2007;26(5 Suppl):549S–554S. 5. Olson SW, et al. Associations of perfluoroalkyl substances with kidney function in a cross-sectional study of adolescents. Environmental Health Perspectives. 2017;125(9):097002.
+- Limit alcohol and excess caffeine, both of which have diuretic effects Chapter Notes — Chapter 5
+
+1. Popkin BM, D'Anci KE, Rosenberg IH. Water, hydration, and health. Nutrition Reviews. 2010;68(8):439–
+4
+5
+8.
+2. Ganio MS, Armstrong LE, Casa DJ, et al. Mild dehydration impairs cognitive performance and mood of men. British Journal of Nutrition. 2011;106(10):1535–
+1
+5
+4
+3.
+3. Armstrong LE, Ganio MS, Casa DJ, et al. Mild dehydration affects mood in healthy young women. Journal of Nutrition. 2012;142(2):382–
+3
+8
+8.
+4. Grandjean AC, Grandjean NR. Dehydration and cognitive performance. Journal of the American College of Nutrition. 2007;26(5 Suppl):549S–554S.
+5. Olson SW, et al. Associations of perfluoroalkyl substances with kidney function in a cross-sectional study of adolescents. Environmental Health Perspectives. 2017;125(9):097002.
 
 
-> **Key Takeaways** > - Air is the most immediate physiological input — we breathe approximately 20,000 times per day, making air quality a constant and powerful influence on health.
+> **Key Takeaways**
+>
+> - Air is the most immediate physiological input — we breathe approximately 20,000 times per day, making air quality a constant and powerful influence on health.
 > - Indoor air is often more polluted than outdoor air. Ventilation, plant life, and avoiding synthetic materials and fragrances are the most accessible improvements.
 > - How we breathe matters as much as what we breathe. Nasal breathing, slow diaphragmatic breathing, and breath-hold practices activate the parasympathetic nervous system and reduce chronic stress load.
 > - Mouth breathing, shallow chest breathing, and hyperventilation are common, correctable patterns that silently undermine sleep, energy, and stress resilience.
@@ -1059,11 +1219,36 @@ Protect the sleep environment. The ideal sleep environment is cool (16–19°C),
 Manage light exposure. Morning sunlight — ideally within thirty minutes of waking — anchors the circadian clock and promotes alertness during the day. Evening light, particularly blue-spectrum light from screens, delays melatonin release. Dimming lights and using warm-toned lighting after sunset supports natural sleep onset.
 Create a wind-down routine. The nervous system needs a transition period between the demands of the day and sleep. A consistent thirty to sixty minute routine — reading, light stretching, a warm bath, or calm conversation — signals safety and readiness to the brain.
 Limit stimulants and alcohol. Caffeine has a half-life of five to seven hours, meaning half of a 3 pm coffee is still active at 9 pm. Alcohol, while sedating initially, fragments sleep architecture in the second half of the night and suppresses REM sleep.
-Chapter Notes — Chapter 6 1. Walker M. Why We Sleep: Unlocking the Power of Sleep and Dreams. New York: Scribner; 2017. 2. Xie L, Kang H, Xu Q, et al. Sleep drives metabolite clearance from the adult brain.
-Science. 2013;342(6156):373–377. 3. Cappuccio FP, D'Elia L, Strazzullo P, Miller MA. Sleep duration and all-cause mortality: a systematic review and meta-analysis of prospective studies. Sleep. 2010;33(5):585–592. 4. Spiegel K, Tasali E, Penev P, Van Cauter E. Brief communication: sleep curtailment in healthy young men is associated with decreased leptin levels, elevated ghrelin levels, and increased hunger and appetite. Annals of Internal Medicine. 2004;141(11):846–850. 5. Irwin MR. Sleep and inflammation: partners in sickness and in health. Nature Reviews Immunology. 2019;19(11):702–715. 6. Panda S. The Circadian Code: Lose Weight, Supercharge Your Energy, and Transform Your Health from Morning to Midnight. New York: Rodale Books; 2019.
+Chapter Notes — Chapter 6
+
+1. Walker M. Why We Sleep: Unlocking the Power of Sleep and Dreams. New York: Scribner;
+2
+0
+1
+7.
+2. Xie L, Kang H, Xu Q, et al. Sleep drives metabolite clearance from the adult brain.
+Science. 2013;342(6156):373–
+3
+7
+7.
+3. Cappuccio FP, D'Elia L, Strazzullo P, Miller MA. Sleep duration and all-cause mortality: a systematic review and meta-analysis of prospective studies. Sleep. 2010;33(5):585–
+5
+9
+2.
+4. Spiegel K, Tasali E, Penev P, Van Cauter E. Brief communication: sleep curtailment in healthy young men is associated with decreased leptin levels, elevated ghrelin levels, and increased hunger and appetite. Annals of Internal Medicine. 2004;141(11):846–
+8
+5
+0.
+5. Irwin MR. Sleep and inflammation: partners in sickness and in health. Nature Reviews Immunology. 2019;19(11):702–
+7
+1
+5.
+6. Panda S. The Circadian Code: Lose Weight, Supercharge Your Energy, and Transform Your Health from Morning to Midnight. New York: Rodale Books; 2019.
 
 
-> **Key Takeaways** > - Water is the medium of life — every biochemical reaction in the body depends on adequate hydration. Even mild dehydration impairs cognition, mood, and physical performance.
+> **Key Takeaways**
+>
+> - Water is the medium of life — every biochemical reaction in the body depends on adequate hydration. Even mild dehydration impairs cognition, mood, and physical performance.
 > - The quality of water matters as much as the quantity. Filtered water that removes chlorine, fluoride, heavy metals, and microplastics reduces the cumulative toxic burden on the body.
 > - Hydration needs vary by body size, activity, climate, and health status. Pale yellow urine is the most reliable daily indicator of adequate hydration.
 > - Mineral-rich water (or water supplemented with electrolytes) supports cellular function better than pure distilled water, particularly during exercise or illness.
@@ -1121,10 +1306,39 @@ Beyond what we eat, when and how we eat also matters. Key evidence-based princip
 - Eat within a consistent daily window — aligning food intake with daylight hours supports circadian metabolism and improves insulin sensitivity
 - Avoid eating within two to three hours of sleep — late eating disrupts sleep quality and metabolic processing
 - Eat slowly and mindfully — satiety signals take approximately twenty minutes to reach the brain; eating quickly consistently leads to overconsumption
-- Prioritise whole foods over supplements — nutrients in whole foods come packaged with fibre, water, and thousands of phytonutrients that supplements cannot replicate Chapter Notes — Chapter 7 1. Ornish D, Brown SE, Scherwitz LW, et al. Can lifestyle changes reverse coronary heart disease? The Lifestyle Heart Trial. The Lancet. 1990;336(8708):129–133. 2. Esselstyn CB Jr, Gendy G, Doyle J, Golubic M, Roizen MF. A way to reverse CAD? Journal of Family Practice. 2014;63(7):356–364b. 3. Satija A, Bhupathiraju SN, Rimm EB, et al. Plant-based dietary patterns and incidence of type 2 diabetes in US men and women: results from three prospective cohort studies. PLoS Medicine. 2016;13(6):e1002039. 4. Barnard ND, Cohen J, Jenkins DJ, et al. A low-fat vegan diet improves glycemic control and cardiovascular risk factors in a randomized clinical trial in individuals with type 2 diabetes. Diabetes Care. 2006;29(8):1777–1783. 5. Willett W, Rockström J, Loken B, et al. Food in the Anthropocene: the EAT–Lancet Commission on healthy diets from sustainable food systems. The Lancet. 2019;393(10170):447–492. 6. Sonnenburg JL, Bäckhed F. Diet-microbiota interactions as moderators of human metabolism. Nature. 2016;535(7610):56–64. 7. Panda S. Circadian physiology of metabolism. Science. 2016;354(6315):1008–1015.
+- Prioritise whole foods over supplements — nutrients in whole foods come packaged with fibre, water, and thousands of phytonutrients that supplements cannot replicate Chapter Notes — Chapter 7
+
+1. Ornish D, Brown SE, Scherwitz LW, et al. Can lifestyle changes reverse coronary heart disease? The Lifestyle Heart Trial. The Lancet. 1990;336(8708):129–
+1
+3
+3.
+2. Esselstyn CB Jr, Gendy G, Doyle J, Golubic M, Roizen MF. A way to reverse CAD? Journal of Family Practice. 2014;63(7):356–364b.
+3. Satija A, Bhupathiraju SN, Rimm EB, et al. Plant-based dietary patterns and incidence of type 2 diabetes in US men and women: results from three prospective cohort studies. PLoS Medicine. 2016;13(6):e
+1
+0
+0
+2
+0
+3
+9.
+4. Barnard ND, Cohen J, Jenkins DJ, et al. A low-fat vegan diet improves glycemic control and cardiovascular risk factors in a randomized clinical trial in individuals with type 2 diabetes. Diabetes Care. 2006;29(8):1777–
+1
+7
+8
+3.
+5. Willett W, Rockström J, Loken B, et al. Food in the Anthropocene: the EAT–Lancet Commission on healthy diets from sustainable food systems. The Lancet. 2019;393(10170):447–
+4
+9
+2.
+6. Sonnenburg JL, Bäckhed F. Diet-microbiota interactions as moderators of human metabolism. Nature. 2016;535(7610):56–
+6
+4.
+7. Panda S. Circadian physiology of metabolism. Science. 2016;354(6315):1008–1015.
 
 
-> **Key Takeaways** > - Sleep is the body's most intensive period of repair, consolidation, and hormonal restoration. It is not passive downtime — it is active maintenance.
+> **Key Takeaways**
+>
+> - Sleep is the body's most intensive period of repair, consolidation, and hormonal restoration. It is not passive downtime — it is active maintenance.
 > - During sleep, the glymphatic system clears metabolic waste from the brain, including proteins associated with neurodegenerative disease. Chronic sleep deprivation accelerates cognitive decline.
 > - Sleep deprivation impairs immune function, insulin sensitivity, emotional regulation, and decision-making — often within a single night of poor sleep.
 > - Consistent sleep and wake times — including weekends — are the single most important behavioural intervention for sleep quality.
@@ -1156,14 +1370,39 @@ Clutter and organisation have measurable psychological effects. Chronically clut
 - Reduce chemical exposure: switch to fragrance-free, plant-based cleaning products; allow new furniture and carpets to off-gas before use
 - Optimise the sleep environment: cool, dark, and quiet (see Chapter 6)
 - Create order in key spaces: a tidy bedroom, kitchen, and workspace reduces cognitive load and supports better habits
-- If housing is unsafe or insecure, seek support through local housing services, tenancy advocacy, or community organisations — housing stability is a health intervention Chapter Notes — Chapter 8 1. World Health Organization. WHO Housing and Health Guidelines. Geneva: WHO; 2018. 2. Frumkin H, Bratman GN, Breslow SJ, et al. Nature contact and human health: a research agenda. Environmental Health Perspectives. 2017;125(7):075001. 3. Stansfeld SA, Matheson MP. Noise pollution: non-auditory effects on health. British Medical Bulletin. 2003;68(1):243–257. 4. Heschong L. Daylighting in Schools: An Investigation into the Relationship Between Daylighting and Human Performance. Fair Oaks, CA: Heschong Mahone Group; 1999. 5. Saxbe DE, Repetti R. No place like home: home tours correlate with daily patterns of mood and cortisol. Personality and Social Psychology Bulletin. 2010;36(1):71–81.
+- If housing is unsafe or insecure, seek support through local housing services, tenancy advocacy, or community organisations — housing stability is a health intervention Chapter Notes — Chapter 8
+
+1. World Health Organization. WHO Housing and Health Guidelines. Geneva: WHO;
+2
+0
+1
+8.
+2. Frumkin H, Bratman GN, Breslow SJ, et al. Nature contact and human health: a research agenda. Environmental Health Perspectives. 2017;125(7):
+0
+7
+5
+0
+0
+1.
+3. Stansfeld SA, Matheson MP. Noise pollution: non-auditory effects on health. British Medical Bulletin. 2003;68(1):243–
+2
+5
+7.
+4. Heschong L. Daylighting in Schools: An Investigation into the Relationship Between Daylighting and Human Performance. Fair Oaks, CA: Heschong Mahone Group;
+1
+9
+9
+9.
+5. Saxbe DE, Repetti R. No place like home: home tours correlate with daily patterns of mood and cortisol. Personality and Social Psychology Bulletin. 2010;36(1):71–81.
 
 **Tier Two: Safety Needs**
 
 Once the physiological foundations are in place, the body's next priority is safety — the assurance that the environment is stable, predictable, and free from threat. Safety needs encompass physical security, health protection, financial stability, and the structural conditions that determine how much control a person has over their own life. When these needs are chronically unmet, the body remains in a state of low-grade biological alert that undermines health at every level.
 
 
-> **Key Takeaways** > - Food is the most powerful daily lever for influencing health. Every meal either nourishes or burdens the body's systems.
+> **Key Takeaways**
+>
+> - Food is the most powerful daily lever for influencing health. Every meal either nourishes or burdens the body's systems.
 > - The whole food plant-based diet is the most extensively researched dietary pattern for the prevention and reversal of chronic disease — including heart disease, type 2 diabetes, and certain cancers.
 > - Ultra-processed foods are not simply "less healthy" — they are actively disruptive to the microbiome, inflammatory pathways, hormonal signalling, and appetite regulation.
 > - Eating within a consistent daily window aligned with daylight hours supports circadian metabolism, insulin sensitivity, and cellular repair.
@@ -1230,7 +1469,9 @@ Because health is the product of an interconnected system, it cannot be reliably
 - Recognise that health is not purely an individual responsibility — structural conditions shape what is available and affordable, and advocacy for better systems is itself a health intervention
 
 
-> **Key Takeaways** > - The built environment we inhabit shapes our air quality, light exposure, noise levels, temperature regulation, and sense of safety — all of which have direct physiological consequences.
+> **Key Takeaways**
+>
+> - The built environment we inhabit shapes our air quality, light exposure, noise levels, temperature regulation, and sense of safety — all of which have direct physiological consequences.
 > - Indoor air pollution from synthetic materials, cleaning products, and poor ventilation is a significant and underestimated health burden.
 > - Chronic noise exposure — particularly at night — disrupts sleep, elevates cortisol, and increases cardiovascular risk even when we habituate consciously.
 > - Natural light during the day and darkness at night are biological requirements, not preferences. Artificial light disrupts circadian rhythms and melatonin production.
@@ -1329,7 +1570,9 @@ When the nervous system is repeatedly assured that tomorrow will follow a predic
 True health is not just about giving the body the right food or shelter; it is about giving the body the consistent, rhythmic stability it needs to thrive.
 
 
-> **Key Takeaways** > - The human nervous system cannot distinguish between a physical predator and a chronic psychological stressor. Both activate the same survival response.
+> **Key Takeaways**
+>
+> - The human nervous system cannot distinguish between a physical predator and a chronic psychological stressor. Both activate the same survival response.
 > - Chronic, unresolved stress — from financial pressure, relationship conflict, housing insecurity, or job uncertainty — keeps the body in a state of low-grade biological alert that erodes health at every level.
 > - Allostatic load — the cumulative biological cost of chronic stress — is a measurable driver of accelerated ageing, immune suppression, metabolic dysfunction, and cardiovascular disease.
 > - Safety is not a luxury. It is a biological prerequisite for the body to shift from defence to repair, growth, and genuine health.
@@ -1361,11 +1604,48 @@ When financial insecurity is persistent, the body remains in a state of chronic 
 
 - Eliminate high-interest debt as a health priority, not just a financial one
 - Automate savings and bill payments to reduce decision fatigue and ensure baseline needs are met predictably
-- Seek financial counselling or community support if debt or insecurity feels overwhelming — financial stress is a health issue and deserves the same attention Chapter Notes — Chapters 9–11 1. Friston K. The free-energy principle: a unified brain theory? Nature Reviews Neuroscience. 2010;11(2):127–138. 2. McEwen BS. Protective and damaging effects of stress mediators. New England Journal of Medicine. 1998;338(3):171–179. 3. Sapolsky RM. Why Zebras Don't Get Ulcers: The Acclaimed Guide to Stress, StressRelated Diseases, and Coping. 3rd ed. New York: Holt Paperbacks; 2004. 4. Mullainathan S, Shafir E. Scarcity: Why Having Too Little Means So Much. New York: Times Books; 2013. 5. Marmot MG, et al. Health inequalities among British civil servants: the Whitehall II study. The Lancet. 1991;337(8754):1387–1393. 6. Panda S. Circadian physiology of metabolism. Science. 2016;354(6315):1008–1015. 7. Porges SW. The Polyvagal Theory. New York: W.W. Norton & Company; 2011. 8. Engel GL. The need for a new medical model: a challenge for biomedicine. Science. 1977;196(4286):129–136.
+- Seek financial counselling or community support if debt or insecurity feels overwhelming — financial stress is a health issue and deserves the same attention Chapter Notes — Chapters 9–11
+
+1. Friston K. The free-energy principle: a unified brain theory? Nature Reviews Neuroscience. 2010;11(2):127–
+1
+3
+8.
+2. McEwen BS. Protective and damaging effects of stress mediators. New England Journal of Medicine. 1998;338(3):171–
+1
+7
+9.
+3. Sapolsky RM. Why Zebras Don't Get Ulcers: The Acclaimed Guide to Stress, StressRelated Diseases, and Coping. 3rd ed. New York: Holt Paperbacks;
+2
+0
+0
+4.
+4. Mullainathan S, Shafir E. Scarcity: Why Having Too Little Means So Much. New York: Times Books;
+2
+0
+1
+3.
+5. Marmot MG, et al. Health inequalities among British civil servants: the Whitehall II study. The Lancet. 1991;337(8754):1387–
+1
+3
+9
+3.
+6. Panda S. Circadian physiology of metabolism. Science. 2016;354(6315):1008–
+1
+0
+1
+5.
+7. Porges SW. The Polyvagal Theory. New York: W.W. Norton & Company;
+2
+0
+1
+1.
+8. Engel GL. The need for a new medical model: a challenge for biomedicine. Science. 1977;196(4286):129–136.
 
 **Tier Three: Love and Belonging**
 
-> **Key Takeaways** > - Financial stress activates the same HPA axis as physical danger — the brain processes economic threat as a survival emergency.
+> **Key Takeaways**
+>
+> - Financial stress activates the same HPA axis as physical danger — the brain processes economic threat as a survival emergency.
 > - Chronic financial insecurity is associated with elevated cortisol, disrupted sleep, impaired decision-making, and significantly increased risk of cardiovascular disease and depression.
 > - Financial safety is not about wealth — it is about having enough buffer between you and chronic survival stress. Even modest financial stability measurably improves health outcomes.
 > - Practical financial stability — emergency savings, manageable debt, and predictable income — functions as a direct health intervention.
@@ -1407,11 +1687,31 @@ The key variables are authenticity, reciprocity, and felt safety — the sense t
 - Engage in active listening: full, undivided attention sends a profound biological signal of value and safety to the other person
 
 - Build micro-communities: a small, reliable group — a running club, a book group, a volunteer organisation, a faith community — fulfils the biological need for a tribe
-- If loneliness is persistent, consider it a health issue deserving the same attention as any physical symptom Chapter Notes — Chapter 12 1. Holt-Lunstad J, Smith TB, Layton JB. Social relationships and mortality risk: a metaanalytic review. PLoS Medicine. 2010;7(7):e1000316. 2. Cacioppo JT, Hawkley LC. Perceived social isolation and cognition. Trends in Cognitive Sciences. 2009;13(10):447–454. 3. Uchino BN. Social support and health: a review of physiological processes potentially underlying links to disease outcomes. Journal of Behavioral Medicine. 2006;29(4):377– 387. 4. Porges SW. The Polyvagal Theory. New York: W.W. Norton & Company; 2011.
+- If loneliness is persistent, consider it a health issue deserving the same attention as any physical symptom Chapter Notes — Chapter 12
+
+1. Holt-Lunstad J, Smith TB, Layton JB. Social relationships and mortality risk: a metaanalytic review. PLoS Medicine. 2010;7(7):e
+1
+0
+0
+0
+3
+1
+6.
+2. Cacioppo JT, Hawkley LC. Perceived social isolation and cognition. Trends in Cognitive Sciences. 2009;13(10):447–
+4
+5
+4.
+3. Uchino BN. Social support and health: a review of physiological processes potentially underlying links to disease outcomes. Journal of Behavioral Medicine. 2006;29(4):377–
+3
+8
+7.
+4. Porges SW. The Polyvagal Theory. New York: W.W. Norton & Company; 2011.
 
 **Tier Four: Esteem**
 
-> **Key Takeaways** > - Social connection is a biological need, not a preference. The human brain evolved to treat isolation as a life-threatening emergency.
+> **Key Takeaways**
+>
+> - Social connection is a biological need, not a preference. The human brain evolved to treat isolation as a life-threatening emergency.
 > - Loneliness and social isolation carry health risks comparable to smoking 15 cigarettes per day — increasing mortality risk by up to 29%.
 > - Strong social bonds regulate the nervous system, buffer stress, improve immune function, and are among the most consistent predictors of longevity across all cultures.
 > - The quality of relationships matters more than the quantity. A few deep, reciprocal connections provide more health benefit than many superficial ones.
@@ -1452,11 +1752,24 @@ When you lack a sense of competence and autonomy, the brain registers this as a 
 - Pursue mastery: deep engagement in a skill, craft, or domain builds unshakeable internal confidence
 - Set firm boundaries: asserting your limits proves to your own nervous system that your wellbeing matters
 - Shift from external to internal validation: recognise that chasing status through consumerism or social media is a bottomless pit; true esteem is knowing your worth independent of outside opinion
-- Celebrate genuine progress, not just outcomes Chapter Notes — Chapter 13 1. Marmot MG, et al. Health inequalities among British civil servants: the Whitehall II study. The Lancet. 1991;337(8754):1387–1393. 2. Deci EL, Ryan RM. Self-determination theory: a macrotheory of human motivation, development, and health. Canadian Psychology. 2008;49(3):182–185. 3. Bandura A. Self-efficacy: toward a unifying theory of behavioral change. Psychological Review. 1977;84(2):191–215.
+- Celebrate genuine progress, not just outcomes Chapter Notes — Chapter 13
+
+1. Marmot MG, et al. Health inequalities among British civil servants: the Whitehall II study. The Lancet. 1991;337(8754):1387–
+1
+3
+9
+3.
+2. Deci EL, Ryan RM. Self-determination theory: a macrotheory of human motivation, development, and health. Canadian Psychology. 2008;49(3):182–
+1
+8
+5.
+3. Bandura A. Self-efficacy: toward a unifying theory of behavioral change. Psychological Review. 1977;84(2):191–215.
 
 **Tier Five: Self-Actualisation**
 
-> **Key Takeaways** > - Self-respect and autonomy are not psychological luxuries — they have a measurable physical footprint. Status, dignity, and a sense of control directly influence cortisol, immune function, and cardiovascular health.
+> **Key Takeaways**
+>
+> - Self-respect and autonomy are not psychological luxuries — they have a measurable physical footprint. Status, dignity, and a sense of control directly influence cortisol, immune function, and cardiovascular health.
 > - The Whitehall Studies demonstrated that perceived control over one's life is a stronger predictor of health outcomes than income or medical access alone.
 > - Autonomy — the experience of acting from genuine choice rather than external compulsion — is a core psychological need whose chronic frustration produces biological stress.
 > - Self-compassion, not self-criticism, is the most effective foundation for sustained behaviour change. Shame activates the threat response; self-respect supports growth.
@@ -1500,11 +1813,42 @@ Curiosity is the breadcrumb trail to your potential
 - Contribute to others: the highest form of self-actualisation often evolves naturally into service — using your unique gifts to improve the lives of others and the world around you
 - Revisit John's story: recall John from the beginning of this book — the 47-year-old whose health was being quietly eroded by ten overlapping factors. A holistic approach to his wellness would not begin with a prescription. It would begin with understanding which tier of his needs was most depleted, and building from there — better sleep, reduced financial stress, reconnection with purpose, and the support of a community. That is what a better approach looks like.
 
-**Chapter Notes — Chapter 14** 1. Blackburn E, Epel E. The Telomere Effect: A Revolutionary Approach to Living Younger, Healthier, Longer. New York: Grand Central Publishing; 2017. 2. Csikszentmihalyi M. Flow: The Psychology of Optimal Experience. New York: Harper & Row; 1990. 3. Buettner D. The Blue Zones: Lessons for Living Longer from the People Who've Lived the Longest. Washington DC: National Geographic; 2008. 4. Maslow AH. A theory of human motivation. Psychological Review. 1943;50(4):370–396. 5. Holt-Lunstad J, Smith TB, Layton JB. Social relationships and mortality risk: a metaanalytic review. PLoS Medicine. 2010;7(7):e1000316. 6. Marmot MG, et al. Health inequalities among British civil servants: the Whitehall II study.
+**Chapter Notes — Chapter 14**
+
+1. Blackburn E, Epel E. The Telomere Effect: A Revolutionary Approach to Living Younger, Healthier, Longer. New York: Grand Central Publishing;
+2
+0
+1
+7.
+2. Csikszentmihalyi M. Flow: The Psychology of Optimal Experience. New York: Harper & Row;
+1
+9
+9
+0.
+3. Buettner D. The Blue Zones: Lessons for Living Longer from the People Who've Lived the Longest. Washington DC: National Geographic;
+2
+0
+0
+8.
+4. Maslow AH. A theory of human motivation. Psychological Review. 1943;50(4):370–
+3
+9
+6.
+5. Holt-Lunstad J, Smith TB, Layton JB. Social relationships and mortality risk: a metaanalytic review. PLoS Medicine. 2010;7(7):e
+1
+0
+0
+0
+3
+1
+6.
+6. Marmot MG, et al. Health inequalities among British civil servants: the Whitehall II study.
 The Lancet. 1991;337(8754):1387–1393.
 
 
-> **Key Takeaways** > - Purpose is not a philosophical luxury — it is a measurable biological driver. People with a strong sense of purpose live longer, sleep better, recover faster, and maintain healthier habits.
+> **Key Takeaways**
+>
+> - Purpose is not a philosophical luxury — it is a measurable biological driver. People with a strong sense of purpose live longer, sleep better, recover faster, and maintain healthier habits.
 > - In the world's Blue Zones, a clear sense of purpose — *ikigai* in Okinawa, *plan de vida* in Costa Rica — is one of the most consistent shared features of exceptional longevity.
 > - Self-actualisation is not reserved for the privileged. It is available in any life where basic needs are reasonably met and where a person is moving toward their own fullest expression.
 > - The conditions for purpose — safety, connection, self-respect — are not prerequisites to be achieved before health is possible. They are health.
@@ -1625,7 +1969,37 @@ The second most common objection is taste and practicality. This is legitimate. 
 
 > **[QR CODE — WFPB Starter Guide, Recipe Resources, and Recommended Reading]** *[website URL placeholder]/wfpb*
 
-**Chapter Notes — Recommendation 1** 1. Esselstyn CB Jr. Updating a 12-year experience with arrest and reversal therapy for coronary heart disease. *American Journal of Cardiology*. 1999;84(3):339–341. 2. Esselstyn CB Jr, Gendy G, Doyle J, Golubic M, Roizen MF. A way to reverse CAD? *Journal of Family Practice*. 2014;63(7):356–364. 3. Campbell TC, Campbell TM. *The China Study*. Dallas: BenBella Books; 2005. 4. Barnard ND, Cohen J, Jenkins DJ, et al. A low-fat vegan diet improves glycemic control and cardiovascular risk factors in a randomized clinical trial in individuals with type 2 diabetes. *Diabetes Care*. 2006;29(8):1777–1783. 5. Greger M, Stone G. *How Not to Die*. New York: Flatiron Books; 2015. 6. Greger M. *How Not to Age*. New York: Flatiron Books; 2023. 7. Ornish D, Scherwitz LW, Billings JH, et al. Intensive lifestyle changes for reversal of coronary heart disease. *JAMA*. 1998;280(23):2001–2007.
+**Chapter Notes — Recommendation 1**
+
+1. Esselstyn CB Jr. Updating a 12-year experience with arrest and reversal therapy for coronary heart disease. *American Journal of Cardiology*. 1999;84(3):339–
+3
+4
+1.
+2. Esselstyn CB Jr, Gendy G, Doyle J, Golubic M, Roizen MF. A way to reverse CAD? *Journal of Family Practice*. 2014;63(7):356–
+3
+6
+4.
+3. Campbell TC, Campbell TM. *The China Study*. Dallas: BenBella Books;
+2
+0
+0
+5.
+4. Barnard ND, Cohen J, Jenkins DJ, et al. A low-fat vegan diet improves glycemic control and cardiovascular risk factors in a randomized clinical trial in individuals with type 2 diabetes. *Diabetes Care*. 2006;29(8):1777–
+1
+7
+8
+3.
+5. Greger M, Stone G. *How Not to Die*. New York: Flatiron Books;
+2
+0
+1
+5.
+6. Greger M. *How Not to Age*. New York: Flatiron Books;
+2
+0
+2
+3.
+7. Ornish D, Scherwitz LW, Billings JH, et al. Intensive lifestyle changes for reversal of coronary heart disease. *JAMA*. 1998;280(23):2001–2007.
 
 ---
 
@@ -1662,7 +2036,19 @@ One practical note: the habit of drinking a large glass of water first thing in 
 
 > **[QR CODE — Recommended Water Filtration Systems and Suppliers]** *[website URL placeholder]/store/water*
 
-**Chapter Notes — Recommendation 2** 1. Grandjean AC, Grandjean NR. Dehydration and cognitive performance. *Journal of the American College of Nutrition*. 2007;26(5 Suppl):549S–554S. 2. Environmental Working Group. *EWG's Tap Water Database*. 2021. Available at: www.ewg.org/tapwater 3. Schaider LA, Rudel RA, Ackerman JM, Dunagan SC, Brody JG. Pharmaceuticals, perfluorosurfactants, and other organic wastewater compounds in public drinking water wells in a shallow sand and gravel aquifer. *Science of the Total Environment*. 2014;468–469:384–393. 4. Grandjean P, Landrigan PJ. Neurobehavioural effects of developmental toxicity. *The Lancet Neurology*. 2014;13(3):330–338.
+**Chapter Notes — Recommendation 2**
+
+1. Grandjean AC, Grandjean NR. Dehydration and cognitive performance. *Journal of the American College of Nutrition*. 2007;26(5 Suppl):549S–554S.
+2. Environmental Working Group. *EWG's Tap Water Database*.
+2
+0
+2
+1. Available at: www.ewg.org/tapwater
+3. Schaider LA, Rudel RA, Ackerman JM, Dunagan SC, Brody JG. Pharmaceuticals, perfluorosurfactants, and other organic wastewater compounds in public drinking water wells in a shallow sand and gravel aquifer. *Science of the Total Environment*. 2014;468–469:384–
+3
+9
+3.
+4. Grandjean P, Landrigan PJ. Neurobehavioural effects of developmental toxicity. *The Lancet Neurology*. 2014;13(3):330–338.
 
 ---
 
@@ -1715,7 +2101,26 @@ For John, melatonin supplementation — combined with improved sleep hygiene and
 
 > **[QR CODE — Sleep Resources, Melatonin Research, and Recommended Suppliers]** *[website URL placeholder]/sleep*
 
-**Chapter Notes — Recommendation 3** 1. Reiter RJ, Tan DX, Rosales-Corral S, Manchester LC. The universal nature, unequal distribution and antioxidant functions of melatonin and its derivatives. *Mini Reviews in Medicinal Chemistry*. 2013;13(3):373–384. 2. Reiter RJ, Mayo JC, Tan DX, Sainz RM, Alatorre-Jimenez M, Qin L. Melatonin as an antioxidant: under promises but over delivers. *Journal of Pineal Research*. 2016;61(3):253–278. 3. Ebrahim IO, Shapiro CM, Williams AJ, Fenwick PB. Alcohol and sleep I: effects on normal sleep. *Alcoholism: Clinical and Experimental Research*. 2013;37(4):539–549. 4. Walker M. *Why We Sleep: Unlocking the Power of Sleep and Dreams*. New York: Scribner; 2017. 5. Xie L, Kang H, Xu Q, et al. Sleep drives metabolite clearance from the adult brain. *Science*. 2013;342(6156):373–377.
+**Chapter Notes — Recommendation 3**
+
+1. Reiter RJ, Tan DX, Rosales-Corral S, Manchester LC. The universal nature, unequal distribution and antioxidant functions of melatonin and its derivatives. *Mini Reviews in Medicinal Chemistry*. 2013;13(3):373–
+3
+8
+4.
+2. Reiter RJ, Mayo JC, Tan DX, Sainz RM, Alatorre-Jimenez M, Qin L. Melatonin as an antioxidant: under promises but over delivers. *Journal of Pineal Research*. 2016;61(3):253–
+2
+7
+8.
+3. Ebrahim IO, Shapiro CM, Williams AJ, Fenwick PB. Alcohol and sleep I: effects on normal sleep. *Alcoholism: Clinical and Experimental Research*. 2013;37(4):539–
+5
+4
+9.
+4. Walker M. *Why We Sleep: Unlocking the Power of Sleep and Dreams*. New York: Scribner;
+2
+0
+1
+7.
+5. Xie L, Kang H, Xu Q, et al. Sleep drives metabolite clearance from the adult brain. *Science*. 2013;342(6156):373–377.
 
 ---
 
@@ -1756,7 +2161,29 @@ Glycine supplementation is exceptionally safe. It has been studied at doses far 
 
 For John, whose liver is under stress from chronic alcohol use, whose gut integrity is compromised, whose sleep is poor, and whose metabolic markers are elevated, glycine supplementation is a straightforward and well-supported addition to his programme.
 
-**Chapter Notes — Recommendation 4** 1. Meléndez-Hevia E, De Paz-Lugo P, Cornish-Bowden A, Cárdenas ML. A weak link in metabolism: the metabolic capacity for glycine biosynthesis does not satisfy the need for collagen synthesis. *Journal of Biosciences*. 2009;34(6):853–872. 2. Razak MA, Begum PS, Viswanath B, Rajagopal S. Multifarious beneficial effect of nonessential amino acid, glycine: a review. *Oxidative Medicine and Cellular Longevity*. 2017;2017:1716701. 3. Bannai M, Kawai N. New therapeutic strategy for amino acid medicine: glycine improves the quality of sleep. *Journal of Pharmacological Sciences*. 2012;118(2):145–148. 4. Zhong Z, Wheeler MD, Li X, et al. L-Glycine: a novel anti-inflammatory, immunomodulatory, and cytoprotective agent. *Current Opinion in Clinical Nutrition and Metabolic Care*. 2003;6(2):229–240. 5. Alves A, Bassot A, Bulteau AL, Pirola L, Morio B. Glycine metabolism and its alterations in obesity and metabolic diseases. *Nutrients*. 2019;11(6):1356.
+**Chapter Notes — Recommendation 4**
+
+1. Meléndez-Hevia E, De Paz-Lugo P, Cornish-Bowden A, Cárdenas ML. A weak link in metabolism: the metabolic capacity for glycine biosynthesis does not satisfy the need for collagen synthesis. *Journal of Biosciences*. 2009;34(6):853–
+8
+7
+2.
+2. Razak MA, Begum PS, Viswanath B, Rajagopal S. Multifarious beneficial effect of nonessential amino acid, glycine: a review. *Oxidative Medicine and Cellular Longevity*. 2017;2017:
+1
+7
+1
+6
+7
+0
+1.
+3. Bannai M, Kawai N. New therapeutic strategy for amino acid medicine: glycine improves the quality of sleep. *Journal of Pharmacological Sciences*. 2012;118(2):145–
+1
+4
+8.
+4. Zhong Z, Wheeler MD, Li X, et al. L-Glycine: a novel anti-inflammatory, immunomodulatory, and cytoprotective agent. *Current Opinion in Clinical Nutrition and Metabolic Care*. 2003;6(2):229–
+2
+4
+0.
+5. Alves A, Bassot A, Bulteau AL, Pirola L, Morio B. Glycine metabolism and its alterations in obesity and metabolic diseases. *Nutrients*. 2019;11(6):1356.
 
 ---
 
@@ -1909,7 +2336,27 @@ For John, this principle does not require perfection. On days when he travels, w
 
 > **[QR CODE — The 75% Raw Food Principle — Meal Ideas and Weekly Planner]** *[website URL placeholder]/raw-food-principle*
 
-**Chapter Notes — Recommendation 5** 1. Shoba G, Joy D, Joseph T, Majeed M, Rajendran R, Srinivas PS. Influence of piperine on the pharmacokinetics of curcumin in animals and human volunteers. *Planta Medica*. 1998;64(4):353–356. 2. de Lorgeril M, Salen P, Martin JL, et al. Mediterranean diet, traditional risk factors, and the rate of cardiovascular complications after myocardial infarction. *Circulation*. 1999;99(6):779–785. 3. Bloedon LT, Szapary PO. Flaxseed and cardiovascular risk. *Nutrition Reviews*. 2004;62(1):18–27. 4. Callaway JC. Hempseed as a nutritional resource: an overview. *Euphytica*. 2004;140(1–2):65–72. 5. Vuksan V, Jenkins AL, Dias AG, et al. Reduction in postprandial glucose excursions and prolongation of satiety: possible explanation of the long-term effects of whole grain Salba (Salvia hispanica L.). *European Journal of Clinical Nutrition*. 2010;64(4):436–438. 6. Hewlings SJ, Kalman DS. Curcumin: a review of its effects on human health. *Foods*. 2017;6(10):92.
+**Chapter Notes — Recommendation 5**
+
+1. Shoba G, Joy D, Joseph T, Majeed M, Rajendran R, Srinivas PS. Influence of piperine on the pharmacokinetics of curcumin in animals and human volunteers. *Planta Medica*. 1998;64(4):353–
+3
+5
+6.
+2. de Lorgeril M, Salen P, Martin JL, et al. Mediterranean diet, traditional risk factors, and the rate of cardiovascular complications after myocardial infarction. *Circulation*. 1999;99(6):779–
+7
+8
+5.
+3. Bloedon LT, Szapary PO. Flaxseed and cardiovascular risk. *Nutrition Reviews*. 2004;62(1):18–
+2
+7.
+4. Callaway JC. Hempseed as a nutritional resource: an overview. *Euphytica*. 2004;140(1–2):65–
+7
+2.
+5. Vuksan V, Jenkins AL, Dias AG, et al. Reduction in postprandial glucose excursions and prolongation of satiety: possible explanation of the long-term effects of whole grain Salba (Salvia hispanica L.). *European Journal of Clinical Nutrition*. 2010;64(4):436–
+4
+3
+8.
+6. Hewlings SJ, Kalman DS. Curcumin: a review of its effects on human health. *Foods*. 2017;6(10):92.
 
 ---
 
@@ -1950,7 +2397,27 @@ A blood test is the only way to know your current level and to monitor the respo
 
 John, who commutes before sunrise and works in a fluorescent-lit office, is almost certainly Vitamin D deficient. A blood test will confirm this. Supplementation is a straightforward correction with a well-established safety profile.
 
-**Chapter Notes — Recommendation 6** 1. Watanabe F. Vitamin B12 sources and bioavailability. *Experimental Biology and Medicine*. 2007;232(10):1266–1274. 2. Holick MF. Vitamin D deficiency. *New England Journal of Medicine*. 2007;357(3):266–281. 3. Autier P, Gandini S. Vitamin D supplementation and total mortality: a meta-analysis of randomized controlled trials. *Archives of Internal Medicine*. 2007;167(16):1730–1737. 4. Garland CF, Gorham ED, Mohr SB, Garland FC. Vitamin D for cancer prevention: global perspective. *Annals of Epidemiology*. 2009;19(7):468–483. 5. Herrmann W, Obeid R. Cobalamin deficiency. *Subcellular Biochemistry*. 2012;56:301–322.
+**Chapter Notes — Recommendation 6**
+
+1. Watanabe F. Vitamin B12 sources and bioavailability. *Experimental Biology and Medicine*. 2007;232(10):1266–
+1
+2
+7
+4.
+2. Holick MF. Vitamin D deficiency. *New England Journal of Medicine*. 2007;357(3):266–
+2
+8
+1.
+3. Autier P, Gandini S. Vitamin D supplementation and total mortality: a meta-analysis of randomized controlled trials. *Archives of Internal Medicine*. 2007;167(16):1730–
+1
+7
+3
+7.
+4. Garland CF, Gorham ED, Mohr SB, Garland FC. Vitamin D for cancer prevention: global perspective. *Annals of Epidemiology*. 2009;19(7):468–
+4
+8
+3.
+5. Herrmann W, Obeid R. Cobalamin deficiency. *Subcellular Biochemistry*. 2012;56:301–322.
 
 ---
 
@@ -2015,7 +2482,27 @@ Grip strength deserves particular mention. It is one of the most consistently st
 
 > **[QR CODE — Six Movements Video Demonstrations]** *[website URL placeholder]/six-movements*
 
-**Chapter Notes — Recommendation 7** 1. Brito LB, Ricardo DR, Araújo DS, Ramos PS, Myers J, Araújo CG. Ability to sit and rise from the floor as a predictor of all-cause mortality. *European Journal of Preventive Cardiology*. 2014;21(7):892–898. 2. Bohannon RW. Grip strength: an indispensable biomarker for older adults. *Clinical Interventions in Aging*. 2019;14:1681–1691. 3. Wen CP, Wai JP, Tsai MK, et al. Minimum amount of physical activity for reduced mortality and extended life expectancy: a prospective cohort study. *The Lancet*. 2011;378(9798):1244–1253. 4. Araujo CG, de Souza e Silva CG, Laukkanen JA, et al. Successful 10-second one-legged stance performance predicts survival in middle-aged and older individuals. *British Journal of Sports Medicine*. 2022;56(17):975–980. 5. Leong DP, Teo KK, Rangarajan S, et al. Prognostic value of grip strength: findings from the Prospective Urban Rural Epidemiology (PURE) study. *The Lancet*. 2015;386(9990):266–273.
+**Chapter Notes — Recommendation 7**
+
+1. Brito LB, Ricardo DR, Araújo DS, Ramos PS, Myers J, Araújo CG. Ability to sit and rise from the floor as a predictor of all-cause mortality. *European Journal of Preventive Cardiology*. 2014;21(7):892–
+8
+9
+8.
+2. Bohannon RW. Grip strength: an indispensable biomarker for older adults. *Clinical Interventions in Aging*. 2019;14:1681–
+1
+6
+9
+1.
+3. Wen CP, Wai JP, Tsai MK, et al. Minimum amount of physical activity for reduced mortality and extended life expectancy: a prospective cohort study. *The Lancet*. 2011;378(9798):1244–
+1
+2
+5
+3.
+4. Araujo CG, de Souza e Silva CG, Laukkanen JA, et al. Successful 10-second one-legged stance performance predicts survival in middle-aged and older individuals. *British Journal of Sports Medicine*. 2022;56(17):975–
+9
+8
+0.
+5. Leong DP, Teo KK, Rangarajan S, et al. Prognostic value of grip strength: findings from the Prospective Urban Rural Epidemiology (PURE) study. *The Lancet*. 2015;386(9990):266–273.
 
 ---
 
@@ -2088,7 +2575,27 @@ He practiced it sitting on the edge of his bed, with his thumbs gently blocking 
 
 > **[QR CODE — Guided Breathing Exercises and Resources]** *[website URL placeholder]/breathing*
 
-**Chapter Notes — Recommendation 8** 1. Zaccaro A, Piarulli A, Laurino M, et al. How breath-control can change your life: a systematic review on psycho-physiological correlates of slow breathing. *Frontiers in Human Neuroscience*. 2018;12:353. 2. Lehrer PM, Gevirtz R. Heart rate variability biofeedback: how and why does it work? *Frontiers in Psychology*. 2014;5:756. 3. Nestor J. *Breath: The New Science of a Lost Art*. New York: Riverhead Books; 2020. 4. McKeown P. *The Oxygen Advantage*. New York: William Morrow; 2015. 5. Jerath R, Edry JW, Barnes VA, Jerath V. Physiology of long pranayamic breathing: neural respiratory elements may provide a mechanism that explains how slow deep breathing shifts the autonomic nervous system. *Medical Hypotheses*. 2006;67(3):566–571.
+**Chapter Notes — Recommendation 8**
+
+1. Zaccaro A, Piarulli A, Laurino M, et al. How breath-control can change your life: a systematic review on psycho-physiological correlates of slow breathing. *Frontiers in Human Neuroscience*. 2018;12:
+3
+5
+3.
+2. Lehrer PM, Gevirtz R. Heart rate variability biofeedback: how and why does it work? *Frontiers in Psychology*. 2014;5:
+7
+5
+6.
+3. Nestor J. *Breath: The New Science of a Lost Art*. New York: Riverhead Books;
+2
+0
+2
+0.
+4. McKeown P. *The Oxygen Advantage*. New York: William Morrow;
+2
+0
+1
+5.
+5. Jerath R, Edry JW, Barnes VA, Jerath V. Physiology of long pranayamic breathing: neural respiratory elements may provide a mechanism that explains how slow deep breathing shifts the autonomic nervous system. *Medical Hypotheses*. 2006;67(3):566–571.
 
 ---
 
@@ -2141,7 +2648,28 @@ For John, a combination of daily earthing and periodic PEMF therapy represents a
 
 > **[QR CODE — PEMF and Earthing Research, Recommended Devices and Suppliers]** *[website URL placeholder]/pemf*
 
-**Chapter Notes — Recommendation 9** 1. Chevalier G, Sinatra ST, Oschman JL, Sokal K, Sokal P. Earthing: health implications of reconnecting the human body to the Earth's surface electrons. *Journal of Environmental and Public Health*. 2012;2012:291541. 2. Funk RH. Endogenous electric fields as guiding cue for cell migration. *Frontiers in Physiology*. 2015;6:143. 3. Markov MS. Expanding use of pulsed electromagnetic field therapies. *Electromagnetic Biology and Medicine*. 2007;26(3):257–274. 4. Elshiwi AM, Hamada HA, Mosaad D, Ragab IMA, Koura GM, Alrawaili SM. Effect of pulsed electromagnetic field on nonspecific low back pain patients: a randomized controlled trial. *Brazilian Journal of Physical Therapy*. 2019;23(3):244–249. 5. Oschman JL, Chevalier G, Brown R. The effects of grounding (earthing) on inflammation, the immune response, wound healing, and prevention and treatment of chronic inflammatory and autoimmune diseases. *Journal of Inflammation Research*. 2015;8:83–96.
+**Chapter Notes — Recommendation 9**
+
+1. Chevalier G, Sinatra ST, Oschman JL, Sokal K, Sokal P. Earthing: health implications of reconnecting the human body to the Earth's surface electrons. *Journal of Environmental and Public Health*. 2012;2012:
+2
+9
+1
+5
+4
+1.
+2. Funk RH. Endogenous electric fields as guiding cue for cell migration. *Frontiers in Physiology*. 2015;6:
+1
+4
+3.
+3. Markov MS. Expanding use of pulsed electromagnetic field therapies. *Electromagnetic Biology and Medicine*. 2007;26(3):257–
+2
+7
+4.
+4. Elshiwi AM, Hamada HA, Mosaad D, Ragab IMA, Koura GM, Alrawaili SM. Effect of pulsed electromagnetic field on nonspecific low back pain patients: a randomized controlled trial. *Brazilian Journal of Physical Therapy*. 2019;23(3):244–
+2
+4
+9.
+5. Oschman JL, Chevalier G, Brown R. The effects of grounding (earthing) on inflammation, the immune response, wound healing, and prevention and treatment of chronic inflammatory and autoimmune diseases. *Journal of Inflammation Research*. 2015;8:83–96.
 
 ---
 
@@ -2184,7 +2712,20 @@ This resistance is worth noting, because it points to something important: the t
 
 > **[QR CODE — Guided Meditation Resources and MBSR Programme Information]** *[website URL placeholder]/meditation*
 
-**Chapter Notes — Recommendation 10** 1. Holzel BK, Carmody J, Vangel M, et al. Mindfulness practice leads to increases in regional brain gray matter density. *Psychiatry Research: Neuroimaging*. 2011;191(1):36–43. 2. Davidson RJ, Kabat-Zinn J, Schumacher J, et al. Alterations in brain and immune function produced by mindfulness meditation. *Psychosomatic Medicine*. 2003;65(4):564–570. 3. Anderson JW, Liu C, Kryscio RJ. Blood pressure response to transcendental meditation: a meta-analysis. *American Journal of Hypertension*. 2008;21(3):310–316. 4. Black DS, O'Reilly GA, Olmstead R, Breen EC, Irwin MR. Mindfulness meditation and improvement in sleep quality and daytime impairment among older adults with sleep disturbances. *JAMA Internal Medicine*. 2015;175(4):494–501.
+**Chapter Notes — Recommendation 10**
+
+1. Holzel BK, Carmody J, Vangel M, et al. Mindfulness practice leads to increases in regional brain gray matter density. *Psychiatry Research: Neuroimaging*. 2011;191(1):36–
+4
+3.
+2. Davidson RJ, Kabat-Zinn J, Schumacher J, et al. Alterations in brain and immune function produced by mindfulness meditation. *Psychosomatic Medicine*. 2003;65(4):564–
+5
+7
+0.
+3. Anderson JW, Liu C, Kryscio RJ. Blood pressure response to transcendental meditation: a meta-analysis. *American Journal of Hypertension*. 2008;21(3):310–
+3
+1
+6.
+4. Black DS, O'Reilly GA, Olmstead R, Breen EC, Irwin MR. Mindfulness meditation and improvement in sleep quality and daytime impairment among older adults with sleep disturbances. *JAMA Internal Medicine*. 2015;175(4):494–501.
 
 ---
 
@@ -2219,7 +2760,26 @@ The combination of this recommendation with Recommendation 7 (walking) and Recom
 
 > **[QR CODE — Nature Therapy Resources and Local Green Space Finder]** *[website URL placeholder]/nature*
 
-**Chapter Notes — Recommendation 11** 1. Li Q, Morimoto K, Kobayashi M, et al. Visiting a forest, but not a city, increases human natural killer activity and expression of anti-cancer proteins. *International Journal of Immunopathology and Pharmacology*. 2008;21(1):117–127. 2. Bratman GN, Hamilton JP, Hahn KS, Daily GC, Gross JJ. Nature experience reduces rumination and subgenual prefrontal cortex activation. *Proceedings of the National Academy of Sciences*. 2015;112(28):8567–8572. 3. Li Q. *Forest Bathing: How Trees Can Help You Find Health and Happiness*. New York: Viking; 2018. 4. Taylor RP, Spehar B, Van Donkelaar P, Hagerhall CM. Perceptual and physiological responses to Jackson Pollock's fractals. *Frontiers in Human Neuroscience*. 2011;5:60. 5. Kaplan R, Kaplan S. *The Experience of Nature: A Psychological Perspective*. Cambridge: Cambridge University Press; 1989.
+**Chapter Notes — Recommendation 11**
+
+1. Li Q, Morimoto K, Kobayashi M, et al. Visiting a forest, but not a city, increases human natural killer activity and expression of anti-cancer proteins. *International Journal of Immunopathology and Pharmacology*. 2008;21(1):117–
+1
+2
+7.
+2. Bratman GN, Hamilton JP, Hahn KS, Daily GC, Gross JJ. Nature experience reduces rumination and subgenual prefrontal cortex activation. *Proceedings of the National Academy of Sciences*. 2015;112(28):8567–
+8
+5
+7
+2.
+3. Li Q. *Forest Bathing: How Trees Can Help You Find Health and Happiness*. New York: Viking;
+2
+0
+1
+8.
+4. Taylor RP, Spehar B, Van Donkelaar P, Hagerhall CM. Perceptual and physiological responses to Jackson Pollock's fractals. *Frontiers in Human Neuroscience*. 2011;5:
+6
+0.
+5. Kaplan R, Kaplan S. *The Experience of Nature: A Psychological Perspective*. Cambridge: Cambridge University Press; 1989.
 
 ---
 
@@ -2256,7 +2816,27 @@ It is also worth noting that many of the other changes in this programme will, i
 
 > **[QR CODE — Relationship Resources and Therapist Finder]** *[website URL placeholder]/relationships*
 
-**Chapter Notes — Recommendation 12** 1. Gottman JM, Silver N. *The Seven Principles for Making Marriage Work*. New York: Harmony Books; 1999. 2. Holt-Lunstad J, Smith TB, Layton JB. Social relationships and mortality risk: a meta-analytic review. *PLoS Medicine*. 2010;7(7):e1000316. 3. Kiecolt-Glaser JK, Loving TJ, Stowell JR, et al. Hostile marital interactions, proinflammatory cytokine production, and wound healing. *Archives of General Psychiatry*. 2005;62(12):1377–1384. 4. Johnson SM. *Hold Me Tight: Seven Conversations for a Lifetime of Love*. New York: Little, Brown; 2008.
+**Chapter Notes — Recommendation 12**
+
+1. Gottman JM, Silver N. *The Seven Principles for Making Marriage Work*. New York: Harmony Books;
+1
+9
+9
+9.
+2. Holt-Lunstad J, Smith TB, Layton JB. Social relationships and mortality risk: a meta-analytic review. *PLoS Medicine*. 2010;7(7):e
+1
+0
+0
+0
+3
+1
+6.
+3. Kiecolt-Glaser JK, Loving TJ, Stowell JR, et al. Hostile marital interactions, proinflammatory cytokine production, and wound healing. *Archives of General Psychiatry*. 2005;62(12):1377–
+1
+3
+8
+4.
+4. Johnson SM. *Hold Me Tight: Seven Conversations for a Lifetime of Love*. New York: Little, Brown; 2008.
 
 ---
 
@@ -2291,7 +2871,24 @@ For John, who has spent years feeling trapped by financial pressure and disconne
 
 > **[QR CODE — Second Income Resources and Community]** *[website URL placeholder]/second-income*
 
-**Chapter Notes — Recommendation 13** 1. Csikszentmihalyi M. *Flow: The Psychology of Optimal Experience*. New York: Harper & Row; 1990. 2. Mullainathan S, Shafir E. *Scarcity: Why Having Too Little Means So Much*. New York: Times Books; 2013. 3. Marmot MG. Status syndrome: how your social standing directly affects your health. *JAMA*. 2004;291(21):2644–2645. 4. Ryan RM, Deci EL. Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being. *American Psychologist*. 2000;55(1):68–78.
+**Chapter Notes — Recommendation 13**
+
+1. Csikszentmihalyi M. *Flow: The Psychology of Optimal Experience*. New York: Harper & Row;
+1
+9
+9
+0.
+2. Mullainathan S, Shafir E. *Scarcity: Why Having Too Little Means So Much*. New York: Times Books;
+2
+0
+1
+3.
+3. Marmot MG. Status syndrome: how your social standing directly affects your health. *JAMA*. 2004;291(21):2644–
+2
+6
+4
+5.
+4. Ryan RM, Deci EL. Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being. *American Psychologist*. 2000;55(1):68–78.
 
 ---
 
@@ -2326,7 +2923,22 @@ This does not mean uprooting everything immediately. It means holding the questi
 
 > **[QR CODE — Environmental Health Resources and Assessment Tools]** *[website URL placeholder]/environment*
 
-**Chapter Notes — Recommendation 14** 1. Landrigan PJ, Fuller R, Acosta NJ, et al. The Lancet Commission on pollution and health. *The Lancet*. 2018;391(10119):462–512. 2. Gascon M, Triguero-Mas M, Martínez D, et al. Mental health benefits of long-term exposure to residential green and blue spaces: a systematic review. *International Journal of Environmental Research and Public Health*. 2015;12(4):4354–4379. 3. Münzel T, Gori T, Babisch W, Basner M. Cardiovascular effects of environmental noise exposure. *European Heart Journal*. 2014;35(13):829–836. 4. Lelieveld J, Evans JS, Fnais M, Giannadaki D, Pozzer A. The contribution of outdoor air pollution sources to premature mortality on a global scale. *Nature*. 2015;524(7564):367–371.
+**Chapter Notes — Recommendation 14**
+
+1. Landrigan PJ, Fuller R, Acosta NJ, et al. The Lancet Commission on pollution and health. *The Lancet*. 2018;391(10119):462–
+5
+1
+2.
+2. Gascon M, Triguero-Mas M, Martínez D, et al. Mental health benefits of long-term exposure to residential green and blue spaces: a systematic review. *International Journal of Environmental Research and Public Health*. 2015;12(4):4354–
+4
+3
+7
+9.
+3. Münzel T, Gori T, Babisch W, Basner M. Cardiovascular effects of environmental noise exposure. *European Heart Journal*. 2014;35(13):829–
+8
+3
+6.
+4. Lelieveld J, Evans JS, Fnais M, Giannadaki D, Pozzer A. The contribution of outdoor air pollution sources to premature mortality on a global scale. *Nature*. 2015;524(7564):367–371.
 
 ---
 
@@ -2405,7 +3017,33 @@ For John, methylene blue was not a magic bullet. No single intervention in this 
 
 **[QR CODE — Methylene Blue: Research, Sourcing, and Protocols]** *[website URL placeholder]/methylene-blue*
 
-**Chapter Notes — Recommendation 15** 1. Rojas JC, Bruchey AK, Gonzalez-Lima F. Neurometabolic mechanisms for memory enhancement and neuroprotection of methylene blue. *Progress in Neurobiology*. 2012;96(1):32–45. 2. Naylor GJ, Smith AH, Connelly P. A controlled trial of methylene blue in severe depressive illness. *Biological Psychiatry*. 1987;22(5):657–659. 3. González-Lima F, Barksdale BR, Rojas JC. Mitochondrial respiration as a target for neuroprotection and cognitive enhancement. *Biochemical Pharmacology*. 2014;88(4):584–593. 4. Oz M, Lorke DE, Petroianu GA. Methylene blue and Alzheimer’s disease. *Biochemical Pharmacology*. 2009;78(8):927–932. 5. Wainwright M, Crossley KB. Methylene blue — a therapeutic dye for all seasons? *Journal of Chemotherapy*. 2002;14(5):431–443. 6. Tucker D, Lu Y, Zhang Q. From mitochondrial function to neuroprotection — an emerging role for methylene blue. *Molecular Neurobiology*. 2018;55(6):5137–5153. 7. Bhattacharya R, Bhattacharya S. Photobiomodulation and methylene blue: synergistic effects on mitochondrial function and cognitive performance. *Frontiers in Neuroscience*. 2020;14:1–12.
+**Chapter Notes — Recommendation 15**
+
+1. Rojas JC, Bruchey AK, Gonzalez-Lima F. Neurometabolic mechanisms for memory enhancement and neuroprotection of methylene blue. *Progress in Neurobiology*. 2012;96(1):32–
+4
+5.
+2. Naylor GJ, Smith AH, Connelly P. A controlled trial of methylene blue in severe depressive illness. *Biological Psychiatry*. 1987;22(5):657–
+6
+5
+9.
+3. González-Lima F, Barksdale BR, Rojas JC. Mitochondrial respiration as a target for neuroprotection and cognitive enhancement. *Biochemical Pharmacology*. 2014;88(4):584–
+5
+9
+3.
+4. Oz M, Lorke DE, Petroianu GA. Methylene blue and Alzheimer’s disease. *Biochemical Pharmacology*. 2009;78(8):927–
+9
+3
+2.
+5. Wainwright M, Crossley KB. Methylene blue — a therapeutic dye for all seasons? *Journal of Chemotherapy*. 2002;14(5):431–
+4
+4
+3.
+6. Tucker D, Lu Y, Zhang Q. From mitochondrial function to neuroprotection — an emerging role for methylene blue. *Molecular Neurobiology*. 2018;55(6):5137–
+5
+1
+5
+3.
+7. Bhattacharya R, Bhattacharya S. Photobiomodulation and methylene blue: synergistic effects on mitochondrial function and cognitive performance. *Frontiers in Neuroscience*. 2020;14:1–12.
 
 ---
 
