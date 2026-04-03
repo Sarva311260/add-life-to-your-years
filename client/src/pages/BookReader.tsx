@@ -9,7 +9,7 @@ import remarkGfm from "remark-gfm";
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
 const MD_CDN_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_490673bf.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_893a6a5c.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -525,7 +525,7 @@ export default function BookReader() {
                     </h3>
                   ),
                   h4: ({ children }) => (
-                    <h4 className="font-semibold text-stone-700 mt-6 mb-2">{children}</h4>
+                    <h4 className="text-lg font-bold text-green-800 mt-8 mb-3 border-l-4 border-green-500 pl-3">{children}</h4>
                   ),
                   p: ({ children }) => {
                     if (highlightQuery && typeof children === "string") {
@@ -560,9 +560,11 @@ export default function BookReader() {
                     <tr className="even:bg-stone-50">{children}</tr>
                   ),
                   ul: ({ children }) => (
-                    <ul className="list-disc list-outside ml-5 mb-4 space-y-1 text-stone-700">
-                      {children}
-                    </ul>
+                    <div className="bg-stone-50 border border-stone-200 rounded-lg p-4 my-4">
+                      <ul className="list-disc list-outside ml-5 space-y-1.5 text-stone-700">
+                        {children}
+                      </ul>
+                    </div>
                   ),
                   ol: ({ children }) => (
                     <ol className="list-decimal list-outside ml-5 mb-4 space-y-1 text-stone-700">
