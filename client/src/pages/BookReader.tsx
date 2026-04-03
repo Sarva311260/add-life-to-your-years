@@ -7,9 +7,9 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 const PDF_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v5_a6b2f767.pdf";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
 const MD_CDN_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_add36901.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_490673bf.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -164,6 +164,8 @@ function buildSearchResults(content: string, query: string): SearchResult[] {
   return results.slice(0, 50); // cap at 50 results
 }
 
+const SCROLL_STORAGE_KEY = "book-reader-scroll";
+
 export default function BookReader() {
   const [bookContent, setBookContent] = useState("");
   const [loading, setLoading] = useState(true);
@@ -191,6 +193,34 @@ export default function BookReader() {
         setError(true);
         setLoading(false);
       });
+  }, []);
+
+  // Restore scroll position when returning from a video modal
+  useEffect(() => {
+    if (!loading && bookContent) {
+      const saved = sessionStorage.getItem(SCROLL_STORAGE_KEY);
+      if (saved) {
+        const scrollY = parseInt(saved, 10);
+        sessionStorage.removeItem(SCROLL_STORAGE_KEY);
+        // Small delay to let the content render before scrolling
+        setTimeout(() => window.scrollTo({ top: scrollY, behavior: "instant" }), 150);
+      }
+    }
+  }, [loading, bookContent]);
+
+  // Intercept clicks on recommendation links to save scroll position before navigating
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement).closest("a");
+      if (!target) return;
+      const href = target.getAttribute("href") || "";
+      if (href.includes("from=reader")) {
+        // Save current scroll position before leaving
+        sessionStorage.setItem(SCROLL_STORAGE_KEY, String(window.scrollY));
+      }
+    };
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
   }, []);
 
   // Keyboard shortcut: Ctrl+F / Cmd+F to open search
@@ -546,21 +576,25 @@ export default function BookReader() {
                       {children}
                     </code>
                   ),
-                  img: ({ src, alt }) => (
-                    <figure className="my-8 text-center">
-                      <img
-                        src={src}
-                        alt={alt || ""}
-                        className="max-w-full mx-auto rounded-lg shadow-md"
-                        loading="lazy"
-                      />
-                      {alt && (
-                        <figcaption className="mt-2 text-sm text-stone-500 italic">
-                          {alt}
-                        </figcaption>
-                      )}
-                    </figure>
-                  ),
+                  img: ({ src, alt }) => {
+                    // Hide the home page QR code in the online reader (it's for PDF use only)
+                    if (src && src.includes("qr-home")) return null;
+                    return (
+                      <figure className="my-8 text-center">
+                        <img
+                          src={src}
+                          alt={alt || ""}
+                          className="max-w-full mx-auto rounded-lg shadow-md"
+                          loading="lazy"
+                        />
+                        {alt && (
+                          <figcaption className="mt-2 text-sm text-stone-500 italic">
+                            {alt}
+                          </figcaption>
+                        )}
+                      </figure>
+                    );
+                  },
                 }}
               >
                 {bookContent}

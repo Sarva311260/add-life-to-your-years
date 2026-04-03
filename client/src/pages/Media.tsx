@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import SiteNav from "@/components/SiteNav";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -356,12 +357,32 @@ function VideoEmbed({ video }: { video: VideoItem }) {
   );
 }
 
-function RecommendationCard({ rec }: { rec: RecommendationSection }) {
-  const [expanded, setExpanded] = useState(rec.videos.length > 0);
+function RecommendationCard({
+  rec,
+  forceExpanded,
+  onPlayModal,
+}: {
+  rec: RecommendationSection;
+  forceExpanded?: boolean;
+  onPlayModal?: () => void;
+}) {
+  const [expanded, setExpanded] = useState(
+    forceExpanded || rec.videos.length > 0
+  );
   const hasVideos = rec.videos.length > 0;
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (forceExpanded && cardRef.current) {
+      setTimeout(() => {
+        cardRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 400);
+    }
+  }, [forceExpanded]);
 
   return (
     <motion.div
+      ref={cardRef}
       id={rec.id}
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -373,9 +394,12 @@ function RecommendationCard({ rec }: { rec: RecommendationSection }) {
           hasVideos ? "border-green-300 shadow-md" : "border-border/50"
         } overflow-hidden`}
       >
-        <button
-          className="w-full text-left"
+        <div
+          className="w-full text-left cursor-pointer select-none"
           onClick={() => setExpanded(!expanded)}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setExpanded(!expanded); }}
         >
           <CardContent className="p-5 flex items-center gap-4">
             <div
@@ -404,15 +428,26 @@ function RecommendationCard({ rec }: { rec: RecommendationSection }) {
                 {rec.description}
               </p>
             </div>
-            <div className="shrink-0 text-muted-foreground">
+            <div className="shrink-0 flex items-center gap-2">
+              {hasVideos && onPlayModal && (
+                <button
+                  onClick={(e) => { e.stopPropagation(); onPlayModal(); }}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-600 hover:bg-green-700 text-white text-xs font-medium transition-colors"
+                >
+                  <Play className="w-3 h-3" />
+                  Watch
+                </button>
+              )}
+              <span className="text-muted-foreground">
               {expanded ? (
                 <ChevronUp className="w-4 h-4" />
               ) : (
                 <ChevronDown className="w-4 h-4" />
               )}
+              </span>
             </div>
           </CardContent>
-        </button>
+        </div>
 
         <AnimatePresence>
           {expanded && (
@@ -464,10 +499,132 @@ function RecommendationCard({ rec }: { rec: RecommendationSection }) {
 
 type Tab = "recommendations" | "podcasts" | "videos";
 
+// ─── Video Modal ─────────────────────────────────────────────────────────────
+
+function VideoModal({
+  rec,
+  onClose,
+}: {
+  rec: RecommendationSection;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", handleKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", handleKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+      >
+        <motion.div
+          className="relative w-full max-w-3xl bg-card rounded-2xl shadow-2xl overflow-hidden"
+          initial={{ scale: 0.92, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.92, opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between px-5 py-4 border-b border-border/40">
+            <div className="flex items-center gap-3">
+              <div
+                className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 font-bold text-xs ${rec.color}`}
+              >
+                {rec.number}
+              </div>
+              <div>
+                <p className="text-xs text-muted-foreground">Recommendation {rec.number}</p>
+                <h3 className="font-semibold text-foreground text-sm">{rec.title}</h3>
+              </div>
+            </div>
+            <button
+              onClick={onClose}
+              className="w-8 h-8 rounded-full bg-muted hover:bg-muted/80 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+            >
+              ✕
+            </button>
+          </div>
+          {/* Videos */}
+          <div className="p-5 space-y-6">
+            {rec.videos.map((v) => (
+              <div key={v.youtubeId} className="space-y-2">
+                <div
+                  className="relative w-full rounded-xl overflow-hidden shadow-md bg-black"
+                  style={{ paddingBottom: "56.25%" }}
+                >
+                  <iframe
+                    className="absolute inset-0 w-full h-full"
+                    src={`https://www.youtube.com/embed/${v.youtubeId}?autoplay=1`}
+                    title={v.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                </div>
+                <p className="font-medium text-foreground text-sm">{v.title}</p>
+                {v.description && (
+                  <p className="text-xs text-muted-foreground">{v.description}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 // ─── Main page ────────────────────────────────────────────────────────────────
 
 export default function Media() {
   const [activeTab, setActiveTab] = useState<Tab>("recommendations");
+  const [modalRec, setModalRec] = useState<RecommendationSection | null>(null);
+  const [openedViaHash, setOpenedViaHash] = useState(false);
+  const [returnTo, setReturnTo] = useState<string | null>(null);
+
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get("from");
+    if (hash && hash.startsWith("rec-")) {
+      const matched = RECOMMENDATIONS.find((r) => r.id === hash);
+      if (matched && matched.videos.length > 0) {
+        setActiveTab("recommendations");
+        setOpenedViaHash(true);
+        // If opened from the book reader, remember to go back there on close
+        // The scroll position is saved in sessionStorage by the book reader before navigating
+        if (from === "reader") setReturnTo("/book/read");
+        setTimeout(() => setModalRec(matched), 300);
+      }
+    }
+  }, []);
+
+  const handleCloseModal = () => {
+    setModalRec(null);
+    if (returnTo) {
+      // Opened from the book reader via ?from=reader — navigate back to it
+      window.location.href = returnTo;
+    } else if (openedViaHash) {
+      // Opened via hash link (e.g. direct URL) — go back in browser history
+      window.history.back();
+    } else {
+      // Opened from the Watch button on this page — just clear hash and stay
+      window.history.replaceState(null, "", window.location.pathname);
+    }
+  };
+
   const totalVideos = RECOMMENDATIONS.reduce(
     (sum, r) => sum + r.videos.length,
     0
@@ -495,6 +652,7 @@ export default function Media() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SiteNav />
       {/* Hero */}
       <section className="py-16 bg-gradient-to-b from-green-50/60 to-white">
         <div className="container text-center">
@@ -599,7 +757,11 @@ export default function Media() {
                 </div>
                 <div className="space-y-4">
                   {RECOMMENDATIONS.map((rec) => (
-                    <RecommendationCard key={rec.id} rec={rec} />
+                    <RecommendationCard
+                      key={rec.id}
+                      rec={rec}
+                      onPlayModal={rec.videos.length > 0 ? () => setModalRec(rec) : undefined}
+                    />
                   ))}
                 </div>
               </motion.div>
@@ -759,6 +921,11 @@ export default function Media() {
           </p>
         </div>
       </footer>
+
+      {/* Video Modal */}
+      {modalRec && (
+        <VideoModal rec={modalRec} onClose={handleCloseModal} />
+      )}
     </div>
   );
 }
