@@ -191,7 +191,14 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     description:
       "Pulsed Electromagnetic Field therapy and grounding — how reconnecting with the Earth's electromagnetic field supports redox signalling and recovery.",
     color: "bg-emerald-100 text-emerald-800 border-emerald-200",
-    videos: [],
+    videos: [
+      {
+        youtubeId: "byinppKR9LY",
+        title: "PEMF Therapy — Pulsed Electromagnetic Field & Redox Signalling",
+        description:
+          "How PEMF therapy works at the cellular level to support redox signalling, recovery, and overall vitality.",
+      },
+    ],
   },
   {
     id: "rec-10",
