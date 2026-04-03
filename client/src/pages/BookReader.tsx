@@ -9,7 +9,7 @@ import remarkGfm from "remark-gfm";
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
 const MD_CDN_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_fb8c5bba.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_f588cb34.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -325,13 +325,7 @@ export default function BookReader() {
             >
               <Search className="h-4 w-4" />
             </Button>
-            <a href={PDF_URL} download="Add-Life-to-Your-Years.pdf">
-              <Button size="sm" className="gap-2 bg-green-700 hover:bg-green-800 text-white">
-                <Download className="h-4 w-4" />
-                <span className="hidden sm:inline">Download PDF</span>
-                <span className="sm:hidden">PDF</span>
-              </Button>
-            </a>
+
           </div>
         </div>
 
@@ -463,12 +457,9 @@ export default function BookReader() {
           {error && (
             <div className="flex flex-col items-center justify-center py-32 gap-4">
               <p className="text-stone-500">Could not load the book content.</p>
-              <a href={PDF_URL} download>
-                <Button className="bg-green-700 hover:bg-green-800 text-white gap-2">
-                  <Download className="h-4 w-4" />
-                  Download PDF instead
-                </Button>
-              </a>
+              <Button onClick={() => window.location.reload()} className="bg-green-700 hover:bg-green-800 text-white gap-2">
+                Try Again
+              </Button>
             </div>
           )}
           {!loading && !error && (
@@ -583,7 +574,7 @@ export default function BookReader() {
                     // Hide the home page QR code in the online reader (it's for PDF use only)
                     if (src && src.includes("qr-home")) return null;
                     // QR codes should be small
-                    const isQR = src && (src.includes("qr-rec") || src.includes("qr-community"));
+                    const isQR = src && (src.includes("qr-rec") || src.includes("qr-community") || src.includes("qr-self-eval") || src.includes("qr_code"));
                     // Infographics should be larger and clickable to zoom
                     const isInfographic = src && (src.includes("infographic") || src.includes("human_microbial"));
                     let imgClass = "max-w-full mx-auto rounded-lg shadow-md";

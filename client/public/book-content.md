@@ -54,29 +54,25 @@ Here is what the ecosystem includes, and how each part connects to this book:
 **The Companion Website**
 
 The website is your digital home base. It expands on the content in this book with dedicated pages for each of the 8 Factors of Health and Disease, additional articles, and regularly updated resources. Wherever you see a QR code in these pages, it will take you directly to the relevant section of the website — so you can move seamlessly between reading and exploring without losing your place.
-[QR CODE PLACEHOLDER — Website Home Page]
-[website URL placeholder]
 
 **The Free Self-Evaluation Tool**
 
 One of the most valuable things you can do before — or alongside — reading this book is to complete the free online self-evaluation. It takes approximately fifteen minutes and asks you a series of carefully designed questions across all 8 health factors. At the end, you receive a personalised wellness profile: an overall score, a breakdown by category, and specific, prioritised recommendations based on your responses.
 This is not a diagnostic tool. It is a mirror — a way of seeing your current health picture clearly, so you know where to focus your energy. Many readers find that completing the evaluation before reading Part Two gives the 8 Factors immediate personal relevance.
 Others prefer to read first and evaluate afterwards. Either approach works.
-[QR CODE PLACEHOLDER — Self-Evaluation Tool]
-[website URL placeholder]/self-evaluation
+
+> [![Take the Self-Evaluation](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-self-eval_0db23102.png)](https://addlifetoyouryears.org/evaluation)
+>
+> **[Take the Free Self-Evaluation](https://addlifetoyouryears.org/evaluation)**
 
 **The Media Library**
 
 The website hosts a growing library of videos, interviews, and educational content — all free to access. This material brings the concepts in the book to life through visual explanation, expert conversation, and real-world examples. As the library grows, it will cover each of the major topics in this book in greater depth. Links and QR codes throughout the text will point you to relevant media content as you read.
-[QR CODE PLACEHOLDER — Media Library]
-[website URL placeholder]/media
 
 **Coaching and Personal Support**
 
 For those who want more than information — who want guidance, accountability, and a personalised plan — one-on-one coaching and in-person consultations are available. These are the only elements of the ecosystem that carry a fee, reflecting the time and expertise involved in truly personalised support. Everything else remains free.
 If you complete the self-evaluation and find that your results raise questions you would like to explore with a professional, or if you simply want support in translating the strategies in Part Three into a programme that fits your specific life, coaching is available through the website.
-[QR CODE PLACEHOLDER — Coaching and Consultation]
-[website URL placeholder]/coaching
 
 > ### How to Get the Most from This Ecosystem
 >
@@ -93,8 +89,6 @@ If you complete the self-evaluation and find that your results raise questions y
 **A Note on Supporting This Work**
 
 Creating and maintaining these resources takes considerable time and effort. If you find value in what you discover here — in the book, the website, or the tools — and you are in a position to contribute, donations are warmly welcomed and genuinely appreciated. They help keep everything free for those who need it most.
-[QR CODE PLACEHOLDER — Support / Donation Page]
-[website URL placeholder]/support
 
 
 
@@ -1417,8 +1411,6 @@ The most common objection at this point is protein. Where does it come from? The
 
 The second most common objection is taste and practicality. This is legitimate. Changing how you eat is a significant life adjustment, and the transition period can be challenging. The resources available to support this transition — cookbooks, online communities, meal planning tools, and the companion website to this book — are extensive. The investment in learning a new way of cooking pays dividends for the rest of your life.
 
-> **[QR CODE — WFPB Starter Guide, Recipe Resources, and Recommended Reading]**
-> *[website URL placeholder]/wfpb*
 
 
 1. Esselstyn CB Jr. Updating a 12-year experience with arrest and reversal therapy for coronary heart disease. *American Journal of Cardiology*. 1999;84(3):339–341.
@@ -1472,8 +1464,6 @@ Thirst is a reliable guide for most healthy adults. The body's thirst mechanism 
 
 One practical note: the habit of drinking a large glass of water first thing in the morning — before coffee, before food — is a simple and beneficial ritual. After eight hours without fluid, the body is mildly dehydrated, and rehydrating before consuming anything else supports kidney function, digestion, and cognitive clarity.
 
-> **[QR CODE — Recommended Water Filtration Systems and Suppliers]**
-> *[website URL placeholder]/store/water*
 
 
 1. Grandjean AC, Grandjean NR. Dehydration and cognitive performance. *Journal of the American College of Nutrition*. 2007;26(5 Suppl):549S–554S.
@@ -1540,8 +1530,6 @@ Melatonin production naturally declines with age — a process that begins in th
 
 For John, melatonin supplementation — combined with improved sleep hygiene and reduced alcohol — is a reasonable and evidence-supported addition to his programme. It addresses both the sleep regulation deficit and the broader antioxidant and anti-inflammatory burden his body is carrying.
 
-> **[QR CODE — Sleep Resources, Melatonin Research, and Recommended Suppliers]**
-> *[website URL placeholder]/sleep*
 
 
 1. Reiter RJ, Tan DX, Rosales-Corral S, Manchester LC. The universal nature, unequal distribution and antioxidant functions of melatonin and its derivatives. *Mini Reviews in Medicinal Chemistry*. 2013;13(3):373–384.
@@ -1612,6 +1600,10 @@ For John, whose liver is under stress from chronic alcohol use, whose gut integr
 ---
 
 **Watch Related Videos:** [View videos for Recommendation 4 — Glycine](https://addlifetoyouryears.org/media#rec-4)
+
+> [![Watch: Glycine Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-4_2a5b81f2.png)](https://addlifetoyouryears.org/media#rec-4)
+>
+> **[Watch Videos: Glycine](https://addlifetoyouryears.org/media#rec-4)**
 
 ---
 
@@ -1725,11 +1717,7 @@ The vitamin C from the fruit significantly enhances the absorption of the non-ha
 
 For John, this morning ritual becomes more than nutrition. It becomes a daily act of intentional self-care — a signal to his body and his nervous system that the day is beginning differently than it used to. The preparation itself — the deliberate assembly of specific, chosen things — is part of the practice. It takes less than five minutes. It costs very little. And it delivers, in a single bowl, a nutritional foundation that most people never come close to achieving in an entire day.
 
-> **[QR CODE — Morning Bowl Recipes and Variations]**
-> *[website URL placeholder]/morning-bowl*
 
-> **[QR CODE — Five Seeds of Life — Sourcing Guide and Preparation Tips]**
-> *[website URL placeholder]/five-seeds*
 
 ### The 75% Raw Food Principle
 
@@ -1764,8 +1752,6 @@ What the 75% raw principle guards against is the gradual drift toward predominan
 
 For John, this principle does not require perfection. On days when he travels, when he is tired, when the circumstances of life make the ideal impossible, he aims for the best available option rather than abandoning the framework entirely. Progress, not perfection, is the standard.
 
-> **[QR CODE — The 75% Raw Food Principle — Meal Ideas and Weekly Planner]**
-> *[website URL placeholder]/raw-food-principle*
 
 
 1. Shoba G, Joy D, Joseph T, Majeed M, Rajendran R, Srinivas PS. Influence of piperine on the pharmacokinetics of curcumin in animals and human volunteers. *Planta Medica*. 1998;64(4):353–356.
@@ -1790,13 +1776,7 @@ For John, this principle does not require perfection. On days when he travels, w
 >
 > **[Watch Videos: Five Seeds of Life](https://addlifetoyouryears.org/media#rec-5)**
 
-> [![Five Seeds of Life Resources](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-5_a4ac10cb.png)](https://addlifetoyouryears.org/media#rec-5)
->
-> **[Five Seeds of Life Resources](https://addlifetoyouryears.org/media#rec-5)**
 
-> [![The 75% Raw Food Principle Resources](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-5_a4ac10cb.png)](https://addlifetoyouryears.org/media#rec-5)
->
-> **[The 75% Raw Food Principle Resources](https://addlifetoyouryears.org/media#rec-5)**
 
 ## Recommendation 6: Vitamin B12 and Vitamin D
 
@@ -1843,6 +1823,14 @@ John, who commutes before sunrise and works in a fluorescent-lit office, is almo
 ---
 
 **Watch Related Videos:** [View videos for Recommendation 6 — Vitamin B12 & Vitamin D](https://addlifetoyouryears.org/media#rec-6)
+
+> [![Watch: Vitamin B12 Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-6-b12_2bf2a980.png)](https://addlifetoyouryears.org/media#rec-6)
+>
+> **[Watch Videos: Vitamin B12](https://addlifetoyouryears.org/media#rec-6)**
+
+> [![Watch: Vitamin D3 Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-6-d3_31c8077f.png)](https://addlifetoyouryears.org/media#rec-6)
+>
+> **[Watch Videos: Vitamin D3](https://addlifetoyouryears.org/media#rec-6)**
 
 ---
 
@@ -1905,8 +1893,6 @@ Grip strength deserves particular mention. It is one of the most consistently st
 | Floor get-up | 5–10 repetitions | Daily | Full-body coordination, strength, independence |
 | Towel isometric | 5–10 repetitions × 5–10 seconds | Daily | Upper body strength, grip strength, posture |
 
-> **[QR CODE — Six Movements Video Demonstrations]**
-> *[website URL placeholder]/six-movements*
 
 
 1. Brito LB, Ricardo DR, Araújo DS, Ramos PS, Myers J, Araújo CG. Ability to sit and rise from the floor as a predictor of all-cause mortality. *European Journal of Preventive Cardiology*. 2014;21(7):892–898.
@@ -1996,8 +1982,6 @@ John found Bhramari particularly helpful in the evening, as part of his wind-dow
 
 He practiced it sitting on the edge of his bed, with his thumbs gently blocking his ears, for five to seven rounds. The external silence created by blocking the ears amplified the internal sound of the hum, which he found deeply absorbing. After finishing, he would sit quietly for a minute, then lie down and transition into the 4-7-8 breath to facilitate sleep. The combination — Bhramari followed by 4-7-8 — became one of the most reliable tools in his toolkit for shifting out of the agitated, racing-mind state that had made falling asleep so difficult for years.
 
-> **[QR CODE — Guided Breathing Exercises and Resources]**
-> *[website URL placeholder]/breathing*
 
 
 1. Zaccaro A, Piarulli A, Laurino M, et al. How breath-control can change your life: a systematic review on psycho-physiological correlates of slow breathing. *Frontiers in Human Neuroscience*. 2018;12:353.
@@ -2085,11 +2069,7 @@ It is important to note that this is not antioxidant supplementation in the conv
 
 For those seeking to support their cellular health as they age, supplementation with stabilised native redox signalling molecules represents one of the most scientifically coherent approaches available — not as a replacement for the foundational lifestyle practices described throughout this book, but as a meaningful complement to them.
 
-> **[QR CODE — Redox Signalling Molecule Supplement: Research, Sourcing and Recommended Protocol]**
-> *[website URL placeholder]/redox-supplement*
 
-> **[QR CODE — PEMF and Earthing Research, Recommended Devices and Suppliers]**
-> *[website URL placeholder]/pemf*
 
 
 1. Chevalier G, Sinatra ST, Oschman JL, Sokal K, Sokal P. Earthing: health implications of reconnecting the human body to the Earth's surface electrons. *Journal of Environmental and Public Health*. 2012;2012:291541.
@@ -2147,8 +2127,6 @@ For John, the most important aspect of this recommendation is not the technique 
 
 This resistance is worth noting, because it points to something important: the thoughts and feelings that arise in meditation are not obstacles to the practice. They are the practice. Learning to observe them without being swept away by them — to see them as passing events in the mind rather than as truths about the world — is the skill that meditation develops, and it is a skill with profound implications for every aspect of John's life.
 
-> **[QR CODE — Guided Meditation Resources and MBSR Programme Information]**
-> *[website URL placeholder]/meditation*
 
 
 1. Holzel BK, Carmody J, Vangel M, et al. Mindfulness practice leads to increases in regional brain gray matter density. *Psychiatry Research: Neuroimaging*. 2011;191(1):36–43.
@@ -2197,8 +2175,6 @@ Where possible, the walk should involve genuine nature — trees, grass, water, 
 
 The combination of this recommendation with Recommendation 7 (walking) and Recommendation 8 (breathing) creates a morning practice of considerable power: a twenty-minute barefoot walk (Recommendation 9 — earthing) in a natural setting, with conscious nasal breathing, provides cardiovascular exercise, nature exposure, earthing, and breathing practice simultaneously. This is not a coincidence — these practices are naturally complementary and mutually reinforcing.
 
-> **[QR CODE — Nature Therapy Resources and Local Green Space Finder]**
-> *[website URL placeholder]/nature*
 
 
 1. Li Q, Morimoto K, Kobayashi M, et al. Visiting a forest, but not a city, increases human natural killer activity and expression of anti-cancer proteins. *International Journal of Immunopathology and Pharmacology*. 2008;21(1):117–127.
@@ -2250,8 +2226,6 @@ The practical starting point is to seek couples therapy with a practitioner trai
 
 It is also worth noting that many of the other changes in this programme will, indirectly, support the relationship. As John's sleep improves, his emotional regulation will improve. As his alcohol use decreases, his availability and presence will increase. As his financial stress begins to ease (Recommendation 13), a major source of conflict will be reduced. The changes are not isolated — they interact and reinforce each other.
 
-> **[QR CODE — Relationship Resources and Therapist Finder]**
-> *[website URL placeholder]/relationships*
 
 
 1. Gottman JM, Silver N. *The Seven Principles for Making Marriage Work*. New York: Harmony Books; 1999.
@@ -2300,8 +2274,6 @@ The answers to these questions are the raw material of a second income that is a
 
 For John, who has spent years feeling trapped by financial pressure and disconnected from any sense of purpose beyond his obligations, this recommendation is not just about money. It is about reclaiming agency — the sense that he is not merely subject to circumstances, but capable of shaping them.
 
-> **[QR CODE — Second Income Resources and Community]**
-> *[website URL placeholder]/second-income*
 
 
 1. Csikszentmihalyi M. *Flow: The Psychology of Optimal Experience*. New York: Harper & Row; 1990.
@@ -2350,8 +2322,6 @@ But the longer-term question — where does John want to live, and what kind of 
 
 This does not mean uprooting everything immediately. It means holding the question consciously — making it a medium-term goal rather than an indefinite aspiration — and allowing it to inform decisions about where to invest energy and resources over the coming years.
 
-> **[QR CODE — Environmental Health Resources and Assessment Tools]**
-> *[website URL placeholder]/environment*
 
 
 1. Landrigan PJ, Fuller R, Acosta NJ, et al. The Lancet Commission on pollution and health. *The Lancet*. 2018;391(10119):462–512.
@@ -2444,7 +2414,7 @@ The combination with morning sunlight became a ritual he looked forward to. The 
 
 For John, methylene blue was not a magic bullet. No single intervention in this programme was. But it was a precisely targeted tool that addressed a specific deficit — mitochondrial dysfunction and its cognitive and emotional consequences — in a way that complemented everything else he was doing. By the time his twelve-month review arrived, it had become one of the interventions he was most reluctant to consider removing.
 
-**[QR CODE — Methylene Blue: Research, Sourcing, and Protocols]** *[website URL placeholder]/methylene-blue*
+
 
 1. Rojas JC, Bruchey AK, Gonzalez-Lima F. Neurometabolic mechanisms for memory enhancement and neuroprotection of methylene blue. *Progress in Neurobiology*. 2012;96(1):32–45.
 2. Naylor GJ, Smith AH, Connelly P. A controlled trial of methylene blue in severe depressive illness. *Biological Psychiatry*. 1987;22(5):657–659.
@@ -2460,6 +2430,10 @@ For John, methylene blue was not a magic bullet. No single intervention in this 
 ---
 
 **Watch Related Videos:** [View videos for Recommendation 15 — Methylene Blue & Photobiomodulation](https://addlifetoyouryears.org/media#rec-15)
+
+> [![Watch: Methylene Blue Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-15_daab66b0.png)](https://addlifetoyouryears.org/media#rec-15)
+>
+> **[Watch Videos: Methylene Blue & Photobiomodulation](https://addlifetoyouryears.org/media#rec-15)**
 
 ---
 
@@ -2539,8 +2513,6 @@ That is what it means to add life to your years.
 
 *Part Four will continue to grow in future editions of this book. Subsequent sections will cover advanced topics including the gut-brain axis and mental health, hormonal health across the lifespan, the role of community and social environment in health outcomes, and an expanded exploration of the emerging science of biological ageing and its practical implications. Readers are encouraged to engage with the companion website for the most current resources, research updates, and community support.*
 
-> **[QR CODE — Join the Community — Share Your Story]**
-> *[website URL placeholder]/community*
 
 ---
 ---
@@ -2682,6 +2654,4 @@ If this book has helped you, please share it with someone who might benefit.
 
 *[addlifetoyouryears.org](https://addlifetoyouryears.org)*
 
-> [![Join the Community](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-community_6eb3161a.png)](https://addlifetoyouryears.org/community)
->
-> **[Join the Community](https://addlifetoyouryears.org/community)**
+

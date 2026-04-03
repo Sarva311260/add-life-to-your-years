@@ -62,7 +62,7 @@ export default function Book() {
             >
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6">
                 <BookOpen className="w-4 h-4" />
-                Free Download
+                Free to Read
               </span>
               <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">
                 Add Life to Your Years
@@ -110,26 +110,6 @@ export default function Book() {
               </CardContent>
             </Card>
 
-            {/* PDF Download */}
-            <Card className="border-2 border-green-200 shadow-lg hover:shadow-xl transition-shadow md:col-span-2">
-              <CardContent className="p-8 flex flex-col md:flex-row items-center gap-6">
-                <div className="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center shrink-0">
-                  <Download className="w-8 h-8 text-green-700" />
-                </div>
-                <div className="flex-1 text-center md:text-left">
-                  <h2 className="font-serif text-xl font-bold text-foreground mb-1">Download PDF</h2>
-                  <p className="text-muted-foreground text-sm">
-                    Best for reading on screen, printing, or sharing. Opens in any PDF viewer. 125 pages · ~2.5 MB
-                  </p>
-                </div>
-                <a href={PDF_URL} download="AddLifeToYourYears.pdf">
-                  <Button className="bg-green-700 hover:bg-green-800 text-white gap-2 px-8" size="lg">
-                    <Download className="w-4 h-4" />
-                    Download PDF
-                  </Button>
-                </a>
-              </CardContent>
-            </Card>
           </motion.div>
 
           {/* What's Inside */}
