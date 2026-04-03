@@ -223,7 +223,14 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     description:
       "Why spending time in natural environments is a measurable health intervention — from forest bathing to sunlight exposure.",
     color: "bg-lime-100 text-lime-800 border-lime-200",
-    videos: [],
+    videos: [
+      {
+        youtubeId: "UHv3SCUioQU",
+        title: "Time in Nature — Forest Bathing, Sunlight & Healing",
+        description:
+          "The science behind why spending time in natural environments is one of the most powerful health interventions available.",
+      },
+    ],
   },
   {
     id: "rec-12",
