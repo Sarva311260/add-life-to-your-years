@@ -144,6 +144,12 @@ const RECOMMENDATIONS: RecommendationSection[] = [
         description:
           "The critical role of B12 in nerve function, energy, and DNA synthesis — and how to ensure you’re getting enough.",
       },
+      {
+        youtubeId: "iotnggfP9Yk",
+        title: "Vitamin D — The Sunshine Vitamin & Your Health",
+        description:
+          "Why Vitamin D deficiency is epidemic, its role in immunity and bone health, and how to supplement correctly.",
+      },
     ],
   },
   {
