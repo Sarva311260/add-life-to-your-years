@@ -137,7 +137,14 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     description:
       "Two critical nutrients that are widely deficient — why they matter and how to supplement intelligently.",
     color: "bg-orange-100 text-orange-800 border-orange-200",
-    videos: [],
+    videos: [
+      {
+        youtubeId: "wY4vEBilWN4",
+        title: "Vitamin B12 — Why It Matters & How to Supplement",
+        description:
+          "The critical role of B12 in nerve function, energy, and DNA synthesis — and how to ensure you’re getting enough.",
+      },
+    ],
   },
   {
     id: "rec-7",
