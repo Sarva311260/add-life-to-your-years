@@ -140,3 +140,5 @@
 - [x] Add Second Income video (https://youtu.be/eD0N8wXjNSs) to Recommendation 13 on Media page
 - [x] Add Environment video (https://youtu.be/foBnfBX4YKQ) to Recommendation 14 on Media page
 - [x] Add Methylene Blue video (https://youtu.be/KvASX2yp0zU) to Recommendation 15 on Media page
+- [x] Fix QR code deep links: auto-expand and scroll to specific recommendation video when URL hash matches (e.g. /media#rec-1)
+- [x] Add video modal/lightbox that auto-opens with specific recommendation video when URL hash matches (e.g. /media#rec-1)
