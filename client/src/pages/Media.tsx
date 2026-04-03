@@ -121,7 +121,14 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     description:
       "Five powerhouse seeds — flax, chia, hemp, pumpkin, and sesame — and why they should be part of your daily nutrition.",
     color: "bg-yellow-100 text-yellow-800 border-yellow-200",
-    videos: [],
+    videos: [
+      {
+        youtubeId: "YckoR3hLL9E",
+        title: "The Five Seeds of Life",
+        description:
+          "Why flax, chia, hemp, pumpkin, and sesame seeds are among the most nutrient-dense foods you can eat daily.",
+      },
+    ],
   },
   {
     id: "rec-6",
