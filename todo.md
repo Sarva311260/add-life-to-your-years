@@ -114,3 +114,8 @@
 - [x] Add medical disclaimer to manuscript (before introduction)
 - [x] Create comprehensive glossary and add to manuscript, PDF, and TOC
 - [x] Remove non-PDF download button from Book page, keep only PDF
+- [x] Add copyright notice to manuscript (online reader and PDF)
+- [x] Generate QR code for addlifetoyouryears.org and add to PDF last page
+- [x] Add share section with QR code to PDF final page
+- [x] Build grouped Media page with 15 Recommendation sections and YouTube videos
+- [x] Add clickable links in book (online reader + PDF) to Media page sections

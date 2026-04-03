@@ -5,9 +5,9 @@ import { Leaf, ArrowLeft, BookOpen, Download, FileText, CheckCircle2 } from "luc
 import { motion } from "framer-motion";
 
 const PDF_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_954eab9d.pdf";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_f06f47f5.pdf";
 const MD_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_6b76350d.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_fe9e4e96.md";
 
 const CONTENTS = [
   "Introduction — The Wellness Ecosystem",
@@ -119,7 +119,7 @@ export default function Book() {
                 <div className="flex-1 text-center md:text-left">
                   <h2 className="font-serif text-xl font-bold text-foreground mb-1">Download PDF</h2>
                   <p className="text-muted-foreground text-sm">
-                    Best for reading on screen, printing, or sharing. Opens in any PDF viewer. 136 pages · ~3.6 MB
+                    Best for reading on screen, printing, or sharing. Opens in any PDF viewer. 138 pages · ~3.8 MB
                   </p>
                 </div>
                 <a href={PDF_URL} download="AddLifeToYourYears.pdf">

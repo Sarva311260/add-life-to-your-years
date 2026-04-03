@@ -1319,6 +1319,13 @@ The second most common objection is taste and practicality. This is legitimate. 
 
 ---
 
+
+---
+
+**Watch Related Videos:** [View videos for Recommendation 1 — Whole Food Plant-Based Diet](https://addlifetoyouryears.org/media#rec-1)
+
+---
+
 ## Recommendation 2: Drink Distilled or Reverse Osmosis Water — Based on Need, Not Dogma
 
 John has been drinking tap water his entire life without giving it much thought. Most people do. The water comes out of the tap, it looks clear, it tastes acceptable, and the authorities have declared it safe. That is usually enough.
@@ -1355,6 +1362,13 @@ One practical note: the habit of drinking a large glass of water first thing in 
 2. Environmental Working Group. *EWG's Tap Water Database*. 2021. Available at: www.ewg.org/tapwater
 3. Schaider LA, Rudel RA, Ackerman JM, Dunagan SC, Brody JG. Pharmaceuticals, perfluorosurfactants, and other organic wastewater compounds in public drinking water wells in a shallow sand and gravel aquifer. *Science of the Total Environment*. 2014;468–469:384–393.
 4. Grandjean P, Landrigan PJ. Neurobehavioural effects of developmental toxicity. *The Lancet Neurology*. 2014;13(3):330–338.
+
+---
+
+
+---
+
+**Watch Related Videos:** [View videos for Recommendation 2 — Water & Hydration](https://addlifetoyouryears.org/media#rec-2)
 
 ---
 
@@ -1414,6 +1428,13 @@ For John, melatonin supplementation — combined with improved sleep hygiene and
 
 ---
 
+
+---
+
+**Watch Related Videos:** [View videos for Recommendation 3 — Sleep & Melatonin](https://addlifetoyouryears.org/media#rec-3)
+
+---
+
 ## Recommendation 4: Supplement with Glycine
 
 Glycine is the simplest amino acid in the human body and one of the most abundant. It is a primary structural component of collagen — the most plentiful protein in the body, comprising approximately 30% of total body protein and providing the structural scaffolding for skin, tendons, ligaments, cartilage, bone, and the walls of blood vessels. It is a precursor to glutathione, the body's master antioxidant. It plays critical roles in the synthesis of creatine (essential for muscle energy), the regulation of the nervous system (acting as an inhibitory neurotransmitter in the spinal cord and brainstem), and the support of liver detoxification pathways. It is required for the synthesis of haem (the iron-containing component of haemoglobin), bile salts (essential for fat digestion), and purines (the building blocks of DNA and RNA).
@@ -1454,6 +1475,13 @@ For John, whose liver is under stress from chronic alcohol use, whose gut integr
 3. Bannai M, Kawai N. New therapeutic strategy for amino acid medicine: glycine improves the quality of sleep. *Journal of Pharmacological Sciences*. 2012;118(2):145–148.
 4. Zhong Z, Wheeler MD, Li X, et al. L-Glycine: a novel anti-inflammatory, immunomodulatory, and cytoprotective agent. *Current Opinion in Clinical Nutrition and Metabolic Care*. 2003;6(2):229–240.
 5. Alves A, Bassot A, Bulteau AL, Pirola L, Morio B. Glycine metabolism and its alterations in obesity and metabolic diseases. *Nutrients*. 2019;11(6):1356.
+
+---
+
+
+---
+
+**Watch Related Videos:** [View videos for Recommendation 4 — Glycine](https://addlifetoyouryears.org/media#rec-4)
 
 ---
 
@@ -1619,6 +1647,13 @@ For John, this principle does not require perfection. On days when he travels, w
 
 ---
 
+
+---
+
+**Watch Related Videos:** [View videos for Recommendation 5 — Five Seeds of Life](https://addlifetoyouryears.org/media#rec-5)
+
+---
+
 ## Recommendation 6: Vitamin B12 and Vitamin D
 
 Two nutritional deficiencies are so common, so consequential, and so easily addressed that they deserve specific and detailed attention in any wellness programme: **Vitamin B12** and **Vitamin D**. These are the two supplements that we consider non-negotiable — not because we prefer supplements to food, but because the food-first principle has clear limits when it comes to these specific nutrients.
@@ -1657,6 +1692,13 @@ John, who commutes before sunrise and works in a fluorescent-lit office, is almo
 3. Autier P, Gandini S. Vitamin D supplementation and total mortality: a meta-analysis of randomized controlled trials. *Archives of Internal Medicine*. 2007;167(16):1730–1737.
 4. Garland CF, Gorham ED, Mohr SB, Garland FC. Vitamin D for cancer prevention: global perspective. *Annals of Epidemiology*. 2009;19(7):468–483.
 5. Herrmann W, Obeid R. Cobalamin deficiency. *Subcellular Biochemistry*. 2012;56:301–322.
+
+---
+
+
+---
+
+**Watch Related Videos:** [View videos for Recommendation 6 — Vitamin B12 & Vitamin D](https://addlifetoyouryears.org/media#rec-6)
 
 ---
 
@@ -1728,6 +1770,13 @@ Grip strength deserves particular mention. It is one of the most consistently st
 3. Wen CP, Wai JP, Tsai MK, et al. Minimum amount of physical activity for reduced mortality and extended life expectancy: a prospective cohort study. *The Lancet*. 2011;378(9798):1244–1253.
 4. Araujo CG, de Souza e Silva CG, Laukkanen JA, et al. Successful 10-second one-legged stance performance predicts survival in middle-aged and older individuals. *British Journal of Sports Medicine*. 2022;56(17):975–980.
 5. Leong DP, Teo KK, Rangarajan S, et al. Prognostic value of grip strength: findings from the Prospective Urban Rural Epidemiology (PURE) study. *The Lancet*. 2015;386(9990):266–273.
+
+---
+
+
+---
+
+**Watch Related Videos:** [View videos for Recommendation 7 — Six Movements](https://addlifetoyouryears.org/media#rec-7)
 
 ---
 
@@ -1806,6 +1855,13 @@ He practiced it sitting on the edge of his bed, with his thumbs gently blocking 
 3. Nestor J. *Breath: The New Science of a Lost Art*. New York: Riverhead Books; 2020.
 4. McKeown P. *The Oxygen Advantage*. New York: William Morrow; 2015.
 5. Jerath R, Edry JW, Barnes VA, Jerath V. Physiology of long pranayamic breathing: neural respiratory elements may provide a mechanism that explains how slow deep breathing shifts the autonomic nervous system. *Medical Hypotheses*. 2006;67(3):566–571.
+
+---
+
+
+---
+
+**Watch Related Videos:** [View videos for Recommendation 8 — Breathing](https://addlifetoyouryears.org/media#rec-8)
 
 ---
 
@@ -1888,6 +1944,13 @@ For those seeking to support their cellular health as they age, supplementation 
 
 ---
 
+
+---
+
+**Watch Related Videos:** [View videos for Recommendation 9 — PEMF & Earthing](https://addlifetoyouryears.org/media#rec-9)
+
+---
+
 ## Recommendation 10: Meditation and Relaxation
 
 John's nervous system has been running in emergency mode for years. The stress response that was designed for short-term survival — the acute mobilisation of energy and attention in response to immediate threat — has become his default operating state. His cortisol is chronically elevated. His heart rate variability is low. His prefrontal cortex — the part of the brain responsible for rational decision-making, impulse control, and long-term planning — is chronically suppressed by the stress hormones that keep his amygdala (the brain's threat-detection centre) in a state of heightened activation.
@@ -1933,6 +1996,13 @@ This resistance is worth noting, because it points to something important: the t
 
 ---
 
+
+---
+
+**Watch Related Videos:** [View videos for Recommendation 10 — Meditation](https://addlifetoyouryears.org/media#rec-10)
+
+---
+
 ## Recommendation 11: Time in Nature
 
 There is a growing body of evidence that time spent in natural environments — forests, parks, coastlines, open countryside — produces measurable improvements in physiological and psychological health that cannot be fully explained by the physical activity involved. Nature appears to have a direct biological effect on human health, independent of exercise, and the mechanisms are increasingly well understood.
@@ -1968,6 +2038,13 @@ The combination of this recommendation with Recommendation 7 (walking) and Recom
 3. Li Q. *Forest Bathing: How Trees Can Help You Find Health and Happiness*. New York: Viking; 2018.
 4. Taylor RP, Spehar B, Van Donkelaar P, Hagerhall CM. Perceptual and physiological responses to Jackson Pollock's fractals. *Frontiers in Human Neuroscience*. 2011;5:60.
 5. Kaplan R, Kaplan S. *The Experience of Nature: A Psychological Perspective*. Cambridge: Cambridge University Press; 1989.
+
+---
+
+
+---
+
+**Watch Related Videos:** [View videos for Recommendation 11 — Time in Nature](https://addlifetoyouryears.org/media#rec-11)
 
 ---
 
@@ -2010,6 +2087,13 @@ It is also worth noting that many of the other changes in this programme will, i
 
 ---
 
+
+---
+
+**Watch Related Videos:** [View videos for Recommendation 12 — Repairing the Relationship](https://addlifetoyouryears.org/media#rec-12)
+
+---
+
 ## Recommendation 13: Develop a Second Stream of Income — From Something You Love
 
 John's financial stress is not incidental to his health crisis. It is one of its primary drivers. The chronic activation of the stress response that financial insecurity produces is physiologically indistinguishable from any other chronic stressor — it elevates cortisol, disrupts sleep, impairs immune function, and narrows cognitive bandwidth. Research by the Nobel Prize-winning economist Sendhil Mullainathan and psychologist Eldar Shafir has demonstrated that financial scarcity impairs cognitive function in ways equivalent to losing 13 IQ points — not because of any inherent limitation in the people affected, but because the mental bandwidth consumed by financial worry leaves less capacity for everything else.
@@ -2047,6 +2131,13 @@ For John, who has spent years feeling trapped by financial pressure and disconne
 
 ---
 
+
+---
+
+**Watch Related Videos:** [View videos for Recommendation 13 — Second Income Stream](https://addlifetoyouryears.org/media#rec-13)
+
+---
+
 ## Recommendation 14: Consider Your Environment
 
 The final recommendation is the most structural — and, for many people, the most difficult to act on immediately. But it deserves to be named, because the environment in which we live is not a neutral backdrop to our health. It is an active determinant of it.
@@ -2081,6 +2172,13 @@ This does not mean uprooting everything immediately. It means holding the questi
 2. Gascon M, Triguero-Mas M, Martínez D, et al. Mental health benefits of long-term exposure to residential green and blue spaces: a systematic review. *International Journal of Environmental Research and Public Health*. 2015;12(4):4354–4379.
 3. Münzel T, Gori T, Babisch W, Basner M. Cardiovascular effects of environmental noise exposure. *European Heart Journal*. 2014;35(13):829–836.
 4. Lelieveld J, Evans JS, Fnais M, Giannadaki D, Pozzer A. The contribution of outdoor air pollution sources to premature mortality on a global scale. *Nature*. 2015;524(7564):367–371.
+
+---
+
+
+---
+
+**Watch Related Videos:** [View videos for Recommendation 14 — Your Environment](https://addlifetoyouryears.org/media#rec-14)
 
 ---
 
@@ -2163,6 +2261,13 @@ For John, methylene blue was not a magic bullet. No single intervention in this 
 5. Wainwright M, Crossley KB. Methylene blue — a therapeutic dye for all seasons? *Journal of Chemotherapy*. 2002;14(5):431–443.
 6. Tucker D, Lu Y, Zhang Q. From mitochondrial function to neuroprotection — an emerging role for methylene blue. *Molecular Neurobiology*. 2018;55(6):5137–5153.
 7. Bhattacharya R, Bhattacharya S. Photobiomodulation and methylene blue: synergistic effects on mitochondrial function and cognitive performance. *Frontiers in Neuroscience*. 2020;14:1–12.
+
+---
+
+
+---
+
+**Watch Related Videos:** [View videos for Recommendation 15 — Methylene Blue & Photobiomodulation](https://addlifetoyouryears.org/media#rec-15)
 
 ---
 
@@ -2363,3 +2468,24 @@ The following terms appear throughout this book. Definitions are written to be a
 **Vagus Nerve** — The longest cranial nerve in the body, running from the brainstem through the neck, chest, and abdomen. The vagus nerve is the primary conduit of the gut-brain axis and plays a central role in regulating heart rate, digestion, inflammation, and the parasympathetic (rest-and-digest) nervous system. Vagal tone — a measure of vagus nerve activity — is associated with resilience, emotional regulation, and social engagement.
 
 ---
+
+---
+
+## Share This Book
+
+If this book has helped you, please share it with someone who might benefit.
+
+[![Scan to visit addlifetoyouryears.org](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr_code_bfd06990.png)](https://addlifetoyouryears.org)
+
+**Scan the QR code** or visit [addlifetoyouryears.org](https://addlifetoyouryears.org) to:
+
+- Read the book online for free
+- Take the personalised Self-Evaluation
+- Access coaching resources and recommendations
+- Share with friends, family, and colleagues
+
+---
+
+*© 2025 Sarva. All rights reserved. Add Life to Your Years.*
+
+*[addlifetoyouryears.org](https://addlifetoyouryears.org)*
