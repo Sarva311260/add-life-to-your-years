@@ -587,6 +587,7 @@ function VideoModal({
 export default function Media() {
   const [activeTab, setActiveTab] = useState<Tab>("recommendations");
   const [modalRec, setModalRec] = useState<RecommendationSection | null>(null);
+  const [openedViaHash, setOpenedViaHash] = useState(false);
 
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
@@ -594,10 +595,26 @@ export default function Media() {
       const matched = RECOMMENDATIONS.find((r) => r.id === hash);
       if (matched && matched.videos.length > 0) {
         setActiveTab("recommendations");
+        setOpenedViaHash(true);
         setTimeout(() => setModalRec(matched), 300);
       }
     }
   }, []);
+
+  const handleCloseModal = () => {
+    setModalRec(null);
+    // Clear the hash so the modal doesn't re-open if the user navigates forward
+    window.history.replaceState(null, "", window.location.pathname);
+    if (openedViaHash) {
+      // Navigate back to wherever the reader came from (e.g. the book PDF viewer)
+      // If there is no meaningful previous page, fall back to the book reader
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = "/book/read";
+      }
+    }
+  };
 
   const totalVideos = RECOMMENDATIONS.reduce(
     (sum, r) => sum + r.videos.length,
@@ -897,7 +914,7 @@ export default function Media() {
 
       {/* Video Modal */}
       {modalRec && (
-        <VideoModal rec={modalRec} onClose={() => setModalRec(null)} />
+        <VideoModal rec={modalRec} onClose={handleCloseModal} />
       )}
     </div>
   );

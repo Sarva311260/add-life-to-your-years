@@ -142,3 +142,6 @@
 - [x] Add Methylene Blue video (https://youtu.be/KvASX2yp0zU) to Recommendation 15 on Media page
 - [x] Fix QR code deep links: auto-expand and scroll to specific recommendation video when URL hash matches (e.g. /media#rec-1)
 - [x] Add video modal/lightbox that auto-opens with specific recommendation video when URL hash matches (e.g. /media#rec-1)
+- [x] Fix Self-Evaluation QR code 404 in book — added /self-evaluation redirect to /questionnaire
+- [x] Video modal close: navigate back to previous page when opened via QR code deep link
+- [x] Regenerate PDF not needed — QR code URL was already correct, only app route was missing
