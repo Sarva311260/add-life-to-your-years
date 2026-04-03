@@ -207,7 +207,14 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     description:
       "The neuroscience of meditation — how regular practice reshapes the brain, reduces cortisol, and builds emotional resilience.",
     color: "bg-violet-100 text-violet-800 border-violet-200",
-    videos: [],
+    videos: [
+      {
+        youtubeId: "wXsxwIJnUJk",
+        title: "Meditation — Neuroscience, Cortisol & Emotional Resilience",
+        description:
+          "How regular meditation reshapes the brain, reduces cortisol, and builds lasting emotional resilience.",
+      },
+    ],
   },
   {
     id: "rec-11",
