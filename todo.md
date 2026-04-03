@@ -150,3 +150,12 @@
 - [x] Add SiteNav to Media page (other pages already had their own home/back navigation)
 - [x] Book reader QR links: history.back() on modal close returns to /book/read (same browser tab navigation)
 - [x] Book reader: save scroll position in sessionStorage when clicking rec links, restore on return from video modal
+- [x] PDF fix: Add Table of Contents at the front of the PDF
+- [x] PDF fix: Restore styled boxes/callouts (blockquotes, highlight boxes) in PDF rendering
+- [x] PDF fix: Make all links open in a new tab so the PDF stays open when a link is clicked
+- [x] PDF fix: Regenerate and upload new PDF v6 to CDN, updated download links in Book.tsx and BookReader.tsx
+- [ ] Remove first QR code (home page QR) from online reader only — keep it in the PDF
+- [ ] Remove first QR code (home page QR) from online reader only — keep it in the PDF
+- [ ] Fix Chapter 4 title — should be Redox not Air — in book-content.md and regenerate PDF
+- [x] URGENT: Fix Media.tsx nested button JSX error (button inside button) — converted outer button to div
+- [x] Fix subheadings not bold in online book reader — added #### prefix to all recurring subheadings in book-content.md

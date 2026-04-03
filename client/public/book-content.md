@@ -413,7 +413,7 @@ of what we feed our minds. Entire libraries have been written about lifestyle ch
 we focus on how lifestyle commonly becomes a source of difficulty, and in Part Three we
 will offer practical, evidence-based strategies for improvement.
 
-Where Lifestyle Commonly Creates Challenges
+#### Where Lifestyle Commonly Creates Challenges
 
 Nutrition and timing. Irregular meals, a reliance on processed foods or animal products,
 excess sugar or alcohol, and chronic under-hydration can drive energy crashes, mood
@@ -442,7 +442,7 @@ Substances and stimulants. Heavy caffeine use to push through fatigue, and alcoh
 to switch off in the evening, can create a self-reinforcing cycle of lighter sleep and greater
 next-day exhaustion.
 
-Important Context
+#### Important Context
 
 Lifestyle challenges rarely operate in isolation. Poor sleep tends to intensify cravings, which
 leads to skipped exercise, which lowers mood — and the cycle compounds. Seasonal
@@ -450,7 +450,7 @@ changes, life stage, caregiving responsibilities, and financial constraints all 
 realistically available to any individual. It is important to recognise that lifestyle challenges
 are not simply a matter of willpower. They are often a matter of circumstances.
 
-Common Early Signals
+#### Common Early Signals
 
 The following patterns may indicate that lifestyle factors are placing the body under strain:
 
@@ -482,7 +482,7 @@ infrastructure, and occupational settings. While some aspects of our environment
 outside individual control, many targeted changes can meaningfully reduce the burden on
 the body.
 
-Where Environmental Factors Commonly Create Challenges
+#### Where Environmental Factors Commonly Create Challenges
 
 Air quality. Indoor pollutants from cooking, heating, candles, cleaning products, new
 furniture, and synthetic paints can cause headaches, fatigue, respiratory symptoms, and
@@ -511,7 +511,7 @@ Built environment and access. Limited footpaths, cycle lanes, and safe outdoor l
 reduce physical activity. Food deserts — areas with limited access to fresh, affordable
 produce — constrain nutritional choices regardless of individual motivation.
 
-Important Context
+#### Important Context
 
 Multiple modest environmental exposures tend to accumulate. Heat, poor air quality, noise,
 and inadequate sleep may each seem manageable in isolation, but together they can create
@@ -520,7 +520,7 @@ disproportionately exposed to these stressors through proximity to highways, ind
 sites, older housing, and limited access to green space. These are structural inequities, not
 individual failings.
 
-Common Early Signals
+#### Common Early Signals
 
 Signal
 Likely Source
@@ -555,7 +555,7 @@ changed. But their effects are highly modifiable. Understanding your genetic ten
 allows you to make smarter, more personalised choices — and to stop blaming yourself for
 challenges that have a biological basis.
 
-Where Genetic Factors Commonly Create Challenges
+#### Where Genetic Factors Commonly Create Challenges
 
 Metabolism and nutrient handling. Differences in appetite regulation, weight gain
 propensity, and insulin sensitivity can make body-weight management significantly harder
@@ -583,7 +583,7 @@ Sleep and circadian rhythm. Chronotype — whether you are naturally a morning p
 or a night owl — has a significant genetic component. Some individuals are prone to
 delayed sleep phase regardless of discipline or intention.
 
-Important Context
+#### Important Context
 
 Genes are not destiny. Most common conditions are influenced by many small-effect
 variants interacting with lifestyle and environment. The same variant can have very
@@ -593,7 +593,7 @@ choices can modify genetic risk, often substantially and sometimes reversibly. F
 history remains one of the most powerful and accessible tools for understanding your
 genetic tendencies.
 
-Common Early Signals
+#### Common Early Signals
 
 The following patterns may suggest that genetic factors are a meaningful contributor to
 health challenges:
@@ -628,7 +628,7 @@ lie outside individual control, but recognising them is important: it reduces se
 clarifies realistic levers for change, and highlights where collective action can make the
 greatest difference.
 
-Where Structural Conditions Commonly Create Challenges
+#### Where Structural Conditions Commonly Create Challenges
 
 Economic security and labour protections. Low or unstable wages, lack of paid sick or
 family leave, unpredictable scheduling, and gaps in benefit coverage create time poverty,
@@ -653,7 +653,7 @@ Environmental regulation and industrial siting. Industrial facilities, highways,
 sites are disproportionately located near lower-income and marginalised communities,
 increasing pollution exposure and disease risk.
 
-Important Context
+#### Important Context
 
 Structural conditions define the realistic range of choices available to individuals and
 families. When wages, housing, or transportation are unstable, even strong personal
@@ -680,7 +680,7 @@ without fully recognising it. Some stress is motivating and even beneficial. But
 unbuffered stress erodes sleep, metabolism, immunity, mood, and decision-making in ways
 that undermine every other health effort.
 
-Where Stress Commonly Creates Challenges
+#### Where Stress Commonly Creates Challenges
 
 Workload, pace, and control. High demands combined with low autonomy, unclear
 expectations, and constant interruptions increase errors, decision fatigue, and burnout.
@@ -722,7 +722,7 @@ significant.
 This cumulative burden is what neuroendocrinologist Dr Bruce McEwen termed allostatic
 load — the biological cost of chronic stress on the body's regulatory systems.
 
-Common Early Signals
+#### Common Early Signals
 
 Physical signals include tight jaw or shoulders, frequent headaches, chest tightness,
 digestive changes, skin flares, and appetite shifts. Sleep signals include difficulty falling
@@ -748,7 +748,7 @@ and curiosities that give daily life a felt sense of significance. When purpose 
 absent, energy scatters, decisions stall, and short-term coping tends to replace long-term
 growth.
 
-Where Lack of Purpose Commonly Creates Challenges
+#### Where Lack of Purpose Commonly Creates Challenges
 
 Motivation and consistency. Without a clear sense of why, habits rely on willpower alone
 — leading to bursts of effort followed by long stalls. Goals feel arbitrary, and minor setbacks
@@ -764,7 +764,7 @@ difficult to sustain.
 Relationships and belonging. Isolation or superficial social ties can develop. Peoplepleasing behaviours — taking on others' priorities in the absence of one's own — are
 followed by resentment or withdrawal.
 
-Important Context
+#### Important Context
 
 Depression can flatten motivation; anxiety narrows perceived options; ADHD complicates
 initiation and follow-through. Direction-setting may require tailored support in these
@@ -836,7 +836,7 @@ powerful anti-inflammatory. It stimulates the vagus nerve, shifting the body tow
 parasympathetic "rest and digest" state. True connection is, in a very real sense,
 physiologically healing.
 
-Common Early Signals
+#### Common Early Signals
 
 • Realising there is no one you would comfortably call in a crisis or list as an emergency
 
@@ -868,7 +868,7 @@ long-term effects of dental interventions such as amalgam fillings and root cana
 impact of implanted devices and materials, and the accumulated effects of repeated
 physical trauma on the nervous system's threat-detection and pain-amplification systems.
 
-Where Physical Conditions Commonly Create Challenges
+#### Where Physical Conditions Commonly Create Challenges
 
 Pain and sensation. Acute and chronic musculoskeletal pain, neuropathic pain, and
 conditions such as complex regional pain syndrome can significantly limit daily function
@@ -889,7 +889,7 @@ differences affect confidence and social participation. The guilt associated wit
 dependency, and the strain placed on caregiving relationships, add a further layer of
 challenge.
 
-Important Context
+#### Important Context
 
 Healing timelines vary considerably between tissue types — bone, tendon, ligament, and
 nerve each follow different recovery trajectories, and secondary problems can emerge
@@ -901,7 +901,7 @@ Multidisciplinary care, involving physiotherapy, pain management, mental health 
 sleep medicine, and social work, typically produces better outcomes than any single
 intervention.
 
-Common Early Signals
+#### Common Early Signals
 
 • Pain, numbness, tingling, weakness, or clumsiness persisting beyond six to twelve
 

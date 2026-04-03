@@ -394,9 +394,12 @@ function RecommendationCard({
           hasVideos ? "border-green-300 shadow-md" : "border-border/50"
         } overflow-hidden`}
       >
-        <button
-          className="w-full text-left"
+        <div
+          className="w-full text-left cursor-pointer select-none"
           onClick={() => setExpanded(!expanded)}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setExpanded(!expanded); }}
         >
           <CardContent className="p-5 flex items-center gap-4">
             <div
@@ -444,7 +447,7 @@ function RecommendationCard({
               </span>
             </div>
           </CardContent>
-        </button>
+        </div>
 
         <AnimatePresence>
           {expanded && (
