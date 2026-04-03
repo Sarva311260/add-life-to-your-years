@@ -73,7 +73,14 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     description:
       "Why the quality and quantity of water you drink matters more than most people realise — and how to optimise your hydration.",
     color: "bg-blue-100 text-blue-800 border-blue-200",
-    videos: [],
+    videos: [
+      {
+        youtubeId: "VRzjoIgHNb0",
+        title: "Water & Hydration — Quality, Purity & Health",
+        description:
+          "Why the water you drink matters — contaminants, filtration methods, and how to optimise your hydration.",
+      },
+    ],
   },
   {
     id: "rec-3",
