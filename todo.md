@@ -145,3 +145,7 @@
 - [x] Fix Self-Evaluation QR code 404 in book — added /self-evaluation redirect to /questionnaire
 - [x] Video modal close: navigate back to previous page when opened via QR code deep link
 - [x] Regenerate PDF not needed — QR code URL was already correct, only app route was missing
+- [ ] Add consistent navigation with home button to all pages that are missing it (Media, Store, Contact, Book, BookReader, Results, Report, FactorDetail, etc.)
+- [x] Fix modal close: just close modal and clear hash, user closes browser tab to return to PDF
+- [x] Add SiteNav to Media page (other pages already had their own home/back navigation)
+- [x] Book reader QR links: history.back() on modal close returns to /book/read (same browser tab navigation)

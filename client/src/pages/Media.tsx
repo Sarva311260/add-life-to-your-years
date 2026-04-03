@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import SiteNav from "@/components/SiteNav";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -588,14 +589,19 @@ export default function Media() {
   const [activeTab, setActiveTab] = useState<Tab>("recommendations");
   const [modalRec, setModalRec] = useState<RecommendationSection | null>(null);
   const [openedViaHash, setOpenedViaHash] = useState(false);
+  const [returnTo, setReturnTo] = useState<string | null>(null);
 
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get("from");
     if (hash && hash.startsWith("rec-")) {
       const matched = RECOMMENDATIONS.find((r) => r.id === hash);
       if (matched && matched.videos.length > 0) {
         setActiveTab("recommendations");
         setOpenedViaHash(true);
+        // If opened from the book reader, remember to go back there on close
+        if (from === "reader") setReturnTo("/book/read");
         setTimeout(() => setModalRec(matched), 300);
       }
     }
@@ -603,16 +609,15 @@ export default function Media() {
 
   const handleCloseModal = () => {
     setModalRec(null);
-    // Clear the hash so the modal doesn't re-open if the user navigates forward
-    window.history.replaceState(null, "", window.location.pathname);
-    if (openedViaHash) {
-      // Navigate back to wherever the reader came from (e.g. the book PDF viewer)
-      // If there is no meaningful previous page, fall back to the book reader
-      if (window.history.length > 1) {
-        window.history.back();
-      } else {
-        window.location.href = "/book/read";
-      }
+    if (returnTo) {
+      // Opened from the book reader via ?from=reader — navigate back to it
+      window.location.href = returnTo;
+    } else if (openedViaHash) {
+      // Opened via hash link (e.g. direct URL) — go back in browser history
+      window.history.back();
+    } else {
+      // Opened from the Watch button on this page — just clear hash and stay
+      window.history.replaceState(null, "", window.location.pathname);
     }
   };
 
@@ -643,6 +648,7 @@ export default function Media() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SiteNav />
       {/* Hero */}
       <section className="py-16 bg-gradient-to-b from-green-50/60 to-white">
         <div className="container text-center">

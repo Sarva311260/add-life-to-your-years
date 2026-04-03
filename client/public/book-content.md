@@ -1968,9 +1968,9 @@ The most common objection at this point is protein. Where does it come from? The
 
 The second most common objection is taste and practicality. This is legitimate. Changing how you eat is a significant life adjustment, and the transition period can be challenging. The resources available to support this transition — cookbooks, online communities, meal planning tools, and the companion website to this book — are extensive. The investment in learning a new way of cooking pays dividends for the rest of your life.
 
-> [![Watch: Whole Food Plant-Based Diet Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-1_e1f9c859.png)](https://addlifetoyouryears.org/media#rec-1)
+> [![Watch: Whole Food Plant-Based Diet Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-1_e1f9c859.png)](https://addlifetoyouryears.org/media?from=reader#rec-1)
 >
-> **[Watch Videos: Whole Food Plant-Based Diet](https://addlifetoyouryears.org/media#rec-1)**
+> **[Watch Videos: Whole Food Plant-Based Diet](https://addlifetoyouryears.org/media?from=reader#rec-1)**
 
 **Chapter Notes — Recommendation 1**
 
@@ -2012,9 +2012,9 @@ Thirst is a reliable guide for most healthy adults. The body's thirst mechanism 
 
 One practical note: the habit of drinking a large glass of water first thing in the morning — before coffee, before food — is a simple and beneficial ritual. After eight hours without fluid, the body is mildly dehydrated, and rehydrating before consuming anything else supports kidney function, digestion, and cognitive clarity.
 
-> [![Watch: Water & Hydration Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-2_effad87b.png)](https://addlifetoyouryears.org/media#rec-2)
+> [![Watch: Water & Hydration Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-2_effad87b.png)](https://addlifetoyouryears.org/media?from=reader#rec-2)
 >
-> **[Watch Videos: Water & Hydration](https://addlifetoyouryears.org/media#rec-2)**
+> **[Watch Videos: Water & Hydration](https://addlifetoyouryears.org/media?from=reader#rec-2)**
 
 **Chapter Notes — Recommendation 2**
 
@@ -2069,9 +2069,9 @@ Melatonin production naturally declines with age — a process that begins in th
 
 For John, melatonin supplementation — combined with improved sleep hygiene and reduced alcohol — is a reasonable and evidence-supported addition to his programme. It addresses both the sleep regulation deficit and the broader antioxidant and anti-inflammatory burden his body is carrying.
 
-> [![Watch: Sleep & Melatonin Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-3_b06717e3.png)](https://addlifetoyouryears.org/media#rec-3)
+> [![Watch: Sleep & Melatonin Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-3_b06717e3.png)](https://addlifetoyouryears.org/media?from=reader#rec-3)
 >
-> **[Watch Videos: Sleep & Melatonin](https://addlifetoyouryears.org/media#rec-3)**
+> **[Watch Videos: Sleep & Melatonin](https://addlifetoyouryears.org/media?from=reader#rec-3)**
 
 **Chapter Notes — Recommendation 3**
 
@@ -2237,13 +2237,13 @@ The vitamin C from the fruit significantly enhances the absorption of the non-ha
 
 For John, this morning ritual becomes more than nutrition. It becomes a daily act of intentional self-care — a signal to his body and his nervous system that the day is beginning differently than it used to. The preparation itself — the deliberate assembly of specific, chosen things — is part of the practice. It takes less than five minutes. It costs very little. And it delivers, in a single bowl, a nutritional foundation that most people never come close to achieving in an entire day.
 
-> [![Watch: Five Seeds of Life Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-5_a4ac10cb.png)](https://addlifetoyouryears.org/media#rec-5)
+> [![Watch: Five Seeds of Life Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-5_a4ac10cb.png)](https://addlifetoyouryears.org/media?from=reader#rec-5)
 >
-> **[Watch Videos: Five Seeds of Life](https://addlifetoyouryears.org/media#rec-5)**
+> **[Watch Videos: Five Seeds of Life](https://addlifetoyouryears.org/media?from=reader#rec-5)**
 
-> [![Five Seeds of Life Resources](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-5_a4ac10cb.png)](https://addlifetoyouryears.org/media#rec-5)
+> [![Five Seeds of Life Resources](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-5_a4ac10cb.png)](https://addlifetoyouryears.org/media?from=reader#rec-5)
 >
-> **[Five Seeds of Life Resources](https://addlifetoyouryears.org/media#rec-5)**
+> **[Five Seeds of Life Resources](https://addlifetoyouryears.org/media?from=reader#rec-5)**
 
 ### The 75% Raw Food Principle
 
@@ -2278,9 +2278,9 @@ What the 75% raw principle guards against is the gradual drift toward predominan
 
 For John, this principle does not require perfection. On days when he travels, when he is tired, when the circumstances of life make the ideal impossible, he aims for the best available option rather than abandoning the framework entirely. Progress, not perfection, is the standard.
 
-> [![The 75% Raw Food Principle Resources](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-5_a4ac10cb.png)](https://addlifetoyouryears.org/media#rec-5)
+> [![The 75% Raw Food Principle Resources](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-5_a4ac10cb.png)](https://addlifetoyouryears.org/media?from=reader#rec-5)
 >
-> **[The 75% Raw Food Principle Resources](https://addlifetoyouryears.org/media#rec-5)**
+> **[The 75% Raw Food Principle Resources](https://addlifetoyouryears.org/media?from=reader#rec-5)**
 
 **Chapter Notes — Recommendation 5**
 
@@ -2394,9 +2394,9 @@ Grip strength deserves particular mention. It is one of the most consistently st
 | Floor get-up | 5–10 repetitions | Daily | Full-body coordination, strength, independence |
 | Towel isometric | 5–10 repetitions × 5–10 seconds | Daily | Upper body strength, grip strength, posture |
 
-> [![Watch: Six Movements Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-7_5dde4a77.png)](https://addlifetoyouryears.org/media#rec-7)
+> [![Watch: Six Movements Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-7_5dde4a77.png)](https://addlifetoyouryears.org/media?from=reader#rec-7)
 >
-> **[Watch Videos: Six Movements](https://addlifetoyouryears.org/media#rec-7)**
+> **[Watch Videos: Six Movements](https://addlifetoyouryears.org/media?from=reader#rec-7)**
 
 **Chapter Notes — Recommendation 7**
 
@@ -2474,9 +2474,9 @@ John found Bhramari particularly helpful in the evening, as part of his wind-dow
 
 He practiced it sitting on the edge of his bed, with his thumbs gently blocking his ears, for five to seven rounds. The external silence created by blocking the ears amplified the internal sound of the hum, which he found deeply absorbing. After finishing, he would sit quietly for a minute, then lie down and transition into the 4-7-8 breath to facilitate sleep. The combination — Bhramari followed by 4-7-8 — became one of the most reliable tools in his toolkit for shifting out of the agitated, racing-mind state that had made falling asleep so difficult for years.
 
-> [![Watch: Breathing Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-8_40dfcf97.png)](https://addlifetoyouryears.org/media#rec-8)
+> [![Watch: Breathing Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-8_40dfcf97.png)](https://addlifetoyouryears.org/media?from=reader#rec-8)
 >
-> **[Watch Videos: Breathing Exercises](https://addlifetoyouryears.org/media#rec-8)**
+> **[Watch Videos: Breathing Exercises](https://addlifetoyouryears.org/media?from=reader#rec-8)**
 
 **Chapter Notes — Recommendation 8**
 
@@ -2532,9 +2532,9 @@ The clinical evidence for PEMF therapy includes:
 
 For John, a combination of daily earthing and periodic PEMF therapy represents a meaningful addition to his programme — particularly given the chronic inflammation, poor sleep, and elevated stress that characterise his current state. PEMF devices range from clinical-grade units used in medical settings to consumer-grade devices suitable for home use. We have researched the available options and provide recommendations for quality, evidence-based devices on the companion website.
 
-> [![Watch: PEMF & Earthing Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-9_c280fa82.png)](https://addlifetoyouryears.org/media#rec-9)
+> [![Watch: PEMF & Earthing Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-9_c280fa82.png)](https://addlifetoyouryears.org/media?from=reader#rec-9)
 >
-> **[Watch Videos: PEMF & Earthing](https://addlifetoyouryears.org/media#rec-9)**
+> **[Watch Videos: PEMF & Earthing](https://addlifetoyouryears.org/media?from=reader#rec-9)**
 
 **Chapter Notes — Recommendation 9**
 
@@ -2580,9 +2580,9 @@ For John, the most important aspect of this recommendation is not the technique 
 
 This resistance is worth noting, because it points to something important: the thoughts and feelings that arise in meditation are not obstacles to the practice. They are the practice. Learning to observe them without being swept away by them — to see them as passing events in the mind rather than as truths about the world — is the skill that meditation develops, and it is a skill with profound implications for every aspect of John's life.
 
-> [![Watch: Meditation Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-10_09ebd7f7.png)](https://addlifetoyouryears.org/media#rec-10)
+> [![Watch: Meditation Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-10_09ebd7f7.png)](https://addlifetoyouryears.org/media?from=reader#rec-10)
 >
-> **[Watch Videos: Meditation](https://addlifetoyouryears.org/media#rec-10)**
+> **[Watch Videos: Meditation](https://addlifetoyouryears.org/media?from=reader#rec-10)**
 
 **Chapter Notes — Recommendation 10**
 
@@ -2619,9 +2619,9 @@ Where possible, the walk should involve genuine nature — trees, grass, water, 
 
 The combination of this recommendation with Recommendation 7 (walking) and Recommendation 8 (breathing) creates a morning practice of considerable power: a twenty-minute barefoot walk (Recommendation 9 — earthing) in a natural setting, with conscious nasal breathing, provides cardiovascular exercise, nature exposure, earthing, and breathing practice simultaneously. This is not a coincidence — these practices are naturally complementary and mutually reinforcing.
 
-> [![Watch: Time in Nature Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-11_a79d1929.png)](https://addlifetoyouryears.org/media#rec-11)
+> [![Watch: Time in Nature Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-11_a79d1929.png)](https://addlifetoyouryears.org/media?from=reader#rec-11)
 >
-> **[Watch Videos: Time in Nature](https://addlifetoyouryears.org/media#rec-11)**
+> **[Watch Videos: Time in Nature](https://addlifetoyouryears.org/media?from=reader#rec-11)**
 
 **Chapter Notes — Recommendation 11**
 
@@ -2661,9 +2661,9 @@ The practical starting point is to seek couples therapy with a practitioner trai
 
 It is also worth noting that many of the other changes in this programme will, indirectly, support the relationship. As John's sleep improves, his emotional regulation will improve. As his alcohol use decreases, his availability and presence will increase. As his financial stress begins to ease (Recommendation 13), a major source of conflict will be reduced. The changes are not isolated — they interact and reinforce each other.
 
-> [![Watch: Relationships Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-12_53fe885c.png)](https://addlifetoyouryears.org/media#rec-12)
+> [![Watch: Relationships Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-12_53fe885c.png)](https://addlifetoyouryears.org/media?from=reader#rec-12)
 >
-> **[Watch Videos: Relationships](https://addlifetoyouryears.org/media#rec-12)**
+> **[Watch Videos: Relationships](https://addlifetoyouryears.org/media?from=reader#rec-12)**
 
 **Chapter Notes — Recommendation 12**
 
@@ -2700,9 +2700,9 @@ The answers to these questions are the raw material of a second income that is a
 
 For John, who has spent years feeling trapped by financial pressure and disconnected from any sense of purpose beyond his obligations, this recommendation is not just about money. It is about reclaiming agency — the sense that he is not merely subject to circumstances, but capable of shaping them.
 
-> [![Watch: Second Income Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-13_378446c4.png)](https://addlifetoyouryears.org/media#rec-13)
+> [![Watch: Second Income Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-13_378446c4.png)](https://addlifetoyouryears.org/media?from=reader#rec-13)
 >
-> **[Watch Videos: Second Income Stream](https://addlifetoyouryears.org/media#rec-13)**
+> **[Watch Videos: Second Income Stream](https://addlifetoyouryears.org/media?from=reader#rec-13)**
 
 **Chapter Notes — Recommendation 13**
 
@@ -2739,9 +2739,9 @@ But the longer-term question — where does John want to live, and what kind of 
 
 This does not mean uprooting everything immediately. It means holding the question consciously — making it a medium-term goal rather than an indefinite aspiration — and allowing it to inform decisions about where to invest energy and resources over the coming years.
 
-> [![Watch: Environment Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-14_64945d06.png)](https://addlifetoyouryears.org/media#rec-14)
+> [![Watch: Environment Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-14_64945d06.png)](https://addlifetoyouryears.org/media?from=reader#rec-14)
 >
-> **[Watch Videos: Your Environment](https://addlifetoyouryears.org/media#rec-14)**
+> **[Watch Videos: Your Environment](https://addlifetoyouryears.org/media?from=reader#rec-14)**
 
 **Chapter Notes — Recommendation 14**
 
@@ -2822,9 +2822,9 @@ The combination with morning sunlight became a ritual he looked forward to. The 
 
 For John, methylene blue was not a magic bullet. No single intervention in this programme was. But it was a precisely targeted tool that addressed a specific deficit — mitochondrial dysfunction and its cognitive and emotional consequences — in a way that complemented everything else he was doing. By the time his twelve-month review arrived, it had become one of the interventions he was most reluctant to consider removing.
 
-[![Watch: Methylene Blue Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-15_8b4889d7.png)](https://addlifetoyouryears.org/media#rec-15)
+[![Watch: Methylene Blue Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-15_8b4889d7.png)](https://addlifetoyouryears.org/media?from=reader#rec-15)
 
-**[Watch Videos: Methylene Blue & Photobiomodulation](https://addlifetoyouryears.org/media#rec-15)**
+**[Watch Videos: Methylene Blue & Photobiomodulation](https://addlifetoyouryears.org/media?from=reader#rec-15)**
 
 **Chapter Notes — Recommendation 15**
 1. Rojas JC, Bruchey AK, Gonzalez-Lima F. Neurometabolic mechanisms for memory enhancement and neuroprotection of methylene blue. *Progress in Neurobiology*. 2012;96(1):32–45.
