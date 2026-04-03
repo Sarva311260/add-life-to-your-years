@@ -119,3 +119,9 @@
 - [x] Add share section with QR code to PDF final page
 - [x] Build grouped Media page with 15 Recommendation sections and YouTube videos
 - [x] Add clickable links in book (online reader + PDF) to Media page sections
+- [x] Restructure Media page into 3 sections: (1) Recommendations (15 grouped), (2) Podcasts, (3) Videos
+- [x] Add Coming Soon placeholders for Podcasts and Videos sections
+- [x] Generate real QR codes for all [QR CODE PLACEHOLDER] entries in book-content.md
+- [x] Replace all [website URL placeholder] text with real addlifetoyouryears.org URLs
+- [x] Regenerate PDF with real QR codes and updated URLs
+- [x] Upload new PDF to CDN and update download links
