@@ -37,7 +37,6 @@
 - [x] User welcome notification: Send owner notification when a user completes their first evaluation (overall score summary, cardiac flag, coaching prompt)
 - [x] Enhance owner notification: Include individual category scores and question responses in first-evaluation notification
 - [ ] Future: Set up custom analytics (questionnaire completion rates, average scores by category, common areas needing attention) once site content is finalised
-- [x] Add page numbers to PDF footer and clickable Table of Contents with all chapters and recommendations
 - [x] Bug fix: Page navigations maintain scroll position from previous page — should scroll to top on every route change
 - [x] Lifestyle Q1: Change "minimal animal products" to "no animal products"
 - [x] Lifestyle: Add new question "How much water do you drink daily?" (4 options)
@@ -91,12 +90,53 @@
 - [x] Add Methylene Blue as Recommendation 15 in Part 4 with full clinical detail, mechanisms, dosing, red light/sun synergy, and references
 - [x] Fix two tables in Factor 8 that are not rendering properly
 - [x] Add Bhramari Pranayama (Bee Breath) to the breathing recommendation in Part 4 with nitric oxide research, step-by-step instructions, and John's experience
-- [x] Insert new Chapter 10: Stability — Moving from Survival to Predictability
-- [x] Rename Chapter 9 to "Security" (remove "and Stability" from title)
-- [x] Renumber old Chapters 10-13 to 11-14
-- [x] Fix TOC scrolling for all chapters and recommendations in online reader
-- [x] Add image renderer to online reader so infographics display
-- [x] Update microbiome infographic CDN URL to latest upload
-- [ ] Generate chapter header illustrations for all parts and chapters (consistent design style)
-- [ ] Generate key infographics: 8 Factors wheel, Maslow hierarchy, and chapter-specific diagrams
-- [ ] Embed all illustrations in the online reader and regenerated PDF
+- [x] Fix Introduction: "14 recommendations" should be "15 recommendations" for John
+- [x] Fix broken paragraph splits throughout manuscript caused by removed form-feed characters (sentences split mid-thought across two paragraphs)
+- [x] Replace "diet" with "what we eat" in microbiome section (two instances: "shaped by diet, environment..." and "Of all these factors, diet...")
+- [x] Bug: Introduction "How to Get the Most" callout box lost its styling after paragraph reflow — restore the blockquote/box formatting
+- [ ] Add full-text search facility to online book reader (search bar, highlight matches, jump to results)
+- [ ] Write Key Takeaway boxes for all 14 chapters and embed them in the manuscript
+- [ ] Fix remaining broken paragraph joins throughout manuscript (e.g. "Reducing\nunnecessary load" should be one sentence to "genuine resilience")
+- [ ] Format all "Common Early Signals" sections throughout the book as styled callout boxes (matching the Introduction "How to Get the Most" box style)
+- [x] Bold all recurring section subheadings throughout the book (Important Context, Common Early Signals, Where Physical Conditions Commonly Create Challenges, Where [X] Commonly Creates Challenges, Key Takeaways, etc.) for easier reading
+- [x] Recreate Top 6 Lifestyle Factors chart with Excessive Alcohol at position 2 (score ~9.2, just below tobacco 9.5), insert into manuscript in Part Two section
+- [ ] Fix missing references 2 and 7 in Chapter 4 notes section; audit all chapter reference sections for numbering gaps
+- [x] Remove all 'Chapter Notes — ...' heading labels from manuscript (keep numbered references)
+- [ ] Full audit and fix of all broken/truncated/empty/split references across all chapter notes sections
+- [x] Add dedicated Redox Biochemistry and Redox Signalling section to Part One of the manuscript (Chapter 4)
+- [x] Update PEMF section to highlight its role in redox signalling and redox biochemistry
+- [x] Add section on supplementing redox signalling molecules (10% decline per decade after age 16)
+- [x] Fix Chapter 9 and 10 heading text merging into body text (renders as huge header)
+- [x] Fix hardcoded table of contents to reflect new chapter numbering (Ch 4 = Redox, Ch 5 = Air, etc.)
+- [x] Connect 'Explore the Book' buttons on all 8 factor detail pages to the correct book reader chapters
+- [x] Create splash hero image for homepage matching book cover style
+- [x] Add book cover to online reader and PDF
+- [x] Add medical disclaimer to manuscript (before introduction)
+- [x] Create comprehensive glossary and add to manuscript, PDF, and TOC
+- [x] Remove non-PDF download button from Book page, keep only PDF
+- [x] Add copyright notice to manuscript (online reader and PDF)
+- [x] Generate QR code for addlifetoyouryears.org and add to PDF last page
+- [x] Add share section with QR code to PDF final page
+- [x] Build grouped Media page with 15 Recommendation sections and YouTube videos
+- [x] Add clickable links in book (online reader + PDF) to Media page sections
+- [x] Restructure Media page into 3 sections: (1) Recommendations (15 grouped), (2) Podcasts, (3) Videos
+- [x] Add Coming Soon placeholders for Podcasts and Videos sections
+- [x] Generate real QR codes for all [QR CODE PLACEHOLDER] entries in book-content.md
+- [x] Replace all [website URL placeholder] text with real addlifetoyouryears.org URLs
+- [x] Regenerate PDF with real QR codes and updated URLs
+- [x] Upload new PDF to CDN and update download links
+- [x] Add Glycine video (https://youtu.be/o2Kc1Iaow40) to Recommendation 4 on Media page
+- [x] Add Melatonin video (https://youtu.be/tcwVfUAqWiY) to Recommendation 3 on Media page
+- [x] Add Water video (https://youtu.be/VRzjoIgHNb0) to Recommendation 2 on Media page
+- [x] Add Five Seeds video (https://youtu.be/YckoR3hLL9E) to Recommendation 5 on Media page
+- [x] Add Vitamin B12 video (https://youtu.be/wY4vEBilWN4) to Recommendation 6 on Media page
+- [x] Add Vitamin D video (https://youtu.be/iotnggfP9Yk) to Recommendation 6 on Media page as second video
+- [x] Add Six Movements video (https://youtu.be/qu3ixTQmpl0) to Recommendation 7 on Media page
+- [x] Add Bhramari Pranayama video (https://youtu.be/8vN08IuParo) to Recommendation 8 (Breathing) on Media page
+- [x] Add PEMF video (https://youtu.be/byinppKR9LY) to Recommendation 9 on Media page
+- [x] Add Meditation video (https://youtu.be/wXsxwIJnUJk) to Recommendation 10 on Media page
+- [x] Add Time in Nature video (https://youtu.be/UHv3SCUioQU) to Recommendation 11 on Media page
+- [x] Add Relationships video (https://youtu.be/rgQvqi6aYD8) to Recommendation 12 on Media page
+- [x] Add Second Income video (https://youtu.be/eD0N8wXjNSs) to Recommendation 13 on Media page
+- [x] Add Environment video (https://youtu.be/foBnfBX4YKQ) to Recommendation 14 on Media page
+- [x] Add Methylene Blue video (https://youtu.be/KvASX2yp0zU) to Recommendation 15 on Media page

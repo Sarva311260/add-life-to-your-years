@@ -94,22 +94,22 @@ export default function Home() {
         <div className="container flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2">
             <Leaf className="w-7 h-7 text-primary" />
-            <span className="font-serif text-lg font-semibold text-foreground">Add Life to Your Years</span>
+            <span className={`font-serif text-lg font-semibold ${scrolled ? "text-foreground" : "text-white"}`}>Add Life to Your Years</span>
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
-            <a href="#about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">About</a>
-            <Link href="/book" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">The Book</Link>
-            <a href="#coaching" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Coaching</a>
-            <a href="#products" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Products</a>
-            <Link href="/media" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Media</Link>
-            <Link href="/store" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Store</Link>
-            <Link href="/contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Contact</Link>
+            <a href="#about" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>About</a>
+            <Link href="/book" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>The Book</Link>
+            <a href="#coaching" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Coaching</a>
+            <a href="#products" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Products</a>
+            <Link href="/media" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Media</Link>
+            <Link href="/store" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Store</Link>
+            <Link href="/contact" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Contact</Link>
             {isAuthenticated && (
               <>
-                <Link href="/dashboard" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Dashboard</Link>
-                <Link href="/questionnaire" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Self-Evaluation</Link>
+                <Link href="/dashboard" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Dashboard</Link>
+                <Link href="/questionnaire" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Self-Evaluation</Link>
               </>
             )}
           </nav>
@@ -118,18 +118,18 @@ export default function Home() {
             {isAuthenticated ? (
               <div className="flex items-center gap-3">
                 <Link href="/dashboard">
-                  <Button variant="outline" size="sm" className="gap-2">
+                  <Button variant="outline" size="sm" className={`gap-2 ${!scrolled ? "border-white/70 text-white hover:bg-white/20 hover:text-white bg-transparent" : ""}`}>
                     <User className="w-4 h-4" />
                     {user?.name || "Dashboard"}
                   </Button>
                 </Link>
-                <Button variant="ghost" size="sm" onClick={() => logout()} className="gap-2 text-muted-foreground">
+                <Button variant="ghost" size="sm" onClick={() => logout()} className={`gap-2 ${!scrolled ? "text-white/80 hover:text-white hover:bg-white/10" : "text-muted-foreground"}`}>
                   <LogOut className="w-4 h-4" />
                 </Button>
               </div>
             ) : (
               <a href={getLoginUrl()}>
-                <Button size="sm" className="gap-2">Sign In or Register</Button>
+                <Button size="sm" className={`gap-2 ${!scrolled ? "bg-white text-green-900 hover:bg-white/90" : ""}`}>Sign In or Register</Button>
               </a>
             )}
           </div>
@@ -176,9 +176,15 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-emerald-50/50 to-white" />
-        <div className="absolute top-20 right-0 w-96 h-96 bg-green-200/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-100/40 rounded-full blur-3xl" />
+        {/* Splash background image */}
+        <div className="absolute inset-0">
+          <img
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/homepage_splash_hero-k75ERSHXrCb53wbbii2uGm.webp"
+            alt=""
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
+        </div>
 
         <div className="container relative">
           <div className="max-w-3xl mx-auto text-center">
@@ -187,15 +193,15 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 text-white text-sm font-medium mb-6">
                 <Leaf className="w-4 h-4" />
                 Your Personal Blueprint
               </span>
-              <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground leading-tight mb-6">
+              <h1 className="font-serif text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
                 Proven Strategies for<br />
-                <span className="text-primary">Health, Wellness & Vitality</span>
+                <span className="text-emerald-300">Health, Wellness & Vitality</span>
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-white/85 mb-8 max-w-2xl mx-auto leading-relaxed">
                 Assess your wellbeing across 8 key areas, uncover your strengths,
                 and receive personalised, evidence-based recommendations to add life to your years.
               </p>
@@ -207,7 +213,7 @@ export default function Home() {
                   </Button>
                 </Link>
                 <a href="#about">
-                  <Button variant="outline" size="lg" className="gap-2 text-base px-8 py-6">
+                  <Button variant="outline" size="lg" className="gap-2 text-base px-8 py-6 border-white/70 text-white hover:bg-white/20 hover:text-white bg-transparent">
                     Learn More
                     <ChevronDown className="w-5 h-5" />
                   </Button>
@@ -314,17 +320,17 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="relative">
-                <div className="bg-gradient-to-br from-primary/10 to-emerald-100 rounded-2xl p-8 md:p-12 flex items-center justify-center">
-                  <div className="bg-white rounded-lg shadow-xl p-6 w-56 md:w-64 transform -rotate-3 hover:rotate-0 transition-transform duration-300">
-                    <div className="bg-gradient-to-br from-primary to-emerald-600 rounded-md p-4 mb-4 text-white text-center">
-                      <Leaf className="w-8 h-8 mx-auto mb-2" />
-                      <div className="font-serif text-sm font-bold leading-tight">Add Life to<br />Your Years</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-xs text-muted-foreground mb-1">A Guide to</div>
-                      <div className="font-serif text-sm font-semibold text-foreground leading-tight">Health, Wellness<br />& Vitality</div>
-                    </div>
+              <div className="flex items-center justify-center">
+                <div className="relative bg-gradient-to-br from-primary/10 to-emerald-100 rounded-2xl p-6 md:p-10 inline-block">
+                  <Link href="/book">
+                    <img
+                      src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-cover-UsuL2YkEq9DNQMFM4uAv7v.webp"
+                      alt="Add Life to Your Years book cover"
+                      className="w-56 md:w-72 rounded-lg shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-300 cursor-pointer block"
+                    />
+                  </Link>
+                  <div className="absolute -bottom-3 -right-3 bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md z-10">
+                    128 Pages
                   </div>
                 </div>
               </div>
@@ -361,9 +367,12 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <Button variant="outline" size="lg" className="gap-2" disabled>
-                Coming Soon
-              </Button>
+              <Link href="/book">
+                <Button size="lg" className="gap-2">
+                  <BookOpen className="w-4 h-4" />
+                  Click to Read
+                </Button>
+              </Link>
             </motion.div>
           </div>
         </div>
@@ -536,8 +545,9 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-primary to-emerald-600 text-white">
-        <div className="container text-center">
+      <section className="py-20 text-white relative overflow-hidden" style={{backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ready_transform_bg-Q4CU3Hf2Uy3VYbPxmZD7sh.webp)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="container text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

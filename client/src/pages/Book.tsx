@@ -5,18 +5,19 @@ import { Leaf, ArrowLeft, BookOpen, Download, FileText, CheckCircle2 } from "luc
 import { motion } from "framer-motion";
 
 const PDF_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_5a9001c5.pdf";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v5_a6b2f767.pdf";
 const MD_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_811b8f48.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_fe9e4e96.md";
 
 const CONTENTS = [
   "Introduction — The Wellness Ecosystem",
-  "Part One: How Our Body Works (Chapters 1–3)",
+  "Part One: How Our Body Works (Chapters 1–4)",
   "Part Two: The 8 Factors of Health and Disease",
-  "Part Three: Wellness Strategies (Chapters 4–14)",
+  "Part Three: Wellness Strategies (Chapters 5–14)",
   "Part Four: John's Path Forward — A Healing Story",
   "All 15 Recommendations with Clinical Evidence (incl. Methylene Blue)",
   "Chapter Notes and References",
+  "Glossary — 42 Key Terms Defined",
 ];
 
 export default function Book() {
@@ -40,28 +41,42 @@ export default function Book() {
 
       {/* Hero */}
       <section className="py-20 bg-gradient-to-b from-green-50/50 to-white">
-        <div className="container text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6">
-              <BookOpen className="w-4 h-4" />
-              Free Download
-            </span>
-            <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Add Life to Your Years
-            </h1>
-            <p className="text-xl text-muted-foreground mb-2 font-medium">
-              Proven Strategies for Health, Wellness and Vitality
-            </p>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-base mt-4">
-              A comprehensive, evidence-based guide to understanding how your body works, what
-              drives chronic disease, and the practical strategies that can help you reclaim your
-              health — starting today.
-            </p>
-          </motion.div>
+        <div className="container">
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="shrink-0"
+            >
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-cover-UsuL2YkEq9DNQMFM4uAv7v.webp"
+                alt="Add Life to Your Years book cover"
+                className="w-52 md:w-64 rounded-xl shadow-2xl"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6">
+                <BookOpen className="w-4 h-4" />
+                Free Download
+              </span>
+              <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">
+                Add Life to Your Years
+              </h1>
+              <p className="text-xl text-muted-foreground mb-2 font-medium">
+                Proven Strategies for Health, Wellness and Vitality
+              </p>
+              <p className="text-muted-foreground max-w-2xl text-base mt-4">
+                A comprehensive, evidence-based guide to understanding how your body works, what
+                drives chronic disease, and the practical strategies that can help you reclaim your
+                health — starting today.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -96,48 +111,21 @@ export default function Book() {
             </Card>
 
             {/* PDF Download */}
-            <Card className="border-2 border-green-200 shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-8 flex flex-col items-center text-center gap-4">
-                <div className="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center">
+            <Card className="border-2 border-green-200 shadow-lg hover:shadow-xl transition-shadow md:col-span-2">
+              <CardContent className="p-8 flex flex-col md:flex-row items-center gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center shrink-0">
                   <Download className="w-8 h-8 text-green-700" />
                 </div>
-                <div>
-                  <h2 className="font-serif text-xl font-bold text-foreground mb-1">
-                    Download PDF
-                  </h2>
+                <div className="flex-1 text-center md:text-left">
+                  <h2 className="font-serif text-xl font-bold text-foreground mb-1">Download PDF</h2>
                   <p className="text-muted-foreground text-sm">
-                    Best for reading on screen, printing, or sharing. Opens in any PDF viewer.
+                    Best for reading on screen, printing, or sharing. Opens in any PDF viewer. 132 pages · ~3.6 MB
                   </p>
                 </div>
-                <p className="text-xs text-muted-foreground">141 pages · ~3.1 MB</p>
-                <a href={PDF_URL} download="AddLifeToYourYears.pdf" className="w-full">
-                  <Button className="w-full bg-green-700 hover:bg-green-800 text-white gap-2" size="lg">
+                <a href={PDF_URL} download="AddLifeToYourYears.pdf">
+                  <Button className="bg-green-700 hover:bg-green-800 text-white gap-2 px-8" size="lg">
                     <Download className="w-4 h-4" />
                     Download PDF
-                  </Button>
-                </a>
-              </CardContent>
-            </Card>
-
-            {/* Markdown Download */}
-            <Card className="border-2 border-blue-200 shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-8 flex flex-col items-center text-center gap-4">
-                <div className="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center">
-                  <FileText className="w-8 h-8 text-blue-700" />
-                </div>
-                <div>
-                  <h2 className="font-serif text-xl font-bold text-foreground mb-1">
-                    Download Markdown
-                  </h2>
-                  <p className="text-muted-foreground text-sm">
-                    Editable format. Open in Word, Google Docs, Notion, or any text editor. Easy to convert.
-                  </p>
-                </div>
-                <p className="text-xs text-muted-foreground">Plain text · ~220 KB</p>
-                <a href={MD_URL} download="AddLifeToYourYears.md" className="w-full">
-                  <Button className="w-full bg-blue-700 hover:bg-blue-800 text-white gap-2" size="lg">
-                    <FileText className="w-4 h-4" />
-                    Download Markdown
                   </Button>
                 </a>
               </CardContent>
