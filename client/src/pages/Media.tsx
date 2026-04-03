@@ -91,7 +91,14 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     description:
       "The underappreciated amino acid that supports collagen synthesis, sleep quality, and metabolic health.",
     color: "bg-purple-100 text-purple-800 border-purple-200",
-    videos: [],
+    videos: [
+      {
+        youtubeId: "o2Kc1Iaow40",
+        title: "Glycine — The Underappreciated Amino Acid",
+        description:
+          "How glycine supports collagen synthesis, sleep quality, and metabolic health.",
+      },
+    ],
   },
   {
     id: "rec-5",
