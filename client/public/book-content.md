@@ -23,7 +23,9 @@ By reading this book, you acknowledge that you are responsible for your own heal
 ---
 
 
-![Introduction — The Wellness Ecosystem](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-intro-hLN2g3Uc8XUMBfVhN3xqB_1d4b6e5c.webp)
+
+
+![Introduction](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-intro-ey4xNkBYLPvsaFpPcKghYd.webp)
 
 # Introduction
 
@@ -94,7 +96,9 @@ Creating and maintaining these resources takes considerable time and effort. If 
 [QR CODE PLACEHOLDER — Support / Donation Page]
 [website URL placeholder]/support
 
-![Part One: How Our Body Works](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-part1-4JBuQAYvy3s5bPvnPjb8ZH.webp)
+
+
+![Part One](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-part1-4JBuQAYvy3s5bPvnPjb8ZH.webp)
 
 # Part One: How Our Body Works
 
@@ -102,7 +106,9 @@ Before exploring what can go wrong with our health, it is worth pausing to appre
 Part One provides this foundation. It covers three interconnected themes: the extraordinary nature of human cells, the microbial ecosystem that lives within and upon us, and the communication systems that coordinate it all.
 
 
-![Chapter 1:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-01-SryDFu8y5LjH284Wf59pw6.webp)
+
+
+![Chapter 1](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-01-SryDFu8y5LjH284Wf59pw6.webp)
 
 ## Chapter 1: The Human Body — A Universe of Cells
 
@@ -150,7 +156,9 @@ This also means that the body has a remarkable capacity for repair — provided 
 > - Supporting cellular health through consistent, evidence-based lifestyle choices is the most powerful long-term health strategy available.
 
 
-![Chapter 2:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-02-5CaoV4C7Jwb9q2GXFHzLKb.webp)
+
+
+![Chapter 2](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-02-5CaoV4C7Jwb9q2GXFHzLKb.webp)
 
 ## Chapter 2: The Microbiome — Our Microbial Partners
 
@@ -183,7 +191,6 @@ Whole plant foods — rich in diverse fibres, resistant starches, and polyphenol
 This means that every meal is not just feeding you — it is feeding your microbial partners.
 The health of the microbiome and the health of the host are inseparable.
 
-![The Biological Hybrid: Human vs. Microbial Cells & Genes](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/human_microbial_infographic_8c3b9a20.webp)
 *Figure 1: The Biological Hybrid — Understanding our composition as a partnership of human and microbial elements. Human cells number 30–37 trillion; microbial cells approximately 38 trillion. Our microbial genes outnumber human genes by 100 to 1,000 times.*
 
 
@@ -196,9 +203,17 @@ The health of the microbiome and the health of the host are inseparable.
 > - What we eat is the single most powerful daily lever for shaping the microbiome — and through it, systemic health.
 
 
-![The Biological Hybrid: Human vs. Microbial Cells & Genes](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/human_microbial_infographic_5d6cf6d3.webp)
+
+
+![Biological Hybrid](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/human_microbial_infographic_5d6cf6d3.webp)
+
+
+![Chapter 3](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-03-T9DmCtXKhdjxxqt8sqgZq3.webp)
 
 ## Chapter 3: Cell Communication — The Body's Internal Language
+
+![Cell Communication](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/infographic-cell-communication-n6JG7xggv4BjdYU27QZWbU.webp)
+
 
 For trillions of cells and trillions of microbes to function as a coherent whole, they must communicate. The body achieves this through an extraordinarily sophisticated network of signalling systems that operate at multiple levels simultaneously.
 
@@ -253,7 +268,9 @@ Garland Science; 2014.
 > - Supporting clear, coherent cellular communication is not a single intervention — it is the cumulative result of all the lifestyle factors explored in this book.
 
 
-![Chapter 5:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-05-BPqctP73r5WUBeS6YFeKSg.webp)
+
+
+![Chapter 4](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-04-redox_05966c02.png)
 
 ## Chapter 4: Redox Biochemistry — The Master Language of Cellular Life
 
@@ -319,7 +336,12 @@ Redox biochemistry is not a standalone topic. It is the biochemical substrate up
 6. Li B, et al. Redox regulation: mechanisms, biology and therapeutic targets in diseases. *Signal Transduction and Targeted Therapy*. 2025;10(1):72.
 
 
-![The 8 Factors of Health — A Framework for Understanding Disease and Vitality](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/infographic-8-factors-wheel-cr6SncJnJCqL66dvn5yv9G.webp)
+
+
+![8 Factors](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/infographic-8-factors-wheel-cr6SncJnJCqL66dvn5yv9G.webp)
+
+
+![Part Two](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-part2-79AHbgtthgLWZyuLsK6F8j.webp)
 
 # Part Two: The 8 Factors of Health and Disease
 
@@ -681,7 +703,6 @@ Before moving to Part Three, it is worth naming the six lifestyle factors most s
 | 5 | Chronic poor sleep | Metabolic syndrome, immune dysfunction, cognitive decline |
 | 6 | Chronic unmanaged stress | Cardiovascular disease, immune suppression, mental illness |
 
-![Top 6 Lifestyle Factors Contributing to Chronic Degenerative Diseases](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/top_6_lifestyle_factors_updated_bd91866b.png)
 
 A note on alcohol: Many public health rankings place alcohol lower than tobacco, largely because population-level mortality statistics have historically been dominated by the sheer volume of smokers. However, when we consider the breadth and severity of harm per unit of consumption, alcohol belongs alongside tobacco as one of the most damaging substances a person can regularly consume. It is classified by the World Health Organization and the International Agency for Research on Cancer as a Group 1 carcinogen
 — the highest possible classification — directly linked to cancers of the mouth, throat, oesophagus, larynx, liver, colon, and breast, with no established safe lower threshold.
@@ -700,7 +721,12 @@ With the challenges clearly mapped, we are now ready to turn to what we can do a
 9. National Institutes of Health. Lifestyle factors and chronic disease prevention. Various publications; available at https://www.nih.gov
 10.Cleveland Clinic. Endothelial dysfunction and cardiovascular disease. Available at: https://my.clevelandclinic.org/health/diseases/23051-endothelial-dysfunction
 
-![Maslow's Hierarchy of Needs — The Foundation of Wellness](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/infographic-maslow-hierarchy-K6js7c9teop2uMYp69cqbY.webp)
+
+
+![Maslow](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/infographic-maslow-hierarchy-K6js7c9teop2uMYp69cqbY.webp)
+
+
+![Part Three](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-part3-4Foy2w4MST64WjM6xshBGi.webp)
 
 # Part Three: Wellness Strategies
 
@@ -713,7 +739,9 @@ The chapters in Part Three follow this structure. We begin with the most fundame
 The physiological tier encompasses the raw materials of biological survival: the inputs the body requires simply to function. Without adequate air, water, sleep, food, and shelter, no amount of effort at higher levels can produce lasting health. These are not optional extras; they are the foundation upon which everything else is built.
 
 
-![Chapter 4: Redox Biochemistry](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-04-redox_05966c02.png)
+
+
+![Chapter 5](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-04-KBiuTRhydwsL33L9Y7Qjnm.webp)
 
 ## Chapter 5: Air — The First Breath
 
@@ -765,7 +793,9 @@ Slow, diaphragmatic breathing activates the parasympathetic nervous system, redu
 > - Spending time in natural, green environments — even briefly — measurably reduces cortisol, blood pressure, and inflammatory markers.
 
 
-![Chapter 6:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-05-BPqctP73r5WUBeS6YFeKA_a6e8e5e2.webp)
+
+
+![Chapter 6](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-05-BPqctP73r5WUBeS6YFeKSg.webp)
 
 ## Chapter 6: Water — The Medium of Life
 
@@ -825,7 +855,9 @@ Filtering tap water through a certified carbon block or reverse osmosis filter a
 > - Consistent daily hydration — beginning with water upon waking — is one of the simplest, highest-leverage health habits available.
 
 
-![Chapter 6:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-06-3NE3YvyEhxK5QPdjcHdYR9.webp)
+
+
+![Chapter 7](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-06-3NE3YvyEhxK5QPdjcHdYR9.webp)
 
 ## Chapter 7: Sleep — The Master Repair Phase
 
@@ -892,7 +924,9 @@ Science. 2013;342(6156):373–377.
 > - Light is the master regulator of the circadian clock. Morning bright light and evening darkness are the two most powerful environmental cues for healthy sleep architecture.
 
 
-![Chapter 1:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-01-SryDFu8y5LjH284Wf59pw6.webp)
+
+
+![Chapter 8](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-07-JJaCXuohsTfH2KAGgfnWW2.webp)
 
 ## Chapter 8: Food — Building the Body from the Inside Out
 
@@ -964,7 +998,9 @@ PLoS Medicine. 2016;13(6):e1002039.
 > - No supplement, medication, or intervention can fully compensate for a chronically poor diet. Food is the foundation.
 
 
-![Chapter 8:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-08-g6JbQPXA255AJoabAkx6UZ.webp)
+
+
+![Chapter 9](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-08-g6JbQPXA255AJoabAkx6UZ.webp)
 
 ## Chapter 9: Shelter — The Environment We Come Home To
 
@@ -1008,7 +1044,9 @@ Once the physiological foundations are in place, the body's next priority is saf
 > - A health-supporting home is not about aesthetics — it is about clean air, natural light, quiet, thermal comfort, and a sense of safety and belonging.
 
 
-![The Biological Hybrid: Human vs. Microbial Cells & Genes](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/human_microbial_infographic_5d6cf6d3.webp)
+
+
+![Chapter 10](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-09-9H5vmDcVvgNpM54ohvej5J.webp)
 
 ## Chapter 10: Security and Stability — The Nervous System's First Request
 
@@ -1071,7 +1109,9 @@ Because health is the product of an interconnected system, it cannot be reliably
 > - Reducing unnecessary stress load and improving recovery capacity multiplies the impact of every other health intervention.
 
 
-![Chapter 11:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-11-A7neNTxjZLU8nNNUeTTxyg.webp)
+
+
+![Chapter 11](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-10-4jFrBKgSbont6xs4dJoYAw.webp)
 
 ## Chapter 11: Financial Safety — The Modern Prerequisite for Wellbeing
 
@@ -1112,7 +1152,9 @@ When financial insecurity is persistent, the body remains in a state of chronic 
 > - Addressing financial stress is not separate from a health strategy. It is central to it.
 
 
-![Chapter 12:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-12-SgSQmC2fpJDvEAZUSrj92K.webp)
+
+
+![Chapter 12](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-11-A7neNTxjZLU8nNNUeTTxyg.webp)
 
 ## Chapter 12: Meaningful Connection — The Biology of Belonging
 
@@ -1161,7 +1203,9 @@ The key variables are authenticity, reciprocity, and felt safety — the sense t
 > - Investing in relationships — with time, attention, and vulnerability — is one of the most evidence-based health interventions available.
 
 
-![Chapter 13:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-13-MAZcSDQF2R3qCiw6nGeQuB.webp)
+
+
+![Chapter 13](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-12-SgSQmC2fpJDvEAZUSrj92K.webp)
 
 ## Chapter 13: Self-Respect and Autonomy — The Architecture of Confidence
 
@@ -1208,7 +1252,9 @@ When you lack a sense of competence and autonomy, the brain registers this as a 
 > - Building competence through small, consistent actions — and acknowledging progress — is the most reliable path to genuine self-esteem.
 
 
-![Chapter 14:](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-14-UFfhGkjVe5BoA3Vm8h2Ray.webp)
+
+
+![Chapter 14](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-13-MAZcSDQF2R3qCiw6nGeQuB.webp)
 
 ## Chapter 14: Purpose, Meaning, and the Fullest Expression of Health
 
@@ -1259,14 +1305,15 @@ That is what a better approach looks like.
 > - Adding life to your years means not just extending the quantity of time, but filling it with meaning, contribution, and the ongoing expression of who you are becoming.
 
 
-![Conclusion — Adding Life to Your Years](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-conclusion-bQ2Qq8S4Y5sajfiuKXPQrf.webp)
 
 
 
 [![Watch: Methylene Blue Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-15_8b4889d7.png)](https://addlifetoyouryears.org/media#rec-15)
 
 
-![Conclusion — Adding Life to Your Years](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-conclusion-bQ2Qq8S4Y5sajfiuKXPQrf.webp)
+
+
+![Conclusion](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-conclusion-bQ2Qq8S4Y5sajfiuKXPQrf.webp)
 
 # Conclusion: Adding Life to Your Years
 
@@ -1282,7 +1329,12 @@ This book is a living document. As new evidence emerges and as the author's unde
 ---
 
 
-![John's 12-Month Healing Journey — From Metabolic Syndrome to Thriving](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/infographic-johns-timeline-gJJqnjN5QWghTmBFBqSCyg.webp)
+
+
+![John's Timeline](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/infographic-johns-timeline-gJJqnjN5QWghTmBFBqSCyg.webp)
+
+
+![Part Four](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-part4-hiCUGJzuE6pXLiock9VE69.webp)
 
 # Part Four: John's Path Forward — A Healing Story
 
