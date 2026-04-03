@@ -1,15 +1,14 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Download, Menu, X, ArrowLeft, Search, ChevronUp, ChevronDown } from "lucide-react";
+import { Download, Menu, X, ArrowLeft } from "lucide-react";
 import { Link } from "wouter";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 const PDF_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_5a9001c5.pdf";
 const MD_CDN_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_c38b9443.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/Version3-AddLifeToYourYears_811b8f48.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -17,15 +16,15 @@ const chapters = [
   { id: "chapter-1", label: "Ch 1: A Universe of Cells" },
   { id: "chapter-2", label: "Ch 2: The Microbiome" },
   { id: "chapter-3", label: "Ch 3: Cell Communication" },
-  { id: "chapter-4", label: "Ch 4: Redox Biochemistry" },
   { id: "part-two", label: "Part Two: The 8 Factors" },
   { id: "part-three", label: "Part Three: Wellness Strategies" },
-  { id: "chapter-5", label: "Ch 5: Air" },
-  { id: "chapter-6", label: "Ch 6: Water" },
-  { id: "chapter-7", label: "Ch 7: Sleep" },
-  { id: "chapter-8", label: "Ch 8: Food" },
-  { id: "chapter-9", label: "Ch 9: Shelter" },
-  { id: "chapter-10", label: "Ch 10: Security & Stability" },
+  { id: "chapter-4", label: "Ch 4: Air" },
+  { id: "chapter-5", label: "Ch 5: Water" },
+  { id: "chapter-6", label: "Ch 6: Sleep" },
+  { id: "chapter-7", label: "Ch 7: Food" },
+  { id: "chapter-8", label: "Ch 8: Shelter" },
+  { id: "chapter-9", label: "Ch 9: Security" },
+  { id: "chapter-10", label: "Ch 10: Stability" },
   { id: "chapter-11", label: "Ch 11: Financial Safety" },
   { id: "chapter-12", label: "Ch 12: Meaningful Connection" },
   { id: "chapter-13", label: "Ch 13: Self-Respect" },
@@ -50,56 +49,52 @@ const chapters = [
   { id: "john-6-months", label: "John, Six Months Later" },
   { id: "john-12-months", label: "John, Twelve Months Later" },
   { id: "a-note", label: "A Note on the Journey" },
-  { id: "glossary", label: "Glossary" },
 ];
 
-// Map heading text to anchor IDs — longer keys first to prevent false prefix matches
+// Map heading text to anchor IDs
 const headingIdMap: Record<string, string> = {
-  "Recommendation 10": "rec-10",
-  "Recommendation 11": "rec-11",
-  "Recommendation 12": "rec-12",
-  "Recommendation 13": "rec-13",
-  "Recommendation 14": "rec-14",
-  "Recommendation 15": "rec-15",
-  "Recommendation 1": "rec-1",
-  "Recommendation 2": "rec-2",
-  "Recommendation 3": "rec-3",
-  "Recommendation 4": "rec-4",
-  "Recommendation 5": "rec-5",
-  "Recommendation 6": "rec-6",
-  "Recommendation 7": "rec-7",
-  "Recommendation 8": "rec-8",
-  "Recommendation 9": "rec-9",
-  "Chapter 10": "chapter-10",
-  "Chapter 11": "chapter-11",
-  "Chapter 12": "chapter-12",
-  "Chapter 13": "chapter-13",
-  "Chapter 14": "chapter-14",
-  "Chapter 1": "chapter-1",
-  "Chapter 2": "chapter-2",
-  "Chapter 3": "chapter-3",
-  "Chapter 4": "chapter-4",
-  "Chapter 5": "chapter-5",
-  "Chapter 6": "chapter-6",
-  "Chapter 7": "chapter-7",
-  "Chapter 8": "chapter-8",
-  "Chapter 9": "chapter-9",
   "Introduction": "introduction",
-  "Part One": "part-one",
-  "Part Two": "part-two",
-  "Part Three": "part-three",
-  "Part Four": "part-four",
-  "Conclusion": "conclusion",
+  "Part One: How Our Body Works": "part-one",
+  "Chapter 1: The Human Body": "chapter-1",
+  "Chapter 2: The Microbiome": "chapter-2",
+  "Chapter 3: Cell Communication": "chapter-3",
+  "Part Two: The 8 Factors of Health": "part-two",
+  "Part Three: Wellness Strategies": "part-three",
+  "Chapter 4: Air": "chapter-4",
+  "Chapter 5: Water": "chapter-5",
+  "Chapter 6: Sleep": "chapter-6",
+  "Chapter 7: Food": "chapter-7",
+  "Chapter 8: Shelter": "chapter-8",
+  "Chapter 9: Security": "chapter-9",
+  "Chapter 10: Stability": "chapter-10",
+  "Chapter 11: Financial Safety": "chapter-11",
+  "Chapter 12: Meaningful Connection": "chapter-12",
+  "Chapter 13: Self-Respect and Autonomy": "chapter-13",
+  "Chapter 14: Purpose, Meaning, and the Fullest Expression": "chapter-14",
+  "Conclusion: Adding Life to Your Years": "conclusion",
+  "Part Four: John's Path Forward": "part-four",
+  "Recommendation 1: Adopt a Whole Food Plant-Based Lifestyle": "rec-1",
+  "Recommendation 2: Drink Distilled or Reverse Osmosis Water": "rec-2",
+  "Recommendation 3: Prioritise Sleep": "rec-3",
+  "Recommendation 4: Supplement with Glycine": "rec-4",
+  "Recommendation 5: The Five Seeds of Life": "rec-5",
+  "Recommendation 6: Vitamin B12 and Vitamin D": "rec-6",
+  "Recommendation 7: The Six Movements": "rec-7",
+  "Recommendation 8: Breathing": "rec-8",
+  "Recommendation 9: PEMF Therapy and Earthing": "rec-9",
+  "Recommendation 10: Meditation and Relaxation": "rec-10",
+  "Recommendation 11: Time in Nature": "rec-11",
+  "Recommendation 12: Repairing the Relationship": "rec-12",
+  "Recommendation 13: Develop a Second Stream of Income": "rec-13",
+  "Recommendation 14: Consider Your Environment": "rec-14",
+  "Recommendation 15: Methylene Blue": "rec-15",
   "John, Six Months Later": "john-6-months",
   "John, Twelve Months Later": "john-12-months",
   "A Note on the Journey": "a-note",
-  "Glossary": "glossary",
 };
 
-// Sort keys by length descending so longer keys match first
-const sortedHeadingKeys = Object.keys(headingIdMap).sort((a, b) => b.length - a.length);
-
 function getHeadingId(children: React.ReactNode): string {
+  // Flatten all child text recursively
   const extractText = (node: React.ReactNode): string => {
     if (typeof node === "string") return node;
     if (typeof node === "number") return String(node);
@@ -110,74 +105,20 @@ function getHeadingId(children: React.ReactNode): string {
     return "";
   };
   const text = extractText(children);
-  for (const key of sortedHeadingKeys) {
-    if (text.includes(key)) return headingIdMap[key];
+  // Sort keys by length descending so longer/more specific keys match first
+  // This prevents "Recommendation 1" from matching "Recommendation 10"
+  const sortedEntries = Object.entries(headingIdMap).sort((a, b) => b[0].length - a[0].length);
+  for (const [key, id] of sortedEntries) {
+    if (text.includes(key)) return id;
   }
   return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
-
-// Highlight search terms in text
-function highlightText(text: string, query: string): React.ReactNode {
-  if (!query || query.length < 2) return text;
-  const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "gi");
-  const parts = text.split(regex);
-  return parts.map((part, i) =>
-    regex.test(part) ? (
-      <mark key={i} className="bg-yellow-200 text-yellow-900 rounded px-0.5 search-highlight">
-        {part}
-      </mark>
-    ) : (
-      part
-    )
-  );
-}
-
-interface SearchResult {
-  lineIndex: number;
-  lineText: string;
-  context: string;
-  matchIndex: number;
-}
-
-function buildSearchResults(content: string, query: string): SearchResult[] {
-  if (!query || query.length < 2) return [];
-  const lines = content.split("\n");
-  const results: SearchResult[] = [];
-  const lowerQuery = query.toLowerCase();
-  lines.forEach((line, idx) => {
-    if (line.toLowerCase().includes(lowerQuery)) {
-      // Get surrounding context (strip markdown markers)
-      const clean = line.replace(/^#+\s*/, "").replace(/[*_`>]/g, "");
-      const contextStart = Math.max(0, idx - 1);
-      const contextLines = lines.slice(contextStart, idx + 2)
-        .map(l => l.replace(/^#+\s*/, "").replace(/[*_`>]/g, "").trim())
-        .filter(Boolean)
-        .join(" ");
-      results.push({
-        lineIndex: idx,
-        lineText: clean,
-        context: contextLines.slice(0, 120) + (contextLines.length > 120 ? "…" : ""),
-        matchIndex: results.length,
-      });
-    }
-  });
-  return results.slice(0, 50); // cap at 50 results
-}
-
-const SCROLL_STORAGE_KEY = "book-reader-scroll";
 
 export default function BookReader() {
   const [bookContent, setBookContent] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
-  const [currentResultIndex, setCurrentResultIndex] = useState(0);
-  const [highlightQuery, setHighlightQuery] = useState("");
-  const searchInputRef = useRef<HTMLInputElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetch(MD_CDN_URL)
@@ -195,79 +136,6 @@ export default function BookReader() {
       });
   }, []);
 
-  // Restore scroll position when returning from a video modal
-  useEffect(() => {
-    if (!loading && bookContent) {
-      const saved = sessionStorage.getItem(SCROLL_STORAGE_KEY);
-      if (saved) {
-        const scrollY = parseInt(saved, 10);
-        sessionStorage.removeItem(SCROLL_STORAGE_KEY);
-        // Small delay to let the content render before scrolling
-        setTimeout(() => window.scrollTo({ top: scrollY, behavior: "instant" }), 150);
-      }
-    }
-  }, [loading, bookContent]);
-
-  // Intercept clicks on recommendation links to save scroll position before navigating
-  useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      const target = (e.target as HTMLElement).closest("a");
-      if (!target) return;
-      const href = target.getAttribute("href") || "";
-      if (href.includes("from=reader")) {
-        // Save current scroll position before leaving
-        sessionStorage.setItem(SCROLL_STORAGE_KEY, String(window.scrollY));
-      }
-    };
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, []);
-
-  // Keyboard shortcut: Ctrl+F / Cmd+F to open search
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === "f") {
-        e.preventDefault();
-        setSearchOpen(true);
-        setTimeout(() => searchInputRef.current?.focus(), 100);
-      }
-      if (e.key === "Escape") {
-        setSearchOpen(false);
-        setHighlightQuery("");
-        setSearchResults([]);
-        setSearchQuery("");
-      }
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, []);
-
-  const handleSearch = useCallback(() => {
-    const results = buildSearchResults(bookContent, searchQuery);
-    setSearchResults(results);
-    setCurrentResultIndex(0);
-    setHighlightQuery(searchQuery);
-    // Scroll to first result
-    if (results.length > 0) {
-      setTimeout(() => {
-        const highlights = document.querySelectorAll(".search-highlight");
-        if (highlights[0]) {
-          highlights[0].scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-      }, 150);
-    }
-  }, [bookContent, searchQuery]);
-
-  const navigateResult = (direction: "next" | "prev") => {
-    const highlights = document.querySelectorAll(".search-highlight");
-    if (highlights.length === 0) return;
-    let next = direction === "next"
-      ? (currentResultIndex + 1) % highlights.length
-      : (currentResultIndex - 1 + highlights.length) % highlights.length;
-    setCurrentResultIndex(next);
-    highlights[next]?.scrollIntoView({ behavior: "smooth", block: "center" });
-  };
-
   const scrollToChapter = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -275,17 +143,6 @@ export default function BookReader() {
       setSidebarOpen(false);
     }
   };
-
-  // Wrap text renderer to highlight search matches
-  const makeTextRenderer = (query: string) => {
-    if (!query || query.length < 2) return undefined;
-    return ({ children }: { children: React.ReactNode }) => {
-      if (typeof children === "string") return <>{highlightText(children, query)}</>;
-      return <>{children}</>;
-    };
-  };
-
-  const totalHighlights = document.querySelectorAll(".search-highlight").length;
 
   return (
     <div className="min-h-screen bg-[#fafaf8]">
@@ -311,112 +168,14 @@ export default function BookReader() {
               Add Life to Your Years
             </span>
           </div>
-          <div className="flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => {
-                setSearchOpen(!searchOpen);
-                if (!searchOpen) setTimeout(() => searchInputRef.current?.focus(), 100);
-              }}
-              className="text-stone-600 hover:text-stone-900"
-              title="Search (Ctrl+F)"
-            >
-              <Search className="h-4 w-4" />
+          <a href={PDF_URL} download="Add-Life-to-Your-Years.pdf">
+            <Button size="sm" className="gap-2 bg-green-700 hover:bg-green-800 text-white">
+              <Download className="h-4 w-4" />
+              <span className="hidden sm:inline">Download PDF</span>
+              <span className="sm:hidden">PDF</span>
             </Button>
-            <a href={PDF_URL} download="Add-Life-to-Your-Years.pdf">
-              <Button size="sm" className="gap-2 bg-green-700 hover:bg-green-800 text-white">
-                <Download className="h-4 w-4" />
-                <span className="hidden sm:inline">Download PDF</span>
-                <span className="sm:hidden">PDF</span>
-              </Button>
-            </a>
-          </div>
+          </a>
         </div>
-
-        {/* Search bar — slides down below header */}
-        {searchOpen && (
-          <div className="border-t border-stone-200 bg-white px-4 py-2 flex items-center gap-2">
-            <Search className="h-4 w-4 text-stone-400 shrink-0" />
-            <Input
-              ref={searchInputRef}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") handleSearch();
-                if (e.key === "Escape") {
-                  setSearchOpen(false);
-                  setHighlightQuery("");
-                  setSearchResults([]);
-                  setSearchQuery("");
-                }
-              }}
-              placeholder="Search the book… (Enter to search)"
-              className="flex-1 h-8 text-sm border-0 shadow-none focus-visible:ring-0 bg-transparent"
-            />
-            {searchResults.length > 0 && (
-              <span className="text-xs text-stone-500 shrink-0 whitespace-nowrap">
-                {totalHighlights > 0 ? `${currentResultIndex + 1} / ${totalHighlights}` : `${searchResults.length} results`}
-              </span>
-            )}
-            {searchResults.length > 0 && (
-              <>
-                <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => navigateResult("prev")}>
-                  <ChevronUp className="h-3 w-3" />
-                </Button>
-                <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => navigateResult("next")}>
-                  <ChevronDown className="h-3 w-3" />
-                </Button>
-              </>
-            )}
-            {searchQuery && (
-              <Button
-                variant="ghost"
-                size="sm"
-                className="h-7 px-2 text-xs text-stone-500"
-                onClick={handleSearch}
-              >
-                Search
-              </Button>
-            )}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-7 w-7 text-stone-400"
-              onClick={() => {
-                setSearchOpen(false);
-                setHighlightQuery("");
-                setSearchResults([]);
-                setSearchQuery("");
-              }}
-            >
-              <X className="h-3 w-3" />
-            </Button>
-          </div>
-        )}
-
-        {/* Search results dropdown */}
-        {searchOpen && searchResults.length > 0 && (
-          <div className="absolute top-full left-0 right-0 bg-white border-b border-stone-200 shadow-lg z-50 max-h-64 overflow-y-auto">
-            {searchResults.map((result, i) => (
-              <button
-                key={i}
-                className="w-full text-left px-4 py-2.5 hover:bg-stone-50 border-b border-stone-100 last:border-0"
-                onClick={() => {
-                  setCurrentResultIndex(i);
-                  const highlights = document.querySelectorAll(".search-highlight");
-                  // Find the i-th group of highlights
-                  if (highlights[i]) {
-                    highlights[i].scrollIntoView({ behavior: "smooth", block: "center" });
-                  }
-                  setSearchOpen(false);
-                }}
-              >
-                <p className="text-xs text-stone-500 mb-0.5 truncate">{result.context}</p>
-              </button>
-            ))}
-          </div>
-        )}
       </header>
 
       <div className="max-w-7xl mx-auto flex">
@@ -471,21 +230,7 @@ export default function BookReader() {
             </div>
           )}
           {!loading && !error && (
-            <div ref={contentRef} className="max-w-3xl mx-auto book-content">
-              {/* Book cover at the top of the reader */}
-              <div className="flex flex-col items-center mb-12 pb-10 border-b border-stone-200">
-                <img
-                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-cover-UsuL2YkEq9DNQMFM4uAv7v.webp"
-                  alt="Add Life to Your Years book cover"
-                  className="w-48 md:w-64 rounded-xl shadow-2xl mb-6"
-                />
-                <h2 className="font-serif text-2xl font-bold text-stone-800 text-center mb-1">Add Life to Your Years</h2>
-                <p className="text-stone-500 text-sm text-center">Proven Strategies for Health, Wellness and Vitality</p>
-                <div className="mt-4 flex gap-3">
-                  <span className="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-medium">128 Pages</span>
-                  <span className="text-xs bg-stone-100 text-stone-600 px-3 py-1 rounded-full font-medium">Free to Read</span>
-                </div>
-              </div>
+            <div className="max-w-3xl mx-auto book-content">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{
@@ -496,11 +241,7 @@ export default function BookReader() {
                         id={id}
                         className="font-serif text-3xl font-bold text-stone-900 mt-12 mb-6 pb-3 border-b border-stone-200 scroll-mt-20"
                       >
-                        {highlightQuery ? highlightText(
-                          typeof children === "string" ? children :
-                          Array.isArray(children) ? children.join("") : String(children),
-                          highlightQuery
-                        ) : children}
+                        {children}
                       </h1>
                     );
                   },
@@ -511,11 +252,7 @@ export default function BookReader() {
                         id={id}
                         className="font-serif text-2xl font-bold text-stone-800 mt-10 mb-4 scroll-mt-20"
                       >
-                        {highlightQuery ? highlightText(
-                          typeof children === "string" ? children :
-                          Array.isArray(children) ? children.join("") : String(children),
-                          highlightQuery
-                        ) : children}
+                        {children}
                       </h2>
                     );
                   },
@@ -527,34 +264,18 @@ export default function BookReader() {
                   h4: ({ children }) => (
                     <h4 className="font-semibold text-stone-700 mt-6 mb-2">{children}</h4>
                   ),
-                  p: ({ children }) => {
-                    if (highlightQuery && typeof children === "string") {
-                      return <p className="text-stone-700 leading-relaxed mb-4 text-base">{highlightText(children, highlightQuery)}</p>;
-                    }
-                    return <p className="text-stone-700 leading-relaxed mb-4 text-base">{children}</p>;
-                  },
+                  p: ({ children }) => (
+                    <p className="text-stone-700 leading-relaxed mb-4 text-base">{children}</p>
+                  ),
                   strong: ({ children }) => (
                     <strong className="font-semibold text-stone-900">{children}</strong>
                   ),
                   em: ({ children }) => <em className="italic text-stone-700">{children}</em>,
-                  blockquote: ({ children }) => {
-                    // Detect if this is a Key Takeaways or video/resource box
-                    const text = typeof children === 'string' ? children :
-                      JSON.stringify(children);
-                    const isKeyBox = text.includes('Key Takeaways') || text.includes('Watch Videos') || text.includes('Watch:') || text.includes('Resources') || text.includes('Join the Community');
-                    if (isKeyBox) {
-                      return (
-                        <div className="my-6 rounded-xl border-2 border-green-500 bg-green-50 px-5 py-4 shadow-sm not-italic">
-                          {children}
-                        </div>
-                      );
-                    }
-                    return (
-                      <blockquote className="border-l-4 border-green-400 pl-4 my-4 text-stone-600 italic bg-green-50/50 py-2 pr-2 rounded-r">
-                        {children}
-                      </blockquote>
-                    );
-                  },
+                  blockquote: ({ children }) => (
+                    <blockquote className="border-l-4 border-green-400 pl-4 my-4 text-stone-600 italic bg-green-50/50 py-2 pr-2 rounded-r">
+                      {children}
+                    </blockquote>
+                  ),
                   table: ({ children }) => (
                     <div className="overflow-x-auto my-6 rounded-lg border border-stone-200 shadow-sm">
                       <table className="w-full text-sm text-left">{children}</table>
@@ -584,30 +305,26 @@ export default function BookReader() {
                   ),
                   li: ({ children }) => <li className="leading-relaxed">{children}</li>,
                   hr: () => <hr className="my-10 border-stone-200" />,
+                  img: ({ src, alt }) => (
+                    <figure className="my-8 text-center">
+                      <img
+                        src={src}
+                        alt={alt || ""}
+                        className="mx-auto max-w-full rounded-xl shadow-md border border-stone-200"
+                        style={{ maxHeight: "480px", objectFit: "contain" }}
+                      />
+                      {alt && (
+                        <figcaption className="mt-3 text-sm text-stone-500 italic">
+                          {alt}
+                        </figcaption>
+                      )}
+                    </figure>
+                  ),
                   code: ({ children }) => (
                     <code className="bg-stone-100 text-stone-800 px-1.5 py-0.5 rounded text-sm font-mono">
                       {children}
                     </code>
                   ),
-                  img: ({ src, alt }) => {
-                    // Hide the home page QR code in the online reader (it's for PDF use only)
-                    if (src && src.includes("qr-home")) return null;
-                    return (
-                      <figure className="my-8 text-center">
-                        <img
-                          src={src}
-                          alt={alt || ""}
-                          className="max-w-full mx-auto rounded-lg shadow-md"
-                          loading="lazy"
-                        />
-                        {alt && (
-                          <figcaption className="mt-2 text-sm text-stone-500 italic">
-                            {alt}
-                          </figcaption>
-                        )}
-                      </figure>
-                    );
-                  },
                 }}
               >
                 {bookContent}

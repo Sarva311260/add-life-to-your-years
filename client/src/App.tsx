@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch, useLocation, Redirect } from "wouter";
+import { Route, Switch, useLocation } from "wouter";
 import { useEffect } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -31,7 +31,6 @@ function Router() {
     <Switch>
       <Route path={"/"} component={Home} />
       <Route path={"/questionnaire"} component={Questionnaire} />
-      <Route path={"/self-evaluation"}>{() => <Redirect to="/questionnaire" />}</Route>
       <Route path={"/teaser-results"} component={TeaserResults} />
       <Route path={"/results/:id"} component={Results} />
       <Route path={"/report/:id"} component={Report} />

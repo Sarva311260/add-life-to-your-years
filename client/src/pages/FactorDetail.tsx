@@ -8,16 +8,7 @@ import {
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 
-const FACTOR_BOOK_CHAPTER: Record<string, string> = {
-  lifestyle: "/book/read#part-two",
-  environmental: "/book/read#chapter-5",
-  genetic: "/book/read#part-one",
-  structural: "/book/read#chapter-10",
-  stress: "/book/read#chapter-10",
-  purpose: "/book/read#chapter-14",
-  relationships: "/book/read#chapter-12",
-  physical_trauma: "/book/read#part-two",
-};
+const BOOK_LINK = "#book"; // Placeholder — update when book purchase link is available
 
 interface FactorData {
   id: string;
@@ -466,13 +457,13 @@ export default function FactorDetail() {
                   There is much more detail on {factor.name.toLowerCase()} and all 8 health factors in the{" "}
                   <strong>Add Life to Your Years</strong> book, including practical strategies and real-world examples.
                 </p>
-                <Link href={FACTOR_BOOK_CHAPTER[factorId] || "/book/read"}>
+                <a href={BOOK_LINK}>
                   <Button className="gap-2">
                     <BookOpen className="w-4 h-4" />
                     Explore the Book
                     <ExternalLink className="w-3.5 h-3.5" />
                   </Button>
-                </Link>
+                </a>
               </CardContent>
             </Card>
           </motion.div>
