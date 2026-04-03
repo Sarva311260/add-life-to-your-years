@@ -138,3 +138,4 @@
 - [x] Add Time in Nature video (https://youtu.be/UHv3SCUioQU) to Recommendation 11 on Media page
 - [x] Add Relationships video (https://youtu.be/rgQvqi6aYD8) to Recommendation 12 on Media page
 - [x] Add Second Income video (https://youtu.be/eD0N8wXjNSs) to Recommendation 13 on Media page
+- [x] Add Environment video (https://youtu.be/foBnfBX4YKQ) to Recommendation 14 on Media page

@@ -271,7 +271,14 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     description:
       "How your home and work environment shapes your health — from air quality and toxin reduction to light and sound.",
     color: "bg-cyan-100 text-cyan-800 border-cyan-200",
-    videos: [],
+    videos: [
+      {
+        youtubeId: "foBnfBX4YKQ",
+        title: "Your Environment — Air Quality, Toxins & Healing Spaces",
+        description:
+          "How your home and work environment shapes your health — from air quality and toxin reduction to light and sound.",
+      },
+    ],
   },
   {
     id: "rec-15",
