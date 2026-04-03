@@ -159,7 +159,14 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     description:
       "The six fundamental movement patterns every body needs — and how to build them into your daily life regardless of fitness level.",
     color: "bg-red-100 text-red-800 border-red-200",
-    videos: [],
+    videos: [
+      {
+        youtubeId: "qu3ixTQmpl0",
+        title: "The Six Movements — Japanese Exercise for Longevity",
+        description:
+          "The six fundamental movement patterns every body needs — and how to build them into your daily life regardless of fitness level.",
+      },
+    ],
   },
   {
     id: "rec-8",
