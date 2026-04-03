@@ -61,9 +61,9 @@ One of the most valuable things you can do before — or alongside — reading t
 This is not a diagnostic tool. It is a mirror — a way of seeing your current health picture clearly, so you know where to focus your energy. Many readers find that completing the evaluation before reading Part Two gives the 8 Factors immediate personal relevance.
 Others prefer to read first and evaluate afterwards. Either approach works.
 
-> [![Take the Self-Evaluation](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-self-eval_0db23102.png)](https://addlifetoyouryears.org/evaluation)
+> [![Take the Self-Evaluation](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-self-eval_0db23102.png)](https://addlifetoyouryears.org/self-evaluation)
 >
-> **[Take the Free Self-Evaluation](https://addlifetoyouryears.org/evaluation)**
+> **[Take the Free Self-Evaluation](https://addlifetoyouryears.org/self-evaluation)**
 
 **The Media Library**
 

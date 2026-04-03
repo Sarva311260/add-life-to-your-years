@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Download, Menu, X, ArrowLeft, Search, ChevronUp, ChevronDown } from "lucide-react";
+import { Menu, X, ArrowLeft, Search, ChevronUp, ChevronDown } from "lucide-react";
 import { Link } from "wouter";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -9,7 +9,7 @@ import remarkGfm from "remark-gfm";
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
 const MD_CDN_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_f588cb34.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_f8e7e6d7.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -164,6 +164,28 @@ function buildSearchResults(content: string, query: string): SearchResult[] {
   return results.slice(0, 50); // cap at 50 results
 }
 
+// YouTube video IDs for each recommendation (used for in-reader video modal)
+const REC_VIDEOS: Record<string, { youtubeId: string; title: string }[]> = {
+  "rec-1": [{ youtubeId: "wb7L3t0ejdI", title: "Whole Food Plant-Based Diet" }],
+  "rec-2": [{ youtubeId: "VRzjoIgHNb0", title: "Water & Hydration" }],
+  "rec-3": [{ youtubeId: "tcwVfUAqWiY", title: "Sleep & Melatonin" }],
+  "rec-4": [{ youtubeId: "o2Kc1Iaow40", title: "Glycine" }],
+  "rec-5": [{ youtubeId: "YckoR3hLL9E", title: "Five Seeds of Life" }],
+  "rec-6": [
+    { youtubeId: "wY4vEBilWN4", title: "Vitamin B12" },
+    { youtubeId: "iotnggfP9Yk", title: "Vitamin D3" },
+  ],
+  "rec-7": [{ youtubeId: "qu3ixTQmpl0", title: "Six Movements" }],
+  "rec-8": [{ youtubeId: "8vN08IuParo", title: "Breathing" }],
+  "rec-9": [{ youtubeId: "byinppKR9LY", title: "PEMF & Earthing" }],
+  "rec-10": [{ youtubeId: "wXsxwIJnUJk", title: "Meditation" }],
+  "rec-11": [{ youtubeId: "UHv3SCUioQU", title: "Time in Nature" }],
+  "rec-12": [{ youtubeId: "rgQvqi6aYD8", title: "Repairing the Relationship" }],
+  "rec-13": [{ youtubeId: "eD0N8wXjNSs", title: "Second Income Stream" }],
+  "rec-14": [{ youtubeId: "foBnfBX4YKQ", title: "Your Environment" }],
+  "rec-15": [{ youtubeId: "KvASX2yp0zU", title: "Methylene Blue & Photobiomodulation" }],
+};
+
 const SCROLL_STORAGE_KEY = "book-reader-scroll";
 
 export default function BookReader() {
@@ -177,6 +199,7 @@ export default function BookReader() {
   const [currentResultIndex, setCurrentResultIndex] = useState(0);
   const [highlightQuery, setHighlightQuery] = useState("");
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
+  const [videoModal, setVideoModal] = useState<{ youtubeId: string; title: string }[] | null>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -209,14 +232,24 @@ export default function BookReader() {
     }
   }, [loading, bookContent]);
 
-  // Intercept clicks on recommendation links to save scroll position before navigating
+  // Intercept clicks on media links to open video modal instead of navigating away
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement).closest("a");
       if (!target) return;
       const href = target.getAttribute("href") || "";
+      // Check if this is a media link with a rec hash
+      const mediaMatch = href.match(/media#(rec-\d+)/);
+      if (mediaMatch) {
+        e.preventDefault();
+        const recId = mediaMatch[1];
+        const videos = REC_VIDEOS[recId];
+        if (videos) {
+          setVideoModal(videos);
+        }
+        return;
+      }
       if (href.includes("from=reader")) {
-        // Save current scroll position before leaving
         sessionStorage.setItem(SCROLL_STORAGE_KEY, String(window.scrollY));
       }
     };
@@ -627,6 +660,45 @@ export default function BookReader() {
               className="max-w-full max-h-[90vh] object-contain rounded-lg"
               onClick={(e) => e.stopPropagation()}
             />
+          </div>
+        </div>
+      )}
+      {/* Video modal — opens when clicking QR codes or media links in the book */}
+      {videoModal && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-4"
+          onClick={() => setVideoModal(null)}
+        >
+          <div
+            className="relative w-full max-w-3xl bg-stone-900 rounded-xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+              onClick={() => setVideoModal(null)}
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <div className="space-y-0">
+              {videoModal.map((video, idx) => (
+                <div key={video.youtubeId}>
+                  {videoModal.length > 1 && (
+                    <div className="px-4 pt-3 pb-1">
+                      <p className="text-white/80 text-sm font-medium">{video.title}</p>
+                    </div>
+                  )}
+                  <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                    <iframe
+                      className="absolute inset-0 w-full h-full"
+                      src={`https://www.youtube.com/embed/${video.youtubeId}?rel=0`}
+                      title={video.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}

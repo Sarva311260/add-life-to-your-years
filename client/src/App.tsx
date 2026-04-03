@@ -32,6 +32,7 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/questionnaire"} component={Questionnaire} />
       <Route path={"/self-evaluation"}>{() => <Redirect to="/questionnaire" />}</Route>
+      <Route path={"/evaluation"}>{() => <Redirect to="/questionnaire" />}</Route>
       <Route path={"/teaser-results"} component={TeaserResults} />
       <Route path={"/results/:id"} component={Results} />
       <Route path={"/report/:id"} component={Report} />
