@@ -239,7 +239,14 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     description:
       "Social connection is a primary determinant of longevity. Practical strategies for deepening relationships and reducing isolation.",
     color: "bg-pink-100 text-pink-800 border-pink-200",
-    videos: [],
+    videos: [
+      {
+        youtubeId: "rgQvqi6aYD8",
+        title: "Repairing Relationships — Social Connection & Longevity",
+        description:
+          "Why social connection is a primary determinant of longevity and practical strategies for deepening relationships.",
+      },
+    ],
   },
   {
     id: "rec-13",

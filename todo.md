@@ -136,3 +136,4 @@
 - [x] Add PEMF video (https://youtu.be/byinppKR9LY) to Recommendation 9 on Media page
 - [x] Add Meditation video (https://youtu.be/wXsxwIJnUJk) to Recommendation 10 on Media page
 - [x] Add Time in Nature video (https://youtu.be/UHv3SCUioQU) to Recommendation 11 on Media page
+- [x] Add Relationships video (https://youtu.be/rgQvqi6aYD8) to Recommendation 12 on Media page
