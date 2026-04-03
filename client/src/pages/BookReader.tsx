@@ -176,6 +176,7 @@ export default function BookReader() {
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [currentResultIndex, setCurrentResultIndex] = useState(0);
   const [highlightQuery, setHighlightQuery] = useState("");
+  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -583,13 +584,13 @@ export default function BookReader() {
                     if (src && src.includes("qr-home")) return null;
                     // QR codes should be small
                     const isQR = src && (src.includes("qr-rec") || src.includes("qr-community"));
-                    // Infographics should be medium-sized
+                    // Infographics should be larger and clickable to zoom
                     const isInfographic = src && (src.includes("infographic") || src.includes("human_microbial"));
                     let imgClass = "max-w-full mx-auto rounded-lg shadow-md";
                     if (isQR) {
                       imgClass = "max-w-[160px] mx-auto rounded-lg shadow-md";
                     } else if (isInfographic) {
-                      imgClass = "max-w-[500px] w-full mx-auto rounded-lg shadow-md";
+                      imgClass = "max-w-[700px] w-full mx-auto rounded-lg shadow-md cursor-pointer hover:opacity-90 transition-opacity";
                     }
                     return (
                       <figure className="my-8 text-center">
@@ -598,10 +599,11 @@ export default function BookReader() {
                           alt={alt || ""}
                           className={imgClass}
                           loading="lazy"
+                          onClick={isInfographic ? () => setZoomedImage(src || null) : undefined}
                         />
                         {alt && (
                           <figcaption className="mt-2 text-sm text-stone-500 italic">
-                            {alt}
+                            {alt}{isInfographic && <span className="ml-1 text-green-700">(tap to zoom)</span>}
                           </figcaption>
                         )}
                       </figure>
@@ -615,6 +617,28 @@ export default function BookReader() {
           )}
         </main>
       </div>
+      {/* Zoom modal for infographics */}
+      {zoomedImage && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-4 cursor-pointer"
+          onClick={() => setZoomedImage(null)}
+        >
+          <div className="relative max-w-[95vw] max-h-[95vh]">
+            <button
+              className="absolute -top-10 right-0 text-white hover:text-stone-300 text-sm font-medium"
+              onClick={() => setZoomedImage(null)}
+            >
+              ✕ Close
+            </button>
+            <img
+              src={zoomedImage}
+              alt="Zoomed infographic"
+              className="max-w-full max-h-[90vh] object-contain rounded-lg"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

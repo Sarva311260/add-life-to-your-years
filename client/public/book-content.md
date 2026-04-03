@@ -741,7 +741,7 @@ The physiological tier encompasses the raw materials of biological survival: the
 
 
 
-![Chapter 5](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-04-KBiuTRhydwsL33L9Y7Qjnm.webp)
+![Chapter 5](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-05-air-SSbnsWh5tSFudEBrvPbrmE.webp)
 
 ## Chapter 5: Air — The First Breath
 
@@ -795,7 +795,7 @@ Slow, diaphragmatic breathing activates the parasympathetic nervous system, redu
 
 
 
-![Chapter 6](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-05-BPqctP73r5WUBeS6YFeKSg.webp)
+![Chapter 6](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-06-water-LLHZ9jmnTjfnzPW4hG8fGu.webp)
 
 ## Chapter 6: Water — The Medium of Life
 
@@ -857,7 +857,7 @@ Filtering tap water through a certified carbon block or reverse osmosis filter a
 
 
 
-![Chapter 7](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-06-3NE3YvyEhxK5QPdjcHdYR9.webp)
+![Chapter 7](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-07-sleep-5tBMKGco7k2LBAUpVtnJUV.webp)
 
 ## Chapter 7: Sleep — The Master Repair Phase
 
@@ -926,7 +926,7 @@ Science. 2013;342(6156):373–377.
 
 
 
-![Chapter 8](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-07-JJaCXuohsTfH2KAGgfnWW2.webp)
+![Chapter 8](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-08-food-QSMYGYRb7kp453qF39aDUh.webp)
 
 ## Chapter 8: Food — Building the Body from the Inside Out
 
@@ -1000,7 +1000,7 @@ PLoS Medicine. 2016;13(6):e1002039.
 
 
 
-![Chapter 9](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-08-g6JbQPXA255AJoabAkx6UZ.webp)
+![Chapter 9](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-09-shelter-Lqxn44oLCH2FPAu58w7CsG.webp)
 
 ## Chapter 9: Shelter — The Environment We Come Home To
 
@@ -1046,7 +1046,7 @@ Once the physiological foundations are in place, the body's next priority is saf
 
 
 
-![Chapter 10](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-09-9H5vmDcVvgNpM54ohvej5J.webp)
+![Chapter 10](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-10-security-n4jWGE6ECoPNwB65xs5G6g.webp)
 
 ## Chapter 10: Security and Stability — The Nervous System's First Request
 
@@ -1111,7 +1111,7 @@ Because health is the product of an interconnected system, it cannot be reliably
 
 
 
-![Chapter 11](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-10-4jFrBKgSbont6xs4dJoYAw.webp)
+![Chapter 11](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-11-financial-L3D5aUNrE8MYu3GqXy3sD3.webp)
 
 ## Chapter 11: Financial Safety — The Modern Prerequisite for Wellbeing
 
@@ -1154,7 +1154,7 @@ When financial insecurity is persistent, the body remains in a state of chronic 
 
 
 
-![Chapter 12](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-11-A7neNTxjZLU8nNNUeTTxyg.webp)
+![Chapter 12](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-12-connection-cwEbAUdocXecdu4RVwCzpD.webp)
 
 ## Chapter 12: Meaningful Connection — The Biology of Belonging
 
@@ -1205,7 +1205,7 @@ The key variables are authenticity, reciprocity, and felt safety — the sense t
 
 
 
-![Chapter 13](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-12-SgSQmC2fpJDvEAZUSrj92K.webp)
+![Chapter 13](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-13-selfrespect-m4cjsL3JtobkWArL4KHiTf.webp)
 
 ## Chapter 13: Self-Respect and Autonomy — The Architecture of Confidence
 
@@ -1254,7 +1254,7 @@ When you lack a sense of competence and autonomy, the brain registers this as a 
 
 
 
-![Chapter 14](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-13-MAZcSDQF2R3qCiw6nGeQuB.webp)
+![Chapter 14](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ch-14-purpose-C9HHPgBVj7VtFSajykehsv.webp)
 
 ## Chapter 14: Purpose, Meaning, and the Fullest Expression of Health
 
@@ -1303,13 +1303,6 @@ That is what a better approach looks like.
 > - Self-actualisation is not reserved for the privileged. It is available in any life where basic needs are reasonably met and where a person is moving toward their own fullest expression.
 > - The conditions for purpose — safety, connection, self-respect — are not prerequisites to be achieved before health is possible. They are health.
 > - Adding life to your years means not just extending the quantity of time, but filling it with meaning, contribution, and the ongoing expression of who you are becoming.
-
-
-
-
-
-[![Watch: Methylene Blue Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-15_8b4889d7.png)](https://addlifetoyouryears.org/media#rec-15)
-
 
 
 
