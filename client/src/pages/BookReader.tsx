@@ -9,7 +9,7 @@ import remarkGfm from "remark-gfm";
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
 const MD_CDN_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_490673bf.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_c38b9443.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -537,11 +537,24 @@ export default function BookReader() {
                     <strong className="font-semibold text-stone-900">{children}</strong>
                   ),
                   em: ({ children }) => <em className="italic text-stone-700">{children}</em>,
-                  blockquote: ({ children }) => (
-                    <blockquote className="border-l-4 border-green-400 pl-4 my-4 text-stone-600 italic bg-green-50/50 py-2 pr-2 rounded-r">
-                      {children}
-                    </blockquote>
-                  ),
+                  blockquote: ({ children }) => {
+                    // Detect if this is a Key Takeaways or video/resource box
+                    const text = typeof children === 'string' ? children :
+                      JSON.stringify(children);
+                    const isKeyBox = text.includes('Key Takeaways') || text.includes('Watch Videos') || text.includes('Watch:') || text.includes('Resources') || text.includes('Join the Community');
+                    if (isKeyBox) {
+                      return (
+                        <div className="my-6 rounded-xl border-2 border-green-500 bg-green-50 px-5 py-4 shadow-sm not-italic">
+                          {children}
+                        </div>
+                      );
+                    }
+                    return (
+                      <blockquote className="border-l-4 border-green-400 pl-4 my-4 text-stone-600 italic bg-green-50/50 py-2 pr-2 rounded-r">
+                        {children}
+                      </blockquote>
+                    );
+                  },
                   table: ({ children }) => (
                     <div className="overflow-x-auto my-6 rounded-lg border border-stone-200 shadow-sm">
                       <table className="w-full text-sm text-left">{children}</table>
