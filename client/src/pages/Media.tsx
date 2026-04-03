@@ -82,7 +82,14 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     description:
       "Sleep is the body's most powerful repair mechanism. Learn how to optimise your sleep architecture and the role of melatonin.",
     color: "bg-indigo-100 text-indigo-800 border-indigo-200",
-    videos: [],
+    videos: [
+      {
+        youtubeId: "tcwVfUAqWiY",
+        title: "Melatonin — Sleep, Repair & Longevity",
+        description:
+          "The science of melatonin: why it matters far beyond sleep and how to optimise your levels naturally.",
+      },
+    ],
   },
   {
     id: "rec-4",

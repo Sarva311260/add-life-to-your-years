@@ -126,3 +126,4 @@
 - [x] Regenerate PDF with real QR codes and updated URLs
 - [x] Upload new PDF to CDN and update download links
 - [x] Add Glycine video (https://youtu.be/o2Kc1Iaow40) to Recommendation 4 on Media page
+- [x] Add Melatonin video (https://youtu.be/tcwVfUAqWiY) to Recommendation 3 on Media page
