@@ -581,12 +581,23 @@ export default function BookReader() {
                   img: ({ src, alt }) => {
                     // Hide the home page QR code in the online reader (it's for PDF use only)
                     if (src && src.includes("qr-home")) return null;
+                    // QR codes should be small
+                    const isQR = src && src.includes("qr-rec");
+                    // Infographics (not chapter headers) should be medium-sized
+                    const isChapterHeader = src && (src.includes("/ch-") || src.includes("ch-part"));
+                    const isInfographic = !isChapterHeader && !isQR && alt && alt.length > 20;
+                    let imgClass = "max-w-full mx-auto rounded-lg shadow-md";
+                    if (isQR) {
+                      imgClass = "max-w-[160px] mx-auto rounded-lg shadow-md";
+                    } else if (isInfographic) {
+                      imgClass = "max-w-[500px] mx-auto rounded-lg shadow-md";
+                    }
                     return (
                       <figure className="my-8 text-center">
                         <img
                           src={src}
                           alt={alt || ""}
-                          className="max-w-full mx-auto rounded-lg shadow-md"
+                          className={imgClass}
                           loading="lazy"
                         />
                         {alt && (
