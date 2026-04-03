@@ -601,6 +601,7 @@ export default function Media() {
         setActiveTab("recommendations");
         setOpenedViaHash(true);
         // If opened from the book reader, remember to go back there on close
+        // The scroll position is saved in sessionStorage by the book reader before navigating
         if (from === "reader") setReturnTo("/book/read");
         setTimeout(() => setModalRec(matched), 300);
       }

@@ -149,3 +149,4 @@
 - [x] Fix modal close: just close modal and clear hash, user closes browser tab to return to PDF
 - [x] Add SiteNav to Media page (other pages already had their own home/back navigation)
 - [x] Book reader QR links: history.back() on modal close returns to /book/read (same browser tab navigation)
+- [x] Book reader: save scroll position in sessionStorage when clicking rec links, restore on return from video modal

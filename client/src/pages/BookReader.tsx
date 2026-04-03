@@ -164,6 +164,8 @@ function buildSearchResults(content: string, query: string): SearchResult[] {
   return results.slice(0, 50); // cap at 50 results
 }
 
+const SCROLL_STORAGE_KEY = "book-reader-scroll";
+
 export default function BookReader() {
   const [bookContent, setBookContent] = useState("");
   const [loading, setLoading] = useState(true);
@@ -191,6 +193,34 @@ export default function BookReader() {
         setError(true);
         setLoading(false);
       });
+  }, []);
+
+  // Restore scroll position when returning from a video modal
+  useEffect(() => {
+    if (!loading && bookContent) {
+      const saved = sessionStorage.getItem(SCROLL_STORAGE_KEY);
+      if (saved) {
+        const scrollY = parseInt(saved, 10);
+        sessionStorage.removeItem(SCROLL_STORAGE_KEY);
+        // Small delay to let the content render before scrolling
+        setTimeout(() => window.scrollTo({ top: scrollY, behavior: "instant" }), 150);
+      }
+    }
+  }, [loading, bookContent]);
+
+  // Intercept clicks on recommendation links to save scroll position before navigating
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement).closest("a");
+      if (!target) return;
+      const href = target.getAttribute("href") || "";
+      if (href.includes("from=reader")) {
+        // Save current scroll position before leaving
+        sessionStorage.setItem(SCROLL_STORAGE_KEY, String(window.scrollY));
+      }
+    };
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
   }, []);
 
   // Keyboard shortcut: Ctrl+F / Cmd+F to open search
