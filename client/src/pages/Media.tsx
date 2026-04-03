@@ -255,7 +255,14 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     description:
       "Financial stress is a major driver of chronic disease. Building a second income stream reduces allostatic load and creates security.",
     color: "bg-amber-100 text-amber-800 border-amber-200",
-    videos: [],
+    videos: [
+      {
+        youtubeId: "eD0N8wXjNSs",
+        title: "Second Income Stream — Financial Stress & Health",
+        description:
+          "How financial stress drives chronic disease and why building a second income stream is a genuine health intervention.",
+      },
+    ],
   },
   {
     id: "rec-14",
