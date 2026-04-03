@@ -200,6 +200,7 @@ export default function BookReader() {
   const [highlightQuery, setHighlightQuery] = useState("");
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
   const [videoModal, setVideoModal] = useState<{ youtubeId: string; title: string }[] | null>(null);
+  const [videoIndex, setVideoIndex] = useState(0);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -667,7 +668,7 @@ export default function BookReader() {
       {videoModal && (
         <div
           className="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-4"
-          onClick={() => setVideoModal(null)}
+          onClick={() => { setVideoModal(null); setVideoIndex(0); }}
         >
           <div
             className="relative w-full max-w-3xl bg-stone-900 rounded-xl overflow-hidden shadow-2xl"
@@ -675,29 +676,36 @@ export default function BookReader() {
           >
             <button
               className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
-              onClick={() => setVideoModal(null)}
+              onClick={() => { setVideoModal(null); setVideoIndex(0); }}
             >
               <X className="w-5 h-5" />
             </button>
-            <div className="space-y-0">
-              {videoModal.map((video, idx) => (
-                <div key={video.youtubeId}>
-                  {videoModal.length > 1 && (
-                    <div className="px-4 pt-3 pb-1">
-                      <p className="text-white/80 text-sm font-medium">{video.title}</p>
-                    </div>
-                  )}
-                  <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                    <iframe
-                      className="absolute inset-0 w-full h-full"
-                      src={`https://www.youtube.com/embed/${video.youtubeId}?rel=0`}
-                      title={video.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  </div>
-                </div>
-              ))}
+            {videoModal.length > 1 && (
+              <div className="flex gap-2 px-4 pt-4 pb-2">
+                {videoModal.map((video, idx) => (
+                  <button
+                    key={video.youtubeId}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                      idx === videoIndex
+                        ? "bg-green-600 text-white"
+                        : "bg-stone-700 text-stone-300 hover:bg-stone-600"
+                    }`}
+                    onClick={() => setVideoIndex(idx)}
+                  >
+                    {video.title}
+                  </button>
+                ))}
+              </div>
+            )}
+            <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+              <iframe
+                key={videoModal[videoIndex].youtubeId}
+                className="absolute inset-0 w-full h-full"
+                src={`https://www.youtube.com/embed/${videoModal[videoIndex].youtubeId}?rel=0`}
+                title={videoModal[videoIndex].title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             </div>
           </div>
         </div>
