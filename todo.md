@@ -132,3 +132,4 @@
 - [x] Add Vitamin B12 video (https://youtu.be/wY4vEBilWN4) to Recommendation 6 on Media page
 - [x] Add Vitamin D video (https://youtu.be/iotnggfP9Yk) to Recommendation 6 on Media page as second video
 - [x] Add Six Movements video (https://youtu.be/qu3ixTQmpl0) to Recommendation 7 on Media page
+- [x] Add Bhramari Pranayama video (https://youtu.be/8vN08IuParo) to Recommendation 8 (Breathing) on Media page

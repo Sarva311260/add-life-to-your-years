@@ -175,7 +175,14 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     description:
       "Breathing is the only autonomic function we can consciously control. Learn how nasal breathing and breath work transform health.",
     color: "bg-teal-100 text-teal-800 border-teal-200",
-    videos: [],
+    videos: [
+      {
+        youtubeId: "8vN08IuParo",
+        title: "Bhramari Pranayama — Bee Breath for Nitric Oxide & Calm",
+        description:
+          "Step-by-step guide to Bhramari (Bee Breath) — how humming breathing boosts nitric oxide, calms the nervous system, and supports healing.",
+      },
+    ],
   },
   {
     id: "rec-9",
