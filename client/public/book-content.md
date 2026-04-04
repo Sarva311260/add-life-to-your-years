@@ -1852,7 +1852,11 @@ The cellular effects were slower to manifest but no less significant. As spermid
 
 **Why it matters:** Gut health and cellular autophagy are two of the most powerful levers available for slowing the ageing process and reducing the risk of chronic disease. The prebiotic feeds and supports the gut ecosystem from the inside; the probiotic replenishes the beneficial bacteria that modern life depletes. Together, they address the gut at both the microbial and cellular level.
 
-> **References:** Hofer SJ, et al. Spermidine is essential for fasting-mediated autophagy and longevity. *Nature Cell Biology*. 2024. | Kiechl S, et al. Higher spermidine intake is linked to lower mortality. *American Journal of Clinical Nutrition*. 2018. | Madeo F, et al. Mechanisms of spermidine-induced autophagy and geroprotection. *Nature Aging*. 2022. | Schroeder S, et al. Dietary spermidine improves cognitive function. *Cell Reports*. 2021. | Loncar M, et al. Mycelium: a nutrient-dense food. *Journal of Agricultural and Food Chemistry*. 2023.
+1. Hofer SJ, et al. Spermidine is essential for fasting-mediated autophagy and longevity. *Nature Cell Biology*. 2024.
+2. Kiechl S, et al. Higher spermidine intake is linked to lower mortality. *American Journal of Clinical Nutrition*. 2018.
+3. Madeo F, et al. Mechanisms of spermidine-induced autophagy and geroprotection. *Nature Aging*. 2022.
+4. Schroeder S, et al. Dietary spermidine improves cognitive function. *Cell Reports*. 2021.
+5. Loncar M, et al. Mycelium: a nutrient-dense food. *Journal of Agricultural and Food Chemistry*. 2023.
 
 ---
 
