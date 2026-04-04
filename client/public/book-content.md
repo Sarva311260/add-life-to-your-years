@@ -1778,7 +1778,85 @@ For John, this principle does not require perfection. On days when he travels, w
 
 
 
-## Recommendation 6: Vitamin B12 and Vitamin D
+## Recommendation 6: Support Your Gut and Cellular Health
+
+### The Microbiome and the Ageing Body
+
+The human gut is home to approximately 38 trillion microorganisms — a number that rivals the total count of human cells in the body. This community, collectively known as the gut microbiome, does far more than assist with digestion. It regulates immune function, produces neurotransmitters, synthesises vitamins, and communicates directly with the brain via the gut-brain axis. When the microbiome is diverse and balanced, it acts as a powerful ally to health. When it is disrupted — a state known as dysbiosis — it becomes a driver of inflammation, metabolic dysfunction, and accelerated ageing.
+
+What is less widely understood is that the microbiome does not operate in isolation. At the cellular level, a parallel process governs the health of every cell in the body: autophagy. This is the cellular housekeeping system by which the body identifies, dismantles, and recycles damaged proteins, dysfunctional organelles, and senescent — or "zombie" — cells. When autophagy functions well, cells remain clean, efficient, and resilient. When it is suppressed — as it is in modern life, characterised by constant eating, poor sleep, and chronic stress — damaged cellular material accumulates, driving the hallmarks of ageing and increasing the risk of virtually every chronic disease.
+
+These two systems, the microbiome and cellular autophagy, are more connected than they might appear. A healthy gut supports systemic anti-inflammatory signalling, which in turn supports cellular repair. And certain compounds produced in or derived from the gut ecosystem directly regulate autophagy at the molecular level. Supporting both simultaneously — with complementary strategies that address different aspects of the same system — produces effects that neither achieves alone.
+
+### Part One: Spermidine and Cellular Renewal
+
+Among the most compelling discoveries in longevity science over the past decade is the role of spermidine, a naturally occurring polyamine found in every living cell. Spermidine levels in the body decline steadily with age — a decline that correlates closely with the accumulation of cellular damage and the onset of age-related disease. Restoring spermidine levels through dietary intake or supplementation has emerged as one of the most evidence-supported strategies for promoting healthy ageing.
+
+Spermidine works primarily by inducing autophagy — the cellular cleanup process described above. Crucially, it does so without suppressing mTOR, the pathway responsible for muscle protein synthesis. This distinguishes it from other autophagy-inducing strategies such as prolonged fasting or the drug rapamycin, both of which can lead to muscle loss when used in isolation. Spermidine appears to activate cellular renewal while preserving lean tissue — a combination of particular relevance to anyone concerned with both longevity and physical function.
+
+Furthermore, recent research has revealed that spermidine is not merely one tool among many: it appears to be *essential* for fasting and rapamycin to effectively induce autophagy at all. Endogenous spermidine levels surge during fasting, and without this surge, the autophagy response is significantly blunted. This positions spermidine not as an optional supplement but as a foundational requirement for cellular renewal.
+
+The research base is substantial and growing. Key findings include:
+
+- **Longevity:** Spermidine supplementation extends lifespan in multiple animal models. Epidemiological data in humans shows that higher dietary spermidine intake is associated with significantly reduced all-cause mortality.
+- **Cellular senescence:** By activating autophagy, spermidine clears senescent cells — damaged cells that no longer function but continue to secrete inflammatory molecules that damage surrounding tissue.
+- **Cardiovascular health:** Studies demonstrate improvements in vascular function, reductions in triglycerides and LDL cholesterol, and lower rates of cardiovascular mortality in populations with higher spermidine intake.
+- **Brain health:** Spermidine improves memory and cognitive function in ageing animal models, and emerging human data suggests a protective role against neurodegenerative conditions including Alzheimer's and Parkinson's disease.
+- **Body composition:** Spermidine inhibits age-related muscle loss (sarcopenia) and reduces fat accumulation, supporting healthy body composition across the lifespan.
+- **Hair and skin:** Randomised controlled trials have demonstrated that spermidine supplementation prolongs the anagen (growth) phase of hair follicles, reducing hair loss and supporting hair thickness. Benefits to skin collagen and keratin production have also been reported.
+- **Immune function and inflammation:** Spermidine exerts potent anti-inflammatory effects and supports immune regulation, reducing the chronic low-grade inflammation that underlies most age-related disease.
+
+A 2022 analysis examining 146 anti-ageing nutrients found that spermidine had the strongest association with reduced mortality — outperforming well-known compounds such as resveratrol, NMN, and alpha-ketoglutarate.
+
+**The source matters.** Spermidine is found in a range of foods — wheat germ, tempeh, aged cheese, and legumes among them — but dietary concentrations are relatively low and variable. The most concentrated natural source identified to date is fungal mycelium: the root-like network of filaments that forms the vegetative body of fungi. Mycelium-derived spermidine offers a concentration approximately ten times greater than the richest conventional food sources, in a form that is highly bioavailable.
+
+Beyond spermidine, mycelium provides a complementary suite of compounds that support both gut health and broader systemic function:
+
+- **Beta-glucan and prebiotic fibres** (including chitosan and chitin) that selectively feed beneficial gut bacteria, supporting microbiome diversity and resilience
+- **Complete protein** with a protein digestibility-corrected amino acid score (PDCAAS) of 1.0 — the highest possible rating, equivalent to egg white
+- **Ergosterol**, a precursor to vitamin D that supports immune function and bone health
+- **Chitosan**, which has been shown to bind and facilitate the excretion of PFAS (per- and polyfluoroalkyl substances, commonly known as "forever chemicals"), as well as excess cholesterol and saturated fats from the digestive tract
+
+A 2023 peer-reviewed study published in the *Journal of Agricultural and Food Chemistry* described mycelium as "a nutrient-dense food to help address world hunger, promote health, and support a regenerative food system" — a recognition of both its nutritional density and its ecological sustainability.
+
+### Part Two: Wholefood Fermented Probiotics
+
+Spermidine and mycelium-derived prebiotics address the cellular and structural foundations of gut health. To complete the picture, the gut also requires a regular supply of beneficial live microorganisms — probiotics — to maintain and restore the microbial balance that underpins immune function, mood, digestion, and systemic inflammation.
+
+Not all probiotic supplements are equivalent. The most clinically effective are those derived from wholefood fermentation processes, where beneficial bacteria are cultured in a nutrient-rich environment that mirrors the conditions of the human gut. The critical distinction is this: laboratory-produced probiotic strains, however well-intentioned, are foreign to the gut ecosystem. Bacteria cultured from organic grains, vegetables, seeds, and legumes — the same foods that have nourished human gut flora for millennia — are inherently more compatible with the intestinal environment and more likely to establish lasting colonies.
+
+The fermentation process itself is as important as the bacterial strains it produces. True fermentation pre-digests the food matrix, increasing the bioavailability of nutrients, reducing anti-nutrients such as phytic acid, and producing beneficial organic acids that create an inhospitable environment for pathogenic bacteria. The result is not merely a probiotic supplement but a living food — one that delivers active, acid-tolerant lactobacilli in a form the gut recognises and can use.
+
+The Lactobacillus family of bacteria, which forms the core of wholefood fermented products, has been extensively studied for its effects on human health:
+
+- **Gut flora restoration:** Regular consumption of live Lactobacillus bacteria improves the diversity and balance of gut microflora, particularly after disruption from illness, stress, or antibiotic therapy
+- **Immune activation:** Lactobacillus strains can translocate from the intestine to lymph nodes and other immune organs, directly stimulating natural killer cells and increasing anti-viral compounds such as interferon
+- **Cholesterol metabolism:** Fermented foods containing active Lactobacillus cultures have been shown to reduce the cholesterol-elevating effect of equivalent non-fermented foods
+- **Digestive enzyme activity:** The active enzymes produced during fermentation pre-digest food components, improving the biological value of nutrients and reducing digestive discomfort, particularly in those with impaired digestion
+- **Lactose tolerance:** Live Lactobacillus bacteria improve the digestion of lactose both in fermented foods and in subsequently consumed dairy products
+- **pH regulation:** Active Lactobacillus bacteria produce lactic acid, shifting the intestinal environment to a mildly acidic pH that inhibits the growth of putrefactive and pathogenic bacteria, moulds, and Candida
+
+The key requirement is that the bacteria must be alive and active at the point of consumption. Many commercially available probiotic products are pasteurised after fermentation — a process that destroys the live cultures while preserving the taste. The result is a product that resembles a probiotic food but delivers none of the biological benefit. The test is simple: add a small amount of the product to warm milk and leave it for 24 hours. If the bacteria are active, a yoghurt will form. If not, only slightly soured milk will remain.
+
+### John's Story
+
+John's gut health had been compromised for years before he understood its significance. A diet low in fibre, years of antibiotic use, and chronic stress had left his microbiome depleted and his gut lining inflamed. He experienced bloating, irregular digestion, and a persistent low-level fatigue that he had come to accept as normal.
+
+When he began supporting his gut systematically — combining a mycelium-based prebiotic with a wholefood fermented probiotic — the changes were gradual but unmistakable. His digestion improved. His energy stabilised. His inflammatory markers, measured at his next blood test, had fallen. What surprised him most was how much his mood improved: the gut-brain axis, he now understood, was not a metaphor.
+
+The cellular effects were slower to manifest but no less significant. As spermidine levels were restored, the cellular cleanup processes that had been suppressed for years began to function again. His body was, in a very real sense, renewing itself from the inside out.
+
+### What to Do
+
+**Recommendation:** Supplement daily with a high-concentration mycelium-derived spermidine product and a wholefood fermented probiotic. Take the mycelium prebiotic in the morning with food. Take the probiotic as directed — ideally with or between meals — using a live, active product that has not been pasteurised after fermentation.
+
+**Why it matters:** Gut health and cellular autophagy are two of the most powerful levers available for slowing the ageing process and reducing the risk of chronic disease. The prebiotic feeds and supports the gut ecosystem from the inside; the probiotic replenishes the beneficial bacteria that modern life depletes. Together, they address the gut at both the microbial and cellular level.
+
+> **References:** Hofer SJ, et al. Spermidine is essential for fasting-mediated autophagy and longevity. *Nature Cell Biology*. 2024. | Kiechl S, et al. Higher spermidine intake is linked to lower mortality. *American Journal of Clinical Nutrition*. 2018. | Madeo F, et al. Mechanisms of spermidine-induced autophagy and geroprotection. *Nature Aging*. 2022. | Schroeder S, et al. Dietary spermidine improves cognitive function. *Cell Reports*. 2021. | Loncar M, et al. Mycelium: a nutrient-dense food. *Journal of Agricultural and Food Chemistry*. 2023.
+
+---
+
+## Recommendation 7: Vitamin B12 and Vitamin D
 
 Two nutritional deficiencies are so common, so consequential, and so easily addressed that they deserve specific and detailed attention in any wellness programme: **Vitamin B12** and **Vitamin D**. These are the two supplements that we consider non-negotiable — not because we prefer supplements to food, but because the food-first principle has clear limits when it comes to these specific nutrients.
 
@@ -1822,19 +1900,19 @@ John, who commutes before sunrise and works in a fluorescent-lit office, is almo
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 6 — Vitamin B12 & Vitamin D](https://addlifetoyouryears.org/media#rec-6)
+**Watch Related Videos:** [View videos for Recommendation 6 — Vitamin B12 & Vitamin D](https://addlifetoyouryears.org/media#rec-7)
 
-> [![Watch: Vitamin B12 Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-6-b12_2bf2a980.png)](https://addlifetoyouryears.org/media#rec-6)
+> [![Watch: Vitamin B12 Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-6-b12_2bf2a980.png)](https://addlifetoyouryears.org/media#rec-7)
 >
-> **[Watch Videos: Vitamin B12](https://addlifetoyouryears.org/media#rec-6)**
+> **[Watch Videos: Vitamin B12](https://addlifetoyouryears.org/media#rec-7)**
 
-> [![Watch: Vitamin D3 Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-6-d3_31c8077f.png)](https://addlifetoyouryears.org/media#rec-6)
+> [![Watch: Vitamin D3 Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-6-d3_31c8077f.png)](https://addlifetoyouryears.org/media#rec-7)
 >
-> **[Watch Videos: Vitamin D3](https://addlifetoyouryears.org/media#rec-6)**
+> **[Watch Videos: Vitamin D3](https://addlifetoyouryears.org/media#rec-7)**
 
 ---
 
-## Recommendation 7: The Six Movements
+## Recommendation 8: The Six Movements
 
 Exercise is one of the most powerful health interventions known to science. The evidence for its benefits spans virtually every domain of health: cardiovascular function, metabolic health, bone density, immune function, cognitive performance, mood, sleep quality, and longevity. A 2011 study in *The Lancet* found that 15 minutes of moderate exercise per day was associated with a 14% reduction in all-cause mortality and a three-year increase in life expectancy — even in people with cardiovascular risk factors.
 
@@ -1906,17 +1984,17 @@ Grip strength deserves particular mention. It is one of the most consistently st
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 7 — Six Movements](https://addlifetoyouryears.org/media#rec-7)
+**Watch Related Videos:** [View videos for Recommendation 7 — Six Movements](https://addlifetoyouryears.org/media#rec-8)
 
 ---
 
 
 
-> [![Watch: Six Movements Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-7_5dde4a77.png)](https://addlifetoyouryears.org/media#rec-7)
+> [![Watch: Six Movements Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-7_5dde4a77.png)](https://addlifetoyouryears.org/media#rec-8)
 >
-> **[Watch Videos: Six Movements](https://addlifetoyouryears.org/media#rec-7)**
+> **[Watch Videos: Six Movements](https://addlifetoyouryears.org/media#rec-8)**
 
-## Recommendation 8: Breathing
+## Recommendation 9: Breathing
 
 The way we breathe affects virtually every system in the body — and most people breathe poorly without knowing it.
 
@@ -1995,17 +2073,17 @@ He practiced it sitting on the edge of his bed, with his thumbs gently blocking 
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 8 — Breathing](https://addlifetoyouryears.org/media#rec-8)
+**Watch Related Videos:** [View videos for Recommendation 8 — Breathing](https://addlifetoyouryears.org/media#rec-9)
 
 ---
 
 
 
-> [![Watch: Breathing Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-8_40dfcf97.png)](https://addlifetoyouryears.org/media#rec-8)
+> [![Watch: Breathing Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-8_40dfcf97.png)](https://addlifetoyouryears.org/media#rec-9)
 >
-> **[Watch Videos: Breathing Exercises](https://addlifetoyouryears.org/media#rec-8)**
+> **[Watch Videos: Breathing Exercises](https://addlifetoyouryears.org/media#rec-9)**
 
-## Recommendation 9: PEMF Therapy and Earthing
+## Recommendation 10: PEMF Therapy and Earthing
 
 This recommendation may be less familiar than the others, but the evidence behind it is substantial — and the underlying science connects directly to what we discussed in Part One about the body's electrical communication systems.
 
@@ -2083,17 +2161,17 @@ For those seeking to support their cellular health as they age, supplementation 
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 9 — PEMF & Earthing](https://addlifetoyouryears.org/media#rec-9)
+**Watch Related Videos:** [View videos for Recommendation 9 — PEMF & Earthing](https://addlifetoyouryears.org/media#rec-10)
 
 ---
 
 
 
-> [![Watch: PEMF & Earthing Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-9_c280fa82.png)](https://addlifetoyouryears.org/media#rec-9)
+> [![Watch: PEMF & Earthing Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-9_c280fa82.png)](https://addlifetoyouryears.org/media#rec-10)
 >
-> **[Watch Videos: PEMF & Earthing](https://addlifetoyouryears.org/media#rec-9)**
+> **[Watch Videos: PEMF & Earthing](https://addlifetoyouryears.org/media#rec-10)**
 
-## Recommendation 10: Meditation and Relaxation
+## Recommendation 11: Meditation and Relaxation
 
 John's nervous system has been running in emergency mode for years. The stress response that was designed for short-term survival — the acute mobilisation of energy and attention in response to immediate threat — has become his default operating state. His cortisol is chronically elevated. His heart rate variability is low. His prefrontal cortex — the part of the brain responsible for rational decision-making, impulse control, and long-term planning — is chronically suppressed by the stress hormones that keep his amygdala (the brain's threat-detection centre) in a state of heightened activation.
 
@@ -2139,17 +2217,17 @@ This resistance is worth noting, because it points to something important: the t
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 10 — Meditation](https://addlifetoyouryears.org/media#rec-10)
+**Watch Related Videos:** [View videos for Recommendation 10 — Meditation](https://addlifetoyouryears.org/media#rec-11)
 
 ---
 
 
 
-> [![Watch: Meditation Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-10_09ebd7f7.png)](https://addlifetoyouryears.org/media#rec-10)
+> [![Watch: Meditation Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-10_09ebd7f7.png)](https://addlifetoyouryears.org/media#rec-11)
 >
-> **[Watch Videos: Meditation](https://addlifetoyouryears.org/media#rec-10)**
+> **[Watch Videos: Meditation](https://addlifetoyouryears.org/media#rec-11)**
 
-## Recommendation 11: Time in Nature
+## Recommendation 12: Time in Nature
 
 There is a growing body of evidence that time spent in natural environments — forests, parks, coastlines, open countryside — produces measurable improvements in physiological and psychological health that cannot be fully explained by the physical activity involved. Nature appears to have a direct biological effect on human health, independent of exercise, and the mechanisms are increasingly well understood.
 
@@ -2188,17 +2266,17 @@ The combination of this recommendation with Recommendation 7 (walking) and Recom
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 11 — Time in Nature](https://addlifetoyouryears.org/media#rec-11)
+**Watch Related Videos:** [View videos for Recommendation 11 — Time in Nature](https://addlifetoyouryears.org/media#rec-12)
 
 ---
 
 
 
-> [![Watch: Time in Nature Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-11_a79d1929.png)](https://addlifetoyouryears.org/media#rec-11)
+> [![Watch: Time in Nature Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-11_a79d1929.png)](https://addlifetoyouryears.org/media#rec-12)
 >
-> **[Watch Videos: Time in Nature](https://addlifetoyouryears.org/media#rec-11)**
+> **[Watch Videos: Time in Nature](https://addlifetoyouryears.org/media#rec-12)**
 
-## Recommendation 12: Repairing the Relationship
+## Recommendation 13: Repairing the Relationship
 
 John's marriage is not a peripheral issue. It is a central health factor — and one that, if addressed, will amplify the benefits of every other change he makes. If left unaddressed, it will undermine them.
 
@@ -2238,17 +2316,17 @@ It is also worth noting that many of the other changes in this programme will, i
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 12 — Repairing the Relationship](https://addlifetoyouryears.org/media#rec-12)
+**Watch Related Videos:** [View videos for Recommendation 12 — Repairing the Relationship](https://addlifetoyouryears.org/media#rec-13)
 
 ---
 
 
 
-> [![Watch: Relationships Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-12_53fe885c.png)](https://addlifetoyouryears.org/media#rec-12)
+> [![Watch: Relationships Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-12_53fe885c.png)](https://addlifetoyouryears.org/media#rec-13)
 >
-> **[Watch Videos: Relationships](https://addlifetoyouryears.org/media#rec-12)**
+> **[Watch Videos: Relationships](https://addlifetoyouryears.org/media#rec-13)**
 
-## Recommendation 13: Develop a Second Stream of Income — From Something You Love
+## Recommendation 14: Develop a Second Stream of Income — From Something You Love
 
 John's financial stress is not incidental to his health crisis. It is one of its primary drivers. The chronic activation of the stress response that financial insecurity produces is physiologically indistinguishable from any other chronic stressor — it elevates cortisol, disrupts sleep, impairs immune function, and narrows cognitive bandwidth. Research by the Nobel Prize-winning economist Sendhil Mullainathan and psychologist Eldar Shafir has demonstrated that financial scarcity impairs cognitive function in ways equivalent to losing 13 IQ points — not because of any inherent limitation in the people affected, but because the mental bandwidth consumed by financial worry leaves less capacity for everything else.
 
@@ -2286,17 +2364,17 @@ For John, who has spent years feeling trapped by financial pressure and disconne
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 13 — Second Income Stream](https://addlifetoyouryears.org/media#rec-13)
+**Watch Related Videos:** [View videos for Recommendation 13 — Second Income Stream](https://addlifetoyouryears.org/media#rec-14)
 
 ---
 
 
 
-> [![Watch: Second Income Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-13_378446c4.png)](https://addlifetoyouryears.org/media#rec-13)
+> [![Watch: Second Income Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-13_378446c4.png)](https://addlifetoyouryears.org/media#rec-14)
 >
-> **[Watch Videos: Second Income Stream](https://addlifetoyouryears.org/media#rec-13)**
+> **[Watch Videos: Second Income Stream](https://addlifetoyouryears.org/media#rec-14)**
 
-## Recommendation 14: Consider Your Environment
+## Recommendation 15: Consider Your Environment
 
 The final recommendation is the most structural — and, for many people, the most difficult to act on immediately. But it deserves to be named, because the environment in which we live is not a neutral backdrop to our health. It is an active determinant of it.
 
@@ -2334,17 +2412,17 @@ This does not mean uprooting everything immediately. It means holding the questi
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 14 — Your Environment](https://addlifetoyouryears.org/media#rec-14)
+**Watch Related Videos:** [View videos for Recommendation 14 — Your Environment](https://addlifetoyouryears.org/media#rec-15)
 
 ---
 
 
 
-> [![Watch: Environment Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-14_64945d06.png)](https://addlifetoyouryears.org/media#rec-14)
+> [![Watch: Environment Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-14_64945d06.png)](https://addlifetoyouryears.org/media#rec-15)
 >
-> **[Watch Videos: Your Environment](https://addlifetoyouryears.org/media#rec-14)**
+> **[Watch Videos: Your Environment](https://addlifetoyouryears.org/media#rec-15)**
 
-## Recommendation 15: Methylene Blue — The Mitochondrial Catalyst
+## Recommendation 16: Methylene Blue — The Mitochondrial Catalyst
 
 Of all the interventions John would eventually add to his programme, methylene blue was perhaps the most surprising. It is not a herb, not a vitamin, not a lifestyle practice. It is a synthetic compound — a deep blue dye first synthesised in 1876 — and yet it has accumulated one of the most remarkable bodies of evidence in the history of cognitive and metabolic medicine. For John, whose struggles included persistent brain fog, low mood, and a sense of mental flatness that had accompanied his years of poor health, methylene blue offered something that few other interventions could: a direct, targeted intervention at the level of the mitochondria — the very engines of cellular energy that had been quietly failing him for years.
 
@@ -2429,11 +2507,11 @@ For John, methylene blue was not a magic bullet. No single intervention in this 
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 15 — Methylene Blue & Photobiomodulation](https://addlifetoyouryears.org/media#rec-15)
+**Watch Related Videos:** [View videos for Recommendation 15 — Methylene Blue & Photobiomodulation](https://addlifetoyouryears.org/media#rec-16)
 
-> [![Watch: Methylene Blue Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-15_daab66b0.png)](https://addlifetoyouryears.org/media#rec-15)
+> [![Watch: Methylene Blue Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-15_daab66b0.png)](https://addlifetoyouryears.org/media#rec-16)
 >
-> **[Watch Videos: Methylene Blue & Photobiomodulation](https://addlifetoyouryears.org/media#rec-15)**
+> **[Watch Videos: Methylene Blue & Photobiomodulation](https://addlifetoyouryears.org/media#rec-16)**
 
 ---
 
