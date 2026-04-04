@@ -1486,7 +1486,72 @@ One practical note: the habit of drinking a large glass of water first thing in 
 >
 > **[Watch Videos: Water & Hydration](https://addlifetoyouryears.org/media#rec-2)**
 
-## Recommendation 3: Prioritise Sleep — and Consider Melatonin
+## Recommendation 3: Cellular Detoxification with Nano-Zeolite
+
+We live in a world saturated with toxins that did not exist a century ago. Heavy metals — lead, mercury, cadmium, arsenic — enter the body through food, water, air, and dental materials. Microplastics have been detected in human blood, lung tissue, and placental tissue. Per- and polyfluoroalkyl substances (PFAS), the so-called "forever chemicals," accumulate in the body because no natural metabolic pathway exists to break them down. These are not theoretical risks. They are measurable, documented, and increasingly linked to chronic inflammation, hormonal disruption, neurological decline, and immune dysfunction.
+
+The body has its own detoxification systems — the liver, kidneys, lymphatic system, and gut — but these systems evolved for a different world. They were not designed to process the volume and variety of synthetic toxins that now enter the body daily. For many people, the toxic load exceeds the body's capacity to clear it, and the result is a slow accumulation that contributes to the chronic disease burden we see today.
+
+### The Science of Zeolite
+
+Zeolite is a naturally occurring crystalline mineral formed over millions of years when volcanic ash reacts with alkaline groundwater. Its defining characteristic is its molecular structure: a three-dimensional lattice of silicon and aluminium tetrahedra that creates an extraordinarily porous framework with a large internal surface area and a permanent negative charge.
+
+This negative charge is the key to zeolite's detoxification mechanism. The vast majority of environmental toxins — heavy metals, ammonia, certain mycotoxins, and many synthetic chemicals — carry a positive charge. Zeolite acts as a molecular magnet, attracting and trapping these positively charged particles within its porous cage structure. Once bound, the toxins are carried through the digestive tract and excreted, without being reabsorbed.
+
+The most extensively studied form is clinoptilolite, a naturally occurring zeolite with a well-established safety profile and documented efficacy in both animal and human studies. A landmark review published in *Frontiers in Pharmacology* (2018) examined the full body of evidence on clinoptilolite safety and medical applications, concluding that it is non-toxic, non-absorbed, and effective at binding heavy metals and other positively charged toxins in the gastrointestinal tract. A clinical study published in *Frontiers in Medicine* (2022) demonstrated that clinoptilolite suspension significantly increased urinary excretion of toxic heavy metals in human subjects, providing direct evidence of its detoxification effect in vivo.
+
+### Nano-Scale Delivery: Why Particle Size Matters
+
+The effectiveness of zeolite as a detoxification agent depends critically on particle size. Conventional zeolite products contain particles large enough to act primarily in the gut — binding toxins in the digestive tract but with limited ability to reach the bloodstream or tissues where toxins accumulate over years of exposure.
+
+Nano and picometer-scale zeolite particles, by contrast, are small enough to be absorbed into the bloodstream and distributed systemically. This means they can reach tissues, organs, and the intercellular fluid — the internal environment where chronic toxic accumulation occurs. The colloidal chemistry that governs nano-scale particles gives them unique properties: they remain suspended in solution rather than settling, they carry a stable surface charge, and they interact with biological systems at the cellular level.
+
+Research published in *Molecules* (2019) confirmed that nano-scale clinoptilolite demonstrates superior bioavailability and tissue penetration compared to conventional zeolite preparations, and that its safety profile remains excellent at nano-scale particle sizes. Studies on microplastic and PFAS removal have further demonstrated that zeolite nanocomposites can bind these emerging contaminants — substances that conventional detoxification approaches cannot address.
+
+### The Modern Toxic Burden
+
+John's story illustrates a pattern that is increasingly common. Years of exposure to environmental toxins — through food, water, air, and everyday products — had created a background burden of heavy metals and synthetic chemicals that his body could not fully clear. This burden was not dramatic enough to cause acute illness, but it was sufficient to suppress immune function, increase inflammatory load, and interfere with the cellular signalling systems that regulate metabolism and repair.
+
+The connection between toxic load and chronic disease is now well-supported in the literature. Heavy metals compete with essential minerals for enzyme binding sites, disrupting hundreds of metabolic reactions. PFAS compounds interfere with thyroid hormone signalling. Microplastics trigger inflammatory responses in gut tissue. The cumulative effect is a system under constant low-level stress — precisely the kind of stress that accelerates biological ageing and increases disease risk.
+
+Systematic detoxification is not a fringe concept. It is a logical response to a documented problem.
+
+### Sea Mineral Plasma: Replenishment Alongside Removal
+
+Effective detoxification is not only about removal — it is also about replenishment. When heavy metals are displaced from enzyme binding sites, those sites must be occupied by the correct minerals to restore function. Sea mineral plasma, derived from ocean water and concentrated through natural evaporation, provides a broad spectrum of trace minerals in picometer-scale ionic form — the size at which minerals are most readily absorbed and utilised by cells.
+
+This combination of removal and replenishment addresses both sides of the toxic burden problem: clearing what should not be there, and restoring what should.
+
+### John's Story
+
+John had never thought of himself as toxic. He ate reasonably well, drank filtered water, and lived in a suburban area. But when he began to investigate his health more systematically, he found elevated lead levels in a hair mineral analysis — a legacy of decades of exposure to leaded paint in older buildings, petrol exhaust from his youth, and the accumulated residue of a lifetime in the modern world.
+
+He began a systematic programme of nano-zeolite supplementation, starting with a low dose and increasing gradually over several weeks. The initial weeks brought some fatigue — a recognised response as the body mobilises stored toxins — but this resolved, and over the following months his energy improved, his inflammatory markers fell, and his sleep deepened. A follow-up hair mineral analysis showed a significant reduction in heavy metal burden.
+
+What struck him most was not the dramatic change but the quiet shift in baseline — a sense that his body was functioning with less resistance, less friction, less of the low-level malaise that he had come to accept as normal ageing.
+
+### What to Do
+
+**Recommendation:** Incorporate a nano-scale zeolite supplement into your daily protocol. Begin with a low dose — two to four drops in water, once daily — and increase gradually over two to four weeks to allow the body to adjust to the mobilisation of stored toxins. Take on an empty stomach or between meals for optimal absorption. Maintain adequate hydration throughout.
+
+**Why it matters:** The toxic burden accumulated over a lifetime cannot be addressed by diet alone. Nano-zeolite provides a safe, evidence-based mechanism for systematically reducing heavy metal load, binding microplastics and synthetic chemicals, and supporting the body's natural detoxification pathways. It is one of the few interventions that addresses the modern environmental toxic burden directly.
+
+**Watch Related Videos:** [View a presentation on nano-zeolite and its applications in human health](https://addlifetoyouryears.org/media#rec-3)
+
+> [![Watch: Nano-Zeolite & Cellular Detoxification](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-3-zeolite_39f9e76b.png)](https://addlifetoyouryears.org/media#rec-3)
+>
+> **[Watch Video: Nano-Zeolite & Cellular Detoxification](https://addlifetoyouryears.org/media#rec-3)**
+
+---
+
+1. Kraljević Pavelić S, et al. Critical review on zeolite clinoptilolite safety and medical applications in vivo. *Frontiers in Pharmacology*. 2018;9:1350.
+2. Mastinu A, et al. Zeolite clinoptilolite: therapeutic virtues of an ancient mineral. *Molecules*. 2019;24(8):1517.
+3. Dolanc I, et al. The impact of long-term clinoptilolite administration on the concentration profile of metals in rodent organisms. *Biology*. 2023;12(2):193.
+4. Munir N, et al. The potential of zeolite nanocomposites in removing microplastics, ammonia, and trace metals from wastewater. *Environmental Science and Pollution Research*. 2024.
+5. Markhali BP, et al. Modified zeolites as alternative adsorbents for PFAS removal. *Clean Technologies*. 2026;8(1):21.
+6. Panaiotov S, et al. Zeolite and neurodegenerative diseases. *Molecules*. 2024;29(11):2614.
+
+## Recommendation 4: Prioritise Sleep — and Consider Melatonin
 
 Of all the interventions available to John, improving his sleep may produce the fastest and most wide-ranging benefits. This is not because sleep is more important than food or movement — it is because John's sleep is so severely compromised that the downstream effects are undermining everything else he is trying to do.
 
@@ -1543,17 +1608,17 @@ For John, melatonin supplementation — combined with improved sleep hygiene and
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 3 — Sleep & Melatonin](https://addlifetoyouryears.org/media#rec-3)
+**Watch Related Videos:** [View videos for Recommendation 3 — Sleep & Melatonin](https://addlifetoyouryears.org/media#rec-4)
 
 ---
 
 
 
-> [![Watch: Sleep & Melatonin Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-3_b06717e3.png)](https://addlifetoyouryears.org/media#rec-3)
+> [![Watch: Sleep & Melatonin Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-3_b06717e3.png)](https://addlifetoyouryears.org/media#rec-4)
 >
-> **[Watch Videos: Sleep & Melatonin](https://addlifetoyouryears.org/media#rec-3)**
+> **[Watch Videos: Sleep & Melatonin](https://addlifetoyouryears.org/media#rec-4)**
 
-## Recommendation 4: Supplement with Glycine
+## Recommendation 5: Supplement with Glycine
 
 Glycine is the simplest amino acid in the human body and one of the most abundant. It is a primary structural component of collagen — the most plentiful protein in the body, comprising approximately 30% of total body protein and providing the structural scaffolding for skin, tendons, ligaments, cartilage, bone, and the walls of blood vessels. It is a precursor to glutathione, the body's master antioxidant. It plays critical roles in the synthesis of creatine (essential for muscle energy), the regulation of the nervous system (acting as an inhibitory neurotransmitter in the spinal cord and brainstem), and the support of liver detoxification pathways. It is required for the synthesis of haem (the iron-containing component of haemoglobin), bile salts (essential for fat digestion), and purines (the building blocks of DNA and RNA).
 
@@ -1599,15 +1664,15 @@ For John, whose liver is under stress from chronic alcohol use, whose gut integr
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 4 — Glycine](https://addlifetoyouryears.org/media#rec-4)
+**Watch Related Videos:** [View videos for Recommendation 4 — Glycine](https://addlifetoyouryears.org/media#rec-5)
 
-> [![Watch: Glycine Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-4_2a5b81f2.png)](https://addlifetoyouryears.org/media#rec-4)
+> [![Watch: Glycine Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-4_2a5b81f2.png)](https://addlifetoyouryears.org/media#rec-5)
 >
-> **[Watch Videos: Glycine](https://addlifetoyouryears.org/media#rec-4)**
+> **[Watch Videos: Glycine](https://addlifetoyouryears.org/media#rec-5)**
 
 ---
 
-## Recommendation 5: The Five Seeds of Life
+## Recommendation 6: The Five Seeds of Life
 
 Every morning, John will add to his breakfast a combination of five seeds that together provide one of the most nutritionally complete and biologically active food combinations available. These are not supplements. They are food — whole, unprocessed, and extraordinarily dense in the nutrients the body needs.
 
@@ -1766,19 +1831,19 @@ For John, this principle does not require perfection. On days when he travels, w
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 5 — Five Seeds of Life](https://addlifetoyouryears.org/media#rec-5)
+**Watch Related Videos:** [View videos for Recommendation 5 — Five Seeds of Life](https://addlifetoyouryears.org/media#rec-6)
 
 ---
 
 
 
-> [![Watch: Five Seeds of Life Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-5_a4ac10cb.png)](https://addlifetoyouryears.org/media#rec-5)
+> [![Watch: Five Seeds of Life Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-5_a4ac10cb.png)](https://addlifetoyouryears.org/media#rec-6)
 >
-> **[Watch Videos: Five Seeds of Life](https://addlifetoyouryears.org/media#rec-5)**
+> **[Watch Videos: Five Seeds of Life](https://addlifetoyouryears.org/media#rec-6)**
 
 
 
-## Recommendation 6: Support Your Gut and Cellular Health
+## Recommendation 7: Support Your Gut and Cellular Health
 
 ### The Microbiome and the Ageing Body
 
@@ -1856,7 +1921,7 @@ The cellular effects were slower to manifest but no less significant. As spermid
 
 **Watch Related Videos:** View videos for Recommendation 6 — Gut Health & Microbiome
 
-[![Watch: Gut Health & Microbiome Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-6-gut-health_846f5d2b.png)](https://addlifetoyouryears.org/media#rec-6)
+[![Watch: Gut Health & Microbiome Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-6-gut-health_846f5d2b.png)](https://addlifetoyouryears.org/media#rec-7)
 
 1. Hofer SJ, et al. Spermidine is essential for fasting-mediated autophagy and longevity. *Nature Cell Biology*. 2024.
 2. Kiechl S, et al. Higher spermidine intake is linked to lower mortality. *American Journal of Clinical Nutrition*. 2018.
@@ -1866,7 +1931,7 @@ The cellular effects were slower to manifest but no less significant. As spermid
 
 ---
 
-## Recommendation 7: Vitamin B12 and Vitamin D
+## Recommendation 8: Vitamin B12 and Vitamin D
 
 Two nutritional deficiencies are so common, so consequential, and so easily addressed that they deserve specific and detailed attention in any wellness programme: **Vitamin B12** and **Vitamin D**. These are the two supplements that we consider non-negotiable — not because we prefer supplements to food, but because the food-first principle has clear limits when it comes to these specific nutrients.
 
@@ -1910,19 +1975,19 @@ John, who commutes before sunrise and works in a fluorescent-lit office, is almo
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 6 — Vitamin B12 & Vitamin D](https://addlifetoyouryears.org/media#rec-7)
+**Watch Related Videos:** [View videos for Recommendation 6 — Vitamin B12 & Vitamin D](https://addlifetoyouryears.org/media#rec-8)
 
-> [![Watch: Vitamin B12 Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-6-b12_2bf2a980.png)](https://addlifetoyouryears.org/media#rec-7)
+> [![Watch: Vitamin B12 Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-6-b12_2bf2a980.png)](https://addlifetoyouryears.org/media#rec-8)
 >
-> **[Watch Videos: Vitamin B12](https://addlifetoyouryears.org/media#rec-7)**
+> **[Watch Videos: Vitamin B12](https://addlifetoyouryears.org/media#rec-8)**
 
-> [![Watch: Vitamin D3 Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-6-d3_31c8077f.png)](https://addlifetoyouryears.org/media#rec-7)
+> [![Watch: Vitamin D3 Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-6-d3_31c8077f.png)](https://addlifetoyouryears.org/media#rec-8)
 >
-> **[Watch Videos: Vitamin D3](https://addlifetoyouryears.org/media#rec-7)**
+> **[Watch Videos: Vitamin D3](https://addlifetoyouryears.org/media#rec-8)**
 
 ---
 
-## Recommendation 8: The Six Movements
+## Recommendation 9: The Six Movements
 
 Exercise is one of the most powerful health interventions known to science. The evidence for its benefits spans virtually every domain of health: cardiovascular function, metabolic health, bone density, immune function, cognitive performance, mood, sleep quality, and longevity. A 2011 study in *The Lancet* found that 15 minutes of moderate exercise per day was associated with a 14% reduction in all-cause mortality and a three-year increase in life expectancy — even in people with cardiovascular risk factors.
 
@@ -1994,17 +2059,17 @@ Grip strength deserves particular mention. It is one of the most consistently st
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 7 — Six Movements](https://addlifetoyouryears.org/media#rec-8)
+**Watch Related Videos:** [View videos for Recommendation 7 — Six Movements](https://addlifetoyouryears.org/media#rec-9)
 
 ---
 
 
 
-> [![Watch: Six Movements Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-7_5dde4a77.png)](https://addlifetoyouryears.org/media#rec-8)
+> [![Watch: Six Movements Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-7_5dde4a77.png)](https://addlifetoyouryears.org/media#rec-9)
 >
-> **[Watch Videos: Six Movements](https://addlifetoyouryears.org/media#rec-8)**
+> **[Watch Videos: Six Movements](https://addlifetoyouryears.org/media#rec-9)**
 
-## Recommendation 9: Breathing
+## Recommendation 10: Breathing
 
 The way we breathe affects virtually every system in the body — and most people breathe poorly without knowing it.
 
@@ -2083,17 +2148,17 @@ He practiced it sitting on the edge of his bed, with his thumbs gently blocking 
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 8 — Breathing](https://addlifetoyouryears.org/media#rec-9)
+**Watch Related Videos:** [View videos for Recommendation 8 — Breathing](https://addlifetoyouryears.org/media#rec-10)
 
 ---
 
 
 
-> [![Watch: Breathing Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-8_40dfcf97.png)](https://addlifetoyouryears.org/media#rec-9)
+> [![Watch: Breathing Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-8_40dfcf97.png)](https://addlifetoyouryears.org/media#rec-10)
 >
-> **[Watch Videos: Breathing Exercises](https://addlifetoyouryears.org/media#rec-9)**
+> **[Watch Videos: Breathing Exercises](https://addlifetoyouryears.org/media#rec-10)**
 
-## Recommendation 10: PEMF Therapy and Earthing
+## Recommendation 11: PEMF Therapy and Earthing
 
 This recommendation may be less familiar than the others, but the evidence behind it is substantial — and the underlying science connects directly to what we discussed in Part One about the body's electrical communication systems.
 
@@ -2171,17 +2236,17 @@ For those seeking to support their cellular health as they age, supplementation 
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 9 — PEMF & Earthing](https://addlifetoyouryears.org/media#rec-10)
+**Watch Related Videos:** [View videos for Recommendation 9 — PEMF & Earthing](https://addlifetoyouryears.org/media#rec-11)
 
 ---
 
 
 
-> [![Watch: PEMF & Earthing Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-9_c280fa82.png)](https://addlifetoyouryears.org/media#rec-10)
+> [![Watch: PEMF & Earthing Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-9_c280fa82.png)](https://addlifetoyouryears.org/media#rec-11)
 >
-> **[Watch Videos: PEMF & Earthing](https://addlifetoyouryears.org/media#rec-10)**
+> **[Watch Videos: PEMF & Earthing](https://addlifetoyouryears.org/media#rec-11)**
 
-## Recommendation 11: Meditation and Relaxation
+## Recommendation 12: Meditation and Relaxation
 
 John's nervous system has been running in emergency mode for years. The stress response that was designed for short-term survival — the acute mobilisation of energy and attention in response to immediate threat — has become his default operating state. His cortisol is chronically elevated. His heart rate variability is low. His prefrontal cortex — the part of the brain responsible for rational decision-making, impulse control, and long-term planning — is chronically suppressed by the stress hormones that keep his amygdala (the brain's threat-detection centre) in a state of heightened activation.
 
@@ -2227,17 +2292,17 @@ This resistance is worth noting, because it points to something important: the t
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 10 — Meditation](https://addlifetoyouryears.org/media#rec-11)
+**Watch Related Videos:** [View videos for Recommendation 10 — Meditation](https://addlifetoyouryears.org/media#rec-12)
 
 ---
 
 
 
-> [![Watch: Meditation Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-10_09ebd7f7.png)](https://addlifetoyouryears.org/media#rec-11)
+> [![Watch: Meditation Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-10_09ebd7f7.png)](https://addlifetoyouryears.org/media#rec-12)
 >
-> **[Watch Videos: Meditation](https://addlifetoyouryears.org/media#rec-11)**
+> **[Watch Videos: Meditation](https://addlifetoyouryears.org/media#rec-12)**
 
-## Recommendation 12: Time in Nature
+## Recommendation 13: Time in Nature
 
 There is a growing body of evidence that time spent in natural environments — forests, parks, coastlines, open countryside — produces measurable improvements in physiological and psychological health that cannot be fully explained by the physical activity involved. Nature appears to have a direct biological effect on human health, independent of exercise, and the mechanisms are increasingly well understood.
 
@@ -2276,17 +2341,17 @@ The combination of this recommendation with Recommendation 7 (walking) and Recom
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 11 — Time in Nature](https://addlifetoyouryears.org/media#rec-12)
+**Watch Related Videos:** [View videos for Recommendation 11 — Time in Nature](https://addlifetoyouryears.org/media#rec-13)
 
 ---
 
 
 
-> [![Watch: Time in Nature Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-11_a79d1929.png)](https://addlifetoyouryears.org/media#rec-12)
+> [![Watch: Time in Nature Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-11_a79d1929.png)](https://addlifetoyouryears.org/media#rec-13)
 >
-> **[Watch Videos: Time in Nature](https://addlifetoyouryears.org/media#rec-12)**
+> **[Watch Videos: Time in Nature](https://addlifetoyouryears.org/media#rec-13)**
 
-## Recommendation 13: Repairing the Relationship
+## Recommendation 14: Repairing the Relationship
 
 John's marriage is not a peripheral issue. It is a central health factor — and one that, if addressed, will amplify the benefits of every other change he makes. If left unaddressed, it will undermine them.
 
@@ -2326,17 +2391,17 @@ It is also worth noting that many of the other changes in this programme will, i
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 12 — Repairing the Relationship](https://addlifetoyouryears.org/media#rec-13)
+**Watch Related Videos:** [View videos for Recommendation 12 — Repairing the Relationship](https://addlifetoyouryears.org/media#rec-14)
 
 ---
 
 
 
-> [![Watch: Relationships Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-12_53fe885c.png)](https://addlifetoyouryears.org/media#rec-13)
+> [![Watch: Relationships Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-12_53fe885c.png)](https://addlifetoyouryears.org/media#rec-14)
 >
-> **[Watch Videos: Relationships](https://addlifetoyouryears.org/media#rec-13)**
+> **[Watch Videos: Relationships](https://addlifetoyouryears.org/media#rec-14)**
 
-## Recommendation 14: Develop a Second Stream of Income — From Something You Love
+## Recommendation 15: Develop a Second Stream of Income — From Something You Love
 
 John's financial stress is not incidental to his health crisis. It is one of its primary drivers. The chronic activation of the stress response that financial insecurity produces is physiologically indistinguishable from any other chronic stressor — it elevates cortisol, disrupts sleep, impairs immune function, and narrows cognitive bandwidth. Research by the Nobel Prize-winning economist Sendhil Mullainathan and psychologist Eldar Shafir has demonstrated that financial scarcity impairs cognitive function in ways equivalent to losing 13 IQ points — not because of any inherent limitation in the people affected, but because the mental bandwidth consumed by financial worry leaves less capacity for everything else.
 
@@ -2374,17 +2439,17 @@ For John, who has spent years feeling trapped by financial pressure and disconne
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 13 — Second Income Stream](https://addlifetoyouryears.org/media#rec-14)
+**Watch Related Videos:** [View videos for Recommendation 13 — Second Income Stream](https://addlifetoyouryears.org/media#rec-15)
 
 ---
 
 
 
-> [![Watch: Second Income Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-13_378446c4.png)](https://addlifetoyouryears.org/media#rec-14)
+> [![Watch: Second Income Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-13_378446c4.png)](https://addlifetoyouryears.org/media#rec-15)
 >
-> **[Watch Videos: Second Income Stream](https://addlifetoyouryears.org/media#rec-14)**
+> **[Watch Videos: Second Income Stream](https://addlifetoyouryears.org/media#rec-15)**
 
-## Recommendation 15: Consider Your Environment
+## Recommendation 16: Consider Your Environment
 
 The final recommendation is the most structural — and, for many people, the most difficult to act on immediately. But it deserves to be named, because the environment in which we live is not a neutral backdrop to our health. It is an active determinant of it.
 
@@ -2422,17 +2487,17 @@ This does not mean uprooting everything immediately. It means holding the questi
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 14 — Your Environment](https://addlifetoyouryears.org/media#rec-15)
+**Watch Related Videos:** [View videos for Recommendation 14 — Your Environment](https://addlifetoyouryears.org/media#rec-16)
 
 ---
 
 
 
-> [![Watch: Environment Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-14_64945d06.png)](https://addlifetoyouryears.org/media#rec-15)
+> [![Watch: Environment Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-14_64945d06.png)](https://addlifetoyouryears.org/media#rec-16)
 >
-> **[Watch Videos: Your Environment](https://addlifetoyouryears.org/media#rec-15)**
+> **[Watch Videos: Your Environment](https://addlifetoyouryears.org/media#rec-16)**
 
-## Recommendation 16: Methylene Blue — The Mitochondrial Catalyst
+## Recommendation 17: Methylene Blue — The Mitochondrial Catalyst
 
 Of all the interventions John would eventually add to his programme, methylene blue was perhaps the most surprising. It is not a herb, not a vitamin, not a lifestyle practice. It is a synthetic compound — a deep blue dye first synthesised in 1876 — and yet it has accumulated one of the most remarkable bodies of evidence in the history of cognitive and metabolic medicine. For John, whose struggles included persistent brain fog, low mood, and a sense of mental flatness that had accompanied his years of poor health, methylene blue offered something that few other interventions could: a direct, targeted intervention at the level of the mitochondria — the very engines of cellular energy that had been quietly failing him for years.
 
@@ -2517,11 +2582,11 @@ For John, methylene blue was not a magic bullet. No single intervention in this 
 
 ---
 
-**Watch Related Videos:** [View videos for Recommendation 15 — Methylene Blue & Photobiomodulation](https://addlifetoyouryears.org/media#rec-16)
+**Watch Related Videos:** [View videos for Recommendation 15 — Methylene Blue & Photobiomodulation](https://addlifetoyouryears.org/media#rec-17)
 
-> [![Watch: Methylene Blue Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-15_daab66b0.png)](https://addlifetoyouryears.org/media#rec-16)
+> [![Watch: Methylene Blue Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-rec-15_daab66b0.png)](https://addlifetoyouryears.org/media#rec-17)
 >
-> **[Watch Videos: Methylene Blue & Photobiomodulation](https://addlifetoyouryears.org/media#rec-16)**
+> **[Watch Videos: Methylene Blue & Photobiomodulation](https://addlifetoyouryears.org/media#rec-17)**
 
 ---
 

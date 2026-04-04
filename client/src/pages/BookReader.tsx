@@ -9,7 +9,7 @@ import remarkGfm from "remark-gfm";
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
 const MD_CDN_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_8aa5bd30.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_b7cdb93f.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -34,20 +34,21 @@ const chapters = [
   { id: "part-four", label: "Part Four: John's Path Forward" },
   { id: "rec-1", label: "Rec 1: Whole Food Plant-Based" },
   { id: "rec-2", label: "Rec 2: Water" },
-  { id: "rec-3", label: "Rec 3: Sleep & Melatonin" },
-  { id: "rec-4", label: "Rec 4: Glycine" },
-  { id: "rec-5", label: "Rec 5: Five Seeds of Life" },
-  { id: "rec-6", label: "Rec 6: Gut Health & Microbiome" },
-  { id: "rec-7", label: "Rec 7: Vitamin B12 & D" },
-  { id: "rec-8", label: "Rec 8: Six Movements" },
-  { id: "rec-9", label: "Rec 9: Breathing" },
-  { id: "rec-10", label: "Rec 10: PEMF & Earthing" },
-  { id: "rec-11", label: "Rec 11: Meditation" },
-  { id: "rec-12", label: "Rec 12: Time in Nature" },
-  { id: "rec-13", label: "Rec 13: Repairing the Relationship" },
-  { id: "rec-14", label: "Rec 14: Second Income Stream" },
-  { id: "rec-15", label: "Rec 15: Your Environment" },
-  { id: "rec-16", label: "Rec 16: Methylene Blue" },
+  { id: "rec-3", label: "Rec 3: Cellular Detoxification" },
+  { id: "rec-4", label: "Rec 4: Sleep & Melatonin" },
+  { id: "rec-5", label: "Rec 5: Glycine" },
+  { id: "rec-6", label: "Rec 6: Five Seeds of Life" },
+  { id: "rec-7", label: "Rec 7: Gut Health & Microbiome" },
+  { id: "rec-8", label: "Rec 8: Vitamin B12 & D" },
+  { id: "rec-9", label: "Rec 9: Six Movements" },
+  { id: "rec-10", label: "Rec 10: Breathing" },
+  { id: "rec-11", label: "Rec 11: PEMF & Earthing" },
+  { id: "rec-12", label: "Rec 12: Meditation" },
+  { id: "rec-13", label: "Rec 13: Time in Nature" },
+  { id: "rec-14", label: "Rec 14: Repairing the Relationship" },
+  { id: "rec-15", label: "Rec 15: Second Income Stream" },
+  { id: "rec-16", label: "Rec 16: Your Environment" },
+  { id: "rec-17", label: "Rec 17: Methylene Blue" },
   { id: "john-6-months", label: "John, Six Months Later" },
   { id: "john-12-months", label: "John, Twelve Months Later" },
   { id: "a-note", label: "A Note on the Journey" },
@@ -63,6 +64,7 @@ const headingIdMap: Record<string, string> = {
   "Recommendation 14": "rec-14",
   "Recommendation 15": "rec-15",
   "Recommendation 16": "rec-16",
+  "Recommendation 17": "rec-17",
   "Recommendation 1": "rec-1",
   "Recommendation 2": "rec-2",
   "Recommendation 3": "rec-3",
@@ -166,27 +168,29 @@ function buildSearchResults(content: string, query: string): SearchResult[] {
   return results.slice(0, 50); // cap at 50 results
 }
 
-// YouTube video IDs for each recommendation (used for in-reader video modal)
-const REC_VIDEOS: Record<string, { youtubeId: string; title: string }[]> = {
+// Video entries for each recommendation (supports YouTube and Rumble)
+type VideoEntry = { youtubeId?: string; rumbleUrl?: string; title: string };
+const REC_VIDEOS: Record<string, VideoEntry[]> = {
   "rec-1": [{ youtubeId: "wb7L3t0ejdI", title: "Whole Food Plant-Based Diet" }],
   "rec-2": [{ youtubeId: "VRzjoIgHNb0", title: "Water & Hydration" }],
-  "rec-3": [{ youtubeId: "tcwVfUAqWiY", title: "Sleep & Melatonin" }],
-  "rec-4": [{ youtubeId: "o2Kc1Iaow40", title: "Glycine" }],
-  "rec-5": [{ youtubeId: "YckoR3hLL9E", title: "Five Seeds of Life" }],
-  "rec-6": [{ youtubeId: "ndqvqAOsFtQ", title: "Gut Health & Microbiome" }],
-  "rec-7": [
+  "rec-3": [{ rumbleUrl: "https://rumble.com/embed/v725t6o", title: "Nano-Zeolite & Cellular Detoxification" }],
+  "rec-4": [{ youtubeId: "tcwVfUAqWiY", title: "Sleep & Melatonin" }],
+  "rec-5": [{ youtubeId: "o2Kc1Iaow40", title: "Glycine" }],
+  "rec-6": [{ youtubeId: "YckoR3hLL9E", title: "Five Seeds of Life" }],
+  "rec-7": [{ youtubeId: "ndqvqAOsFtQ", title: "Gut Health & Microbiome" }],
+  "rec-8": [
     { youtubeId: "wY4vEBilWN4", title: "Vitamin B12" },
     { youtubeId: "iotnggfP9Yk", title: "Vitamin D3" },
   ],
-  "rec-8": [{ youtubeId: "qu3ixTQmpl0", title: "Six Movements" }],
-  "rec-9": [{ youtubeId: "8vN08IuParo", title: "Breathing" }],
-  "rec-10": [{ youtubeId: "byinppKR9LY", title: "PEMF & Earthing" }],
-  "rec-11": [{ youtubeId: "wXsxwIJnUJk", title: "Meditation" }],
-  "rec-12": [{ youtubeId: "UHv3SCUioQU", title: "Time in Nature" }],
-  "rec-13": [{ youtubeId: "rgQvqi6aYD8", title: "Repairing the Relationship" }],
-  "rec-14": [{ youtubeId: "eD0N8wXjNSs", title: "Second Income Stream" }],
-  "rec-15": [{ youtubeId: "foBnfBX4YKQ", title: "Your Environment" }],
-  "rec-16": [{ youtubeId: "KvASX2yp0zU", title: "Methylene Blue & Photobiomodulation" }],
+  "rec-9": [{ youtubeId: "qu3ixTQmpl0", title: "Six Movements" }],
+  "rec-10": [{ youtubeId: "8vN08IuParo", title: "Breathing" }],
+  "rec-11": [{ youtubeId: "byinppKR9LY", title: "PEMF & Earthing" }],
+  "rec-12": [{ youtubeId: "wXsxwIJnUJk", title: "Meditation" }],
+  "rec-13": [{ youtubeId: "UHv3SCUioQU", title: "Time in Nature" }],
+  "rec-14": [{ youtubeId: "rgQvqi6aYD8", title: "Repairing the Relationship" }],
+  "rec-15": [{ youtubeId: "eD0N8wXjNSs", title: "Second Income Stream" }],
+  "rec-16": [{ youtubeId: "foBnfBX4YKQ", title: "Your Environment" }],
+  "rec-17": [{ youtubeId: "KvASX2yp0zU", title: "Methylene Blue & Photobiomodulation" }],
 };
 
 const SCROLL_STORAGE_KEY = "book-reader-scroll";
@@ -202,7 +206,7 @@ export default function BookReader() {
   const [currentResultIndex, setCurrentResultIndex] = useState(0);
   const [highlightQuery, setHighlightQuery] = useState("");
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
-  const [videoModal, setVideoModal] = useState<{ youtubeId: string; title: string }[] | null>(null);
+  const [videoModal, setVideoModal] = useState<VideoEntry[] | null>(null);
   const [videoIndex, setVideoIndex] = useState(0);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -702,9 +706,13 @@ export default function BookReader() {
             )}
             <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
               <iframe
-                key={videoModal[videoIndex].youtubeId}
+                key={videoModal[videoIndex].youtubeId || videoModal[videoIndex].rumbleUrl}
                 className="absolute inset-0 w-full h-full"
-                src={`https://www.youtube.com/embed/${videoModal[videoIndex].youtubeId}?rel=0`}
+                src={
+                  videoModal[videoIndex].youtubeId
+                    ? `https://www.youtube.com/embed/${videoModal[videoIndex].youtubeId}?rel=0`
+                    : videoModal[videoIndex].rumbleUrl || ""
+                }
                 title={videoModal[videoIndex].title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
