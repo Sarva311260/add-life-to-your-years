@@ -9,7 +9,7 @@ import remarkGfm from "remark-gfm";
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
 const MD_CDN_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_0ef4fe0d.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_8aa5bd30.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -173,6 +173,7 @@ const REC_VIDEOS: Record<string, { youtubeId: string; title: string }[]> = {
   "rec-3": [{ youtubeId: "tcwVfUAqWiY", title: "Sleep & Melatonin" }],
   "rec-4": [{ youtubeId: "o2Kc1Iaow40", title: "Glycine" }],
   "rec-5": [{ youtubeId: "YckoR3hLL9E", title: "Five Seeds of Life" }],
+  "rec-6": [{ youtubeId: "ndqvqAOsFtQ", title: "Gut Health & Microbiome" }],
   "rec-7": [
     { youtubeId: "wY4vEBilWN4", title: "Vitamin B12" },
     { youtubeId: "iotnggfP9Yk", title: "Vitamin D3" },
