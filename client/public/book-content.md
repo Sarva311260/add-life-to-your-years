@@ -1373,17 +1373,17 @@ The programme outlined in this book — the full suite of evidence-based supplem
 
 Here is the breakdown:
 
-| Supplement | Daily Cost | Monthly Cost |
+| Supplement | Daily Cost (USD) | Monthly Cost (USD) |
 |---|---|---|
 | Wholefood Fermented Probiotic | $1.50 | $45.00 |
-| Mycelium-Derived Spermidine | — | $60.00 |
+| Mycelium-Derived Spermidine | $2.00 | $60.00 |
 | Nano-Zeolite (Cellular Detox) | $0.50 | $15.00 |
 | Glycine | $0.50 | $15.00 |
 | Melatonin | $0.10 | $3.00 |
 | Vitamin B12 | $0.45 | $13.50 |
 | Vitamin D3 | $0.60 | $18.00 |
 | Methylene Blue | $0.50 | $15.00 |
-| **Total** | | **~$184.50/month** |
+| **Total** | **$6.15/day** | **~$184.50/month** |
 
 Approximately $185 per month. Less than the monthly repayment on a modest car loan. Less than many people spend on takeaway coffee.
 
