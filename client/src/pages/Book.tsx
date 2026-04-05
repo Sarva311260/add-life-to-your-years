@@ -70,6 +70,9 @@ export default function Book() {
               <p className="text-xl text-muted-foreground mb-2 font-medium">
                 Proven Strategies for Health, Wellness and Vitality
               </p>
+              <p className="text-sm text-muted-foreground mt-1 font-medium">
+                by Sarva Keller
+              </p>
               <p className="text-muted-foreground max-w-2xl text-base mt-4">
                 A comprehensive, evidence-based guide to understanding how your body works, what
                 drives chronic disease, and the practical strategies that can help you reclaim your
@@ -131,13 +134,37 @@ export default function Book() {
             </div>
 
             {/* Note */}
-            <div className="text-center p-6 rounded-2xl bg-muted/40 border border-border/50">
+            <div className="text-center p-6 rounded-2xl bg-muted/40 border border-border/50 mb-16">
               <p className="text-muted-foreground text-sm leading-relaxed">
                 <strong className="text-foreground">This book is completely free.</strong> It is part of a broader wellness
                 ecosystem — a set of interconnected resources designed to help you move from understanding to lasting change.
                 If you find value in it, please share it with someone who might benefit.
               </p>
             </div>
+
+            {/* About the Author */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex flex-col md:flex-row items-center md:items-start gap-8 p-8 rounded-2xl bg-green-50/60 border border-green-100"
+            >
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/sarva_0909cc87.jpg"
+                alt="Sarva Keller"
+                className="w-32 h-32 rounded-full object-cover shadow-lg shrink-0 ring-4 ring-green-200"
+              />
+              <div>
+                <h2 className="font-serif text-2xl font-bold text-foreground mb-1">About the Author</h2>
+                <p className="text-primary font-semibold mb-4">Sarva Keller</p>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-3">
+                  Sarva Keller was born in Hungary and trained as a classical musician before an early interest in Eastern philosophy set him on a different path. He moved to Australia 46 years ago and has spent most of his working life in the wellness field — as a vegetarian chef, restaurant owner, health product marketer, product formulator, health food manufacturer, and wellness coach.
+                </p>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  For years, people asked him to write a concise book drawing on his decades of accumulated experience. He spent the last three years doing further research into the latest science on health, wellness, and longevity. This book is the result.
+                </p>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>

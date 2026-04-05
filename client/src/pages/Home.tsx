@@ -349,6 +349,7 @@ export default function Home() {
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Add Life to Your Years
               </h2>
+              <p className="text-sm text-muted-foreground mb-4 font-medium">by Sarva Keller</p>
               <p className="text-muted-foreground mb-4 leading-relaxed">
                 Did you know your body is home to 30–37 trillion cells — and roughly the same number of
                 microbial organisms? You are a <em>holobiont</em>, an ecological unit where human and microbial
