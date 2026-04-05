@@ -158,7 +158,7 @@ export default function Book() {
                 <h2 className="font-serif text-2xl font-bold text-foreground mb-1">About the Author</h2>
                 <p className="text-primary font-semibold mb-4">Sarva Keller</p>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-3">
-                  Sarva Keller was born in Hungary and trained as a classical musician before an early interest in Eastern philosophy set him on a different path. He moved to Australia 46 years ago and has spent most of his working life in the wellness field — as a vegetarian chef, restaurant owner, health product marketer, product formulator, health food manufacturer, and wellness coach.
+                  Sarva Keller was born in Hungary and trained as a classical musician before an early interest in Eastern philosophy set him on a different path. Now 66, he moved to Australia 46 years ago and has spent most of his working life in the wellness field — as a vegetarian chef, restaurant owner, health product marketer, product formulator, health food manufacturer, and wellness coach.
                 </p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   For years, people asked him to write a concise book drawing on his decades of accumulated experience. He spent the last three years doing further research into the latest science on health, wellness, and longevity. This book is the result.
