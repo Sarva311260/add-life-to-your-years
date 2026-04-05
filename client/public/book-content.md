@@ -1359,6 +1359,42 @@ Now, let us begin.
 
 ---
 
+## The Investment in Your Health: What Does This Actually Cost?
+
+At some point, most people ask a reasonable question: how much will all of this cost?
+
+It is worth pausing on that question — not to dismiss it, but to put it in perspective.
+
+Consider the car. In the developed world, the average new car costs around $50,000. Once purchased, it requires ongoing maintenance — servicing, tyres, insurance, registration — typically $150 to $200 per month, not counting fuel. Nobody questions this. We accept it as the cost of keeping a machine running. We budget for it. We plan around it. We understand that neglecting maintenance leads to breakdowns that cost far more.
+
+Now consider your body. Unlike a car, it cannot be traded in. It cannot be replaced. It will carry you for the rest of your life — and unlike any machine, it has a remarkable capacity to repair itself when given the right conditions. Yet most people spend less on maintaining their body than they spend maintaining their vehicle.
+
+The programme outlined in this book — the full suite of evidence-based supplements recommended alongside the food and lifestyle changes — costs approximately the same as maintaining a car.
+
+Here is the breakdown:
+
+| Supplement | Daily Cost | Monthly Cost |
+|---|---|---|
+| Wholefood Fermented Probiotic | $1.50 | $45.00 |
+| Mycelium-Derived Spermidine | — | $60.00 |
+| Nano-Zeolite (Cellular Detox) | $0.50 | $15.00 |
+| Glycine | $0.50 | $15.00 |
+| Melatonin | $0.10 | $3.00 |
+| Vitamin B12 | $0.45 | $13.50 |
+| Vitamin D3 | $0.60 | $18.00 |
+| Methylene Blue | $0.50 | $15.00 |
+| **Total** | | **~$184.50/month** |
+
+Approximately $185 per month. Less than the monthly repayment on a modest car loan. Less than many people spend on takeaway coffee.
+
+And here is the question worth sitting with: *what is better for you — a handful of pharmaceutical pills taken daily to manage the symptoms of a body that has been neglected, or a small number of evidence-based supplements taken to support a body that is being actively maintained?*
+
+The pharmaceutical model is reactive. It waits for the system to break down, then attempts to manage the breakdown — often with significant side effects, often for life, often at far greater cost. The maintenance model is proactive. It invests in the conditions the body needs to function well, before the breakdown occurs.
+
+This is not an argument against medicine. It is an argument for taking maintenance seriously — the same way you take your car's maintenance seriously, but applied to the one vehicle you can never replace.
+
+---
+
 ## Recommendation 1: Adopt a Whole Food Plant-Based Lifestyle
 
 The first and most important change John can make is to his food.
