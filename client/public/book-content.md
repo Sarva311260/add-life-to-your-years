@@ -1387,6 +1387,16 @@ Here is the breakdown:
 
 Approximately $185 per month. Less than the monthly repayment on a modest car loan. Less than many people spend on takeaway coffee.
 
+It is also worth noting what this figure does *not* include: food. And here the programme pays for itself in a different way. The whole food plant-based lifestyle — built around legumes, whole grains, vegetables, fruits, nuts, and seeds — is consistently cheaper than the typical Western diet. Dried beans and lentils cost a fraction of meat. Oats, brown rice, and barley are among the least expensive foods available. A family eating a well-planned plant-based diet routinely spends 20 to 30 per cent less on groceries than one eating a meat-centred diet. The food savings, in many cases, more than offset the cost of the supplements. The programme, taken as a whole, may cost less than what you are spending now.
+
+And then there is the other side of the ledger — the cost of *not* investing.
+
+When chronic disease arrives, it does not come alone. It brings with it medical appointments, specialist consultations, diagnostic tests, and prescriptions that accumulate month after month, year after year. It brings reduced capacity to work — days lost, promotions missed, careers curtailed. In many countries, a serious illness can mean months or years of reduced income at precisely the moment when medical costs are highest. The financial cost of a single hospitalisation can exceed years of supplement expenditure. The cost of managing type 2 diabetes, heart disease, or cancer over a decade dwarfs any investment in prevention.
+
+But the cost that cannot be put in a table is the suffering. The loss of energy, independence, and quality of life. The burden placed on family members who become carers. The years spent managing a body that is failing rather than living fully in one that is thriving. These costs are real, and they are enormous — and they are largely preventable.
+
+The question is not whether you can afford to invest in your health. The question is whether you can afford not to.
+
 And here is the question worth sitting with: *what is better for you — a handful of pharmaceutical pills taken daily to manage the symptoms of a body that has been neglected, or a small number of evidence-based supplements taken to support a body that is being actively maintained?*
 
 The pharmaceutical model is reactive. It waits for the system to break down, then attempts to manage the breakdown — often with significant side effects, often for life, often at far greater cost. The maintenance model is proactive. It invests in the conditions the body needs to function well, before the breakdown occurs.
