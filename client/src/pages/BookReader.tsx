@@ -181,6 +181,7 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
   "rec-8": [
     { youtubeId: "wY4vEBilWN4", title: "Vitamin B12" },
     { youtubeId: "iotnggfP9Yk", title: "Vitamin D3" },
+    { youtubeId: "uxWARJ4s95Y", title: "Vitamin D3 (Part 2)" },
   ],
   "rec-9": [{ youtubeId: "qu3ixTQmpl0", title: "Six Movements" }],
   "rec-10": [{ youtubeId: "8vN08IuParo", title: "Breathing" }],

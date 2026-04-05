@@ -151,6 +151,12 @@ const RECOMMENDATIONS: RecommendationSection[] = [
         description:
           "Why Vitamin D deficiency is epidemic, its role in immunity and bone health, and how to supplement correctly.",
       },
+      {
+        youtubeId: "uxWARJ4s95Y",
+        title: "Vitamin D3 — Part 2",
+        description:
+          "Further insights into Vitamin D3 — its broader roles in health, optimal levels, and practical supplementation guidance.",
+      },
     ],
   },
   {
