@@ -515,7 +515,7 @@ export default function BookReader() {
                 <h2 className="font-serif text-2xl font-bold text-stone-800 text-center mb-1">Add Life to Your Years</h2>
                 <p className="text-stone-500 text-sm text-center">Proven Strategies for Health, Wellness and Vitality</p>
                 <div className="mt-4 flex gap-3">
-                  <span className="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-medium">128 Pages</span>
+                  <span className="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-medium">151 Pages</span>
                   <span className="text-xs bg-stone-100 text-stone-600 px-3 py-1 rounded-full font-medium">Free to Read</span>
                 </div>
               </div>
