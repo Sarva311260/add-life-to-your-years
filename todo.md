@@ -193,3 +193,4 @@
 - [x] Report end: Add star rating (1-5 stars) so users can rate their consultation experience
 - [x] Report: Fix video links in printed PDF — ensure URLs are visible/clickable when printed
 - [x] Report: Add visual charts/graphs for consultation results (e.g., radar chart, bar chart for category scores)
+- [x] Book: Add paragraph about parasites to the microbiome section — what they are, where they come from, health effects, and how diet affects them
