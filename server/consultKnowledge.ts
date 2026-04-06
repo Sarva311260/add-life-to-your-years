@@ -123,14 +123,24 @@ Keep this phase to 2-3 exchanges. When you have a good understanding of their in
 
     2: `CURRENT PHASE: Health Snapshot (Phase 2 of 6)
 Your goal: Get a quick but meaningful picture of their current health situation.
-${evaluationSummary ? `You already have their self-evaluation data. Reference specific scores and areas that stand out. Ask about the 2-3 areas where their scores were lowest — what's going on there?` : `Ask focused questions about their daily habits: What do they eat? How do they sleep? How much water? Exercise? Stress levels? Keep it conversational — don't make it feel like a form.`}
-${consultType === "specific_conditions" ? `Focus especially on factors related to their condition(s): ${selectedConditions?.join(", ")}.` : ""}
+
+IMPORTANT — DIETARY INTAKE QUESTION (MUST ASK):
+During this phase, you MUST ask the person to describe what a typical day of eating looks like for them. Ask them specifically:
+- What does a typical breakfast look like?
+- What about lunch and dinner?
+- Do they have any snacks between meals, and if so, what kind?
+This gives you a real picture of their daily nutrition. Ask it conversationally — for example: "Tell me, what does a typical day of eating look like for you? Walk me through your breakfast, lunch, dinner, and any snacks in between."
+This question is essential for every consultation — whether full review or specific conditions.
+
+${evaluationSummary ? `You already have their self-evaluation data. Reference specific scores and areas that stand out. Ask about the 2-3 areas where their scores were lowest — what's going on there? Also make sure to ask about their typical daily meals (breakfast, lunch, dinner, snacks).` : `Ask focused questions about their daily habits. Start with their diet — ask them to walk you through a typical day of eating (breakfast, lunch, dinner, and snacks). Then explore sleep, water intake, exercise, and stress levels. Keep it conversational — don't make it feel like a form.`}
+${consultType === "specific_conditions" ? `Focus especially on factors related to their condition(s): ${selectedConditions?.join(", ")}. But still ask about their daily meals — diet is connected to almost every health condition.` : ""}
 Keep this phase to 3-4 exchanges. You're building a picture, not doing an interrogation.`,
 
     3: `CURRENT PHASE: Deep Dive (Phase 3 of 6)
 Your goal: Go deeper into the 2-3 most relevant health factors for this person.
 Based on what you've learned so far, focus on the areas that would make the biggest difference.
 ${consultType === "specific_conditions" ? `Their specific concern(s): ${selectedConditions?.join(", ")}. Explore the root causes and contributing factors.` : ""}
+If the person has shared their daily meals, follow up on specific dietary choices — for example, how much processed food, whether they eat enough raw foods, how much water they drink, and whether their diet includes plant-based whole foods. If they haven't yet described their meals, ask now.
 Ask follow-up questions that show you're really listening. Connect dots between different aspects of their health.
 For example: "You mentioned poor sleep and high stress — those are deeply connected. The stress hormones..."
 Keep this phase to 3-5 exchanges. Go deep but stay focused.`,
@@ -212,6 +222,9 @@ A 2-3 paragraph overview of the key findings.${firstName ? ` Address ${firstName
 
 ## Health Assessment
 Summarise the person's current health picture across the relevant factors.
+
+## Dietary Analysis
+Based on the meals they described (breakfast, lunch, dinner, and snacks), provide an honest but encouraging assessment of their current diet. Highlight what they're doing well and where there's room for improvement. Connect their dietary choices to their specific health concerns.
 
 ## Key Findings
 The most important insights from the consultation, with clear explanations.

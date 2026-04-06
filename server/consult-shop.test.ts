@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
-import { HEALTH_CONDITIONS, CONSULTATION_PHASES, BOOK_RECOMMENDATIONS } from "./consultKnowledge";
+import { HEALTH_CONDITIONS, CONSULTATION_PHASES, BOOK_RECOMMENDATIONS, buildConsultSystemPrompt, buildReportPrompt } from "./consultKnowledge";
 
 type AuthenticatedUser = NonNullable<TrpcContext["user"]>;
 
@@ -140,6 +140,49 @@ describe("consultKnowledge", () => {
 
   it("HEALTH_CONDITIONS has at least 6 conditions", () => {
     expect(HEALTH_CONDITIONS.length).toBeGreaterThanOrEqual(6);
+  });
+});
+
+describe("buildConsultSystemPrompt dietary intake", () => {
+
+  it("Phase 2 prompt includes dietary intake question for full review", () => {
+    const prompt = buildConsultSystemPrompt(2, "full_review", undefined, undefined, undefined, "John");
+    expect(prompt).toContain("breakfast");
+    expect(prompt).toContain("lunch");
+    expect(prompt).toContain("dinner");
+    expect(prompt).toContain("snack");
+    expect(prompt).toContain("DIETARY INTAKE");
+  });
+
+  it("Phase 2 prompt includes dietary intake question for specific conditions", () => {
+    const prompt = buildConsultSystemPrompt(2, "specific_conditions", ["sleep"], undefined, undefined, "Jane");
+    expect(prompt).toContain("breakfast");
+    expect(prompt).toContain("lunch");
+    expect(prompt).toContain("dinner");
+    expect(prompt).toContain("snack");
+    expect(prompt).toContain("diet is connected to almost every health condition");
+  });
+
+  it("Phase 2 prompt with evaluation data still asks about meals", () => {
+    const evalSummary = "Overall Score: 65%\nBMI: 24.5\nCategory Scores:\n- Lifestyle Choices: 55%";
+    const prompt = buildConsultSystemPrompt(2, "full_review", undefined, evalSummary, undefined, "Sarah");
+    expect(prompt).toContain("typical daily meals");
+    expect(prompt).toContain("breakfast");
+  });
+
+  it("Phase 3 prompt includes dietary follow-up instruction", () => {
+    const prompt = buildConsultSystemPrompt(3, "full_review", undefined, undefined, "some context", "Tom");
+    expect(prompt).toContain("dietary choices");
+    expect(prompt).toContain("processed food");
+    expect(prompt).toContain("plant-based");
+  });
+
+  it("Report prompt includes Dietary Analysis section", () => {
+    const report = buildReportPrompt("full_review", null, "conversation", undefined, "Alex");
+    expect(report).toContain("Dietary Analysis");
+    expect(report).toContain("breakfast");
+    expect(report).toContain("lunch");
+    expect(report).toContain("dinner");
   });
 });
 

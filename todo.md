@@ -187,3 +187,4 @@
 - [x] Consult: Resume loads full message history and AI picks up from the correct phase
 - [x] Consult: Make self-evaluation mandatory (not just advised) — block consultation start without completed evaluation
 - [x] Consult: Auto-redirect back to Consult page after completing evaluation if user came from Consult
+- [x] Consult: AI should ask about typical daily diet — breakfast, lunch, dinner, and snacks between meals
