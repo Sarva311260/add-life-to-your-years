@@ -50,7 +50,7 @@ export default function Book() {
               className="shrink-0"
             >
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-cover-UsuL2YkEq9DNQMFM4uAv7v.webp"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-cover-sarva-keller_87f4edbe.png"
                 alt="Add Life to Your Years book cover"
                 className="w-52 md:w-64 rounded-xl shadow-2xl"
               />

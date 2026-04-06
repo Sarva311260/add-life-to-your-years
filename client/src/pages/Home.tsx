@@ -353,7 +353,7 @@ export default function Home() {
                 <div className="relative bg-gradient-to-br from-primary/10 to-emerald-100 rounded-2xl p-6 md:p-10 inline-block">
                   <Link href="/book">
                     <img
-                      src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-cover-UsuL2YkEq9DNQMFM4uAv7v.webp"
+                      src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-cover-sarva-keller_87f4edbe.png"
                       alt="Add Life to Your Years book cover"
                       className="w-56 md:w-72 rounded-lg shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-300 cursor-pointer block"
                     />
