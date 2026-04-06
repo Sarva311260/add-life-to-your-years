@@ -236,6 +236,12 @@ export async function updateProduct(id: number, data: Partial<InsertShopProduct>
   await db.update(shopProducts).set(data).where(eq(shopProducts.id, id));
 }
 
+export async function updateUserFirstName(userId: number, firstName: string) {
+  const db = await getDb();
+  if (!db) return;
+  await db.update(users).set({ firstName }).where(eq(users.id, userId));
+}
+
 export async function getUserByEmail(email: string) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");

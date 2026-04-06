@@ -14,6 +14,7 @@ import {
   getUserConsultReports,
   getLatestEvaluationByUserId,
   getRecommendationsByEvaluation,
+  getUserByOpenId,
 } from "../db";
 import {
   buildConsultSystemPrompt,
@@ -23,6 +24,7 @@ import {
   BOOK_RECOMMENDATIONS,
 } from "../consultKnowledge";
 import { CATEGORIES } from "../../shared/questionnaire";
+import { RECOMMENDATION_VIDEOS, getVideoLinksMarkdown } from "../../shared/videoMap";
 
 export const consultRouter = router({
   /** Get available health conditions for the condition selector */
@@ -202,6 +204,10 @@ export const consultRouter = router({
         await updateConsultation(input.consultationId, { currentPhase });
       }
 
+      // Get user's first name for personalisation
+      const userRecord = await getUserByOpenId(ctx.user.openId);
+      const firstName = userRecord?.firstName || undefined;
+
       // Build the system prompt for current phase
       const systemPrompt = buildConsultSystemPrompt(
         currentPhase,
@@ -209,6 +215,7 @@ export const consultRouter = router({
         selectedConditions || undefined,
         evaluationSummary,
         conversationContext,
+        firstName,
       );
 
       // Build LLM messages
@@ -256,11 +263,21 @@ export const consultRouter = router({
             .map((m) => `${m.role === "user" ? "User" : "Sarva"}: ${m.content}`)
             .join("\n\n");
 
+          // Get user's first name
+          const user = await getUserByOpenId(ctx.user.openId);
+          const firstName = user?.firstName || undefined;
+
+          // Get video links for all book recommendations (the LLM will match relevant ones)
+          const allRecIds = BOOK_RECOMMENDATIONS.map(r => r.id);
+          const videoLinksMarkdown = getVideoLinksMarkdown(allRecIds);
+
           const reportPrompt = buildReportPrompt(
             consultation.consultType,
             selectedConditions,
             fullConversation,
             evaluationSummary,
+            firstName,
+            videoLinksMarkdown,
           );
 
           const reportResponse = await invokeLLM({

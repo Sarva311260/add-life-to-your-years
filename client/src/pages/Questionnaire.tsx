@@ -647,6 +647,28 @@ function DemographicsForm({ demographics, setDemographics, bmiResult, showIncomp
       </div>
 
       <div className="space-y-6">
+        {/* First Name */}
+        <Card className={`border transition-all ${demographics.firstName ? "border-primary/30 bg-primary/[0.02]" : "border-border/60"}`}>
+          <CardContent className="p-6">
+            <div className="flex items-start gap-3 mb-4">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full text-sm font-semibold flex items-center justify-center bg-primary/10 text-primary">&#9733;</span>
+              <div>
+                <h3 className="font-medium text-foreground leading-snug">What's your first name?</h3>
+                <p className="text-xs text-muted-foreground mt-1">This helps us personalise your results and consultation</p>
+              </div>
+            </div>
+            <div className="ml-10">
+              <input
+                type="text"
+                value={demographics.firstName || ""}
+                onChange={(e) => update("firstName", e.target.value)}
+                placeholder="Your first name"
+                className="w-full max-w-xs px-4 py-3 rounded-lg border border-border/60 text-sm bg-background text-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+              />
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Gender */}
         <Card className={`border transition-all ${demographics.gender ? "border-primary/30 bg-primary/[0.02]" : showIncomplete && !demographics.gender ? "border-red-300 bg-red-50/30 ring-1 ring-red-200" : "border-border/60"}`}>
           <CardContent className="p-6">

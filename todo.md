@@ -177,3 +177,8 @@
 - [x] Personal Review: Upsell section at end of consultation report with payment button
 - [x] Personal Review: Owner notification when paid review is requested (with report details)
 - [x] Personal Review: Success/confirmation page after payment
+- [x] Consult: Add first name field to self-evaluation demographics form
+- [x] Consult: Add first name prompt to consult start page (for users who skip evaluation)
+- [x] Consult: Store first name in user profile (database column)
+- [x] Consult: Use first name in AI consultation prompts and report generation (replace "Dear")
+- [x] Consult: Include relevant recommendation video links from Media page in consultation reports

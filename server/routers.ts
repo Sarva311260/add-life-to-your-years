@@ -12,6 +12,7 @@ import {
   createRecommendations,
   getRecommendationsByEvaluation,
   getUserByOpenId,
+  updateUserFirstName,
 } from "./db";
 import { generateEvaluationPDF } from "./pdfReport";
 import { storagePut } from "./storage";
@@ -34,6 +35,14 @@ export const appRouter = router({
     }),
   }),
 
+  /** Set or update user's first name */
+  setFirstName: protectedProcedure
+    .input(z.object({ firstName: z.string().min(1).max(100) }))
+    .mutation(async ({ ctx, input }) => {
+      await updateUserFirstName(ctx.user.id, input.firstName.trim());
+      return { success: true };
+    }),
+
   evaluation: router({
     submit: protectedProcedure
       .input(
@@ -41,6 +50,7 @@ export const appRouter = router({
           responses: z.record(z.string(), z.number()),
           categoryScores: z.record(z.string(), z.number()),
           demographics: z.object({
+            firstName: z.string().optional(),
             gender: z.enum(["male", "female"]),
             age: z.number().min(1).max(150),
             heightUnit: z.enum(["metric", "imperial"]),
@@ -65,6 +75,10 @@ export const appRouter = router({
         let bmi: number | undefined;
 
         if (input.demographics) {
+          // Save firstName to user profile if provided
+          if (input.demographics.firstName?.trim()) {
+            await updateUserFirstName(ctx.user.id, input.demographics.firstName.trim());
+          }
           gender = input.demographics.gender;
           age = input.demographics.age;
 

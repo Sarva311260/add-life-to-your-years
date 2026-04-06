@@ -25,6 +25,7 @@ export default function Consult() {
   const [consultType, setConsultType] = useState<"full_review" | "specific_conditions" | null>(null);
   const [selectedConditions, setSelectedConditions] = useState<string[]>([]);
   const [otherCondition, setOtherCondition] = useState("");
+  const [firstName, setFirstName] = useState("");
 
   const { data: conditions } = trpc.consult.getConditions.useQuery(undefined, {
     enabled: isAuthenticated,
@@ -32,6 +33,12 @@ export default function Consult() {
   const { data: evalStatus } = trpc.consult.checkEvaluation.useQuery(undefined, {
     enabled: isAuthenticated,
   });
+
+  // Check if user already has a first name saved
+  const { data: meData } = trpc.auth.me.useQuery(undefined, {
+    enabled: isAuthenticated,
+  });
+  const setFirstNameMutation = trpc.setFirstName.useMutation();
 
   const startMutation = trpc.consult.start.useMutation({
     onSuccess: (data) => {
@@ -64,7 +71,17 @@ export default function Consult() {
     setStep("prerequisite");
   };
 
-  const handleStartConsultation = () => {
+  const handleStartConsultation = async () => {
+    // Save first name if provided and not already saved
+    const nameToSave = firstName.trim();
+    if (nameToSave && (!(meData as any)?.firstName || (meData as any)?.firstName !== nameToSave)) {
+      try {
+        await setFirstNameMutation.mutateAsync({ firstName: nameToSave });
+      } catch (e) {
+        // Non-blocking — continue even if save fails
+      }
+    }
+
     setStep("starting");
     const finalConditions = [...selectedConditions];
     if (otherCondition.trim() && selectedConditions.includes("other")) {
@@ -382,6 +399,31 @@ export default function Consult() {
                           <ArrowRight className="w-4 h-4" />
                           View the Book
                         </Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* First name */}
+                <Card className="border-2 border-primary/20">
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                        <Heart className="w-5 h-5 text-primary" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-foreground mb-1">
+                          What should I call you?
+                        </h3>
+                        <p className="text-sm text-muted-foreground mb-3">
+                          Your first name helps me personalise your consultation and report.
+                        </p>
+                        <Input
+                          value={firstName || (meData as any)?.firstName || ""}
+                          onChange={(e) => setFirstName(e.target.value)}
+                          placeholder="Your first name"
+                          className="max-w-xs"
+                        />
                       </div>
                     </div>
                   </CardContent>

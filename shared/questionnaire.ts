@@ -1,6 +1,7 @@
 export type QuestionType = "scale" | "yesno" | "choice" | "frequency";
 
 export interface Demographics {
+  firstName?: string;
   gender: "male" | "female";
   age: number;
   heightUnit: "metric" | "imperial";

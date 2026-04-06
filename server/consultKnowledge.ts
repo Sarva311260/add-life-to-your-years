@@ -75,6 +75,7 @@ export function buildConsultSystemPrompt(
   selectedConditions?: string[],
   evaluationSummary?: string,
   conversationContext?: string,
+  firstName?: string,
 ): string {
   const basePrompt = `You are Sarva Keller, a 66-year-old wellness coach with decades of experience in holistic health. You were born in Hungary, trained as a classical musician, and moved to Australia 46 years ago. You've spent your working life in the wellness field — as a vegetarian chef, restaurant owner, health product marketer, product formulator, health food manufacturer, and wellness coach. You've spent the last three years researching the latest science on health, wellness, and longevity, and you wrote the book "Add Life to Your Years."
 
@@ -86,6 +87,10 @@ YOUR VOICE AND TONE:
 - You're encouraging but honest — you don't sugarcoat, but you always offer hope
 - You share from experience, not just theory
 - You occasionally reference your own journey or observations from decades in the field
+
+ADDRESSING THE PERSON:
+${firstName ? `- Their first name is ${firstName}. Use it naturally in conversation. Don't overuse it — just enough to feel personal.
+- NEVER use "Dear" — just use their name conversationally.` : `- You don't know their name yet. Don't use "Dear" or any generic salutation. Just speak directly and warmly.`}
 
 CRITICAL RULES:
 - You are NOT a doctor. You NEVER diagnose conditions or prescribe treatments.
@@ -176,22 +181,34 @@ export function buildReportPrompt(
   selectedConditions: string[] | null,
   conversationHistory: string,
   evaluationSummary?: string,
+  firstName?: string,
+  videoLinksMarkdown?: string,
 ): string {
+  const nameInstruction = firstName
+    ? `The person's first name is ${firstName}. Address them by their first name naturally throughout the report (e.g., "${firstName}, based on what you shared..."). Do NOT use "Dear" — just use their name conversationally.`
+    : `Do NOT use "Dear" or any generic salutation. Just write naturally as if speaking directly to the person.`;
+
+  const videoInstruction = videoLinksMarkdown
+    ? `\n\nRELEVANT VIDEO RESOURCES (include these as "Watch" links within the matching recommendations):\n${videoLinksMarkdown}\nFor each recommendation that has a matching video above, add a "📺 Watch:" line with the video link(s).`
+    : "";
+
   return `You are Sarva Keller. Based on the following wellness consultation, generate a comprehensive personalised wellness report in Markdown format.
+
+${nameInstruction}
 
 CONSULTATION TYPE: ${consultType === "full_review" ? "Complete Personal Wellness Review" : `Specific Conditions: ${selectedConditions?.join(", ") || "General"}`}
 
 ${evaluationSummary ? `SELF-EVALUATION DATA:\n${evaluationSummary}\n` : ""}
 
 CONSULTATION CONVERSATION:
-${conversationHistory}
+${conversationHistory}${videoInstruction}
 
 Generate a professional wellness report with these sections:
 
 # Personal Wellness Report
 
 ## Executive Summary
-A 2-3 paragraph overview of the key findings.
+A 2-3 paragraph overview of the key findings.${firstName ? ` Address ${firstName} by name in the opening.` : ""}
 
 ## Health Assessment
 Summarise the person's current health picture across the relevant factors.
@@ -205,6 +222,7 @@ For each recommendation (3-5 total):
 - **Why this matters for you:** Specific explanation
 - **What to do:** Clear, actionable steps
 - **Starting point:** Where to begin this week
+- **📺 Watch:** Include relevant video link(s) if available from the video resources above
 - **Related product:** If applicable, mention a relevant product
 
 ## 30-Day Action Plan
