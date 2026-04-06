@@ -239,8 +239,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Why This Site */}
+      <section id="about" className="py-20 bg-gradient-to-b from-white to-green-50/40">
+        <div className="container max-w-3xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6">
+              <Leaf className="w-4 h-4" />
+              Why This Site
+            </span>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-6">
+              The Problem Isn't a Lack of Information
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-5">
+              We live in an age of information abundance. The internet and platforms like YouTube have placed more health knowledge at our fingertips than any library in history. And yet, despite all of that access, people are more confused, more overwhelmed, and more unwell than ever before.
+            </p>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-5">
+              The problem is no longer a shortage of information. The problem is the opposite: too much of it, scattered across too many sources, often contradictory, frequently driven by commercial interests, and almost never organised into something a real person can actually use in their daily life.
+            </p>
+            <p className="text-foreground font-medium text-lg leading-relaxed">
+              That is the purpose of this ecosystem — this website, the book, and the resources connected to them. Not to add more noise, but to do the hard work of filtering, organising, and translating the best available evidence into a clear, practical framework for health and vitality. One that respects your intelligence, honours the complexity of the human body, and gives you something you can actually act on.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* 8 Health Factors */}
-      <section id="about" className="py-20 bg-white">
+      <section className="py-20 bg-white">
         <div className="container">
           <div className="text-center mb-14">
             <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
