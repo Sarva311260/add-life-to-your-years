@@ -194,3 +194,8 @@
 - [x] Report: Fix video links in printed PDF — ensure URLs are visible/clickable when printed
 - [x] Report: Add visual charts/graphs for consultation results (e.g., radar chart, bar chart for category scores)
 - [x] Book: Add paragraph about parasites to the microbiome section — what they are, where they come from, health effects, and how diet affects them
+- [x] Evaluation: Add female-specific questions — menopause status (pre/during/post), menses regularity, contraceptive pill use, menopausal symptoms and severity
+- [x] Evaluation: Add male-specific question — frequent nighttime urination (for males over 40)
+- [x] Evaluation: Add universal questions — COVID vaccination (yes/no + how many doses), antibiotics in last 5 years (yes/no + how many courses), meals per day, bowel movements per day
+- [x] Evaluation: Implement conditional logic — show questions based on gender and age answers
+- [x] Consultation: Update AI prompt to incorporate new evaluation data points

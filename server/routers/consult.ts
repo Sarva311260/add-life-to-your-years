@@ -26,7 +26,7 @@ import {
   HEALTH_CONDITIONS,
   BOOK_RECOMMENDATIONS,
 } from "../consultKnowledge";
-import { CATEGORIES } from "../../shared/questionnaire";
+import { CATEGORIES, HEALTH_HISTORY_QUESTIONS, getVisibleHealthHistoryQuestions } from "../../shared/questionnaire";
 import { RECOMMENDATION_VIDEOS, getVideoLinksMarkdown } from "../../shared/videoMap";
 
 export const consultRouter = router({
@@ -75,6 +75,19 @@ export const consultRouter = router({
           if (score !== undefined) {
             evaluationSummary += `- ${cat.name}: ${Math.round(score)}%\n`;
           }
+        }
+        // Include health history answers
+        const evalResponses = latestEval.responses as Record<string, number>;
+        const demographics = { gender: latestEval.gender as "male" | "female" | undefined, age: latestEval.age ?? undefined };
+        const visibleHealthQs = getVisibleHealthHistoryQuestions(demographics, evalResponses);
+        const healthAnswers = visibleHealthQs
+          .filter((q) => evalResponses[q.id] !== undefined)
+          .map((q) => {
+            const opt = q.options.find((o) => o.value === evalResponses[q.id]);
+            return `- ${q.text} \u2192 ${opt?.label ?? String(evalResponses[q.id])}`;
+          });
+        if (healthAnswers.length > 0) {
+          evaluationSummary += "\nHealth History:\n" + healthAnswers.join("\n") + "\n";
         }
       }
 
@@ -173,6 +186,19 @@ export const consultRouter = router({
             if (score !== undefined) {
               evaluationSummary += `- ${cat.name}: ${Math.round(score)}%\n`;
             }
+          }
+          // Include health history answers
+          const evalResponses = latestEval.responses as Record<string, number>;
+          const demographics = { gender: latestEval.gender as "male" | "female" | undefined, age: latestEval.age ?? undefined };
+          const visibleHealthQs = getVisibleHealthHistoryQuestions(demographics, evalResponses);
+          const healthAnswers = visibleHealthQs
+            .filter((q) => evalResponses[q.id] !== undefined)
+            .map((q) => {
+              const opt = q.options.find((o) => o.value === evalResponses[q.id]);
+              return `- ${q.text} \u2192 ${opt?.label ?? String(evalResponses[q.id])}`;
+            });
+          if (healthAnswers.length > 0) {
+            evaluationSummary += "\nHealth History:\n" + healthAnswers.join("\n") + "\n";
           }
         }
       }

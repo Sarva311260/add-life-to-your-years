@@ -856,6 +856,229 @@ export const CATEGORIES: Category[] = [
   },
 ];
 
+// ---- Health History (non-scored, conditional) ----
+
+export interface HealthHistoryQuestion {
+  id: string;
+  text: string;
+  description?: string;
+  type: "choice" | "yesno";
+  options: ChoiceOption[];
+  /** Condition function: receives demographics + current health history responses, returns true if question should be shown */
+  condition?: (demographics: Partial<Demographics>, responses: Record<string, number>) => boolean;
+}
+
+/**
+ * These questions are NOT scored into the 8 wellness categories.
+ * They provide critical health context for the AI consultation.
+ * Answers are stored in the same responses record with "health_" prefix.
+ */
+export const HEALTH_HISTORY_QUESTIONS: HealthHistoryQuestion[] = [
+  // ---- Female-specific: Menopause status (female, age > 40) ----
+  {
+    id: "health_menopause_status",
+    text: "What is your current menopausal status?",
+    description: "Menopause is a natural transition that can significantly affect overall health and wellbeing.",
+    type: "choice",
+    options: [
+      { value: 1, label: "Pre-menopausal — I have not yet entered menopause" },
+      { value: 2, label: "Peri-menopausal — I am currently experiencing menopausal changes" },
+      { value: 3, label: "Post-menopausal — I have completed menopause" },
+    ],
+    condition: (d) => d.gender === "female" && (d.age ?? 0) > 40,
+  },
+  // Pre-menopausal: menses regularity
+  {
+    id: "health_menses_regularity",
+    text: "Are your menstrual cycles regular and predictable?",
+    description: "Regular cycles are generally a sign of balanced hormonal health.",
+    type: "choice",
+    options: [
+      { value: 1, label: "Yes — my cycles are regular and predictable" },
+      { value: 2, label: "No — my cycles are irregular or unpredictable" },
+    ],
+    condition: (d, r) => d.gender === "female" && (d.age ?? 0) > 40 && r["health_menopause_status"] === 1,
+  },
+  // Pre-menopausal: contraceptive pill
+  {
+    id: "health_contraceptive_pill",
+    text: "Are you currently taking contraceptive pills?",
+    description: "Hormonal contraceptives can influence nutrient absorption, mood, and metabolic health.",
+    type: "choice",
+    options: [
+      { value: 1, label: "Yes" },
+      { value: 2, label: "No" },
+    ],
+    condition: (d, r) => d.gender === "female" && (d.age ?? 0) > 40 && r["health_menopause_status"] === 1,
+  },
+  // Peri-menopausal: symptoms and severity
+  {
+    id: "health_menopause_symptoms",
+    text: "Are you experiencing menopausal symptoms?",
+    description: "Common symptoms include hot flushes, night sweats, mood changes, sleep disturbances, and joint pain.",
+    type: "choice",
+    options: [
+      { value: 1, label: "No noticeable symptoms" },
+      { value: 2, label: "Mild symptoms — occasional and manageable" },
+      { value: 3, label: "Moderate symptoms — noticeable impact on daily life" },
+      { value: 4, label: "Severe symptoms — significantly affecting quality of life" },
+    ],
+    condition: (d, r) => d.gender === "female" && (d.age ?? 0) > 40 && r["health_menopause_status"] === 2,
+  },
+  // Post-menopausal: symptoms resolved?
+  {
+    id: "health_postmenopause_symptoms",
+    text: "Have your menopausal symptoms resolved?",
+    description: "Some women continue to experience symptoms well after menopause has completed.",
+    type: "choice",
+    options: [
+      { value: 1, label: "Yes — symptoms have fully resolved" },
+      { value: 2, label: "Mostly — occasional mild symptoms remain" },
+      { value: 3, label: "No — I still experience significant symptoms" },
+    ],
+    condition: (d, r) => d.gender === "female" && (d.age ?? 0) > 40 && r["health_menopause_status"] === 3,
+  },
+  // Female under 40: menses regularity
+  {
+    id: "health_menses_young",
+    text: "Are your menstrual cycles regular and predictable?",
+    description: "Regular cycles are generally a sign of balanced hormonal health.",
+    type: "choice",
+    options: [
+      { value: 1, label: "Yes — my cycles are regular and predictable" },
+      { value: 2, label: "No — my cycles are irregular or unpredictable" },
+    ],
+    condition: (d) => d.gender === "female" && (d.age ?? 0) <= 40,
+  },
+  // Female under 40: contraceptive pill
+  {
+    id: "health_contraceptive_young",
+    text: "Are you currently taking contraceptive pills?",
+    description: "Hormonal contraceptives can influence nutrient absorption, mood, and metabolic health.",
+    type: "choice",
+    options: [
+      { value: 1, label: "Yes" },
+      { value: 2, label: "No" },
+    ],
+    condition: (d) => d.gender === "female" && (d.age ?? 0) <= 40,
+  },
+  // ---- Male-specific: Nighttime urination (male, age > 40) ----
+  {
+    id: "health_night_urination",
+    text: "Do you experience frequent nighttime urination?",
+    description: "Waking multiple times at night to urinate (nocturia) can indicate prostate or metabolic health concerns.",
+    type: "choice",
+    options: [
+      { value: 1, label: "No — I rarely wake at night to urinate" },
+      { value: 2, label: "Occasionally — once per night" },
+      { value: 3, label: "Frequently — 2 or more times per night" },
+    ],
+    condition: (d) => d.gender === "male" && (d.age ?? 0) > 40,
+  },
+  // ---- Universal questions ----
+  {
+    id: "health_covid_vaccination",
+    text: "Did you receive any COVID-19 vaccinations?",
+    description: "",
+    type: "choice",
+    options: [
+      { value: 1, label: "Yes" },
+      { value: 2, label: "No" },
+    ],
+  },
+  {
+    id: "health_covid_doses",
+    text: "How many COVID-19 vaccine doses did you receive?",
+    description: "",
+    type: "choice",
+    options: [
+      { value: 1, label: "1 dose" },
+      { value: 2, label: "2 doses" },
+      { value: 3, label: "3 doses" },
+      { value: 4, label: "4 doses" },
+      { value: 5, label: "5 or more doses" },
+    ],
+    condition: (d, r) => r["health_covid_vaccination"] === 1,
+  },
+  {
+    id: "health_antibiotics",
+    text: "Have you taken any antibiotics in the last 5 years?",
+    description: "Antibiotics can significantly disrupt the gut microbiome and affect long-term health.",
+    type: "choice",
+    options: [
+      { value: 1, label: "Yes" },
+      { value: 2, label: "No" },
+    ],
+  },
+  {
+    id: "health_antibiotics_count",
+    text: "Approximately how many courses of antibiotics have you taken in the last 5 years?",
+    description: "",
+    type: "choice",
+    options: [
+      { value: 1, label: "1 course" },
+      { value: 2, label: "2–3 courses" },
+      { value: 3, label: "4–5 courses" },
+      { value: 4, label: "More than 5 courses" },
+    ],
+    condition: (d, r) => r["health_antibiotics"] === 1,
+  },
+  {
+    id: "health_meals_per_day",
+    text: "How many main meals do you eat per day?",
+    description: "Main meals typically include breakfast, lunch, and dinner.",
+    type: "choice",
+    options: [
+      { value: 1, label: "1 meal" },
+      { value: 2, label: "2 meals" },
+      { value: 3, label: "3 meals" },
+      { value: 4, label: "4 or more meals" },
+    ],
+  },
+  {
+    id: "health_bowel_movements",
+    text: "How many bowel movements do you typically have per day?",
+    description: "Regular bowel movements are an important indicator of digestive health and gut function.",
+    type: "choice",
+    options: [
+      { value: 1, label: "Less than once a day" },
+      { value: 2, label: "Once a day" },
+      { value: 3, label: "Twice a day" },
+      { value: 4, label: "3 or more times a day" },
+    ],
+  },
+];
+
+/**
+ * Get the visible health history questions based on demographics and current responses.
+ */
+export function getVisibleHealthHistoryQuestions(
+  demographics: Partial<Demographics>,
+  responses: Record<string, number>
+): HealthHistoryQuestion[] {
+  return HEALTH_HISTORY_QUESTIONS.filter(
+    (q) => !q.condition || q.condition(demographics, responses)
+  );
+}
+
+/**
+ * Format health history responses as a readable summary for the AI consultation.
+ */
+export function formatHealthHistorySummary(
+  demographics: Partial<Demographics>,
+  responses: Record<string, number>
+): string {
+  const visible = getVisibleHealthHistoryQuestions(demographics, responses);
+  const lines: string[] = [];
+  for (const q of visible) {
+    const val = responses[q.id];
+    if (val === undefined) continue;
+    const opt = q.options.find((o) => o.value === val);
+    lines.push(`${q.text} → ${opt?.label ?? String(val)}`);
+  }
+  return lines.length > 0 ? lines.join("\n") : "No health history data provided.";
+}
+
 export const SCORE_LABELS: Record<number, string> = {
   1: "Very Poor",
   2: "Poor",

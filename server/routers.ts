@@ -16,7 +16,7 @@ import {
 } from "./db";
 import { generateEvaluationPDF } from "./pdfReport";
 import { storagePut } from "./storage";
-import { CATEGORIES, calculateOverallScore, hasCardiacFlag, getScoreLevelLabel, getOptionsForQuestion } from "../shared/questionnaire";
+import { CATEGORIES, calculateOverallScore, hasCardiacFlag, getScoreLevelLabel, getOptionsForQuestion, HEALTH_HISTORY_QUESTIONS, formatHealthHistorySummary } from "../shared/questionnaire";
 import { consultRouter } from "./routers/consult";
 import { shopRouter } from "./routers/shop";
 import { reviewRouter } from "./routers/review";
@@ -178,12 +178,18 @@ export const appRouter = router({
           const origin = ctx.req.headers.origin || ctx.req.headers.referer?.replace(/\/[^/]*$/, '') || '';
           const reportLink = `${origin}/report/${evaluationId}`;
 
+          // Build health history summary for notification
+          const healthHistorySummary = input.demographics
+            ? formatHealthHistorySummary(input.demographics, input.responses)
+            : "No health history data provided.";
+
           notifyOwner({
             title: `First Evaluation Completed: ${userName}`,
             content: `${userName} (${userEmail}) has completed their first wellness evaluation!\n\n` +
               `🏆 Overall Score: ${Math.round(overallScore)}% (${scoreLevelLabel})\n` +
               `${cardiacFlag ? "⚠️ Cardiac flag detected\n" : ""}` +
               `📄 View Full Report: ${reportLink}\n` +
+              `\n--- Health History ---\n${healthHistorySummary}\n` +
               `\n--- Category Breakdown & Responses ---\n\n${categoryBreakdown}\n\n` +
               `This is a great opportunity to reach out and offer personalised coaching support.`,
           }).catch((err) => {

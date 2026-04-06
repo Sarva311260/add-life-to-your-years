@@ -7,11 +7,12 @@ import { trpc } from "@/lib/trpc";
 import {
   CATEGORIES, getOptionsForQuestion, calculateCategoryScore, calculateOverallScore,
   hasCardiacFlag, calculateBMI, getBMICategory,
+  HEALTH_HISTORY_QUESTIONS, getVisibleHealthHistoryQuestions,
   type Demographics,
 } from "@shared/questionnaire";
 import {
   Heart, Building2, Dna, Shield, Brain, Compass, Users, Activity,
-  ArrowLeft, ArrowRight, CheckCircle2, AlertTriangle, Leaf, Loader2, User
+  ArrowLeft, ArrowRight, CheckCircle2, AlertTriangle, Leaf, Loader2, User, ClipboardList
 } from "lucide-react";
 import { useState, useMemo, useCallback, useEffect } from "react";
 import { useLocation, useSearch } from "wouter";
@@ -22,6 +23,13 @@ const STORAGE_KEY = "wellness-eval-responses";
 const CATEGORY_INDEX_KEY = "wellness-eval-category-index";
 const TEASER_STORAGE_KEY = "wellness-eval-teaser-data";
 const DEMOGRAPHICS_KEY = "wellness-eval-demographics";
+
+// Step indices:
+// STEP_DEMOGRAPHICS = -1
+// STEP_HEALTH_HISTORY = -2 (shown between demographics and first category)
+// 0..N = category indices
+const STEP_DEMOGRAPHICS = -1;
+const STEP_HEALTH_HISTORY = -2;
 
 const CATEGORY_ICONS: Record<string, React.ReactNode> = {
   lifestyle: <Heart className="w-5 h-5" />,
@@ -50,7 +58,6 @@ function loadSavedDemographics(): Partial<Demographics> {
     const saved = localStorage.getItem(DEMOGRAPHICS_KEY);
     if (saved) {
       const parsed = JSON.parse(saved);
-      // Ensure unit defaults are always set
       if (!parsed.heightUnit) parsed.heightUnit = "metric";
       if (!parsed.weightUnit) parsed.weightUnit = "metric";
       return parsed;
@@ -59,7 +66,6 @@ function loadSavedDemographics(): Partial<Demographics> {
   return { heightUnit: "metric", weightUnit: "metric" };
 }
 
-// Step index: -1 = demographics, 0..N = category indices
 export default function Questionnaire() {
   const { user, isAuthenticated, loading: authLoading } = useAuth();
   const [, navigate] = useLocation();
@@ -71,10 +77,11 @@ export default function Questionnaire() {
       const saved = localStorage.getItem(CATEGORY_INDEX_KEY);
       if (saved) {
         const idx = parseInt(saved, 10);
-        if (!isNaN(idx) && idx >= -1 && idx < CATEGORIES.length) return idx;
+        // Support old saved values and new STEP_HEALTH_HISTORY
+        if (!isNaN(idx) && idx >= -2 && idx < CATEGORIES.length) return idx;
       }
     } catch {}
-    return -1; // Start at demographics
+    return STEP_DEMOGRAPHICS;
   });
 
   const [responses, setResponses] = useState<Record<string, number>>(loadSavedResponses);
@@ -103,17 +110,48 @@ export default function Questionnaire() {
     localStorage.setItem(CATEGORY_INDEX_KEY, String(currentStep));
   }, [currentStep]);
 
+  // Health history questions visible based on current demographics + responses
+  const visibleHealthQuestions = useMemo(() => {
+    return getVisibleHealthHistoryQuestions(demographics, responses);
+  }, [demographics, responses]);
+
+  const healthHistoryAnswered = useMemo(() => {
+    return visibleHealthQuestions.filter((q) => responses[q.id] !== undefined).length;
+  }, [visibleHealthQuestions, responses]);
+
+  const healthHistoryComplete = visibleHealthQuestions.length > 0 && healthHistoryAnswered === visibleHealthQuestions.length;
+
+  // When demographics change, clear health history answers that are no longer visible
+  useEffect(() => {
+    const visible = getVisibleHealthHistoryQuestions(demographics, responses);
+    const visibleIds = new Set(visible.map((q) => q.id));
+    const allHealthIds = HEALTH_HISTORY_QUESTIONS.map((q) => q.id);
+    const toRemove = allHealthIds.filter((id) => !visibleIds.has(id) && responses[id] !== undefined);
+    if (toRemove.length > 0) {
+      setResponses((prev) => {
+        const next = { ...prev };
+        toRemove.forEach((id) => delete next[id]);
+        return next;
+      });
+    }
+  }, [demographics.gender, demographics.age]);
+
   const totalQuestions = CATEGORIES.reduce((sum, cat) => sum + cat.questions.length, 0);
-  const answeredQuestions = Object.keys(responses).length;
+  // Count only scored category answers (not health_ prefixed)
+  const answeredCategoryQuestions = useMemo(() => {
+    return Object.keys(responses).filter((k) => !k.startsWith("health_")).length;
+  }, [responses]);
   const demographicsComplete = !!(demographics.gender && demographics.age &&
     ((demographics.heightUnit === "metric" && demographics.heightCm) ||
      (demographics.heightUnit === "imperial" && demographics.heightFt)) &&
     ((demographics.weightUnit === "metric" && demographics.weightKg) ||
      (demographics.weightUnit === "imperial" && demographics.weightLbs)));
 
-  // Progress: demographics counts as 1 step, then questions
-  const totalSteps = totalQuestions + 1; // +1 for demographics
-  const completedSteps = (demographicsComplete ? 1 : 0) + answeredQuestions;
+  // Progress: demographics + health history + category questions
+  const totalSteps = totalQuestions + 1 + (visibleHealthQuestions.length > 0 ? 1 : 0);
+  const completedSteps = (demographicsComplete ? 1 : 0) +
+    (healthHistoryComplete ? 1 : 0) +
+    answeredCategoryQuestions;
   const progressPercent = Math.round((completedSteps / totalSteps) * 100);
 
   const currentCategory = currentStep >= 0 ? CATEGORIES[currentStep] : null;
@@ -153,10 +191,25 @@ export default function Questionnaire() {
   }, []);
 
   const handleNext = () => {
-    if (currentStep === -1) {
-      // Validate demographics before proceeding
+    if (currentStep === STEP_DEMOGRAPHICS) {
       if (!demographicsComplete) {
         toast.error("Please complete all demographic fields before continuing.");
+        return;
+      }
+      // Go to health history if there are visible questions, otherwise first category
+      if (getVisibleHealthHistoryQuestions(demographics, responses).length > 0) {
+        setCurrentStep(STEP_HEALTH_HISTORY);
+      } else {
+        setCurrentStep(0);
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (currentStep === STEP_HEALTH_HISTORY) {
+      // Check health history is complete
+      const visible = getVisibleHealthHistoryQuestions(demographics, responses);
+      const unansweredHealth = visible.filter((q) => responses[q.id] === undefined);
+      if (unansweredHealth.length > 0) {
+        toast.error(`Please answer all health history questions. ${unansweredHealth.length} remaining.`);
+        setShowIncomplete(true);
         return;
       }
       setCurrentStep(0);
@@ -168,7 +221,18 @@ export default function Questionnaire() {
   };
 
   const handlePrev = () => {
-    if (currentStep > -1) {
+    if (currentStep === 0) {
+      // Go back to health history if there are visible questions, otherwise demographics
+      if (visibleHealthQuestions.length > 0) {
+        setCurrentStep(STEP_HEALTH_HISTORY);
+      } else {
+        setCurrentStep(STEP_DEMOGRAPHICS);
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (currentStep === STEP_HEALTH_HISTORY) {
+      setCurrentStep(STEP_DEMOGRAPHICS);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (currentStep > 0) {
       setCurrentStep((prev) => prev - 1);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -186,13 +250,11 @@ export default function Questionnaire() {
   const adjustedCategoryScores = useMemo(() => {
     const adjusted = { ...categoryScores };
     if (bmiResult && adjusted.lifestyle !== undefined) {
-      // BMI score (1-5) contributes as an additional question to lifestyle
       const lifestyleCat = CATEGORIES.find((c) => c.id === "lifestyle");
       if (lifestyleCat) {
         const catResponses = lifestyleCat.questions
           .map((q) => responses[q.id])
           .filter((v): v is number => v !== undefined);
-        // Add BMI score to the responses
         const allScores = [...catResponses, bmiResult.score];
         adjusted.lifestyle = Math.round((allScores.reduce((a, b) => a + b, 0) / (allScores.length * 5)) * 100);
       }
@@ -204,13 +266,24 @@ export default function Questionnaire() {
     // Check demographics
     if (!demographicsComplete) {
       setShowIncomplete(true);
-      setCurrentStep(-1);
+      setCurrentStep(STEP_DEMOGRAPHICS);
       window.scrollTo({ top: 0, behavior: "smooth" });
       toast.error("Please complete the demographic information.");
       return;
     }
 
-    // Check all questions are answered
+    // Check health history
+    const visibleHealth = getVisibleHealthHistoryQuestions(demographics, responses);
+    const unansweredHealth = visibleHealth.filter((q) => responses[q.id] === undefined);
+    if (unansweredHealth.length > 0) {
+      setShowIncomplete(true);
+      setCurrentStep(STEP_HEALTH_HISTORY);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      toast.error(`Please answer all health history questions. ${unansweredHealth.length} remaining.`);
+      return;
+    }
+
+    // Check all category questions are answered
     const unanswered = CATEGORIES.flatMap((cat) =>
       cat.questions.filter((q) => responses[q.id] === undefined)
     );
@@ -283,9 +356,20 @@ export default function Questionnaire() {
     localStorage.removeItem(DEMOGRAPHICS_KEY);
     localStorage.removeItem("wellness-eval-pending-submit");
     localStorage.removeItem(TEASER_STORAGE_KEY);
-    setCurrentStep(-1);
+    setCurrentStep(STEP_DEMOGRAPHICS);
     setShowIncomplete(false);
     toast.success("All responses cleared. Start fresh!");
+  };
+
+  // Determine next step label for navigation buttons
+  const getNextLabel = () => {
+    if (currentStep === STEP_DEMOGRAPHICS) {
+      if (visibleHealthQuestions.length > 0) return "Next: Health History";
+      return `Next: ${CATEGORIES[0].name}`;
+    }
+    if (currentStep === STEP_HEALTH_HISTORY) return `Next: ${CATEGORIES[0].name}`;
+    if (currentStep >= 0 && currentStep < CATEGORIES.length - 1) return "Next";
+    return "";
   };
 
   return (
@@ -299,7 +383,7 @@ export default function Questionnaire() {
               Back to Home
             </button>
             <div className="flex items-center gap-3 text-sm">
-              {(answeredQuestions > 0 || Object.keys(demographics).length > 0) && (
+              {(answeredCategoryQuestions > 0 || Object.keys(demographics).length > 0) && (
                 <button
                   onClick={handleClearResponses}
                   className="text-xs text-muted-foreground hover:text-red-500 transition-colors"
@@ -326,9 +410,9 @@ export default function Questionnaire() {
 
               {/* Demographics entry */}
               <button
-                onClick={() => setCurrentStep(-1)}
+                onClick={() => setCurrentStep(STEP_DEMOGRAPHICS)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left text-sm transition-all ${
-                  currentStep === -1
+                  currentStep === STEP_DEMOGRAPHICS
                     ? "bg-primary/10 text-primary font-medium"
                     : demographicsComplete
                     ? "text-foreground hover:bg-accent"
@@ -345,6 +429,34 @@ export default function Questionnaire() {
                   <AlertTriangle className="w-4 h-4 text-red-500 flex-shrink-0" />
                 ) : null}
               </button>
+
+              {/* Health History entry - only show if demographics are filled enough to show questions */}
+              {visibleHealthQuestions.length > 0 && (
+                <button
+                  onClick={() => setCurrentStep(STEP_HEALTH_HISTORY)}
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left text-sm transition-all ${
+                    currentStep === STEP_HEALTH_HISTORY
+                      ? "bg-primary/10 text-primary font-medium"
+                      : healthHistoryComplete
+                      ? "text-foreground hover:bg-accent"
+                      : showIncomplete && !healthHistoryComplete
+                      ? "text-red-600 bg-red-50/50 hover:bg-red-50"
+                      : "text-muted-foreground hover:bg-accent"
+                  }`}
+                >
+                  <ClipboardList className="w-5 h-5 flex-shrink-0" />
+                  <span className="flex-1 truncate">Health History</span>
+                  {healthHistoryComplete ? (
+                    <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
+                  ) : showIncomplete && !healthHistoryComplete ? (
+                    <AlertTriangle className="w-4 h-4 text-red-500 flex-shrink-0" />
+                  ) : (
+                    <span className="text-xs text-muted-foreground flex-shrink-0">
+                      {healthHistoryAnswered}/{visibleHealthQuestions.length}
+                    </span>
+                  )}
+                </button>
+              )}
 
               {CATEGORIES.map((cat, i) => {
                 const catAnswered = cat.questions.filter((q) => responses[q.id] !== undefined).length;
@@ -387,9 +499,9 @@ export default function Questionnaire() {
           <div className="lg:hidden">
             <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1">
               <button
-                onClick={() => setCurrentStep(-1)}
+                onClick={() => setCurrentStep(STEP_DEMOGRAPHICS)}
                 className={`flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-full text-xs font-medium transition-all ${
-                  currentStep === -1
+                  currentStep === STEP_DEMOGRAPHICS
                     ? "bg-primary text-white"
                     : demographicsComplete
                     ? "bg-primary/10 text-primary"
@@ -401,6 +513,23 @@ export default function Questionnaire() {
                 {demographicsComplete ? <CheckCircle2 className="w-3 h-3" /> : null}
                 About You
               </button>
+              {visibleHealthQuestions.length > 0 && (
+                <button
+                  onClick={() => setCurrentStep(STEP_HEALTH_HISTORY)}
+                  className={`flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-full text-xs font-medium transition-all ${
+                    currentStep === STEP_HEALTH_HISTORY
+                      ? "bg-primary text-white"
+                      : healthHistoryComplete
+                      ? "bg-primary/10 text-primary"
+                      : showIncomplete && !healthHistoryComplete
+                      ? "bg-red-100 text-red-600"
+                      : "bg-accent text-muted-foreground"
+                  }`}
+                >
+                  {healthHistoryComplete ? <CheckCircle2 className="w-3 h-3" /> : null}
+                  Health
+                </button>
+              )}
               {CATEGORIES.map((cat, i) => {
                 const catAnswered = cat.questions.filter((q) => responses[q.id] !== undefined).length;
                 const catComplete = catAnswered === cat.questions.length;
@@ -432,7 +561,7 @@ export default function Questionnaire() {
           {/* Content area */}
           <div>
             <AnimatePresence mode="wait">
-              {currentStep === -1 ? (
+              {currentStep === STEP_DEMOGRAPHICS ? (
                 <motion.div
                   key="demographics"
                   initial={{ opacity: 0, x: 20 }}
@@ -451,7 +580,43 @@ export default function Questionnaire() {
                   <div className="flex items-center justify-between mt-8 pt-6 border-t">
                     <div />
                     <Button onClick={handleNext} className="gap-2">
-                      Next: {CATEGORIES[0].name}
+                      {getNextLabel()}
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </motion.div>
+              ) : currentStep === STEP_HEALTH_HISTORY ? (
+                <motion.div
+                  key="health-history"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <HealthHistoryForm
+                    demographics={demographics}
+                    responses={responses}
+                    onAnswer={handleAnswer}
+                    showIncomplete={showIncomplete}
+                  />
+
+                  {/* Navigation */}
+                  <div className="flex items-center justify-between mt-8 pt-6 border-t">
+                    <Button
+                      variant="outline"
+                      onClick={handlePrev}
+                      className="gap-2"
+                    >
+                      <ArrowLeft className="w-4 h-4" />
+                      Previous
+                    </Button>
+
+                    <div className="text-sm text-muted-foreground">
+                      {healthHistoryAnswered}/{visibleHealthQuestions.length} answered
+                    </div>
+
+                    <Button onClick={handleNext} className="gap-2">
+                      {getNextLabel()}
                       <ArrowRight className="w-4 h-4" />
                     </Button>
                   </div>
@@ -592,7 +757,7 @@ export default function Questionnaire() {
                         </Button>
                         {!allComplete && (
                           <p className="text-xs text-orange-600 font-medium">
-                            {totalQuestions - answeredQuestions} question{totalQuestions - answeredQuestions > 1 ? "s" : ""} still unanswered
+                            {totalQuestions - answeredCategoryQuestions} question{totalQuestions - answeredCategoryQuestions > 1 ? "s" : ""} still unanswered
                           </p>
                         )}
                       </div>
@@ -617,6 +782,106 @@ export default function Questionnaire() {
             </AnimatePresence>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+// ---- Health History Form Component ----
+
+interface HealthHistoryFormProps {
+  demographics: Partial<Demographics>;
+  responses: Record<string, number>;
+  onAnswer: (questionId: string, value: number) => void;
+  showIncomplete: boolean;
+}
+
+function HealthHistoryForm({ demographics, responses, onAnswer, showIncomplete }: HealthHistoryFormProps) {
+  const visibleQuestions = useMemo(() => {
+    return getVisibleHealthHistoryQuestions(demographics, responses);
+  }, [demographics, responses]);
+
+  return (
+    <div>
+      <div className="mb-8">
+        <div className="flex items-center gap-3 mb-2">
+          <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center">
+            <ClipboardList className="w-5 h-5" />
+          </div>
+          <div>
+            <h2 className="text-xl font-bold text-foreground">Health History</h2>
+            <p className="text-sm text-muted-foreground">Important context for your personalised consultation</p>
+          </div>
+        </div>
+        <p className="text-muted-foreground mt-2">
+          These questions help us understand your health background better. Your answers will provide valuable context
+          during your wellness consultation, allowing for more personalised and relevant guidance.
+        </p>
+      </div>
+
+      <div className="space-y-6">
+        {visibleQuestions.map((question, qi) => {
+          const selectedValue = responses[question.id];
+          const isUnanswered = showIncomplete && selectedValue === undefined;
+
+          return (
+            <Card key={question.id} className={`border transition-all ${
+              selectedValue !== undefined
+                ? "border-amber-300/50 bg-amber-50/30"
+                : isUnanswered
+                ? "border-red-300 bg-red-50/30 ring-1 ring-red-200"
+                : "border-border/60"
+            }`}>
+              <CardContent className="p-6">
+                <div className="flex items-start gap-3 mb-4">
+                  <span className={`flex-shrink-0 w-7 h-7 rounded-full text-sm font-semibold flex items-center justify-center ${
+                    isUnanswered
+                      ? "bg-red-100 text-red-600"
+                      : selectedValue !== undefined
+                      ? "bg-amber-100 text-amber-700"
+                      : "bg-primary/10 text-primary"
+                  }`}>
+                    {qi + 1}
+                  </span>
+                  <div>
+                    <h3 className="font-medium text-foreground leading-snug">{question.text}</h3>
+                    {question.description && (
+                      <p className="text-sm text-muted-foreground mt-1">{question.description}</p>
+                    )}
+                    {isUnanswered && (
+                      <p className="text-xs text-red-500 mt-1 font-medium">Please answer this question</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="space-y-2 ml-10">
+                  {question.options.map((option) => (
+                    <button
+                      key={option.value}
+                      onClick={() => onAnswer(question.id, option.value)}
+                      className={`w-full text-left px-4 py-3 rounded-lg border text-sm transition-all ${
+                        selectedValue === option.value
+                          ? "border-amber-500 bg-amber-50 text-amber-800 font-medium"
+                          : "border-border/60 hover:border-amber-300 hover:bg-amber-50/30 text-foreground"
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className={`w-4 h-4 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${
+                          selectedValue === option.value ? "border-amber-500" : "border-muted-foreground/30"
+                        }`}>
+                          {selectedValue === option.value && (
+                            <div className="w-2 h-2 rounded-full bg-amber-500" />
+                          )}
+                        </div>
+                        {option.label}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
     </div>
   );
