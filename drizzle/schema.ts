@@ -161,3 +161,28 @@ export const shopProducts = mysqlTable("shop_products", {
 
 export type ShopProduct = typeof shopProducts.$inferSelect;
 export type InsertShopProduct = typeof shopProducts.$inferInsert;
+
+/**
+ * Review requests — tracks paid personal review requests by Sarva.
+ */
+export const reviewRequests = mysqlTable("review_requests", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  consultationId: int("consultationId").notNull(),
+  reportId: int("reportId").notNull(),
+  /** Stripe checkout session ID */
+  stripeSessionId: varchar("stripeSessionId", { length: 255 }),
+  /** Stripe payment intent ID */
+  stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 255 }),
+  /** 'pending_payment', 'paid', 'in_review', 'completed', 'refunded' */
+  status: varchar("status", { length: 32 }).default("pending_payment").notNull(),
+  /** Sarva's personal notes/recommendations added during review */
+  reviewNotes: text("reviewNotes"),
+  /** When Sarva completed the review */
+  reviewedAt: timestamp("reviewedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type ReviewRequest = typeof reviewRequests.$inferSelect;
+export type InsertReviewRequest = typeof reviewRequests.$inferInsert;

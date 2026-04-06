@@ -22,6 +22,7 @@ import ConsultSession from "@/pages/ConsultSession";
 import ConsultReport from "@/pages/ConsultReport";
 import ConsultHistory from "@/pages/ConsultHistory";
 import Shop from "@/pages/Shop";
+import ReviewSuccess from "@/pages/ReviewSuccess";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -51,6 +52,7 @@ function Router() {
       <Route path={"/consult/session/:id"} component={ConsultSession} />
       <Route path={"/consult/report/:id"} component={ConsultReport} />
       <Route path={"/consult/history"} component={ConsultHistory} />
+      <Route path={"/consult/review-success"} component={ReviewSuccess} />
       <Route path={"/shop"} component={Shop} />
       <Route path={"/dashboard"} component={Dashboard} />
       <Route path={"/404"} component={NotFound} />

@@ -18,11 +18,13 @@ import { storagePut } from "./storage";
 import { CATEGORIES, calculateOverallScore, hasCardiacFlag, getScoreLevelLabel, getOptionsForQuestion } from "../shared/questionnaire";
 import { consultRouter } from "./routers/consult";
 import { shopRouter } from "./routers/shop";
+import { reviewRouter } from "./routers/review";
 
 export const appRouter = router({
   system: systemRouter,
   consult: consultRouter,
   shop: shopRouter,
+  review: reviewRouter,
   auth: router({
     me: publicProcedure.query((opts) => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {

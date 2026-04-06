@@ -171,3 +171,9 @@
 - [x] Automated Wellness Consult: Shop page with wellness products, linked from recommendations
 - [x] Automated Wellness Consult: Medical disclaimer throughout consultation flow
 - [x] Automated Wellness Consult: Wire up routes in App.tsx and add Consult/Shop menu links
+- [x] Stripe integration: Add Stripe feature to project for payment processing
+- [x] Personal Review: Database table for review requests (linked to consultation/report, payment status)
+- [x] Personal Review: Stripe checkout session for US$27 payment
+- [x] Personal Review: Upsell section at end of consultation report with payment button
+- [x] Personal Review: Owner notification when paid review is requested (with report details)
+- [x] Personal Review: Success/confirmation page after payment

@@ -2,8 +2,8 @@ import { eq, desc, and } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import {
   InsertUser, users, evaluations, recommendations, InsertEvaluation, InsertRecommendation,
-  consultations, consultMessages, consultReports, shopProducts,
-  InsertConsultation, InsertConsultMessage, InsertConsultReport, InsertShopProduct,
+  consultations, consultMessages, consultReports, shopProducts, reviewRequests,
+  InsertConsultation, InsertConsultMessage, InsertConsultReport, InsertShopProduct, InsertReviewRequest,
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -248,4 +248,39 @@ export async function getLatestEvaluationByUserId(userId: number) {
   if (!db) throw new Error("Database not available");
   const result = await db.select().from(evaluations).where(eq(evaluations.userId, userId)).orderBy(desc(evaluations.completedAt)).limit(1);
   return result.length > 0 ? result[0] : undefined;
+}
+
+// ---- Review request helpers ----
+
+export async function createReviewRequest(data: InsertReviewRequest) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.insert(reviewRequests).values(data);
+  return result[0].insertId;
+}
+
+export async function getReviewRequestByReportId(reportId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.select().from(reviewRequests).where(eq(reviewRequests.reportId, reportId)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function getReviewRequestBySessionId(sessionId: string) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.select().from(reviewRequests).where(eq(reviewRequests.stripeSessionId, sessionId)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function updateReviewRequest(id: number, data: Partial<InsertReviewRequest>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(reviewRequests).set(data).where(eq(reviewRequests.id, id));
+}
+
+export async function getUserReviewRequests(userId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  return db.select().from(reviewRequests).where(eq(reviewRequests.userId, userId)).orderBy(desc(reviewRequests.createdAt));
 }
