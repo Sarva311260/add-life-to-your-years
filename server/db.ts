@@ -1,6 +1,10 @@
-import { eq, desc } from "drizzle-orm";
+import { eq, desc, and } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, evaluations, recommendations, InsertEvaluation, InsertRecommendation } from "../drizzle/schema";
+import {
+  InsertUser, users, evaluations, recommendations, InsertEvaluation, InsertRecommendation,
+  consultations, consultMessages, consultReports, shopProducts,
+  InsertConsultation, InsertConsultMessage, InsertConsultReport, InsertShopProduct,
+} from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -137,4 +141,111 @@ export async function getLatestRecommendations(userId: number) {
   const latestEval = await db.select().from(evaluations).where(eq(evaluations.userId, userId)).orderBy(desc(evaluations.completedAt)).limit(1);
   if (latestEval.length === 0) return [];
   return db.select().from(recommendations).where(eq(recommendations.evaluationId, latestEval[0].id));
+}
+
+// ---- Consultation helpers ----
+
+export async function createConsultation(data: InsertConsultation) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.insert(consultations).values(data);
+  return result[0].insertId;
+}
+
+export async function getConsultationById(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.select().from(consultations).where(eq(consultations.id, id)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function getUserConsultations(userId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  return db.select().from(consultations).where(eq(consultations.userId, userId)).orderBy(desc(consultations.createdAt));
+}
+
+export async function updateConsultation(id: number, data: Partial<InsertConsultation>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(consultations).set(data).where(eq(consultations.id, id));
+}
+
+// ---- Consultation message helpers ----
+
+export async function addConsultMessage(data: InsertConsultMessage) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.insert(consultMessages).values(data);
+  return result[0].insertId;
+}
+
+export async function getConsultMessages(consultationId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  return db.select().from(consultMessages).where(eq(consultMessages.consultationId, consultationId));
+}
+
+// ---- Consultation report helpers ----
+
+export async function createConsultReport(data: InsertConsultReport) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.insert(consultReports).values(data);
+  return result[0].insertId;
+}
+
+export async function getConsultReport(consultationId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.select().from(consultReports).where(eq(consultReports.consultationId, consultationId)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function getUserConsultReports(userId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  return db.select().from(consultReports).where(eq(consultReports.userId, userId)).orderBy(desc(consultReports.createdAt));
+}
+
+// ---- Shop product helpers ----
+
+export async function getActiveProducts() {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  return db.select().from(shopProducts).where(eq(shopProducts.isActive, 1)).orderBy(shopProducts.sortOrder);
+}
+
+export async function getProductById(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.select().from(shopProducts).where(eq(shopProducts.id, id)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function createProduct(data: InsertShopProduct) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.insert(shopProducts).values(data);
+  return result[0].insertId;
+}
+
+export async function updateProduct(id: number, data: Partial<InsertShopProduct>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(shopProducts).set(data).where(eq(shopProducts.id, id));
+}
+
+export async function getUserByEmail(email: string) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.select().from(users).where(eq(users.email, email)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function getLatestEvaluationByUserId(userId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.select().from(evaluations).where(eq(evaluations.userId, userId)).orderBy(desc(evaluations.completedAt)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
 }

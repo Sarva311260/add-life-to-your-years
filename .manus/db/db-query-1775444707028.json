@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE `consultations` (\n\t`id` int AUTO_INCREMENT NOT NULL,\n\t`userId` int NOT NULL,\n\t`consultType` varchar(32) NOT NULL,\n\t`selectedConditions` json,\n\t`currentPhase` int NOT NULL DEFAULT 1,\n\t`status` varchar(20) NOT NULL DEFAULT 'active',\n\t`evaluationId` int,\n\t`summary` text,\n\t`createdAt` timestamp NOT NULL DEFAULT (now()),\n\t`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,\n\tCONSTRAINT `consultations_id` PRIMARY KEY(`id`)\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute CREATE TABLE `consultations` (\n\t`id` int AUTO_INCREMENT NOT NULL,\n\t`userId` int NOT NULL,\n\t`consultType` varchar(32) NOT NULL,\n\t`selectedConditions` json,\n\t`currentPhase` int NOT NULL DEFAULT 1,\n\t`status` varchar(20) NOT NULL DEFAULT 'active',\n\t`evaluationId` int,\n\t`summary` text,\n\t`createdAt` timestamp NOT NULL DEFAULT (now()),\n\t`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,\n\tCONSTRAINT `consultations_id` PRIMARY KEY(`id`)\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 408
+}

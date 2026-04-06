@@ -159,3 +159,15 @@
 - [ ] Fix Chapter 4 title — should be Redox not Air — in book-content.md and regenerate PDF
 - [x] URGENT: Fix Media.tsx nested button JSX error (button inside button) — converted outer button to div
 - [x] Fix subheadings not bold in online book reader — added #### prefix to all recurring subheadings in book-content.md
+- [x] Automated Wellness Consult: Database schema for consultations, chat messages, reports, shop products
+- [x] Automated Wellness Consult: Backend tRPC routers for consultation flow, AI chat, report generation
+- [x] Automated Wellness Consult: LLM system prompt with book knowledge base in Sarva's voice (plant-based, holistic)
+- [x] Automated Wellness Consult: Landing page with two paths (Full Wellness Review / Specific Conditions)
+- [x] Automated Wellness Consult: Condition selector (sleep, gut health, joint pain, fatigue, stress, skin, diagnosed conditions)
+- [x] Automated Wellness Consult: Hybrid consultation chat UI with structured phases and progress indicator
+- [x] Automated Wellness Consult: Self-evaluation import (match by email, show prompt to use same email)
+- [x] Automated Wellness Consult: Personalised written report with specific recommendations, downloadable/revisitable
+- [x] Automated Wellness Consult: Consultation history page (saved sessions, revisit past reports)
+- [x] Automated Wellness Consult: Shop page with wellness products, linked from recommendations
+- [x] Automated Wellness Consult: Medical disclaimer throughout consultation flow
+- [x] Automated Wellness Consult: Wire up routes in App.tsx and add Consult/Shop menu links

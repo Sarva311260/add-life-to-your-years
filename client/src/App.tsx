@@ -17,6 +17,11 @@ import Contact from "./pages/Contact";
 import FactorDetail from "@/pages/FactorDetail";
 import Book from "@/pages/Book";
 import BookReader from "@/pages/BookReader";
+import Consult from "@/pages/Consult";
+import ConsultSession from "@/pages/ConsultSession";
+import ConsultReport from "@/pages/ConsultReport";
+import ConsultHistory from "@/pages/ConsultHistory";
+import Shop from "@/pages/Shop";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -42,6 +47,11 @@ function Router() {
       <Route path={"/factor/:id"} component={FactorDetail} />
       <Route path={"/book"} component={Book} />
       <Route path={"/book/read"} component={BookReader} />
+      <Route path={"/consult"} component={Consult} />
+      <Route path={"/consult/session/:id"} component={ConsultSession} />
+      <Route path={"/consult/report/:id"} component={ConsultReport} />
+      <Route path={"/consult/history"} component={ConsultHistory} />
+      <Route path={"/shop"} component={Shop} />
       <Route path={"/dashboard"} component={Dashboard} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />

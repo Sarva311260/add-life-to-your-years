@@ -16,9 +16,13 @@ import {
 import { generateEvaluationPDF } from "./pdfReport";
 import { storagePut } from "./storage";
 import { CATEGORIES, calculateOverallScore, hasCardiacFlag, getScoreLevelLabel, getOptionsForQuestion } from "../shared/questionnaire";
+import { consultRouter } from "./routers/consult";
+import { shopRouter } from "./routers/shop";
 
 export const appRouter = router({
   system: systemRouter,
+  consult: consultRouter,
+  shop: shopRouter,
   auth: router({
     me: publicProcedure.query((opts) => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {

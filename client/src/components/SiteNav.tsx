@@ -37,8 +37,11 @@ export default function SiteNav() {
           <Link href="/media" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Media
           </Link>
-          <Link href="/store" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-            Store
+          <Link href="/consult" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            Consult
+          </Link>
+          <Link href="/shop" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            Shop
           </Link>
           <Link href="/contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Contact
@@ -99,7 +102,8 @@ export default function SiteNav() {
               <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Home</Link>
               <Link href="/book" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">The Book</Link>
               <Link href="/media" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Media</Link>
-              <Link href="/store" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Store</Link>
+              <Link href="/consult" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Consult</Link>
+              <Link href="/shop" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Shop</Link>
               <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Contact</Link>
               {isAuthenticated && (
                 <>
