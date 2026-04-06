@@ -212,6 +212,23 @@ describe("consult.submitRating", () => {
   });
 });
 
+describe("consult.getEvaluationScores", () => {
+  it("rejects unauthenticated users", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+    await expect(
+      caller.consult.getEvaluationScores({ consultationId: 1 })
+    ).rejects.toThrow();
+  });
+
+  it("returns null for non-existent consultation", async () => {
+    const ctx = createAuthContext();
+    const caller = appRouter.createCaller(ctx);
+    const result = await caller.consult.getEvaluationScores({ consultationId: 999999 });
+    expect(result).toBeNull();
+  });
+});
+
 describe("review.createDonationCheckout", () => {
   it("rejects unauthenticated users", async () => {
     const ctx = createPublicContext();

@@ -191,3 +191,5 @@
 - [x] Report end: Add voluntary contribution/donation section with warm message about supporting the free service
 - [x] Report end: Add share button with text encouraging users to share the consultation with friends/family
 - [x] Report end: Add star rating (1-5 stars) so users can rate their consultation experience
+- [x] Report: Fix video links in printed PDF — ensure URLs are visible/clickable when printed
+- [x] Report: Add visual charts/graphs for consultation results (e.g., radar chart, bar chart for category scores)

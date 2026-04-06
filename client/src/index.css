@@ -139,3 +139,27 @@
     }
   }
 }
+
+/* Print styles — show full URLs after links so they're usable on paper */
+@media print {
+  .prose a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+    color: #666;
+    word-break: break-all;
+  }
+  .prose a[href^="http"] {
+    color: #333 !important;
+    text-decoration: underline !important;
+  }
+  /* Ensure charts print nicely */
+  .report-charts {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  /* Force white background for print */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}

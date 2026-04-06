@@ -8,6 +8,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { getLoginUrl } from "@/const";
 import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
+import WellnessCharts from "@/components/WellnessCharts";
 import { Streamdown } from "streamdown";
 import { toast } from "sonner";
 import {
@@ -97,6 +98,11 @@ export default function ConsultReport() {
   );
 
   const { data: existingRating } = trpc.consult.getRating.useQuery(
+    { consultationId },
+    { enabled: isAuthenticated && consultationId > 0 }
+  );
+
+  const { data: evalScores } = trpc.consult.getEvaluationScores.useQuery(
     { consultationId },
     { enabled: isAuthenticated && consultationId > 0 }
   );
@@ -301,6 +307,15 @@ export default function ConsultReport() {
               : "Date unavailable"}
           </div>
         </div>
+
+        {/* Visual charts (if evaluation data available) */}
+        {evalScores && (
+          <WellnessCharts
+            overallScore={evalScores.overallScore}
+            categoryScores={evalScores.categoryScores}
+            bmi={evalScores.bmi}
+          />
+        )}
 
         {/* Report body */}
         <Card>

@@ -359,6 +359,31 @@ export const consultRouter = router({
       return getConsultReport(input.consultationId);
     }),
 
+  /** Get evaluation scores linked to a consultation (for charts) */
+  getEvaluationScores: protectedProcedure
+    .input(z.object({ consultationId: z.number() }))
+    .query(async ({ ctx, input }) => {
+      const consultation = await getConsultationById(input.consultationId);
+      if (!consultation || consultation.userId !== ctx.user.id) return null;
+      if (!consultation.evaluationId) return null;
+      const { getEvaluationById } = await import("../db");
+      const evaluation = await getEvaluationById(consultation.evaluationId);
+      if (!evaluation) return null;
+      const catScores = evaluation.categoryScores as Record<string, number>;
+      return {
+        overallScore: Math.round(Number(evaluation.overallScore)),
+        categoryScores: CATEGORIES.map((cat) => ({
+          id: cat.id,
+          name: cat.name,
+          score: Math.round(catScores[cat.id] ?? 0),
+          color: cat.color,
+        })),
+        bmi: evaluation.bmi ? Number(evaluation.bmi) : null,
+        age: evaluation.age,
+        gender: evaluation.gender,
+      };
+    }),
+
   /** Get all user's reports */
   reports: protectedProcedure.query(async ({ ctx }) => {
     return getUserConsultReports(ctx.user.id);
