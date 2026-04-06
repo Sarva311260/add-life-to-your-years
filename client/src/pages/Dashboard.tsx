@@ -43,7 +43,7 @@ export default function Dashboard() {
             <Leaf className="w-12 h-12 text-primary mx-auto mb-4" />
             <h2 className="text-xl font-bold mb-2">Sign In to Access Dashboard</h2>
             <p className="text-muted-foreground mb-6">Track your wellness journey by signing in.</p>
-            <a href={getLoginUrl()}>
+            <a href={getLoginUrl("/dashboard")}>
               <Button className="gap-2">Sign In or Register</Button>
             </a>
           </CardContent>

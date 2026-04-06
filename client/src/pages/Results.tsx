@@ -54,7 +54,7 @@ export default function Results() {
             <Leaf className="w-12 h-12 text-primary mx-auto mb-4" />
             <h2 className="text-xl font-bold mb-2">Sign In or Register</h2>
             <p className="text-muted-foreground mb-6">Please sign in or create a free account to view your evaluation results.</p>
-            <a href={getLoginUrl()}>
+            <a href={getLoginUrl(`/results/${evaluationId}`)}>
               <Button className="gap-2">Sign In or Register</Button>
             </a>
           </CardContent>

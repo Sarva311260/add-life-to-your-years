@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Leaf, Menu, X, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
@@ -14,6 +14,7 @@ import { getLoginUrl } from "@/const";
 export default function SiteNav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isAuthenticated, user, logout } = useAuth();
+  const [currentLocation] = useLocation();
 
   return (
     <header className="sticky top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-border/40">
@@ -73,7 +74,7 @@ export default function SiteNav() {
               </Button>
             </div>
           ) : (
-            <a href={getLoginUrl()}>
+            <a href={getLoginUrl(currentLocation)}>
               <Button size="sm">Sign In or Register</Button>
             </a>
           )}
@@ -116,7 +117,7 @@ export default function SiteNav() {
                   Sign Out
                 </Button>
               ) : (
-                <a href={getLoginUrl()}>
+                <a href={getLoginUrl(currentLocation)}>
                   <Button size="sm" className="w-full">Sign In or Register</Button>
                 </a>
               )}

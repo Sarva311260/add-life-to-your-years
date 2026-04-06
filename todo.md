@@ -199,3 +199,4 @@
 - [x] Evaluation: Add universal questions — COVID vaccination (yes/no + how many doses), antibiotics in last 5 years (yes/no + how many courses), meals per day, bowel movements per day
 - [x] Evaluation: Implement conditional logic — show questions based on gender and age answers
 - [x] Consultation: Update AI prompt to incorporate new evaluation data points
+- [x] Bug: Login redirects to home page instead of dashboard — user cannot reach assessment dashboard after login
