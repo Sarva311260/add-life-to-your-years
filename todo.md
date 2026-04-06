@@ -188,3 +188,6 @@
 - [x] Consult: Make self-evaluation mandatory (not just advised) — block consultation start without completed evaluation
 - [x] Consult: Auto-redirect back to Consult page after completing evaluation if user came from Consult
 - [x] Consult: AI should ask about typical daily diet — breakfast, lunch, dinner, and snacks between meals
+- [x] Report end: Add voluntary contribution/donation section with warm message about supporting the free service
+- [x] Report end: Add share button with text encouraging users to share the consultation with friends/family
+- [x] Report end: Add star rating (1-5 stars) so users can rate their consultation experience

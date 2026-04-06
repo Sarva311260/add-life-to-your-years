@@ -129,6 +129,60 @@ export const reviewRouter = router({
       return { checkoutUrl: session.url };
     }),
 
+  /** Create a Stripe checkout session for a voluntary contribution */
+  createDonationCheckout: protectedProcedure
+    .input(
+      z.object({
+        consultationId: z.number(),
+        amountCents: z.number().min(100).max(100000), // $1 to $1000
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const stripe = getStripe();
+      if (!stripe) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Payment processing is not configured yet. Please try again later.",
+        });
+      }
+
+      const origin = ctx.req.headers.origin || "https://addlifetoyouryears.org";
+
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        line_items: [
+          {
+            price_data: {
+              currency: "usd",
+              product_data: {
+                name: "Voluntary Contribution — Add Life to Your Years",
+                description: "Thank you for supporting this free wellness service. Your contribution helps keep it available for everyone.",
+              },
+              unit_amount: input.amountCents,
+            },
+            quantity: 1,
+          },
+        ],
+        mode: "payment",
+        success_url: `${origin}/consult/report/${input.consultationId}?donated=true`,
+        cancel_url: `${origin}/consult/report/${input.consultationId}`,
+        client_reference_id: ctx.user.id.toString(),
+        customer_email: ctx.user.email || undefined,
+        metadata: {
+          type: "donation",
+          user_id: ctx.user.id.toString(),
+          consultation_id: input.consultationId.toString(),
+        },
+      });
+
+      notifyOwner({
+        title: "New Voluntary Contribution",
+        content: `${ctx.user.name || ctx.user.email || "A user"} has made a voluntary contribution of $${(input.amountCents / 100).toFixed(2)} USD.`,
+      }).catch(() => {});
+
+      return { checkoutUrl: session.url };
+    }),
+
   /** Verify payment was successful (called from success page) */
   verifyPayment: protectedProcedure
     .input(z.object({ sessionId: z.string() }))

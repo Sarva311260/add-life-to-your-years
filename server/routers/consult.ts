@@ -15,6 +15,9 @@ import {
   getLatestEvaluationByUserId,
   getRecommendationsByEvaluation,
   getUserByOpenId,
+  createConsultRating,
+  getConsultRating,
+  updateConsultRating,
 } from "../db";
 import {
   buildConsultSystemPrompt,
@@ -389,4 +392,41 @@ export const consultRouter = router({
       completedAt: latestEval?.completedAt || null,
     };
   }),
+
+  /** Submit or update a star rating for a consultation */
+  submitRating: protectedProcedure
+    .input(z.object({
+      consultationId: z.number(),
+      reportId: z.number(),
+      rating: z.number().min(1).max(5),
+      feedback: z.string().max(1000).optional(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      const existing = await getConsultRating(input.consultationId, ctx.user.id);
+      if (existing) {
+        await updateConsultRating(existing.id, { rating: input.rating, feedback: input.feedback });
+        return { success: true, updated: true };
+      } else {
+        await createConsultRating({
+          userId: ctx.user.id,
+          consultationId: input.consultationId,
+          reportId: input.reportId,
+          rating: input.rating,
+          feedback: input.feedback,
+        });
+        // Notify owner of new rating
+        notifyOwner({
+          title: `New Consultation Rating: ${input.rating}/5 stars`,
+          content: `A user rated their consultation ${input.rating}/5 stars.${input.feedback ? `\n\nFeedback: "${input.feedback}"` : ""}`,
+        }).catch(() => {});
+        return { success: true, updated: false };
+      }
+    }),
+
+  /** Get the rating for a consultation */
+  getRating: protectedProcedure
+    .input(z.object({ consultationId: z.number() }))
+    .query(async ({ ctx, input }) => {
+      return getConsultRating(input.consultationId, ctx.user.id);
+    }),
 });

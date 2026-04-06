@@ -2,8 +2,8 @@ import { eq, desc, and } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import {
   InsertUser, users, evaluations, recommendations, InsertEvaluation, InsertRecommendation,
-  consultations, consultMessages, consultReports, shopProducts, reviewRequests,
-  InsertConsultation, InsertConsultMessage, InsertConsultReport, InsertShopProduct, InsertReviewRequest,
+  consultations, consultMessages, consultReports, shopProducts, reviewRequests, consultRatings,
+  InsertConsultation, InsertConsultMessage, InsertConsultReport, InsertShopProduct, InsertReviewRequest, InsertConsultRating,
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -289,4 +289,26 @@ export async function getUserReviewRequests(userId: number) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
   return db.select().from(reviewRequests).where(eq(reviewRequests.userId, userId)).orderBy(desc(reviewRequests.createdAt));
+}
+
+export async function createConsultRating(data: InsertConsultRating) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const [result] = await db.insert(consultRatings).values(data);
+  return (result as { insertId: number }).insertId;
+}
+
+export async function getConsultRating(consultationId: number, userId: number) {
+  const db = await getDb();
+  if (!db) return null;
+  const rows = await db.select().from(consultRatings)
+    .where(eq(consultRatings.consultationId, consultationId))
+    .limit(1);
+  return rows[0] || null;
+}
+
+export async function updateConsultRating(id: number, data: { rating: number; feedback?: string }) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(consultRatings).set(data).where(eq(consultRatings.id, id));
 }

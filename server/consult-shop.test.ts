@@ -186,6 +186,58 @@ describe("buildConsultSystemPrompt dietary intake", () => {
   });
 });
 
+describe("consult.submitRating", () => {
+  it("rejects rating below 1", async () => {
+    const ctx = createAuthContext();
+    const caller = appRouter.createCaller(ctx);
+    await expect(
+      caller.consult.submitRating({ consultationId: 1, reportId: 1, rating: 0 })
+    ).rejects.toThrow();
+  });
+
+  it("rejects rating above 5", async () => {
+    const ctx = createAuthContext();
+    const caller = appRouter.createCaller(ctx);
+    await expect(
+      caller.consult.submitRating({ consultationId: 1, reportId: 1, rating: 6 })
+    ).rejects.toThrow();
+  });
+
+  it("rejects unauthenticated users", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+    await expect(
+      caller.consult.submitRating({ consultationId: 1, reportId: 1, rating: 5 })
+    ).rejects.toThrow();
+  });
+});
+
+describe("review.createDonationCheckout", () => {
+  it("rejects unauthenticated users", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+    await expect(
+      caller.review.createDonationCheckout({ consultationId: 1, amountCents: 1000 })
+    ).rejects.toThrow();
+  });
+
+  it("rejects amounts below $1", async () => {
+    const ctx = createAuthContext();
+    const caller = appRouter.createCaller(ctx);
+    await expect(
+      caller.review.createDonationCheckout({ consultationId: 1, amountCents: 50 })
+    ).rejects.toThrow();
+  });
+
+  it("rejects amounts above $1000", async () => {
+    const ctx = createAuthContext();
+    const caller = appRouter.createCaller(ctx);
+    await expect(
+      caller.review.createDonationCheckout({ consultationId: 1, amountCents: 200000 })
+    ).rejects.toThrow();
+  });
+});
+
 describe("shop.list", () => {
   it("returns products array for public users (no auth required)", async () => {
     const ctx = createPublicContext();

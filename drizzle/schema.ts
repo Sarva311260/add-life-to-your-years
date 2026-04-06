@@ -187,3 +187,21 @@ export const reviewRequests = mysqlTable("review_requests", {
 
 export type ReviewRequest = typeof reviewRequests.$inferSelect;
 export type InsertReviewRequest = typeof reviewRequests.$inferInsert;
+
+/**
+ * Consultation ratings — stores user star ratings and optional feedback.
+ */
+export const consultRatings = mysqlTable("consult_ratings", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  consultationId: int("consultationId").notNull(),
+  reportId: int("reportId").notNull(),
+  /** Star rating 1-5 */
+  rating: int("rating").notNull(),
+  /** Optional written feedback */
+  feedback: text("feedback"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type ConsultRating = typeof consultRatings.$inferSelect;
+export type InsertConsultRating = typeof consultRatings.$inferInsert;
