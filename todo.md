@@ -185,3 +185,5 @@
 - [x] Consult: Auto-detect active (incomplete) consultation when user visits Consult page
 - [x] Consult: Show resume prompt with "Continue where you left off" or "Start fresh" options
 - [x] Consult: Resume loads full message history and AI picks up from the correct phase
+- [x] Consult: Make self-evaluation mandatory (not just advised) — block consultation start without completed evaluation
+- [x] Consult: Auto-redirect back to Consult page after completing evaluation if user came from Consult

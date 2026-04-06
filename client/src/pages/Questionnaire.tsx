@@ -14,7 +14,7 @@ import {
   ArrowLeft, ArrowRight, CheckCircle2, AlertTriangle, Leaf, Loader2, User
 } from "lucide-react";
 import { useState, useMemo, useCallback, useEffect } from "react";
-import { useLocation } from "wouter";
+import { useLocation, useSearch } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 
@@ -63,6 +63,8 @@ function loadSavedDemographics(): Partial<Demographics> {
 export default function Questionnaire() {
   const { user, isAuthenticated, loading: authLoading } = useAuth();
   const [, navigate] = useLocation();
+  const searchString = useSearch();
+  const redirectTo = new URLSearchParams(searchString).get("redirect");
 
   const [currentStep, setCurrentStep] = useState(() => {
     try {
@@ -256,7 +258,12 @@ export default function Questionnaire() {
       localStorage.removeItem("wellness-eval-pending-submit");
       localStorage.removeItem(TEASER_STORAGE_KEY);
       toast.success("Evaluation submitted successfully!");
-      navigate(`/results/${result.evaluationId}`);
+      if (redirectTo === "consult") {
+        toast.info("Evaluation complete! Taking you back to your consultation...");
+        navigate("/consult");
+      } else {
+        navigate(`/results/${result.evaluationId}`);
+      }
     } catch (error: any) {
       console.error("Submission error:", error);
       const errorMessage = error?.message || "Unknown error";

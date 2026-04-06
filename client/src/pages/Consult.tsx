@@ -401,7 +401,7 @@ export default function Consult() {
                       )}
                       <div className="flex-1">
                         <h3 className="font-semibold text-foreground mb-1">
-                          Self-Evaluation {evalStatus?.hasEvaluation ? "Complete" : "Recommended"}
+                          Self-Evaluation {evalStatus?.hasEvaluation ? "Complete" : "Required"}
                         </h3>
                         {evalStatus?.hasEvaluation ? (
                           <p className="text-sm text-muted-foreground">
@@ -411,17 +411,17 @@ export default function Consult() {
                         ) : (
                           <div>
                             <p className="text-sm text-muted-foreground mb-3">
-                              We strongly recommend completing the self-evaluation first. It helps the AI
-                              understand your health picture and provide much more personalised guidance.
+                              You need to complete the self-evaluation before starting a consultation.
+                              It gives the AI a clear picture of your health so it can provide truly personalised guidance.
                             </p>
                             <Button
                               variant="outline"
                               size="sm"
-                              onClick={() => navigate("/questionnaire")}
+                              onClick={() => navigate("/questionnaire?redirect=consult")}
                               className="gap-2"
                             >
                               <ClipboardCheck className="w-4 h-4" />
-                              Take the Self-Evaluation
+                              Take the Self-Evaluation Now
                             </Button>
                           </div>
                         )}
@@ -508,8 +508,9 @@ export default function Consult() {
                   <Button
                     size="lg"
                     onClick={handleStartConsultation}
-                    disabled={startMutation.isPending}
+                    disabled={startMutation.isPending || !evalStatus?.hasEvaluation}
                     className="gap-2 px-8"
+                    title={!evalStatus?.hasEvaluation ? "Please complete the self-evaluation first" : undefined}
                   >
                     {startMutation.isPending ? (
                       <>
@@ -523,6 +524,11 @@ export default function Consult() {
                       </>
                     )}
                   </Button>
+                  {!evalStatus?.hasEvaluation && (
+                    <p className="text-sm text-orange-600 mt-2">
+                      Please complete the self-evaluation above before starting your consultation.
+                    </p>
+                  )}
                 </div>
               </motion.div>
             )}
