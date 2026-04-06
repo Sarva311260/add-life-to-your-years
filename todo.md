@@ -182,3 +182,6 @@
 - [x] Consult: Store first name in user profile (database column)
 - [x] Consult: Use first name in AI consultation prompts and report generation (replace "Dear")
 - [x] Consult: Include relevant recommendation video links from Media page in consultation reports
+- [x] Consult: Auto-detect active (incomplete) consultation when user visits Consult page
+- [x] Consult: Show resume prompt with "Continue where you left off" or "Start fresh" options
+- [x] Consult: Resume loads full message history and AI picks up from the correct phase

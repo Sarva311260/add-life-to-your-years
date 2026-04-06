@@ -34,6 +34,11 @@ export default function Consult() {
     enabled: isAuthenticated,
   });
 
+  // Check for active (incomplete) consultation
+  const { data: activeConsult } = trpc.consult.getActive.useQuery(undefined, {
+    enabled: isAuthenticated,
+  });
+
   // Check if user already has a first name saved
   const { data: meData } = trpc.auth.me.useQuery(undefined, {
     enabled: isAuthenticated,
@@ -136,9 +141,59 @@ export default function Consult() {
                 exit={{ opacity: 0, y: -20 }}
                 className="space-y-6"
               >
+                {/* Resume active consultation prompt */}
+                {activeConsult && (
+                  <Card className="border-2 border-primary/40 bg-primary/5 mb-6">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                          <Sparkles className="w-6 h-6 text-primary" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="font-serif text-lg font-semibold text-foreground mb-1">
+                            You have an unfinished consultation
+                          </h3>
+                          <p className="text-sm text-muted-foreground mb-1">
+                            {activeConsult.consultType === "full_review"
+                              ? "Complete Wellness Review"
+                              : "Specific Conditions"}
+                            {" — "}
+                            Phase {activeConsult.currentPhase} of 6
+                            {" · "}
+                            {activeConsult.messageCount} message{activeConsult.messageCount !== 1 ? "s" : ""}
+                          </p>
+                          <p className="text-xs text-muted-foreground mb-4">
+                            Started {new Date(activeConsult.createdAt).toLocaleDateString(undefined, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}
+                          </p>
+                          <div className="flex items-center gap-3">
+                            <Button
+                              onClick={() => navigate(`/consult/session/${activeConsult.id}`)}
+                              className="gap-2"
+                            >
+                              <ArrowRight className="w-4 h-4" />
+                              Continue Where You Left Off
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="text-muted-foreground"
+                              onClick={() => {
+                                // Could abandon the old one, but for now just let them start fresh
+                                toast.info("You can start a new consultation below. Your previous session is saved in your history.");
+                              }}
+                            >
+                              Start Fresh Instead
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+
                 <div className="text-center mb-8">
                   <h2 className="font-serif text-2xl font-semibold text-foreground mb-2">
-                    How would you like to begin?
+                    {activeConsult ? "Or start a new consultation" : "How would you like to begin?"}
                   </h2>
                   <p className="text-muted-foreground">
                     Choose the type of consultation that best fits your needs

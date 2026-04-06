@@ -361,6 +361,24 @@ export const consultRouter = router({
     return getUserConsultReports(ctx.user.id);
   }),
 
+  /** Get the user's most recent active (incomplete) consultation */
+  getActive: protectedProcedure.query(async ({ ctx }) => {
+    const allConsults = await getUserConsultations(ctx.user.id);
+    const active = allConsults.find((c) => c.status === "active");
+    if (!active) return null;
+    const messages = await getConsultMessages(active.id);
+    const userMessages = messages.filter((m) => m.role !== "system");
+    return {
+      id: active.id,
+      consultType: active.consultType,
+      selectedConditions: active.selectedConditions,
+      currentPhase: active.currentPhase,
+      messageCount: userMessages.length,
+      createdAt: active.createdAt,
+      updatedAt: active.updatedAt,
+    };
+  }),
+
   /** Check if user has completed a self-evaluation */
   checkEvaluation: protectedProcedure.query(async ({ ctx }) => {
     const latestEval = await getLatestEvaluationByUserId(ctx.user.id);
