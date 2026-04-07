@@ -75,14 +75,19 @@ export default function Questionnaire() {
 
   const [currentStep, setCurrentStep] = useState(() => {
     try {
-      // If no demographics data is saved, always start at demographics step.
-      // This prevents skipping demographics when localStorage has a stale step
-      // from a previous session (e.g., after clearing data or fresh login).
+      // Check if MEANINGFUL demographics data exists (not just defaults).
+      // The defaults { heightUnit, weightUnit } don't count — we need actual
+      // user-entered data like name, gender, age, etc.
       const savedDemographics = localStorage.getItem(DEMOGRAPHICS_KEY);
-      const hasDemographics = savedDemographics && Object.keys(JSON.parse(savedDemographics)).length > 0;
+      let hasMeaningfulDemographics = false;
+      if (savedDemographics) {
+        const parsed = JSON.parse(savedDemographics);
+        // Check for at least one real field (not just unit defaults)
+        hasMeaningfulDemographics = !!(parsed.firstName || parsed.gender || parsed.age);
+      }
 
-      if (!hasDemographics) {
-        // Clear any stale step index so we start fresh
+      if (!hasMeaningfulDemographics) {
+        // Clear any stale step index so we start fresh at demographics
         localStorage.removeItem(CATEGORY_INDEX_KEY);
         return STEP_DEMOGRAPHICS;
       }
@@ -122,6 +127,19 @@ export default function Questionnaire() {
   useEffect(() => {
     localStorage.setItem(CATEGORY_INDEX_KEY, String(currentStep));
   }, [currentStep]);
+
+  // Safety net: force demographics step if user hasn't filled in required fields.
+  // This handles edge cases where currentStep is restored to a wrong value
+  // (e.g., stale localStorage, race conditions during OAuth redirect).
+  useEffect(() => {
+    const hasMeaningful = !!(demographics.firstName || demographics.gender || demographics.age);
+    if (!hasMeaningful && currentStep !== STEP_DEMOGRAPHICS) {
+      console.log('[Questionnaire] Forcing demographics step: no meaningful demographics data found, currentStep was', currentStep);
+      setCurrentStep(STEP_DEMOGRAPHICS);
+    }
+    // Only run on mount (and when isAuthenticated changes, to catch post-login)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthenticated]);
 
   // Health history questions visible based on current demographics + responses
   const visibleHealthQuestions = useMemo(() => {

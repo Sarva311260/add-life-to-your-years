@@ -216,4 +216,4 @@
 - [x] Bug: Demographics/BMI/personal questions (name, gender, age, height, weight) being skipped after OAuth login redirect — fixed by checking for saved demographics before restoring step from localStorage
 - [ ] Bug: Login loop STILL happens — user has to click Sign In again after registering (trust proxy fix not sufficient)
 - [ ] Bug: Enter button disappears on second visit to sign-in gate (after OAuth redirect)
-- [ ] Bug: Demographics STILL skipped after login — goes straight to Lifestyle Choices
+- [x] Bug: Demographics STILL skipped after login — fixed with useEffect safety net that forces demographics when no meaningful data (firstName/gender/age) exists
