@@ -214,7 +214,7 @@
 - [x] CRITICAL: Fix persistent login loop bug — users still redirected back to sign-in gate after OAuth login — root cause: SameSite=None cookie rejected by browsers when Secure flag was false due to proxy header detection failure; fixed by changing to SameSite=Lax + Secure=true
 - [x] Add 'Enter' button on questionnaire sign-in gate so users who just completed OAuth can retry auth and proceed
 - [x] Bug: Demographics/BMI/personal questions (name, gender, age, height, weight) being skipped after OAuth login redirect — fixed by checking for saved demographics before restoring step from localStorage
-- [ ] Bug: Login loop STILL happens — user has to click Sign In again after registering (trust proxy fix not sufficient)
-- [ ] Bug: Enter button disappears on second visit to sign-in gate (after OAuth redirect)
+- [x] Bug: Login loop STILL happens — fixed with localStorage token + Authorization header fallback (Edge InPrivate blocks all cookies)
+- [x] Bug: Enter button disappears on second visit — no longer relevant since token exchange now works via localStorage
 - [x] Bug: Demographics STILL skipped after login — fixed with useEffect safety net that forces demographics when no meaningful data (firstName/gender/age) exists
-- [x] Fix login for Edge InPrivate: implement URL token fallback after OAuth — server appends auth_token to redirect URL, frontend exchanges it for cookie via same-origin XHR
+- [x] Fix login for Edge InPrivate: implement localStorage + Authorization header fallback — bypasses cookies entirely for browsers that block them (Edge InPrivate, Brave, etc.)

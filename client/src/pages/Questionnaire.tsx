@@ -74,10 +74,10 @@ export default function Questionnaire() {
   const searchParams = new URLSearchParams(searchString);
   const redirectTo = searchParams.get("redirect");
 
-  // Edge InPrivate fallback: detect auth_token from OAuth redirect and exchange it
-  // for a session cookie via same-origin XHR (which Edge allows, unlike redirect cookies).
-  // Read directly from window.location.search (not wouter's useSearch) because the
-  // full-page redirect from OAuth may not be synced to wouter's router state yet.
+  // Edge InPrivate (and other cookie-blocking browsers) fallback:
+  // The OAuth callback appends auth_token to the redirect URL.
+  // We save it to localStorage so the tRPC client can send it as an Authorization header.
+  // This bypasses cookies entirely for authentication.
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const authToken = urlParams.get("auth_token");
@@ -88,20 +88,20 @@ export default function Questionnaire() {
     const remaining = cleanParams.toString();
     const cleanUrl = window.location.pathname + (remaining ? `?${remaining}` : "");
     window.history.replaceState({}, "", cleanUrl);
-    // Exchange token for cookie
+    // Save token to localStorage — the tRPC client in main.tsx reads this
+    // and sends it as Authorization: Bearer <token> on every request
+    localStorage.setItem("app_session_token", authToken);
+    // Also try to set cookie via XHR (works in most browsers)
     (async () => {
       try {
         setRetryingAuth(true);
-        const resp = await fetch("/api/auth/set-session", {
+        await fetch("/api/auth/set-session", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
           body: JSON.stringify({ token: authToken }),
-        });
-        if (!resp.ok) {
-          console.error("[Auth] Token exchange HTTP error:", resp.status);
-        }
-        // Refresh auth state to pick up the new cookie
+        }).catch(() => {}); // Cookie may fail in Edge InPrivate, that's OK
+        // Refresh auth state — will now work via Authorization header even if cookie failed
         await refresh();
       } catch (err) {
         console.error("[Auth] Token exchange failed:", err);

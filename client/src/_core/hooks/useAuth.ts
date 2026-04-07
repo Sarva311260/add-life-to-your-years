@@ -37,6 +37,8 @@ export function useAuth(options?: UseAuthOptions) {
       }
       throw error;
     } finally {
+      // Clear localStorage session token (used as cookie fallback for Edge InPrivate etc.)
+      localStorage.removeItem('app_session_token');
       utils.auth.me.setData(undefined, null);
       await utils.auth.me.invalidate();
     }
