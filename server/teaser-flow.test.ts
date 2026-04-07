@@ -127,7 +127,7 @@ describe("Teaser Results - Data Structure Validation", () => {
     };
 
     expect(teaserData.responses).toBeDefined();
-    expect(Object.keys(teaserData.responses).length).toBe(52); // 52 total questions (split substance into 3 separate: tobacco, alcohol, caffeine)
+    expect(Object.keys(teaserData.responses).length).toBe(54); // 54 total questions (added diabetes + stroke to genetics)
     expect(teaserData.categoryScores).toBeDefined();
     expect(Object.keys(teaserData.categoryScores).length).toBe(8);
     expect(teaserData.overallScore).toBeGreaterThan(0);
