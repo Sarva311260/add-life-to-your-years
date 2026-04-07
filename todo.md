@@ -205,3 +205,4 @@
 - [x] Bug: Evaluation does not require sign-in — users can start without registering, causing data loss if page closes. Must require login/registration before starting the evaluation.
 - [x] Knowledge base: Integrate condition-specific knowledge base into AI consultation system prompt
 - [x] Knowledge base: Create clean editable Markdown file for ongoing maintenance
+- [x] Bug: Broken arrow character on evaluation sign-in gate — shows as weird number/code instead of ← arrow

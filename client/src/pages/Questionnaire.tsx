@@ -410,7 +410,7 @@ export default function Questionnaire() {
               onClick={() => navigate("/")}
               className="mt-4 text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              \u2190 Back to Home
+              <span className="flex items-center gap-1"><ArrowLeft className="w-3 h-3 inline" /> Back to Home</span>
             </button>
           </CardContent>
         </Card>
