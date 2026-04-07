@@ -76,22 +76,31 @@ export default function Questionnaire() {
 
   // Edge InPrivate fallback: detect auth_token from OAuth redirect and exchange it
   // for a session cookie via same-origin XHR (which Edge allows, unlike redirect cookies).
+  // Read directly from window.location.search (not wouter's useSearch) because the
+  // full-page redirect from OAuth may not be synced to wouter's router state yet.
   useEffect(() => {
-    const authToken = searchParams.get("auth_token");
+    const urlParams = new URLSearchParams(window.location.search);
+    const authToken = urlParams.get("auth_token");
     if (!authToken) return;
     // Remove the token from the URL immediately (security: don't leave it in history)
-    const cleanUrl = window.location.pathname + (redirectTo ? `?redirect=${redirectTo}` : "");
+    const cleanParams = new URLSearchParams(window.location.search);
+    cleanParams.delete("auth_token");
+    const remaining = cleanParams.toString();
+    const cleanUrl = window.location.pathname + (remaining ? `?${remaining}` : "");
     window.history.replaceState({}, "", cleanUrl);
     // Exchange token for cookie
     (async () => {
       try {
         setRetryingAuth(true);
-        await fetch("/api/auth/set-session", {
+        const resp = await fetch("/api/auth/set-session", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
           body: JSON.stringify({ token: authToken }),
         });
+        if (!resp.ok) {
+          console.error("[Auth] Token exchange HTTP error:", resp.status);
+        }
         // Refresh auth state to pick up the new cookie
         await refresh();
       } catch (err) {
