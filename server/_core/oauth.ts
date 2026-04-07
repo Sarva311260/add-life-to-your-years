@@ -97,7 +97,11 @@ export function registerOAuthRoutes(app: Express) {
       const { returnPath } = parseState(state);
       // Ensure returnPath is a relative path to prevent open redirect
       const safePath = returnPath.startsWith("/") ? returnPath : "/";
-      res.redirect(302, safePath);
+      // Append session token as query param for browsers that block cookies
+      // during redirect chains (e.g., Edge InPrivate mode).
+      // The frontend will detect this and set the cookie via XHR if needed.
+      const separator = safePath.includes("?") ? "&" : "?";
+      res.redirect(302, `${safePath}${separator}auth_token=${encodeURIComponent(sessionToken)}`);
     } catch (error) {
       console.error("[OAuth] Callback failed", error);
       res.status(500).json({ error: "OAuth callback failed" });

@@ -71,7 +71,36 @@ export default function Questionnaire() {
   const [retryingAuth, setRetryingAuth] = useState(false);
   const [, navigate] = useLocation();
   const searchString = useSearch();
-  const redirectTo = new URLSearchParams(searchString).get("redirect");
+  const searchParams = new URLSearchParams(searchString);
+  const redirectTo = searchParams.get("redirect");
+
+  // Edge InPrivate fallback: detect auth_token from OAuth redirect and exchange it
+  // for a session cookie via same-origin XHR (which Edge allows, unlike redirect cookies).
+  useEffect(() => {
+    const authToken = searchParams.get("auth_token");
+    if (!authToken) return;
+    // Remove the token from the URL immediately (security: don't leave it in history)
+    const cleanUrl = window.location.pathname + (redirectTo ? `?redirect=${redirectTo}` : "");
+    window.history.replaceState({}, "", cleanUrl);
+    // Exchange token for cookie
+    (async () => {
+      try {
+        setRetryingAuth(true);
+        await fetch("/api/auth/set-session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({ token: authToken }),
+        });
+        // Refresh auth state to pick up the new cookie
+        await refresh();
+      } catch (err) {
+        console.error("[Auth] Token exchange failed:", err);
+      } finally {
+        setTimeout(() => setRetryingAuth(false), 500);
+      }
+    })();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const [currentStep, setCurrentStep] = useState(() => {
     try {

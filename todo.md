@@ -217,3 +217,4 @@
 - [ ] Bug: Login loop STILL happens — user has to click Sign In again after registering (trust proxy fix not sufficient)
 - [ ] Bug: Enter button disappears on second visit to sign-in gate (after OAuth redirect)
 - [x] Bug: Demographics STILL skipped after login — fixed with useEffect safety net that forces demographics when no meaningful data (firstName/gender/age) exists
+- [x] Fix login for Edge InPrivate: implement URL token fallback after OAuth — server appends auth_token to redirect URL, frontend exchanges it for cookie via same-origin XHR

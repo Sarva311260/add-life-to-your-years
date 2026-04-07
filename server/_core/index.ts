@@ -8,6 +8,8 @@ import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { registerStripeWebhook } from "../stripeWebhook";
+import { getSessionCookieOptions } from "./cookies";
+import { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -37,6 +39,19 @@ async function startServer() {
   const server = createServer(app);
   // Stripe webhook must be registered BEFORE express.json() for raw body parsing
   registerStripeWebhook(app);
+
+  // Token-to-cookie exchange endpoint for browsers that block cookies during redirects
+  // (e.g., Edge InPrivate mode). The frontend calls this via XHR after OAuth redirect.
+  app.post('/api/auth/set-session', express.json(), (req, res) => {
+    const { token } = req.body;
+    if (!token || typeof token !== 'string') {
+      return res.status(400).json({ error: 'token is required' });
+    }
+    const cookieOptions = getSessionCookieOptions(req);
+    res.cookie(COOKIE_NAME, token, { ...cookieOptions, maxAge: ONE_YEAR_MS });
+    console.log('[Auth] Set session cookie via token exchange (Edge InPrivate fallback)');
+    res.json({ ok: true });
+  });
 
   // Diagnostic endpoint to debug cookie/proxy issues (temporary)
   app.get('/api/debug/session', (req, res) => {
