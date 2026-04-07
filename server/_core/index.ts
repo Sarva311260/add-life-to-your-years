@@ -40,6 +40,14 @@ async function startServer() {
 
   // Diagnostic endpoint to debug cookie/proxy issues (temporary)
   app.get('/api/debug/session', (req, res) => {
+    // Set a test cookie to verify Set-Cookie headers work
+    res.cookie('debug_test', 'works', {
+      httpOnly: true,
+      path: '/',
+      sameSite: 'lax',
+      secure: true,
+      maxAge: 60000,
+    });
     res.json({
       protocol: req.protocol,
       secure: req.secure,
@@ -47,8 +55,10 @@ async function startServer() {
       ip: req.ip,
       xForwardedProto: req.headers['x-forwarded-proto'],
       xForwardedHost: req.headers['x-forwarded-host'],
+      host: req.headers['host'],
       hasCookie: !!req.headers.cookie,
       cookieNames: req.headers.cookie ? req.headers.cookie.split(';').map(c => c.trim().split('=')[0]) : [],
+      rawCookieHeader: req.headers.cookie || '(none)',
     });
   });
   // Configure body parser with larger size limit for file uploads
