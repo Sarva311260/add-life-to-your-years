@@ -372,6 +372,52 @@ export default function Questionnaire() {
     return "";
   };
 
+  // Auth gate: require sign-in before starting the evaluation
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-green-50/30 to-white flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-8 h-8 animate-spin text-primary mx-auto mb-4" />
+          <p className="text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-green-50/30 to-white flex items-center justify-center p-4">
+        <Card className="max-w-md w-full">
+          <CardContent className="pt-8 pb-8 text-center">
+            <div className="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-6">
+              <Leaf className="w-8 h-8" />
+            </div>
+            <h2 className="text-2xl font-bold mb-3">Sign In to Start Your Evaluation</h2>
+            <p className="text-muted-foreground mb-2">
+              To ensure your progress is saved and your results are securely stored, please sign in or create a free account before starting the self-evaluation.
+            </p>
+            <p className="text-sm text-muted-foreground mb-6">
+              This way, even if your browser closes unexpectedly, you won't lose any of your answers.
+            </p>
+            <Button
+              size="lg"
+              className="w-full bg-primary hover:bg-primary/90 text-white font-semibold"
+              onClick={() => window.location.href = getLoginUrl("/questionnaire" + (redirectTo ? `?redirect=${redirectTo}` : ""))}
+            >
+              Sign In / Register
+            </Button>
+            <button
+              onClick={() => navigate("/")}
+              className="mt-4 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              \u2190 Back to Home
+            </button>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50/30 to-white">
       {/* Top bar */}
