@@ -372,7 +372,11 @@ export default function Questionnaire() {
     return "";
   };
 
-  // Auth gate: require sign-in before starting the evaluation
+  // Auth gate: require sign-in before starting the evaluation.
+  // authLoading is true while the auth.me query is loading OR fetching (isFetching).
+  // We must wait for authLoading to be false before deciding the user is unauthenticated.
+  // This prevents the login loop where users land back on /questionnaire after OAuth
+  // and briefly see the sign-in gate before the session cookie is verified.
   if (authLoading) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-green-50/30 to-white flex items-center justify-center">

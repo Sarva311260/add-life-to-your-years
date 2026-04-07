@@ -145,11 +145,11 @@ export const CATEGORIES: Category[] = [
         type: "choice",
         options: [
           { value: 1, label: "Town water (unfiltered)" },
-          { value: 2, label: "Rain water" },
-          { value: 3, label: "Bore or well water" },
+          { value: 2, label: "Bore or well water" },
+          { value: 3, label: "Rain water" },
           { value: 4, label: "Bottled water" },
-          { value: 3, label: "Distilled or reverse osmosis water" },
           { value: 5, label: "Filtered water (not distilled or RO)" },
+          { value: 4.5, label: "Distilled or reverse osmosis water" },
         ],
       },
       {

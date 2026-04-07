@@ -206,3 +206,8 @@
 - [x] Knowledge base: Integrate condition-specific knowledge base into AI consultation system prompt
 - [x] Knowledge base: Create clean editable Markdown file for ongoing maintenance
 - [x] Bug: Broken arrow character on evaluation sign-in gate — shows as weird number/code instead of ← arrow
+- [ ] Bug: After login/registration, user is sent back to sign-in gate instead of automatically proceeding into the evaluation — causing a confusing loop that blocks users
+- [ ] Admin: Delete sarva1960 test account from database after login loop fix is verified
+- [ ] Bug: Water question — selecting distilled also selects bore water (score conflict). Distilled/RO should score 5, bore water needs a unique score.
+- [ ] Evaluation: Fix water question — all 6 options must have unique score values (Town=1, Bore=2, Rain=3, Bottled=4, Filtered=5, Distilled=5... need user input on final ranking)
+- [ ] Evaluation: Add multi-select support for questions where user can choose more than one option (pending user review of full question list)

@@ -158,8 +158,8 @@ describe("New Lifestyle Questions", () => {
     const bestOption = q!.options!.find((o) => o.label.startsWith("Filtered"));
     expect(bestOption).toBeDefined();
     expect(bestOption!.value).toBe(5);
-    // Distilled/RO should now be lower scored
-    const distilledOption = q!.options!.find((o) => o.label.toLowerCase().includes("distilled"));
+    // Distilled/RO should now be lower scored (value 4.5, not 5)
+    const distilledOption = q!.options!.find((o) => o.label.toLowerCase().startsWith("distilled"));
     expect(distilledOption).toBeDefined();
     expect(distilledOption!.value).toBeLessThan(5);
   });
