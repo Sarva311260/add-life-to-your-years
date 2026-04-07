@@ -26,6 +26,7 @@ import {
   HEALTH_CONDITIONS,
   BOOK_RECOMMENDATIONS,
 } from "../consultKnowledge";
+import { formatMultipleConditions } from "../conditionKnowledge";
 import { CATEGORIES, HEALTH_HISTORY_QUESTIONS, getVisibleHealthHistoryQuestions } from "../../shared/questionnaire";
 import { RECOMMENDATION_VIDEOS, getVideoLinksMarkdown } from "../../shared/videoMap";
 
@@ -91,12 +92,22 @@ export const consultRouter = router({
         }
       }
 
+      // Build condition-specific knowledge base context
+      const conditionKnowledgeContext = input.selectedConditions && input.selectedConditions.length > 0
+        ? formatMultipleConditions(input.selectedConditions)
+        : input.consultType === "full_review"
+        ? formatMultipleConditions(["sleep", "gut_health", "fatigue", "stress", "weight", "heart"])
+        : undefined;
+
       // Generate the initial AI greeting
       const systemPrompt = buildConsultSystemPrompt(
         1,
         input.consultType,
         input.selectedConditions,
         evaluationSummary,
+        undefined,
+        undefined,
+        conditionKnowledgeContext,
       );
 
       const greeting = await invokeLLM({
@@ -237,6 +248,13 @@ export const consultRouter = router({
       const userRecord = await getUserByOpenId(ctx.user.openId);
       const firstName = userRecord?.firstName || undefined;
 
+      // Build condition-specific knowledge base context
+      const conditionKnowledgeContext = selectedConditions && selectedConditions.length > 0
+        ? formatMultipleConditions(selectedConditions)
+        : consultation.consultType === "full_review"
+        ? formatMultipleConditions(["sleep", "gut_health", "fatigue", "stress", "weight", "heart"])
+        : undefined;
+
       // Build the system prompt for current phase
       const systemPrompt = buildConsultSystemPrompt(
         currentPhase,
@@ -245,6 +263,7 @@ export const consultRouter = router({
         evaluationSummary,
         conversationContext,
         firstName,
+        conditionKnowledgeContext,
       );
 
       // Build LLM messages

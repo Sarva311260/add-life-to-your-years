@@ -203,3 +203,5 @@
 - [x] Evaluation: Add "Filtered (not distilled or RO)" as a water type option in the water question
 - [x] Evaluation: Add diabetes and stroke as options under the genetics/family history question
 - [x] Bug: Evaluation does not require sign-in — users can start without registering, causing data loss if page closes. Must require login/registration before starting the evaluation.
+- [x] Knowledge base: Integrate condition-specific knowledge base into AI consultation system prompt
+- [x] Knowledge base: Create clean editable Markdown file for ongoing maintenance
