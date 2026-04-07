@@ -82,6 +82,15 @@ export function registerOAuthRoutes(app: Express) {
       });
 
       const cookieOptions = getSessionCookieOptions(req);
+      console.log("[OAuth] Setting session cookie:", {
+        cookieName: COOKIE_NAME,
+        sameSite: cookieOptions.sameSite,
+        secure: cookieOptions.secure,
+        httpOnly: cookieOptions.httpOnly,
+        protocol: req.protocol,
+        xForwardedProto: req.headers["x-forwarded-proto"],
+        hostname: req.hostname,
+      });
       res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: ONE_YEAR_MS });
 
       // Redirect to the return path (e.g., /questionnaire) instead of always /

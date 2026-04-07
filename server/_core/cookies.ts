@@ -2,47 +2,30 @@ import type { CookieOptions, Request } from "express";
 
 const LOCAL_HOSTS = new Set(["localhost", "127.0.0.1", "::1"]);
 
-function isIpAddress(host: string) {
-  // Basic IPv4 check and IPv6 presence detection.
-  if (/^\d{1,3}(\.\d{1,3}){3}$/.test(host)) return true;
-  return host.includes(":");
-}
-
-function isSecureRequest(req: Request) {
-  if (req.protocol === "https") return true;
-
-  const forwardedProto = req.headers["x-forwarded-proto"];
-  if (!forwardedProto) return false;
-
-  const protoList = Array.isArray(forwardedProto)
-    ? forwardedProto
-    : forwardedProto.split(",");
-
-  return protoList.some(proto => proto.trim().toLowerCase() === "https");
+function isLocalRequest(req: Request): boolean {
+  const hostname = req.hostname;
+  return LOCAL_HOSTS.has(hostname);
 }
 
 export function getSessionCookieOptions(
   req: Request
 ): Pick<CookieOptions, "domain" | "httpOnly" | "path" | "sameSite" | "secure"> {
-  // const hostname = req.hostname;
-  // const shouldSetDomain =
-  //   hostname &&
-  //   !LOCAL_HOSTS.has(hostname) &&
-  //   !isIpAddress(hostname) &&
-  //   hostname !== "127.0.0.1" &&
-  //   hostname !== "::1";
+  const isLocal = isLocalRequest(req);
 
-  // const domain =
-  //   shouldSetDomain && !hostname.startsWith(".")
-  //     ? `.${hostname}`
-  //     : shouldSetDomain
-  //       ? hostname
-  //       : undefined;
-
+  // For production (proxied environments like Manus):
+  // - Use sameSite: "lax" because frontend and backend are same-origin (/api/*)
+  //   and OAuth uses top-level redirects (not iframes), so "lax" works correctly.
+  // - Always set secure: true in production because all traffic goes through HTTPS.
+  //   Previously, secure depended on x-forwarded-proto detection which could fail
+  //   on the OAuth callback, causing browsers to silently reject the SameSite=None
+  //   cookie (browsers require Secure=true for SameSite=None), creating a login loop.
+  //
+  // For local development:
+  // - Use sameSite: "lax" and secure: false (localhost doesn't use HTTPS).
   return {
     httpOnly: true,
     path: "/",
-    sameSite: "none",
-    secure: isSecureRequest(req),
+    sameSite: "lax",
+    secure: !isLocal,
   };
 }
