@@ -30,9 +30,27 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 
 async function startServer() {
   const app = express();
+  // Trust reverse proxy (Cloudflare, Manus proxy) so req.protocol, req.hostname,
+  // req.secure, and req.ip reflect the real client values, not the proxy's.
+  // This is critical for cookies with Secure flag behind HTTPS-terminating proxies.
+  app.set('trust proxy', true);
   const server = createServer(app);
   // Stripe webhook must be registered BEFORE express.json() for raw body parsing
   registerStripeWebhook(app);
+
+  // Diagnostic endpoint to debug cookie/proxy issues (temporary)
+  app.get('/api/debug/session', (req, res) => {
+    res.json({
+      protocol: req.protocol,
+      secure: req.secure,
+      hostname: req.hostname,
+      ip: req.ip,
+      xForwardedProto: req.headers['x-forwarded-proto'],
+      xForwardedHost: req.headers['x-forwarded-host'],
+      hasCookie: !!req.headers.cookie,
+      cookieNames: req.headers.cookie ? req.headers.cookie.split(';').map(c => c.trim().split('=')[0]) : [],
+    });
+  });
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
