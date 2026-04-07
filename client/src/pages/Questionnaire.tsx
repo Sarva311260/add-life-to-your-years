@@ -67,13 +67,26 @@ function loadSavedDemographics(): Partial<Demographics> {
 }
 
 export default function Questionnaire() {
-  const { user, isAuthenticated, loading: authLoading } = useAuth();
+  const { user, isAuthenticated, loading: authLoading, refresh } = useAuth();
+  const [retryingAuth, setRetryingAuth] = useState(false);
   const [, navigate] = useLocation();
   const searchString = useSearch();
   const redirectTo = new URLSearchParams(searchString).get("redirect");
 
   const [currentStep, setCurrentStep] = useState(() => {
     try {
+      // If no demographics data is saved, always start at demographics step.
+      // This prevents skipping demographics when localStorage has a stale step
+      // from a previous session (e.g., after clearing data or fresh login).
+      const savedDemographics = localStorage.getItem(DEMOGRAPHICS_KEY);
+      const hasDemographics = savedDemographics && Object.keys(JSON.parse(savedDemographics)).length > 0;
+
+      if (!hasDemographics) {
+        // Clear any stale step index so we start fresh
+        localStorage.removeItem(CATEGORY_INDEX_KEY);
+        return STEP_DEMOGRAPHICS;
+      }
+
       const saved = localStorage.getItem(CATEGORY_INDEX_KEY);
       if (saved) {
         const idx = parseInt(saved, 10);
@@ -373,11 +386,7 @@ export default function Questionnaire() {
   };
 
   // Auth gate: require sign-in before starting the evaluation.
-  // authLoading is true while the auth.me query is loading OR fetching (isFetching).
-  // We must wait for authLoading to be false before deciding the user is unauthenticated.
-  // This prevents the login loop where users land back on /questionnaire after OAuth
-  // and briefly see the sign-in gate before the session cookie is verified.
-  if (authLoading) {
+  if (authLoading || retryingAuth) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-green-50/30 to-white flex items-center justify-center">
         <div className="text-center">
@@ -410,6 +419,27 @@ export default function Questionnaire() {
             >
               Sign In / Register
             </Button>
+            <div className="mt-4 pt-4 border-t border-border/50">
+              <p className="text-sm text-muted-foreground mb-3">
+                Already signed in? If you just registered or logged in, click below to continue.
+              </p>
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full font-semibold"
+                onClick={async () => {
+                  setRetryingAuth(true);
+                  try {
+                    await refresh();
+                  } finally {
+                    // Small delay to let React Query update state
+                    setTimeout(() => setRetryingAuth(false), 500);
+                  }
+                }}
+              >
+                Enter
+              </Button>
+            </div>
             <button
               onClick={() => navigate("/")}
               className="mt-4 text-sm text-muted-foreground hover:text-foreground transition-colors"

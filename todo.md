@@ -212,3 +212,5 @@
 - [ ] Evaluation: Fix water question — all 6 options must have unique score values (Town=1, Bore=2, Rain=3, Bottled=4, Filtered=5, Distilled=5... need user input on final ranking)
 - [ ] Evaluation: Add multi-select support for questions where user can choose more than one option (pending user review of full question list)
 - [x] CRITICAL: Fix persistent login loop bug — users still redirected back to sign-in gate after OAuth login — root cause: SameSite=None cookie rejected by browsers when Secure flag was false due to proxy header detection failure; fixed by changing to SameSite=Lax + Secure=true
+- [x] Add 'Enter' button on questionnaire sign-in gate so users who just completed OAuth can retry auth and proceed
+- [x] Bug: Demographics/BMI/personal questions (name, gender, age, height, weight) being skipped after OAuth login redirect — fixed by checking for saved demographics before restoring step from localStorage
