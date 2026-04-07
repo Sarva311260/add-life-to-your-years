@@ -153,11 +153,15 @@ describe("New Lifestyle Questions", () => {
   it("should include water type question", () => {
     const q = lifestyleCategory?.questions.find((q) => q.id === "lifestyle_water_type");
     expect(q).toBeDefined();
-    expect(q!.options!.length).toBe(5);
-    // Best option (distilled/RO) should be value 5
-    const bestOption = q!.options!.find((o) => o.value === 5);
+    expect(q!.options!.length).toBe(6);
+    // Best option (filtered, not distilled or RO) should be value 5
+    const bestOption = q!.options!.find((o) => o.label.startsWith("Filtered"));
     expect(bestOption).toBeDefined();
-    expect(bestOption!.label.toLowerCase()).toContain("distilled");
+    expect(bestOption!.value).toBe(5);
+    // Distilled/RO should now be lower scored
+    const distilledOption = q!.options!.find((o) => o.label.toLowerCase().includes("distilled"));
+    expect(distilledOption).toBeDefined();
+    expect(distilledOption!.value).toBeLessThan(5);
   });
 
   it("should include raw food question with 75% as ideal", () => {

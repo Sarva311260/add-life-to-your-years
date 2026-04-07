@@ -200,3 +200,4 @@
 - [x] Evaluation: Implement conditional logic — show questions based on gender and age answers
 - [x] Consultation: Update AI prompt to incorporate new evaluation data points
 - [x] Bug: Login redirects to home page instead of dashboard — user cannot reach assessment dashboard after login
+- [x] Evaluation: Add "Filtered (not distilled or RO)" as a water type option in the water question
