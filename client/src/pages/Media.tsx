@@ -65,6 +65,12 @@ const RECOMMENDATIONS: RecommendationSection[] = [
         description:
           "An in-depth look at how plant-based nutrition supports long-term vitality.",
       },
+      {
+        youtubeId: "ztIZoaKTeqk",
+        title: "Whole Food Plant-Based Living",
+        description:
+          "Practical insights into adopting a whole food plant-based lifestyle for lasting health and vitality.",
+      },
     ],
   },
   {
@@ -80,6 +86,12 @@ const RECOMMENDATIONS: RecommendationSection[] = [
         title: "Water & Hydration — Quality, Purity & Health",
         description:
           "Why the water you drink matters — contaminants, filtration methods, and how to optimise your hydration.",
+      },
+      {
+        youtubeId: "KcYV0Wjx_2k",
+        title: "Water & Hydration — The Science of Staying Hydrated",
+        description:
+          "A deeper look at water and hydration — why proper hydration is essential for cellular health and how to get it right.",
       },
     ],
   },
@@ -188,6 +200,12 @@ const RECOMMENDATIONS: RecommendationSection[] = [
         title: "Bhramari Pranayama — Bee Breath for Nitric Oxide & Calm",
         description:
           "Step-by-step guide to Bhramari (Bee Breath) — how humming breathing boosts nitric oxide, calms the nervous system, and supports healing.",
+      },
+      {
+        youtubeId: "QVoGbaq8xos",
+        title: "Breathing — The Power of Conscious Breath",
+        description:
+          "How conscious breathing techniques transform health — from nasal breathing to advanced breath work practices.",
       },
     ],
   },

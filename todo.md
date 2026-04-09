@@ -218,3 +218,9 @@
 - [x] Bug: Enter button disappears on second visit — no longer relevant since token exchange now works via localStorage
 - [x] Bug: Demographics STILL skipped after login — fixed with useEffect safety net that forces demographics when no meaningful data (firstName/gender/age) exists
 - [x] Fix login for Edge InPrivate: implement localStorage + Authorization header fallback — bypasses cookies entirely for browsers that block them (Edge InPrivate, Brave, etc.)
+- [ ] CRITICAL: Fix login loop in Edge InPrivate - auth must work without cookies using localStorage + Authorization header
+- [ ] After OAuth redirect, user must go directly to demographics (no auth gate shown again)
+- [ ] Test auth flow end-to-end in sandbox browser
+- [x] Add Water and Hydration video (https://youtu.be/KcYV0Wjx_2k) to Recommendation 2 on Media page
+- [x] Add Breathing video (https://youtu.be/QVoGbaq8xos) to Recommendation 8 on Media page
+- [x] Add Whole Food Plant Based video (https://youtu.be/ztIZoaKTeqk) to Recommendation 1 on Media page
