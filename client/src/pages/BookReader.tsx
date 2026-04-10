@@ -171,8 +171,14 @@ function buildSearchResults(content: string, query: string): SearchResult[] {
 // Video entries for each recommendation (supports YouTube and Rumble)
 type VideoEntry = { youtubeId?: string; rumbleUrl?: string; title: string };
 const REC_VIDEOS: Record<string, VideoEntry[]> = {
-  "rec-1": [{ youtubeId: "wb7L3t0ejdI", title: "Whole Food Plant-Based Diet" }],
-  "rec-2": [{ youtubeId: "VRzjoIgHNb0", title: "Water & Hydration" }],
+  "rec-1": [
+    { youtubeId: "wb7L3t0ejdI", title: "Whole Food Plant-Based Diet" },
+    { youtubeId: "ztIZoaKTeqk", title: "Whole Food Plant-Based Living" },
+  ],
+  "rec-2": [
+    { youtubeId: "VRzjoIgHNb0", title: "Water & Hydration — Quality, Purity & Health" },
+    { youtubeId: "KcYV0Wjx_2k", title: "Water & Hydration — The Science of Staying Hydrated" },
+  ],
   "rec-3": [{ rumbleUrl: "https://rumble.com/embed/v725t6o", title: "Nano-Zeolite & Cellular Detoxification" }],
   "rec-4": [{ youtubeId: "tcwVfUAqWiY", title: "Sleep & Melatonin" }],
   "rec-5": [{ youtubeId: "o2Kc1Iaow40", title: "Glycine" }],
@@ -184,8 +190,14 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
     { youtubeId: "uxWARJ4s95Y", title: "Vitamin D3 (Part 2)" },
   ],
   "rec-9": [{ youtubeId: "qu3ixTQmpl0", title: "Six Movements" }],
-  "rec-10": [{ youtubeId: "8vN08IuParo", title: "Breathing" }],
-  "rec-11": [{ youtubeId: "byinppKR9LY", title: "PEMF & Earthing" }],
+  "rec-10": [
+    { youtubeId: "8vN08IuParo", title: "Bhramari Pranayama — Bee Breath" },
+    { youtubeId: "QVoGbaq8xos", title: "Breathing — The Power of Conscious Breath" },
+  ],
+  "rec-11": [
+    { youtubeId: "byinppKR9LY", title: "PEMF Therapy & Redox Signalling" },
+    { youtubeId: "LKOli-nNALM", title: "PEMF & Earthing — Reconnecting with the Earth's Field" },
+  ],
   "rec-12": [{ youtubeId: "wXsxwIJnUJk", title: "Meditation" }],
   "rec-13": [{ youtubeId: "UHv3SCUioQU", title: "Time in Nature" }],
   "rec-14": [{ youtubeId: "rgQvqi6aYD8", title: "Repairing the Relationship" }],
