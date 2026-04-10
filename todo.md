@@ -224,3 +224,4 @@
 - [x] Add Water and Hydration video (https://youtu.be/KcYV0Wjx_2k) to Recommendation 2 on Media page
 - [x] Add Breathing video (https://youtu.be/QVoGbaq8xos) to Recommendation 8 on Media page
 - [x] Add Whole Food Plant Based video (https://youtu.be/ztIZoaKTeqk) to Recommendation 1 on Media page
+- [x] Add PEMF video (https://youtu.be/LKOli-nNALM) to Recommendation 9 on Media page

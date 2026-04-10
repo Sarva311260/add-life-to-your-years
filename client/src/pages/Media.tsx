@@ -223,6 +223,12 @@ const RECOMMENDATIONS: RecommendationSection[] = [
         description:
           "How PEMF therapy works at the cellular level to support redox signalling, recovery, and overall vitality.",
       },
+      {
+        youtubeId: "LKOli-nNALM",
+        title: "PEMF & Earthing — Reconnecting with the Earth's Field",
+        description:
+          "Exploring the science of PEMF therapy and earthing — how reconnecting with the Earth's electromagnetic field supports healing and recovery.",
+      },
     ],
   },
   {
