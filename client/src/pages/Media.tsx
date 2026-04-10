@@ -538,6 +538,9 @@ function VideoModal({
   rec: RecommendationSection;
   onClose: () => void;
 }) {
+  const [activeVideoIdx, setActiveVideoIdx] = useState(0);
+  const activeVideo = rec.videos[activeVideoIdx];
+
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -560,7 +563,7 @@ function VideoModal({
         onClick={onClose}
       >
         <motion.div
-          className="relative w-full max-w-3xl bg-card rounded-2xl shadow-2xl overflow-hidden"
+          className="relative w-full max-w-3xl bg-card rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
           initial={{ scale: 0.92, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.92, opacity: 0 }}
@@ -568,7 +571,7 @@ function VideoModal({
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-5 py-4 border-b border-border/40">
+          <div className="flex items-center justify-between px-5 py-4 border-b border-border/40 shrink-0">
             <div className="flex items-center gap-3">
               <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 font-bold text-xs ${rec.color}`}
@@ -587,28 +590,53 @@ function VideoModal({
               ✕
             </button>
           </div>
-          {/* Videos */}
-          <div className="p-5 space-y-6">
-            {rec.videos.map((v) => (
-              <div key={v.youtubeId} className="space-y-2">
-                <div
-                  className="relative w-full rounded-xl overflow-hidden shadow-md bg-black"
-                  style={{ paddingBottom: "56.25%" }}
+
+          {/* Video Tab Menu — shown when multiple videos exist */}
+          {rec.videos.length > 1 && (
+            <div className="flex gap-1 px-5 pt-3 pb-1 border-b border-border/30 overflow-x-auto shrink-0">
+              {rec.videos.map((v, idx) => (
+                <button
+                  key={v.youtubeId}
+                  onClick={() => setActiveVideoIdx(idx)}
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors whitespace-nowrap ${
+                    activeVideoIdx === idx
+                      ? "bg-green-100 text-green-800"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                  }`}
                 >
-                  <iframe
-                    className="absolute inset-0 w-full h-full"
-                    src={`https://www.youtube.com/embed/${v.youtubeId}?autoplay=1`}
-                    title={v.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  />
-                </div>
-                <p className="font-medium text-foreground text-sm">{v.title}</p>
-                {v.description && (
-                  <p className="text-xs text-muted-foreground">{v.description}</p>
-                )}
-              </div>
-            ))}
+                  <Play className="w-3 h-3" />
+                  {v.title.length > 40 ? v.title.substring(0, 40) + "…" : v.title}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Active Video */}
+          <div className="p-5 space-y-3 overflow-y-auto">
+            <div
+              className="relative w-full rounded-xl overflow-hidden shadow-md bg-black"
+              style={{ paddingBottom: "56.25%" }}
+            >
+              <iframe
+                key={activeVideo.youtubeId}
+                className="absolute inset-0 w-full h-full"
+                src={`https://www.youtube.com/embed/${activeVideo.youtubeId}?autoplay=1`}
+                title={activeVideo.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+            <p className="font-medium text-foreground text-sm">{activeVideo.title}</p>
+            {activeVideo.description && (
+              <p className="text-xs text-muted-foreground">{activeVideo.description}</p>
+            )}
+
+            {/* Video counter */}
+            {rec.videos.length > 1 && (
+              <p className="text-xs text-muted-foreground pt-1">
+                Video {activeVideoIdx + 1} of {rec.videos.length}
+              </p>
+            )}
           </div>
         </motion.div>
       </motion.div>

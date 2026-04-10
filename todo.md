@@ -225,3 +225,4 @@
 - [x] Add Breathing video (https://youtu.be/QVoGbaq8xos) to Recommendation 8 on Media page
 - [x] Add Whole Food Plant Based video (https://youtu.be/ztIZoaKTeqk) to Recommendation 1 on Media page
 - [x] Add PEMF video (https://youtu.be/LKOli-nNALM) to Recommendation 9 on Media page
+- [x] Fix QR code deep links: video modal should show ALL videos for each recommendation with tab menu (like B12/D section), not just the first video
