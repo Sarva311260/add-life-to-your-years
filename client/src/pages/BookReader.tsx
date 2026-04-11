@@ -5,6 +5,7 @@ import { Menu, X, ArrowLeft, Search, ChevronUp, ChevronDown } from "lucide-react
 import { Link } from "wouter";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
@@ -665,8 +666,44 @@ export default function BookReader() {
                   },
                 }}
               >
-                {bookContent}
+                {bookContent && bookContent.indexOf("\n# Glossary") !== -1
+                  ? bookContent.substring(0, bookContent.indexOf("\n# Glossary"))
+                  : bookContent}
               </ReactMarkdown>
+              {/* Interactive Synergy Infographic - inserted before Glossary */}
+              {bookContent && bookContent.indexOf("\n# Glossary") !== -1 && (
+                <div id="synergy-infographic">
+                  <SynergyInfographic />
+                </div>
+              )}
+              {/* Render Glossary and everything after it */}
+              {bookContent && bookContent.indexOf("\n# Glossary") !== -1 && (
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    h1: ({ children }) => {
+                      const id = getHeadingId(children);
+                      return (
+                        <h1 id={id} className="font-serif text-3xl font-bold text-stone-900 mt-12 mb-6 pb-3 border-b border-stone-200 scroll-mt-20">
+                          {children}
+                        </h1>
+                      );
+                    },
+                    h2: ({ children }) => {
+                      const id = getHeadingId(children);
+                      return (
+                        <h2 id={id} className="font-serif text-2xl font-bold text-stone-800 mt-10 mb-4 scroll-mt-20">
+                          {children}
+                        </h2>
+                      );
+                    },
+                    p: ({ children }) => <p className="text-stone-700 leading-relaxed mb-4 text-base">{children}</p>,
+                    strong: ({ children }) => <strong className="font-semibold text-stone-900">{children}</strong>,
+                  }}
+                >
+                  {bookContent.substring(bookContent.indexOf("\n# Glossary"))}
+                </ReactMarkdown>
+              )}
             </div>
           )}
         </main>
