@@ -275,12 +275,13 @@ export default function BookReader() {
       const target = (e.target as HTMLElement).closest("a");
       if (!target) return;
       const href = target.getAttribute("href") || "";
-      // Check if this is a media link with a rec hash
-      const mediaMatch = href.match(/media#(rec-[\w-]+)/);
+      // Check if this is a media link with a rec or appendix hash
+      const mediaMatch = href.match(/media#((?:rec|appendix)-[\w-]+)/);
       if (mediaMatch) {
         e.preventDefault();
-        const recId = mediaMatch[1];
-        const videos = REC_VIDEOS[recId];
+        const hashId = mediaMatch[1];
+        // Try direct match first, then with rec- prefix for appendix links
+        const videos = REC_VIDEOS[hashId] || REC_VIDEOS[`rec-${hashId}`];
         if (videos) {
           setVideoModal(videos);
         }

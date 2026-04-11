@@ -258,3 +258,4 @@
 - [x] Update book table of contents to include Appendix B
 - [x] Add both cold shower videos to Media page under Lifestyle Choices > Cold Showers subcategory
 - [x] Add first cold shower video (xTVMGyJ8cZU) insights to AI knowledge base
+- [x] Fix Appendix B cold shower QR code/video link to open in lightbox and restore scroll position when closed (matching existing recommendation video behavior)
