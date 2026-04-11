@@ -48,6 +48,21 @@ interface StandaloneVideo {
   category?: string;
 }
 
+interface HealthFactorSubcategory {
+  id: string;
+  title: string;
+  videos: VideoItem[];
+}
+
+interface HealthFactorSection {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  color: string;
+  subcategories: HealthFactorSubcategory[];
+}
+
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const RECOMMENDATIONS: RecommendationSection[] = [
@@ -340,6 +355,116 @@ const PODCASTS: PodcastItem[] = [
 ];
 
 const STANDALONE_VIDEOS: StandaloneVideo[] = [];
+
+const HEALTH_FACTOR_VIDEOS: HealthFactorSection[] = [
+  {
+    id: "hf-lifestyle",
+    title: "Lifestyle Choices",
+    description: "Diet, exercise, sleep, and hydration — the daily choices that shape your cellular health.",
+    icon: "\u{1F331}",
+    color: "bg-green-100 text-green-800 border-green-200",
+    subcategories: [
+      {
+        id: "hf-lifestyle-wfpb",
+        title: "Whole Food Plant-Based",
+        videos: [
+          {
+            youtubeId: "FX58PyQwrcI",
+            title: "Dr. Ellsworth Wareham — 98-Year-Old Vegan Heart Surgeon",
+            description: "Dr. Wareham, a retired cardiothoracic surgeon who practiced until 95, shares how a low-fat vegan diet can arrest and reverse coronary artery disease. References Dr. T. Colin Campbell, Dr. Dean Ornish, and Dr. Caldwell Esselstyn.",
+          },
+          {
+            youtubeId: "RGy3jhiPqD0",
+            title: "Dr. John Scharffenberg — 100-Year-Old Doctor's 7 Risk Factors",
+            description: "Dr. Scharffenberg, a 100-year-old preventive medicine doctor and lifelong vegetarian, explains the 7 risk factors for cardiovascular disease and why lifestyle changes can lower heart attack risk by 80%, stroke by 80%, and diabetes by 88%.",
+          },
+        ],
+      },
+      { id: "hf-lifestyle-water", title: "Water & Hydration", videos: [] },
+      { id: "hf-lifestyle-sleep", title: "Sleep & Recovery", videos: [] },
+      { id: "hf-lifestyle-exercise", title: "Exercise & Movement", videos: [] },
+    ],
+  },
+  {
+    id: "hf-environmental",
+    title: "Environmental Factors",
+    description: "Toxins, air quality, water quality, and how your surroundings impact your health.",
+    icon: "\u{1F30D}",
+    color: "bg-cyan-100 text-cyan-800 border-cyan-200",
+    subcategories: [
+      { id: "hf-env-toxins", title: "Toxins & Chemicals", videos: [] },
+      { id: "hf-env-air", title: "Air Quality", videos: [] },
+      { id: "hf-env-healing-space", title: "Healing Spaces", videos: [] },
+    ],
+  },
+  {
+    id: "hf-genetic",
+    title: "Genetic Predisposition",
+    description: "Family history, epigenetics, and how lifestyle can switch genes on and off.",
+    icon: "\u{1F9EC}",
+    color: "bg-purple-100 text-purple-800 border-purple-200",
+    subcategories: [
+      { id: "hf-gen-epigenetics", title: "Epigenetics & Gene Expression", videos: [] },
+      { id: "hf-gen-family", title: "Family History & Prevention", videos: [] },
+    ],
+  },
+  {
+    id: "hf-structural",
+    title: "Structural Barriers",
+    description: "Healthcare access, income, education, and systemic factors that affect health outcomes.",
+    icon: "\u{1F3DB}",
+    color: "bg-amber-100 text-amber-800 border-amber-200",
+    subcategories: [
+      { id: "hf-struct-access", title: "Healthcare Access", videos: [] },
+      { id: "hf-struct-financial", title: "Financial Wellbeing", videos: [] },
+    ],
+  },
+  {
+    id: "hf-stress",
+    title: "Stress & Emotional Health",
+    description: "Chronic stress, trauma, coping mechanisms, and emotional resilience.",
+    icon: "\u{1F9D8}",
+    color: "bg-rose-100 text-rose-800 border-rose-200",
+    subcategories: [
+      { id: "hf-stress-chronic", title: "Chronic Stress", videos: [] },
+      { id: "hf-stress-meditation", title: "Meditation & Mindfulness", videos: [] },
+      { id: "hf-stress-breathing", title: "Breathwork", videos: [] },
+    ],
+  },
+  {
+    id: "hf-purpose",
+    title: "Purpose & Meaning",
+    description: "Direction, goals, fulfilment, and the health impact of living with purpose.",
+    icon: "\u{1F3AF}",
+    color: "bg-indigo-100 text-indigo-800 border-indigo-200",
+    subcategories: [
+      { id: "hf-purpose-direction", title: "Finding Purpose", videos: [] },
+      { id: "hf-purpose-goals", title: "Goals & Fulfilment", videos: [] },
+    ],
+  },
+  {
+    id: "hf-relationships",
+    title: "Relationships & Social Connection",
+    description: "Support networks, community, belonging, and the #1 predictor of longevity.",
+    icon: "\u{1F91D}",
+    color: "bg-pink-100 text-pink-800 border-pink-200",
+    subcategories: [
+      { id: "hf-rel-social", title: "Social Connection", videos: [] },
+      { id: "hf-rel-community", title: "Community & Belonging", videos: [] },
+    ],
+  },
+  {
+    id: "hf-physical",
+    title: "Physical Trauma",
+    description: "Injuries, dental health, implants, and physical conditions that affect overall wellbeing.",
+    icon: "\u{1FA7A}",
+    color: "bg-orange-100 text-orange-800 border-orange-200",
+    subcategories: [
+      { id: "hf-phys-injuries", title: "Injuries & Recovery", videos: [] },
+      { id: "hf-phys-dental", title: "Dental Health", videos: [] },
+    ],
+  },
+];
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
@@ -644,7 +769,98 @@ function VideoModal({
   );
 }
 
-// ─── Main page ────────────────────────────────────────────────────────────────
+// ─── Health Factor Card ──────────────────────────────────────────────────────────────────────
+
+function HealthFactorCard({ factor, videoCount }: { factor: HealthFactorSection; videoCount: number }) {
+  const [expanded, setExpanded] = useState(videoCount > 0);
+
+  return (
+    <motion.div
+      id={factor.id}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4 }}
+    >
+      <Card className={`border overflow-hidden ${videoCount > 0 ? 'border-green-300 shadow-md' : 'border-border/50'}`}>
+        {/* Factor Header */}
+        <div
+          className="w-full text-left cursor-pointer select-none"
+          onClick={() => setExpanded(!expanded)}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setExpanded(!expanded); }}
+        >
+          <CardContent className="p-5 flex items-center gap-4">
+            <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-xl ${factor.color}`}>
+              {factor.icon}
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 flex-wrap">
+                <h3 className="font-semibold text-foreground text-lg">{factor.title}</h3>
+                {videoCount > 0 ? (
+                  <Badge className="bg-green-100 text-green-700 border-green-200 text-xs">
+                    <Play className="w-2.5 h-2.5 mr-1" />
+                    {videoCount} video{videoCount > 1 ? 's' : ''}
+                  </Badge>
+                ) : (
+                  <Badge variant="outline" className="text-xs text-muted-foreground">
+                    Coming Soon
+                  </Badge>
+                )}
+              </div>
+              <p className="text-sm text-muted-foreground mt-0.5">{factor.description}</p>
+            </div>
+            <span className="shrink-0 text-muted-foreground">
+              {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+            </span>
+          </CardContent>
+        </div>
+
+        {/* Expanded: Subcategories */}
+        <AnimatePresence>
+          {expanded && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <div className="px-5 pb-5 border-t border-border/40 pt-4 space-y-5">
+                {factor.subcategories.map((sub) => (
+                  <div key={sub.id} id={sub.id}>
+                    <div className="flex items-center gap-2 mb-3">
+                      <Leaf className="w-4 h-4 text-green-600" />
+                      <h4 className="font-medium text-foreground text-sm">{sub.title}</h4>
+                      {sub.videos.length > 0 && (
+                        <span className="text-xs text-muted-foreground">({sub.videos.length} video{sub.videos.length > 1 ? 's' : ''})</span>
+                      )}
+                    </div>
+                    {sub.videos.length > 0 ? (
+                      <div className="grid md:grid-cols-2 gap-6 ml-6">
+                        {sub.videos.map((v) => (
+                          <VideoEmbed key={v.youtubeId} video={v} />
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="ml-6 flex items-center gap-2 text-muted-foreground text-xs py-2">
+                        <Video className="w-3.5 h-3.5 opacity-40" />
+                        <span>Videos coming soon</span>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </Card>
+    </motion.div>
+  );
+}
+
+// ─── Main page ────────────────────────────────────────────────────────────────────────────
 
 export default function Media() {
   const [activeTab, setActiveTab] = useState<Tab>("recommendations");
@@ -704,7 +920,7 @@ export default function Media() {
       id: "videos",
       label: "Videos",
       icon: <Video className="w-4 h-4" />,
-      count: STANDALONE_VIDEOS.length || undefined,
+      count: HEALTH_FACTOR_VIDEOS.reduce((sum, hf) => sum + hf.subcategories.reduce((s, sc) => s + sc.videos.length, 0), 0) || undefined,
     },
   ];
 
@@ -915,7 +1131,7 @@ export default function Media() {
               </motion.div>
             )}
 
-            {/* ── Videos Tab ── */}
+            {/* ── Videos Tab (8 Health Factors) ── */}
             {activeTab === "videos" && (
               <motion.div
                 key="videos"
@@ -926,44 +1142,21 @@ export default function Media() {
               >
                 <div className="mb-8">
                   <h2 className="font-serif text-2xl font-bold text-foreground">
-                    Videos
+                    Videos by Health Factor
                   </h2>
                   <p className="text-sm text-muted-foreground mt-1">
-                    General health and wellness videos — interviews, lectures,
-                    and documentaries.
+                    Interviews, lectures, and documentaries organised by the 8 health factors that shape your wellbeing.
                   </p>
                 </div>
 
-                {STANDALONE_VIDEOS.length > 0 ? (
-                  <div className="grid md:grid-cols-2 gap-6">
-                    {STANDALONE_VIDEOS.map((v) => (
-                      <VideoEmbed key={v.youtubeId} video={v} />
-                    ))}
-                  </div>
-                ) : (
-                  <Card className="border-dashed border-border/60">
-                    <CardContent className="p-8 flex flex-col items-center text-center gap-4">
-                      <div className="w-14 h-14 rounded-full bg-muted flex items-center justify-center">
-                        <Video className="w-6 h-6 text-muted-foreground opacity-50" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-1">
-                          Videos Coming Soon
-                        </h3>
-                        <p className="text-sm text-muted-foreground max-w-md">
-                          We are adding interviews, lectures, and documentaries
-                          on health and wellness topics. Check back soon.
-                        </p>
-                      </div>
-                      <Badge
-                        variant="outline"
-                        className="text-xs text-muted-foreground"
-                      >
-                        Coming Soon
-                      </Badge>
-                    </CardContent>
-                  </Card>
-                )}
+                <div className="space-y-6">
+                  {HEALTH_FACTOR_VIDEOS.map((factor) => {
+                    const factorVideoCount = factor.subcategories.reduce((s, sc) => s + sc.videos.length, 0);
+                    return (
+                      <HealthFactorCard key={factor.id} factor={factor} videoCount={factorVideoCount} />
+                    );
+                  })}
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

@@ -501,6 +501,56 @@ Key message for AI consultations: When clients say they "eat vegan" or "plant-ba
 
 Key references: Satija et al. PLOS Medicine (Harvard, 3 cohorts), Prevención con Dieta Mediterránea (PREDIMED) study, Diabetes Educator journal, Appetite journal studies on vegan lifestyle behaviours.`,
   },
+  {
+    recommendationId: 1,
+    recommendationTitle: "Whole Food Plant-Based Lifestyle (Dr. Ellsworth Wareham)",
+    insights: `VIDEO INSIGHTS: DR. ELLSWORTH WAREHAM — 98-YEAR-OLD VEGAN HEART SURGEON
+
+Source Video: "Dr. Ellsworth Wareham — 98 years old vegan" (YouTube: FX58PyQwrcI)
+
+Dr. Ellsworth Wareham was a cardiothoracic surgeon who practiced until age 95 and followed a vegan diet for approximately half his life. His personal experience and clinical observations provide compelling evidence for the WFPB approach to cardiovascular health.
+
+Key clinical insights:
+- Cholesterol is identified as the chief problem in developing coronary artery disease
+- If total cholesterol is kept under 140 mg/dL, heart attacks are "very, very seldom" — Dr. Wareham's own cholesterol was 117 mg/dL
+- Exercise alone cannot significantly lower cholesterol if the diet is high in saturated animal fats
+- The easiest and most effective way to lower cholesterol is through a low-fat vegan diet
+- A low-fat vegan diet can not only prevent but also arrest and reverse existing coronary artery disease
+- Animal proteins (such as casein in milk) also raise cholesterol, not just animal fats
+
+Taste adaptation: Food preferences are learned behaviours. When a person changes their diet and gradually reduces salt, taste buds adapt within a few months, allowing them to enjoy healthy plant-based foods. The Wall Street Journal noted that "all tastes are acquired except for breast milk."
+
+Public health: Widespread adoption of healthy dietary habits could drastically reduce the incidence of coronary disease, which is primarily a disease of developed countries.
+
+Key references: Dr. T. Colin Campbell (Cornell University) on animal proteins and cholesterol, Dr. Dean Ornish (San Francisco) and Dr. Caldwell Esselstyn (Cleveland Clinic) — the only doctors who have clinically demonstrated that coronary artery disease can be arrested and reversed using a low-fat vegan diet. Dr. Esselstyn's position: coronary artery disease "does not need to exist, and if it does, it doesn't need to progress."`,
+  },
+  {
+    recommendationId: 1,
+    recommendationTitle: "Whole Food Plant-Based Lifestyle (Dr. John Scharffenberg)",
+    insights: `VIDEO INSIGHTS: DR. JOHN SCHARFFENBERG — 100-YEAR-OLD DOCTOR'S 7 RISK FACTORS
+
+Source Video: "100 Year-Old Nutrition Professor: 7 Keys to Longevity" (YouTube: RGy3jhiPqD0)
+
+Dr. John Scharffenberg is a 100-year-old preventive medicine doctor and nutritionist who has been a vegetarian his entire life. He advocates for lifestyle changes as the primary method for preventing disease and extending lifespan.
+
+The 7 Risk Factors for Cardiovascular Disease:
+1. Tobacco — Do not smoke. Known cause of death and disease.
+2. Alcohol — Consume zero alcohol. No safe level exists. Any amount increases risk of dying. Alcohol is a risk factor for breast cancer in women. Major study by Max Griswold (University of Washington), funded by Bill Gates and published in The Lancet, concluded the safe amount of alcohol is zero.
+3. Inactivity — Exercise every day. An obese person who exercises daily will live longer than a normal-weight person who does not exercise. Importance increases during mid-life (ages 40–70).
+4. Overweight — Maintain healthy weight, but prioritise exercise even if overweight. Being overweight increases risk of dying from almost every known disease.
+5. Sugar — Reduce sugar intake. Too much sugar increases heart attack risk.
+6. Meat — Avoid meat. The optimum diet is a vegetarian diet.
+7. Saturated Fat — Limit to no more than 5–6% of total calories. This essentially requires a vegetarian diet.
+
+Key health claims:
+- The optimum diet is vegetarian — agreed upon by WHO, American Heart Association, and European Cardiology Society
+- In 2015, medical scientists advised the US government that the optimum diet is vegetarian, but agriculture lobby altered the recommendation to include "lean meat"
+- Living the right lifestyle can lower heart attack risk by 80%, stroke risk by 80%, and diabetes risk by 88% without any pills
+- Critique of statins: For 93% of people taking statins, the pills did not extend their lives by a single day. Only 7% with severe heart disease gained approximately 8 months
+- Doctors should prescribe lifestyle changes (like an hour of exercise daily) rather than immediately turning to pills
+
+Key references: Max Griswold study (The Lancet), American Heart Association (5–6% saturated fat guideline), World Health Organization, European Cardiology Society.`,
+  },
 ];
 
 /**

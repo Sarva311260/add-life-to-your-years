@@ -241,3 +241,12 @@
 - [x] Add infographic to book before the glossary
 - [x] Fix infographic: Replace Sunflower with Black Sesame in Five Seeds popup
 - [x] Fix infographic: Add sunshine as beneficial in B12/Vitamin D popup
+- [x] Create slide sequence outline for 40-min seminar presentation (30 slides, approved by user)
+- [x] Generate visual assets for slides (images, tables, infographics)
+- [x] Build the slide presentation with consistent branding
+- [x] Write speaker notes for each slide
+- [x] Add "Add Life To Your Years Ecosystem" slide to the presentation (website, book, self-evaluation, AI consultant, media library, 1:1 coaching)
+- [x] Add new "Videos" section on Media page organized by 8 Health Factors with subcategories (keep existing recommendation videos untouched)
+- [x] Add WFPB video FX58PyQwrcI to new Videos section under Lifestyle Choices > WFPB
+- [x] Add WFPB video RGy3jhiPqD0 to new Videos section under Lifestyle Choices > WFPB
+- [x] Add both new videos to AI knowledge base (videoKnowledge.ts)
