@@ -211,6 +211,240 @@ The Five Seeds and Their Specific Benefits:
 
 Practical Application: These seeds can be combined into a daily seed mix and added to smoothies, oatmeal, salads, or plant-based yoghurt. Consistency is key — daily consumption activates the body's natural healing capabilities over time.`,
   },
+  {
+    recommendationId: 6,
+    recommendationTitle: "Vitamin B12 & Vitamin D",
+    insights: `VIDEO INSIGHTS FOR RECOMMENDATION 6: VITAMIN B12 & VITAMIN D
+
+Source Video A: "Vitamin B12 — Why It Matters & How to Supplement"
+Vitamin B12 is the single most critical supplement for anyone following a plant-based diet. Unlike most nutrients abundant in whole plant foods, B12 is produced by soil bacteria and is no longer reliably available in modern food systems. The consequences of deficiency are severe: irreversible neurological damage, megaloblastic anaemia, cognitive decline, elevated homocysteine (a major cardiovascular risk factor), and increased cancer risk.
+
+Why the Current RDA is Outdated: The official RDA for B12 was established based on the minimum needed to prevent overt deficiency symptoms. Newer research indicates optimal health requires significantly higher intake. Blood tests showing "normal" B12 levels can be misleading — standard serum B12 tests measure both active and inactive forms. More accurate markers are Methylmalonic Acid (MMA) and Holotranscobalamin (active B12).
+
+Supplementation Protocol:
+- Cyanocobalamin (most studied and stable) or Methylcobalamin are both effective
+- Daily supplementation: 250–500 mcg per day
+- Weekly supplementation: 2,000–2,500 mcg once per week (passive diffusion at high doses)
+- Do not rely on B12-fortified foods alone — amounts are inconsistent
+- Sublingual forms improve absorption for older adults whose intrinsic factor declines with age
+- Key insight: Even vegetarians and vegans who "feel fine" should supplement proactively — neurological damage from B12 deficiency can be silent for years before symptoms appear
+- Studies show vegetarians and vegans have better overall health markers than omnivores, but this advantage is significantly reduced in those who are B12-deficient
+
+Source Video B: "Vitamin D — The Sunshine Vitamin & Your Health"
+Vitamin D deficiency affects an estimated 1 billion people globally. Despite being called a "vitamin," Vitamin D is actually a prohormone — a precursor to a powerful steroid hormone that regulates over 2,000 genes and influences virtually every system in the body.
+
+Why Deficiency is So Common: Modern indoor lifestyles severely limit sun exposure. Sunscreen blocks UVB rays needed for Vitamin D synthesis. People living above 35° latitude cannot produce adequate Vitamin D from sunlight for 4–6 months of the year. Darker skin requires significantly more sun exposure. Obesity sequesters Vitamin D in fat tissue.
+
+Health Impacts of Deficiency: Weakened immune function, increased cancer risk (particularly colon, breast, and prostate), depression, cognitive decline and dementia risk, osteoporosis, cardiovascular disease, and type 2 diabetes.
+
+Optimal Blood Levels: Standard laboratory reference ranges (20–50 ng/mL) reflect the minimum to prevent rickets, not optimal health. Research suggests optimal levels are 60–80 ng/mL (150–200 nmol/L).
+
+Supplementation Protocol:
+- Test first: Get a 25-hydroxyvitamin D blood test to establish baseline
+- Typical maintenance dose: 2,000–5,000 IU daily of Vitamin D3 (cholecalciferol)
+- For deficiency correction: 5,000–10,000 IU daily under supervision
+- Essential co-factors: Always take with Vitamin K2 (MK-7 form, 100–200 mcg) to direct calcium to bones rather than arteries, and Magnesium (which activates Vitamin D)
+- Retest after 3 months to confirm levels have reached optimal range
+- Take with a meal containing fat for best absorption (fat-soluble vitamin)
+
+Source Video C: "Vitamin D3 — Part 2 (Advanced Protocols)"
+Vitamin D3 from sun or supplements must be converted twice — first in the liver (to 25-hydroxyvitamin D), then in the kidneys and other tissues (to the active hormone). This conversion requires adequate Magnesium at every step. Without sufficient Magnesium, supplementing with Vitamin D will not produce the desired health benefits.
+
+Critical Co-factor Network:
+- Magnesium: Required for both conversion steps. Deficiency is extremely common (estimated 50–80% of the population). Supplement with 300–400 mg of Magnesium Glycinate or Malate daily.
+- Vitamin K2 (MK-7): Activates proteins that direct calcium to bones and teeth, preventing arterial calcification. Essential when supplementing D3 at higher doses.
+- Boron: Trace mineral that extends the half-life of Vitamin D in the body. Found in nuts, seeds, and legumes — well-supplied by a WFPB diet.
+- Zinc: Supports the immune functions of Vitamin D. Found in pumpkin seeds, hemp seeds, and legumes.
+
+Toxicity Concerns: Vitamin D toxicity from supplementation is rare and requires sustained very high doses (typically >40,000 IU daily for months). Sun exposure never causes Vitamin D toxicity as the body self-regulates production. The key safety measure is regular blood testing to stay within the 60–80 ng/mL optimal range.`,
+  },
+  {
+    recommendationId: 7,
+    recommendationTitle: "The Six Movements",
+    insights: `VIDEO INSIGHTS FOR RECOMMENDATION 7: THE SIX MOVEMENTS
+
+Source Video: "The Six Movements — Japanese Exercise for Longevity"
+This video draws on the movement practices of Japan's oldest and most active citizens — particularly the supercentenarians of Okinawa — to identify six simple daily movements that collectively preserve physical independence, brain health, and longevity. The key insight is that it is not vigorous exercise but consistent, gentle daily movement that distinguishes those who remain active and independent into their 90s and beyond.
+
+The Six Movements:
+
+1. Sampo (Slow Mindful Walking): 20–30 minutes of slow, deliberate walking daily. Unlike brisk exercise walking, Sampo emphasises awareness of each step, breath, and surroundings. Research shows it reduces cortisol, improves mood, enhances creativity, and maintains cardiovascular health. The slower pace activates the parasympathetic nervous system and reduces stress hormones.
+
+2. Radio Taiso (Gentle Full-Body Warm-Up): A 10-minute sequence of gentle joint rotations, arm swings, trunk twists, and light stretches. Practised daily by millions of Japanese people of all ages. Improves circulation, joint mobility, and coordination. Particularly valuable first thing in the morning.
+
+3. Deep Squat (Resting Squat): Spending time in a full deep squat position (heels on floor) for 5–10 minutes daily. This natural resting position maintains hip mobility, ankle flexibility, and pelvic floor health. Loss of the ability to squat deeply is a strong predictor of mortality risk in older adults.
+
+4. Single-Leg Standing (Balance Training): Standing on one leg for 30–60 seconds per side, repeated several times daily. Balance is one of the strongest predictors of longevity — inability to stand on one leg for 10 seconds is associated with a near-doubling of mortality risk. Can be practised while brushing teeth or waiting for the kettle.
+
+5. Floor Sitting Transitions (Get Down, Get Up): Practising sitting down to the floor and rising back up without using hands. Known as the Sitting-Rising Test (SRT), this is a powerful predictor of all-cause mortality. Each point scored on the SRT is associated with a 21% reduction in mortality risk. Maintains hip mobility, core strength, and functional independence.
+
+6. Towel Twist (Grip and Upper Body Rotation): Holding a towel at both ends and twisting it in opposite directions while rotating the torso. Maintains grip strength (a key longevity biomarker), shoulder mobility, and spinal rotation. Grip strength is inversely associated with cardiovascular disease, cognitive decline, and all-cause mortality.
+
+Why These Six Work: They address the four key physical capacities that predict healthy ageing: balance, flexibility, functional strength, and cardiovascular health. They require no equipment, no gym membership, and can be completed in under 30 minutes daily. The Japanese philosophy is that movement should be woven into daily life, not treated as a separate workout.`,
+  },
+  {
+    recommendationId: 10,
+    recommendationTitle: "Meditation",
+    insights: `VIDEO INSIGHTS FOR RECOMMENDATION 10: MEDITATION
+
+Source Video: "Meditation — Neuroscience, Cortisol & Emotional Resilience"
+Regular meditation produces measurable, structural changes in the brain — not just temporary relaxation. These changes have profound implications for stress resilience, cognitive performance, emotional regulation, and longevity.
+
+Structural Brain Changes from Regular Meditation:
+- Increased grey matter density in the prefrontal cortex (decision-making, impulse control, planning)
+- Enlarged hippocampus (memory formation and emotional regulation) — meditation reverses hippocampal shrinkage caused by chronic stress
+- Reduced amygdala volume (the brain's fear and threat-detection centre) — meditators show less reactive fear responses
+- Thicker insula (interoception — awareness of internal body states) — meditators are better at detecting subtle physical signals
+- Slower brain ageing: Long-term meditators show significantly less age-related cortical thinning
+
+Cortisol and the Stress Response: Chronic stress elevates cortisol, which damages the hippocampus, suppresses immune function, promotes inflammation, accelerates cellular ageing (telomere shortening), and drives weight gain (particularly abdominal fat). Regular meditation is one of the most effective evidence-based interventions for reducing chronic cortisol levels.
+
+Cognitive and Emotional Benefits:
+- Improved attention span and focus (even 8 weeks of practice shows measurable improvement)
+- Enhanced working memory and reduced mind-wandering
+- Increased empathy and compassion
+- Reduced emotional reactivity — meditators respond rather than react
+- Improved pain tolerance (meditation changes how the brain processes pain signals)
+
+Practical Starting Protocol:
+- Begin with just 5–10 minutes daily — consistency matters more than duration
+- Breath-focused meditation (following the breath, gently returning attention when the mind wanders) is the most researched and accessible form
+- Body scan meditation is particularly effective for stress reduction
+- Loving-kindness (Metta) meditation specifically increases compassion and social connection
+- The goal is not to stop thinking but to observe thoughts without attachment
+
+Research Highlights: An 8-week Mindfulness-Based Stress Reduction (MBSR) programme produced measurable increases in grey matter density in the hippocampus and reductions in amygdala volume. Harvard studies show meditators' brains age 7 years more slowly than non-meditators.`,
+  },
+  {
+    recommendationId: 11,
+    recommendationTitle: "Time in Nature",
+    insights: `VIDEO INSIGHTS FOR RECOMMENDATION 11: TIME IN NATURE
+
+Source Video: "Time in Nature — Forest Bathing, Sunlight & Healing"
+Spending time in natural environments produces profound healing effects — from forest bathing (Shinrin-yoku) to morning sunlight exposure — through measurable biological mechanisms.
+
+Forest Bathing (Shinrin-yoku): Developed in Japan in the 1980s as a public health initiative, forest bathing involves slow, mindful immersion in a forest environment — not hiking or exercise, but simply being present among trees. Research demonstrates:
+- Significant reductions in cortisol, adrenaline, and noradrenaline
+- Lowered blood pressure and heart rate
+- Enhanced Natural Killer (NK) cell activity (immune cells that target cancer cells and viruses) — effects lasting up to 30 days after a 3-day forest immersion
+- Reduced inflammatory markers
+- Improved mood, reduced anxiety and depression scores
+
+The Phytoncide Effect: Trees emit volatile organic compounds called phytoncides (particularly alpha-pinene and limonene) as a natural defence against insects and pathogens. When humans inhale these compounds, they trigger increases in NK cell activity and anti-cancer proteins. This is a key mechanism behind the immune-boosting effects of forest environments.
+
+Sunlight Beyond Vitamin D: Morning sunlight exposure (within the first hour of waking) has effects beyond Vitamin D synthesis:
+- Sets the circadian clock — morning light signals to the brain that it is daytime, improving sleep quality that night
+- Stimulates serotonin production (the precursor to melatonin)
+- Triggers the release of nitric oxide from skin, improving vascular health
+- Infrared light from the sun penetrates tissue and stimulates mitochondrial function (photobiomodulation)
+
+Practical Protocol:
+- Minimum effective dose: 5 minutes in nature significantly improves mood and self-esteem
+- Optimal: 20–30 minutes of morning sunlight (before 10am) with skin exposure
+- Forest bathing: 2 hours in a natural environment provides measurable NK cell benefits
+- Barefoot contact with the earth (grounding/earthing) reduces inflammatory markers and improves sleep
+- Even urban green spaces provide measurable benefits — the key is natural elements (trees, water, soil)
+
+Research: A meta-analysis of 10 studies found that outdoor exercise in natural environments produced significantly greater improvements in mood and self-esteem than indoor exercise. Hospital patients with window views of trees recover faster and require less pain medication than those with views of walls.`,
+  },
+  {
+    recommendationId: 12,
+    recommendationTitle: "Repairing Relationships",
+    insights: `VIDEO INSIGHTS FOR RECOMMENDATION 12: REPAIRING RELATIONSHIPS
+
+Source Video: "Repairing Relationships — Social Connection & Longevity"
+This video focuses on the psychological concept of "rupture and repair" in interpersonal relationships — the idea that conflict and disconnection are inevitable, but the ability to repair those ruptures is what determines relationship health and longevity.
+
+Key Insights on Relationship Health:
+- All relationships experience ruptures (moments of disconnection, conflict, misattunement)
+- The quality of a relationship is not determined by the absence of conflict but by the capacity to repair after conflict
+- Emotional maturity involves the ability to acknowledge one's role in a rupture, take responsibility, and initiate repair
+- Unrepaired ruptures accumulate and erode trust, intimacy, and connection over time
+- The repair process itself — when done well — can actually deepen a relationship beyond its pre-rupture state
+
+The Repair Process:
+1. Recognise that a rupture has occurred (awareness)
+2. Take responsibility for your part without defensiveness
+3. Express genuine empathy for the other person's experience
+4. Make a concrete repair attempt (apology, changed behaviour, renewed connection)
+5. Allow time for the repair to be received and integrated
+
+Connection to Health and Longevity: The Harvard Study of Adult Development (the longest-running study on happiness and health) found that the quality of close relationships is the single strongest predictor of health and happiness in later life — more than wealth, fame, or even physical health metrics. Loneliness and social isolation are as damaging to health as smoking 15 cigarettes per day.`,
+  },
+  {
+    recommendationId: 13,
+    recommendationTitle: "Second Income Stream",
+    insights: `VIDEO INSIGHTS FOR RECOMMENDATION 13: SECOND INCOME STREAM
+
+Source Video: "Second Income Stream — Financial Stress & Health"
+Financial stress is one of the most pervasive and damaging forms of chronic stress in modern life. Its health consequences include elevated cortisol and chronic inflammation, disrupted sleep (financial worry is a leading cause of insomnia), increased cardiovascular disease risk, suppressed immune function, and reduced ability to invest in healthy food, exercise, and preventive healthcare.
+
+Three Strategies for Creating a Second Income Stream:
+1. Monetise existing skills and knowledge: Identify expertise you already have (professional skills, hobbies, life experience) and create a service or product around it — consulting, coaching, teaching, writing, or creating digital content.
+2. Create passive income assets: Develop assets that generate income without ongoing active work — digital products (ebooks, courses, templates), rental income, dividend-paying investments, or royalties.
+3. Leverage the sharing economy: Use existing assets (home, car, equipment, time) to generate income through platforms that match supply with demand.
+
+The Wellness Connection: Financial security is not separate from health — it is a foundational pillar of it. Reducing financial stress directly reduces cortisol, improves sleep, and frees cognitive and emotional resources for health-promoting behaviours. The goal is not wealth accumulation but financial resilience — having enough buffer that unexpected expenses do not create a health crisis.`,
+  },
+  {
+    recommendationId: 14,
+    recommendationTitle: "Your Environment",
+    insights: `VIDEO INSIGHTS FOR RECOMMENDATION 14: YOUR ENVIRONMENT
+
+Source Video: "Your Environment — Air Quality, Toxins & Healing Spaces"
+Our bodies are in constant biochemical dialogue with the spaces we inhabit. Environmental factors that affect health include air quality (indoor air is often 2–5 times more polluted than outdoor air), light quality and quantity (artificial light disrupts circadian rhythms), electromagnetic field exposure, noise levels (chronic noise exposure elevates cortisol and blood pressure), clutter and visual complexity (increase cognitive load and stress), and temperature (affects sleep quality, metabolic rate, and immune function).
+
+Workspace Optimisation:
+- Stand-up desks reduce the health risks of prolonged sitting (associated with increased mortality independent of exercise habits)
+- Natural light in workspaces improves mood, alertness, and sleep quality
+- Plants in workspaces reduce stress, improve air quality, and increase productivity
+- Separating work and rest spaces is critical — working from the bedroom activates the stress response in spaces meant for recovery
+
+Bedroom as a Healing Space:
+- Keep the bedroom exclusively for sleep and intimacy — no work, no screens
+- Optimal temperature: 16–19°C (60–67°F) for deep sleep
+- Total darkness: Use blackout curtains and cover all LED indicator lights
+- Silence or white noise: Eliminate noise disruptions
+- Remove electronic devices: Phones and tablets emit blue light and electromagnetic fields that disrupt melatonin production
+
+Indoor Air Quality:
+- Open windows daily for ventilation, even briefly
+- Use HEPA air purifiers in bedrooms and main living areas
+- Avoid synthetic fragrances (candles, air fresheners, fabric softeners) — contain volatile organic compounds (VOCs) that are endocrine disruptors
+- Choose low-VOC paints and furnishings
+- Houseplants (particularly spider plants, peace lilies, and snake plants) filter indoor air pollutants`,
+  },
+  {
+    recommendationId: 15,
+    recommendationTitle: "Methylene Blue & Photobiomodulation",
+    insights: `VIDEO INSIGHTS FOR RECOMMENDATION 15: METHYLENE BLUE & PHOTOBIOMODULATION
+
+Source Video: "Methylene Blue — Mitochondrial Medicine & Photobiomodulation"
+Methylene Blue (MB) is a synthetic compound with over 130 years of medical history — it was the first fully synthetic drug used in medicine. It is experiencing a renaissance in longevity and mitochondrial medicine research due to its unique ability to act as an electron carrier in the mitochondrial respiratory chain.
+
+Mechanism of Action: Mitochondria produce ATP (cellular energy) through the electron transport chain. As we age, this chain becomes less efficient — electrons "leak" and create damaging free radicals. Methylene Blue can accept and donate electrons, acting as an auxiliary electron carrier that bypasses damaged segments of the chain. This increases ATP production efficiency, reduces free radical generation, protects mitochondria from oxidative damage, and improves cellular energy availability.
+
+Evidence-Based Benefits:
+- Cognitive enhancement: Improves memory consolidation, attention, and processing speed. Clinical trials show improvements in Alzheimer's disease markers.
+- Neuroprotection: Protects neurons from oxidative stress and mitochondrial dysfunction — relevant for Parkinson's, Alzheimer's, and traumatic brain injury.
+- Antimicrobial: Historical use as an antimalarial; active against certain bacteria, viruses, and fungi.
+- Antidepressant effects: Inhibits MAO (monoamine oxidase) and increases serotonin and dopamine availability.
+
+Synergy with Red Light and Sunlight (Photobiomodulation): Methylene Blue has a unique synergy with red and near-infrared light. When MB is present in tissues and red/NIR light is applied, the photochemical reaction dramatically amplifies ATP production — far beyond what either intervention achieves alone.
+
+Dosing Protocol:
+- Pharmaceutical-grade (USP) Methylene Blue only — never industrial or laboratory grade
+- Low-dose protocol: 0.5–4 mg/kg body weight
+- Typical starting dose: 10–20 mg per day
+- Take in the morning (stimulating effect may interfere with sleep if taken late)
+- Expect blue-green urine and potentially blue-tinged tongue — this is normal and harmless
+
+Critical Contraindications:
+- CRITICAL: Do NOT combine with SSRIs, SNRIs, MAOIs, or other serotonergic medications — risk of potentially fatal serotonin syndrome
+- G6PD deficiency: Contraindicated
+- Pregnancy: Avoid
+- Always consult a healthcare provider before use, particularly if on any medications`,
+  },
 ];
 
 /**
