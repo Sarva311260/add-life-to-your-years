@@ -9,7 +9,7 @@ import remarkGfm from "remark-gfm";
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
 const MD_CDN_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_5fcab6e6.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_8bede975.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -53,6 +53,7 @@ const chapters = [
   { id: "john-12-months", label: "John, Twelve Months Later" },
   { id: "a-note", label: "A Note on the Journey" },
   { id: "glossary", label: "Glossary" },
+  { id: "appendix-a", label: "Appendix A: Diet Comparison" },
 ];
 
 // Map heading text to anchor IDs — longer keys first to prevent false prefix matches
@@ -98,6 +99,7 @@ const headingIdMap: Record<string, string> = {
   "John, Twelve Months Later": "john-12-months",
   "A Note on the Journey": "a-note",
   "Glossary": "glossary",
+  "Appendix A": "appendix-a",
 };
 
 // Sort keys by length descending so longer keys match first

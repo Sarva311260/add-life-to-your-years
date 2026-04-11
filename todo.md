@@ -230,3 +230,5 @@
 - [x] Send video extracts to user for review
 - [x] Add approved video knowledge to hidden knowledge base for AI consults
 - [x] Analyze remaining 10 videos and add to video knowledge base for AI consults
+- [x] Analyze 5 diet comparison videos and write appendix chapter on Keto/Carnivore/Mediterranean/Paleo/Vegan vs WFPB
+- [x] Add Appendix A (Diet Comparison chapter) to the book in the app
