@@ -65,7 +65,7 @@ const recommendations: Recommendation[] = [
     icon: "🌱",
     color: "#8BC34A",
     description:
-      "Flax, chia, hemp, pumpkin, and sunflower seeds — providing essential fatty acids, minerals, and nerve-supporting nutrients.",
+      "Flax, chia, hemp, pumpkin, and black sesame seeds — providing essential fatty acids, minerals, and nerve-supporting nutrients.",
     synergy:
       "Seeds complement the WFPB diet with concentrated omega-3s and zinc, support brain health for meditation, and provide magnesium for sleep.",
   },
@@ -76,7 +76,7 @@ const recommendations: Recommendation[] = [
     icon: "☀️",
     color: "#FFC107",
     description:
-      "Essential supplementation — B12 for nerve function and D3 with co-factors (K2, magnesium, boron) for immune and bone health.",
+      "Essential supplementation — B12 for nerve function and D3 with co-factors (K2, magnesium, boron) for immune and bone health. Adequate sunshine is also vital as a natural source of vitamin D and overall wellbeing.",
     synergy:
       "B12 supports the nervous system for meditation and breathing. Vitamin D works with sunlight from nature exposure and enhances immune function alongside WFPB nutrition.",
   },
