@@ -236,3 +236,4 @@
 - [x] Add 5 diet comparison videos to Appendix A in book with QR codes and inline video player
 - [x] Build owner-only Knowledge Base viewer page in the dashboard (searchable, browsable, shows all video and condition knowledge entries)
 - [x] Fix Appendix A video QR codes to use inline video modal (same as other book videos) instead of opening in new window
+- [x] Reduce Appendix A to single QR code linking to all 5 diet videos instead of 5 separate QR codes
