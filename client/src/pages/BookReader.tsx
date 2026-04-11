@@ -9,7 +9,7 @@ import remarkGfm from "remark-gfm";
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
 const MD_CDN_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_0f3870da.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_92b3d65d.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -206,6 +206,13 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
   "rec-15": [{ youtubeId: "eD0N8wXjNSs", title: "Second Income Stream" }],
   "rec-16": [{ youtubeId: "foBnfBX4YKQ", title: "Your Environment" }],
   "rec-17": [{ youtubeId: "KvASX2yp0zU", title: "Methylene Blue & Photobiomodulation" }],
+  "rec-appendix-diet": [
+    { youtubeId: "Weg9GUnH24E", title: "What Humans Are Designed to Eat" },
+    { youtubeId: "nEjuZsP8o7g", title: "The Ketogenic Diet — Is It Healthy?" },
+    { youtubeId: "MJVSD0hggZE", title: "The Ketogenic Diet is a Scam" },
+    { youtubeId: "uVGpTLMN6w4", title: "Mediterranean Diet vs WFPB" },
+    { youtubeId: "dpyz-AumCUk", title: "Is a Plant-Based Diet Always Healthy?" },
+  ],
 };
 
 const SCROLL_STORAGE_KEY = "book-reader-scroll";
@@ -262,7 +269,7 @@ export default function BookReader() {
       if (!target) return;
       const href = target.getAttribute("href") || "";
       // Check if this is a media link with a rec hash
-      const mediaMatch = href.match(/media#(rec-\d+)/);
+      const mediaMatch = href.match(/media#(rec-[\w-]+)/);
       if (mediaMatch) {
         e.preventDefault();
         const recId = mediaMatch[1];
