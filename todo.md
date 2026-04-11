@@ -226,3 +226,6 @@
 - [x] Add Whole Food Plant Based video (https://youtu.be/ztIZoaKTeqk) to Recommendation 1 on Media page
 - [x] Add PEMF video (https://youtu.be/LKOli-nNALM) to Recommendation 9 on Media page
 - [x] Fix QR code deep links: video modal should show ALL videos for each recommendation with tab menu (like B12/D section), not just the first video
+- [x] Analyze first 7 videos from media library and extract WFPB-aligned health insights
+- [x] Send video extracts to user for review
+- [x] Add approved video knowledge to hidden knowledge base for AI consults

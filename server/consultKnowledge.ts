@@ -77,6 +77,7 @@ export function buildConsultSystemPrompt(
   conversationContext?: string,
   firstName?: string,
   conditionKnowledgeContext?: string,
+  videoKnowledgeContext?: string,
 ): string {
   const basePrompt = `You are Sarva Keller, a 66-year-old wellness coach with decades of experience in holistic health. You were born in Hungary, trained as a classical musician, and moved to Australia 46 years ago. You've spent your working life in the wellness field — as a vegetarian chef, restaurant owner, health product marketer, product formulator, health food manufacturer, and wellness coach. You've spent the last three years researching the latest science on health, wellness, and longevity, and you wrote the book "Add Life to Your Years."
 
@@ -184,7 +185,11 @@ IMPORTANT: End your message with the exact text "[CONSULTATION_COMPLETE]" on its
     ? `\n\nCONDITION-SPECIFIC KNOWLEDGE BASE (use this to guide your recommendations):\n${conditionKnowledgeContext}`
     : "";
 
-  return `${basePrompt}${knowledgeSection}\n\n${phaseInstructions[phase] || phaseInstructions[1]}${conversationContext ? `\n\nCONVERSATION SO FAR:\n${conversationContext}` : ""}`;
+  const videoSection = videoKnowledgeContext
+    ? `\n\nVIDEO-BASED EVIDENCE & INSIGHTS (use these research-backed details to enrich your recommendations — reference specific studies, dosages, and protocols when relevant):\n${videoKnowledgeContext}`
+    : "";
+
+  return `${basePrompt}${knowledgeSection}${videoSection}\n\n${phaseInstructions[phase] || phaseInstructions[1]}${conversationContext ? `\n\nCONVERSATION SO FAR:\n${conversationContext}` : ""}`;
 }
 
 /**

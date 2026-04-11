@@ -27,6 +27,7 @@ import {
   BOOK_RECOMMENDATIONS,
 } from "../consultKnowledge";
 import { formatMultipleConditions } from "../conditionKnowledge";
+import { formatAllVideoKnowledge } from "../videoKnowledge";
 import { CATEGORIES, HEALTH_HISTORY_QUESTIONS, getVisibleHealthHistoryQuestions } from "../../shared/questionnaire";
 import { RECOMMENDATION_VIDEOS, getVideoLinksMarkdown } from "../../shared/videoMap";
 
@@ -99,6 +100,9 @@ export const consultRouter = router({
         ? formatMultipleConditions(["sleep", "gut_health", "fatigue", "stress", "weight", "heart"])
         : undefined;
 
+      // Build video knowledge context
+      const videoKnowledgeContext = formatAllVideoKnowledge();
+
       // Generate the initial AI greeting
       const systemPrompt = buildConsultSystemPrompt(
         1,
@@ -108,6 +112,7 @@ export const consultRouter = router({
         undefined,
         undefined,
         conditionKnowledgeContext,
+        videoKnowledgeContext,
       );
 
       const greeting = await invokeLLM({
@@ -255,6 +260,9 @@ export const consultRouter = router({
         ? formatMultipleConditions(["sleep", "gut_health", "fatigue", "stress", "weight", "heart"])
         : undefined;
 
+      // Build video knowledge context
+      const videoKnowledgeContext = formatAllVideoKnowledge();
+
       // Build the system prompt for current phase
       const systemPrompt = buildConsultSystemPrompt(
         currentPhase,
@@ -264,6 +272,7 @@ export const consultRouter = router({
         conversationContext,
         firstName,
         conditionKnowledgeContext,
+        videoKnowledgeContext,
       );
 
       // Build LLM messages
