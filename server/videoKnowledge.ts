@@ -588,7 +588,12 @@ PRACTICAL PROTOCOL ("Scottish Shower"):
 - Most people find it becomes enjoyable within a week
 
 WHEN TO RECOMMEND:
-This practice is suitable for most healthy adults and can be recommended as part of a holistic wellness routine. It costs nothing, requires no equipment, and takes less than a minute. It pairs well with other recommendations — particularly stress management, sleep quality, and immune resilience. Always ask about cardiovascular conditions before recommending.`,
+This practice is suitable for most healthy adults and can be recommended as part of a holistic wellness routine. It costs nothing, requires no equipment, and takes less than a minute. It pairs well with other recommendations — particularly stress management, sleep quality, and immune resilience. Always ask about cardiovascular conditions before recommending.
+
+VIDEO RESOURCES:
+Video 1 (youtubeId: xTVMGyJ8cZU): "Cold Showers — Hormesis, Inflammation & Cognitive Benefits" — Explores the science of hormesis (low-dose stress creating beneficial adaptations). Covers 7 key benefits: decreased muscle/joint pain, faster recovery, reduced inflammation, increased cognitive function, improved mood, enhanced metabolism. Explains norepinephrine increases of 200–300%, antioxidant network boosts including glutathione, increased mitochondrial density, and strengthened T-cell immune response. Practical advice: start with 30 seconds to 1 minute, use contrast therapy (alternating hot and cold).
+
+Video 2 (youtubeId: may_PlDfNRE): "Dr. Jin Sung — The Science Behind Cold Showers: 5 Evidence-Based Benefits" — Dr. Jin Sung of Clinical Excellence explains: (1) improved immune function (increased leukocytes, Natural Killer Cells, IL-6), (2) boosted metabolism, (3) enhanced mood and memory through sympathetic nervous system activation and endorphin release, (4) reduced pain and inflammation (beneficial for chronic pain, asthma, rheumatoid arthritis, fibromyalgia), (5) post-exercise recovery. References the 2016 Dutch study. Emphasises cold showers are free — a foundational health practice alongside anti-inflammatory diet, better sleep, stress reduction, sunshine, and deep belly breathing.`,
   },
 ];
 

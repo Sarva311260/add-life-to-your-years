@@ -251,3 +251,10 @@
 - [x] Add WFPB video RGy3jhiPqD0 to new Videos section under Lifestyle Choices > WFPB
 - [x] Add both new videos to AI knowledge base (videoKnowledge.ts)
 - [x] Add cold shower knowledge to AI consultant knowledge base (videoKnowledge.ts) so AI can recommend cold showers during consultations
+- [x] Add cold shower video (may_PlDfNRE) as second tab in Cold Showers section on Media page (single QR code for section)
+- [x] Add cold shower video insights to AI knowledge base
+- [x] Add Appendix B (Cold Showers) to book content on website (online reader)
+- [x] Add both cold shower videos (xTVMGyJ8cZU, may_PlDfNRE) as tabs with single QR code in Appendix B
+- [x] Update book table of contents to include Appendix B
+- [x] Add both cold shower videos to Media page under Lifestyle Choices > Cold Showers subcategory
+- [x] Add first cold shower video (xTVMGyJ8cZU) insights to AI knowledge base

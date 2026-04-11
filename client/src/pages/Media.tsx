@@ -383,6 +383,22 @@ const HEALTH_FACTOR_VIDEOS: HealthFactorSection[] = [
       { id: "hf-lifestyle-water", title: "Water & Hydration", videos: [] },
       { id: "hf-lifestyle-sleep", title: "Sleep & Recovery", videos: [] },
       { id: "hf-lifestyle-exercise", title: "Exercise & Movement", videos: [] },
+      {
+        id: "hf-lifestyle-cold-showers",
+        title: "Cold Showers",
+        videos: [
+          {
+            youtubeId: "xTVMGyJ8cZU",
+            title: "Cold Showers — Hormesis, Inflammation & Cognitive Benefits",
+            description: "Explores the science of hormesis — how low-dose stress creates beneficial adaptations. Covers 7 key benefits including decreased pain, reduced inflammation, increased cognitive function, improved mood, and enhanced metabolism. Explains norepinephrine increases of 200–300%, antioxidant network boosts, and T-cell immune response.",
+          },
+          {
+            youtubeId: "may_PlDfNRE",
+            title: "Dr. Jin Sung — 5 Evidence-Based Benefits of Cold Showers",
+            description: "Dr. Jin Sung explains the five main evidence-based benefits: improved immune function, boosted metabolism, enhanced mood and memory, reduced pain and inflammation, and post-exercise recovery. References the 2016 Dutch study of 3,018 adults showing a 29% reduction in sick days from just 30 seconds daily.",
+          },
+        ],
+      },
     ],
   },
   {
