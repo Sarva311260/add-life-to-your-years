@@ -232,3 +232,6 @@
 - [x] Analyze remaining 10 videos and add to video knowledge base for AI consults
 - [x] Analyze 5 diet comparison videos and write appendix chapter on Keto/Carnivore/Mediterranean/Paleo/Vegan vs WFPB
 - [x] Add Appendix A (Diet Comparison chapter) to the book in the app
+- [x] Add 5 diet comparison videos to videoKnowledge.ts knowledge base
+- [x] Add 5 diet comparison videos to Appendix A in book with QR codes and inline video player
+- [x] Build owner-only Knowledge Base viewer page in the dashboard (searchable, browsable, shows all video and condition knowledge entries)

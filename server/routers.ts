@@ -20,12 +20,41 @@ import { CATEGORIES, calculateOverallScore, hasCardiacFlag, getScoreLevelLabel, 
 import { consultRouter } from "./routers/consult";
 import { shopRouter } from "./routers/shop";
 import { reviewRouter } from "./routers/review";
+import { adminProcedure } from "./_core/trpc";
+import { CONDITION_KNOWLEDGE } from "./conditionKnowledge";
+import { VIDEO_KNOWLEDGE } from "./videoKnowledge";
 
 export const appRouter = router({
   system: systemRouter,
   consult: consultRouter,
   shop: shopRouter,
   review: reviewRouter,
+
+  knowledge: router({
+    list: adminProcedure.query(() => {
+      const conditionEntries = CONDITION_KNOWLEDGE.map((c) => ({
+        id: `condition-${c.id}`,
+        type: "condition" as const,
+        title: c.label,
+        content: [
+          `OVERVIEW:\n${c.overview}`,
+          `SYMPTOMS:\n${c.symptoms}`,
+          `TRIGGERS:\n${c.triggers}`,
+          `INTERVENTIONS:\nNutrition: ${c.interventions.nutrition}\nMovement: ${c.interventions.movement}\nStress: ${c.interventions.stress}\nSleep: ${c.interventions.sleep}`,
+        ].join("\n\n"),
+      }));
+
+      const videoEntries = VIDEO_KNOWLEDGE.map((v) => ({
+        id: `video-${v.recommendationId}`,
+        type: "video" as const,
+        title: v.recommendationTitle,
+        content: v.insights,
+      }));
+
+      return [...videoEntries, ...conditionEntries];
+    }),
+  }),
+
   auth: router({
     me: publicProcedure.query((opts) => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {

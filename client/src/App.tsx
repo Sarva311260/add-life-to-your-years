@@ -23,6 +23,7 @@ import ConsultReport from "@/pages/ConsultReport";
 import ConsultHistory from "@/pages/ConsultHistory";
 import Shop from "@/pages/Shop";
 import ReviewSuccess from "@/pages/ReviewSuccess";
+import KnowledgeBase from "@/pages/KnowledgeBase";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -55,6 +56,7 @@ function Router() {
       <Route path={"/consult/review-success"} component={ReviewSuccess} />
       <Route path={"/shop"} component={Shop} />
       <Route path={"/dashboard"} component={Dashboard} />
+      <Route path={"/knowledge-base"} component={KnowledgeBase} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

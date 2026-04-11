@@ -6,7 +6,7 @@ import { trpc } from "@/lib/trpc";
 import { CATEGORIES, getScoreLevel, getScoreLevelLabel } from "@shared/questionnaire";
 import {
   ArrowLeft, ArrowRight, TrendingUp, TrendingDown, Minus,
-  Leaf, Calendar, BarChart3, Target, Loader2, LogOut, User
+  Leaf, Calendar, BarChart3, Target, Loader2, LogOut, User, BookOpen
 } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import {
@@ -21,6 +21,7 @@ const CATEGORY_COLORS = [
 
 export default function Dashboard() {
   const { user, isAuthenticated, loading: authLoading, logout } = useAuth();
+  const isOwner = user?.role === "admin";
   const [, navigate] = useLocation();
 
   const { data: evaluations, isLoading } = trpc.evaluation.history.useQuery(undefined, {
@@ -95,6 +96,14 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="flex items-center gap-3">
+            {isOwner && (
+              <Link href="/knowledge-base">
+                <Button variant="outline" size="sm" className="gap-2 text-xs">
+                  <BookOpen className="w-3.5 h-3.5" />
+                  Knowledge Base
+                </Button>
+              </Link>
+            )}
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <User className="w-4 h-4" />
               {user?.name || "User"}

@@ -445,6 +445,62 @@ Critical Contraindications:
 - Pregnancy: Avoid
 - Always consult a healthcare provider before use, particularly if on any medications`,
   },
+  {
+    recommendationId: 18,
+    recommendationTitle: "Appendix A: Diet Comparison — Keto, Carnivore, Mediterranean, Paleo, Vegan vs WFPB",
+    insights: `VIDEO INSIGHTS FOR APPENDIX A: DIET COMPARISON
+
+Source Video A: "What Humans Are Designed To Eat (According To Science)"
+For 90% of our 25-million-year evolutionary history, humans consumed over 95% plants. True carnivores (lions, wolves) possess biological mechanisms to handle dietary cholesterol and saturated fat — humans lack these entirely. Palaeolithic humans had a life expectancy of approximately 25 years and did not live long enough to develop chronic diseases. Meat consumption was a survival strategy, not a blueprint for longevity.
+
+Key evidence: Epidemiological data from 20th-century populations on near-exclusive plant-based diets showed virtually no coronary artery disease, hypertension, stroke, diabetes, or common cancers. The WFPB diet is the ONLY diet scientifically proven to not only halt but reverse heart disease — demonstrated by Pritikin, Ornish, and Esselstyn.
+
+Critical distinction: WFPB is not the same as general veganism. Health benefits are derived from unprocessed plant foods, not processed vegan junk food.
+
+Key references: Turner & Thompson (Nutrition Reviews), Eaton & Konner (NEJM 1985 & 2010), Milton (Am J Clin Nutr 2000), Jenkins et al. (Comp Biochem Physiol 2003), Roberts (Am J Cardiology 1990), Esselstyn et al. (J Family Practice 2014).
+
+Source Video B: "The Ketogenic Diet: Is It Healthy? (What the Science Says)"
+Keto's primary weaknesses: Requires over 37,500 calories/day to meet essential vitamin/mineral needs on some popular plans. Documented clinical complications include scurvy and selenium deficiency causing sudden cardiac death in children. Eliminates prebiotics, fibre, and resistant starches — gut microbiome changes detectable within 24 hours. Saturated fat reaching the colon induces weight gain, leaky gut, and inflammation.
+
+Mortality data: Low-carbohydrate animal-based diets are linked to increased all-cause mortality and 50% higher cardiovascular disease risk (Harvard cohort and ARIC cohort studies, Lancet Public Health). Impairs artery function and blunts beneficial cholesterol effects of weight loss.
+
+In contrast: Plant-based low-carbohydrate approaches (whole vegetables, nuts, whole grains) are associated with LOWER mortality — the opposite of animal-based keto.
+
+Key references: Calton (JISSN), Hall/NuSI study (Cell Metabolism), Noto et al. PLOS ONE meta-analysis, Seidelmann et al. Lancet Public Health, Harvard ARIC cohort.
+
+Source Video C: "The Ketogenic Diet is a Scam"
+The NuSI study (funded by low-carb advocates Gary Taubes and Peter Attia to PROVE keto superiority) instead falsified the carbohydrate-insulin model. In 17 overweight men in metabolic wards: keto produced 3.5 lbs weight loss in 7 days — but actual body fat loss rate SLOWED by more than half. The loss was water weight and lean muscle mass. Body began breaking down its own protein when deprived of glucose.
+
+Crossfit study: 8% shrinkage in leg muscle thickness on keto diet. High-carbohydrate diet produced steadier and faster actual body fat loss despite less dramatic scale weight changes.
+
+Conclusion: The carbohydrate-insulin model of obesity has been experimentally falsified by its own proponents' research. High-carbohydrate whole food diets (like WFPB) are superior for actual fat loss and muscle retention.
+
+Key researchers: Kevin Hall (NIH), Gary Taubes, Gerald Reaven, John Farquhar.
+
+Source Video D: "Mediterranean Diet vs. Whole Food Plant-Based Diet for Heart Disease"
+Mediterranean diet evidence: Lyon Diet Heart Study (~600 patients) — reduced annual cardiac event rate from ~4% to ~1%. Significant improvement, but patients continued to experience new cardiac events. Disease slowed, not stopped or reversed.
+
+WFPB evidence: Esselstyn Cleveland Clinic case series (198 patients with advanced CVD): Among 177 adherent patients — recurrent cardiac event rate less than 0.6%. Among 21 non-adherent patients — 62% experienced adverse events. This is disease REVERSAL, not merely slowing.
+
+Dr. Dean Ornish quote: "A Mediterranean diet is an improvement over what most people eat, but a whole-food, plant-based diet is superior."
+
+Key distinction for AI consultations: When clients ask about Mediterranean diet, acknowledge its genuine benefits while clearly explaining it cannot reverse established disease. WFPB is the only evidence-based approach for disease reversal.
+
+Key references: Sofi et al. (Am J Clin Nutr 2010), de Lorgeril Lyon Diet Heart Study (Circulation 1999), Esselstyn et al. (J Family Practice 2014), Ornish et al. (Lancet 1990, JAMA 1998).
+
+Source Video E: "Is a Plant-Based Diet Always Healthy? (The Unhealthy Vegan)"
+Critical distinction for all consultations: A vegan diet ≠ a WFPB diet. This is one of the most important clarifications to make with clients.
+
+Harvard study (PLOS Medicine, 3 large prospective cohorts): Healthy plant foods (whole grains, fruits, vegetables, nuts, legumes) — reduced Type 2 Diabetes risk by nearly HALF. Unhealthy plant foods (fruit juices, sweetened beverages, refined grains, potatoes, sweets) — INCREASED Type 2 Diabetes risk, even though technically vegan.
+
+Junk food veganism (processed vegan products, refined oils, fake meats, white bread, chips, soft drinks) offers NO meaningful health advantage and can be actively harmful — performing worse than a general mixed diet.
+
+Motivation matters: Health-motivated vegans make consistently healthier food choices than ethics-motivated vegans (Appetite journal research).
+
+Key message for AI consultations: When clients say they "eat vegan" or "plant-based," always probe for food quality. The health benefits are EXCLUSIVELY tied to whole, unprocessed plant foods. "Big changes beget big results" — rapid improvements from strict WFPB provide strong motivation to continue.
+
+Key references: Satija et al. PLOS Medicine (Harvard, 3 cohorts), Prevención con Dieta Mediterránea (PREDIMED) study, Diabetes Educator journal, Appetite journal studies on vegan lifestyle behaviours.`,
+  },
 ];
 
 /**
