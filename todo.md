@@ -250,3 +250,4 @@
 - [x] Add WFPB video FX58PyQwrcI to new Videos section under Lifestyle Choices > WFPB
 - [x] Add WFPB video RGy3jhiPqD0 to new Videos section under Lifestyle Choices > WFPB
 - [x] Add both new videos to AI knowledge base (videoKnowledge.ts)
+- [x] Add cold shower knowledge to AI consultant knowledge base (videoKnowledge.ts) so AI can recommend cold showers during consultations
