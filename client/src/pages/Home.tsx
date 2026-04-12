@@ -361,7 +361,7 @@ export default function Home() {
                     />
                   </Link>
                   <div className="absolute -bottom-3 -right-3 bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md z-10">
-                    151 Pages
+                    226 Pages
                   </div>
                 </div>
               </div>

@@ -23,6 +23,7 @@ export interface ConditionKnowledge {
     movement: string;
     stress: string;
     sleep: string;
+    offLabel?: string;
   };
 }
 
@@ -231,7 +232,7 @@ export const CONDITION_KNOWLEDGE: ConditionKnowledge[] = [
     id: "cancer",
     label: "Cancer Support",
     overview:
-      "Supporting the body's biological 'terrain' to optimise immune surveillance, prevent abnormal cell growth, and aid recovery alongside primary care.",
+      "Supporting the body's biological 'terrain' to optimise immune surveillance, prevent abnormal cell growth, and aid recovery alongside primary care. IMPORTANT NOTE: Research into off-label generic drugs — specifically fenbendazole (a benzimidazole antiparasitic) and ivermectin (a Nobel Prize-winning antiparasitic) — has identified potential anticancer mechanisms including microtubule destabilisation, inhibition of glucose uptake, reactivation of p53 tumour suppressor function, and inhibition of the Akt/mTOR pathway. A 2021 Stanford/Washington University case series documented tumour regression in three advanced-cancer patients self-administering fenbendazole. As of February 2026, the U.S. National Cancer Institute announced formal study of ivermectin's anticancer properties. This information is for educational purposes only — always consult a qualified healthcare professional. See Appendix C in the book for full details, references, and safety information. Visit fenbendazole.org for comprehensive research resources.",
     symptoms:
       "Unexplained weight loss, severe fatigue, localised pain, and immune suppression (often secondary to conventional treatments).",
     triggers:
@@ -245,6 +246,8 @@ export const CONDITION_KNOWLEDGE: ConditionKnowledge[] = [
         "Psycho-neuro-immunology shows that unresolved trauma and chronic distress suppress immunity. Incorporate daily meditation or grounding practices to support emotional healing.",
       sleep:
         "Consider Melatonin supplementation at night — not just for sleep, but because it acts as a powerful systemic antioxidant and regulates the circadian rhythms essential for cellular repair.",
+      offLabel:
+        "EDUCATIONAL INFORMATION ONLY — NOT MEDICAL ADVICE: Research has identified potential anticancer properties in two off-patent generic drugs: Fenbendazole (veterinary antiparasitic; human equivalent mebendazole is FDA-approved) disrupts microtubule polymerisation, inhibits cancer cell glucose uptake, and may reactivate p53 tumour suppressor function. Ivermectin (Nobel Prize 2015; over 4 billion doses administered worldwide) inhibits the Akt/mTOR pathway, disrupts glycolysis, and promotes apoptosis. A 2021 Stanford/Washington University case series documented significant tumour regression in three advanced-cancer patients. The U.S. National Cancer Institute began formally studying ivermectin's anticancer properties in February 2026. The absence of large-scale clinical trials reflects the economics of generic drug research, not evidence of inefficacy. NEVER self-medicate — always discuss with a qualified healthcare professional. See Appendix C in the book for full details, case reports, mechanisms, safety profiles, and references. Visit fenbendazole.org for comprehensive research information.",
     },
   },
   {
@@ -392,7 +395,7 @@ Wellness Interventions:
 - Nutrition & Supplementation: ${knowledge.interventions.nutrition}
 - Movement & Exercise: ${knowledge.interventions.movement}
 - Stress Management: ${knowledge.interventions.stress}
-- Sleep & Recovery: ${knowledge.interventions.sleep}
+- Sleep & Recovery: ${knowledge.interventions.sleep}${knowledge.interventions.offLabel ? `\n- Off-Label Research (Educational Only): ${knowledge.interventions.offLabel}` : ""}
 `.trim();
 }
 
