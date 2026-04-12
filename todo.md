@@ -259,3 +259,18 @@
 - [x] Add both cold shower videos to Media page under Lifestyle Choices > Cold Showers subcategory
 - [x] Add first cold shower video (xTVMGyJ8cZU) insights to AI knowledge base
 - [x] Fix Appendix B cold shower QR code/video link to open in lightbox and restore scroll position when closed (matching existing recommendation video behavior)
+- [ ] Referral system: database schema (referral codes, referral tracking table)
+- [ ] Referral system: unique referral link generation per user
+- [ ] Referral system: track when referred friend creates account + completes evaluation
+- [ ] Referral system: Stripe coupon - $5 off for referred friend on $27 consult
+- [ ] Referral system: Stripe coupon - 100% off (free consult) for referrer after 3 completed referrals
+- [ ] Referral system: repeatable rewards (every 3 additional referrals = another free consult)
+- [ ] Referral system: 30-day expiry on earned coupons
+- [ ] Referral system: referral progress dashboard UI (shows X of 3 friends completed)
+- [ ] Referral system: share buttons / copy referral link UI
+- [ ] Referral system: notification when reward is earned
+- [ ] Referral system: integrate with evaluation completion flow
+- [ ] Referral system: tests
+- [x] Add new "Recipes" subcategory in Lifestyle Choices on Media page (after WFPB, before Water & Hydration)
+- [x] Add recipe video VDMOFa8iRqo to Recipes subcategory (matching exact format of other videos in section)
+- [x] Extract recipe from video and display under the video

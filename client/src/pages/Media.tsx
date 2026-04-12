@@ -22,6 +22,13 @@ interface VideoItem {
   youtubeId: string;
   title: string;
   description?: string;
+  recipe?: {
+    title: string;
+    prepNote?: string;
+    ingredients: { section: string; items: string[] }[];
+    instructions: { section: string; steps: string[] }[];
+    tip?: string;
+  };
 }
 
 interface RecommendationSection {
@@ -380,6 +387,70 @@ const HEALTH_FACTOR_VIDEOS: HealthFactorSection[] = [
           },
         ],
       },
+      {
+        id: "hf-lifestyle-recipes",
+        title: "Recipes",
+        videos: [
+          {
+            youtubeId: "VDMOFa8iRqo",
+            title: "Dr. Greger's V12 Vegetable Blast \u2014 Daily Green Smoothie",
+            description: "Dr. Michael Greger demonstrates his V12 Vegetable Blast recipe \u2014 a nutrient-dense daily smoothie packed with celery, carrot, bell pepper, scallion, beet, jalape\u00F1o, turmeric, kale, and parsley blended with tomato juice, black pepper, horseradish, and lemon. Includes a 5-day meal prep method for quick daily preparation.",
+            recipe: {
+              title: "V12 Vegetable Blast",
+              prepNote: "Prep 5 bags on Sunday for the whole work week.",
+              ingredients: [
+                {
+                  section: "Per bag (prep ahead)",
+                  items: [
+                    "1 stalk celery",
+                    "1 carrot (unpeeled, scrape off bitter outer layer)",
+                    "\u00BD red, orange, or yellow bell pepper",
+                    "1 scallion (tips trimmed)",
+                    "\u2155 of a small beet",
+                    "\u2155 of a raw jalape\u00F1o (optional)",
+                    "\u00BC inch fresh turmeric root",
+                    "1 cup kale",
+                    "1 cup curly parsley",
+                  ],
+                },
+                {
+                  section: "Added daily when blending",
+                  items: [
+                    "1 cup no-salt-added vegetable or tomato juice",
+                    "1 cup ice cubes",
+                    "\u215B tsp freshly ground black pepper",
+                    "\u00BD tsp horseradish (prepared or freshly grated)",
+                    "Juice of \u00BD lemon (zest optional)",
+                  ],
+                },
+              ],
+              instructions: [
+                {
+                  section: "Meal Prep (5 days)",
+                  steps: [
+                    "Wash all vegetables thoroughly.",
+                    "Set out 5 reusable bags.",
+                    "Into each bag, place: 1 stalk celery, 1 scraped carrot, \u00BD bell pepper, 1 scallion, \u2155 beet, \u2155 jalape\u00F1o, \u00BC inch turmeric.",
+                    "Add 1 cup kale and 1 cup parsley to each bag.",
+                    "Store all 5 bags in the refrigerator.",
+                  ],
+                },
+                {
+                  section: "Daily Blending",
+                  steps: [
+                    "Pour 1 cup vegetable/tomato juice into a high-speed blender.",
+                    "Add 1 cup ice cubes, \u215B tsp black pepper, \u00BD tsp horseradish.",
+                    "Squeeze in juice of \u00BD lemon (add zest if desired).",
+                    "Empty one pre-prepared bag into the blender.",
+                    "Blend on high until smooth.",
+                  ],
+                },
+              ],
+              tip: "Dr. Greger recommends drinking it while munching on walnuts, pumpkin seeds, or avocado to maximise absorption of fat-soluble nutrients.",
+            },
+          },
+        ],
+      },
       { id: "hf-lifestyle-water", title: "Water & Hydration", videos: [] },
       { id: "hf-lifestyle-sleep", title: "Sleep & Recovery", videos: [] },
       { id: "hf-lifestyle-exercise", title: "Exercise & Movement", videos: [] },
@@ -524,6 +595,43 @@ function VideoEmbed({ video }: { video: VideoItem }) {
           </Button>
         </a>
       </div>
+      {/* Recipe card (if present) */}
+      {video.recipe && (
+        <div className="mt-3 rounded-lg border border-green-200 bg-green-50/50 p-4 space-y-3">
+          <div className="flex items-center gap-2">
+            <BookOpen className="w-4 h-4 text-green-700" />
+            <h5 className="font-semibold text-green-900 text-sm">{video.recipe.title}</h5>
+          </div>
+          {video.recipe.prepNote && (
+            <p className="text-xs text-green-700 italic">{video.recipe.prepNote}</p>
+          )}
+          {video.recipe.ingredients.map((group) => (
+            <div key={group.section}>
+              <p className="text-xs font-semibold text-green-800 mb-1">{group.section}</p>
+              <ul className="list-disc list-inside space-y-0.5">
+                {group.items.map((item, i) => (
+                  <li key={i} className="text-xs text-foreground/80">{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          {video.recipe.instructions.map((group) => (
+            <div key={group.section}>
+              <p className="text-xs font-semibold text-green-800 mb-1">{group.section}</p>
+              <ol className="list-decimal list-inside space-y-0.5">
+                {group.steps.map((step, i) => (
+                  <li key={i} className="text-xs text-foreground/80">{step}</li>
+                ))}
+              </ol>
+            </div>
+          ))}
+          {video.recipe.tip && (
+            <p className="text-xs text-green-700 border-t border-green-200 pt-2 mt-2">
+              <span className="font-semibold">Tip:</span> {video.recipe.tip}
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 }
