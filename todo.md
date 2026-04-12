@@ -291,3 +291,4 @@
 - [x] Add fenbendazole/ivermectin information to Cancer Support section in condition knowledge base
 - [x] Recount book pages and update page count wherever it appears (images, text references) — updated to 226 Pages
 - [x] Fix contradictory water advice in Chapter 6 — "mineral-rich water" statement contradicts distilled water as gold standard; fixed in Key Takeaways box and videoKnowledge.ts
+- [x] Fix Chapter 9 banner image — shows "Thelter" instead of "Shelter"
