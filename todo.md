@@ -276,3 +276,10 @@
 - [x] Extract recipe from video and display under the video
 - [x] Fix deployment OOM (exit code 137): transient build server memory issue — resolved on retry, deployment successful
 - [x] Add Bowen Therapy to AI consultation condition knowledge base for physical conditions
+- [x] Write Appendix C: Off-Label Pharmaceuticals introduction (what is off-label, generics, why no RCTs, COVID suppression example)
+- [x] Write Appendix C: Fenbendazole subsection with careful disclaimers (reference fenbendazole.org)
+- [x] Write Appendix C: Ivermectin subsection with careful disclaimers
+- [x] Write Appendix C: Combined Use section (fenbendazole + ivermectin together)
+- [x] Add 2 videos to Appendix C with tabs, QR code, and scroll position memory
+- [x] Add Appendix C to book content (online reader) with TOC update
+- [x] Add fenbendazole/ivermectin knowledge to AI knowledge base (with careful non-diagnostic framing)

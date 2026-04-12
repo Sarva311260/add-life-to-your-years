@@ -347,6 +347,26 @@ export const CONDITION_KNOWLEDGE: ConditionKnowledge[] = [
         "Studies indicate Bowen Therapy can improve sleep quality and increase pressure pain thresholds. By calming the nervous system and reducing pain, it helps restore natural sleep patterns. Sessions are recommended as part of a holistic approach alongside good sleep hygiene.",
     },
   },
+  {
+    id: "off-label-fenbendazole-ivermectin",
+    label: "Off-Label Pharmaceuticals: Fenbendazole & Ivermectin (Educational Information Only)",
+    overview:
+      "IMPORTANT DISCLAIMER: This information is provided for educational purposes only. It does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before starting, stopping, or changing any medication. Fenbendazole is a benzimidazole-class antiparasitic drug (veterinary) whose human equivalent mebendazole is FDA-approved. Ivermectin is a Nobel Prize-winning antiparasitic (2015, Omura & Campbell) with over 4 billion doses administered worldwide and WHO essential medicine status. Both are off-patent generic drugs that have attracted research interest for potential anticancer properties. Laboratory studies have identified multiple mechanisms: fenbendazole disrupts microtubule polymerisation, inhibits glucose uptake via GLUT transporters, and may reactivate p53 tumour suppressor function. Ivermectin inhibits the Akt/mTOR pathway, disrupts glycolysis, and promotes apoptosis. A 2021 Stanford/Washington University case series documented tumour regression in three advanced-cancer patients self-administering fenbendazole. As of February 2026, the U.S. National Cancer Institute announced formal study of ivermectin's anticancer properties. The absence of large-scale RCTs reflects the economics of generic drug research (no patent protection = no financial incentive for trials), not evidence of inefficacy. For more information visit fenbendazole.org. See Appendix C in the book for full details and references.",
+    symptoms:
+      "This knowledge may be relevant when a person mentions: interest in off-label or repurposed medications, questions about generic drugs for serious conditions, interest in complementary approaches alongside conventional treatment, questions about fenbendazole or ivermectin, or general questions about why certain drugs lack large-scale clinical trials despite promising preliminary evidence.",
+    triggers:
+      "The structural barrier to evidence generation for off-patent drugs: pharmaceutical companies have no financial incentive to fund expensive clinical trials for generic drugs that any competitor can manufacture. This 'free rider' problem means promising therapeutic applications remain in evidence limbo. During COVID-19, this dynamic was publicly visible when off-label generic drugs faced institutional suppression despite clinical evidence.",
+    interventions: {
+      nutrition:
+        "CRITICAL: Never recommend, prescribe, or suggest dosing of fenbendazole or ivermectin. Only provide educational information and always direct the person to discuss with their qualified healthcare professional. You may mention that Appendix C in the book contains detailed research information and references. If asked about protocols, state that this is outside your scope and they should consult their doctor. You may note that the research literature discusses supportive supplements like vitamin D alongside conventional treatment, but dosing decisions must be made by their healthcare team.",
+      movement:
+        "General wellness recommendations apply. Gentle movement, walking, and stress reduction support overall health regardless of any treatment protocol. Always emphasise that any treatment decisions should be made in consultation with qualified healthcare professionals.",
+      stress:
+        "Navigating serious health conditions is inherently stressful. Recommend stress management practices (meditation, breathing exercises, time in nature) as part of overall wellbeing. Encourage open communication with their healthcare team about all treatments and supplements being considered.",
+      sleep:
+        "Quality sleep is essential for immune function and cellular repair. Standard sleep hygiene recommendations apply. Emphasise the importance of working with their healthcare team for any treatment decisions.",
+    },
+  },
 ];
 
 /**

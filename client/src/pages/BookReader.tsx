@@ -10,7 +10,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
 const MD_CDN_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_6527020f.md";
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_8e89003b.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -56,6 +56,7 @@ const chapters = [
   { id: "glossary", label: "Glossary" },
   { id: "appendix-a", label: "Appendix A: Diet Comparison" },
   { id: "appendix-b", label: "Appendix B: Cold Showers" },
+  { id: "appendix-c", label: "Appendix C: Off-Label Pharmaceuticals" },
 ];
 
 // Map heading text to anchor IDs — longer keys first to prevent false prefix matches
@@ -101,6 +102,7 @@ const headingIdMap: Record<string, string> = {
   "John, Twelve Months Later": "john-12-months",
   "A Note on the Journey": "a-note",
   "Glossary": "glossary",
+  "Appendix C": "appendix-c",
   "Appendix B": "appendix-b",
   "Appendix A": "appendix-a",
 };
@@ -212,6 +214,10 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
   "rec-appendix-cold-showers": [
     { youtubeId: "xTVMGyJ8cZU", title: "Cold Showers — Hormesis, Inflammation & Cognitive Benefits" },
     { youtubeId: "may_PlDfNRE", title: "The Science Behind Cold Showers — 5 Evidence-Based Benefits" },
+  ],
+  "rec-appendix-off-label": [
+    { youtubeId: "QBnT8es28WY", title: "Fenbendazole — The Joe Tippens Protocol & Cancer Research" },
+    { youtubeId: "5Q5QjEPGNNg", title: "Fenbendazole & Ivermectin — Stanford Case Series & Mechanisms" },
   ],
   "rec-appendix-diet": [
     { youtubeId: "Weg9GUnH24E", title: "What Humans Are Designed to Eat" },

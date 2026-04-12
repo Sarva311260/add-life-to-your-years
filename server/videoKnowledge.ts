@@ -595,6 +595,24 @@ Video 1 (youtubeId: xTVMGyJ8cZU): "Cold Showers — Hormesis, Inflammation & Cog
 
 Video 2 (youtubeId: may_PlDfNRE): "Dr. Jin Sung — The Science Behind Cold Showers: 5 Evidence-Based Benefits" — Dr. Jin Sung of Clinical Excellence explains: (1) improved immune function (increased leukocytes, Natural Killer Cells, IL-6), (2) boosted metabolism, (3) enhanced mood and memory through sympathetic nervous system activation and endorphin release, (4) reduced pain and inflammation (beneficial for chronic pain, asthma, rheumatoid arthritis, fibromyalgia), (5) post-exercise recovery. References the 2016 Dutch study. Emphasises cold showers are free — a foundational health practice alongside anti-inflammatory diet, better sleep, stress reduction, sunshine, and deep belly breathing.`,
   },
+  {
+    recommendationId: 100,
+    recommendationTitle: "Appendix C: Off-Label Pharmaceuticals — Fenbendazole & Ivermectin",
+    insights: `IMPORTANT DISCLAIMER: This information is for educational purposes only. It does not constitute medical advice, diagnosis, or treatment. Never recommend, prescribe, or suggest dosing. Always direct people to consult their qualified healthcare professional.
+
+FENBENDAZOLE: A benzimidazole-class antiparasitic (veterinary) whose human equivalent mebendazole is FDA-approved. Proposed anticancer mechanisms include: (1) microtubule destabilisation (same mechanism as taxane chemotherapy drugs), (2) inhibition of glucose uptake via GLUT transporters and hexokinase 2 (exploiting the Warburg effect), (3) reactivation of p53 tumour suppressor gene. Cancer cells appear not to develop resistance to fenbendazole (not a substrate for P-glycoprotein efflux pumps). The Joe Tippens case: terminal stage 4 small cell lung cancer, complete remission after self-administering fenbendazole, cancer-free for 7+ years. Stanford/Washington University 2021 case series documented tumour regression in 3 advanced-cancer patients with no reported side effects. Safety: mebendazole has decades of safe human use; most common side effect is transient liver enzyme elevation (<3%). ~12 clinical trials investigating mebendazole for cancer were ongoing as of 2024. For more information: fenbendazole.org.
+
+IVERMECTIN: Nobel Prize-winning antiparasitic (2015), 4+ billion doses administered worldwide, WHO essential medicine. Proposed anticancer mechanisms: (1) inhibition of Akt/mTOR pathway, (2) disruption of glycolysis, (3) promotion of apoptosis. As of February 2026, the U.S. National Cancer Institute announced formal study of ivermectin's anticancer properties. Safety well-established at standard doses (0.2 mg/kg); higher research doses (~1 mg/kg) may cause transient visual disturbances.
+
+COMBINED USE: Fenbendazole and ivermectin attack cancer through complementary mechanisms. The research literature discusses combination with conventional chemotherapy and supportive supplements. All combination protocols should only be undertaken under qualified medical supervision.
+
+THE RESEARCH FUNDING GAP: The absence of large-scale RCTs for these off-patent drugs reflects economics, not efficacy. No company has financial incentive to fund trials for drugs any competitor can sell for pennies. This was publicly visible during COVID-19 when off-label generic drugs faced institutional suppression.
+
+VIDEO RESOURCES:
+Video 1 (youtubeId: QBnT8es28WY): "Fenbendazole — The Joe Tippens Protocol & Cancer Research" — Covers the Joe Tippens story, the science behind benzimidazole compounds as anticancer agents, microtubule disruption mechanisms, glucose uptake inhibition, and the growing body of case reports.
+
+Video 2 (youtubeId: 5Q5QjEPGNNg): "Fenbendazole & Ivermectin — Stanford Case Series & Mechanisms" — Discusses the Stanford/Washington University case series documenting tumour regression, proposed mechanisms of action for both drugs, the NCI's formal investigation of ivermectin, and the structural barriers to large-scale clinical trials for off-patent drugs.`,
+  },
 ];
 
 /**
