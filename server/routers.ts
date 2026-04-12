@@ -57,8 +57,8 @@ export const appRouter = router({
         3: [{ youtubeId: "tcwVfUAqWiY", title: "Sleep & Melatonin" }],
         // Zeolite/Cellular Detox uses a special recommendationId since it has no videoKnowledge entry
         101: [
-          { rumbleUrl: "https://rumble.com/embed/v725t6o", title: "Dr. Robert Young Speaks On MasterPeace" },
-          { rumbleUrl: "https://rumble.com/embed/v77pg4w", title: "Why Is MasterPeace So Powerful Yet Gentle?" },
+          { rumbleUrl: "https://rumble.com/embed/v6zz56g/", title: "Dr. Robert Young Speaks On MasterPeace" },
+          { rumbleUrl: "https://rumble.com/embed/v75is4o/", title: "Why Is MasterPeace So Powerful Yet Gentle?" },
         ],
         4: [{ youtubeId: "o2Kc1Iaow40", title: "Glycine" }],
         5: [{ youtubeId: "YckoR3hLL9E", title: "Five Seeds of Life" }],

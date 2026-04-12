@@ -128,13 +128,13 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     color: "bg-emerald-100 text-emerald-800 border-emerald-200",
     videos: [
       {
-        rumbleUrl: "https://rumble.com/embed/v725t6o",
+        rumbleUrl: "https://rumble.com/embed/v6zz56g/",
         title: "Dr. Robert Young Speaks On MasterPeace",
         description:
           "A compilation of Dr. Robert Young discussing MasterPeace nano-zeolite and its applications in human health.",
       },
       {
-        rumbleUrl: "https://rumble.com/embed/v77pg4w",
+        rumbleUrl: "https://rumble.com/embed/v75is4o/",
         title: "Why Is MasterPeace So Powerful Yet Gentle?",
         description:
           "How MasterPeace nano/picometer zeolite works to attract and bind toxins while nourishing the body with sea mineral plasma.",
