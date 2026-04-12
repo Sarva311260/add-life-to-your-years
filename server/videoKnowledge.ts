@@ -69,7 +69,7 @@ Distilled water is described as "hungry water" due to its potent solvent and che
 - Lower risk of kidney and gallstones
 - During fasting, particularly valuable for flushing out toxins released by the body
 
-Critical protocol: Always add minerals or electrolytes back into distilled water, or ensure consumption of a mineral-rich whole food plant-based diet to compensate. Never drink distilled water from plastic jugs due to chemical leaching risk.
+Critical protocol: The body obtains its minerals most effectively from whole plant foods — not from water. A whole food plant-based diet naturally provides all the electrolytes and trace minerals the body needs, so there is no requirement to add minerals back into distilled water. Never drink distilled water from plastic jugs due to chemical leaching risk.
 
 Source Video B: "Water & Hydration — The Science of Staying Hydrated"
 The EPA lists over 86,000 man-made chemicals, many of which end up in the water supply. Steam distillation is the most comprehensive and consistent purification method.

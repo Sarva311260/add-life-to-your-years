@@ -290,3 +290,4 @@
 - [x] Add proper academic references to end of Appendix C (Off-Label Pharmaceuticals) in book content, matching format of other chapters
 - [x] Add fenbendazole/ivermectin information to Cancer Support section in condition knowledge base
 - [x] Recount book pages and update page count wherever it appears (images, text references) — updated to 226 Pages
+- [x] Fix contradictory water advice in Chapter 6 — "mineral-rich water" statement contradicts distilled water as gold standard; fixed in Key Takeaways box and videoKnowledge.ts
