@@ -283,3 +283,7 @@
 - [x] Add 2 videos to Appendix C with tabs, QR code, and scroll position memory
 - [x] Add Appendix C to book content (online reader) with TOC update
 - [x] Add fenbendazole/ivermectin knowledge to AI knowledge base (with careful non-diagnostic framing)
+- [x] Fix Knowledge Base page crash — React hooks order violation (useMemo after conditional returns)
+- [x] Verify Knowledge Base video links work correctly after fix
+- [ ] Add proper academic references to Appendix C (Off-Label Pharmaceuticals) in the book content
+- [x] Fix Knowledge Base green Video badge — clicking it opens dropdown with video titles, each opens YouTube in new tab

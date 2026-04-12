@@ -1,14 +1,97 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Search, BookOpen, Video, ChevronDown, ChevronUp, ArrowLeft } from "lucide-react";
+import { Search, BookOpen, Video, ChevronDown, ChevronUp, ArrowLeft, ExternalLink, Play } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { getLoginUrl } from "@/const";
 import { Link } from "wouter";
 import SiteNav from "@/components/SiteNav";
 import { useAuth } from "@/_core/hooks/useAuth";
+
+type VideoLink = { youtubeId: string; title: string };
+
+function VideoDropdown({ videoLinks, entryId }: { videoLinks: VideoLink[]; entryId: string }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [open]);
+
+  if (videoLinks.length === 0) {
+    return (
+      <Badge variant="default" className="text-xs opacity-50 cursor-default">
+        Video
+      </Badge>
+    );
+  }
+
+  // Single video — just open directly
+  if (videoLinks.length === 1) {
+    return (
+      <Badge
+        variant="default"
+        className="text-xs cursor-pointer hover:bg-primary/80 flex items-center gap-1"
+        onClick={(e) => {
+          e.stopPropagation();
+          window.open(`https://www.youtube.com/watch?v=${videoLinks[0].youtubeId}`, "_blank");
+        }}
+      >
+        <Play className="w-3 h-3" />
+        Watch
+      </Badge>
+    );
+  }
+
+  // Multiple videos — show dropdown
+  return (
+    <div className="relative" ref={ref}>
+      <Badge
+        variant="default"
+        className="text-xs cursor-pointer hover:bg-primary/80 flex items-center gap-1"
+        onClick={(e) => {
+          e.stopPropagation();
+          setOpen(!open);
+        }}
+      >
+        <Play className="w-3 h-3" />
+        {videoLinks.length} Videos
+      </Badge>
+      {open && (
+        <div className="absolute right-0 top-full mt-1 z-50 bg-popover border border-border rounded-lg shadow-lg py-1 min-w-[280px] max-w-[360px]">
+          <div className="px-3 py-1.5 text-xs font-semibold text-muted-foreground border-b border-border mb-1">
+            Open in new tab
+          </div>
+          {videoLinks.map((vl, i) => (
+            <button
+              key={`${entryId}-${vl.youtubeId}`}
+              className="w-full text-left px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground flex items-center gap-2 transition-colors"
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(`https://www.youtube.com/watch?v=${vl.youtubeId}`, "_blank");
+                setOpen(false);
+              }}
+            >
+              <Play className="w-3.5 h-3.5 shrink-0 text-primary" />
+              <span className="flex-1 min-w-0 truncate">{vl.title}</span>
+              <ExternalLink className="w-3 h-3 shrink-0 text-muted-foreground" />
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function KnowledgeBase() {
   const { user, loading } = useAuth();
@@ -21,6 +104,29 @@ export default function KnowledgeBase() {
   });
 
   const isOwner = user?.openId === import.meta.env.VITE_OWNER_OPEN_ID || user?.role === "admin";
+
+  const allEntries = knowledgeData || [];
+
+  // useMemo MUST be called before any conditional returns (React rules of hooks)
+  const filtered = useMemo(() => {
+    const q = searchQuery.toLowerCase().trim();
+    return allEntries.filter((entry: any) => {
+      const matchesTab =
+        activeTab === "all" ||
+        (activeTab === "video" && entry.type === "video") ||
+        (activeTab === "condition" && entry.type === "condition");
+      if (!matchesTab) return false;
+      if (!q) return true;
+      return (
+        entry.title.toLowerCase().includes(q) ||
+        entry.content.toLowerCase().includes(q)
+      );
+    });
+  }, [allEntries, searchQuery, activeTab]);
+
+  const toggleExpand = (id: string) => {
+    setExpandedId((prev) => (prev === id ? null : id));
+  };
 
   if (loading) {
     return (
@@ -63,28 +169,6 @@ export default function KnowledgeBase() {
       </div>
     );
   }
-
-  const allEntries = knowledgeData || [];
-
-  const filtered = useMemo(() => {
-    const q = searchQuery.toLowerCase().trim();
-    return allEntries.filter((entry) => {
-      const matchesTab =
-        activeTab === "all" ||
-        (activeTab === "video" && entry.type === "video") ||
-        (activeTab === "condition" && entry.type === "condition");
-      if (!matchesTab) return false;
-      if (!q) return true;
-      return (
-        entry.title.toLowerCase().includes(q) ||
-        entry.content.toLowerCase().includes(q)
-      );
-    });
-  }, [allEntries, searchQuery, activeTab]);
-
-  const toggleExpand = (id: string) => {
-    setExpandedId((prev) => (prev === id ? null : id));
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -130,7 +214,7 @@ export default function KnowledgeBase() {
               onClick={() => setActiveTab(tab)}
               className="capitalize"
             >
-              {tab === "all" ? `All (${allEntries.length})` : tab === "video" ? `Videos (${allEntries.filter(e => e.type === "video").length})` : `Conditions (${allEntries.filter(e => e.type === "condition").length})`}
+              {tab === "all" ? `All (${allEntries.length})` : tab === "video" ? `Videos (${allEntries.filter((e: any) => e.type === "video").length})` : `Conditions (${allEntries.filter((e: any) => e.type === "condition").length})`}
             </Button>
           ))}
         </div>
@@ -156,8 +240,9 @@ export default function KnowledgeBase() {
           </div>
         ) : (
           <div className="space-y-3">
-            {filtered.map((entry) => {
+            {filtered.map((entry: any) => {
               const isExpanded = expandedId === entry.id;
+              const videoLinks: VideoLink[] = entry.videoLinks || [];
               return (
                 <Card
                   key={entry.id}
@@ -186,9 +271,13 @@ export default function KnowledgeBase() {
                         </div>
                       </div>
                       <div className="flex items-center gap-2 shrink-0">
-                        <Badge variant={entry.type === "video" ? "default" : "secondary"} className="text-xs">
-                          {entry.type === "video" ? "Video" : "Condition"}
-                        </Badge>
+                        {entry.type === "video" ? (
+                          <VideoDropdown videoLinks={videoLinks} entryId={entry.id} />
+                        ) : (
+                          <Badge variant="secondary" className="text-xs">
+                            Condition
+                          </Badge>
+                        )}
                         {isExpanded ? (
                           <ChevronUp className="w-4 h-4 text-muted-foreground" />
                         ) : (

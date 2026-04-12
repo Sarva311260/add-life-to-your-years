@@ -44,12 +44,65 @@ export const appRouter = router({
         ].join("\n\n"),
       }));
 
-      const videoEntries = VIDEO_KNOWLEDGE.map((v) => ({
-        id: `video-${v.recommendationId}`,
-        type: "video" as const,
-        title: v.recommendationTitle,
-        content: v.insights,
-      }));
+      // Master mapping of recommendation IDs to their YouTube videos
+      const VIDEO_ID_MAP: Record<number, { youtubeId: string; title: string }[]> = {
+        1: [
+          { youtubeId: "wb7L3t0ejdI", title: "Whole Food Plant-Based Diet" },
+          { youtubeId: "ztIZoaKTeqk", title: "Whole Food Plant-Based Living" },
+        ],
+        2: [
+          { youtubeId: "VRzjoIgHNb0", title: "Water & Hydration — Quality, Purity & Health" },
+          { youtubeId: "KcYV0Wjx_2k", title: "Water & Hydration — The Science of Staying Hydrated" },
+        ],
+        3: [{ youtubeId: "tcwVfUAqWiY", title: "Sleep & Melatonin" }],
+        4: [{ youtubeId: "o2Kc1Iaow40", title: "Glycine" }],
+        5: [{ youtubeId: "YckoR3hLL9E", title: "Five Seeds of Life" }],
+        6: [
+          { youtubeId: "wY4vEBilWN4", title: "Vitamin B12" },
+          { youtubeId: "iotnggfP9Yk", title: "Vitamin D3" },
+          { youtubeId: "uxWARJ4s95Y", title: "Vitamin D3 (Part 2)" },
+        ],
+        7: [{ youtubeId: "qu3ixTQmpl0", title: "Six Movements" }],
+        10: [{ youtubeId: "wXsxwIJnUJk", title: "Meditation" }],
+        11: [{ youtubeId: "UHv3SCUioQU", title: "Time in Nature" }],
+        12: [{ youtubeId: "rgQvqi6aYD8", title: "Repairing the Relationship" }],
+        13: [{ youtubeId: "eD0N8wXjNSs", title: "Second Income Stream" }],
+        14: [{ youtubeId: "foBnfBX4YKQ", title: "Your Environment" }],
+        15: [{ youtubeId: "KvASX2yp0zU", title: "Methylene Blue & Photobiomodulation" }],
+        18: [
+          { youtubeId: "Weg9GUnH24E", title: "What Humans Are Designed to Eat" },
+          { youtubeId: "nEjuZsP8o7g", title: "The Ketogenic Diet — Is It Healthy?" },
+          { youtubeId: "MJVSD0hggZE", title: "The Ketogenic Diet is a Scam" },
+          { youtubeId: "uVGpTLMN6w4", title: "Mediterranean Diet vs WFPB" },
+          { youtubeId: "dpyz-AumCUk", title: "Is a Plant-Based Diet Always Healthy?" },
+        ],
+        99: [
+          { youtubeId: "xTVMGyJ8cZU", title: "Cold Showers — Hormesis & Cognitive Benefits" },
+          { youtubeId: "may_PlDfNRE", title: "Cold Showers — 5 Evidence-Based Benefits" },
+        ],
+        100: [
+          { youtubeId: "QBnT8es28WY", title: "Fenbendazole — Joe Tippens Protocol" },
+          { youtubeId: "5Q5QjEPGNNg", title: "Fenbendazole & Ivermectin — Stanford Case Series" },
+        ],
+      };
+
+      const videoEntries = VIDEO_KNOWLEDGE.map((v) => {
+        // Also check for Dr. Wareham / Dr. Scharffenberg entries (recommendationId 1 but different titles)
+        let videoLinks = VIDEO_ID_MAP[v.recommendationId] || [];
+        // For duplicate recommendationId=1 entries (Wareham, Scharffenberg), extract from text
+        if (v.recommendationId === 1 && v.recommendationTitle.includes("Wareham")) {
+          videoLinks = [{ youtubeId: "FX58PyQwrcI", title: "Dr. Ellsworth Wareham — 98yo Vegan Heart Surgeon" }];
+        } else if (v.recommendationId === 1 && v.recommendationTitle.includes("Scharffenberg")) {
+          videoLinks = [{ youtubeId: "RGy3jhiPqD0", title: "Dr. Scharffenberg — 100yo Doctor's 7 Risk Factors" }];
+        }
+        return {
+          id: `video-${v.recommendationId}-${v.recommendationTitle.slice(0, 20).replace(/\W/g, '')}`,
+          type: "video" as const,
+          title: v.recommendationTitle,
+          content: v.insights,
+          videoLinks,
+        };
+      });
 
       return [...videoEntries, ...conditionEntries];
     }),
