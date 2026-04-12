@@ -45,7 +45,7 @@ export const appRouter = router({
       }));
 
       // Master mapping of recommendation IDs to their videos (YouTube or Rumble)
-      const VIDEO_ID_MAP: Record<number, { youtubeId?: string; rumbleUrl?: string; title: string }[]> = {
+      const VIDEO_ID_MAP: Record<number, { youtubeId?: string; rumbleUrl?: string; rumblePageUrl?: string; title: string }[]> = {
         1: [
           { youtubeId: "wb7L3t0ejdI", title: "Whole Food Plant-Based Diet" },
           { youtubeId: "ztIZoaKTeqk", title: "Whole Food Plant-Based Living" },
@@ -57,8 +57,8 @@ export const appRouter = router({
         3: [{ youtubeId: "tcwVfUAqWiY", title: "Sleep & Melatonin" }],
         // Zeolite/Cellular Detox uses a special recommendationId since it has no videoKnowledge entry
         101: [
-          { rumbleUrl: "https://rumble.com/embed/v6zz56g/", title: "Dr. Robert Young Speaks On MasterPeace" },
-          { rumbleUrl: "https://rumble.com/embed/v75is4o/", title: "Why Is MasterPeace So Powerful Yet Gentle?" },
+          { rumbleUrl: "https://rumble.com/embed/v6zz56g/", rumblePageUrl: "https://rumble.com/v725t6o-dr.-robert-young-speaks-on-masterpeace-compilation.html", title: "Dr. Robert Young Speaks On MasterPeace" },
+          { rumbleUrl: "https://rumble.com/embed/v75is4o/", rumblePageUrl: "https://rumble.com/v77pg4w-why-is-masterpeace-so-powerful-yet-gentle.html", title: "Why Is MasterPeace So Powerful Yet Gentle?" },
         ],
         4: [{ youtubeId: "o2Kc1Iaow40", title: "Glycine" }],
         5: [{ youtubeId: "YckoR3hLL9E", title: "Five Seeds of Life" }],

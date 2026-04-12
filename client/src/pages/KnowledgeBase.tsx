@@ -10,16 +10,12 @@ import { Link } from "wouter";
 import SiteNav from "@/components/SiteNav";
 import { useAuth } from "@/_core/hooks/useAuth";
 
-type VideoLink = { youtubeId?: string; rumbleUrl?: string; title: string };
+type VideoLink = { youtubeId?: string; rumbleUrl?: string; rumblePageUrl?: string; title: string };
 
 function getVideoUrl(vl: VideoLink): string {
   if (vl.youtubeId) return `https://www.youtube.com/watch?v=${vl.youtubeId}`;
-  if (vl.rumbleUrl) {
-    // Convert embed URL to watch URL
-    const embedMatch = vl.rumbleUrl.match(/embed\/([^/?]+)/);
-    if (embedMatch) return `https://rumble.com/${embedMatch[1]}`;
-    return vl.rumbleUrl;
-  }
+  if (vl.rumblePageUrl) return vl.rumblePageUrl;
+  if (vl.rumbleUrl) return vl.rumbleUrl;
   return "#";
 }
 
