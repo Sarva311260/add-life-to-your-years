@@ -274,3 +274,5 @@
 - [x] Add new "Recipes" subcategory in Lifestyle Choices on Media page (after WFPB, before Water & Hydration)
 - [x] Add recipe video VDMOFa8iRqo to Recipes subcategory (matching exact format of other videos in section)
 - [x] Extract recipe from video and display under the video
+- [x] Fix deployment OOM (exit code 137): transient build server memory issue — resolved on retry, deployment successful
+- [x] Add Bowen Therapy to AI consultation condition knowledge base for physical conditions

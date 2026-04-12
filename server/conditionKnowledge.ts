@@ -327,6 +327,26 @@ export const CONDITION_KNOWLEDGE: ConditionKnowledge[] = [
         "Establish a strict sleep hygiene protocol (cool room, digital sunset, consistent schedule) to allow the body the time and energy required to assess and repair itself overnight.",
     },
   },
+  {
+    id: "bowen-therapy",
+    label: "Bowen Therapy (Complementary Bodywork)",
+    overview:
+      "Bowen Therapy is a gentle, non-invasive, holistic soft-tissue technique that balances the autonomic nervous system and stimulates the body's innate healing mechanisms. It involves subtle, precise rolling movements over muscles, ligaments, and tendons -- with no forceful manipulation. It is used to reduce pain, improve mobility, reduce stress, and address a wide range of conditions including musculoskeletal injuries, digestive issues, chronic fatigue, migraines, fibromyalgia, respiratory conditions, and hormonal irregularities. It is safe for all ages, from infants to the elderly, and often provides rapid, long-term, or permanent remission of symptoms in relatively few sessions (many people experience significant improvements within three sessions).",
+    symptoms:
+      "Bowen Therapy may be recommended when a person presents with: chronic or acute back pain, neck pain, sciatica, frozen shoulder, joint discomfort, sports injuries (tennis elbow, hamstring issues, ankle/knee injuries), migraines or headaches, TMJ (jaw) problems, whiplash, fibromyalgia, chronic fatigue syndrome, arthritis, IBS or digestive issues (indigestion, reflux), respiratory issues (asthma), hormonal irregularities, pregnancy-related pain, poor sleep quality, high stress or anxiety, or reduced mobility and range of motion.",
+    triggers:
+      "Physical trauma, repetitive strain, postural imbalances, chronic stress activating the sympathetic nervous system, sports injuries, sedentary lifestyle leading to fascial restrictions, and accumulated muscular tension from unresolved emotional or physical stress.",
+    interventions: {
+      nutrition:
+        "Bowen Therapy works best alongside a clean WFPB diet that reduces systemic inflammation. Adequate hydration is essential after sessions to support lymphatic drainage and toxin removal. Anti-inflammatory foods (turmeric, ginger, leafy greens, berries) support the healing process initiated by the therapy.",
+      movement:
+        "Bowen Therapy improves circulation and lymphatic drainage, helping detoxify the body and rebalance systems. After sessions, gentle movement such as walking is encouraged. The therapy itself increases range of motion and supports rehabilitation of sports injuries, making it an excellent complement to a gradual return to exercise.",
+      stress:
+        "One of Bowen Therapy's primary mechanisms is calming the autonomic nervous system, shifting the body from sympathetic (fight-or-flight) into parasympathetic (rest-and-repair) mode. This makes it particularly effective for managing stress, anxiety, and fatigue. It pairs well with breathing practices and meditation.",
+      sleep:
+        "Studies indicate Bowen Therapy can improve sleep quality and increase pressure pain thresholds. By calming the nervous system and reducing pain, it helps restore natural sleep patterns. Sessions are recommended as part of a holistic approach alongside good sleep hygiene.",
+    },
+  },
 ];
 
 /**
