@@ -19,7 +19,8 @@ import { motion, AnimatePresence } from "framer-motion";
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 interface VideoItem {
-  youtubeId: string;
+  youtubeId?: string;
+  rumbleUrl?: string;
   title: string;
   description?: string;
   recipe?: {
@@ -49,7 +50,8 @@ interface PodcastItem {
 }
 
 interface StandaloneVideo {
-  youtubeId: string;
+  youtubeId?: string;
+  rumbleUrl?: string;
   title: string;
   description?: string;
   category?: string;
@@ -118,8 +120,30 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-3",
+    id: "rec-zeolite",
     number: 3,
+    title: "Cellular Detoxification with Nano-Zeolite",
+    description:
+      "Nano-zeolite provides a safe, evidence-based mechanism for reducing heavy metal load, binding microplastics, and supporting the body's natural detoxification pathways.",
+    color: "bg-emerald-100 text-emerald-800 border-emerald-200",
+    videos: [
+      {
+        rumbleUrl: "https://rumble.com/embed/v725t6o",
+        title: "Dr. Robert Young Speaks On MasterPeace",
+        description:
+          "A compilation of Dr. Robert Young discussing MasterPeace nano-zeolite and its applications in human health.",
+      },
+      {
+        rumbleUrl: "https://rumble.com/embed/v77pg4w",
+        title: "Why Is MasterPeace So Powerful Yet Gentle?",
+        description:
+          "How MasterPeace nano/picometer zeolite works to attract and bind toxins while nourishing the body with sea mineral plasma.",
+      },
+    ],
+  },
+  {
+    id: "rec-3",
+    number: 4,
     title: "Sleep & Melatonin",
     description:
       "Sleep is the body's most powerful repair mechanism. Learn how to optimise your sleep architecture and the role of melatonin.",
@@ -564,7 +588,7 @@ function VideoEmbed({ video }: { video: VideoItem }) {
       >
         <iframe
           className="absolute inset-0 w-full h-full"
-          src={`https://www.youtube.com/embed/${video.youtubeId}`}
+          src={video.youtubeId ? `https://www.youtube.com/embed/${video.youtubeId}` : video.rumbleUrl || ""}
           title={video.title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
@@ -867,9 +891,9 @@ function VideoModal({
               style={{ paddingBottom: "56.25%" }}
             >
               <iframe
-                key={activeVideo.youtubeId}
+                key={activeVideo.youtubeId || activeVideo.rumbleUrl}
                 className="absolute inset-0 w-full h-full"
-                src={`https://www.youtube.com/embed/${activeVideo.youtubeId}?autoplay=1`}
+                src={activeVideo.youtubeId ? `https://www.youtube.com/embed/${activeVideo.youtubeId}?autoplay=1` : activeVideo.rumbleUrl || ""}
                 title={activeVideo.title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen

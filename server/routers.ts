@@ -44,8 +44,8 @@ export const appRouter = router({
         ].join("\n\n"),
       }));
 
-      // Master mapping of recommendation IDs to their YouTube videos
-      const VIDEO_ID_MAP: Record<number, { youtubeId: string; title: string }[]> = {
+      // Master mapping of recommendation IDs to their videos (YouTube or Rumble)
+      const VIDEO_ID_MAP: Record<number, { youtubeId?: string; rumbleUrl?: string; title: string }[]> = {
         1: [
           { youtubeId: "wb7L3t0ejdI", title: "Whole Food Plant-Based Diet" },
           { youtubeId: "ztIZoaKTeqk", title: "Whole Food Plant-Based Living" },
@@ -55,6 +55,11 @@ export const appRouter = router({
           { youtubeId: "KcYV0Wjx_2k", title: "Water & Hydration — The Science of Staying Hydrated" },
         ],
         3: [{ youtubeId: "tcwVfUAqWiY", title: "Sleep & Melatonin" }],
+        // Zeolite/Cellular Detox uses a special recommendationId since it has no videoKnowledge entry
+        101: [
+          { rumbleUrl: "https://rumble.com/embed/v725t6o", title: "Dr. Robert Young Speaks On MasterPeace" },
+          { rumbleUrl: "https://rumble.com/embed/v77pg4w", title: "Why Is MasterPeace So Powerful Yet Gentle?" },
+        ],
         4: [{ youtubeId: "o2Kc1Iaow40", title: "Glycine" }],
         5: [{ youtubeId: "YckoR3hLL9E", title: "Five Seeds of Life" }],
         6: [

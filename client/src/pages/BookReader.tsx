@@ -186,7 +186,7 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
     { youtubeId: "VRzjoIgHNb0", title: "Water & Hydration — Quality, Purity & Health" },
     { youtubeId: "KcYV0Wjx_2k", title: "Water & Hydration — The Science of Staying Hydrated" },
   ],
-  "rec-3": [{ rumbleUrl: "https://rumble.com/embed/v725t6o", title: "Nano-Zeolite & Cellular Detoxification" }],
+  "rec-3": [{ rumbleUrl: "https://rumble.com/embed/v725t6o", title: "Dr. Robert Young Speaks On MasterPeace" }, { rumbleUrl: "https://rumble.com/embed/v77pg4w", title: "Why Is MasterPeace So Powerful Yet Gentle?" }],
   "rec-4": [{ youtubeId: "tcwVfUAqWiY", title: "Sleep & Melatonin" }],
   "rec-5": [{ youtubeId: "o2Kc1Iaow40", title: "Glycine" }],
   "rec-6": [{ youtubeId: "YckoR3hLL9E", title: "Five Seeds of Life" }],

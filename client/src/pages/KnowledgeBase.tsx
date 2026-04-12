@@ -10,7 +10,18 @@ import { Link } from "wouter";
 import SiteNav from "@/components/SiteNav";
 import { useAuth } from "@/_core/hooks/useAuth";
 
-type VideoLink = { youtubeId: string; title: string };
+type VideoLink = { youtubeId?: string; rumbleUrl?: string; title: string };
+
+function getVideoUrl(vl: VideoLink): string {
+  if (vl.youtubeId) return `https://www.youtube.com/watch?v=${vl.youtubeId}`;
+  if (vl.rumbleUrl) {
+    // Convert embed URL to watch URL
+    const embedMatch = vl.rumbleUrl.match(/embed\/([^/?]+)/);
+    if (embedMatch) return `https://rumble.com/${embedMatch[1]}`;
+    return vl.rumbleUrl;
+  }
+  return "#";
+}
 
 function VideoDropdown({ videoLinks, entryId }: { videoLinks: VideoLink[]; entryId: string }) {
   const [open, setOpen] = useState(false);
@@ -44,7 +55,7 @@ function VideoDropdown({ videoLinks, entryId }: { videoLinks: VideoLink[]; entry
         className="text-xs cursor-pointer hover:bg-primary/80 flex items-center gap-1"
         onClick={(e) => {
           e.stopPropagation();
-          window.open(`https://www.youtube.com/watch?v=${videoLinks[0].youtubeId}`, "_blank");
+          window.open(getVideoUrl(videoLinks[0]), "_blank");
         }}
       >
         <Play className="w-3 h-3" />
@@ -74,11 +85,11 @@ function VideoDropdown({ videoLinks, entryId }: { videoLinks: VideoLink[]; entry
           </div>
           {videoLinks.map((vl, i) => (
             <button
-              key={`${entryId}-${vl.youtubeId}`}
+              key={`${entryId}-${vl.youtubeId || vl.rumbleUrl || i}`}
               className="w-full text-left px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground flex items-center gap-2 transition-colors"
               onClick={(e) => {
                 e.stopPropagation();
-                window.open(`https://www.youtube.com/watch?v=${vl.youtubeId}`, "_blank");
+                window.open(getVideoUrl(vl), "_blank");
                 setOpen(false);
               }}
             >
