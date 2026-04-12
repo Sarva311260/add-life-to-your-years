@@ -294,3 +294,4 @@
 - [x] Fix Chapter 9 banner image — shows "Thelter" instead of "Shelter"
 - [x] Fix zeolite video links — added 2 Rumble videos (Dr. Robert Young MasterPeace + Why Is MasterPeace So Powerful), updated KnowledgeBase, BookReader, and Media pages to support Rumble embeds
 - [x] Add zeolite/cellular detoxification entry to Knowledge Base (videoKnowledge.ts) with Rumble video links
+- [x] Update all instances of "151 Pages" to "226 Pages" across entire site (homepage + BookReader; no images needed as page count is text-based)
