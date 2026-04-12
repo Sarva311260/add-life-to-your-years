@@ -293,3 +293,4 @@
 - [x] Fix contradictory water advice in Chapter 6 — "mineral-rich water" statement contradicts distilled water as gold standard; fixed in Key Takeaways box and videoKnowledge.ts
 - [x] Fix Chapter 9 banner image — shows "Thelter" instead of "Shelter"
 - [x] Fix zeolite video links — added 2 Rumble videos (Dr. Robert Young MasterPeace + Why Is MasterPeace So Powerful), updated KnowledgeBase, BookReader, and Media pages to support Rumble embeds
+- [x] Add zeolite/cellular detoxification entry to Knowledge Base (videoKnowledge.ts) with Rumble video links

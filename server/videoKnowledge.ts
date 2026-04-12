@@ -610,8 +610,39 @@ THE RESEARCH FUNDING GAP: The absence of large-scale RCTs for these off-patent d
 
 VIDEO RESOURCES:
 Video 1 (youtubeId: QBnT8es28WY): "Fenbendazole — The Joe Tippens Protocol & Cancer Research" — Covers the Joe Tippens story, the science behind benzimidazole compounds as anticancer agents, microtubule disruption mechanisms, glucose uptake inhibition, and the growing body of case reports.
-
 Video 2 (youtubeId: 5Q5QjEPGNNg): "Fenbendazole & Ivermectin — Stanford Case Series & Mechanisms" — Discusses the Stanford/Washington University case series documenting tumour regression, proposed mechanisms of action for both drugs, the NCI's formal investigation of ivermectin, and the structural barriers to large-scale clinical trials for off-patent drugs.`,
+  },
+  {
+    recommendationId: 101,
+    recommendationTitle: "Cellular Detoxification with Nano-Zeolite",
+    insights: `VIDEO INSIGHTS FOR RECOMMENDATION 3: CELLULAR DETOXIFICATION WITH NANO-ZEOLITE
+
+Source Video A: "Dr. Robert Young Speaks On MasterPeace" (Rumble)
+Dr. Robert Young discusses the science behind nano-zeolite and its applications in human health. The modern world exposes the body to an unprecedented toxic burden — heavy metals (lead, mercury, cadmium, arsenic), microplastics, PFAS ("forever chemicals"), and thousands of synthetic compounds that did not exist a century ago. The body's natural detoxification systems (liver, kidneys, lymphatic system) evolved for a different world and are often overwhelmed by the volume and variety of modern toxins.
+
+Zeolite is a naturally occurring crystalline mineral with a three-dimensional lattice structure that carries a permanent negative charge. This negative charge acts as a molecular magnet, attracting and trapping positively charged toxins — including heavy metals, ammonia, and certain mycotoxins — within its porous cage structure. Once bound, the toxins are carried through the body and excreted without being reabsorbed.
+
+Key scientific points:
+- Clinoptilolite (the most studied zeolite form) is non-toxic, non-absorbed, and effective at binding heavy metals
+- Nano and picometer-scale particles can enter the bloodstream and reach tissues where toxins accumulate
+- A clinical study in Frontiers in Medicine (2022) demonstrated that clinoptilolite significantly increased urinary excretion of toxic heavy metals
+- Nano-scale clinoptilolite demonstrates superior bioavailability and tissue penetration compared to conventional preparations
+- Zeolite nanocomposites can bind microplastics and PFAS — substances conventional detoxification cannot address
+
+Source Video B: "Why Is MasterPeace So Powerful Yet Gentle?" (Rumble)
+This video explains the dual mechanism of MasterPeace: removal of toxins through nano/picometer zeolite combined with replenishment through sea mineral plasma. When heavy metals are displaced from enzyme binding sites, those sites must be occupied by the correct minerals to restore function. Sea mineral plasma provides a broad spectrum of trace minerals in picometer-scale ionic form — the size at which minerals are most readily absorbed by cells.
+
+Practical guidance:
+- Begin with a low dose (two to four drops in water, once daily) and increase gradually over two to four weeks
+- Take on an empty stomach or between meals for optimal absorption
+- Maintain adequate hydration throughout
+- Some initial fatigue is a recognised response as the body mobilises stored toxins — this typically resolves within weeks
+- The toxic burden accumulated over a lifetime cannot be addressed by diet alone; nano-zeolite provides a safe, evidence-based mechanism for systematic detoxification
+
+References:
+1. Kraljević Pavelić S, et al. Critical review on zeolite clinoptilolite safety and medical applications in vivo. Frontiers in Pharmacology. 2018;9:1350.
+2. Mastinu A, et al. Zeolite clinoptilolite: therapeutic virtues of an ancient mineral. Molecules. 2019;24(8):1517.
+3. Dolanc I, et al. The impact of long-term clinoptilolite administration on the concentration profile of metals in rodent organisms. Biology. 2023;12(2):193.`,
   },
 ];
 
