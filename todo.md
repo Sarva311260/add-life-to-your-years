@@ -320,3 +320,4 @@
 - [x] PEMF page: Add Contact menu item to navigation so visitors can easily leave a message
 - [x] Add YouTube video qiR4yBymtwY as first Vitamin D3 video in Rec 8 (BookReader REC_VIDEOS)
 - [x] Add video to knowledge base (videoKnowledge.ts) with content summary
+- [x] Bug: Knowledge base text not selectable/copyable — fix CSS preventing text selection

@@ -294,9 +294,9 @@ export default function KnowledgeBase() {
                     </div>
                   </CardHeader>
                   {isExpanded && (
-                    <CardContent className="px-5 pb-5">
-                      <div className="mt-2 border-t pt-4">
-                        <pre className="whitespace-pre-wrap text-sm text-foreground font-sans leading-relaxed">
+                    <CardContent className="px-5 pb-5" onClick={(e) => e.stopPropagation()}>
+                      <div className="mt-2 border-t pt-4 select-text cursor-text">
+                        <pre className="whitespace-pre-wrap text-sm text-foreground font-sans leading-relaxed select-text">
                           {entry.content}
                         </pre>
                       </div>
