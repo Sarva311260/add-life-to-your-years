@@ -66,6 +66,7 @@ export const appRouter = router({
         5: [{ youtubeId: "YckoR3hLL9E", title: "Five Seeds of Life" }],
         6: [
           { youtubeId: "wY4vEBilWN4", title: "Vitamin B12" },
+          { youtubeId: "qiR4yBymtwY", title: "Vitamin D3 — Dr. Michael Holick" },
           { youtubeId: "iotnggfP9Yk", title: "Vitamin D3" },
           { youtubeId: "uxWARJ4s95Y", title: "Vitamin D3 (Part 2)" },
         ],

@@ -47,6 +47,7 @@ export const RECOMMENDATION_VIDEOS: Record<number, RecommendationVideo[]> = {
   ],
   6: [
     { youtubeId: "wY4vEBilWN4", title: "Vitamin B12 — Why It Matters & How to Supplement" },
+    { youtubeId: "qiR4yBymtwY", title: "Vitamin D3 — Dr. Michael Holick" },
     { youtubeId: "iotnggfP9Yk", title: "Vitamin D — The Sunshine Vitamin & Your Health" },
     { youtubeId: "uxWARJ4s95Y", title: "Vitamin D3 — Part 2" },
   ],
