@@ -24,6 +24,7 @@ import ConsultHistory from "@/pages/ConsultHistory";
 import Shop from "@/pages/Shop";
 import ReviewSuccess from "@/pages/ReviewSuccess";
 import KnowledgeBase from "@/pages/KnowledgeBase";
+import PEMF from "@/pages/PEMF";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -57,6 +58,7 @@ function Router() {
       <Route path={"/shop"} component={Shop} />
       <Route path={"/dashboard"} component={Dashboard} />
       <Route path={"/knowledge-base"} component={KnowledgeBase} />
+      <Route path={"/pemf"} component={PEMF} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
