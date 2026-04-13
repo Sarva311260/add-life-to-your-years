@@ -400,7 +400,7 @@ export default function PEMFAffiliate() {
     setMobileMenuOpen(false);
     const el = document.getElementById(sectionId);
     if (el) {
-      const headerOffset = 100;
+      const headerOffset = 70;
       const elementPosition = el.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({ top: elementPosition - headerOffset, behavior: 'smooth' });
     }
@@ -559,7 +559,7 @@ export default function PEMFAffiliate() {
       </section>
 
       {/* ── What is PEMF? ─────────────────────────────────── */}
-      <section id="science" className="py-20 bg-white">
+      <section id="science" className="py-20 bg-white" style={{ scrollMarginTop: '70px' }}>
         <div className="container max-w-4xl">
           <FadeIn>
             <div className="text-center mb-14">
@@ -630,7 +630,7 @@ export default function PEMFAffiliate() {
       </section>
 
       {/* ── Clinical Evidence ─────────────────────────────── */}
-      <section id="evidence" className="py-20 bg-white">
+      <section id="evidence" className="py-20 bg-white" style={{ scrollMarginTop: '70px' }}>
         <div className="container max-w-5xl">
           <FadeIn>
             <div className="text-center mb-14">
@@ -659,7 +659,7 @@ export default function PEMFAffiliate() {
       </section>
 
       {/* ── Products ──────────────────────────────────────── */}
-      <section id="products" className="py-20 bg-gradient-to-b from-emerald-50/40 to-white">
+      <section id="products" className="py-20 bg-gradient-to-b from-emerald-50/40 to-white" style={{ scrollMarginTop: '70px' }}>
         <div className="container max-w-5xl">
           <FadeIn>
             <div className="text-center mb-14">
