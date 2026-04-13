@@ -4,6 +4,7 @@ import {
   InsertUser, users, evaluations, recommendations, InsertEvaluation, InsertRecommendation,
   consultations, consultMessages, consultReports, shopProducts, reviewRequests, consultRatings,
   InsertConsultation, InsertConsultMessage, InsertConsultReport, InsertShopProduct, InsertReviewRequest, InsertConsultRating,
+  pemfAffiliates, InsertPemfAffiliate, pemfEnquiries, InsertPemfEnquiry,
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -311,4 +312,49 @@ export async function updateConsultRating(id: number, data: { rating: number; fe
   const db = await getDb();
   if (!db) throw new Error("Database not available");
   await db.update(consultRatings).set(data).where(eq(consultRatings.id, id));
+}
+
+// ─── PEMF Affiliates ───────────────────────────────────────────────
+
+export async function createPemfAffiliate(data: InsertPemfAffiliate): Promise<number> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const [result] = await db.insert(pemfAffiliates).values(data);
+  return (result as { insertId: number }).insertId;
+}
+
+export async function getPemfAffiliateBySlug(slug: string) {
+  const db = await getDb();
+  if (!db) return null;
+  const rows = await db.select().from(pemfAffiliates)
+    .where(eq(pemfAffiliates.slug, slug))
+    .limit(1);
+  return rows[0] || null;
+}
+
+export async function getPemfAffiliateById(id: number) {
+  const db = await getDb();
+  if (!db) return null;
+  const rows = await db.select().from(pemfAffiliates)
+    .where(eq(pemfAffiliates.id, id))
+    .limit(1);
+  return rows[0] || null;
+}
+
+export async function checkSlugExists(slug: string): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+  const rows = await db.select({ id: pemfAffiliates.id }).from(pemfAffiliates)
+    .where(eq(pemfAffiliates.slug, slug))
+    .limit(1);
+  return rows.length > 0;
+}
+
+// ─── PEMF Enquiries ────────────────────────────────────────────────
+
+export async function createPemfEnquiry(data: InsertPemfEnquiry): Promise<number> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const [result] = await db.insert(pemfEnquiries).values(data);
+  return (result as { insertId: number }).insertId;
 }

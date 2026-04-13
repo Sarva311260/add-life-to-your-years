@@ -300,3 +300,10 @@
 - [x] PEMF page: Add product detail popup/modal for P90+ with additional information
 - [x] PEMF page: Add product detail popup/modal for Shaken Massager with additional information
 - [x] PEMF page: Add product detail popup/modal for Galaxy G-One with additional information
+- [x] PEMF Affiliate System: Create database tables for affiliates (name, email, phone, slug) and contact enquiries
+- [x] PEMF Affiliate System: Build tRPC procedures for affiliate registration, lookup by slug, and contact form submission
+- [x] PEMF Affiliate System: Build affiliate sign-up page at /pemf/join (public form: name, email, phone)
+- [x] PEMF Affiliate System: Build personalised PEMF page at /pemf/:slug with affiliate name & phone in header
+- [x] PEMF Affiliate System: Update PEMF header layout — logo left, menu centered, "Name — Brand Partner" + phone on right
+- [x] PEMF Affiliate System: Contact form on personalised page that notifies both owner (sarva) and affiliate via email
+- [x] PEMF Affiliate System: Register routes in App.tsx for /pemf/join and /pemf/:slug

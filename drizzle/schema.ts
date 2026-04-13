@@ -205,3 +205,41 @@ export const consultRatings = mysqlTable("consult_ratings", {
 
 export type ConsultRating = typeof consultRatings.$inferSelect;
 export type InsertConsultRating = typeof consultRatings.$inferInsert;
+
+/**
+ * PEMF Affiliates — brand partners who get personalised PEMF pages.
+ */
+export const pemfAffiliates = mysqlTable("pemf_affiliates", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  phone: varchar("phone", { length: 50 }).notNull(),
+  /** URL-friendly slug derived from name (e.g. john-smith) */
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
+  /** Whether the affiliate is currently active */
+  isActive: int("isActive").default(1).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type PemfAffiliate = typeof pemfAffiliates.$inferSelect;
+export type InsertPemfAffiliate = typeof pemfAffiliates.$inferInsert;
+
+/**
+ * PEMF Enquiries — contact form submissions from affiliate pages.
+ */
+export const pemfEnquiries = mysqlTable("pemf_enquiries", {
+  id: int("id").autoincrement().primaryKey(),
+  affiliateId: int("affiliateId").notNull(),
+  /** Visitor's name */
+  visitorName: varchar("visitorName", { length: 255 }).notNull(),
+  /** Visitor's email */
+  visitorEmail: varchar("visitorEmail", { length: 320 }).notNull(),
+  /** Visitor's phone */
+  visitorPhone: varchar("visitorPhone", { length: 50 }),
+  /** Message from the visitor */
+  message: text("message"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type PemfEnquiry = typeof pemfEnquiries.$inferSelect;
+export type InsertPemfEnquiry = typeof pemfEnquiries.$inferInsert;
