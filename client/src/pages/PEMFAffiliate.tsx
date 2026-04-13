@@ -586,33 +586,33 @@ export default function PEMFAffiliate() {
             </div>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <div className="prose prose-lg prose-gray max-w-none">
-              <p className="text-gray-700 leading-relaxed">
+            <div className="max-w-none">
+              <p className="text-gray-700 leading-relaxed text-base">
                 Pulsed Electromagnetic Field (PEMF) therapy uses externally applied electromagnetic pulses to stimulate cellular repair and regeneration. The technology has been used in clinical medicine since the 1970s — it was first approved by the FDA in 1979 for the treatment of non-union bone fractures, and has since accumulated a substantial evidence base across a range of applications.
               </p>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed text-base">
                 The mechanism is consistent with what we know about cellular electrical signalling: PEMF pulses interact with the cell membrane's electrical potential, stimulating ion channels, improving cellular energy production (ATP synthesis), reducing inflammation, and promoting tissue repair. The frequencies used in therapeutic PEMF devices typically fall within the range of the Earth's natural Schumann resonances — suggesting that PEMF therapy may in part be restoring the electromagnetic environment that the body evolved within.
               </p>            </div>
           </FadeIn>
 
           {/* Cell, Mitochondria & Phone Charger Analogy */}
           <FadeIn delay={0.15}>
-            <div className="mt-10 prose prose-lg prose-gray max-w-none">
+            <div className="mt-10 max-w-none">
               <h3 className="font-serif text-2xl font-semibold text-gray-900 mb-4">You Are an Electromagnetic Being</h3>
-              <p className="text-gray-700 leading-relaxed mb-5">
+              <p className="text-gray-700 leading-relaxed text-base mb-5">
                 At the most fundamental level, you are not just a biological organism — you are an electromagnetic being. Every living cell in your body carries an electrical charge, and it is this charge that keeps the cell alive. When the electromagnetic field of a cell collapses, the cell dies. This is not a metaphor; it is the basic physics of cellular life. The health of your cells is inseparable from the health of their electrical environment.
               </p>
-              <p className="text-gray-700 leading-relaxed mb-5">
+              <p className="text-gray-700 leading-relaxed text-base mb-5">
                 Inside each cell are tiny structures called <strong>mitochondria</strong> — the energy plants of the cell. Their job is to take the oxygen you breathe and the food you eat and convert them into <strong>ATP</strong> (adenosine triphosphate), the universal energy currency that powers every function your body performs. This conversion process is driven by a continuous flow of electrons — think of it like the spinning propeller of a turbine, generating electricity. When that electron flow is strong and uninterrupted, your cells are energised, your tissues repair efficiently, and your body thrives.
               </p>
-              <p className="text-gray-700 leading-relaxed mb-5">
+              <p className="text-gray-700 leading-relaxed text-base mb-5">
                 But that electron flow can be disrupted. Toxins, pesticides, industrial chemicals, chronic inflammation, nutritional deficiencies, and infections can all impair mitochondrial function and reduce ATP production. When this happens, cells begin to malfunction. And here is the critical insight: <strong>every major chronic disease</strong> — inflammatory, autoimmune, degenerative, and even cancerous — has a mitochondrial component. At the heart of virtually all chronic illness is a shortage of cellular energy. The cells are not dying from a lack of medicine; they are struggling from a lack of power.
               </p>
               <h3 className="font-serif text-2xl font-semibold text-gray-900 mb-4 mt-8">The Phone Charger Analogy</h3>
-              <p className="text-gray-700 leading-relaxed mb-5">
+              <p className="text-gray-700 leading-relaxed text-base mb-5">
                 Think about what happens when your mobile phone battery runs flat. The screen dims, apps crash, and eventually the phone shuts down entirely — not because anything is broken, but simply because there is no power. The solution is straightforward: you place it on a wireless charger. The charger uses a <strong>pulsating electromagnetic field</strong> to transfer energy through induction — no wires, no direct contact — and the phone's battery begins to recharge.
               </p>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed text-base">
                 The products on this site like the P90+ work on exactly the same principle, but for your body. When you place your feet on the P90+'s metal plate, the device generates a pulsating electromagnetic field that passes through your body by induction — just like that wireless charger. Your mitochondria, the batteries of your cells, pick up this electromagnetic energy and use it to restore their electron flow and ramp up ATP production. Depleted, sluggish cells begin to recharge. Circulation improves, oxygen delivery increases, inflammation reduces, and the body's natural repair processes are switched back on. You are not adding anything foreign to your body — you are simply restoring the energy environment that your cells were designed to operate within.
               </p>
             </div>
@@ -626,7 +626,7 @@ export default function PEMFAffiliate() {
                 </div>
                 <div>
                   <h3 className="font-serif text-xl font-semibold text-gray-900 mb-2">PEMF and Redox Signalling</h3>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed text-base">
                     One of the most important mechanisms of PEMF therapy is its direct influence on cellular redox biochemistry. Research has demonstrated that PEMF exposure modulates the production and balance of reactive oxygen species (ROS) within cells, particularly at the mitochondrial level. Rather than simply suppressing oxidative stress, PEMF appears to <em>recalibrate</em> the redox environment — reducing excessive ROS while preserving the beneficial signalling functions that reactive species play in immune defence, apoptosis, and tissue repair.
                   </p>
                 </div>
@@ -637,7 +637,7 @@ export default function PEMFAffiliate() {
           <FadeIn delay={0.3}>
             <div className="mt-14">
               <h3 className="font-serif text-2xl font-semibold text-gray-900 mb-4">From Hospital Rooms to Your Living Room</h3>
-              <p className="text-gray-700 leading-relaxed mb-6">
+              <p className="text-gray-700 leading-relaxed text-base mb-6">
                 For decades, the remarkable benefits of PEMF therapy were locked behind the doors of hospitals and specialist clinics. The devices required to deliver therapeutic electromagnetic pulses were enormous, complex, and extraordinarily expensive. Clinical-grade machines like the <strong>Papimi</strong> — a high-powered ion induction therapy device developed in Greece — cost upwards of <strong>US$60,000</strong>, required trained operators, and were far too large and specialised for anything other than a clinical setting. The result was that millions of people who could have benefited from this proven technology simply had no access to it.
               </p>
 
@@ -660,7 +660,7 @@ export default function PEMFAffiliate() {
                 </div>
               </div>
 
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed text-base">
                 That has now changed. Thanks to <strong>OlyLife</strong>, this extraordinary technology is no longer confined to hospitals and clinics. Through years of innovation, miniaturisation, and a clever direct-to-consumer business model, OlyLife has managed to bring the cost of genuine PEMF therapy down to levels that are accessible to everyday people — without compromising on the science or the therapeutic effectiveness. What once required a US$60,000 machine and a trained clinician can now be experienced in the comfort of your own home, at a fraction of the cost.
               </p>
             </div>
@@ -714,7 +714,7 @@ export default function PEMFAffiliate() {
                     {item.icon}
                   </div>
                   <h3 className="font-semibold text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">{item.text}</p>
+                  <p className="text-base text-gray-600 leading-relaxed">{item.text}</p>
                 </div>
               </FadeIn>
             ))}
@@ -748,7 +748,7 @@ export default function PEMFAffiliate() {
                       <div className="md:w-3/5 p-8 flex flex-col justify-center">
                         <Badge className="w-fit bg-emerald-100 text-emerald-800 border-emerald-200 mb-3 text-xs">{product.tagline}</Badge>
                         <h3 className="font-serif text-2xl font-bold text-gray-900 mb-3">{product.name}</h3>
-                        <p className="text-gray-600 leading-relaxed mb-5">{product.description}</p>
+                        <p className="text-gray-600 leading-relaxed text-base mb-5">{product.description}</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-5">
                           {product.features.map((f) => (
                             <div key={f} className="flex items-center gap-2 text-sm text-gray-700">
@@ -810,7 +810,7 @@ export default function PEMFAffiliate() {
                 <div className="text-center">
                   <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-5 font-serif text-xl font-bold">{item.step}</div>
                   <h3 className="font-semibold text-gray-900 mb-3">{item.title}</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+                  <p className="text-base text-gray-600 leading-relaxed">{item.desc}</p>
                 </div>
               </FadeIn>
             ))}

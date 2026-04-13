@@ -323,3 +323,4 @@
 - [x] Bug: Knowledge base text not selectable/copyable — fix CSS preventing text selection
 - [x] PEMF page: Analyze video 5uHnNjfJEYU, write phone charger analogy paragraphs (P90+ metal plate), insert at right place in PEMF page only
 - [x] PEMF page: Find and add peer-reviewed references for mitochondria/ATP/chronic disease and PEMF induction to evidence section
+- [x] PEMF page: Standardise body text font size across the whole page to match 'What is PEMF' section, keep references smaller
