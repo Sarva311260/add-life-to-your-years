@@ -400,7 +400,7 @@ export default function PEMFAffiliate() {
     setMobileMenuOpen(false);
     const el = document.getElementById(sectionId);
     if (el) {
-      const headerOffset = 80;
+      const headerOffset = 100;
       const elementPosition = el.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({ top: elementPosition - headerOffset, behavior: 'smooth' });
     }
