@@ -230,7 +230,28 @@ Supplementation Protocol:
 - Key insight: Even vegetarians and vegans who "feel fine" should supplement proactively — neurological damage from B12 deficiency can be silent for years before symptoms appear
 - Studies show vegetarians and vegans have better overall health markers than omnivores, but this advantage is significantly reduced in those who are B12-deficient
 
-Source Video B: "Vitamin D — The Sunshine Vitamin & Your Health"
+Source Video B: "Vitamin D3 — Dr. Michael Holick (Pioneer of Vitamin D Research)"
+This video features an in-depth interview with Dr. Michael Holick, the scientist who identified the major circulating and active forms of Vitamin D. Dr. Holick is one of the world's foremost authorities on Vitamin D research.
+
+Optimal Blood Levels: The Endocrine Society defines sufficiency as at least 30 ng/mL, but Dr. Holick recommends optimal blood levels of 40 to 60 ng/mL (up to 100 ng/mL is considered perfectly safe).
+
+Dosage Recommendations: Dr. Holick recommends a minimum of 5,000 IU per day for adults, with 10,000 IU per day being ideal. He personally takes 8,000 IU/day. For a normal-weight person, taking 100 IU of Vitamin D raises the blood level by approximately 1 ng/mL. Obese individuals (BMI > 30) need 2 to 3 times more Vitamin D than normal-weight individuals to achieve the same blood levels.
+
+Key Research Findings:
+- VITAL Study: Taking 2,000 IU/day for five years resulted in a 25% reduction in cancer mortality and a 22% reduction in autoimmune disorders. For normal-weight individuals, it reduced cancer incidence by 24%.
+- Pregnancy: Maintaining blood levels around 40 ng/mL is associated with a 60% reduced risk of premature birth. A study of 250 pregnant women showed improved odds of successful vaginal delivery when mothers were Vitamin D sufficient.
+- Type 1 Diabetes: A 1960s Finnish study showed infants given 2,000 IU daily had an 88% reduced risk of developing Type 1 Diabetes. When authorities later lowered the dose to 400 IU, diabetes rates increased dramatically.
+- Multiple Sclerosis: Living at higher latitudes increases MS risk by 100% due to lack of sun exposure. A Harvard study showed women taking the highest amounts of Vitamin D had approximately 40% reduced risk of MS.
+- COVID-19: A study of approximately 200,000 blood samples showed that Vitamin D deficient individuals had a much higher risk of contracting and dying from COVID-19. Risk reduction improved significantly at 34 ng/mL and continued to improve up to 60 ng/mL.
+- Gene Expression: A study giving healthy adults 600, 4,000, or 10,000 IU/day for six months showed a dose-dependent response. The 10,000 IU dose altered over 1,200 genes controlling apoptosis, immune function, metabolic activity, and antioxidants.
+
+On Cofactors: Dr. Holick states that Vitamin K2, while important for bone health, is not strictly necessary alongside Vitamin D — pushing back against claims that high-dose D3 without K2 causes arterial calcium buildup. He notes there is no evidence for this unless toxic levels of Vitamin D are reached. Magnesium is required to metabolise Vitamin D but is typically adequate from a healthy diet.
+
+Toxicity: Vitamin D toxicity is incredibly rare. Studies giving patients 50,000 IU every two weeks for years showed no toxicity.
+
+Resources: Dr. Holick helped develop the free app "D Minder" (dminder.info), which calculates Vitamin D production from sun exposure based on location, time, skin type, and weight. His book "The Vitamin D Solution" provides comprehensive guidance.
+
+Source Video C: "Vitamin D — The Sunshine Vitamin & Your Health"
 Vitamin D deficiency affects an estimated 1 billion people globally. Despite being called a "vitamin," Vitamin D is actually a prohormone — a precursor to a powerful steroid hormone that regulates over 2,000 genes and influences virtually every system in the body.
 
 Why Deficiency is So Common: Modern indoor lifestyles severely limit sun exposure. Sunscreen blocks UVB rays needed for Vitamin D synthesis. People living above 35° latitude cannot produce adequate Vitamin D from sunlight for 4–6 months of the year. Darker skin requires significantly more sun exposure. Obesity sequesters Vitamin D in fat tissue.
@@ -247,7 +268,7 @@ Supplementation Protocol:
 - Retest after 3 months to confirm levels have reached optimal range
 - Take with a meal containing fat for best absorption (fat-soluble vitamin)
 
-Source Video C: "Vitamin D3 — Part 2 (Advanced Protocols)"
+Source Video D: "Vitamin D3 — Part 2 (Advanced Protocols)"
 Vitamin D3 from sun or supplements must be converted twice — first in the liver (to 25-hydroxyvitamin D), then in the kidneys and other tissues (to the active hormone). This conversion requires adequate Magnesium at every step. Without sufficient Magnesium, supplementing with Vitamin D will not produce the desired health benefits.
 
 Critical Co-factor Network:

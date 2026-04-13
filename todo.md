@@ -318,3 +318,5 @@
 - [x] Book: Add redox supplementation section to Chapter 4 (Redox) — covering redox supplements, keeping PEMF redox reference
 - [x] Book: Update Recommendation 11 with cross-reference to Chapter 4 for redox supplementation
 - [x] PEMF page: Add Contact menu item to navigation so visitors can easily leave a message
+- [x] Add YouTube video qiR4yBymtwY as first Vitamin D3 video in Rec 8 (BookReader REC_VIDEOS)
+- [x] Add video to knowledge base (videoKnowledge.ts) with content summary
