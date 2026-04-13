@@ -315,3 +315,5 @@
 - [x] PEMF page: Add photos of Papimi and clinical PEMF devices
 - [x] PEMF page: Add paragraph about OlyLife making the technology affordable and accessible
 - [x] PEMF page: Apply same changes to PEMFAffiliate.tsx
+- [x] Book: Add redox supplementation section to Chapter 4 (Redox) — covering redox supplements, keeping PEMF redox reference
+- [x] Book: Update Recommendation 11 with cross-reference to Chapter 4 for redox supplementation

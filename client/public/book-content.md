@@ -328,12 +328,27 @@ The decline in redox signalling capacity is not caused by any single factor. It 
 
 Redox biochemistry is not a standalone topic. It is the biochemical substrate upon which every other health intervention operates. The benefits of exercise, sleep, nutrition, stress management, and therapeutic technologies such as PEMF therapy are all mediated — at least in part — through their effects on cellular redox balance. Understanding this gives us a more coherent picture of why these interventions work, and why their effects compound when combined.
 
+**Supplementing Redox Signalling Molecules**
+
+For most of human history, the idea of supplementing redox signalling molecules was not possible — these molecules are produced inside cells, and they are extraordinarily fragile. Outside the body, they break down within seconds. The scientific consensus, until recently, was that supplementation of native redox molecules was simply not achievable.
+
+That consensus has been challenged by a technology developed over more than a decade of research by a team of medical scientists and engineers. Using a proprietary electrochemical process, researchers discovered a method to reorganise the molecules of purified water and natural salts into a stable suspension of the same redox signalling molecules that the body produces natively — including balanced ratios of reactive oxygen species and their reductive counterparts. The resulting solution, when consumed, delivers these molecules in a form that the body recognises as its own, allowing them to participate directly in cellular signalling processes.
+
+The significance of this development lies in what it addresses: the age-related decline in the body's own production of redox signalling molecules. Because this decline begins in the mid-teens and continues at approximately 10 per cent per decade, supplementation offers a means of restoring a more youthful redox environment at the cellular level — not by introducing foreign compounds, but by replenishing molecules that are native to the body and that the body is simply producing less of.
+
+Research conducted on this technology has demonstrated measurable effects on biomarkers of cellular health, including improvements in antioxidant enzyme activity (confirming that the molecules are activating the body's endogenous antioxidant systems), changes in gene expression consistent with improved cellular communication, and improvements in cardiovascular and immune markers. Independent studies have confirmed that the molecules in these preparations are bioactive and distinct from simple saline solution.
+
+It is important to note that this is not antioxidant supplementation in the conventional sense. Antioxidants — whether from food or supplements — neutralise free radicals directly. Redox signalling molecule supplementation works differently: it supports the *signalling infrastructure* that tells the body when and how to deploy its own antioxidant defences, repair damaged cells, and coordinate immune responses. This distinction matters clinically, because the indiscriminate neutralisation of all ROS can actually impair health — blunting the very signals the body uses to adapt to exercise, fight infection, and regulate gene expression.
+
+For those seeking to support their cellular health as they age, supplementation with stabilised native redox signalling molecules represents one of the most scientifically coherent approaches available — not as a replacement for the foundational lifestyle practices described throughout this book, but as a meaningful complement to them.
+
 > **Key Takeaways**
 >
 > - Redox biochemistry — the continuous transfer of electrons between molecules — is the foundational language of cellular life, governing energy production, immune function, tissue repair, and gene expression.
 > - Reactive oxygen species (ROS) are not simply damaging free radicals; at physiological concentrations, they are precision signalling molecules that activate antioxidant defences and coordinate cellular communication.
 > - Antioxidants do not work unless activated by redox signalling molecules — making the balance of the redox system more important than antioxidant intake alone.
 > - From approximately age sixteen, the body's production of redox signalling molecules declines by an estimated 10 per cent per decade — a gradual loss that underlies many of the hallmarks of ageing.
+> - Supplementation with stabilised native redox signalling molecules offers a scientifically coherent means of restoring the body's declining redox capacity — not by introducing foreign compounds, but by replenishing the molecules the body produces less of with age.
 > - Every major health intervention in this book — exercise, sleep, nutrition, PEMF therapy, and others — works in part by supporting or restoring healthy redox balance.
 
 1. Sies H, Belousov VV, Chandel NS, et al. Defining roles of specific reactive oxygen species (ROS) in cell biology and physiology. *Nature Reviews Molecular Cell Biology*. 2022;23(7):499–515.
@@ -2268,22 +2283,9 @@ The clinical evidence for PEMF therapy includes:
 
 For John, a combination of daily earthing and periodic PEMF therapy represents a meaningful addition to his programme — particularly given the chronic inflammation, poor sleep, and elevated stress that characterise his current state. PEMF devices range from clinical-grade units used in medical settings to consumer-grade devices suitable for home use. We have researched the available options and provide recommendations for quality, evidence-based devices on the companion website.
 
-**Supplementing Redox Signalling Molecules**
+**Redox Supplementation**
 
-For most of human history, the idea of supplementing redox signalling molecules was not possible — these molecules are produced inside cells, and they are extraordinarily fragile. Outside the body, they break down within seconds. The scientific consensus, until recently, was that supplementation of native redox molecules was simply not achievable.
-
-That consensus has been challenged by a technology developed over more than a decade of research by a team of medical scientists and engineers. Using a proprietary electrochemical process, researchers discovered a method to reorganise the molecules of purified water and natural salts into a stable suspension of the same redox signalling molecules that the body produces natively — including balanced ratios of reactive oxygen species and their reductive counterparts. The resulting solution, when consumed, delivers these molecules in a form that the body recognises as its own, allowing them to participate directly in cellular signalling processes.
-
-The significance of this development lies in what it addresses: the age-related decline in the body's own production of redox signalling molecules. Because this decline begins in the mid-teens and continues at approximately 10 per cent per decade, supplementation offers a means of restoring a more youthful redox environment at the cellular level — not by introducing foreign compounds, but by replenishing molecules that are native to the body and that the body is simply producing less of.
-
-Research conducted on this technology has demonstrated measurable effects on biomarkers of cellular health, including improvements in antioxidant enzyme activity (confirming that the molecules are activating the body's endogenous antioxidant systems), changes in gene expression consistent with improved cellular communication, and improvements in cardiovascular and immune markers. Independent studies have confirmed that the molecules in these preparations are bioactive and distinct from simple saline solution.
-
-It is important to note that this is not antioxidant supplementation in the conventional sense. Antioxidants — whether from food or supplements — neutralise free radicals directly. Redox signalling molecule supplementation works differently: it supports the *signalling infrastructure* that tells the body when and how to deploy its own antioxidant defences, repair damaged cells, and coordinate immune responses. This distinction matters clinically, because the indiscriminate neutralisation of all ROS can actually impair health — blunting the very signals the body uses to adapt to exercise, fight infection, and regulate gene expression.
-
-For those seeking to support their cellular health as they age, supplementation with stabilised native redox signalling molecules represents one of the most scientifically coherent approaches available — not as a replacement for the foundational lifestyle practices described throughout this book, but as a meaningful complement to them.
-
-
-
+The connection between PEMF therapy and redox biochemistry raises a natural question: can we also support the body's redox signalling capacity through direct supplementation? The answer, remarkably, is yes — and the science behind it is discussed in detail in **Chapter 4: Redox Biochemistry**. For those who have not yet read that chapter, the key insight is this: stabilised native redox signalling molecules can now be supplemented orally, offering a means of restoring the body's declining redox capacity with age. Combined with PEMF therapy's ability to recalibrate the cellular redox environment, these two approaches work synergistically to support the foundational biochemistry of cellular health.
 
 1. Chevalier G, Sinatra ST, Oschman JL, Sokal K, Sokal P. Earthing: health implications of reconnecting the human body to the Earth's surface electrons. *Journal of Environmental and Public Health*. 2012;2012:291541.
 2. Funk RH. Endogenous electric fields as guiding cue for cell migration. *Frontiers in Physiology*. 2015;6:143.
