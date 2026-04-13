@@ -307,3 +307,5 @@
 - [x] PEMF Affiliate System: Update PEMF header layout — logo left, menu centered, "Name — Brand Partner" + phone on right
 - [x] PEMF Affiliate System: Contact form on personalised page that notifies both owner (sarva) and affiliate via email
 - [x] PEMF Affiliate System: Register routes in App.tsx for /pemf/join and /pemf/:slug
+- [x] Bug: PEMF affiliate page — mobile layout clash between menu links and Brand Partner name/phone on small screens
+- [x] Bug: PEMF affiliate page — Devices anchor link doesn't scroll to the devices section

@@ -12,9 +12,9 @@ import {
   Zap, Heart, Brain, Moon, Shield, Activity, Bone, Sparkles,
   ArrowRight, BookOpen, Play, ChevronDown, ExternalLink,
   Leaf, X, Eye, Waves, Dumbbell, Battery, Sun, Droplets,
-  Phone, Mail, User, MessageSquare, CheckCircle, Send,
+  Phone, Mail, User, MessageSquare, CheckCircle, Send, Menu,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useRoute } from "wouter";
 import { trpc } from "@/lib/trpc";
@@ -393,6 +393,18 @@ export default function PEMFAffiliate() {
 
   const [selectedProduct, setSelectedProduct] = useState<number | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const scrollToSection = useCallback((e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    const el = document.getElementById(sectionId);
+    if (el) {
+      const headerOffset = 60;
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: elementPosition - headerOffset, behavior: 'smooth' });
+    }
+  }, []);
 
   // Loading state
   if (isLoading) {
@@ -424,8 +436,8 @@ export default function PEMFAffiliate() {
   return (
     <div className="min-h-screen bg-white">
       {/* ── Affiliate Header ─────────────────────────────────── */}
-      {/* Logo left | Nav centered | Affiliate name + phone right */}
       <header className="sticky top-0 left-0 right-0 z-50 bg-emerald-900/95 backdrop-blur-md shadow-sm border-b border-emerald-700/40">
+        {/* Desktop header */}
         <div className="container flex items-center justify-between h-14">
           {/* Left: Logo */}
           <div className="flex items-center gap-2 flex-shrink-0">
@@ -435,27 +447,27 @@ export default function PEMFAffiliate() {
             </span>
           </div>
 
-          {/* Center: Nav */}
-          <nav className="flex items-center gap-1">
-            <a href="#science">
+          {/* Center: Nav (hidden on mobile) */}
+          <nav className="hidden md:flex items-center gap-1">
+            <a href="#science" onClick={(e) => scrollToSection(e, 'science')}>
               <Button variant="ghost" size="sm" className="text-emerald-200 hover:text-white hover:bg-emerald-800/50 text-xs">
                 Science
               </Button>
             </a>
-            <a href="#evidence">
+            <a href="#evidence" onClick={(e) => scrollToSection(e, 'evidence')}>
               <Button variant="ghost" size="sm" className="text-emerald-200 hover:text-white hover:bg-emerald-800/50 text-xs">
                 Evidence
               </Button>
             </a>
-            <a href="#products">
+            <a href="#products" onClick={(e) => scrollToSection(e, 'products')}>
               <Button variant="ghost" size="sm" className="text-emerald-200 hover:text-white hover:bg-emerald-800/50 text-xs">
                 Devices
               </Button>
             </a>
           </nav>
 
-          {/* Right: Affiliate name & phone */}
-          <div className="flex-shrink-0 text-right">
+          {/* Right: Affiliate name & phone (hidden on small mobile, shown sm+) */}
+          <div className="hidden sm:block flex-shrink-0 text-right">
             <div className="text-white text-sm font-medium leading-tight">
               {affiliate.name}
               <span className="text-emerald-300 font-normal"> — Brand Partner</span>
@@ -465,7 +477,42 @@ export default function PEMFAffiliate() {
               <span>{affiliate.phone}</span>
             </div>
           </div>
+
+          {/* Mobile: hamburger menu button */}
+          <button
+            className="md:hidden text-emerald-200 hover:text-white p-1"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
+
+        {/* Mobile dropdown menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-emerald-900 border-t border-emerald-700/40 px-4 py-3 space-y-1">
+            {/* Affiliate info on mobile */}
+            <div className="pb-3 mb-2 border-b border-emerald-700/40">
+              <div className="text-white text-sm font-medium">
+                {affiliate.name}
+                <span className="text-emerald-300 font-normal"> — Brand Partner</span>
+              </div>
+              <div className="flex items-center gap-1 text-emerald-300/80 text-xs mt-0.5">
+                <Phone className="w-3 h-3" />
+                <span>{affiliate.phone}</span>
+              </div>
+            </div>
+            <a href="#science" onClick={(e) => scrollToSection(e, 'science')} className="block text-emerald-200 hover:text-white py-2 text-sm">
+              Science
+            </a>
+            <a href="#evidence" onClick={(e) => scrollToSection(e, 'evidence')} className="block text-emerald-200 hover:text-white py-2 text-sm">
+              Evidence
+            </a>
+            <a href="#products" onClick={(e) => scrollToSection(e, 'products')} className="block text-emerald-200 hover:text-white py-2 text-sm">
+              Devices
+            </a>
+          </div>
+        )}
       </header>
 
       {/* ── Hero ──────────────────────────────────────────── */}
@@ -492,13 +539,13 @@ export default function PEMFAffiliate() {
             </FadeIn>
             <FadeIn delay={0.3}>
               <div className="flex flex-wrap justify-center gap-4">
-                <a href="#science">
+                <a href="#science" onClick={(e) => scrollToSection(e, 'science')}>
                   <Button size="lg" className="bg-white text-emerald-900 hover:bg-emerald-50 gap-2 font-medium">
                     <BookOpen className="w-4 h-4" />
                     The Science
                   </Button>
                 </a>
-                <a href="#products">
+                <a href="#products" onClick={(e) => scrollToSection(e, 'products')}>
                   <Button size="lg" variant="outline" className="border-emerald-400/40 text-white hover:bg-emerald-800/50 gap-2 font-medium">
                     <Zap className="w-4 h-4" />
                     View Devices

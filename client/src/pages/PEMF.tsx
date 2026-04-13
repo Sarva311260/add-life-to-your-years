@@ -11,9 +11,9 @@ import {
 import {
   Zap, Heart, Brain, Moon, Shield, Activity, Bone, Sparkles,
   ArrowRight, BookOpen, Play, ChevronDown, ExternalLink,
-  Leaf, X, Eye, Waves, Dumbbell, Battery, Sun, Droplets
+  Leaf, X, Eye, Waves, Dumbbell, Battery, Sun, Droplets, Menu
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 
 /* ── Product Data ─────────────────────────────────────────── */
@@ -294,10 +294,22 @@ function ProductDetailModal({
    ══════════════════════════════════════════════════════════════ */
 export default function PEMF() {
   const [selectedProduct, setSelectedProduct] = useState<number | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const scrollToSection = useCallback((e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    const el = document.getElementById(sectionId);
+    if (el) {
+      const headerOffset = 60;
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: elementPosition - headerOffset, behavior: 'smooth' });
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
-      {/* ── Standalone PEMF Header ──────────────────────────── */}
+         {/* ── Standalone PEMF Header ──────────────────────── */}
       <header className="sticky top-0 left-0 right-0 z-50 bg-emerald-900/95 backdrop-blur-md shadow-sm border-b border-emerald-700/40">
         <div className="container flex items-center justify-between h-14">
           <div className="flex items-center gap-2">
@@ -306,24 +318,44 @@ export default function PEMF() {
               Add Life to Your Years
             </span>
           </div>
-          <nav className="flex items-center gap-1">
-            <a href="#science">
+          <nav className="hidden md:flex items-center gap-1">
+            <a href="#science" onClick={(e) => scrollToSection(e, 'science')}>
               <Button variant="ghost" size="sm" className="text-emerald-200 hover:text-white hover:bg-emerald-800/50 text-xs">
                 Science
               </Button>
             </a>
-            <a href="#evidence">
+            <a href="#evidence" onClick={(e) => scrollToSection(e, 'evidence')}>
               <Button variant="ghost" size="sm" className="text-emerald-200 hover:text-white hover:bg-emerald-800/50 text-xs">
                 Evidence
               </Button>
             </a>
-            <a href="#products">
+            <a href="#products" onClick={(e) => scrollToSection(e, 'products')}>
               <Button variant="ghost" size="sm" className="text-emerald-200 hover:text-white hover:bg-emerald-800/50 text-xs">
                 Devices
               </Button>
             </a>
           </nav>
+          <button
+            className="md:hidden text-emerald-200 hover:text-white p-1"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-emerald-900 border-t border-emerald-700/40 px-4 py-3 space-y-1">
+            <a href="#science" onClick={(e) => scrollToSection(e, 'science')} className="block text-emerald-200 hover:text-white py-2 text-sm">
+              Science
+            </a>
+            <a href="#evidence" onClick={(e) => scrollToSection(e, 'evidence')} className="block text-emerald-200 hover:text-white py-2 text-sm">
+              Evidence
+            </a>
+            <a href="#products" onClick={(e) => scrollToSection(e, 'products')} className="block text-emerald-200 hover:text-white py-2 text-sm">
+              Devices
+            </a>
+          </div>
+        )}
       </header>
 
       {/* ── Hero ──────────────────────────────────────────── */}
@@ -351,13 +383,13 @@ export default function PEMF() {
             </FadeIn>
             <FadeIn delay={0.3}>
               <div className="flex flex-wrap justify-center gap-4">
-                <a href="#science">
+                <a href="#science" onClick={(e) => scrollToSection(e, 'science')}>
                   <Button size="lg" className="bg-white text-emerald-900 hover:bg-emerald-50 gap-2 font-medium">
                     <BookOpen className="w-4 h-4" />
                     The Science
                   </Button>
                 </a>
-                <a href="#products">
+                <a href="#products" onClick={(e) => scrollToSection(e, 'products')}>
                   <Button size="lg" variant="outline" className="border-emerald-400/40 text-white hover:bg-emerald-800/50 gap-2 font-medium">
                     <Zap className="w-4 h-4" />
                     View Devices
