@@ -191,6 +191,12 @@ const REFERENCES = [
   "Funk RH. Endogenous electric fields as guiding cue for cell migration. Frontiers in Physiology. 2015;6:143.",
   "Chevalier G, et al. Earthing: health implications of reconnecting the human body to the Earth's surface electrons. Journal of Environmental and Public Health. 2012;2012:291541.",
   "Oschman JL, et al. The effects of grounding (earthing) on inflammation, the immune response, wound healing, and prevention and treatment of chronic inflammatory and autoimmune diseases. Journal of Inflammation Research. 2015;8:83–96.",
+  "Nicolson GL. Mitochondrial dysfunction and chronic disease: treatment with natural supplements. Integrative Medicine: A Clinician's Journal. 2014;13(4):35–45. PMC4566449.",
+  "Bhatti JS, et al. Mitochondrial dysfunction and oxidative stress in metabolic disorders — a step towards mitochondria based therapeutic strategies. Biochimica et Biophysica Acta. 2017;1863(5):1066–1077. PMC5423868.",
+  "Staal J, Blanco LP, Perl A. Mitochondrial dysfunction in inflammation and autoimmunity. Frontiers in Immunology. 2023;14:1304315.",
+  "Chianese D, et al. Exploring mitochondrial interactions with pulsed electromagnetic fields: mechanisms and therapeutic implications. International Journal of Molecular Sciences. 2024;25(15):PMC11277522.",
+  "Hollenberg AM, et al. Electromagnetic stimulation increases mitochondrial oxidative phosphorylation in osteoblasts and promotes bone fracture repair. Scientific Reports. 2021;11:19536.",
+  "Yang C, et al. Pulsed electromagnetic fields regulate metabolic reprogramming and mitochondrial fission in endothelial cells for angiogenesis. Scientific Reports. 2024;14:PMC11329790.",
 ];
 
 /* ── Fade-in animation wrapper ────────────────────────────── */
@@ -432,6 +438,29 @@ export default function PEMF() {
               </p>
               <p className="text-gray-700 leading-relaxed">
                 The mechanism is consistent with what we know about cellular electrical signalling: PEMF pulses interact with the cell membrane's electrical potential, stimulating ion channels, improving cellular energy production (ATP synthesis), reducing inflammation, and promoting tissue repair. The frequencies used in therapeutic PEMF devices typically fall within the range of the Earth's natural Schumann resonances — suggesting that PEMF therapy may in part be restoring the electromagnetic environment that the body evolved within.
+              </p>
+            </div>
+            </FadeIn>
+
+          {/* Cell, Mitochondria & Phone Charger Analogy */}
+          <FadeIn delay={0.15}>
+            <div className="mt-10 prose prose-lg prose-gray max-w-none">
+              <h3 className="font-serif text-2xl font-semibold text-gray-900 mb-4">You Are an Electromagnetic Being</h3>
+              <p className="text-gray-700 leading-relaxed mb-5">
+                At the most fundamental level, you are not just a biological organism — you are an electromagnetic being. Every living cell in your body carries an electrical charge, and it is this charge that keeps the cell alive. When the electromagnetic field of a cell collapses, the cell dies. This is not a metaphor; it is the basic physics of cellular life. The health of your cells is inseparable from the health of their electrical environment.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-5">
+                Inside each cell are tiny structures called <strong>mitochondria</strong> — the energy plants of the cell. Their job is to take the oxygen you breathe and the food you eat and convert them into <strong>ATP</strong> (adenosine triphosphate), the universal energy currency that powers every function your body performs. This conversion process is driven by a continuous flow of electrons — think of it like the spinning propeller of a turbine, generating electricity. When that electron flow is strong and uninterrupted, your cells are energised, your tissues repair efficiently, and your body thrives.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-5">
+                But that electron flow can be disrupted. Toxins, pesticides, industrial chemicals, chronic inflammation, nutritional deficiencies, and infections can all impair mitochondrial function and reduce ATP production. When this happens, cells begin to malfunction. And here is the critical insight: <strong>every major chronic disease</strong> — inflammatory, autoimmune, degenerative, and even cancerous — has a mitochondrial component. At the heart of virtually all chronic illness is a shortage of cellular energy. The cells are not dying from a lack of medicine; they are struggling from a lack of power.
+              </p>
+              <h3 className="font-serif text-2xl font-semibold text-gray-900 mb-4 mt-8">The Phone Charger Analogy</h3>
+              <p className="text-gray-700 leading-relaxed mb-5">
+                Think about what happens when your mobile phone battery runs flat. The screen dims, apps crash, and eventually the phone shuts down entirely — not because anything is broken, but simply because there is no power. The solution is straightforward: you place it on a wireless charger. The charger uses a <strong>pulsating electromagnetic field</strong> to transfer energy through induction — no wires, no direct contact — and the phone's battery begins to recharge.
+              </p>
+              <p className="text-gray-700 leading-relaxed">
+                The P90+ works on exactly the same principle, but for your body. When you place your feet on the P90+'s metal plate, the device generates a pulsating electromagnetic field that passes through your body by induction — just like that wireless charger. Your mitochondria, the batteries of your cells, pick up this electromagnetic energy and use it to restore their electron flow and ramp up ATP production. Depleted, sluggish cells begin to recharge. Circulation improves, oxygen delivery increases, inflammation reduces, and the body's natural repair processes are switched back on. You are not adding anything foreign to your body — you are simply restoring the energy environment that your cells were designed to operate within.
               </p>
             </div>
           </FadeIn>

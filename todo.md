@@ -321,3 +321,5 @@
 - [x] Add YouTube video qiR4yBymtwY as first Vitamin D3 video in Rec 8 (BookReader REC_VIDEOS)
 - [x] Add video to knowledge base (videoKnowledge.ts) with content summary
 - [x] Bug: Knowledge base text not selectable/copyable — fix CSS preventing text selection
+- [x] PEMF page: Analyze video 5uHnNjfJEYU, write phone charger analogy paragraphs (P90+ metal plate), insert at right place in PEMF page only
+- [x] PEMF page: Find and add peer-reviewed references for mitochondria/ATP/chronic disease and PEMF induction to evidence section
