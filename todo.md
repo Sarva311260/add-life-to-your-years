@@ -310,3 +310,8 @@
 - [x] Bug: PEMF affiliate page — mobile layout clash between menu links and Brand Partner name/phone on small screens
 - [x] Bug: PEMF affiliate page — Devices anchor link doesn't scroll to the devices section
 - [x] Bug: PEMF page anchor scroll offset too low — section headers hidden behind sticky header, need more offset
+- [x] PEMF page: Remove book reference ("From Add Life to Your Years by Sarva Keller — Chapter 9: PEMF & Earthing")
+- [x] PEMF page: Add paragraph about historical PEMF devices being expensive, large, hospital-only (including Papimi at $60,000)
+- [x] PEMF page: Add photos of Papimi and clinical PEMF devices
+- [x] PEMF page: Add paragraph about OlyLife making the technology affordable and accessible
+- [x] PEMF page: Apply same changes to PEMFAffiliate.tsx

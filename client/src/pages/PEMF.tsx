@@ -445,13 +445,36 @@ export default function PEMF() {
             </div>
           </FadeIn>
 
-          {/* Book reference */}
+          {/* Historical context — from hospital to home */}
           <FadeIn delay={0.3}>
-            <div className="mt-8 flex items-center gap-3 text-sm text-gray-500">
-              <BookOpen className="w-4 h-4 text-emerald-600" />
-              <span>
-                From <em className="text-gray-700">Add Life to Your Years</em> by Sarva Keller — Chapter 9: PEMF & Earthing
-              </span>
+            <div className="mt-14">
+              <h3 className="font-serif text-2xl font-semibold text-gray-900 mb-4">From Hospital Rooms to Your Living Room</h3>
+              <p className="text-gray-700 leading-relaxed mb-6">
+                For decades, the remarkable benefits of PEMF therapy were locked behind the doors of hospitals and specialist clinics. The devices required to deliver therapeutic electromagnetic pulses were enormous, complex, and extraordinarily expensive. Clinical-grade machines like the <strong>Papimi</strong> — a high-powered ion induction therapy device developed in Greece — cost upwards of <strong>US$60,000</strong>, required trained operators, and were far too large and specialised for anything other than a clinical setting. The result was that millions of people who could have benefited from this proven technology simply had no access to it.
+              </p>
+
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="rounded-xl overflow-hidden border border-gray-200 bg-gray-50">
+                  <img
+                    src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/papimi-device_ca16d201.jpg"
+                    alt="Papimi PEMF device — a clinical-grade machine costing over US$60,000"
+                    className="w-full h-56 object-contain bg-white"
+                  />
+                  <p className="text-xs text-gray-500 text-center py-2 px-3">The Papimi device — clinical-grade PEMF costing over US$60,000</p>
+                </div>
+                <div className="rounded-xl overflow-hidden border border-gray-200 bg-gray-50">
+                  <img
+                    src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/clinical-pemf-room_7ffba86f.jpg"
+                    alt="Patient receiving PEMF therapy in a clinical setting"
+                    className="w-full h-56 object-cover"
+                  />
+                  <p className="text-xs text-gray-500 text-center py-2 px-3">PEMF therapy in a clinical setting — previously the only way to access this technology</p>
+                </div>
+              </div>
+
+              <p className="text-gray-700 leading-relaxed">
+                That has now changed. Thanks to <strong>OlyLife</strong>, this extraordinary technology is no longer confined to hospitals and clinics. Through years of innovation, miniaturisation, and a clever direct-to-consumer business model, OlyLife has managed to bring the cost of genuine PEMF therapy down to levels that are accessible to everyday people — without compromising on the science or the therapeutic effectiveness. What once required a US$60,000 machine and a trained clinician can now be experienced in the comfort of your own home, at a fraction of the cost.
+              </p>
             </div>
           </FadeIn>
         </div>
@@ -644,14 +667,7 @@ export default function PEMF() {
                 </li>
               ))}
             </ol>
-            <div className="mt-8 flex items-center gap-3 text-sm text-gray-500">
-              <BookOpen className="w-4 h-4 text-emerald-600" />
-              <span>
-                For a comprehensive discussion of PEMF therapy and its role in holistic wellness, see{" "}
-                <em className="text-emerald-700">Add Life to Your Years</em>{" "}
-                — Chapter 9: PEMF & Earthing.
-              </span>
-            </div>
+
           </FadeIn>
         </div>
       </section>
