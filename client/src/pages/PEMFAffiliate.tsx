@@ -14,7 +14,7 @@ import {
   Leaf, X, Eye, Waves, Dumbbell, Battery, Sun, Droplets,
   Phone, Mail, User, MessageSquare, CheckCircle, Send, Menu,
 } from "lucide-react";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import { useRoute } from "wouter";
 import { trpc } from "@/lib/trpc";
@@ -394,15 +394,17 @@ export default function PEMFAffiliate() {
   const [selectedProduct, setSelectedProduct] = useState<number | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   const scrollToSection = useCallback((e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
     const el = document.getElementById(sectionId);
     if (el) {
-      const headerOffset = 70;
+      const headerHeight = headerRef.current?.offsetHeight || 56;
+      const offset = headerHeight + 20;
       const elementPosition = el.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({ top: elementPosition - headerOffset, behavior: 'smooth' });
+      window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
     }
   }, []);
 
@@ -436,7 +438,7 @@ export default function PEMFAffiliate() {
   return (
     <div className="min-h-screen bg-white">
       {/* ── Affiliate Header ─────────────────────────────────── */}
-      <header className="sticky top-0 left-0 right-0 z-50 bg-emerald-900/95 backdrop-blur-md shadow-sm border-b border-emerald-700/40">
+      <header ref={headerRef} className="sticky top-0 left-0 right-0 z-50 bg-emerald-900/95 backdrop-blur-md shadow-sm border-b border-emerald-700/40">
         {/* Desktop header */}
         <div className="container flex items-center justify-between h-14">
           {/* Left: Logo */}
@@ -559,7 +561,7 @@ export default function PEMFAffiliate() {
       </section>
 
       {/* ── What is PEMF? ─────────────────────────────────── */}
-      <section id="science" className="py-20 bg-white" style={{ scrollMarginTop: '70px' }}>
+      <section id="science" className="py-20 bg-white" style={{ scrollMarginTop: '80px' }}>
         <div className="container max-w-4xl">
           <FadeIn>
             <div className="text-center mb-14">
@@ -630,7 +632,7 @@ export default function PEMFAffiliate() {
       </section>
 
       {/* ── Clinical Evidence ─────────────────────────────── */}
-      <section id="evidence" className="py-20 bg-white" style={{ scrollMarginTop: '70px' }}>
+      <section id="evidence" className="py-20 bg-white" style={{ scrollMarginTop: '80px' }}>
         <div className="container max-w-5xl">
           <FadeIn>
             <div className="text-center mb-14">
@@ -659,7 +661,7 @@ export default function PEMFAffiliate() {
       </section>
 
       {/* ── Products ──────────────────────────────────────── */}
-      <section id="products" className="py-20 bg-gradient-to-b from-emerald-50/40 to-white" style={{ scrollMarginTop: '70px' }}>
+      <section id="products" className="py-20 bg-gradient-to-b from-emerald-50/40 to-white" style={{ scrollMarginTop: '80px' }}>
         <div className="container max-w-5xl">
           <FadeIn>
             <div className="text-center mb-14">
