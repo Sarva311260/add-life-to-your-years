@@ -235,7 +235,7 @@ This video features an in-depth interview with Dr. Michael Holick, the scientist
 
 Optimal Blood Levels: The Endocrine Society defines sufficiency as at least 30 ng/mL, but Dr. Holick recommends optimal blood levels of 40 to 60 ng/mL (up to 100 ng/mL is considered perfectly safe).
 
-Dosage Recommendations: Dr. Holick recommends a minimum of 5,000 IU per day for adults, with 10,000 IU per day being ideal. He personally takes 8,000 IU/day. For a normal-weight person, taking 100 IU of Vitamin D raises the blood level by approximately 1 ng/mL. Obese individuals (BMI > 30) need 2 to 3 times more Vitamin D than normal-weight individuals to achieve the same blood levels.
+Daily Recommendation: 5,000–10,000 IU of Vitamin D3. Dr. Holick personally takes 8,000 IU/day. For a normal-weight person, taking 100 IU of Vitamin D raises the blood level by approximately 1 ng/mL. Obese individuals (BMI > 30) need 2 to 3 times more Vitamin D than normal-weight individuals to achieve the same blood levels.
 
 Key Research Findings:
 - VITAL Study: Taking 2,000 IU/day for five years resulted in a 25% reduction in cancer mortality and a 22% reduction in autoimmune disorders. For normal-weight individuals, it reduced cancer incidence by 24%.
@@ -262,8 +262,7 @@ Optimal Blood Levels: Standard laboratory reference ranges (20–50 ng/mL) refle
 
 Supplementation Protocol:
 - Test first: Get a 25-hydroxyvitamin D blood test to establish baseline
-- Typical maintenance dose: 2,000–5,000 IU daily of Vitamin D3 (cholecalciferol)
-- For deficiency correction: 5,000–10,000 IU daily under supervision
+- Daily recommendation: 5,000–10,000 IU of Vitamin D3 (cholecalciferol)
 - Essential co-factors: Always take with Vitamin K2 (MK-7 form, 100–200 mcg) to direct calcium to bones rather than arteries, and Magnesium (which activates Vitamin D)
 - Retest after 3 months to confirm levels have reached optimal range
 - Take with a meal containing fat for best absorption (fat-soluble vitamin)
