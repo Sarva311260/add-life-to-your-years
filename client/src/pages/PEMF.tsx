@@ -11,7 +11,7 @@ import {
 import {
   Zap, Heart, Brain, Moon, Shield, Activity, Bone, Sparkles,
   ArrowRight, BookOpen, Play, ChevronDown, ExternalLink,
-  Leaf, X, Eye, Waves, Dumbbell, Battery, Sun, Droplets, Menu
+  Leaf, X, Eye, Waves, Dumbbell, Battery, Sun, Droplets, Menu, Mail, Phone, MessageSquare
 } from "lucide-react";
 import { useState, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
@@ -336,6 +336,11 @@ export default function PEMF() {
                 Devices
               </Button>
             </a>
+            <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>
+              <Button variant="ghost" size="sm" className="text-emerald-200 hover:text-white hover:bg-emerald-800/50 text-xs">
+                Contact
+              </Button>
+            </a>
           </nav>
           <button
             className="md:hidden text-emerald-200 hover:text-white p-1"
@@ -355,6 +360,9 @@ export default function PEMF() {
             </a>
             <a href="#products" onClick={(e) => scrollToSection(e, 'products')} className="block text-emerald-200 hover:text-white py-2 text-sm">
               Devices
+            </a>
+            <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="block text-emerald-200 hover:text-white py-2 text-sm">
+              Contact
             </a>
           </div>
         )}
@@ -668,6 +676,74 @@ export default function PEMF() {
               ))}
             </ol>
 
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ── Contact Section ─────────────────────────────── */}
+      <section id="contact" className="py-20 bg-emerald-900" style={{ scrollMarginTop: '120px' }}>
+        <div className="container max-w-3xl">
+          <FadeIn>
+            <div className="text-center mb-10">
+              <p className="text-sm font-medium text-emerald-400 tracking-widest uppercase mb-3">Get in Touch</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-4">Leave Us a Message</h2>
+              <div className="w-16 h-0.5 bg-emerald-400 mx-auto mb-4" />
+              <p className="text-emerald-200/80">Have questions about PEMF therapy or our devices? We'd love to hear from you.</p>
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                const form = e.target as HTMLFormElement;
+                const name = (form.elements.namedItem('name') as HTMLInputElement).value;
+                const email = (form.elements.namedItem('email') as HTMLInputElement).value;
+                const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value;
+                const subject = encodeURIComponent(`PEMF Enquiry from ${name}`);
+                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+                window.location.href = `mailto:sarva@addlifetoyouryears.org?subject=${subject}&body=${body}`;
+              }}
+              className="space-y-5"
+            >
+              <div className="grid md:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-sm font-medium text-emerald-300 mb-1.5">Your Name</label>
+                  <input
+                    name="name"
+                    type="text"
+                    required
+                    className="w-full px-4 py-3 rounded-lg bg-emerald-800/50 border border-emerald-700/50 text-white placeholder-emerald-400/50 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-transparent"
+                    placeholder="John Smith"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-emerald-300 mb-1.5">Your Email</label>
+                  <input
+                    name="email"
+                    type="email"
+                    required
+                    className="w-full px-4 py-3 rounded-lg bg-emerald-800/50 border border-emerald-700/50 text-white placeholder-emerald-400/50 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-transparent"
+                    placeholder="john@example.com"
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-emerald-300 mb-1.5">Your Message</label>
+                <textarea
+                  name="message"
+                  rows={4}
+                  required
+                  className="w-full px-4 py-3 rounded-lg bg-emerald-800/50 border border-emerald-700/50 text-white placeholder-emerald-400/50 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-transparent resize-none"
+                  placeholder="I'd like to know more about..."
+                />
+              </div>
+              <div className="text-center">
+                <Button size="lg" type="submit" className="bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-semibold gap-2 px-8">
+                  <Mail className="w-4 h-4" />
+                  Send Message
+                </Button>
+              </div>
+            </form>
           </FadeIn>
         </div>
       </section>

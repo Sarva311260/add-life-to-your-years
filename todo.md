@@ -317,3 +317,4 @@
 - [x] PEMF page: Apply same changes to PEMFAffiliate.tsx
 - [x] Book: Add redox supplementation section to Chapter 4 (Redox) — covering redox supplements, keeping PEMF redox reference
 - [x] Book: Update Recommendation 11 with cross-reference to Chapter 4 for redox supplementation
+- [x] PEMF page: Add Contact menu item to navigation so visitors can easily leave a message
