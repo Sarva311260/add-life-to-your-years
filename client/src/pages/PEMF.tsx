@@ -1,11 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import SiteNav from "@/components/SiteNav";
-import { Link } from "wouter";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import {
   Zap, Heart, Brain, Moon, Shield, Activity, Bone, Sparkles,
-  ArrowRight, BookOpen, Play, ChevronDown, ExternalLink
+  ArrowRight, BookOpen, Play, ChevronDown, ExternalLink,
+  Leaf, X, Eye, Waves, Dumbbell, Battery, Sun, Droplets
 } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -25,6 +31,36 @@ const PRODUCTS = [
     ],
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/p90plus-clean_87a41dc7.jpg",
     accent: "bg-emerald-50 border-emerald-200",
+    /* Extended detail for popup */
+    detail: {
+      subtitle: "3-in-1 PEMF & Terahertz Wellness System",
+      overview:
+        "The OlyLife THZ Tera-P90+ is the world's first device to integrate PEMF technology with Terahertz wave therapy. It combines three precision wellness tools into a single unified platform: the Main PEMF & Terahertz Device, the Frost Age Beauty Device, and the Revitaluxe Massager.",
+      components: [
+        {
+          name: "Main Device — PEMF & Terahertz",
+          desc: "Combines calibrated electromagnetic pulses with Terahertz wave technology that resonates at the natural frequency range of healthy human cells. Features 20 intensity levels, wireless infrared remote control, and an upgraded foot pedal (up to US 13 / EU 47).",
+        },
+        {
+          name: "Frost Age Beauty Device — RF & EMS",
+          desc: "A dedicated anti-aging attachment using Radio Frequency technology to stimulate collagen production and tighten skin, combined with Electrical Muscle Stimulation for facial and body toning. Ideal for fine lines, wrinkles, and skin elasticity.",
+        },
+        {
+          name: "Revitaluxe Massager — 3-in-1 Magnetic Fusion",
+          desc: "The most advanced attachment combining pulsed, static, and rotating magnetic fields with EMS/TENS pain relief and Red Light Therapy (photobiomodulation) for hair regrowth, scalp health, and deep tissue recovery.",
+        },
+      ],
+      specs: [
+        { label: "Core Technology", value: "PEMF + Terahertz Wave" },
+        { label: "Beauty Technology", value: "RF + EMS" },
+        { label: "Massage Technology", value: "3-in-1 Magnetic Fusion + EMS + TENS + Red Light" },
+        { label: "Intensity Levels", value: "20 (fully adjustable)" },
+        { label: "Control", value: "Infrared Wireless Remote" },
+        { label: "Foot Pedal", value: "Up to US Size 13 / EU Size 47" },
+        { label: "Safety", value: "Built-in Fuse Protection" },
+        { label: "Warranty", value: "1 Year" },
+      ],
+    },
   },
   {
     name: "OlyLife Shaken Massager",
@@ -39,6 +75,35 @@ const PRODUCTS = [
     ],
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/shaken-massager_fced25a9.jpg",
     accent: "bg-teal-50 border-teal-200",
+    detail: {
+      subtitle: "7-in-1 Smart Wellness Belt",
+      overview:
+        "The OlyLife Shaken Massager is a wearable waist massage belt designed for body wellness, muscle relaxation, and core massage. It uses a 7.8 Hz ultra-low frequency PEMF field that penetrates up to 20 cm deep, combined with six additional therapeutic technologies for comprehensive body support.",
+      components: [
+        {
+          name: "PEMF Therapy (7.8 Hz)",
+          desc: "Ultra-low frequency pulsed electromagnetic field penetrates up to 20 cm deep, improving microcirculation, enhancing cellular metabolism, and supporting the body's natural repair processes at the tissue level.",
+        },
+        {
+          name: "Heat & Red Light Therapy",
+          desc: "Targeted heat therapy combined with red light for deep tissue warming, increased blood flow, and photobiomodulation — promoting relaxation and accelerating recovery in the core and waist area.",
+        },
+        {
+          name: "Vibration & Ultrasound Massage",
+          desc: "9-speed powerful vibration with 4 professional massage heads delivers rhythmic oscillation and ultrasound stimulation. Targets neck, shoulder, back, waist, and legs for comprehensive muscle relief.",
+        },
+      ],
+      specs: [
+        { label: "Core Technology", value: "PEMF (7.8 Hz ultra-low frequency)" },
+        { label: "Penetration Depth", value: "Up to 20 cm" },
+        { label: "Technologies", value: "7 integrated (PEMF, ultrasound, heat, vibration, red light, EMS, infrared)" },
+        { label: "Vibration Speeds", value: "9 levels" },
+        { label: "Massage Heads", value: "4 professional attachments" },
+        { label: "Charging", value: "USB Type-C rechargeable" },
+        { label: "Target Areas", value: "Neck, shoulder, back, waist, legs" },
+        { label: "Warranty", value: "1 Year" },
+      ],
+    },
   },
   {
     name: "OlyLife Galaxy G-One",
@@ -53,6 +118,35 @@ const PRODUCTS = [
     ],
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/galaxy-gone_917c4ce8.png",
     accent: "bg-green-50 border-green-200",
+    detail: {
+      subtitle: "PEMF Smart Eye Massager",
+      overview:
+        "The OlyLife Galaxy G-One is an advanced smart eye massager that integrates low-frequency PEMF technology with 3D airbag kneading, graphene heat therapy, and intermittent vibration. Featuring 4 unique technologies and 7 eye care modes, it delivers professional-grade eye therapy in a compact, foldable design.",
+      components: [
+        {
+          name: "Six-Zone 3D Airbag Kneading",
+          desc: "Precision airbag compression across six zones around the eyes delivers gentle, rhythmic kneading that relieves tension, reduces puffiness, and stimulates acupressure points around the orbital area.",
+        },
+        {
+          name: "Graphene 42°C Warm Compress",
+          desc: "Constant-temperature graphene heating at 42°C provides soothing warmth that improves blood circulation around the eyes, relieves dryness, and helps relax the delicate muscles surrounding the eye area.",
+        },
+        {
+          name: "PEMF + Low-Frequency Vibration",
+          desc: "Intermittent low-frequency PEMF pulses combined with gentle vibration stimulate cellular activity, reduce inflammation, and support overall eye health — particularly beneficial for those experiencing digital eye strain.",
+        },
+      ],
+      specs: [
+        { label: "Core Technology", value: "Low-frequency PEMF" },
+        { label: "Massage System", value: "Six-Zone 3D Airbag Kneading" },
+        { label: "Heat Therapy", value: "Graphene 42°C Constant Temperature" },
+        { label: "Unique Technologies", value: "4 (Bionic Ultra Vision, Portable PEMF, Graphene, 3D Airbag)" },
+        { label: "Eye Care Modes", value: "7 modes" },
+        { label: "Design", value: "Foldable & travel-friendly" },
+        { label: "Control", value: "One-button simple operation" },
+        { label: "Warranty", value: "1 Year" },
+      ],
+    },
   },
 ];
 
@@ -114,15 +208,123 @@ function FadeIn({ children, delay = 0, className = "" }: { children: React.React
   );
 }
 
+/* ── Product Detail Modal ─────────────────────────────────── */
+function ProductDetailModal({
+  product,
+  open,
+  onClose,
+}: {
+  product: (typeof PRODUCTS)[number];
+  open: boolean;
+  onClose: () => void;
+}) {
+  const d = product.detail;
+  return (
+    <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
+      <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto bg-white">
+        <DialogHeader>
+          <DialogTitle className="font-serif text-2xl text-gray-900 pr-6">
+            {product.name}
+          </DialogTitle>
+          <DialogDescription className="text-emerald-700 font-medium">
+            {d.subtitle}
+          </DialogDescription>
+        </DialogHeader>
+
+        {/* Product image */}
+        <div className="flex justify-center py-4 bg-gray-50 rounded-lg mb-4">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="h-48 w-auto object-contain"
+          />
+        </div>
+
+        {/* Overview */}
+        <p className="text-gray-700 leading-relaxed text-sm mb-6">
+          {d.overview}
+        </p>
+
+        {/* Components / Key Technologies */}
+        <div className="space-y-4 mb-6">
+          <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">
+            Key Technologies
+          </h4>
+          {d.components.map((c) => (
+            <div
+              key={c.name}
+              className="border border-emerald-100 bg-emerald-50/40 rounded-lg p-4"
+            >
+              <h5 className="font-semibold text-gray-900 text-sm mb-1">
+                {c.name}
+              </h5>
+              <p className="text-gray-600 text-sm leading-relaxed">{c.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Specifications table */}
+        <div className="mb-4">
+          <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-3">
+            Specifications
+          </h4>
+          <div className="border border-gray-200 rounded-lg overflow-hidden">
+            {d.specs.map((s, i) => (
+              <div
+                key={s.label}
+                className={`flex text-sm ${i % 2 === 0 ? "bg-gray-50" : "bg-white"}`}
+              >
+                <div className="w-2/5 px-4 py-2.5 font-medium text-gray-700 border-r border-gray-200">
+                  {s.label}
+                </div>
+                <div className="w-3/5 px-4 py-2.5 text-gray-600">
+                  {s.value}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 /* ══════════════════════════════════════════════════════════════
    PEMF Page
    ══════════════════════════════════════════════════════════════ */
 export default function PEMF() {
-  const [expandedProduct, setExpandedProduct] = useState<number | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<number | null>(null);
 
   return (
     <div className="min-h-screen bg-white">
-      <SiteNav />
+      {/* ── Standalone PEMF Header ──────────────────────────── */}
+      <header className="sticky top-0 left-0 right-0 z-50 bg-emerald-900/95 backdrop-blur-md shadow-sm border-b border-emerald-700/40">
+        <div className="container flex items-center justify-between h-14">
+          <div className="flex items-center gap-2">
+            <Leaf className="w-5 h-5 text-emerald-300" />
+            <span className="font-serif text-sm font-semibold text-white hidden sm:block">
+              Add Life to Your Years
+            </span>
+          </div>
+          <nav className="flex items-center gap-1">
+            <a href="#science">
+              <Button variant="ghost" size="sm" className="text-emerald-200 hover:text-white hover:bg-emerald-800/50 text-xs">
+                Science
+              </Button>
+            </a>
+            <a href="#evidence">
+              <Button variant="ghost" size="sm" className="text-emerald-200 hover:text-white hover:bg-emerald-800/50 text-xs">
+                Evidence
+              </Button>
+            </a>
+            <a href="#products">
+              <Button variant="ghost" size="sm" className="text-emerald-200 hover:text-white hover:bg-emerald-800/50 text-xs">
+                Devices
+              </Button>
+            </a>
+          </nav>
+        </div>
+      </header>
 
       {/* ── Hero ──────────────────────────────────────────── */}
       <section className="relative overflow-hidden">
@@ -202,7 +404,7 @@ export default function PEMF() {
                 <div>
                   <h3 className="font-serif text-xl font-semibold text-gray-900 mb-2">PEMF and Redox Signalling</h3>
                   <p className="text-gray-700 leading-relaxed">
-                    One of the most important mechanisms of PEMF therapy is its direct influence on cellular redox biochemistry. Research has demonstrated that PEMF exposure modulates the production and balance of reactive oxygen species (ROS) within cells, particularly at the mitochondrial level. Rather than simply suppressing oxidative stress, PEMF appears to <em>recalibrate</em> the redox environment — reducing excessive ROS production in damaged tissue while simultaneously stimulating the Nrf2 antioxidant pathway, the master regulator of the body's endogenous antioxidant defences.
+                    One of the most important mechanisms of PEMF therapy is its direct influence on cellular redox biochemistry. Research has demonstrated that PEMF exposure modulates the production and balance of reactive oxygen species (ROS) within cells, particularly at the mitochondrial level. Rather than simply suppressing oxidative stress, PEMF appears to <em>recalibrate</em> the redox environment — reducing excessive ROS while preserving the beneficial signalling functions that reactive species play in immune defence, apoptosis, and tissue repair.
                   </p>
                 </div>
               </div>
@@ -313,7 +515,7 @@ export default function PEMF() {
                         </Badge>
                         <h3 className="font-serif text-2xl font-bold text-gray-900 mb-3">{product.name}</h3>
                         <p className="text-gray-600 leading-relaxed mb-5">{product.description}</p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-5">
                           {product.features.map((f) => (
                             <div key={f} className="flex items-center gap-2 text-sm text-gray-700">
                               <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
@@ -321,6 +523,14 @@ export default function PEMF() {
                             </div>
                           ))}
                         </div>
+                        <Button
+                          variant="outline"
+                          className="w-fit border-emerald-300 text-emerald-700 hover:bg-emerald-50 hover:text-emerald-800 gap-2"
+                          onClick={() => setSelectedProduct(i)}
+                        >
+                          Learn More
+                          <ArrowRight className="w-4 h-4" />
+                        </Button>
                       </div>
                     </div>
                   </CardContent>
@@ -333,12 +543,12 @@ export default function PEMF() {
           <FadeIn delay={0.3}>
             <div className="mt-12 text-center">
               <p className="text-gray-600 mb-4">Interested in learning more about these devices?</p>
-              <Link href="/contact">
+              <a href="mailto:sarva@addlifetoyouryears.org">
                 <Button size="lg" className="bg-emerald-700 hover:bg-emerald-800 text-white gap-2">
                   Get in Touch
                   <ArrowRight className="w-4 h-4" />
                 </Button>
-              </Link>
+              </a>
             </div>
           </FadeIn>
         </div>
@@ -404,9 +614,7 @@ export default function PEMF() {
               <BookOpen className="w-4 h-4 text-emerald-600" />
               <span>
                 For a comprehensive discussion of PEMF therapy and its role in holistic wellness, see{" "}
-                <Link href="/book" className="text-emerald-700 hover:text-emerald-800 underline underline-offset-2">
-                  <em>Add Life to Your Years</em>
-                </Link>{" "}
+                <em className="text-emerald-700">Add Life to Your Years</em>{" "}
                 — Chapter 9: PEMF & Earthing.
               </span>
             </div>
@@ -429,6 +637,15 @@ export default function PEMF() {
           <p className="text-sm">&copy; {new Date().getFullYear()} Add Life to Your Years. All rights reserved.</p>
         </div>
       </footer>
+
+      {/* ── Product Detail Modal ──────────────────────────── */}
+      {selectedProduct !== null && (
+        <ProductDetailModal
+          product={PRODUCTS[selectedProduct]}
+          open={selectedProduct !== null}
+          onClose={() => setSelectedProduct(null)}
+        />
+      )}
     </div>
   );
 }

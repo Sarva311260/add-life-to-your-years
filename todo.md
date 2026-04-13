@@ -296,3 +296,7 @@
 - [x] Add zeolite/cellular detoxification entry to Knowledge Base (videoKnowledge.ts) with Rumble video links
 - [x] Update all instances of "151 Pages" to "226 Pages" across entire site (homepage + BookReader; no images needed as page count is text-based)
 - [x] Build PEMF informational page at /pemf route — P90+, Shaken Massager, Galaxy G-One — green elegant design, no purchase button, includes book references and Vimeo video
+- [x] PEMF page: Make self-contained with standalone header (no links to main site homepage)
+- [x] PEMF page: Add product detail popup/modal for P90+ with additional information
+- [x] PEMF page: Add product detail popup/modal for Shaken Massager with additional information
+- [x] PEMF page: Add product detail popup/modal for Galaxy G-One with additional information
