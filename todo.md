@@ -309,3 +309,4 @@
 - [x] PEMF Affiliate System: Register routes in App.tsx for /pemf/join and /pemf/:slug
 - [x] Bug: PEMF affiliate page — mobile layout clash between menu links and Brand Partner name/phone on small screens
 - [x] Bug: PEMF affiliate page — Devices anchor link doesn't scroll to the devices section
+- [x] Bug: PEMF page anchor scroll offset too low — section headers hidden behind sticky header, need more offset

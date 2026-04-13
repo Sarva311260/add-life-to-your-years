@@ -301,7 +301,7 @@ export default function PEMF() {
     setMobileMenuOpen(false);
     const el = document.getElementById(sectionId);
     if (el) {
-      const headerOffset = 60;
+      const headerOffset = 80;
       const elementPosition = el.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({ top: elementPosition - headerOffset, behavior: 'smooth' });
     }
