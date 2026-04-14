@@ -325,3 +325,5 @@
 - [x] PEMF page: Find and add peer-reviewed references for mitochondria/ATP/chronic disease and PEMF induction to evidence section
 - [x] PEMF page: Standardise body text font size across the whole page to match 'What is PEMF' section, keep references smaller
 - [x] PEMF page: Update phone charger analogy — remove 'apps crash', replace with 'when battery goes flat the ability to communicate stops' connecting to cell function breakdown
+- [x] PEMF page: Generate PEMF-branded Open Graph preview image (1200x630) for link sharing
+- [x] PEMF page: Add Open Graph + Twitter Card meta tags to /pemf route so link previews show PEMF title/image not main site
