@@ -327,3 +327,4 @@
 - [x] PEMF page: Update phone charger analogy — remove 'apps crash', replace with 'when battery goes flat the ability to communicate stops' connecting to cell function breakdown
 - [x] PEMF page: Generate PEMF-branded Open Graph preview image (1200x630) for link sharing
 - [x] PEMF page: Add Open Graph + Twitter Card meta tags to /pemf route so link previews show PEMF title/image not main site
+- [ ] PEMF page: Add OlyLife manufacturing credentials paragraph (R&D Sweden/Germany, components Japan, assembled Hong Kong) after affordability paragraph in both PEMF.tsx and PEMFAffiliate.tsx

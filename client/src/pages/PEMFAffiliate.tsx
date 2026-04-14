@@ -663,6 +663,9 @@ export default function PEMFAffiliate() {
               <p className="text-gray-700 leading-relaxed text-base">
                 That has now changed. Thanks to <strong>OlyLife</strong>, this extraordinary technology is no longer confined to hospitals and clinics. Through years of innovation, miniaturisation, and a clever direct-to-consumer business model, OlyLife has managed to bring the cost of genuine PEMF therapy down to levels that are accessible to everyday people — without compromising on the science or the therapeutic effectiveness. What once required a US$60,000 machine and a trained clinician can now be experienced in the comfort of your own home, at a fraction of the cost.
               </p>
+              <p className="text-gray-700 leading-relaxed text-base mt-4">
+                This is possible because of how OlyLife is structured. Their research and development is conducted in <strong>Sweden</strong> and <strong>Germany</strong> — two countries with deep traditions of precision engineering and medical technology. The critical components are sourced from <strong>Japan</strong>, renowned for its exacting manufacturing standards. Final assembly takes place in <strong>Hong Kong</strong>, where world-class logistics and manufacturing infrastructure keep costs efficient. The result is a product that is genuinely cutting-edge in its science, yet priced within reach of everyday people.
+              </p>
             </div>
           </FadeIn>
         </div>
