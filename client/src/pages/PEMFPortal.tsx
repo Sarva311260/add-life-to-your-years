@@ -136,6 +136,11 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
     { enabled: !!token, retry: false }
   );
 
+  const { data: allEnquiries } = trpc.pemfAffiliate.getEnquiries.useQuery(
+    { token },
+    { enabled: !!token, retry: false }
+  );
+
   useEffect(() => {
     if (profile) {
       setEditName(profile.name);
@@ -374,41 +379,62 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
           )}
         </div>
 
-        {/* Recent Enquiries */}
-        {profile.recentEnquiries.length > 0 && (
-          <div className="bg-white/5 border border-emerald-800/30 rounded-2xl p-6">
-            <button
-              onClick={() => setShowEnquiries(!showEnquiries)}
-              className="flex items-center justify-between w-full"
-            >
-              <div className="flex items-center gap-2">
-                <BarChart2 className="w-5 h-5 text-emerald-400" />
-                <h2 className="text-white font-semibold">Recent Enquiries</h2>
-                <span className="bg-emerald-600/30 text-emerald-300 text-xs px-2 py-0.5 rounded-full">{profile.recentEnquiries.length}</span>
-              </div>
-              {showEnquiries ? <ChevronUp className="w-5 h-5 text-gray-400" /> : <ChevronDown className="w-5 h-5 text-gray-400" />}
-            </button>
+        {/* All Leads Table */}
+        <div className="bg-white/5 border border-emerald-800/30 rounded-2xl p-6">
+          <button
+            onClick={() => setShowEnquiries(!showEnquiries)}
+            className="flex items-center justify-between w-full"
+          >
+            <div className="flex items-center gap-2">
+              <BarChart2 className="w-5 h-5 text-emerald-400" />
+              <h2 className="text-white font-semibold">My Leads</h2>
+              {allEnquiries && (
+                <span className="bg-emerald-600/30 text-emerald-300 text-xs px-2 py-0.5 rounded-full">{allEnquiries.length}</span>
+              )}
+            </div>
+            {showEnquiries ? <ChevronUp className="w-5 h-5 text-gray-400" /> : <ChevronDown className="w-5 h-5 text-gray-400" />}
+          </button>
 
-            {showEnquiries && (
-              <div className="mt-5 space-y-3">
-                {profile.recentEnquiries.map((enq) => (
-                  <div key={enq.id} className="bg-black/20 rounded-xl p-4">
-                    <div className="flex items-start justify-between gap-2">
-                      <div>
-                        <p className="text-white font-medium text-sm">{enq.visitorName}</p>
-                        <p className="text-gray-400 text-xs">{enq.visitorEmail}{enq.visitorPhone ? ` · ${enq.visitorPhone}` : ""}</p>
-                        {enq.message && <p className="text-gray-300 text-sm mt-1.5 italic">"{enq.message}"</p>}
+          {showEnquiries && (
+            <div className="mt-5">
+              {!allEnquiries || allEnquiries.length === 0 ? (
+                <div className="text-center py-8 text-gray-500">
+                  <BarChart2 className="w-10 h-10 mx-auto mb-2 opacity-30" />
+                  <p className="text-sm">No leads yet. Share your PEMF link to start receiving enquiries.</p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {allEnquiries.map((enq) => (
+                    <div key={enq.id} className="bg-black/20 rounded-xl p-4">
+                      <div className="flex items-start justify-between gap-3 flex-wrap">
+                        <div className="flex-1 min-w-0">
+                          <p className="text-white font-medium text-sm">{enq.visitorName}</p>
+                          <p className="text-gray-400 text-xs mt-0.5">
+                            {enq.visitorEmail}{enq.visitorPhone ? ` · ${enq.visitorPhone}` : ""}
+                          </p>
+                          {enq.message && (
+                            <p className="text-gray-300 text-sm mt-1.5 italic">"{enq.message}"</p>
+                          )}
+                          {enq.sourcePage && (
+                            <div className="mt-2">
+                              <span className="inline-flex items-center gap-1 bg-emerald-900/30 border border-emerald-700/30 text-emerald-300 text-xs px-2 py-0.5 rounded-full">
+                                <Link2 className="w-3 h-3" />
+                                {enq.sourcePage}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                        <p className="text-gray-500 text-xs whitespace-nowrap">
+                          {new Date(enq.createdAt).toLocaleDateString()}
+                        </p>
                       </div>
-                      <p className="text-gray-500 text-xs whitespace-nowrap">
-                        {new Date(enq.createdAt).toLocaleDateString()}
-                      </p>
                     </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

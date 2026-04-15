@@ -232,6 +232,7 @@ export const pemfAffiliateRouter = router({
           visitorEmail: e.visitorEmail,
           visitorPhone: e.visitorPhone,
           message: e.message,
+          sourcePage: e.sourcePage,
           createdAt: e.createdAt,
         })),
       };
@@ -314,6 +315,7 @@ export const pemfAffiliateRouter = router({
         visitorEmail: z.string().email().max(320),
         visitorPhone: z.string().max(50).optional(),
         message: z.string().max(2000).optional(),
+        sourcePage: z.string().max(512).optional(),
       })
     )
     .mutation(async ({ input }) => {
@@ -328,6 +330,7 @@ export const pemfAffiliateRouter = router({
         visitorEmail: input.visitorEmail.trim().toLowerCase(),
         visitorPhone: input.visitorPhone?.trim() || null,
         message: input.message?.trim() || null,
+        sourcePage: input.sourcePage?.trim() || null,
       });
 
       notifyOwner({
@@ -337,7 +340,8 @@ export const pemfAffiliateRouter = router({
           `Visitor Name: ${input.visitorName}\n` +
           `Visitor Email: ${input.visitorEmail}\n` +
           `Visitor Phone: ${input.visitorPhone || "Not provided"}\n` +
-          `Message: ${input.message || "No message"}\n\n` +
+          `Message: ${input.message || "No message"}\n` +
+          `Source Page: ${input.sourcePage || "Unknown"}\n\n` +
           `Brand Partner: ${affiliate.name}\n` +
           `Partner Email: ${affiliate.email}\n` +
           `Partner Phone: ${affiliate.phone}\n`,
@@ -567,6 +571,28 @@ export const pemfAffiliateRouter = router({
       }
       await deletePemfResource(input.id);
       return { success: true };
+    }),
+
+  /**
+   * Affiliate: get full enquiries list with source page tracking.
+   */
+  getEnquiries: publicProcedure
+    .input(z.object({ token: z.string() }))
+    .query(async ({ input }) => {
+      const payload = await verifyAffiliateToken(input.token);
+      if (!payload) throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid or expired session." });
+      const affiliate = await getPemfAffiliateById(payload.affiliateId);
+      if (!affiliate || !affiliate.isActive) throw new TRPCError({ code: "UNAUTHORIZED", message: "Account not found." });
+      const enquiries = await getPemfEnquiriesByAffiliate(affiliate.id);
+      return enquiries.reverse().map(e => ({
+        id: e.id,
+        visitorName: e.visitorName,
+        visitorEmail: e.visitorEmail,
+        visitorPhone: e.visitorPhone,
+        message: e.message,
+        sourcePage: e.sourcePage,
+        createdAt: e.createdAt,
+      }));
     }),
 
   /**

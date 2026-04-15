@@ -241,6 +241,8 @@ export const pemfEnquiries = mysqlTable("pemf_enquiries", {
   visitorPhone: varchar("visitorPhone", { length: 50 }),
   /** Message from the visitor */
   message: text("message"),
+  /** The page URL the enquiry was submitted from (e.g. /pemf/john-smith) */
+  sourcePage: varchar("sourcePage", { length: 512 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 

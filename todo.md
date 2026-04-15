@@ -356,3 +356,9 @@
 - [x] PEMF Affiliate: Allow affiliates to choose their own URL slug on sign-up form with availability check and "already taken" error message
 - [x] Resource hub: Add "Landing Pages & Websites" resource type with subcategory support (admin can add subcategories, affiliates see resources grouped by subcategory)
 - [x] Resource hub: Landing pages auto-personalise URL for each affiliate by appending their slug (e.g. /pemf becomes /pemf/their-name when viewed in affiliate portal)
+- [x] Enquiry tracking: Add sourcePage column to pemf_enquiries table to record which page the lead came from
+- [x] Enquiry tracking: Update contact forms on all PEMF pages to pass current page URL when submitting
+- [x] Enquiry tracking: Show "Enquiries by Page" breakdown in affiliate portal dashboard
+- [x] Enquiry tracking: Add sourcePage column to pemf_enquiries table to record which page the lead came from
+- [x] Enquiry tracking: Update contact forms on all PEMF pages to pass current page URL when submitting
+- [x] Enquiry tracking: Show full leads table in affiliate portal — name, email, phone, message, source page, date
