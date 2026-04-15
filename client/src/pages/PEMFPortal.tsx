@@ -237,7 +237,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
           <div className="flex items-center gap-3">
             <a href="/pemf/portal/resources" className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors text-sm">
               <BookOpen className="w-4 h-4" />
-              <span className="hidden sm:inline">Resources</span>
+              <span>Resources</span>
             </a>
             <span className="text-emerald-300 text-sm hidden sm:block">{profile.name}</span>
             <button
