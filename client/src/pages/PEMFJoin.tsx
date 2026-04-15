@@ -150,7 +150,8 @@ export default function PEMFJoin() {
 
               {/* Custom Slug Field */}
               <div>
-                <label className="block text-emerald-300 text-sm font-medium mb-2">Your Personal URL</label>
+                <label className="block text-emerald-300 text-sm font-medium mb-1">Your Personal URL</label>
+                <p className="text-gray-400 text-xs mb-2">This is the unique link you'll share with people — it's the address they'll visit to learn about PEMF through you. Choose something simple and memorable, like your name.</p>
                 <div className="relative">
                   <div className="flex items-center bg-white/10 border rounded-lg overflow-hidden transition-all"
                     style={{
