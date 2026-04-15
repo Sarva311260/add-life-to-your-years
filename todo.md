@@ -351,3 +351,4 @@
 - [x] Affiliate resource hub: Admin upload panel at /pemf/admin/resources (upload PDFs, add templates, add video links)
 - [x] Affiliate resource hub: Affiliate-facing resource page at /pemf/portal/resources (download, copy, watch)
 - [x] Affiliate resource hub: Resources nav link in affiliate portal header and admin header
+- [x] PEMF Affiliate: Fix duplicate slug collision — append last 4 digits of phone number when slug already exists (e.g. john-smith-4521)

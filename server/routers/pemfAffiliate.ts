@@ -102,12 +102,15 @@ export const pemfAffiliateRouter = router({
         slug = "partner-" + Date.now();
       }
 
-      // Ensure slug is unique
+      // Ensure slug is unique — on collision, append last 4 digits of phone number
       let finalSlug = slug;
-      let counter = 1;
-      while (await checkSlugExists(finalSlug)) {
-        finalSlug = `${slug}-${counter}`;
-        counter++;
+      if (await checkSlugExists(finalSlug)) {
+        const phoneSuffix = input.phone.trim().replace(/\D/g, "").slice(-4);
+        finalSlug = phoneSuffix ? `${slug}-${phoneSuffix}` : `${slug}-${Date.now().toString().slice(-4)}`;
+        // If still collides (extremely rare), append timestamp
+        if (await checkSlugExists(finalSlug)) {
+          finalSlug = `${slug}-${Date.now().toString().slice(-6)}`;
+        }
       }
 
       // Hash password
