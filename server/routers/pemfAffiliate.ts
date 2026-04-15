@@ -653,8 +653,7 @@ export const pemfAffiliateRouter = router({
 });
 
 /**
- * Send a welcome email to a new affiliate using the Forge notification API.
- * Falls back gracefully if the API is unavailable.
+ * Send a welcome email to a new affiliate using Resend with the verified domain.
  */
 async function sendAffiliateWelcomeEmail({
   name,
@@ -667,12 +666,50 @@ async function sendAffiliateWelcomeEmail({
   slug: string;
   origin: string;
 }) {
+  const resendApiKey = process.env.RESEND_API_KEY;
+  if (!resendApiKey) {
+    console.warn("[Email] RESEND_API_KEY not configured, skipping welcome email.");
+    return;
+  }
+
   const pemfLink = `${origin}/pemf/${slug}`;
   const portalLink = `${origin}/pemf/portal`;
 
   const subject = `Welcome to the Add Life to Your Years Brand Partner Programme`;
-  const body = `
-Hi ${name},
+  const htmlBody = `
+<p>Hi ${name},</p>
+
+<p>Welcome to the <strong>Add Life to Your Years Brand Partner Programme</strong>! We're thrilled to have you on board.</p>
+
+<p>Your personal PEMF page is now live and ready to share:<br>
+<a href="${pemfLink}">${pemfLink}</a></p>
+
+<p>Share this link with anyone interested in PEMF therapy. Every enquiry that comes through your page will be tracked in your partner portal.</p>
+
+<hr>
+<h3>Your Partner Portal</h3>
+<p>Log in to your partner portal to view your enquiry stats, update your details, and access resources:<br>
+<a href="${portalLink}">${portalLink}</a></p>
+
+<p>Use the email address you registered with and the password you created during sign-up.</p>
+
+<hr>
+<h3>What's in Your Portal</h3>
+<ul>
+<li>Your personal PEMF link to share</li>
+<li>Enquiry tracking — see who has reached out through your page</li>
+<li>Resources — marketing materials, scripts, email templates, and more</li>
+<li>Profile settings — update your details or change your password</li>
+</ul>
+
+<p>If you have any questions, simply reply to this email.</p>
+
+<p>Warm regards,<br>
+<strong>Add Life to Your Years Team</strong><br>
+<a href="https://addlifetoyouryears.org">addlifetoyouryears.org</a></p>
+`.trim();
+
+  const textBody = `Hi ${name},
 
 Welcome to the Add Life to Your Years Brand Partner Programme! We're thrilled to have you on board.
 
@@ -681,48 +718,35 @@ ${pemfLink}
 
 Share this link with anyone interested in PEMF therapy. Every enquiry that comes through your page will be tracked in your partner portal.
 
----
-Your Partner Portal
----
-Log in to your partner portal to view your enquiry stats, update your details, and access resources:
+Your Partner Portal:
 ${portalLink}
 
 Use the email address you registered with and the password you created during sign-up.
 
----
-What's in Your Portal
----
-• Your personal PEMF link to share
-• Enquiry tracking — see who has reached out through your page
-• Resources — marketing materials, scripts, email templates, and more
-• Profile settings — update your details or change your password
+What's in Your Portal:
+- Your personal PEMF link to share
+- Enquiry tracking — see who has reached out through your page
+- Resources — marketing materials, scripts, email templates, and more
+- Profile settings — update your details or change your password
 
 If you have any questions, simply reply to this email.
 
 Warm regards,
 Add Life to Your Years Team
-https://addlifetoyouryears.org
-`.trim();
+https://addlifetoyouryears.org`;
 
-  const forgeApiUrl = process.env.BUILT_IN_FORGE_API_URL;
-  const forgeApiKey = process.env.BUILT_IN_FORGE_API_KEY;
-
-  if (!forgeApiUrl || !forgeApiKey) {
-    console.warn("[Email] Forge API not configured, skipping welcome email.");
-    return;
-  }
-
-  const response = await fetch(`${forgeApiUrl}/api/v1/email/send`, {
+  const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${forgeApiKey}`,
+      Authorization: `Bearer ${resendApiKey}`,
     },
     body: JSON.stringify({
-      to: email,
+      from: "Add Life to Your Years Team <noreply@addlifetoyouryears.org>",
+      to: [email],
       subject,
-      text: body,
-      from_name: "Add Life to Your Years Team",
+      html: htmlBody,
+      text: textBody,
     }),
   });
 
@@ -730,12 +754,13 @@ https://addlifetoyouryears.org
     const text = await response.text();
     console.warn(`[Email] Welcome email failed (${response.status}): ${text}`);
   } else {
-    console.log(`[Email] Welcome email sent to ${email}`);
+    const data = await response.json();
+    console.log(`[Email] Welcome email sent to ${email} — id: ${data.id}`);
   }
 }
 
 /**
- * Send an enquiry notification email directly to the affiliate.
+ * Send an enquiry notification email directly to the affiliate using Resend.
  */
 async function sendAffiliateEnquiryEmail({
   affiliateName,
@@ -754,48 +779,66 @@ async function sendAffiliateEnquiryEmail({
   message: string | null;
   sourcePage: string | null;
 }) {
-  const forgeApiUrl = process.env.BUILT_IN_FORGE_API_URL;
-  const forgeApiKey = process.env.BUILT_IN_FORGE_API_KEY;
-
-  if (!forgeApiUrl || !forgeApiKey) {
-    console.warn("[Email] Forge API not configured, skipping enquiry email.");
+  const resendApiKey = process.env.RESEND_API_KEY;
+  if (!resendApiKey) {
+    console.warn("[Email] RESEND_API_KEY not configured, skipping enquiry email.");
     return;
   }
 
   const subject = `New PEMF Enquiry from ${visitorName}`;
-  const body = `
-Hi ${affiliateName},
+  const htmlBody = `
+<p>Hi ${affiliateName},</p>
+
+<p>You have a new enquiry from someone who visited your PEMF page!</p>
+
+<hr>
+<h3>Enquiry Details</h3>
+<table style="border-collapse:collapse;width:100%;">
+  <tr><td style="padding:6px 12px;font-weight:bold;">Name</td><td style="padding:6px 12px;">${visitorName}</td></tr>
+  <tr style="background:#f9f9f9;"><td style="padding:6px 12px;font-weight:bold;">Email</td><td style="padding:6px 12px;"><a href="mailto:${visitorEmail}">${visitorEmail}</a></td></tr>
+  <tr><td style="padding:6px 12px;font-weight:bold;">Phone</td><td style="padding:6px 12px;">${visitorPhone || "Not provided"}</td></tr>
+  <tr style="background:#f9f9f9;"><td style="padding:6px 12px;font-weight:bold;">Message</td><td style="padding:6px 12px;">${message || "No message"}</td></tr>
+  <tr><td style="padding:6px 12px;font-weight:bold;">Source Page</td><td style="padding:6px 12px;">${sourcePage || "Unknown"}</td></tr>
+</table>
+
+<p>You can view all your enquiries in your partner portal:<br>
+<a href="https://addlifetoyouryears.org/pemf/portal">https://addlifetoyouryears.org/pemf/portal</a></p>
+
+<p>Warm regards,<br>
+<strong>Add Life to Your Years Team</strong><br>
+<a href="https://addlifetoyouryears.org">addlifetoyouryears.org</a></p>
+`.trim();
+
+  const textBody = `Hi ${affiliateName},
 
 You have a new enquiry from someone who visited your PEMF page!
 
----
-Enquiry Details
----
+Enquiry Details:
 Name: ${visitorName}
 Email: ${visitorEmail}
 Phone: ${visitorPhone || "Not provided"}
 Message: ${message || "No message"}
 Source Page: ${sourcePage || "Unknown"}
 
-You can view all your enquiries in your partner portal:
+View all your enquiries in your partner portal:
 https://addlifetoyouryears.org/pemf/portal
 
 Warm regards,
 Add Life to Your Years Team
-https://addlifetoyouryears.org
-`.trim();
+https://addlifetoyouryears.org`;
 
-  const response = await fetch(`${forgeApiUrl}/api/v1/email/send`, {
+  const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${forgeApiKey}`,
+      Authorization: `Bearer ${resendApiKey}`,
     },
     body: JSON.stringify({
-      to: affiliateEmail,
+      from: "Add Life to Your Years Team <noreply@addlifetoyouryears.org>",
+      to: [affiliateEmail],
       subject,
-      text: body,
-      from_name: "Add Life to Your Years Team",
+      html: htmlBody,
+      text: textBody,
     }),
   });
 
@@ -803,6 +846,7 @@ https://addlifetoyouryears.org
     const text = await response.text();
     console.warn(`[Email] Enquiry email failed (${response.status}): ${text}`);
   } else {
-    console.log(`[Email] Enquiry email sent to affiliate ${affiliateEmail}`);
+    const data = await response.json();
+    console.log(`[Email] Enquiry email sent to affiliate ${affiliateEmail} — id: ${data.id}`);
   }
 }
