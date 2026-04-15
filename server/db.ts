@@ -376,6 +376,12 @@ export async function updatePemfAffiliate(id: number, data: Partial<{
   passwordHash: string;
   isActive: number;
   lastLoginAt: Date;
+  facebook: string | null;
+  instagram: string | null;
+  linkedin: string | null;
+  tiktok: string | null;
+  youtube: string | null;
+  twitter: string | null;
 }>) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");

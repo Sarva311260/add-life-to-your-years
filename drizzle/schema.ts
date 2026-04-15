@@ -221,6 +221,13 @@ export const pemfAffiliates = mysqlTable("pemf_affiliates", {
   /** Whether the affiliate is currently active */
   isActive: int("isActive").default(1).notNull(),
   lastLoginAt: timestamp("lastLoginAt"),
+  /** Social media links */
+  facebook: varchar("facebook", { length: 512 }),
+  instagram: varchar("instagram", { length: 512 }),
+  linkedin: varchar("linkedin", { length: 512 }),
+  tiktok: varchar("tiktok", { length: 512 }),
+  youtube: varchar("youtube", { length: 512 }),
+  twitter: varchar("twitter", { length: 512 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 

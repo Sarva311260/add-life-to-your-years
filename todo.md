@@ -362,3 +362,8 @@
 - [x] Enquiry tracking: Add sourcePage column to pemf_enquiries table to record which page the lead came from
 - [x] Enquiry tracking: Update contact forms on all PEMF pages to pass current page URL when submitting
 - [x] Enquiry tracking: Show full leads table in affiliate portal — name, email, phone, message, source page, date
+- [x] Affiliate social media: Add Facebook, Instagram, LinkedIn, TikTok, YouTube, X columns to pemfAffiliates table
+- [x] Affiliate social media: Update getProfile/updateProfile backend to include social links
+- [x] Affiliate social media: Add social link edit fields in affiliate portal profile section
+- [x] Affiliate social media: Display social media icons on affiliate PEMF page
+- [x] Affiliate PEMF page: Add share button (WhatsApp, Facebook, copy link)

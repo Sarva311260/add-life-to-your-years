@@ -125,6 +125,14 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
   const [editPhone, setEditPhone] = useState("");
   const [editEmail, setEditEmail] = useState("");
 
+  // Social media fields
+  const [editFacebook, setEditFacebook] = useState("");
+  const [editInstagram, setEditInstagram] = useState("");
+  const [editLinkedin, setEditLinkedin] = useState("");
+  const [editTiktok, setEditTiktok] = useState("");
+  const [editYoutube, setEditYoutube] = useState("");
+  const [editTwitter, setEditTwitter] = useState("");
+
   // Password change
   const [currentPw, setCurrentPw] = useState("");
   const [newPw, setNewPw] = useState("");
@@ -146,6 +154,12 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
       setEditName(profile.name);
       setEditPhone(profile.phone);
       setEditEmail(profile.email);
+      setEditFacebook(profile.facebook || "");
+      setEditInstagram(profile.instagram || "");
+      setEditLinkedin(profile.linkedin || "");
+      setEditTiktok(profile.tiktok || "");
+      setEditYoutube(profile.youtube || "");
+      setEditTwitter(profile.twitter || "");
     }
   }, [profile]);
 
@@ -173,6 +187,12 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
       name: editName !== profile?.name ? editName : undefined,
       phone: editPhone !== profile?.phone ? editPhone : undefined,
       email: editEmail !== profile?.email ? editEmail : undefined,
+      facebook: editFacebook !== (profile?.facebook || "") ? (editFacebook || null) : undefined,
+      instagram: editInstagram !== (profile?.instagram || "") ? (editInstagram || null) : undefined,
+      linkedin: editLinkedin !== (profile?.linkedin || "") ? (editLinkedin || null) : undefined,
+      tiktok: editTiktok !== (profile?.tiktok || "") ? (editTiktok || null) : undefined,
+      youtube: editYoutube !== (profile?.youtube || "") ? (editYoutube || null) : undefined,
+      twitter: editTwitter !== (profile?.twitter || "") ? (editTwitter || null) : undefined,
     });
   };
 
@@ -313,6 +333,40 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
                 )}
               </div>
             ))}
+          </div>
+
+          {/* Social Media Links */}
+          <div className="mt-6 pt-6 border-t border-emerald-800/30">
+            <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-4">Social Media Links</p>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {[
+                { label: "Facebook", value: editFacebook, setter: setEditFacebook, placeholder: "https://facebook.com/yourpage" },
+                { label: "Instagram", value: editInstagram, setter: setEditInstagram, placeholder: "https://instagram.com/yourhandle" },
+                { label: "LinkedIn", value: editLinkedin, setter: setEditLinkedin, placeholder: "https://linkedin.com/in/yourprofile" },
+                { label: "TikTok", value: editTiktok, setter: setEditTiktok, placeholder: "https://tiktok.com/@yourhandle" },
+                { label: "YouTube", value: editYoutube, setter: setEditYoutube, placeholder: "https://youtube.com/@yourchannel" },
+                { label: "X (Twitter)", value: editTwitter, setter: setEditTwitter, placeholder: "https://x.com/yourhandle" },
+              ].map(({ label, value, setter, placeholder }) => (
+                <div key={label}>
+                  <label className="block text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5">{label}</label>
+                  {editMode ? (
+                    <input
+                      type="url"
+                      value={value}
+                      onChange={(e) => setter(e.target.value)}
+                      placeholder={placeholder}
+                      className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-3 py-2.5 text-white text-sm placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all"
+                    />
+                  ) : (
+                    value ? (
+                      <a href={value} target="_blank" rel="noreferrer" className="text-emerald-400 text-sm py-2.5 block hover:text-emerald-300 truncate">{value}</a>
+                    ) : (
+                      <p className="text-gray-600 text-sm py-2.5 italic">Not set</p>
+                    )
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

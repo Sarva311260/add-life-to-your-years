@@ -13,6 +13,8 @@ import {
   ArrowRight, BookOpen, Play, ChevronDown, ExternalLink,
   Leaf, X, Eye, Waves, Dumbbell, Battery, Sun, Droplets,
   Phone, Mail, User, MessageSquare, CheckCircle, Send, Menu,
+  Share2, Copy, Check,
+  Facebook, Instagram, Linkedin, Youtube,
 } from "lucide-react";
 import { useState, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
@@ -402,6 +404,22 @@ export default function PEMFAffiliate() {
   const [selectedProduct, setSelectedProduct] = useState<number | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleShare = () => {
+    const url = window.location.href;
+    const title = `${affiliate?.name} — PEMF Healing | Add Life to Your Years`;
+    const text = `Check out this PEMF wellness page from ${affiliate?.name}`;
+    if (navigator.share) {
+      navigator.share({ title, text, url }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(url).then(() => {
+        setCopied(true);
+        toast.success("Link copied to clipboard!");
+        setTimeout(() => setCopied(false), 2000);
+      });
+    }
+  };
   const headerRef = useRef<HTMLElement>(null);
 
   const scrollToSection = useCallback((e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
@@ -481,16 +499,26 @@ export default function PEMFAffiliate() {
             </a>
           </nav>
 
-          {/* Right: Affiliate name & phone (hidden on small mobile, shown sm+) */}
-          <div className="hidden sm:block flex-shrink-0 text-right">
-            <div className="text-white text-sm font-medium leading-tight">
-              {affiliate.name}
-              <span className="text-emerald-300 font-normal"> — Brand Partner</span>
+          {/* Right: Affiliate name, phone & share button */}
+          <div className="hidden sm:flex items-center gap-3 flex-shrink-0">
+            <div className="text-right">
+              <div className="text-white text-sm font-medium leading-tight">
+                {affiliate.name}
+                <span className="text-emerald-300 font-normal"> — Brand Partner</span>
+              </div>
+              <div className="flex items-center justify-end gap-1 text-emerald-300/80 text-xs">
+                <Phone className="w-3 h-3" />
+                <span>{affiliate.phone}</span>
+              </div>
             </div>
-            <div className="flex items-center justify-end gap-1 text-emerald-300/80 text-xs">
-              <Phone className="w-3 h-3" />
-              <span>{affiliate.phone}</span>
-            </div>
+            <button
+              onClick={handleShare}
+              className="flex items-center gap-1.5 bg-emerald-700/60 hover:bg-emerald-600 text-emerald-100 text-xs px-3 py-1.5 rounded-lg transition-all border border-emerald-600/40"
+              title="Share this page"
+            >
+              {copied ? <Check className="w-3.5 h-3.5" /> : <Share2 className="w-3.5 h-3.5" />}
+              <span className="hidden lg:inline">{copied ? "Copied!" : "Share"}</span>
+            </button>
           </div>
 
           {/* Mobile: hamburger menu button */}
@@ -919,7 +947,52 @@ export default function PEMFAffiliate() {
 
       {/* ── Footer ────────────────────────────────────────── */}
       <footer className="py-8 bg-emerald-900 text-emerald-200/70">
-        <div className="container text-center">
+        <div className="container text-center space-y-4">
+          {/* Social media icons */}
+          {(affiliate.facebook || affiliate.instagram || affiliate.linkedin || affiliate.tiktok || affiliate.youtube || affiliate.twitter) && (
+            <div className="flex items-center justify-center gap-4">
+              {affiliate.facebook && (
+                <a href={affiliate.facebook} target="_blank" rel="noreferrer" className="text-emerald-300/70 hover:text-emerald-300 transition-colors" title="Facebook">
+                  <Facebook className="w-5 h-5" />
+                </a>
+              )}
+              {affiliate.instagram && (
+                <a href={affiliate.instagram} target="_blank" rel="noreferrer" className="text-emerald-300/70 hover:text-emerald-300 transition-colors" title="Instagram">
+                  <Instagram className="w-5 h-5" />
+                </a>
+              )}
+              {affiliate.linkedin && (
+                <a href={affiliate.linkedin} target="_blank" rel="noreferrer" className="text-emerald-300/70 hover:text-emerald-300 transition-colors" title="LinkedIn">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+              )}
+              {affiliate.tiktok && (
+                <a href={affiliate.tiktok} target="_blank" rel="noreferrer" className="text-emerald-300/70 hover:text-emerald-300 transition-colors" title="TikTok">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+                </a>
+              )}
+              {affiliate.youtube && (
+                <a href={affiliate.youtube} target="_blank" rel="noreferrer" className="text-emerald-300/70 hover:text-emerald-300 transition-colors" title="YouTube">
+                  <Youtube className="w-5 h-5" />
+                </a>
+              )}
+              {affiliate.twitter && (
+                <a href={affiliate.twitter} target="_blank" rel="noreferrer" className="text-emerald-300/70 hover:text-emerald-300 transition-colors" title="X (Twitter)">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+              )}
+            </div>
+          )}
+          {/* Share button */}
+          <div>
+            <button
+              onClick={handleShare}
+              className="inline-flex items-center gap-2 bg-emerald-700/40 hover:bg-emerald-700/60 text-emerald-200 text-sm px-4 py-2 rounded-lg transition-all border border-emerald-600/30"
+            >
+              {copied ? <Check className="w-4 h-4" /> : <Share2 className="w-4 h-4" />}
+              {copied ? "Link Copied!" : "Share This Page"}
+            </button>
+          </div>
           <p className="text-sm">&copy; {new Date().getFullYear()} Add Life to Your Years. All rights reserved.</p>
         </div>
       </footer>

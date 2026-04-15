@@ -225,6 +225,12 @@ export const pemfAffiliateRouter = router({
         phone: affiliate.phone,
         slug: affiliate.slug,
         createdAt: affiliate.createdAt,
+        facebook: affiliate.facebook,
+        instagram: affiliate.instagram,
+        linkedin: affiliate.linkedin,
+        tiktok: affiliate.tiktok,
+        youtube: affiliate.youtube,
+        twitter: affiliate.twitter,
         enquiryCount: enquiries.length,
         recentEnquiries: enquiries.slice(-5).reverse().map(e => ({
           id: e.id,
@@ -249,6 +255,12 @@ export const pemfAffiliateRouter = router({
       email: z.string().email().max(320).optional(),
       newPassword: z.string().min(6).max(100).optional(),
       currentPassword: z.string().optional(),
+      facebook: z.string().max(512).optional().nullable(),
+      instagram: z.string().max(512).optional().nullable(),
+      linkedin: z.string().max(512).optional().nullable(),
+      tiktok: z.string().max(512).optional().nullable(),
+      youtube: z.string().max(512).optional().nullable(),
+      twitter: z.string().max(512).optional().nullable(),
     }))
     .mutation(async ({ input }) => {
       const payload = await verifyAffiliateToken(input.token);
@@ -260,6 +272,12 @@ export const pemfAffiliateRouter = router({
 
       if (input.name) updates.name = input.name.trim();
       if (input.phone) updates.phone = input.phone.trim();
+      if (input.facebook !== undefined) updates.facebook = input.facebook || null;
+      if (input.instagram !== undefined) updates.instagram = input.instagram || null;
+      if (input.linkedin !== undefined) updates.linkedin = input.linkedin || null;
+      if (input.tiktok !== undefined) updates.tiktok = input.tiktok || null;
+      if (input.youtube !== undefined) updates.youtube = input.youtube || null;
+      if (input.twitter !== undefined) updates.twitter = input.twitter || null;
       if (input.email) {
         const emailLower = input.email.trim().toLowerCase();
         if (emailLower !== affiliate.email) {
@@ -300,6 +318,12 @@ export const pemfAffiliateRouter = router({
         name: affiliate.name,
         phone: affiliate.phone,
         slug: affiliate.slug,
+        facebook: affiliate.facebook,
+        instagram: affiliate.instagram,
+        linkedin: affiliate.linkedin,
+        tiktok: affiliate.tiktok,
+        youtube: affiliate.youtube,
+        twitter: affiliate.twitter,
       };
     }),
 
@@ -441,6 +465,12 @@ export const pemfAffiliateRouter = router({
       name: z.string().min(2).max(255).optional(),
       email: z.string().email().max(320).optional(),
       phone: z.string().min(5).max(50).optional(),
+      facebook: z.string().max(512).optional().nullable(),
+      instagram: z.string().max(512).optional().nullable(),
+      linkedin: z.string().max(512).optional().nullable(),
+      tiktok: z.string().max(512).optional().nullable(),
+      youtube: z.string().max(512).optional().nullable(),
+      twitter: z.string().max(512).optional().nullable(),
     }))
     .mutation(async ({ input }) => {
       if (!await verifyAdminToken(input.adminToken)) {
@@ -449,6 +479,12 @@ export const pemfAffiliateRouter = router({
       const updates: Parameters<typeof updatePemfAffiliate>[1] = {};
       if (input.name) updates.name = input.name.trim();
       if (input.phone) updates.phone = input.phone.trim();
+      if (input.facebook !== undefined) updates.facebook = input.facebook || null;
+      if (input.instagram !== undefined) updates.instagram = input.instagram || null;
+      if (input.linkedin !== undefined) updates.linkedin = input.linkedin || null;
+      if (input.tiktok !== undefined) updates.tiktok = input.tiktok || null;
+      if (input.youtube !== undefined) updates.youtube = input.youtube || null;
+      if (input.twitter !== undefined) updates.twitter = input.twitter || null;
       if (input.email) updates.email = input.email.trim().toLowerCase();
       if (Object.keys(updates).length > 0) {
         await updatePemfAffiliate(input.affiliateId, updates);
