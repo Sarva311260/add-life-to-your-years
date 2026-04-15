@@ -14,6 +14,7 @@ const TYPE_CONFIG = {
   script: { label: "Script", icon: BookOpen, color: "text-purple-400", bg: "bg-purple-900/20" },
   email_template: { label: "Email Template", icon: Mail, color: "text-yellow-400", bg: "bg-yellow-900/20" },
   video: { label: "Video", icon: Video, color: "text-red-400", bg: "bg-red-900/20" },
+  landing_page: { label: "Landing Page / Website", icon: ExternalLink, color: "text-emerald-400", bg: "bg-emerald-900/20" },
 } as const;
 
 type ResourceType = keyof typeof TYPE_CONFIG;
@@ -27,7 +28,9 @@ interface Resource {
   fileName: string | null;
   content: string | null;
   videoUrl: string | null;
+  pageUrl: string | null;
   category: string | null;
+  subcategory: string | null;
   isPublished: number;
   sortOrder: number;
   createdAt: Date;
@@ -43,8 +46,10 @@ function AddResourceForm({ adminToken, onSuccess, onCancel }: {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
+  const [subcategory, setSubcategory] = useState("");
   const [content, setContent] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
+  const [pageUrl, setPageUrl] = useState("");
   const [isPublished, setIsPublished] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<{ url: string; name: string } | null>(null);
@@ -89,6 +94,9 @@ function AddResourceForm({ adminToken, onSuccess, onCancel }: {
     if (type === "email_template" && !content.trim()) {
       toast.error("Please enter the email template content."); return;
     }
+    if (type === "landing_page" && !pageUrl.trim()) {
+      toast.error("Please enter the page URL."); return;
+    }
     createMutation.mutate({
       adminToken,
       type,
@@ -98,7 +106,9 @@ function AddResourceForm({ adminToken, onSuccess, onCancel }: {
       fileName: uploadedFile?.name,
       content: content.trim() || undefined,
       videoUrl: videoUrl.trim() || undefined,
+      pageUrl: pageUrl.trim() || undefined,
       category: category.trim() || undefined,
+      subcategory: subcategory.trim() || undefined,
       isPublished,
     });
   };
@@ -157,6 +167,17 @@ function AddResourceForm({ adminToken, onSuccess, onCancel }: {
             />
           </div>
         </div>
+        {/* Subcategory (for landing pages especially) */}
+        <div>
+          <label className="block text-emerald-300/70 text-xs mb-1">Subcategory (optional)</label>
+          <input
+            type="text"
+            value={subcategory}
+            onChange={(e) => setSubcategory(e.target.value)}
+            className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+            placeholder={type === "landing_page" ? "e.g. PEMF Pages, Health Resources" : "Optional sub-grouping within category"}
+          />
+        </div>
 
         {/* Description */}
         <div>
@@ -211,6 +232,21 @@ function AddResourceForm({ adminToken, onSuccess, onCancel }: {
                 <p className="text-gray-500 text-xs mt-1">Max 16MB</p>
               </div>
             )}
+          </div>
+        )}
+
+        {/* Landing Page URL */}
+        {type === "landing_page" && (
+          <div>
+            <label className="block text-emerald-300/70 text-xs mb-1">Page URL *</label>
+            <input
+              type="url"
+              value={pageUrl}
+              onChange={(e) => setPageUrl(e.target.value)}
+              className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+              placeholder="https://addlifetoyouryears.org/pemf"
+            />
+            <p className="text-gray-500 text-xs mt-1">Affiliates will see their personalised version of this link (e.g. /pemf/their-name) if it's a PEMF page.</p>
           </div>
         )}
 

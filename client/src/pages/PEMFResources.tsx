@@ -13,6 +13,7 @@ const TYPE_CONFIG = {
   script: { label: "Script", icon: BookOpen, color: "text-purple-400", bg: "bg-purple-900/20", border: "border-purple-800/30" },
   email_template: { label: "Email Template", icon: Mail, color: "text-yellow-400", bg: "bg-yellow-900/20", border: "border-yellow-800/30" },
   video: { label: "Video", icon: Video, color: "text-red-400", bg: "bg-red-900/20", border: "border-red-800/30" },
+  landing_page: { label: "Landing Page", icon: ExternalLink, color: "text-emerald-400", bg: "bg-emerald-900/20", border: "border-emerald-800/30" },
 } as const;
 
 type ResourceType = keyof typeof TYPE_CONFIG;
@@ -26,7 +27,9 @@ interface Resource {
   fileName: string | null;
   content: string | null;
   videoUrl: string | null;
+  pageUrl: string | null;
   category: string | null;
+  subcategory: string | null;
   isPublished: number;
   sortOrder: number;
   createdAt: Date;
@@ -46,10 +49,27 @@ function getYouTubeEmbedUrl(url: string): string | null {
   return null;
 }
 
-function ResourceCard({ resource }: { resource: Resource }) {
+function ResourceCard({ resource, affiliateSlug }: { resource: Resource; affiliateSlug?: string }) {
   const [expanded, setExpanded] = useState(false);
   const [copied, setCopied] = useState(false);
-  const { label, icon: Icon, color, bg, border } = TYPE_CONFIG[resource.type];
+  const typeKey = (resource.type in TYPE_CONFIG ? resource.type : 'document') as ResourceType;
+  const { label, icon: Icon, color, bg, border } = TYPE_CONFIG[typeKey];
+
+  // For landing pages, personalise the URL if it matches our domain and ends with /pemf
+  const getPersonalisedUrl = () => {
+    if (!resource.pageUrl) return null;
+    if (!affiliateSlug) return resource.pageUrl;
+    try {
+      const url = new URL(resource.pageUrl);
+      // If the path ends with /pemf (with or without trailing slash), append the slug
+      const path = url.pathname.replace(/\/$/, '');
+      if (path === '/pemf' || path.match(/\/pemf$/)) {
+        return `${url.origin}${path}/${affiliateSlug}`;
+      }
+    } catch {}
+    return resource.pageUrl;
+  };
+  const personalisedUrl = getPersonalisedUrl();
 
   const handleCopy = () => {
     if (resource.content) {
@@ -143,6 +163,32 @@ function ResourceCard({ resource }: { resource: Resource }) {
               </pre>
             </div>
           )}
+
+          {/* Landing page — personalised link */}
+          {resource.type === "landing_page" && personalisedUrl && (
+            <div className="space-y-3">
+              <div className="bg-emerald-900/20 border border-emerald-700/30 rounded-lg p-3">
+                <p className="text-emerald-300/70 text-xs font-medium uppercase tracking-wider mb-1">Your Personal Link</p>
+                <p className="text-white text-sm font-mono break-all">{personalisedUrl}</p>
+              </div>
+              <div className="flex gap-2">
+                <a
+                  href={personalisedUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-700/30 text-emerald-300 text-sm px-4 py-2.5 rounded-lg transition-all"
+                >
+                  <ExternalLink className="w-4 h-4" /> Open Page
+                </a>
+                <button
+                  onClick={() => { navigator.clipboard.writeText(personalisedUrl); setCopied(true); setTimeout(() => setCopied(false), 2000); }}
+                  className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 text-sm px-4 py-2.5 rounded-lg transition-all"
+                >
+                  <Copy className="w-4 h-4" /> {copied ? "Copied!" : "Copy Link"}
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -158,6 +204,13 @@ export default function PEMFResources() {
     { enabled: !!token, retry: false }
   );
 
+  const { data: profile } = trpc.pemfAffiliate.getProfile.useQuery(
+    { token },
+    { enabled: !!token, retry: false }
+  );
+
+  const affiliateSlug = profile?.slug || undefined;
+
   if (!token) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-[#0a2e1a] to-[#0d3b22] flex items-center justify-center">
@@ -169,14 +222,17 @@ export default function PEMFResources() {
     );
   }
 
-  const filtered = resources
-    ? (filterType === "all" ? resources : resources.filter((r: Resource) => r.type === filterType))
+  const filtered: Resource[] = resources
+    ? (filterType === "all" ? (resources as Resource[]) : (resources as Resource[]).filter((r) => r.type === filterType))
     : [];
 
-  const grouped = filtered.reduce((acc: Record<string, Resource[]>, r: Resource) => {
+  // Group by category, then subcategory
+  const grouped = filtered.reduce((acc: Record<string, Record<string, Resource[]>>, r: Resource) => {
     const cat = r.category || "General";
-    if (!acc[cat]) acc[cat] = [];
-    acc[cat].push(r);
+    const sub = r.subcategory || "";
+    if (!acc[cat]) acc[cat] = {};
+    if (!acc[cat][sub]) acc[cat][sub] = [];
+    acc[cat][sub].push(r);
     return acc;
   }, {});
 
@@ -249,14 +305,21 @@ export default function PEMFResources() {
         ) : filtered.length === 0 ? (
           <div className="text-center py-12 text-gray-500">No resources in this category yet.</div>
         ) : (
-          Object.entries(grouped).map(([category, items]) => (
+          Object.entries(grouped).map(([category, subcats]) => (
             <div key={category}>
               <h2 className="text-emerald-400/70 text-xs font-semibold uppercase tracking-wider mb-3">{category}</h2>
-              <div className="space-y-2">
-                {items.map((resource) => (
-                  <ResourceCard key={resource.id} resource={resource} />
-                ))}
-              </div>
+              {Object.entries(subcats as Record<string, Resource[]>).map(([sub, items]) => (
+                <div key={sub} className="mb-4">
+                  {sub && (
+                    <h3 className="text-gray-400 text-xs font-medium uppercase tracking-wider mb-2 pl-1 border-l-2 border-emerald-700/50">{sub}</h3>
+                  )}
+                  <div className="space-y-2">
+                    {(items as Resource[]).map((resource) => (
+                      <ResourceCard key={resource.id} resource={resource} affiliateSlug={affiliateSlug} />
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           ))
         )}

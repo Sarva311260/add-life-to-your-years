@@ -483,14 +483,16 @@ export const pemfAffiliateRouter = router({
   adminCreateResource: publicProcedure
     .input(z.object({
       adminToken: z.string(),
-      type: z.enum(["document", "script", "email_template", "video"]),
+      type: z.enum(["document", "script", "email_template", "video", "landing_page"]),
       title: z.string().min(1).max(255),
       description: z.string().max(2000).optional(),
       fileUrl: z.string().url().optional(),
       fileName: z.string().max(255).optional(),
       content: z.string().optional(),
       videoUrl: z.string().url().optional(),
+      pageUrl: z.string().url().optional(),
       category: z.string().max(100).optional(),
+      subcategory: z.string().max(100).optional(),
       isPublished: z.boolean().default(true),
       sortOrder: z.number().int().default(0),
     }))
@@ -506,7 +508,9 @@ export const pemfAffiliateRouter = router({
         fileName: input.fileName || null,
         content: input.content || null,
         videoUrl: input.videoUrl || null,
+        pageUrl: input.pageUrl || null,
         category: input.category || null,
+        subcategory: input.subcategory || null,
         isPublished: input.isPublished ? 1 : 0,
         sortOrder: input.sortOrder,
       });
@@ -526,7 +530,9 @@ export const pemfAffiliateRouter = router({
       fileName: z.string().max(255).optional().nullable(),
       content: z.string().optional().nullable(),
       videoUrl: z.string().url().optional().nullable(),
+      pageUrl: z.string().url().optional().nullable(),
       category: z.string().max(100).optional().nullable(),
+      subcategory: z.string().max(100).optional().nullable(),
       isPublished: z.boolean().optional(),
       sortOrder: z.number().int().optional(),
     }))
@@ -541,7 +547,9 @@ export const pemfAffiliateRouter = router({
       if (input.fileName !== undefined) updates.fileName = input.fileName;
       if (input.content !== undefined) updates.content = input.content;
       if (input.videoUrl !== undefined) updates.videoUrl = input.videoUrl;
+      if (input.pageUrl !== undefined) updates.pageUrl = input.pageUrl;
       if (input.category !== undefined) updates.category = input.category;
+      if (input.subcategory !== undefined) updates.subcategory = input.subcategory;
       if (input.isPublished !== undefined) updates.isPublished = input.isPublished ? 1 : 0;
       if (input.sortOrder !== undefined) updates.sortOrder = input.sortOrder;
       await updatePemfResource(input.id, updates as any);

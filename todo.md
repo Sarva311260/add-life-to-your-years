@@ -354,3 +354,5 @@
 - [x] PEMF Affiliate: Fix duplicate slug collision — append last 4 digits of phone number when slug already exists (e.g. john-smith-4521)
 - [x] PEMF Affiliate: Allow affiliates to choose their own URL slug on sign-up form with availability check and "already taken" error message
 - [x] PEMF Affiliate: Allow affiliates to choose their own URL slug on sign-up form with availability check and "already taken" error message
+- [x] Resource hub: Add "Landing Pages & Websites" resource type with subcategory support (admin can add subcategories, affiliates see resources grouped by subcategory)
+- [x] Resource hub: Landing pages auto-personalise URL for each affiliate by appending their slug (e.g. /pemf becomes /pemf/their-name when viewed in affiliate portal)

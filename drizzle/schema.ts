@@ -252,8 +252,8 @@ export type InsertPemfEnquiry = typeof pemfEnquiries.$inferInsert;
  */
 export const pemfResources = mysqlTable("pemf_resources", {
   id: int("id").autoincrement().primaryKey(),
-  /** Resource type: 'document' | 'script' | 'email_template' | 'video' */
-  type: mysqlEnum("type", ["document", "script", "email_template", "video"]).notNull(),
+  /** Resource type: 'document' | 'script' | 'email_template' | 'video' | 'landing_page' */
+  type: mysqlEnum("type", ["document", "script", "email_template", "video", "landing_page"]).notNull(),
   /** Display title */
   title: varchar("title", { length: 255 }).notNull(),
   /** Optional description shown to affiliates */
@@ -268,6 +268,10 @@ export const pemfResources = mysqlTable("pemf_resources", {
   videoUrl: varchar("videoUrl", { length: 512 }),
   /** Category label for grouping (e.g. 'Getting Started', 'Social Media') */
   category: varchar("category", { length: 100 }),
+  /** Subcategory label for further grouping within a category (e.g. 'PEMF Pages', 'Health Resources') */
+  subcategory: varchar("subcategory", { length: 100 }),
+  /** For landing_page type: the URL of the page or website */
+  pageUrl: varchar("pageUrl", { length: 512 }),
   /** Whether visible to affiliates */
   isPublished: int("isPublished").default(1).notNull(),
   /** Display order within category */
