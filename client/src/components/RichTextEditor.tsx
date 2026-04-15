@@ -86,8 +86,8 @@ export default function RichTextEditor({
       title={title}
       className={`p-1.5 rounded transition-colors ${
         active
-          ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400"
-          : "text-gray-500 hover:bg-gray-100 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-white/10 dark:hover:text-white"
+          ? "bg-emerald-100 text-emerald-700"
+          : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
       }`}
     >
       {children}
@@ -97,7 +97,7 @@ export default function RichTextEditor({
   return (
     <div className={`border border-input rounded-lg overflow-hidden ${className}`}>
       {/* Toolbar */}
-      <div className="flex flex-wrap items-center gap-0.5 px-2 py-1.5 border-b border-input bg-muted/40">
+      <div className="flex flex-wrap items-center gap-0.5 px-2 py-1.5 border-b border-input bg-white dark:bg-white/10">
         {/* History */}
         <ToolbarBtn onClick={() => editor.chain().focus().undo().run()} title="Undo">
           <Undo className="w-3.5 h-3.5" />
@@ -106,7 +106,7 @@ export default function RichTextEditor({
           <Redo className="w-3.5 h-3.5" />
         </ToolbarBtn>
 
-        <div className="w-px h-4 bg-border mx-1" />
+        <div className="w-px h-4 bg-gray-300 mx-1" />
 
         {/* Text style */}
         <ToolbarBtn
@@ -131,7 +131,7 @@ export default function RichTextEditor({
           <UnderlineIcon className="w-3.5 h-3.5" />
         </ToolbarBtn>
 
-        <div className="w-px h-4 bg-border mx-1" />
+        <div className="w-px h-4 bg-gray-300 mx-1" />
 
         {/* Lists */}
         <ToolbarBtn
@@ -149,7 +149,7 @@ export default function RichTextEditor({
           <ListOrdered className="w-3.5 h-3.5" />
         </ToolbarBtn>
 
-        <div className="w-px h-4 bg-border mx-1" />
+        <div className="w-px h-4 bg-gray-300 mx-1" />
 
         {/* Alignment */}
         <ToolbarBtn
@@ -174,7 +174,7 @@ export default function RichTextEditor({
           <AlignRight className="w-3.5 h-3.5" />
         </ToolbarBtn>
 
-        <div className="w-px h-4 bg-border mx-1" />
+        <div className="w-px h-4 bg-gray-300 mx-1" />
 
         {/* Link */}
         <ToolbarBtn
@@ -194,7 +194,7 @@ export default function RichTextEditor({
 
       {/* Link input bar */}
       {showLinkInput && (
-        <div className="flex items-center gap-2 px-3 py-2 border-b border-input bg-muted/20">
+        <div className="flex items-center gap-2 px-3 py-2 border-b border-input bg-white dark:bg-white/10">
           <Input
             autoFocus
             placeholder="https://example.com"
@@ -211,7 +211,7 @@ export default function RichTextEditor({
       {/* Editor area */}
       <EditorContent
         editor={editor}
-        className="prose prose-sm dark:prose-invert max-w-none px-3 py-2 focus-within:outline-none"
+        className="prose prose-sm max-w-none px-3 py-2 focus-within:outline-none bg-white text-gray-900"
         style={{ minHeight }}
       />
 

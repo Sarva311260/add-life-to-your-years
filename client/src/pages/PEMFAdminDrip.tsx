@@ -96,11 +96,10 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
           <p className="text-emerald-300/70 mt-1">Manage drip sequences, broadcast emails, and view email logs.</p>
         </div>
         <Button
-          variant="outline"
           size="sm"
           onClick={() => processQueue.mutate({ adminToken, origin: window.location.origin })}
           disabled={processQueue.isPending}
-          className="gap-2"
+          className="gap-2 bg-white text-emerald-900 hover:bg-emerald-50 border border-white/30"
         >
           {processQueue.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4" />}
           Process Queue Now
