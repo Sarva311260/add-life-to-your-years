@@ -4,12 +4,12 @@ import { toast } from "sonner";
 import {
   Leaf, Eye, EyeOff, ArrowRight, LogOut, User, Phone, Mail,
   BarChart2, Link2, Copy, Edit2, Check, X, Lock, ChevronDown, ChevronUp, BookOpen,
-  Send, Loader2, Zap
+  Send, Loader2, Zap, Mail as MailIcon, Settings
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import RichTextEditor from "@/components/RichTextEditor";
 
 const TOKEN_KEY = "affiliate_token";
 
@@ -159,6 +159,18 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
     { enabled: !!token, retry: false }
   );
 
+  // Drip overrides
+  const [activeTab, setActiveTab] = useState<"dashboard" | "campaigns">("dashboard");
+  const { data: dripSequences = [], refetch: refetchDrip } = trpc.drip.affiliateGetDripOverrides.useQuery(
+    { token },
+    { enabled: !!token && activeTab === "campaigns", retry: false }
+  );
+  const [editingOverride, setEditingOverride] = useState<{ emailId: number; subject: string; body: string } | null>(null);
+  const saveDripOverride = trpc.drip.affiliateSaveDripOverride.useMutation({
+    onSuccess: () => { toast.success("Email template saved!"); setEditingOverride(null); refetchDrip(); },
+    onError: (e) => toast.error(e.message),
+  });
+
   // Manual email to lead
   const [emailTarget, setEmailTarget] = useState<{ email: string; name: string } | null>(null);
   const [emailSubject, setEmailSubject] = useState("");
@@ -270,7 +282,98 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
         </div>
       </header>
 
+      {/* Tab Navigation */}
+      <div className="bg-[#0a2e1a]/80 border-b border-emerald-800/20">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="flex gap-1">
+            <button
+              onClick={() => setActiveTab("dashboard")}
+              className={`px-5 py-3 text-sm font-medium border-b-2 transition-colors ${
+                activeTab === "dashboard"
+                  ? "border-emerald-400 text-emerald-400"
+                  : "border-transparent text-gray-400 hover:text-white"
+              }`}
+            >
+              Dashboard
+            </button>
+            <button
+              onClick={() => setActiveTab("campaigns")}
+              className={`px-5 py-3 text-sm font-medium border-b-2 transition-colors flex items-center gap-1.5 ${
+                activeTab === "campaigns"
+                  ? "border-emerald-400 text-emerald-400"
+                  : "border-transparent text-gray-400 hover:text-white"
+              }`}
+            >
+              <MailIcon className="w-3.5 h-3.5" /> My Campaigns
+            </button>
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-5xl mx-auto px-4 py-10 space-y-6">
+
+        {/* ─── CAMPAIGNS TAB ─── */}
+        {activeTab === "campaigns" && (
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-xl font-serif text-white mb-1">My Email Campaigns</h2>
+              <p className="text-emerald-300/70 text-sm">Personalise the drip emails that go out to your prospects. Your custom version will be used instead of the default template.</p>
+            </div>
+
+            {dripSequences.length === 0 ? (
+              <div className="bg-white/5 border border-emerald-800/30 rounded-2xl p-8 text-center">
+                <MailIcon className="w-10 h-10 text-emerald-700 mx-auto mb-3" />
+                <p className="text-gray-400">No active email sequences yet. Check back once your admin has set up campaigns.</p>
+              </div>
+            ) : (
+              dripSequences.map((seq: any) => (
+                <div key={seq.id} className="bg-white/5 border border-emerald-800/30 rounded-2xl p-6 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="text-white font-semibold">{seq.name}</h3>
+                      {seq.description && <p className="text-emerald-300/60 text-sm mt-0.5">{seq.description}</p>}
+                    </div>
+                    <span className={`text-xs px-2 py-0.5 rounded-full ${
+                      seq.isActive ? "bg-emerald-900/50 text-emerald-400" : "bg-gray-800 text-gray-500"
+                    }`}>{seq.isActive ? "Active" : "Paused"}</span>
+                  </div>
+
+                  {seq.emails.length === 0 ? (
+                    <p className="text-gray-500 text-sm">No emails in this sequence yet.</p>
+                  ) : (
+                    <div className="space-y-3">
+                      {seq.emails.map((email: any) => (
+                        <div key={email.id} className="bg-white/5 border border-emerald-800/20 rounded-xl p-4">
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 mb-1">
+                                <span className="text-xs bg-emerald-900/50 text-emerald-400 px-2 py-0.5 rounded-full">Day {email.dayOffset}</span>
+                                {email.hasOverride && <span className="text-xs bg-blue-900/50 text-blue-400 px-2 py-0.5 rounded-full">Customised</span>}
+                              </div>
+                              <p className="text-white text-sm font-medium truncate">{email.customSubject || email.subject}</p>
+                              <p className="text-gray-400 text-xs mt-0.5">Default: {email.subject}</p>
+                            </div>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="shrink-0 gap-1.5 text-xs"
+                              onClick={() => setEditingOverride({ emailId: email.id, subject: email.customSubject || email.subject, body: email.customBody || email.body })}
+                            >
+                              <Edit2 className="w-3 h-3" /> Customise
+                            </Button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))
+            )}
+          </div>
+        )}
+
+        {/* ─── DASHBOARD TAB ─── */}
+        {activeTab === "dashboard" && <>
         {/* Welcome Banner */}
         <div className="bg-emerald-900/30 border border-emerald-700/30 rounded-2xl p-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -556,7 +659,55 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
             </div>
           )}
         </div>
+        </> /* end dashboard tab */}
       </div>
+
+      {/* Drip Override Edit Dialog */}
+      <Dialog open={!!editingOverride} onOpenChange={(open) => { if (!open) setEditingOverride(null); }}>
+        <DialogContent className="sm:max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>Customise Email Template</DialogTitle>
+            <DialogDescription>
+              Edit the subject and body for this email. Your version will be sent to your prospects instead of the default.
+            </DialogDescription>
+          </DialogHeader>
+          {editingOverride && (
+            <div className="space-y-4 py-2">
+              <div>
+                <label className="text-sm font-medium mb-1 block">Subject</label>
+                <Input
+                  value={editingOverride.subject}
+                  onChange={e => setEditingOverride(o => o ? { ...o, subject: e.target.value } : null)}
+                  placeholder="Email subject..."
+                />
+              </div>
+              <div>
+                <label className="text-sm font-medium mb-1 block">Body</label>
+                <RichTextEditor
+                  value={editingOverride.body}
+                  onChange={(html) => setEditingOverride(o => o ? { ...o, body: html } : null)}
+                  placeholder="Email body..."
+                  minHeight={280}
+                />
+                <p className="text-xs text-muted-foreground mt-1">
+                  Use <code className="bg-muted px-1 rounded">{"{{leadName}}"}</code> for the prospect's name. An unsubscribe link is added automatically.
+                </p>
+              </div>
+            </div>
+          )}
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setEditingOverride(null)}>Cancel</Button>
+            <Button
+              onClick={() => editingOverride && saveDripOverride.mutate({ token, dripEmailId: editingOverride.emailId, subject: editingOverride.subject, body: editingOverride.body })}
+              disabled={!editingOverride?.subject || !editingOverride?.body || saveDripOverride.isPending}
+              className="gap-2"
+            >
+              {saveDripOverride.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Check className="w-4 h-4" />}
+              Save My Version
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       {/* Manual Email Dialog */}
       <Dialog open={!!emailTarget} onOpenChange={(open) => { if (!open) setEmailTarget(null); }}>
@@ -573,11 +724,11 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
               value={emailSubject}
               onChange={e => setEmailSubject(e.target.value)}
             />
-            <Textarea
-              placeholder="Your message..."
+            <RichTextEditor
               value={emailBody}
-              onChange={e => setEmailBody(e.target.value)}
-              rows={7}
+              onChange={setEmailBody}
+              placeholder="Your message..."
+              minHeight={200}
             />
           </div>
           <DialogFooter>

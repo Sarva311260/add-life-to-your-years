@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import RichTextEditor from "@/components/RichTextEditor";
 import { Badge } from "@/components/ui/badge";
 import {
   Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter,
@@ -126,11 +127,11 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
             value={broadcastSubject}
             onChange={e => setBroadcastSubject(e.target.value)}
           />
-          <Textarea
-            placeholder="Email body (HTML supported)..."
+          <RichTextEditor
             value={broadcastBody}
-            onChange={e => setBroadcastBody(e.target.value)}
-            rows={6}
+            onChange={setBroadcastBody}
+            placeholder="Email body..."
+            minHeight={160}
           />
           <Button
             onClick={() => broadcast.mutate({ adminToken, subject: broadcastSubject, body: broadcastBody })}
@@ -331,12 +332,12 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
               />
             </div>
             <div>
-              <label className="text-sm font-medium text-foreground mb-1 block">Body (HTML supported)</label>
-              <Textarea
-                placeholder="Email body... You can use HTML. The affiliate's name and an unsubscribe link will be added automatically."
+              <label className="text-sm font-medium text-foreground mb-1 block">Body</label>
+              <RichTextEditor
                 value={emailForm.body}
-                onChange={e => setEmailForm(f => ({ ...f, body: e.target.value }))}
-                rows={10}
+                onChange={(html) => setEmailForm(f => ({ ...f, body: html }))}
+                placeholder="Email body... The affiliate's name and an unsubscribe link will be added automatically."
+                minHeight={240}
               />
               <p className="text-xs text-muted-foreground mt-1">
                 Available placeholders: <code className="bg-muted px-1 rounded">{"{{leadName}}"}</code> — the lead's first name.

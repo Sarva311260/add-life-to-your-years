@@ -10,6 +10,7 @@ import {
   updateDripEnrollment, getDueEmails, logDripSend, getDripSendLogByEnrollment,
   logEmail, getAllEmailLog, getEmailLogByAffiliate,
   getAllPemfAffiliates, getPemfAffiliateById, getActiveDripSequences,
+  getAffiliateDripOverride, upsertAffiliateDripOverride, getAffiliateDripOverridesForAffiliate,
 } from "../db";
 import { Resend } from "resend";
 
@@ -359,6 +360,55 @@ export const dripCampaignRouter = router({
       return result;
     }),
 
+  // ─── AFFILIATE: Get/save drip email overrides ────────────────────────────
+
+  affiliateGetDripOverrides: publicProcedure
+    .input(z.object({ token: z.string() }))
+    .query(async ({ input }) => {
+      const payload = await verifyAffiliateToken(input.token);
+      if (!payload) throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid or expired session." });
+
+      // Get all active sequences with their emails
+      const sequences = await getAllDripSequences();
+      const result = [];
+      for (const seq of sequences) {
+        const emails = await getDripEmailsBySequence(seq.id);
+        const emailsWithOverrides = await Promise.all(
+          emails.map(async (email) => {
+            const override = await getAffiliateDripOverride(payload.affiliateId, email.id);
+            return {
+              ...email,
+              customSubject: override?.subject ?? null,
+              customBody: override?.body ?? null,
+              hasOverride: !!override,
+            };
+          })
+        );
+        result.push({ ...seq, emails: emailsWithOverrides });
+      }
+      return result;
+    }),
+
+  affiliateSaveDripOverride: publicProcedure
+    .input(z.object({
+      token: z.string(),
+      dripEmailId: z.number(),
+      subject: z.string().nullable(),
+      body: z.string().nullable(),
+    }))
+    .mutation(async ({ input }) => {
+      const payload = await verifyAffiliateToken(input.token);
+      if (!payload) throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid or expired session." });
+
+      await upsertAffiliateDripOverride({
+        affiliateId: payload.affiliateId,
+        dripEmailId: input.dripEmailId,
+        subject: input.subject,
+        body: input.body,
+      });
+      return { success: true };
+    }),
+
   // ─── PUBLIC: Unsubscribe ──────────────────────────────────────────────────
 
   unsubscribe: publicProcedure
@@ -388,14 +438,18 @@ export async function processDripQueue(origin: string): Promise<{ sent: number; 
     if (!affiliate) continue;
 
     const unsubLink = unsubscribeUrl(origin, enrollment.unsubscribeToken);
-    const htmlBody = wrapWithUnsubscribe(dripEmail.body, unsubLink, affiliate.name);
+    // Check for affiliate override
+    const override = await getAffiliateDripOverride(enrollment.affiliateId, dripEmail.id);
+    const emailSubject = override?.subject || dripEmail.subject;
+    const emailBodyRaw = override?.body || dripEmail.body;
+    const htmlBody = wrapWithUnsubscribe(emailBodyRaw, unsubLink, affiliate.name);
 
     try {
       const result = await resend.emails.send({
         from: `${affiliate.name} via Add Life to Your Years <noreply@addlifetoyouryears.org>`,
         replyTo: affiliate.email,
         to: enrollment.leadEmail,
-        subject: dripEmail.subject,
+        subject: emailSubject,
         html: `<p>Hi ${enrollment.leadName},</p>${htmlBody}`,
       });
 

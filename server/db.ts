@@ -9,6 +9,7 @@ import {
   dripSequences, InsertDripSequence, dripEmails, InsertDripEmail,
   dripEnrollments, InsertDripEnrollment, dripSendLog, InsertDripSendLog,
   emailLog, InsertEmailLog,
+  affiliateDripOverrides, InsertAffiliateDripOverride,
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -623,4 +624,35 @@ export async function getAllEmailLog(limit = 100) {
   const db = await getDb();
   if (!db) return [];
   return db.select().from(emailLog).orderBy(desc(emailLog.sentAt)).limit(limit);
+}
+
+// ─── Affiliate Drip Overrides ─────────────────────────────────────────────────
+
+export async function getAffiliateDripOverride(affiliateId: number, dripEmailId: number) {
+  const db = await getDb();
+  if (!db) return null;
+  const rows = await db.select().from(affiliateDripOverrides)
+    .where(and(eq(affiliateDripOverrides.affiliateId, affiliateId), eq(affiliateDripOverrides.dripEmailId, dripEmailId)))
+    .limit(1);
+  return rows[0] ?? null;
+}
+
+export async function upsertAffiliateDripOverride(data: InsertAffiliateDripOverride) {
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+  const existing = await getAffiliateDripOverride(data.affiliateId!, data.dripEmailId!);
+  if (existing) {
+    await db.update(affiliateDripOverrides)
+      .set({ subject: data.subject, body: data.body })
+      .where(eq(affiliateDripOverrides.id, existing.id));
+  } else {
+    await db.insert(affiliateDripOverrides).values(data);
+  }
+}
+
+export async function getAffiliateDripOverridesForAffiliate(affiliateId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(affiliateDripOverrides)
+    .where(eq(affiliateDripOverrides.affiliateId, affiliateId));
 }

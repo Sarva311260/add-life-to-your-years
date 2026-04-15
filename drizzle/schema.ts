@@ -394,3 +394,22 @@ export const emailLog = mysqlTable("email_log", {
 
 export type EmailLog = typeof emailLog.$inferSelect;
 export type InsertEmailLog = typeof emailLog.$inferInsert;
+
+/**
+ * Affiliate Drip Email Overrides — allows affiliates to customise the subject/body
+ * of individual drip emails for their own leads. Falls back to the admin default if no override.
+ */
+export const affiliateDripOverrides = mysqlTable("affiliate_drip_overrides", {
+  id: int("id").autoincrement().primaryKey(),
+  affiliateId: int("affiliateId").notNull(),
+  dripEmailId: int("dripEmailId").notNull(),
+  /** Custom subject (null = use admin default) */
+  subject: varchar("subject", { length: 255 }),
+  /** Custom body HTML (null = use admin default) */
+  body: text("body"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type AffiliateDripOverride = typeof affiliateDripOverrides.$inferSelect;
+export type InsertAffiliateDripOverride = typeof affiliateDripOverrides.$inferInsert;
