@@ -390,6 +390,120 @@ function ContactFormModal({
 }
 
 /* ══════════════════════════════════════════════════════════════
+   Inline Contact Section Form (server-side submission)
+   ══════════════════════════════════════════════════════════════ */
+function ContactSectionForm({ affiliateSlug }: { affiliateSlug: string }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const enquiryMutation = trpc.pemfAffiliate.submitEnquiry.useMutation({
+    onSuccess: () => {
+      setSubmitted(true);
+      toast.success("Your message has been sent!");
+    },
+    onError: (error) => {
+      toast.error(error.message || "Something went wrong. Please try again.");
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name.trim() || !email.trim()) {
+      toast.error("Please fill in your name and email.");
+      return;
+    }
+    enquiryMutation.mutate({
+      affiliateSlug,
+      visitorName: name.trim(),
+      visitorEmail: email.trim(),
+      visitorPhone: phone.trim() || undefined,
+      message: message.trim() || undefined,
+      sourcePage: window.location.pathname,
+    });
+  };
+
+  if (submitted) {
+    return (
+      <div className="text-center py-12">
+        <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h3 className="text-xl font-semibold text-white mb-2">Message Sent!</h3>
+        <p className="text-emerald-200/70">Thank you for reaching out. We'll be in touch with you shortly.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <div className="grid md:grid-cols-2 gap-5">
+        <div>
+          <label className="block text-sm font-medium text-emerald-300 mb-1.5">Your Name *</label>
+          <input
+            type="text"
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full px-4 py-3 rounded-lg bg-emerald-800/50 border border-emerald-700/50 text-white placeholder-emerald-400/50 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-transparent"
+            placeholder="John Smith"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-emerald-300 mb-1.5">Your Email *</label>
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full px-4 py-3 rounded-lg bg-emerald-800/50 border border-emerald-700/50 text-white placeholder-emerald-400/50 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-transparent"
+            placeholder="john@example.com"
+          />
+        </div>
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-emerald-300 mb-1.5">Your Phone</label>
+        <input
+          type="tel"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          className="w-full px-4 py-3 rounded-lg bg-emerald-800/50 border border-emerald-700/50 text-white placeholder-emerald-400/50 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-transparent"
+          placeholder="+61 400 000 000"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-emerald-300 mb-1.5">Your Message</label>
+        <textarea
+          rows={4}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          className="w-full px-4 py-3 rounded-lg bg-emerald-800/50 border border-emerald-700/50 text-white placeholder-emerald-400/50 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-transparent resize-none"
+          placeholder="I'd like to know more about..."
+        />
+      </div>
+      <div className="text-center">
+        <Button
+          size="lg"
+          type="submit"
+          disabled={enquiryMutation.isPending}
+          className="bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-semibold gap-2 px-8"
+        >
+          {enquiryMutation.isPending ? (
+            <><div className="w-4 h-4 border-2 border-emerald-900/30 border-t-emerald-900 rounded-full animate-spin" />Sending...</>
+          ) : (
+            <><Mail className="w-4 h-4" />Send Message</>
+          )}
+        </Button>
+      </div>
+    </form>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════
    Personalised Affiliate PEMF Page
    ══════════════════════════════════════════════════════════════ */
 export default function PEMFAffiliate() {
@@ -880,58 +994,7 @@ export default function PEMFAffiliate() {
             </div>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                const form = e.target as HTMLFormElement;
-                const name = (form.elements.namedItem('name') as HTMLInputElement).value;
-                const email = (form.elements.namedItem('email') as HTMLInputElement).value;
-                const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value;
-                const subject = encodeURIComponent(`PEMF Enquiry from ${name}`);
-                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-                window.location.href = `mailto:sarva@addlifetoyouryears.org?subject=${subject}&body=${body}`;
-              }}
-              className="space-y-5"
-            >
-              <div className="grid md:grid-cols-2 gap-5">
-                <div>
-                  <label className="block text-sm font-medium text-emerald-300 mb-1.5">Your Name</label>
-                  <input
-                    name="name"
-                    type="text"
-                    required
-                    className="w-full px-4 py-3 rounded-lg bg-emerald-800/50 border border-emerald-700/50 text-white placeholder-emerald-400/50 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-transparent"
-                    placeholder="John Smith"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-emerald-300 mb-1.5">Your Email</label>
-                  <input
-                    name="email"
-                    type="email"
-                    required
-                    className="w-full px-4 py-3 rounded-lg bg-emerald-800/50 border border-emerald-700/50 text-white placeholder-emerald-400/50 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-transparent"
-                    placeholder="john@example.com"
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-emerald-300 mb-1.5">Your Message</label>
-                <textarea
-                  name="message"
-                  rows={4}
-                  required
-                  className="w-full px-4 py-3 rounded-lg bg-emerald-800/50 border border-emerald-700/50 text-white placeholder-emerald-400/50 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-transparent resize-none"
-                  placeholder="I'd like to know more about..."
-                />
-              </div>
-              <div className="text-center">
-                <Button size="lg" type="submit" className="bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-semibold gap-2 px-8">
-                  <Mail className="w-4 h-4" />
-                  Send Message
-                </Button>
-              </div>
-            </form>
+            <ContactSectionForm affiliateSlug={slug} />
           </FadeIn>
         </div>
       </section>
