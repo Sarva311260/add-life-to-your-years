@@ -328,3 +328,17 @@
 - [x] PEMF page: Generate PEMF-branded Open Graph preview image (1200x630) for link sharing
 - [x] PEMF page: Add Open Graph + Twitter Card meta tags to /pemf route so link previews show PEMF title/image not main site
 - [ ] PEMF page: Add OlyLife manufacturing credentials paragraph (R&D Sweden/Germany, components Japan, assembled Hong Kong) after affordability paragraph in both PEMF.tsx and PEMFAffiliate.tsx
+- [x] Affiliate portal: Login page at /pemf/portal
+- [x] Affiliate portal: Dashboard with enquiry stats, profile edit, password change
+- [x] Admin back office: Login at /pemf/admin with PEMF_ADMIN_PASSWORD
+- [x] Admin back office: View all affiliates with enquiry counts
+- [x] Admin back office: Edit affiliate details, reset password, activate/deactivate
+- [x] PEMFJoin: Added password field for new signups
+- [x] Database: Added passwordHash and lastLoginAt columns to pemf_affiliates
+- [x] Affiliate portal: Login page at /pemf/portal
+- [x] Affiliate portal: Dashboard with enquiry stats, profile edit, password change
+- [x] Admin back office: Login at /pemf/admin with PEMF_ADMIN_PASSWORD secret
+- [x] Admin back office: View all affiliates with enquiry counts, search
+- [x] Admin back office: Edit affiliate details, reset password, activate/deactivate
+- [x] PEMFJoin: Added password field for new signups
+- [x] Database: Added passwordHash and lastLoginAt columns to pemf_affiliates

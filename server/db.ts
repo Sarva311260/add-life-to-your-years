@@ -1,4 +1,4 @@
-import { eq, desc, and } from "drizzle-orm";
+import { eq, desc, and, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import {
   InsertUser, users, evaluations, recommendations, InsertEvaluation, InsertRecommendation,
@@ -357,4 +357,54 @@ export async function createPemfEnquiry(data: InsertPemfEnquiry): Promise<number
   if (!db) throw new Error("Database not available");
   const [result] = await db.insert(pemfEnquiries).values(data);
   return (result as { insertId: number }).insertId;
+}
+
+export async function getPemfAffiliateByEmail(email: string) {
+  const db = await getDb();
+  if (!db) return null;
+  const rows = await db.select().from(pemfAffiliates)
+    .where(eq(pemfAffiliates.email, email))
+    .limit(1);
+  return rows[0] || null;
+}
+
+export async function updatePemfAffiliate(id: number, data: Partial<{
+  name: string;
+  email: string;
+  phone: string;
+  passwordHash: string;
+  isActive: number;
+  lastLoginAt: Date;
+}>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(pemfAffiliates).set(data).where(eq(pemfAffiliates.id, id));
+}
+
+export async function getAllPemfAffiliates() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(pemfAffiliates).orderBy(pemfAffiliates.createdAt);
+}
+
+export async function getPemfEnquiriesByAffiliate(affiliateId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(pemfEnquiries)
+    .where(eq(pemfEnquiries.affiliateId, affiliateId))
+    .orderBy(pemfEnquiries.createdAt);
+}
+
+export async function getEnquiryCountsByAffiliate(): Promise<Record<number, number>> {
+  const db = await getDb();
+  if (!db) return {};
+  const rows = await db.select({
+    affiliateId: pemfEnquiries.affiliateId,
+    count: sql<number>`COUNT(*)`,
+  }).from(pemfEnquiries).groupBy(pemfEnquiries.affiliateId);
+  const map: Record<number, number> = {};
+  for (const row of rows) {
+    map[row.affiliateId] = Number(row.count);
+  }
+  return map;
 }

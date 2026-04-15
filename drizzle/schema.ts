@@ -216,8 +216,11 @@ export const pemfAffiliates = mysqlTable("pemf_affiliates", {
   phone: varchar("phone", { length: 50 }).notNull(),
   /** URL-friendly slug derived from name (e.g. john-smith) */
   slug: varchar("slug", { length: 255 }).notNull().unique(),
+  /** Bcrypt hashed password for affiliate login */
+  passwordHash: varchar("passwordHash", { length: 255 }),
   /** Whether the affiliate is currently active */
   isActive: int("isActive").default(1).notNull(),
+  lastLoginAt: timestamp("lastLoginAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 

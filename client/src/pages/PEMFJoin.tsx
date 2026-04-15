@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
-import { Leaf, CheckCircle, Copy, ArrowRight } from "lucide-react";
+import { Leaf, CheckCircle, Copy, ArrowRight, Eye, EyeOff } from "lucide-react";
 
 export default function PEMFJoin() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [generatedSlug, setGeneratedSlug] = useState("");
 
@@ -14,6 +16,10 @@ export default function PEMFJoin() {
     onSuccess: (data) => {
       setGeneratedSlug(data.slug);
       setSubmitted(true);
+      // Store token so they can go straight to dashboard
+      if (data.token) {
+        localStorage.setItem("affiliate_token", data.token);
+      }
       toast.success("Welcome aboard! Your personalised PEMF page is ready.");
     },
     onError: (error) => {
@@ -23,14 +29,19 @@ export default function PEMFJoin() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !email.trim() || !phone.trim()) {
+    if (!name.trim() || !email.trim() || !phone.trim() || !password.trim()) {
       toast.error("Please fill in all fields.");
+      return;
+    }
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters.");
       return;
     }
     registerMutation.mutate({
       name: name.trim(),
       email: email.trim(),
       phone: phone.trim(),
+      password,
     });
   };
 
@@ -50,7 +61,12 @@ export default function PEMFJoin() {
             <Leaf className="w-6 h-6 text-emerald-400" />
             <span className="text-white font-serif text-lg">Add Life to Your Years</span>
           </div>
-          <span className="text-emerald-300/70 text-sm tracking-wider uppercase">Brand Partner Programme</span>
+          <div className="flex items-center gap-4">
+            <a href="/pemf/portal" className="text-emerald-300/70 text-sm hover:text-emerald-300 transition-colors">
+              Already a partner? Sign in →
+            </a>
+            <span className="text-emerald-300/70 text-sm tracking-wider uppercase hidden sm:block">Brand Partner Programme</span>
+          </div>
         </div>
       </header>
 
@@ -109,6 +125,29 @@ export default function PEMFJoin() {
                 />
               </div>
 
+              <div>
+                <label className="block text-emerald-300 text-sm font-medium mb-2">Create Password</label>
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="At least 6 characters"
+                    className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-4 py-3 pr-12 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all"
+                    required
+                    minLength={6}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200 transition-colors"
+                  >
+                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  </button>
+                </div>
+                <p className="text-gray-500 text-xs mt-1">You'll use this to log in to your partner dashboard.</p>
+              </div>
+
               <button
                 type="submit"
                 disabled={registerMutation.isPending}
@@ -135,6 +174,7 @@ export default function PEMFJoin() {
                 "Your name displayed as a Brand Partner",
                 "Contact form notifications sent directly to you",
                 "Share your unique link with your network",
+                "Access your partner dashboard to track enquiries",
               ].map((benefit, i) => (
                 <div key={i} className="flex items-center gap-3 text-gray-300">
                   <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
@@ -173,13 +213,22 @@ export default function PEMFJoin() {
               </div>
             </div>
 
-            <a
-              href={`/pemf/${generatedSlug}`}
-              className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-8 py-3.5 rounded-lg transition-all"
-            >
-              View Your Page
-              <ArrowRight className="w-5 h-5" />
-            </a>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href={`/pemf/${generatedSlug}`}
+                className="inline-flex items-center justify-center gap-2 bg-emerald-600/30 hover:bg-emerald-600/50 border border-emerald-600/50 text-emerald-300 font-semibold px-6 py-3.5 rounded-lg transition-all"
+              >
+                View Your Page
+                <ArrowRight className="w-5 h-5" />
+              </a>
+              <a
+                href="/pemf/portal"
+                className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-3.5 rounded-lg transition-all"
+              >
+                Go to My Dashboard
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </div>
           </div>
         )}
       </div>
