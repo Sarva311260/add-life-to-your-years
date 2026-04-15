@@ -71,6 +71,10 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
     onError: (e) => toast.error(e.message),
   });
 
+  // ── Email Stats ──────────────────────────────────────────────────────────
+  const { data: adminEmailStats = [] } = trpc.drip.adminGetEmailStats.useQuery({ adminToken });
+  const adminStatsMap = Object.fromEntries((adminEmailStats as any[]).map((s: any) => [s.dripEmailId, s]));
+
   // ── Broadcast ──────────────────────────────────────────────────────────────
   const [broadcastSubject, setBroadcastSubject] = useState("");
   const [broadcastBody, setBroadcastBody] = useState("");
@@ -223,6 +227,19 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
                               <div className="text-xs text-emerald-300/60 mt-0.5 line-clamp-2"
                                 dangerouslySetInnerHTML={{ __html: email.body.replace(/<[^>]*>/g, " ").slice(0, 120) + "..." }}
                               />
+                              {(() => {
+                                const s = adminStatsMap[email.id];
+                                if (!s || s.sent === 0) return null;
+                                const openRate = Math.round((s.opens / s.sent) * 100);
+                                const clickRate = Math.round((s.clicks / s.sent) * 100);
+                                return (
+                                  <div className="flex items-center gap-3 mt-1.5">
+                                    <span className="text-xs text-gray-400">📤 {s.sent} sent</span>
+                                    <span className="text-xs text-emerald-400">👁 {openRate}% open</span>
+                                    <span className="text-xs text-blue-400">🔗 {clickRate}% click</span>
+                                  </div>
+                                );
+                              })()}
                             </div>
                             <div className="flex items-center gap-1 shrink-0">
                               <Button

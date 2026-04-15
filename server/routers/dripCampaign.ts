@@ -11,6 +11,7 @@ import {
   logEmail, getAllEmailLog, getEmailLogByAffiliate,
   getAllPemfAffiliates, getPemfAffiliateById, getActiveDripSequences,
   getAffiliateDripOverride, upsertAffiliateDripOverride, getAffiliateDripOverridesForAffiliate,
+  updateDripSendStatus, getDripEmailStats, getAdminDripEmailStats,
 } from "../db";
 import { Resend } from "resend";
 
@@ -59,6 +60,24 @@ function generateToken(): string {
 /** Build an unsubscribe URL */
 function unsubscribeUrl(origin: string, token: string): string {
   return `${origin}/unsubscribe?token=${token}`;
+}
+
+/** Inject a tracking pixel into an HTML email body */
+function injectTrackingPixel(html: string, origin: string, sendLogId: number, affiliateId: number, dripEmailId: number, prospectEmail: string): string {
+  const pixelUrl = `${origin}/track/open?t=${sendLogId}&a=${affiliateId}&e=${dripEmailId}&p=${encodeURIComponent(prospectEmail)}`;
+  const pixel = `<img src="${pixelUrl}" width="1" height="1" style="display:none;" alt="" />`;
+  return html + pixel;
+}
+
+/** Wrap all href links in an HTML email body with click tracking */
+function wrapLinksWithTracking(html: string, origin: string, sendLogId: number, affiliateId: number, dripEmailId: number, prospectEmail: string): string {
+  const hrefRegex = new RegExp('href="(https?:\/\/[^"]+)"', 'g');
+  return html.replace(hrefRegex, (match, url) => {
+    // Don't wrap unsubscribe links or already-wrapped tracking links
+    if (url.includes('/unsubscribe') || url.includes('/track/')) return match;
+    const trackUrl = `${origin}/track/click?t=${sendLogId}&a=${affiliateId}&e=${dripEmailId}&p=${encodeURIComponent(prospectEmail)}&u=${encodeURIComponent(url)}`;
+    return `href="${trackUrl}"`;
+  });
 }
 
 /** Wrap email body with unsubscribe footer */
@@ -409,6 +428,25 @@ export const dripCampaignRouter = router({
       return { success: true };
     }),
 
+  // ─── AFFILIATE: Email Stats ──────────────────────────────────────────────
+
+  affiliateGetEmailStats: publicProcedure
+    .input(z.object({ token: z.string() }))
+    .query(async ({ input }) => {
+      const payload = await verifyAffiliateToken(input.token);
+      if (!payload) throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid or expired session." });
+      return getDripEmailStats(payload.affiliateId);
+    }),
+
+  // ─── ADMIN: Email Stats ───────────────────────────────────────────────────
+
+  adminGetEmailStats: publicProcedure
+    .input(z.object({ adminToken: z.string() }))
+    .query(async ({ input }) => {
+      if (!(await verifyAdminToken(input.adminToken))) throw new TRPCError({ code: "UNAUTHORIZED" });
+      return getAdminDripEmailStats();
+    }),
+
   // ─── PUBLIC: Unsubscribe ──────────────────────────────────────────────────
 
   unsubscribe: publicProcedure
@@ -444,20 +482,30 @@ export async function processDripQueue(origin: string): Promise<{ sent: number; 
     const emailBodyRaw = override?.body || dripEmail.body;
     const htmlBody = wrapWithUnsubscribe(emailBodyRaw, unsubLink, affiliate.name);
 
+    // Create send log entry first so we have the ID for tracking URLs
+    const sendLog = await logDripSend({
+      enrollmentId: enrollment.id,
+      dripEmailId: dripEmail.id,
+      status: "pending",
+    });
+    const sendLogId = sendLog?.insertId ?? 0;
+
+    // Inject tracking pixel and wrap links
+    const trackedBody = wrapLinksWithTracking(
+      injectTrackingPixel(htmlBody, origin, sendLogId, affiliate.id, dripEmail.id, enrollment.leadEmail),
+      origin, sendLogId, affiliate.id, dripEmail.id, enrollment.leadEmail
+    );
+
     try {
       const result = await resend.emails.send({
         from: `${affiliate.name} via Add Life to Your Years <noreply@addlifetoyouryears.org>`,
         replyTo: affiliate.email,
         to: enrollment.leadEmail,
         subject: emailSubject,
-        html: `<p>Hi ${enrollment.leadName},</p>${htmlBody}`,
+        html: `<p>Hi ${enrollment.leadName},</p>${trackedBody}`,
       });
 
-      await logDripSend({
-        enrollmentId: enrollment.id,
-        dripEmailId: dripEmail.id,
-        status: "sent",
-      });
+      await updateDripSendStatus(sendLogId, "sent");
 
       await logEmail({
         type: "affiliate_to_lead",

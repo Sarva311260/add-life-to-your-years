@@ -413,3 +413,34 @@ export const affiliateDripOverrides = mysqlTable("affiliate_drip_overrides", {
 
 export type AffiliateDripOverride = typeof affiliateDripOverrides.$inferSelect;
 export type InsertAffiliateDripOverride = typeof affiliateDripOverrides.$inferInsert;
+
+/**
+ * Email Open Events — recorded when a tracking pixel is loaded.
+ */
+export const emailOpenEvents = mysqlTable("email_open_events", {
+  id: int("id").autoincrement().primaryKey(),
+  /** The drip send log entry this open belongs to */
+  dripSendLogId: int("dripSendLogId").notNull(),
+  affiliateId: int("affiliateId").notNull(),
+  dripEmailId: int("dripEmailId").notNull(),
+  prospectEmail: varchar("prospectEmail", { length: 320 }),
+  openedAt: timestamp("openedAt").defaultNow().notNull(),
+  userAgent: text("userAgent"),
+});
+export type EmailOpenEvent = typeof emailOpenEvents.$inferSelect;
+
+/**
+ * Email Click Events — recorded when a tracked link is clicked.
+ */
+export const emailClickEvents = mysqlTable("email_click_events", {
+  id: int("id").autoincrement().primaryKey(),
+  dripSendLogId: int("dripSendLogId").notNull(),
+  affiliateId: int("affiliateId").notNull(),
+  dripEmailId: int("dripEmailId").notNull(),
+  prospectEmail: varchar("prospectEmail", { length: 320 }),
+  /** The original destination URL */
+  targetUrl: text("targetUrl").notNull(),
+  clickedAt: timestamp("clickedAt").defaultNow().notNull(),
+  userAgent: text("userAgent"),
+});
+export type EmailClickEvent = typeof emailClickEvents.$inferSelect;

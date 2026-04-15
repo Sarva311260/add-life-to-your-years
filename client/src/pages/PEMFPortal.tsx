@@ -165,6 +165,11 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
     { token },
     { enabled: !!token && activeTab === "campaigns", retry: false }
   );
+  const { data: emailStats = [] } = trpc.drip.affiliateGetEmailStats.useQuery(
+    { token },
+    { enabled: !!token && activeTab === "campaigns", retry: false }
+  );
+  const statsMap = Object.fromEntries((emailStats as any[]).map((s: any) => [s.dripEmailId, s]));
   const [editingOverride, setEditingOverride] = useState<{ emailId: number; subject: string; body: string } | null>(null);
   const saveDripOverride = trpc.drip.affiliateSaveDripOverride.useMutation({
     onSuccess: () => { toast.success("Email template saved!"); setEditingOverride(null); refetchDrip(); },
@@ -352,6 +357,20 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
                               </div>
                               <p className="text-white text-sm font-medium truncate">{email.customSubject || email.subject}</p>
                               <p className="text-gray-400 text-xs mt-0.5">Default: {email.subject}</p>
+                              {/* Stats row */}
+                              {(() => {
+                                const s = statsMap[email.id];
+                                if (!s || s.sent === 0) return null;
+                                const openRate = s.sent > 0 ? Math.round((s.opens / s.sent) * 100) : 0;
+                                const clickRate = s.sent > 0 ? Math.round((s.clicks / s.sent) * 100) : 0;
+                                return (
+                                  <div className="flex items-center gap-3 mt-2">
+                                    <span className="text-xs text-gray-400">📤 {s.sent} sent</span>
+                                    <span className="text-xs text-emerald-400">👁 {openRate}% opened</span>
+                                    <span className="text-xs text-blue-400">🔗 {clickRate}% clicked</span>
+                                  </div>
+                                );
+                              })()}
                             </div>
                             <Button
                               size="sm"

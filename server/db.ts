@@ -656,3 +656,71 @@ export async function getAffiliateDripOverridesForAffiliate(affiliateId: number)
   return db.select().from(affiliateDripOverrides)
     .where(eq(affiliateDripOverrides.affiliateId, affiliateId));
 }
+
+/** Update the status of a drip send log entry by its ID */
+export async function updateDripSendStatus(id: number, status: string) {
+  const db = await getDb();
+  if (!db) return;
+  await db.update(dripSendLog).set({ status } as any).where(eq(dripSendLog.id, id));
+}
+
+/** Get open and click stats per drip email for a given affiliate */
+export async function getDripEmailStats(affiliateId: number): Promise<Array<{
+  dripEmailId: number;
+  sent: number;
+  opens: number;
+  clicks: number;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+  const [rows] = await (db as any).execute(
+    `SELECT
+       sl.dripEmailId,
+       COUNT(DISTINCT sl.id) AS sent,
+       COUNT(DISTINCT oe.id) AS opens,
+       COUNT(DISTINCT ce.id) AS clicks
+     FROM drip_send_log sl
+     JOIN drip_enrollments de ON sl.enrollmentId = de.id
+     LEFT JOIN email_open_events oe ON oe.dripSendLogId = sl.id
+     LEFT JOIN email_click_events ce ON ce.dripSendLogId = sl.id
+     WHERE de.affiliateId = ? AND sl.status = 'sent'
+     GROUP BY sl.dripEmailId`,
+    [affiliateId]
+  );
+  return (rows as any[]).map((r: any) => ({
+    dripEmailId: r.dripEmailId,
+    sent: Number(r.sent),
+    opens: Number(r.opens),
+    clicks: Number(r.clicks),
+  }));
+}
+
+/** Get open and click stats per drip email across all affiliates (admin view) */
+export async function getAdminDripEmailStats(): Promise<Array<{
+  dripEmailId: number;
+  sent: number;
+  opens: number;
+  clicks: number;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+  const [rows] = await (db as any).execute(
+    `SELECT
+       sl.dripEmailId,
+       COUNT(DISTINCT sl.id) AS sent,
+       COUNT(DISTINCT oe.id) AS opens,
+       COUNT(DISTINCT ce.id) AS clicks
+     FROM drip_send_log sl
+     LEFT JOIN email_open_events oe ON oe.dripSendLogId = sl.id
+     LEFT JOIN email_click_events ce ON ce.dripSendLogId = sl.id
+     WHERE sl.status = 'sent'
+     GROUP BY sl.dripEmailId`,
+    []
+  );
+  return (rows as any[]).map((r: any) => ({
+    dripEmailId: r.dripEmailId,
+    sent: Number(r.sent),
+    opens: Number(r.opens),
+    clicks: Number(r.clicks),
+  }));
+}
