@@ -369,4 +369,6 @@
 - [x] Affiliate PEMF page: Add share button (WhatsApp, Facebook, copy link)
 - [x] Bug fix: PEMF contact form enquiry email goes to sarva (owner) — should go only to the affiliate whose page was visited
 - [x] Bug fix: PEMF affiliate contact form opens email client (mailto) instead of submitting silently via server — replace with tRPC submitEnquiry mutation
-- [ ] Bug fix: Admin resources page — Draft/Published toggle button overflows/overlaps the "Published" label text
+- [x] Bug fix: Admin resources page — Draft/Published toggle button overflows/overlaps the "Published" label text
+- [ ] Bug fix: Affiliate enquiry email notification not delivered to affiliate's registered email — investigate and fix
+- [x] Resource hub: Add Vimeo video embedding support alongside YouTube in affiliate portal

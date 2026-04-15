@@ -35,15 +35,24 @@ interface Resource {
   createdAt: Date;
 }
 
-function getYouTubeEmbedUrl(url: string): string | null {
+function getVideoEmbedUrl(url: string): string | null {
   try {
     const u = new URL(url);
+    // YouTube
     if (u.hostname.includes("youtube.com")) {
       const v = u.searchParams.get("v");
       if (v) return `https://www.youtube.com/embed/${v}`;
     }
     if (u.hostname === "youtu.be") {
       return `https://www.youtube.com/embed${u.pathname}`;
+    }
+    // Vimeo: vimeo.com/123456789 or player.vimeo.com/video/123456789
+    if (u.hostname === "vimeo.com" || u.hostname === "www.vimeo.com") {
+      const id = u.pathname.replace(/^\//, "").split("/")[0];
+      if (id && /^\d+$/.test(id)) return `https://player.vimeo.com/video/${id}`;
+    }
+    if (u.hostname === "player.vimeo.com") {
+      return url; // already an embed URL
     }
   } catch {}
   return null;
@@ -79,7 +88,7 @@ function ResourceCard({ resource, affiliateSlug }: { resource: Resource; affilia
     }
   };
 
-  const embedUrl = resource.videoUrl ? getYouTubeEmbedUrl(resource.videoUrl) : null;
+  const embedUrl = resource.videoUrl ? getVideoEmbedUrl(resource.videoUrl) : null;
 
   return (
     <div className={`bg-white/5 border ${border} rounded-xl overflow-hidden`}>
