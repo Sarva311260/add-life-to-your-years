@@ -283,9 +283,9 @@ function AddResourceForm({ adminToken, onSuccess, onCancel }: {
           <button
             type="button"
             onClick={() => setIsPublished(!isPublished)}
-            className={`relative w-10 h-5 rounded-full transition-colors ${isPublished ? "bg-emerald-600" : "bg-gray-600"}`}
+            className={`relative inline-flex flex-shrink-0 w-11 h-6 rounded-full transition-colors ${isPublished ? "bg-emerald-600" : "bg-gray-600"}`}
           >
-            <span className={`absolute top-0.5 w-4 h-4 bg-white rounded-full transition-transform ${isPublished ? "translate-x-5" : "translate-x-0.5"}`} />
+            <span className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${isPublished ? "translate-x-6" : "translate-x-1"}`} />
           </button>
           <span className="text-sm text-gray-300">{isPublished ? "Published (visible to affiliates)" : "Draft (hidden from affiliates)"}</span>
         </div>
