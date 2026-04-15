@@ -243,6 +243,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
   }
 
   const personalLink = `${window.location.origin}/pemf/${profile.slug}`;
+  const mainSiteLink = `${window.location.origin}/ref/${profile.slug}`;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0a2e1a] via-[#0d3b22] to-[#0a2e1a]">
@@ -287,19 +288,41 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
           </div>
         </div>
 
-        {/* Personal Link */}
+        {/* Personal Links */}
         <div className="bg-white/5 border border-emerald-800/30 rounded-2xl p-6">
           <div className="flex items-center gap-2 mb-4">
             <Link2 className="w-5 h-5 text-emerald-400" />
-            <h2 className="text-white font-semibold">Your Personal PEMF Link</h2>
+            <h2 className="text-white font-semibold">Your Personalised Links</h2>
           </div>
-          <div className="flex items-center gap-3 bg-black/30 rounded-xl p-4">
-            <a href={personalLink} target="_blank" rel="noreferrer" className="text-emerald-400 text-sm flex-1 break-all hover:text-emerald-300 transition-colors">
-              {personalLink}
-            </a>
-            <button onClick={copyLink} className="flex-shrink-0 bg-emerald-600 hover:bg-emerald-500 text-white p-2.5 rounded-lg transition-all" title="Copy link">
-              <Copy className="w-4 h-4" />
-            </button>
+          <div className="space-y-3">
+            {/* PEMF page */}
+            <div>
+              <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5 font-medium">PEMF Therapy Page</p>
+              <div className="flex items-center gap-3 bg-black/30 rounded-xl p-4">
+                <a href={personalLink} target="_blank" rel="noreferrer" className="text-emerald-400 text-sm flex-1 break-all hover:text-emerald-300 transition-colors">
+                  {personalLink}
+                </a>
+                <button onClick={copyLink} className="flex-shrink-0 bg-emerald-600 hover:bg-emerald-500 text-white p-2.5 rounded-lg transition-all" title="Copy PEMF link">
+                  <Copy className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+            {/* Main site */}
+            <div>
+              <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5 font-medium">Main Website</p>
+              <div className="flex items-center gap-3 bg-black/30 rounded-xl p-4">
+                <a href={mainSiteLink} target="_blank" rel="noreferrer" className="text-emerald-400 text-sm flex-1 break-all hover:text-emerald-300 transition-colors">
+                  {mainSiteLink}
+                </a>
+                <button
+                  onClick={() => { navigator.clipboard.writeText(mainSiteLink); toast.success("Main site link copied!"); }}
+                  className="flex-shrink-0 bg-emerald-600 hover:bg-emerald-500 text-white p-2.5 rounded-lg transition-all"
+                  title="Copy main site link"
+                >
+                  <Copy className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
