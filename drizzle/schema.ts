@@ -291,3 +291,106 @@ export const pemfResources = mysqlTable("pemf_resources", {
 
 export type PemfResource = typeof pemfResources.$inferSelect;
 export type InsertPemfResource = typeof pemfResources.$inferInsert;
+
+/**
+ * Drip Sequences — admin-defined email sequences sent to leads automatically.
+ */
+export const dripSequences = mysqlTable("drip_sequences", {
+  id: int("id").autoincrement().primaryKey(),
+  /** Display name for this sequence (e.g. "PEMF Welcome Series") */
+  name: varchar("name", { length: 255 }).notNull(),
+  /** Optional description */
+  description: text("description"),
+  /** Whether this sequence is active and will enroll new leads */
+  isActive: int("isActive").default(1).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type DripSequence = typeof dripSequences.$inferSelect;
+export type InsertDripSequence = typeof dripSequences.$inferInsert;
+
+/**
+ * Drip Emails — individual emails within a drip sequence.
+ */
+export const dripEmails = mysqlTable("drip_emails", {
+  id: int("id").autoincrement().primaryKey(),
+  sequenceId: int("sequenceId").notNull(),
+  /** Days after enrollment to send this email (0 = immediately) */
+  dayOffset: int("dayOffset").default(0).notNull(),
+  /** Email subject line */
+  subject: varchar("subject", { length: 255 }).notNull(),
+  /** Email body (HTML supported) */
+  body: text("body").notNull(),
+  /** Display order within the sequence */
+  sortOrder: int("sortOrder").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type DripEmail = typeof dripEmails.$inferSelect;
+export type InsertDripEmail = typeof dripEmails.$inferInsert;
+
+/**
+ * Drip Enrollments — tracks which leads are enrolled in which sequences.
+ */
+export const dripEnrollments = mysqlTable("drip_enrollments", {
+  id: int("id").autoincrement().primaryKey(),
+  sequenceId: int("sequenceId").notNull(),
+  enquiryId: int("enquiryId").notNull(),
+  affiliateId: int("affiliateId").notNull(),
+  /** Lead's email address */
+  leadEmail: varchar("leadEmail", { length: 320 }).notNull(),
+  /** Lead's name */
+  leadName: varchar("leadName", { length: 255 }).notNull(),
+  /** When the enrollment started */
+  enrolledAt: timestamp("enrolledAt").defaultNow().notNull(),
+  /** 'active' | 'completed' | 'unsubscribed' */
+  status: varchar("status", { length: 20 }).default("active").notNull(),
+  /** Unique token for unsubscribe link */
+  unsubscribeToken: varchar("unsubscribeToken", { length: 64 }).notNull().unique(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type DripEnrollment = typeof dripEnrollments.$inferSelect;
+export type InsertDripEnrollment = typeof dripEnrollments.$inferInsert;
+
+/**
+ * Drip Send Log — tracks which drip emails have been sent to which enrollments.
+ */
+export const dripSendLog = mysqlTable("drip_send_log", {
+  id: int("id").autoincrement().primaryKey(),
+  enrollmentId: int("enrollmentId").notNull(),
+  dripEmailId: int("dripEmailId").notNull(),
+  sentAt: timestamp("sentAt").defaultNow().notNull(),
+  /** 'sent' | 'failed' */
+  status: varchar("status", { length: 20 }).default("sent").notNull(),
+});
+
+export type DripSendLog = typeof dripSendLog.$inferSelect;
+export type InsertDripSendLog = typeof dripSendLog.$inferInsert;
+
+/**
+ * Email Log — tracks all manually sent emails (affiliate→lead, admin→affiliate, broadcasts).
+ */
+export const emailLog = mysqlTable("email_log", {
+  id: int("id").autoincrement().primaryKey(),
+  /** 'affiliate_to_lead' | 'admin_to_affiliate' | 'admin_broadcast' */
+  type: varchar("type", { length: 32 }).notNull(),
+  /** Sender affiliate ID (if affiliate→lead) */
+  affiliateId: int("affiliateId"),
+  /** Recipient email */
+  toEmail: varchar("toEmail", { length: 320 }).notNull(),
+  /** Recipient name */
+  toName: varchar("toName", { length: 255 }),
+  subject: varchar("subject", { length: 255 }).notNull(),
+  body: text("body").notNull(),
+  /** Resend message ID */
+  resendId: varchar("resendId", { length: 128 }),
+  /** 'sent' | 'failed' */
+  status: varchar("status", { length: 20 }).default("sent").notNull(),
+  sentAt: timestamp("sentAt").defaultNow().notNull(),
+});
+
+export type EmailLog = typeof emailLog.$inferSelect;
+export type InsertEmailLog = typeof emailLog.$inferInsert;

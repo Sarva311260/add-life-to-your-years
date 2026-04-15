@@ -6,6 +6,9 @@ import {
   InsertConsultation, InsertConsultMessage, InsertConsultReport, InsertShopProduct, InsertReviewRequest, InsertConsultRating,
   pemfAffiliates, InsertPemfAffiliate, pemfEnquiries, InsertPemfEnquiry,
   pemfResources, InsertPemfResource,
+  dripSequences, InsertDripSequence, dripEmails, InsertDripEmail,
+  dripEnrollments, InsertDripEnrollment, dripSendLog, InsertDripSendLog,
+  emailLog, InsertEmailLog,
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -449,4 +452,175 @@ export async function deletePemfResource(id: number) {
   const db = await getDb();
   if (!db) throw new Error("Database unavailable");
   await db.delete(pemfResources).where(eq(pemfResources.id, id));
+}
+
+// ─── Drip Sequences ───────────────────────────────────────────────────────────
+
+export async function createDripSequence(data: InsertDripSequence): Promise<number> {
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+  const [result] = await db.insert(dripSequences).values(data);
+  return (result as any).insertId;
+}
+
+export async function getAllDripSequences() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(dripSequences).orderBy(dripSequences.createdAt);
+}
+
+export async function getActiveDripSequences() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(dripSequences).where(eq(dripSequences.isActive, 1)).orderBy(dripSequences.createdAt);
+}
+
+export async function updateDripSequence(id: number, data: Partial<InsertDripSequence>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+  await db.update(dripSequences).set(data).where(eq(dripSequences.id, id));
+}
+
+export async function deleteDripSequence(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+  await db.delete(dripSequences).where(eq(dripSequences.id, id));
+}
+
+// ─── Drip Emails ──────────────────────────────────────────────────────────────
+
+export async function createDripEmail(data: InsertDripEmail): Promise<number> {
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+  const [result] = await db.insert(dripEmails).values(data);
+  return (result as any).insertId;
+}
+
+export async function getDripEmailsBySequence(sequenceId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(dripEmails)
+    .where(eq(dripEmails.sequenceId, sequenceId))
+    .orderBy(dripEmails.sortOrder, dripEmails.dayOffset);
+}
+
+export async function updateDripEmail(id: number, data: Partial<InsertDripEmail>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+  await db.update(dripEmails).set(data).where(eq(dripEmails.id, id));
+}
+
+export async function deleteDripEmail(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+  await db.delete(dripEmails).where(eq(dripEmails.id, id));
+}
+
+// ─── Drip Enrollments ─────────────────────────────────────────────────────────
+
+export async function createDripEnrollment(data: InsertDripEnrollment): Promise<number> {
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+  const [result] = await db.insert(dripEnrollments).values(data);
+  return (result as any).insertId;
+}
+
+export async function getDripEnrollmentsByAffiliate(affiliateId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(dripEnrollments)
+    .where(eq(dripEnrollments.affiliateId, affiliateId))
+    .orderBy(desc(dripEnrollments.enrolledAt));
+}
+
+export async function getDripEnrollmentByToken(token: string) {
+  const db = await getDb();
+  if (!db) return null;
+  const rows = await db.select().from(dripEnrollments)
+    .where(eq(dripEnrollments.unsubscribeToken, token))
+    .limit(1);
+  return rows[0] || null;
+}
+
+export async function updateDripEnrollment(id: number, data: Partial<InsertDripEnrollment>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+  await db.update(dripEnrollments).set(data).where(eq(dripEnrollments.id, id));
+}
+
+/** Get all active enrollments with their sequence emails that are due to be sent. */
+export async function getDueEmails(): Promise<Array<{
+  enrollment: typeof dripEnrollments.$inferSelect;
+  dripEmail: typeof dripEmails.$inferSelect;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  // Get all active enrollments
+  const activeEnrollments = await db.select().from(dripEnrollments)
+    .where(eq(dripEnrollments.status, "active"));
+
+  if (activeEnrollments.length === 0) return [];
+
+  // Get already-sent log entries
+  const sentLogs = await db.select().from(dripSendLog);
+  const sentSet = new Set(sentLogs.map(l => `${l.enrollmentId}-${l.dripEmailId}`));
+
+  const due: Array<{ enrollment: typeof dripEnrollments.$inferSelect; dripEmail: typeof dripEmails.$inferSelect }> = [];
+
+  for (const enrollment of activeEnrollments) {
+    const emails = await getDripEmailsBySequence(enrollment.sequenceId);
+    const now = Date.now();
+    const enrolledMs = new Date(enrollment.enrolledAt).getTime();
+
+    for (const email of emails) {
+      const key = `${enrollment.id}-${email.id}`;
+      if (sentSet.has(key)) continue; // already sent
+
+      const sendAfterMs = enrolledMs + email.dayOffset * 24 * 60 * 60 * 1000;
+      if (now >= sendAfterMs) {
+        due.push({ enrollment, dripEmail: email });
+      }
+    }
+  }
+
+  return due;
+}
+
+export async function logDripSend(data: InsertDripSendLog) {
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+  const [result] = await db.insert(dripSendLog).values(data);
+  return (result as any).insertId;
+}
+
+export async function getDripSendLogByEnrollment(enrollmentId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(dripSendLog)
+    .where(eq(dripSendLog.enrollmentId, enrollmentId))
+    .orderBy(dripSendLog.sentAt);
+}
+
+// ─── Email Log ────────────────────────────────────────────────────────────────
+
+export async function logEmail(data: InsertEmailLog): Promise<number> {
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+  const [result] = await db.insert(emailLog).values(data);
+  return (result as any).insertId;
+}
+
+export async function getEmailLogByAffiliate(affiliateId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(emailLog)
+    .where(eq(emailLog.affiliateId, affiliateId))
+    .orderBy(desc(emailLog.sentAt));
+}
+
+export async function getAllEmailLog(limit = 100) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(emailLog).orderBy(desc(emailLog.sentAt)).limit(limit);
 }

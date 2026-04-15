@@ -4,8 +4,12 @@ import { toast } from "sonner";
 import {
   Leaf, Eye, EyeOff, ArrowRight, LogOut, Users, BarChart2,
   ToggleLeft, ToggleRight, Edit2, Lock, Check, X, ChevronDown, ChevronUp,
-  Mail, Phone, Link2, Copy, Search, BookOpen
+  Mail, Phone, Link2, Copy, Search, BookOpen, Send, Loader2
 } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 
 const ADMIN_TOKEN_KEY = "pemf_admin_token";
 
@@ -117,6 +121,15 @@ function AffiliateRow({ affiliate, adminToken, onRefresh }: {
     toast.success("Link copied!");
   };
 
+  // Individual email to affiliate
+  const [showEmailDialog, setShowEmailDialog] = useState(false);
+  const [emailSubject, setEmailSubject] = useState("");
+  const [emailBody, setEmailBody] = useState("");
+  const sendEmail = trpc.drip.adminEmailAffiliate.useMutation({
+    onSuccess: () => { toast.success("Email sent!"); setShowEmailDialog(false); setEmailSubject(""); setEmailBody(""); },
+    onError: (e) => toast.error(e.message),
+  });
+
   return (
     <div className={`bg-white/5 border rounded-xl overflow-hidden transition-all ${affiliate.isActive ? "border-emerald-800/30" : "border-red-900/30 opacity-60"}`}>
       {/* Row Header */}
@@ -208,6 +221,13 @@ function AffiliateRow({ affiliate, adminToken, onRefresh }: {
             </button>
 
             <button
+              onClick={() => setShowEmailDialog(true)}
+              className="flex items-center gap-1.5 text-xs bg-blue-900/40 hover:bg-blue-900/60 text-blue-300 px-3 py-1.5 rounded-lg transition-all"
+            >
+              <Mail className="w-3.5 h-3.5" /> Send Email
+            </button>
+
+            <button
               onClick={() => setActiveMutation.mutate({ adminToken, affiliateId: affiliate.id, isActive: !affiliate.isActive })}
               disabled={setActiveMutation.isPending}
               className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg transition-all disabled:opacity-50 ${affiliate.isActive ? "bg-red-900/40 hover:bg-red-900/60 text-red-300" : "bg-emerald-900/40 hover:bg-emerald-900/60 text-emerald-300"}`}
@@ -241,6 +261,31 @@ function AffiliateRow({ affiliate, adminToken, onRefresh }: {
           )}
         </div>
       )}
+
+      {/* Email Dialog */}
+      <Dialog open={showEmailDialog} onOpenChange={setShowEmailDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Email {affiliate.name}</DialogTitle>
+            <DialogDescription>Send a direct email to this affiliate from noreply@addlifetoyouryears.org.</DialogDescription>
+          </DialogHeader>
+          <div className="space-y-3 py-2">
+            <Input placeholder="Subject..." value={emailSubject} onChange={e => setEmailSubject(e.target.value)} />
+            <Textarea placeholder="Message body (HTML supported)..." value={emailBody} onChange={e => setEmailBody(e.target.value)} rows={6} />
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setShowEmailDialog(false)}>Cancel</Button>
+            <Button
+              onClick={() => sendEmail.mutate({ adminToken, affiliateId: affiliate.id, subject: emailSubject, body: emailBody })}
+              disabled={!emailSubject || !emailBody || sendEmail.isPending}
+              className="gap-2"
+            >
+              {sendEmail.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+              Send Email
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
@@ -293,6 +338,10 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
             <a href="/pemf/admin/resources" className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors text-sm">
               <BookOpen className="w-4 h-4" />
               <span className="hidden sm:inline">Resources</span>
+            </a>
+            <a href="/pemf/admin/campaigns" className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors text-sm">
+              <Mail className="w-4 h-4" />
+              <span className="hidden sm:inline">Campaigns</span>
             </a>
             <button
               onClick={() => { clearAdminToken(); onLogout(); }}

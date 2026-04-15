@@ -22,6 +22,7 @@ import {
 } from "../db";
 import { ENV } from "../_core/env";
 import { TRPCError } from "@trpc/server";
+import { enrollLeadInDripSequences } from "./dripCampaign";
 
 const AFFILIATE_JWT_SECRET = ENV.cookieSecret + "_affiliate";
 const ADMIN_PASSWORD = process.env.PEMF_ADMIN_PASSWORD || "pemf-admin-2024";
@@ -356,6 +357,14 @@ export const pemfAffiliateRouter = router({
         message: input.message?.trim() || null,
         sourcePage: input.sourcePage?.trim() || null,
       });
+
+      // Enroll lead in all active drip sequences
+      enrollLeadInDripSequences({
+        enquiryId,
+        affiliateId: affiliate.id,
+        leadEmail: input.visitorEmail.trim().toLowerCase(),
+        leadName: input.visitorName.trim(),
+      }).catch(err => console.warn("[Drip] Enrollment failed:", err));
 
       sendAffiliateEnquiryEmail({
         affiliateName: affiliate.name,

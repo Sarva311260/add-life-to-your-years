@@ -3,8 +3,13 @@ import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 import {
   Leaf, Eye, EyeOff, ArrowRight, LogOut, User, Phone, Mail,
-  BarChart2, Link2, Copy, Edit2, Check, X, Lock, ChevronDown, ChevronUp, BookOpen
+  BarChart2, Link2, Copy, Edit2, Check, X, Lock, ChevronDown, ChevronUp, BookOpen,
+  Send, Loader2, Zap
 } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const TOKEN_KEY = "affiliate_token";
 
@@ -148,6 +153,20 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
     { token },
     { enabled: !!token, retry: false }
   );
+
+  const { data: enrollments = [] } = trpc.drip.affiliateGetEnrollments.useQuery(
+    { token },
+    { enabled: !!token, retry: false }
+  );
+
+  // Manual email to lead
+  const [emailTarget, setEmailTarget] = useState<{ email: string; name: string } | null>(null);
+  const [emailSubject, setEmailSubject] = useState("");
+  const [emailBody, setEmailBody] = useState("");
+  const sendLeadEmail = trpc.drip.affiliateSendEmailToLead.useMutation({
+    onSuccess: () => { toast.success("Email sent!"); setEmailTarget(null); setEmailSubject(""); setEmailBody(""); },
+    onError: (e) => toast.error(e.message),
+  });
 
   useEffect(() => {
     if (profile) {
@@ -477,10 +496,35 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
                               </span>
                             </div>
                           )}
+                          {/* Drip enrollment status */}
+                          {(() => {
+                            const enroll = enrollments.find(e => e.enquiryId === enq.id);
+                            if (!enroll) return null;
+                            return (
+                              <div className="mt-2 flex items-center gap-1.5">
+                                <Zap className="w-3 h-3 text-amber-400" />
+                                <span className={`text-xs px-2 py-0.5 rounded-full ${
+                                  enroll.status === 'active' ? 'bg-amber-900/30 text-amber-300' :
+                                  enroll.status === 'completed' ? 'bg-emerald-900/30 text-emerald-300' :
+                                  'bg-gray-800 text-gray-400'
+                                }`}>
+                                  Drip: {enroll.status} · {enroll.emailsSent} sent
+                                </span>
+                              </div>
+                            );
+                          })()}
                         </div>
-                        <p className="text-gray-500 text-xs whitespace-nowrap">
-                          {new Date(enq.createdAt).toLocaleDateString()}
-                        </p>
+                        <div className="flex flex-col items-end gap-2">
+                          <p className="text-gray-500 text-xs whitespace-nowrap">
+                            {new Date(enq.createdAt).toLocaleDateString()}
+                          </p>
+                          <button
+                            onClick={() => { setEmailTarget({ email: enq.visitorEmail, name: enq.visitorName }); setEmailSubject(""); setEmailBody(""); }}
+                            className="flex items-center gap-1 text-xs bg-blue-900/30 hover:bg-blue-900/50 text-blue-300 px-2.5 py-1 rounded-lg transition-all"
+                          >
+                            <Mail className="w-3 h-3" /> Email
+                          </button>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -490,6 +534,42 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
           )}
         </div>
       </div>
+
+      {/* Manual Email Dialog */}
+      <Dialog open={!!emailTarget} onOpenChange={(open) => { if (!open) setEmailTarget(null); }}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Email {emailTarget?.name}</DialogTitle>
+            <DialogDescription>
+              Send a personal follow-up email to {emailTarget?.email}. Your email address will be set as the reply-to.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-3 py-2">
+            <Input
+              placeholder="Subject..."
+              value={emailSubject}
+              onChange={e => setEmailSubject(e.target.value)}
+            />
+            <Textarea
+              placeholder="Your message..."
+              value={emailBody}
+              onChange={e => setEmailBody(e.target.value)}
+              rows={7}
+            />
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setEmailTarget(null)}>Cancel</Button>
+            <Button
+              onClick={() => sendLeadEmail.mutate({ token, leadEmail: emailTarget!.email, leadName: emailTarget!.name, subject: emailSubject, body: emailBody })}
+              disabled={!emailSubject || !emailBody || sendLeadEmail.isPending}
+              className="gap-2"
+            >
+              {sendLeadEmail.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+              Send Email
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
