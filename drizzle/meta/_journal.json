@@ -64,6 +64,13 @@
       "when": 1776229079310,
       "tag": "0008_sleepy_vulcan",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1776232122724,
+      "tag": "0009_fresh_vulcan",
+      "breakpoints": true
     }
   ]
 }

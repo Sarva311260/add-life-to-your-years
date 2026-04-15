@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import {
   Leaf, Eye, EyeOff, ArrowRight, LogOut, Users, BarChart2,
   ToggleLeft, ToggleRight, Edit2, Lock, Check, X, ChevronDown, ChevronUp,
-  Mail, Phone, Link2, Copy, Search
+  Mail, Phone, Link2, Copy, Search, BookOpen
 } from "lucide-react";
 
 const ADMIN_TOKEN_KEY = "pemf_admin_token";
@@ -289,12 +289,18 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
             <span className="text-emerald-600/60 mx-1">·</span>
             <span className="text-emerald-300/70 text-sm">Admin</span>
           </div>
-          <button
-            onClick={() => { clearAdminToken(); onLogout(); }}
-            className="flex items-center gap-1.5 text-gray-400 hover:text-white transition-colors text-sm"
-          >
-            <LogOut className="w-4 h-4" /> Sign Out
-          </button>
+          <div className="flex items-center gap-3">
+            <a href="/pemf/admin/resources" className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors text-sm">
+              <BookOpen className="w-4 h-4" />
+              <span className="hidden sm:inline">Resources</span>
+            </a>
+            <button
+              onClick={() => { clearAdminToken(); onLogout(); }}
+              className="flex items-center gap-1.5 text-gray-400 hover:text-white transition-colors text-sm"
+            >
+              <LogOut className="w-4 h-4" /> Sign Out
+            </button>
+          </div>
         </div>
       </header>
 

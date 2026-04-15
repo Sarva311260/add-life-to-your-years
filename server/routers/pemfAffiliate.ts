@@ -14,6 +14,11 @@ import {
   getAllPemfAffiliates,
   getPemfEnquiriesByAffiliate,
   getEnquiryCountsByAffiliate,
+  createPemfResource,
+  getAllPemfResources,
+  getPublishedPemfResources,
+  updatePemfResource,
+  deletePemfResource,
 } from "../db";
 import { ENV } from "../_core/env";
 import { TRPCError } from "@trpc/server";
@@ -114,6 +119,16 @@ export const pemfAffiliateRouter = router({
         phone: input.phone.trim(),
         slug: finalSlug,
         passwordHash,
+      });
+
+      // Send welcome email to the new affiliate
+      sendAffiliateWelcomeEmail({
+        name: input.name.trim(),
+        email: input.email.trim().toLowerCase(),
+        slug: finalSlug,
+        origin: (process.env.VITE_OAUTH_PORTAL_URL ? "https://addlifetoyouryears.org" : "https://addlifetoyouryears.org"),
+      }).catch((err) => {
+        console.warn("[Email] Failed to send affiliate welcome email:", err);
       });
 
       // Notify the owner about the new affiliate
@@ -421,4 +436,219 @@ export const pemfAffiliateRouter = router({
       }
       return { success: true };
     }),
+
+  // ─── RESOURCE PROCEDURES ─────────────────────────────────────────
+
+  /**
+   * Get all published resources (for affiliates).
+   */
+  getResources: publicProcedure
+    .input(z.object({ token: z.string() }))
+    .query(async ({ input }) => {
+      const payload = await verifyAffiliateToken(input.token);
+      if (!payload) throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid or expired session." });
+      return getPublishedPemfResources();
+    }),
+
+  /**
+   * Admin: get all resources (published + unpublished).
+   */
+  adminGetResources: publicProcedure
+    .input(z.object({ adminToken: z.string() }))
+    .query(async ({ input }) => {
+      if (!await verifyAdminToken(input.adminToken)) {
+        throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid admin session." });
+      }
+      return getAllPemfResources();
+    }),
+
+  /**
+   * Admin: create a new resource (document, script, email template, or video).
+   */
+  adminCreateResource: publicProcedure
+    .input(z.object({
+      adminToken: z.string(),
+      type: z.enum(["document", "script", "email_template", "video"]),
+      title: z.string().min(1).max(255),
+      description: z.string().max(2000).optional(),
+      fileUrl: z.string().url().optional(),
+      fileName: z.string().max(255).optional(),
+      content: z.string().optional(),
+      videoUrl: z.string().url().optional(),
+      category: z.string().max(100).optional(),
+      isPublished: z.boolean().default(true),
+      sortOrder: z.number().int().default(0),
+    }))
+    .mutation(async ({ input }) => {
+      if (!await verifyAdminToken(input.adminToken)) {
+        throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid admin session." });
+      }
+      const id = await createPemfResource({
+        type: input.type,
+        title: input.title,
+        description: input.description || null,
+        fileUrl: input.fileUrl || null,
+        fileName: input.fileName || null,
+        content: input.content || null,
+        videoUrl: input.videoUrl || null,
+        category: input.category || null,
+        isPublished: input.isPublished ? 1 : 0,
+        sortOrder: input.sortOrder,
+      });
+      return { success: true, id };
+    }),
+
+  /**
+   * Admin: update an existing resource.
+   */
+  adminUpdateResource: publicProcedure
+    .input(z.object({
+      adminToken: z.string(),
+      id: z.number(),
+      title: z.string().min(1).max(255).optional(),
+      description: z.string().max(2000).optional(),
+      fileUrl: z.string().url().optional().nullable(),
+      fileName: z.string().max(255).optional().nullable(),
+      content: z.string().optional().nullable(),
+      videoUrl: z.string().url().optional().nullable(),
+      category: z.string().max(100).optional().nullable(),
+      isPublished: z.boolean().optional(),
+      sortOrder: z.number().int().optional(),
+    }))
+    .mutation(async ({ input }) => {
+      if (!await verifyAdminToken(input.adminToken)) {
+        throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid admin session." });
+      }
+      const updates: Record<string, unknown> = {};
+      if (input.title !== undefined) updates.title = input.title;
+      if (input.description !== undefined) updates.description = input.description;
+      if (input.fileUrl !== undefined) updates.fileUrl = input.fileUrl;
+      if (input.fileName !== undefined) updates.fileName = input.fileName;
+      if (input.content !== undefined) updates.content = input.content;
+      if (input.videoUrl !== undefined) updates.videoUrl = input.videoUrl;
+      if (input.category !== undefined) updates.category = input.category;
+      if (input.isPublished !== undefined) updates.isPublished = input.isPublished ? 1 : 0;
+      if (input.sortOrder !== undefined) updates.sortOrder = input.sortOrder;
+      await updatePemfResource(input.id, updates as any);
+      return { success: true };
+    }),
+
+  /**
+   * Admin: delete a resource.
+   */
+  adminDeleteResource: publicProcedure
+    .input(z.object({ adminToken: z.string(), id: z.number() }))
+    .mutation(async ({ input }) => {
+      if (!await verifyAdminToken(input.adminToken)) {
+        throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid admin session." });
+      }
+      await deletePemfResource(input.id);
+      return { success: true };
+    }),
+
+  /**
+   * Admin: upload a file (PDF/doc/script) to S3 and return the URL.
+   * Accepts base64-encoded file content.
+   */
+  adminUploadFile: publicProcedure
+    .input(z.object({
+      adminToken: z.string(),
+      fileName: z.string().max(255),
+      fileBase64: z.string(),
+      mimeType: z.string().max(100),
+    }))
+    .mutation(async ({ input }) => {
+      if (!await verifyAdminToken(input.adminToken)) {
+        throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid admin session." });
+      }
+      const { storagePut } = await import("../storage");
+      const buffer = Buffer.from(input.fileBase64, "base64");
+      const suffix = Date.now().toString(36);
+      const safeFileName = input.fileName.replace(/[^a-zA-Z0-9._-]/g, "_");
+      const key = `pemf-resources/${suffix}-${safeFileName}`;
+      const { url } = await storagePut(key, buffer, input.mimeType);
+      return { success: true, url, fileName: input.fileName };
+    }),
 });
+
+/**
+ * Send a welcome email to a new affiliate using the Forge notification API.
+ * Falls back gracefully if the API is unavailable.
+ */
+async function sendAffiliateWelcomeEmail({
+  name,
+  email,
+  slug,
+  origin,
+}: {
+  name: string;
+  email: string;
+  slug: string;
+  origin: string;
+}) {
+  const pemfLink = `${origin}/pemf/${slug}`;
+  const portalLink = `${origin}/pemf/portal`;
+
+  const subject = `Welcome to the Add Life to Your Years Brand Partner Programme`;
+  const body = `
+Hi ${name},
+
+Welcome to the Add Life to Your Years Brand Partner Programme! We're thrilled to have you on board.
+
+Your personal PEMF page is now live and ready to share:
+${pemfLink}
+
+Share this link with anyone interested in PEMF therapy. Every enquiry that comes through your page will be tracked in your partner portal.
+
+---
+Your Partner Portal
+---
+Log in to your partner portal to view your enquiry stats, update your details, and access resources:
+${portalLink}
+
+Use the email address you registered with and the password you created during sign-up.
+
+---
+What's in Your Portal
+---
+• Your personal PEMF link to share
+• Enquiry tracking — see who has reached out through your page
+• Resources — marketing materials, scripts, email templates, and more
+• Profile settings — update your details or change your password
+
+If you have any questions, simply reply to this email.
+
+Warm regards,
+Add Life to Your Years Team
+https://addlifetoyouryears.org
+`.trim();
+
+  const forgeApiUrl = process.env.BUILT_IN_FORGE_API_URL;
+  const forgeApiKey = process.env.BUILT_IN_FORGE_API_KEY;
+
+  if (!forgeApiUrl || !forgeApiKey) {
+    console.warn("[Email] Forge API not configured, skipping welcome email.");
+    return;
+  }
+
+  const response = await fetch(`${forgeApiUrl}/api/v1/email/send`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${forgeApiKey}`,
+    },
+    body: JSON.stringify({
+      to: email,
+      subject,
+      text: body,
+      from_name: "Add Life to Your Years Team",
+    }),
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    console.warn(`[Email] Welcome email failed (${response.status}): ${text}`);
+  } else {
+    console.log(`[Email] Welcome email sent to ${email}`);
+  }
+}

@@ -5,6 +5,7 @@ import {
   consultations, consultMessages, consultReports, shopProducts, reviewRequests, consultRatings,
   InsertConsultation, InsertConsultMessage, InsertConsultReport, InsertShopProduct, InsertReviewRequest, InsertConsultRating,
   pemfAffiliates, InsertPemfAffiliate, pemfEnquiries, InsertPemfEnquiry,
+  pemfResources, InsertPemfResource,
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -407,4 +408,39 @@ export async function getEnquiryCountsByAffiliate(): Promise<Record<number, numb
     map[row.affiliateId] = Number(row.count);
   }
   return map;
+}
+
+// ─── PEMF Resource Helpers ────────────────────────────────────────────────────
+
+export async function createPemfResource(data: InsertPemfResource): Promise<number> {
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+  const [result] = await db.insert(pemfResources).values(data);
+  return (result as any).insertId;
+}
+
+export async function getAllPemfResources() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(pemfResources).orderBy(pemfResources.sortOrder, pemfResources.createdAt);
+}
+
+export async function getPublishedPemfResources() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(pemfResources)
+    .where(eq(pemfResources.isPublished, 1))
+    .orderBy(pemfResources.sortOrder, pemfResources.createdAt);
+}
+
+export async function updatePemfResource(id: number, data: Partial<InsertPemfResource>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+  await db.update(pemfResources).set(data).where(eq(pemfResources.id, id));
+}
+
+export async function deletePemfResource(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+  await db.delete(pemfResources).where(eq(pemfResources.id, id));
 }

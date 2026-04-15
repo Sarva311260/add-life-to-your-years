@@ -246,3 +246,35 @@ export const pemfEnquiries = mysqlTable("pemf_enquiries", {
 
 export type PemfEnquiry = typeof pemfEnquiries.$inferSelect;
 export type InsertPemfEnquiry = typeof pemfEnquiries.$inferInsert;
+
+/**
+ * PEMF Resources — documents, scripts, email templates, and videos for affiliates.
+ */
+export const pemfResources = mysqlTable("pemf_resources", {
+  id: int("id").autoincrement().primaryKey(),
+  /** Resource type: 'document' | 'script' | 'email_template' | 'video' */
+  type: mysqlEnum("type", ["document", "script", "email_template", "video"]).notNull(),
+  /** Display title */
+  title: varchar("title", { length: 255 }).notNull(),
+  /** Optional description shown to affiliates */
+  description: text("description"),
+  /** For documents/scripts: S3 CDN URL of uploaded file */
+  fileUrl: varchar("fileUrl", { length: 512 }),
+  /** Original filename (for documents/scripts) */
+  fileName: varchar("fileName", { length: 255 }),
+  /** For email templates: the full email body text */
+  content: text("content"),
+  /** For videos: YouTube/Vimeo URL */
+  videoUrl: varchar("videoUrl", { length: 512 }),
+  /** Category label for grouping (e.g. 'Getting Started', 'Social Media') */
+  category: varchar("category", { length: 100 }),
+  /** Whether visible to affiliates */
+  isPublished: int("isPublished").default(1).notNull(),
+  /** Display order within category */
+  sortOrder: int("sortOrder").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type PemfResource = typeof pemfResources.$inferSelect;
+export type InsertPemfResource = typeof pemfResources.$inferInsert;

@@ -3,7 +3,7 @@ import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 import {
   Leaf, Eye, EyeOff, ArrowRight, LogOut, User, Phone, Mail,
-  BarChart2, Link2, Copy, Edit2, Check, X, Lock, ChevronDown, ChevronUp
+  BarChart2, Link2, Copy, Edit2, Check, X, Lock, ChevronDown, ChevronUp, BookOpen
 } from "lucide-react";
 
 const TOKEN_KEY = "affiliate_token";
@@ -210,6 +210,10 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
             <span className="text-white font-serif text-lg">Add Life to Your Years</span>
           </div>
           <div className="flex items-center gap-3">
+            <a href="/pemf/portal/resources" className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors text-sm">
+              <BookOpen className="w-4 h-4" />
+              <span className="hidden sm:inline">Resources</span>
+            </a>
             <span className="text-emerald-300 text-sm hidden sm:block">{profile.name}</span>
             <button
               onClick={() => { clearToken(); onLogout(); }}
