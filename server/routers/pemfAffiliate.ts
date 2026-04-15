@@ -357,20 +357,16 @@ export const pemfAffiliateRouter = router({
         sourcePage: input.sourcePage?.trim() || null,
       });
 
-      notifyOwner({
-        title: `New PEMF Enquiry via ${affiliate.name}`,
-        content:
-          `A visitor has submitted an enquiry through ${affiliate.name}'s PEMF page.\n\n` +
-          `Visitor Name: ${input.visitorName}\n` +
-          `Visitor Email: ${input.visitorEmail}\n` +
-          `Visitor Phone: ${input.visitorPhone || "Not provided"}\n` +
-          `Message: ${input.message || "No message"}\n` +
-          `Source Page: ${input.sourcePage || "Unknown"}\n\n` +
-          `Brand Partner: ${affiliate.name}\n` +
-          `Partner Email: ${affiliate.email}\n` +
-          `Partner Phone: ${affiliate.phone}\n`,
+      sendAffiliateEnquiryEmail({
+        affiliateName: affiliate.name,
+        affiliateEmail: affiliate.email,
+        visitorName: input.visitorName,
+        visitorEmail: input.visitorEmail,
+        visitorPhone: input.visitorPhone || null,
+        message: input.message || null,
+        sourcePage: input.sourcePage || null,
       }).catch((err) => {
-        console.warn("[Notification] Failed to send enquiry notification to owner:", err);
+        console.warn("[Email] Failed to send enquiry email to affiliate:", err);
       });
 
       return { success: true, enquiryId };
@@ -735,5 +731,78 @@ https://addlifetoyouryears.org
     console.warn(`[Email] Welcome email failed (${response.status}): ${text}`);
   } else {
     console.log(`[Email] Welcome email sent to ${email}`);
+  }
+}
+
+/**
+ * Send an enquiry notification email directly to the affiliate.
+ */
+async function sendAffiliateEnquiryEmail({
+  affiliateName,
+  affiliateEmail,
+  visitorName,
+  visitorEmail,
+  visitorPhone,
+  message,
+  sourcePage,
+}: {
+  affiliateName: string;
+  affiliateEmail: string;
+  visitorName: string;
+  visitorEmail: string;
+  visitorPhone: string | null;
+  message: string | null;
+  sourcePage: string | null;
+}) {
+  const forgeApiUrl = process.env.BUILT_IN_FORGE_API_URL;
+  const forgeApiKey = process.env.BUILT_IN_FORGE_API_KEY;
+
+  if (!forgeApiUrl || !forgeApiKey) {
+    console.warn("[Email] Forge API not configured, skipping enquiry email.");
+    return;
+  }
+
+  const subject = `New PEMF Enquiry from ${visitorName}`;
+  const body = `
+Hi ${affiliateName},
+
+You have a new enquiry from someone who visited your PEMF page!
+
+---
+Enquiry Details
+---
+Name: ${visitorName}
+Email: ${visitorEmail}
+Phone: ${visitorPhone || "Not provided"}
+Message: ${message || "No message"}
+Source Page: ${sourcePage || "Unknown"}
+
+You can view all your enquiries in your partner portal:
+https://addlifetoyouryears.org/pemf/portal
+
+Warm regards,
+Add Life to Your Years Team
+https://addlifetoyouryears.org
+`.trim();
+
+  const response = await fetch(`${forgeApiUrl}/api/v1/email/send`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${forgeApiKey}`,
+    },
+    body: JSON.stringify({
+      to: affiliateEmail,
+      subject,
+      text: body,
+      from_name: "Add Life to Your Years Team",
+    }),
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    console.warn(`[Email] Enquiry email failed (${response.status}): ${text}`);
+  } else {
+    console.log(`[Email] Enquiry email sent to affiliate ${affiliateEmail}`);
   }
 }
