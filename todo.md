@@ -372,3 +372,4 @@
 - [x] Bug fix: Admin resources page — Draft/Published toggle button overflows/overlaps the "Published" label text
 - [ ] Bug fix: Affiliate enquiry email notification not delivered to affiliate's registered email — investigate and fix
 - [x] Resource hub: Add Vimeo video embedding support alongside YouTube in affiliate portal
+- [x] Admin resources: Add search bar with live filtering by title, description, or category

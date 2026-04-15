@@ -462,6 +462,7 @@ export default function PEMFAdminResources() {
   const adminToken = getAdminToken();
   const [showAddForm, setShowAddForm] = useState(false);
   const [filterType, setFilterType] = useState<ResourceType | "all">("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const { data: resources, isLoading, refetch } = trpc.pemfAffiliate.adminGetResources.useQuery(
     { adminToken },
@@ -480,7 +481,18 @@ export default function PEMFAdminResources() {
   }
 
   const filtered = resources
-    ? (filterType === "all" ? resources : resources.filter(r => r.type === filterType))
+    ? resources.filter(r => {
+        const matchesType = filterType === "all" || r.type === filterType;
+        if (!matchesType) return false;
+        if (!searchQuery.trim()) return true;
+        const q = searchQuery.toLowerCase();
+        return (
+          r.title.toLowerCase().includes(q) ||
+          (r.description?.toLowerCase().includes(q) ?? false) ||
+          (r.category?.toLowerCase().includes(q) ?? false) ||
+          (r.subcategory?.toLowerCase().includes(q) ?? false)
+        );
+      })
     : [];
 
   const grouped = filtered.reduce((acc, r) => {
@@ -520,6 +532,25 @@ export default function PEMFAdminResources() {
             onCancel={() => setShowAddForm(false)}
           />
         )}
+
+        {/* Search bar */}
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Search resources by title, description or category…"
+            value={searchQuery}
+            onChange={e => setSearchQuery(e.target.value)}
+            className="w-full bg-white/5 border border-emerald-800/30 rounded-xl px-4 py-3 pl-10 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500/50 text-sm"
+          />
+          <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
+          </svg>
+          {searchQuery && (
+            <button onClick={() => setSearchQuery("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white">
+              <X className="w-4 h-4" />
+            </button>
+          )}
+        </div>
 
         {/* Filter tabs */}
         <div className="flex gap-2 flex-wrap">
