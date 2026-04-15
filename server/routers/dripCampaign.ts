@@ -15,9 +15,9 @@ import {
 import { Resend } from "resend";
 
 const ADMIN_PASSWORD = process.env.PEMF_ADMIN_PASSWORD || "pemf-admin-2024";
-const ADMIN_JWT_SECRET = ENV.cookieSecret + "_pemf_admin";
+// Admin tokens are signed with the affiliate secret in pemfAffiliate.ts — must match
 const AFFILIATE_JWT_SECRET = ENV.cookieSecret + "_affiliate";
-const adminSecret = new TextEncoder().encode(ADMIN_JWT_SECRET);
+const adminSecret = new TextEncoder().encode(AFFILIATE_JWT_SECRET);
 const affiliateSecret = new TextEncoder().encode(AFFILIATE_JWT_SECRET);
 
 const FROM_ADDRESS = "Add Life to Your Years Team <noreply@addlifetoyouryears.org>";

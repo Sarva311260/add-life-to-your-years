@@ -92,8 +92,8 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-foreground">Email Campaigns</h2>
-          <p className="text-muted-foreground mt-1">Manage drip sequences, broadcast emails, and view email logs.</p>
+          <h2 className="text-2xl font-bold text-white">Email Campaigns</h2>
+          <p className="text-emerald-300/70 mt-1">Manage drip sequences, broadcast emails, and view email logs.</p>
         </div>
         <Button
           variant="outline"
@@ -108,16 +108,13 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
       </div>
 
       {/* ── Broadcast Section ─────────────────────────────────────────────── */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-lg">
-            <Users className="w-5 h-5 text-primary" />
+      <div className="bg-white/5 border border-emerald-800/30 rounded-2xl p-6 space-y-4">
+          <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+            <Users className="w-5 h-5 text-emerald-400" />
             Broadcast to All Affiliates
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
+          </h3>
           {broadcastResult && (
-            <div className="flex items-center gap-3 p-3 rounded-lg bg-green-50 border border-green-200 text-green-800 text-sm">
+            <div className="flex items-center gap-3 p-3 rounded-lg bg-emerald-900/40 border border-emerald-700/40 text-emerald-300 text-sm">
               <CheckCircle className="w-4 h-4 shrink-0" />
               Last broadcast: {broadcastResult.sent} sent, {broadcastResult.failed} failed out of {broadcastResult.total} affiliates.
             </div>
@@ -126,6 +123,7 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
             placeholder="Subject line..."
             value={broadcastSubject}
             onChange={e => setBroadcastSubject(e.target.value)}
+            className="bg-white/10 border-emerald-700/40 text-white placeholder:text-emerald-300/40"
           />
           <RichTextEditor
             value={broadcastBody}
@@ -136,19 +134,18 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
           <Button
             onClick={() => broadcast.mutate({ adminToken, subject: broadcastSubject, body: broadcastBody })}
             disabled={!broadcastSubject || !broadcastBody || broadcast.isPending}
-            className="gap-2"
+            className="gap-2 bg-emerald-600 hover:bg-emerald-500 text-white"
           >
             {broadcast.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
             Send to All Active Affiliates
           </Button>
-        </CardContent>
-      </Card>
+      </div>
 
       {/* ── Drip Sequences ────────────────────────────────────────────────── */}
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
-            <Mail className="w-5 h-5 text-primary" />
+          <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+            <Mail className="w-5 h-5 text-emerald-400" />
             Drip Sequences
           </h3>
           <Button size="sm" onClick={() => setShowNewSeq(true)} className="gap-2">
@@ -158,37 +155,36 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
         </div>
 
         {seqLoading ? (
-          <div className="flex items-center gap-2 text-muted-foreground py-8 justify-center">
+          <div className="flex items-center gap-2 text-emerald-300/60 py-8 justify-center">
             <Loader2 className="w-5 h-5 animate-spin" />
             Loading sequences...
           </div>
         ) : sequences.length === 0 ? (
-          <div className="text-center py-12 text-muted-foreground border-2 border-dashed rounded-xl">
+          <div className="text-center py-12 text-emerald-300/60 border-2 border-dashed border-emerald-800/40 rounded-xl">
             <Mail className="w-10 h-10 mx-auto mb-3 opacity-30" />
-            <p className="font-medium">No drip sequences yet</p>
+            <p className="font-medium text-white">No drip sequences yet</p>
             <p className="text-sm mt-1">Create a sequence to start automating emails to new leads.</p>
           </div>
         ) : (
           <div className="space-y-3">
             {sequences.map(seq => (
-              <Card key={seq.id} className="border-border/60">
-                <CardContent className="p-4">
+              <div key={seq.id} className="bg-white/5 border border-emerald-800/30 rounded-xl p-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <button
                         onClick={() => setExpandedSeq(expandedSeq === seq.id ? null : seq.id)}
                         className="flex items-center gap-2 text-left"
                       >
-                        {expandedSeq === seq.id ? <ChevronUp className="w-4 h-4 text-muted-foreground" /> : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
+                        {expandedSeq === seq.id ? <ChevronUp className="w-4 h-4 text-emerald-400" /> : <ChevronDown className="w-4 h-4 text-emerald-400" />}
                         <div>
-                          <div className="font-medium text-foreground">{seq.name}</div>
-                          {seq.description && <div className="text-xs text-muted-foreground mt-0.5">{seq.description}</div>}
+                          <div className="font-medium text-white">{seq.name}</div>
+                          {seq.description && <div className="text-xs text-emerald-300/60 mt-0.5">{seq.description}</div>}
                         </div>
                       </button>
                       <Badge variant={seq.isActive ? "default" : "secondary"} className="text-xs">
                         {seq.isActive ? "Active" : "Paused"}
                       </Badge>
-                      <span className="text-xs text-muted-foreground">{seq.emailCount} email{seq.emailCount !== 1 ? "s" : ""}</span>
+                      <span className="text-xs text-emerald-300/60">{seq.emailCount} email{seq.emailCount !== 1 ? "s" : ""}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Button
@@ -211,21 +207,21 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
 
                   {/* Expanded: emails in this sequence */}
                   {expandedSeq === seq.id && (
-                    <div className="mt-4 pt-4 border-t border-border/50 space-y-3">
+                    <div className="mt-4 pt-4 border-t border-emerald-800/30 space-y-3">
                       {seqEmails.length === 0 ? (
-                        <p className="text-sm text-muted-foreground">No emails in this sequence yet.</p>
+                        <p className="text-sm text-emerald-300/60">No emails in this sequence yet.</p>
                       ) : (
                         seqEmails.map((email, idx) => (
-                          <div key={email.id} className="flex items-start gap-3 p-3 rounded-lg bg-muted/40 border border-border/40">
+                          <div key={email.id} className="flex items-start gap-3 p-3 rounded-lg bg-white/5 border border-emerald-800/20">
                             <div className="flex items-center gap-1.5 shrink-0 mt-0.5">
-                              <Clock className="w-3.5 h-3.5 text-muted-foreground" />
-                              <span className="text-xs font-medium text-muted-foreground">
+                              <Clock className="w-3.5 h-3.5 text-emerald-400" />
+                              <span className="text-xs font-medium text-emerald-300">
                                 Day {email.dayOffset}
                               </span>
                             </div>
                             <div className="flex-1 min-w-0">
-                              <div className="font-medium text-sm text-foreground truncate">{email.subject}</div>
-                              <div className="text-xs text-muted-foreground mt-0.5 line-clamp-2"
+                              <div className="font-medium text-sm text-white truncate">{email.subject}</div>
+                              <div className="text-xs text-emerald-300/60 mt-0.5 line-clamp-2"
                                 dangerouslySetInnerHTML={{ __html: email.body.replace(/<[^>]*>/g, " ").slice(0, 120) + "..." }}
                               />
                             </div>
@@ -260,8 +256,7 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
                       </Button>
                     </div>
                   )}
-                </CardContent>
-              </Card>
+                </div>
             ))}
           </div>
         )}
