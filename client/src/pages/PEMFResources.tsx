@@ -64,15 +64,21 @@ function ResourceCard({ resource, affiliateSlug }: { resource: Resource; affilia
   const typeKey = (resource.type in TYPE_CONFIG ? resource.type : 'document') as ResourceType;
   const { label, icon: Icon, color, bg, border } = TYPE_CONFIG[typeKey];
 
-  // For landing pages, personalise the URL if it matches our domain and ends with /pemf
+  // For landing pages, personalise the URL:
+  // - /pemf  → /pemf/[slug]
+  // - /ref   → /ref/[slug]
   const getPersonalisedUrl = () => {
     if (!resource.pageUrl) return null;
     if (!affiliateSlug) return resource.pageUrl;
     try {
       const url = new URL(resource.pageUrl);
-      // If the path ends with /pemf (with or without trailing slash), append the slug
       const path = url.pathname.replace(/\/$/, '');
+      // PEMF affiliate page
       if (path === '/pemf' || path.match(/\/pemf$/)) {
+        return `${url.origin}${path}/${affiliateSlug}`;
+      }
+      // Main website affiliate page
+      if (path === '/ref' || path.match(/\/ref$/)) {
         return `${url.origin}${path}/${affiliateSlug}`;
       }
     } catch {}

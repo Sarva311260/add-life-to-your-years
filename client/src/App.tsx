@@ -31,6 +31,7 @@ import PEMFPortal from "@/pages/PEMFPortal";
 import PEMFAdmin from "@/pages/PEMFAdmin";
 import PEMFAdminResources from "@/pages/PEMFAdminResources";
 import PEMFResources from "@/pages/PEMFResources";
+import HomeAffiliate from "@/pages/HomeAffiliate";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -70,6 +71,7 @@ function Router() {
       <Route path={"/pemf/admin"} component={PEMFAdmin} />
       <Route path={"/pemf/admin/resources"} component={PEMFAdminResources} />
       <Route path={"/pemf/portal/resources"} component={PEMFResources} />
+      <Route path={"/ref/:slug"} component={HomeAffiliate} />
       <Route path={"/pemf/:slug"} component={PEMFAffiliate} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
