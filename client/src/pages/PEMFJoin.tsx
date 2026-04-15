@@ -1,7 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
-import { Leaf, CheckCircle, Copy, ArrowRight, Eye, EyeOff } from "lucide-react";
+import { Leaf, CheckCircle, Copy, ArrowRight, Eye, EyeOff, Check, X, Loader2 } from "lucide-react";
+
+function generateSlugPreview(text: string): string {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+}
 
 export default function PEMFJoin() {
   const [name, setName] = useState("");
@@ -9,14 +19,41 @@ export default function PEMFJoin() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [customSlug, setCustomSlug] = useState("");
+  const [slugTouched, setSlugTouched] = useState(false);
+  const [debouncedSlug, setDebouncedSlug] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [generatedSlug, setGeneratedSlug] = useState("");
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Auto-populate slug from name (only if user hasn't manually edited it)
+  useEffect(() => {
+    if (!slugTouched && name) {
+      const preview = generateSlugPreview(name);
+      setCustomSlug(preview);
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+      debounceRef.current = setTimeout(() => setDebouncedSlug(preview), 500);
+    }
+  }, [name, slugTouched]);
+
+  // Debounce slug availability check
+  const handleSlugChange = (val: string) => {
+    setSlugTouched(true);
+    const sanitized = generateSlugPreview(val);
+    setCustomSlug(sanitized);
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => setDebouncedSlug(sanitized), 500);
+  };
+
+  const slugCheck = trpc.pemfAffiliate.checkSlugAvailability.useQuery(
+    { slug: debouncedSlug },
+    { enabled: debouncedSlug.length > 0 }
+  );
 
   const registerMutation = trpc.pemfAffiliate.register.useMutation({
     onSuccess: (data) => {
       setGeneratedSlug(data.slug);
       setSubmitted(true);
-      // Store token so they can go straight to dashboard
       if (data.token) {
         localStorage.setItem("affiliate_token", data.token);
       }
@@ -37,11 +74,16 @@ export default function PEMFJoin() {
       toast.error("Password must be at least 6 characters.");
       return;
     }
+    if (slugCheck.data && !slugCheck.data.available) {
+      toast.error("That URL is already taken. Please choose a different one.");
+      return;
+    }
     registerMutation.mutate({
       name: name.trim(),
       email: email.trim(),
       phone: phone.trim(),
       password,
+      customSlug: customSlug || undefined,
     });
   };
 
@@ -51,6 +93,11 @@ export default function PEMFJoin() {
     navigator.clipboard.writeText(personalLink);
     toast.success("Link copied to clipboard!");
   };
+
+  const slugPreviewUrl = `${window.location.origin}/pemf/${customSlug || "your-name"}`;
+  const isCheckingSlug = slugCheck.isFetching;
+  const slugAvailable = slugCheck.data?.available;
+  const slugChecked = !isCheckingSlug && debouncedSlug.length > 0 && slugCheck.data !== undefined;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0a2e1a] via-[#0d3b22] to-[#0a2e1a]">
@@ -99,6 +146,51 @@ export default function PEMFJoin() {
                   className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all"
                   required
                 />
+              </div>
+
+              {/* Custom Slug Field */}
+              <div>
+                <label className="block text-emerald-300 text-sm font-medium mb-2">Your Personal URL</label>
+                <div className="relative">
+                  <div className="flex items-center bg-white/10 border rounded-lg overflow-hidden transition-all"
+                    style={{
+                      borderColor: slugChecked
+                        ? (slugAvailable ? "rgba(52,211,153,0.5)" : "rgba(239,68,68,0.5)")
+                        : "rgba(6,78,59,0.3)"
+                    }}
+                  >
+                    <span className="text-gray-400 text-sm px-3 py-3 border-r border-emerald-700/30 whitespace-nowrap bg-white/5">
+                      …/pemf/
+                    </span>
+                    <input
+                      type="text"
+                      value={customSlug}
+                      onChange={(e) => handleSlugChange(e.target.value)}
+                      placeholder="your-name"
+                      className="flex-1 bg-transparent px-3 py-3 text-white placeholder-gray-500 focus:outline-none text-sm"
+                    />
+                    <div className="px-3">
+                      {isCheckingSlug && <Loader2 className="w-4 h-4 text-gray-400 animate-spin" />}
+                      {slugChecked && slugAvailable && <Check className="w-4 h-4 text-emerald-400" />}
+                      {slugChecked && !slugAvailable && <X className="w-4 h-4 text-red-400" />}
+                    </div>
+                  </div>
+                </div>
+                {slugChecked && slugAvailable && (
+                  <p className="text-emerald-400 text-xs mt-1.5 flex items-center gap-1">
+                    <Check className="w-3 h-3" /> Available! Your link will be: <span className="font-medium">{slugPreviewUrl}</span>
+                  </p>
+                )}
+                {slugChecked && !slugAvailable && (
+                  <p className="text-red-400 text-xs mt-1.5 flex items-center gap-1">
+                    <X className="w-3 h-3" /> That URL is already taken — please choose a different one.
+                  </p>
+                )}
+                {!slugChecked && customSlug && (
+                  <p className="text-gray-500 text-xs mt-1.5">
+                    Your link will be: <span className="text-gray-400">{slugPreviewUrl}</span>
+                  </p>
+                )}
               </div>
 
               <div>
@@ -150,7 +242,7 @@ export default function PEMFJoin() {
 
               <button
                 type="submit"
-                disabled={registerMutation.isPending}
+                disabled={registerMutation.isPending || (slugChecked && !slugAvailable)}
                 className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3.5 rounded-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {registerMutation.isPending ? (

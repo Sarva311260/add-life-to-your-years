@@ -77,9 +77,18 @@ async function verifyAdminToken(token: string): Promise<boolean> {
 
 export const pemfAffiliateRouter = router({
   /**
-   * Register a new PEMF affiliate (brand partner).
-   * Public — no auth required.
+   * Check if a slug is available.
+   * Public — used for real-time availability check on sign-up form.
    */
+  checkSlugAvailability: publicProcedure
+    .input(z.object({ slug: z.string().min(1).max(100) }))
+    .query(async ({ input }) => {
+      const sanitized = generateSlug(input.slug);
+      if (!sanitized) return { available: false, sanitized: "" };
+      const taken = await checkSlugExists(sanitized);
+      return { available: !taken, sanitized };
+    }),
+
   register: publicProcedure
     .input(
       z.object({
@@ -87,6 +96,7 @@ export const pemfAffiliateRouter = router({
         email: z.string().email().max(320),
         phone: z.string().min(5).max(50),
         password: z.string().min(6).max(100),
+        customSlug: z.string().min(1).max(100).optional(),
       })
     )
     .mutation(async ({ input }) => {
@@ -96,18 +106,20 @@ export const pemfAffiliateRouter = router({
         throw new TRPCError({ code: "CONFLICT", message: "An account with this email already exists." });
       }
 
-      // Generate slug from name
-      let slug = generateSlug(input.name);
-      if (!slug) {
-        slug = "partner-" + Date.now();
-      }
-
-      // Ensure slug is unique — on collision, append last 4 digits of phone number
-      let finalSlug = slug;
-      if (await checkSlugExists(finalSlug)) {
-        const phoneSuffix = input.phone.trim().replace(/\D/g, "").slice(-4);
-        finalSlug = phoneSuffix ? `${slug}-${phoneSuffix}` : `${slug}-${Date.now().toString().slice(-4)}`;
-        // If still collides (extremely rare), append timestamp
+      // Determine slug: use custom if provided, otherwise generate from name
+      let finalSlug: string;
+      if (input.customSlug) {
+        finalSlug = generateSlug(input.customSlug);
+        if (!finalSlug) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: "Invalid URL — please use letters, numbers, and hyphens only." });
+        }
+        if (await checkSlugExists(finalSlug)) {
+          throw new TRPCError({ code: "CONFLICT", message: "That URL is already taken. Please choose a different one." });
+        }
+      } else {
+        let slug = generateSlug(input.name);
+        if (!slug) slug = "partner-" + Date.now();
+        finalSlug = slug;
         if (await checkSlugExists(finalSlug)) {
           finalSlug = `${slug}-${Date.now().toString().slice(-6)}`;
         }

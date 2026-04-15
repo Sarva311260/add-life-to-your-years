@@ -352,3 +352,5 @@
 - [x] Affiliate resource hub: Affiliate-facing resource page at /pemf/portal/resources (download, copy, watch)
 - [x] Affiliate resource hub: Resources nav link in affiliate portal header and admin header
 - [x] PEMF Affiliate: Fix duplicate slug collision — append last 4 digits of phone number when slug already exists (e.g. john-smith-4521)
+- [x] PEMF Affiliate: Allow affiliates to choose their own URL slug on sign-up form with availability check and "already taken" error message
+- [x] PEMF Affiliate: Allow affiliates to choose their own URL slug on sign-up form with availability check and "already taken" error message
