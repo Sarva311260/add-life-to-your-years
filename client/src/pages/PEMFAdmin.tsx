@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
+import PEMFAdminDrip from "./PEMFAdminDrip";
 import {
   Leaf, Eye, EyeOff, ArrowRight, LogOut, Users, BarChart2,
   ToggleLeft, ToggleRight, Edit2, Lock, Check, X, ChevronDown, ChevronUp,
@@ -291,9 +292,12 @@ function AffiliateRow({ affiliate, adminToken, onRefresh }: {
 }
 
 // ─── Admin Dashboard ──────────────────────────────────────────────────────────
+type AdminView = "affiliates" | "campaigns";
+
 function AdminDashboard({ onLogout }: { onLogout: () => void }) {
   const adminToken = getAdminToken();
   const [search, setSearch] = useState("");
+  const [activeView, setActiveView] = useState<AdminView>("affiliates");
 
   const { data: affiliates, isLoading, refetch } = trpc.pemfAffiliate.adminGetAffiliates.useQuery(
     { adminToken },
@@ -339,10 +343,6 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
               <BookOpen className="w-4 h-4" />
               <span className="hidden sm:inline">Resources</span>
             </a>
-            <a href="/pemf/admin/campaigns" className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors text-sm">
-              <Mail className="w-4 h-4" />
-              <span className="hidden sm:inline">Campaigns</span>
-            </a>
             <button
               onClick={() => { clearAdminToken(); onLogout(); }}
               className="flex items-center gap-1.5 text-gray-400 hover:text-white transition-colors text-sm"
@@ -353,68 +353,98 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
         </div>
       </header>
 
-      <div className="max-w-6xl mx-auto px-4 py-10 space-y-6">
-        {/* Stats */}
-        <div className="grid grid-cols-3 gap-4">
-          {[
-            { label: "Total Partners", value: affiliates.length, icon: Users },
-            { label: "Active Partners", value: activeCount, icon: ToggleRight },
-            { label: "Total Enquiries", value: totalEnquiries, icon: BarChart2 },
-          ].map(({ label, value, icon: Icon }) => (
-            <div key={label} className="bg-white/5 border border-emerald-800/30 rounded-xl p-4 text-center">
-              <Icon className="w-5 h-5 text-emerald-400 mx-auto mb-2" />
-              <p className="text-2xl font-bold text-white">{value}</p>
-              <p className="text-gray-400 text-xs mt-0.5">{label}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Search + List */}
-        <div className="bg-white/5 border border-emerald-800/30 rounded-2xl p-6">
-          <div className="flex items-center justify-between mb-5 gap-4 flex-wrap">
-            <div className="flex items-center gap-2">
-              <Users className="w-5 h-5 text-emerald-400" />
-              <h2 className="text-white font-semibold">Brand Partners</h2>
-            </div>
-            <div className="relative">
-              <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search by name, email, phone..."
-                className="bg-white/10 border border-emerald-700/30 rounded-lg pl-9 pr-4 py-2 text-white text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 w-64"
-              />
-            </div>
+      {/* Tab Nav */}
+      <div className="bg-[#0a2e1a]/80 border-b border-emerald-800/20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex gap-1">
+            {(["affiliates", "campaigns"] as AdminView[]).map((view) => (
+              <button
+                key={view}
+                onClick={() => setActiveView(view)}
+                className={`px-5 py-3 text-sm font-medium capitalize transition-colors border-b-2 ${
+                  activeView === view
+                    ? "border-emerald-400 text-emerald-400"
+                    : "border-transparent text-gray-400 hover:text-white"
+                }`}
+              >
+                {view === "affiliates" ? "Brand Partners" : "Email Campaigns"}
+              </button>
+            ))}
           </div>
+        </div>
+      </div>
 
-          {filtered.length === 0 ? (
-            <div className="text-center py-12 text-gray-500">
-              {search ? "No partners match your search." : "No brand partners registered yet."}
-            </div>
-          ) : (
-            <div className="space-y-3">
-              {filtered.map((affiliate) => (
-                <AffiliateRow
-                  key={affiliate.id}
-                  affiliate={affiliate}
-                  adminToken={adminToken}
-                  onRefresh={() => refetch()}
-                />
+      <div className="max-w-6xl mx-auto px-4 py-10 space-y-6">
+        {/* Stats — only on affiliates tab */}
+        {activeView === "campaigns" && (
+          <div className="bg-[#0d3b22]/60 border border-emerald-800/30 rounded-2xl p-6">
+            <PEMFAdminDrip adminToken={adminToken} />
+          </div>
+        )}
+        {activeView === "affiliates" && (
+          <>
+            <div className="grid grid-cols-3 gap-4">
+              {[
+                { label: "Total Partners", value: affiliates.length, icon: Users },
+                { label: "Active Partners", value: activeCount, icon: ToggleRight },
+                { label: "Total Enquiries", value: totalEnquiries, icon: BarChart2 },
+              ].map(({ label, value, icon: Icon }) => (
+                <div key={label} className="bg-white/5 border border-emerald-800/30 rounded-xl p-4 text-center">
+                  <Icon className="w-5 h-5 text-emerald-400 mx-auto mb-2" />
+                  <p className="text-2xl font-bold text-white">{value}</p>
+                  <p className="text-gray-400 text-xs mt-0.5">{label}</p>
+                </div>
               ))}
             </div>
-          )}
-        </div>
 
-        {/* Quick Links */}
-        <div className="flex gap-3 flex-wrap">
-          <a href="/pemf/join" className="text-emerald-400 hover:text-emerald-300 text-sm transition-colors">
-            → Affiliate Sign-Up Page
-          </a>
-          <a href="/pemf" className="text-emerald-400 hover:text-emerald-300 text-sm transition-colors">
-            → Main PEMF Page
-          </a>
-        </div>
+            {/* Search + List */}
+            <div className="bg-white/5 border border-emerald-800/30 rounded-2xl p-6">
+              <div className="flex items-center justify-between mb-5 gap-4 flex-wrap">
+                <div className="flex items-center gap-2">
+                  <Users className="w-5 h-5 text-emerald-400" />
+                  <h2 className="text-white font-semibold">Brand Partners</h2>
+                </div>
+                <div className="relative">
+                  <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Search by name, email, phone..."
+                    className="bg-white/10 border border-emerald-700/30 rounded-lg pl-9 pr-4 py-2 text-white text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 w-64"
+                  />
+                </div>
+              </div>
+
+              {filtered.length === 0 ? (
+                <div className="text-center py-12 text-gray-500">
+                  {search ? "No partners match your search." : "No brand partners registered yet."}
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {filtered.map((affiliate) => (
+                    <AffiliateRow
+                      key={affiliate.id}
+                      affiliate={affiliate}
+                      adminToken={adminToken}
+                      onRefresh={() => refetch()}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Quick Links */}
+            <div className="flex gap-3 flex-wrap">
+              <a href="/pemf/join" className="text-emerald-400 hover:text-emerald-300 text-sm transition-colors">
+                → Affiliate Sign-Up Page
+              </a>
+              <a href="/pemf" className="text-emerald-400 hover:text-emerald-300 text-sm transition-colors">
+                → Main PEMF Page
+              </a>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
