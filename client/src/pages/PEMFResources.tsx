@@ -86,12 +86,20 @@ function ResourceCard({ resource, affiliateSlug }: { resource: Resource; affilia
   };
   const personalisedUrl = getPersonalisedUrl();
 
+  const [copiedUrl, setCopiedUrl] = useState(false);
+
   const handleCopy = () => {
     if (resource.content) {
       navigator.clipboard.writeText(resource.content);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
+  };
+
+  const handleCopyUrl = (url: string) => {
+    navigator.clipboard.writeText(url);
+    setCopiedUrl(true);
+    setTimeout(() => setCopiedUrl(false), 2000);
   };
 
   const embedUrl = resource.videoUrl ? getVideoEmbedUrl(resource.videoUrl) : null;
@@ -121,20 +129,28 @@ function ResourceCard({ resource, affiliateSlug }: { resource: Resource; affilia
             <p className="text-gray-300 text-sm">{resource.description}</p>
           )}
 
-          {/* Document / Script — download link */}
+          {/* Document / Script — download link + copy URL */}
           {(resource.type === "document" || resource.type === "script") && resource.fileUrl && (
-            <a
-              href={resource.fileUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-700/30 text-emerald-300 text-sm px-4 py-2.5 rounded-lg transition-all"
-            >
-              <Download className="w-4 h-4" />
-              Download {resource.fileName || "File"}
-            </a>
+            <div className="flex flex-wrap gap-2">
+              <a
+                href={resource.fileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-700/30 text-emerald-300 text-sm px-4 py-2.5 rounded-lg transition-all"
+              >
+                <Download className="w-4 h-4" />
+                Download {resource.fileName || "File"}
+              </a>
+              <button
+                onClick={() => handleCopyUrl(resource.fileUrl!)}
+                className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 text-sm px-4 py-2.5 rounded-lg transition-all"
+              >
+                <Copy className="w-4 h-4" /> {copiedUrl ? "Copied!" : "Copy Link"}
+              </button>
+            </div>
           )}
 
-          {/* Video — embed or link */}
+          {/* Video — embed or link + copy URL */}
           {resource.type === "video" && resource.videoUrl && (
             <div className="space-y-3">
               {embedUrl ? (
@@ -157,6 +173,22 @@ function ResourceCard({ resource, affiliateSlug }: { resource: Resource; affilia
                   <ExternalLink className="w-4 h-4" /> Watch Video
                 </a>
               )}
+              <div className="flex flex-wrap gap-2">
+                <a
+                  href={resource.videoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 text-sm px-4 py-2.5 rounded-lg transition-all"
+                >
+                  <ExternalLink className="w-4 h-4" /> Open Link
+                </a>
+                <button
+                  onClick={() => handleCopyUrl(resource.videoUrl!)}
+                  className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 text-sm px-4 py-2.5 rounded-lg transition-all"
+                >
+                  <Copy className="w-4 h-4" /> {copiedUrl ? "Copied!" : "Copy Link"}
+                </button>
+              </div>
             </div>
           )}
 
