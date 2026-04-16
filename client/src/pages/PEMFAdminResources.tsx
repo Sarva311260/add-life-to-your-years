@@ -82,20 +82,23 @@ function AddResourceForm({ adminToken, onSuccess, onCancel }: {
     reader.readAsDataURL(file);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent, asDraft = false) => {
     e.preventDefault();
     if (!title.trim()) { toast.error("Title is required."); return; }
-    if ((type === "document" || type === "script") && !uploadedFile) {
-      toast.error("Please upload a file."); return;
-    }
-    if (type === "video" && !videoUrl.trim()) {
-      toast.error("Please enter a video URL."); return;
-    }
-    if (type === "email_template" && !content.trim()) {
-      toast.error("Please enter the email template content."); return;
-    }
-    if (type === "landing_page" && !pageUrl.trim()) {
-      toast.error("Please enter the page URL."); return;
+    // Only enforce content requirements when publishing (not saving as draft)
+    if (!asDraft) {
+      if ((type === "document" || type === "script") && !uploadedFile) {
+        toast.error("Please upload a file before publishing."); return;
+      }
+      if (type === "video" && !videoUrl.trim()) {
+        toast.error("Please enter a video URL before publishing."); return;
+      }
+      if (type === "email_template" && !content.trim()) {
+        toast.error("Please enter the email template content before publishing."); return;
+      }
+      if (type === "landing_page" && !pageUrl.trim()) {
+        toast.error("Please enter the page URL before publishing."); return;
+      }
     }
     createMutation.mutate({
       adminToken,
@@ -109,7 +112,13 @@ function AddResourceForm({ adminToken, onSuccess, onCancel }: {
       pageUrl: pageUrl.trim() || undefined,
       category: category.trim() || undefined,
       subcategory: subcategory.trim() || undefined,
-      isPublished,
+      isPublished: asDraft ? false : isPublished,
+    },
+    {
+      onSuccess: () => {
+        toast.success(asDraft ? "Saved as draft — you can fill in the content later." : "Resource added.");
+        onSuccess();
+      },
     });
   };
 
@@ -291,7 +300,16 @@ function AddResourceForm({ adminToken, onSuccess, onCancel }: {
         </div>
 
         {/* Actions */}
-        <div className="flex gap-3 pt-2">
+        <div className="flex flex-wrap gap-3 pt-2">
+          <button
+            type="button"
+            disabled={createMutation.isPending || uploading}
+            onClick={(e) => handleSubmit(e as any, true)}
+            className="flex items-center gap-2 bg-gray-600 hover:bg-gray-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-all disabled:opacity-50"
+          >
+            {createMutation.isPending ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <FileText className="w-4 h-4" />}
+            Save as Draft
+          </button>
           <button
             type="submit"
             disabled={createMutation.isPending || uploading}
@@ -347,9 +365,12 @@ function ResourceCard({ resource, adminToken, onRefresh }: {
           <Icon className={`w-4 h-4 ${color}`} />
         </div>
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 flex-wrap">
+            <div className="flex items-center gap-2 flex-wrap">
             <p className="text-white font-medium text-sm">{resource.title}</p>
             {!resource.isPublished && <span className="text-xs bg-gray-700/50 text-gray-400 px-1.5 py-0.5 rounded">Draft</span>}
+            {!resource.isPublished && !resource.fileUrl && !resource.videoUrl && !resource.content && !resource.pageUrl && (
+              <span className="text-xs bg-amber-900/40 text-amber-400 px-1.5 py-0.5 rounded border border-amber-700/30">⚠ Needs content</span>
+            )}
             {resource.category && <span className="text-xs bg-emerald-900/30 text-emerald-400/70 px-1.5 py-0.5 rounded">{resource.category}</span>}
           </div>
           <p className="text-gray-500 text-xs">{label}</p>
