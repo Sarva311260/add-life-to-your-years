@@ -338,8 +338,10 @@ function ResourceCard({ resource, adminToken, onRefresh }: {
   const [editTitle, setEditTitle] = useState(resource.title);
   const [editDesc, setEditDesc] = useState(resource.description || "");
   const [editCategory, setEditCategory] = useState(resource.category || "");
+  const [editSubcategory, setEditSubcategory] = useState(resource.subcategory || "");
   const [editContent, setEditContent] = useState(resource.content || "");
   const [editVideoUrl, setEditVideoUrl] = useState(resource.videoUrl || "");
+  const [editPageUrl, setEditPageUrl] = useState(resource.pageUrl || "");
 
   const { label, icon: Icon, color, bg } = TYPE_CONFIG[resource.type];
 
@@ -434,6 +436,12 @@ function ResourceCard({ resource, adminToken, onRefresh }: {
                   className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50" />
               </div>
               <div>
+                <label className="block text-emerald-300/70 text-xs mb-1">Subcategory (optional)</label>
+                <input type="text" value={editSubcategory} onChange={(e) => setEditSubcategory(e.target.value)}
+                  className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+                  placeholder="e.g. Social Media, PEMF, Wellness" />
+              </div>
+              <div>
                 <label className="block text-emerald-300/70 text-xs mb-1">Description</label>
                 <textarea value={editDesc} onChange={(e) => setEditDesc(e.target.value)} rows={2}
                   className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 resize-none" />
@@ -452,14 +460,24 @@ function ResourceCard({ resource, adminToken, onRefresh }: {
                     className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50" />
                 </div>
               )}
+              {resource.type === "landing_page" && (
+                <div>
+                  <label className="block text-emerald-300/70 text-xs mb-1">Page URL</label>
+                  <input type="url" value={editPageUrl} onChange={(e) => setEditPageUrl(e.target.value)}
+                    className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+                    placeholder="https://..." />
+                </div>
+              )}
               <div className="flex gap-2">
                 <button
                   onClick={() => updateMutation.mutate({
                     adminToken, id: resource.id,
                     title: editTitle, description: editDesc || undefined,
                     category: editCategory || undefined,
+                    subcategory: editSubcategory || undefined,
                     content: resource.type === "email_template" ? (editContent || undefined) : undefined,
                     videoUrl: resource.type === "video" ? (editVideoUrl || undefined) : undefined,
+                    pageUrl: resource.type === "landing_page" ? (editPageUrl || undefined) : undefined,
                   })}
                   disabled={updateMutation.isPending}
                   className="flex items-center gap-1.5 text-xs bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded-lg transition-all disabled:opacity-50"
