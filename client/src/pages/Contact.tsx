@@ -5,12 +5,27 @@ import { Leaf, ArrowLeft, Mail, MessageCircle, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { toast } from "sonner";
+import { trpc } from "@/lib/trpc";
 
 export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [sending, setSending] = useState(false);
+
+  const submitContact = trpc.contact.submit.useMutation({
+    onSuccess: () => {
+      toast.success("Thank you for your message! We will get back to you soon.");
+      setName("");
+      setEmail("");
+      setMessage("");
+      setSending(false);
+    },
+    onError: () => {
+      toast.error("Something went wrong. Please try again.");
+      setSending(false);
+    },
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,14 +34,7 @@ export default function Contact() {
       return;
     }
     setSending(true);
-    // Placeholder — connect to backend when ready
-    setTimeout(() => {
-      toast.success("Thank you for your message! We will get back to you soon.");
-      setName("");
-      setEmail("");
-      setMessage("");
-      setSending(false);
-    }, 1000);
+    submitContact.mutate({ name, email, message });
   };
 
   return (

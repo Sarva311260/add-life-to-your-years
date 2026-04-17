@@ -374,6 +374,58 @@ export const appRouter = router({
         return { url };
       }),
   }),
+
+  // ── Contact Form ──────────────────────────────────────────────────────────
+  contact: router({
+    submit: publicProcedure
+      .input(z.object({
+        name: z.string().min(1),
+        email: z.string().email(),
+        message: z.string().min(1),
+      }))
+      .mutation(async ({ input }) => {
+        const resendApiKey = process.env.RESEND_API_KEY;
+        if (!resendApiKey) {
+          console.warn("[Contact] RESEND_API_KEY not configured.");
+          return { success: true };
+        }
+
+        const htmlBody = `
+<p><strong>New contact form submission from ${input.name}</strong></p>
+<table style="border-collapse:collapse;width:100%;">
+  <tr><td style="padding:6px 12px;font-weight:bold;">Name</td><td style="padding:6px 12px;">${input.name}</td></tr>
+  <tr style="background:#f9f9f9;"><td style="padding:6px 12px;font-weight:bold;">Email</td><td style="padding:6px 12px;"><a href="mailto:${input.email}">${input.email}</a></td></tr>
+  <tr><td style="padding:6px 12px;font-weight:bold;">Message</td><td style="padding:6px 12px;">${input.message.replace(/\n/g, "<br>")}</td></tr>
+</table>
+`.trim();
+
+        const response = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${resendApiKey}`,
+          },
+          body: JSON.stringify({
+            from: "Add Life to Your Years <noreply@addlifetoyouryears.org>",
+            to: ["info@addlifetoyouryears.org"],
+            reply_to: input.email,
+            subject: `New Contact Form Message from ${input.name}`,
+            html: htmlBody,
+            text: `Name: ${input.name}\nEmail: ${input.email}\nMessage:\n${input.message}`,
+          }),
+        });
+
+        if (!response.ok) {
+          const text = await response.text();
+          console.warn(`[Contact] Email failed (${response.status}): ${text}`);
+        } else {
+          const data = await response.json();
+          console.log(`[Contact] Email sent — id: ${data.id}`);
+        }
+
+        return { success: true };
+      }),
+  }),
 });
 
 export type AppRouter = typeof appRouter;

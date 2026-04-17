@@ -22,6 +22,7 @@ const adminSecret = new TextEncoder().encode(AFFILIATE_JWT_SECRET);
 const affiliateSecret = new TextEncoder().encode(AFFILIATE_JWT_SECRET);
 
 const FROM_ADDRESS = "Add Life to Your Years Team <noreply@addlifetoyouryears.org>";
+const ADMIN_REPLY_TO = "sarva@addlifetoyouryears.org";
 
 async function verifyAdminToken(token: string): Promise<boolean> {
   try {
@@ -230,6 +231,7 @@ export const dripCampaignRouter = router({
           const result = await resend.emails.send({
             from: FROM_ADDRESS,
             to: affiliate.email,
+            replyTo: ADMIN_REPLY_TO,
             subject: input.subject,
             html: `<p>Hi ${affiliate.name},</p>${input.body}`,
           });
@@ -279,6 +281,7 @@ export const dripCampaignRouter = router({
       const result = await resend.emails.send({
         from: FROM_ADDRESS,
         to: affiliate.email,
+        replyTo: ADMIN_REPLY_TO,
         subject: input.subject,
         html: `<p>Hi ${affiliate.name},</p>${input.body}`,
       });
