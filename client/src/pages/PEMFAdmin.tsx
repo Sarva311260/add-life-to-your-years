@@ -2,6 +2,7 @@ import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 import PEMFAdminDrip from "./PEMFAdminDrip";
+import PEMFAdminProducts from "./PEMFAdminProducts";
 import {
   Leaf, Eye, EyeOff, ArrowRight, LogOut, Users, BarChart2,
   ToggleLeft, ToggleRight, Edit2, Lock, Check, X, ChevronDown, ChevronUp,
@@ -14,9 +15,12 @@ import { Button } from "@/components/ui/button";
 
 const ADMIN_TOKEN_KEY = "pemf_admin_token";
 
+const ADMIN_PW_KEY = "pemf_admin_password";
 function getAdminToken() { return localStorage.getItem(ADMIN_TOKEN_KEY) || ""; }
 function setAdminToken(t: string) { localStorage.setItem(ADMIN_TOKEN_KEY, t); }
-function clearAdminToken() { localStorage.removeItem(ADMIN_TOKEN_KEY); }
+function clearAdminToken() { localStorage.removeItem(ADMIN_TOKEN_KEY); localStorage.removeItem(ADMIN_PW_KEY); }
+function getAdminPassword() { return localStorage.getItem(ADMIN_PW_KEY) || ""; }
+function setAdminPassword(p: string) { localStorage.setItem(ADMIN_PW_KEY, p); }
 
 // ─── Admin Login ─────────────────────────────────────────────────────────────
 function AdminLogin({ onLogin }: { onLogin: () => void }) {
@@ -26,6 +30,7 @@ function AdminLogin({ onLogin }: { onLogin: () => void }) {
   const loginMutation = trpc.pemfAffiliate.adminLogin.useMutation({
     onSuccess: (data) => {
       setAdminToken(data.token);
+      setAdminPassword(password);
       onLogin();
       toast.success("Welcome to the admin back office.");
     },
@@ -292,7 +297,7 @@ function AffiliateRow({ affiliate, adminToken, onRefresh }: {
 }
 
 // ─── Admin Dashboard ──────────────────────────────────────────────────────────
-type AdminView = "affiliates" | "campaigns";
+type AdminView = "affiliates" | "campaigns" | "products";
 
 function AdminDashboard({ onLogout }: { onLogout: () => void }) {
   const adminToken = getAdminToken();
@@ -357,7 +362,7 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
       <div className="bg-[#0a2e1a]/80 border-b border-emerald-800/20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex gap-1">
-            {(["affiliates", "campaigns"] as AdminView[]).map((view) => (
+            {(["affiliates", "campaigns", "products"] as AdminView[]).map((view) => (
               <button
                 key={view}
                 onClick={() => setActiveView(view)}
@@ -367,7 +372,7 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
                     : "border-transparent text-gray-400 hover:text-white"
                 }`}
               >
-                {view === "affiliates" ? "Brand Partners" : "Email Campaigns"}
+                  {view === "affiliates" ? "Brand Partners" : view === "campaigns" ? "Email Campaigns" : "Recommended Products"}
               </button>
             ))}
           </div>
@@ -376,6 +381,11 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
 
       <div className="max-w-6xl mx-auto px-4 py-10 space-y-6">
         {/* Stats — only on affiliates tab */}
+        {activeView === "products" && (
+          <div className="bg-[#0d3b22]/60 border border-emerald-800/30 rounded-2xl p-6">
+            <PEMFAdminProducts adminToken={adminToken} />
+          </div>
+        )}
         {activeView === "campaigns" && (
           <div className="bg-[#0d3b22]/60 border border-emerald-800/30 rounded-2xl p-6">
             <PEMFAdminDrip adminToken={adminToken} />

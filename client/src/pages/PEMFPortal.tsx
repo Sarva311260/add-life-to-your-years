@@ -160,11 +160,26 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
   );
 
   // Drip overrides
-  const [activeTab, setActiveTab] = useState<"dashboard" | "campaigns">("dashboard");
+  const [activeTab, setActiveTab] = useState<"dashboard" | "campaigns" | "products">("dashboard");
   const { data: dripSequences = [], refetch: refetchDrip } = trpc.drip.affiliateGetDripOverrides.useQuery(
     { token },
     { enabled: !!token && activeTab === "campaigns", retry: false }
   );
+
+  // Product links
+  const { data: productLinks = [], refetch: refetchProducts } = trpc.recommendedProducts.getMyLinks.useQuery(
+    { affiliateToken: token },
+    { enabled: !!token && activeTab === "products", retry: false }
+  );
+  const saveProductLink = trpc.recommendedProducts.saveMyLink.useMutation({
+    onSuccess: () => { toast.success("Link saved!"); refetchProducts(); },
+    onError: (e: any) => toast.error(e.message),
+  });
+  const removeProductLink = trpc.recommendedProducts.removeMyLink.useMutation({
+    onSuccess: () => { toast.success("Link removed."); refetchProducts(); },
+    onError: (e: any) => toast.error(e.message),
+  });
+  const [productLinkEdits, setProductLinkEdits] = useState<Record<number, string>>({});
   const { data: emailStats = [] } = trpc.drip.affiliateGetEmailStats.useQuery(
     { token },
     { enabled: !!token && activeTab === "campaigns", retry: false }
@@ -311,6 +326,16 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
             >
               <MailIcon className="w-3.5 h-3.5" /> My Campaigns
             </button>
+            <button
+              onClick={() => setActiveTab("products")}
+              className={`px-5 py-3 text-sm font-medium border-b-2 transition-colors flex items-center gap-1.5 ${
+                activeTab === "products"
+                  ? "border-emerald-400 text-emerald-400"
+                  : "border-transparent text-gray-400 hover:text-white"
+              }`}
+            >
+              My Product Links
+            </button>
           </div>
         </div>
       </div>
@@ -387,6 +412,82 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
                   )}
                 </div>
               ))
+            )}
+          </div>
+        )}
+
+        {/* ─── PRODUCTS TAB ─── */}
+        {activeTab === "products" && (
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-xl font-serif text-white mb-1">My Product Links</h2>
+              <p className="text-emerald-300/70 text-sm">For each affiliate product below, enter your own affiliate link. When visitors arrive through your referral link, they'll use your link to purchase. If you don't add a link, the default link will be used.</p>
+            </div>
+            {productLinks.length === 0 ? (
+              <div className="bg-white/5 border border-emerald-800/30 rounded-2xl p-8 text-center">
+                <p className="text-gray-400">No affiliate products have been set up yet. Check back once your admin has added products.</p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {(productLinks as any[]).map((product: any) => {
+                  const editVal = productLinkEdits[product.id] ?? product.myUrl ?? "";
+                  return (
+                    <div key={product.id} className="bg-white/5 border border-emerald-800/30 rounded-2xl p-5">
+                      <div className="flex items-start justify-between gap-4 flex-wrap">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="text-white font-medium">{product.name}</span>
+                            {product.category && (
+                              <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-900/50 text-emerald-300">{product.category}</span>
+                            )}
+                          </div>
+                          <p className="text-gray-400 text-sm mt-1">{product.shortDescription || product.description}</p>
+                        </div>
+                      </div>
+                      <div className="mt-4 flex gap-2 items-end">
+                        <div className="flex-1">
+                          <label className="text-emerald-300 text-xs font-medium block mb-1">Your Affiliate Link</label>
+                          <input
+                            type="url"
+                            value={editVal}
+                            onChange={e => setProductLinkEdits(prev => ({ ...prev, [product.id]: e.target.value }))}
+                            placeholder="https://your-affiliate-link.com/..."
+                            className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-3 py-2 text-white text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+                          />
+                        </div>
+                        <button
+                          onClick={() => {
+                            const url = editVal.trim();
+                            if (!url) {
+                              removeProductLink.mutate({ affiliateToken: token, productId: product.id });
+                            } else {
+                              saveProductLink.mutate({ affiliateToken: token, productId: product.id, affiliateUrl: url });
+                            }
+                          }}
+                          disabled={saveProductLink.isPending || removeProductLink.isPending}
+                          className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium rounded-lg transition-colors shrink-0"
+                        >
+                          {editVal.trim() ? "Save" : "Remove"}
+                        </button>
+                        {product.myUrl && (
+                          <button
+                            onClick={() => { setProductLinkEdits(prev => ({ ...prev, [product.id]: "" })); }}
+                            className="px-3 py-2 border border-red-800/50 text-red-400 hover:text-red-300 text-sm rounded-lg transition-colors shrink-0"
+                          >
+                            Clear
+                          </button>
+                        )}
+                      </div>
+                      {product.myUrl && (
+                        <p className="text-emerald-400/70 text-xs mt-2">✓ Your link is active</p>
+                      )}
+                      {!product.myUrl && product.defaultAffiliateUrl && (
+                        <p className="text-gray-500 text-xs mt-2">Default link will be used until you add your own.</p>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             )}
           </div>
         )}

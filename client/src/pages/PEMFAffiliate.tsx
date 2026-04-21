@@ -16,7 +16,7 @@ import {
   Share2, Copy, Check,
   Facebook, Instagram, Linkedin, Youtube,
 } from "lucide-react";
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useRoute } from "wouter";
 import { trpc } from "@/lib/trpc";
@@ -519,6 +519,15 @@ export default function PEMFAffiliate() {
   const [contactOpen, setContactOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+
+  // Set affiliate cookie with no expiry when visitor arrives via pemf link
+  useEffect(() => {
+    if (slug) {
+      const farFuture = new Date();
+      farFuture.setFullYear(farFuture.getFullYear() + 100);
+      document.cookie = `affiliate_slug=${encodeURIComponent(slug)}; expires=${farFuture.toUTCString()}; path=/; SameSite=Lax`;
+    }
+  }, [slug]);
 
   const handleShare = () => {
     const url = window.location.href;

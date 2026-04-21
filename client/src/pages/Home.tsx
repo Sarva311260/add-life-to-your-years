@@ -11,8 +11,15 @@ import {
   BookOpen, ArrowRight, Star, Leaf, ChevronDown, Menu, X, LogOut, User,
   Play, Gift, HeartHandshake, ExternalLink, ShoppingBag, MessageCircle
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { trpc } from "@/lib/trpc";
+
+// Helper to read affiliate_slug cookie
+function getAffiliateCookie(): string {
+  const match = document.cookie.match(/(?:^|;\s*)affiliate_slug=([^;]*)/);
+  return match ? decodeURIComponent(match[1]) : "";
+}
 
 const CATEGORY_ICONS: Record<string, React.ReactNode> = {
   lifestyle: <Heart className="w-6 h-6" />,
@@ -80,6 +87,13 @@ export default function Home() {
   const { user, loading, isAuthenticated, logout } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [affiliateSlug] = useState(() => getAffiliateCookie());
+
+  // Fetch recommended products with affiliate-specific links
+  const { data: recommendedProducts = [] } = trpc.recommendedProducts.list.useQuery(
+    { affiliateSlug: affiliateSlug || undefined },
+    { retry: false }
+  );
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -464,50 +478,55 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Supplements",
-                desc: "High-quality, plant-based supplements to fill nutritional gaps and support optimal health.",
-                icon: <Leaf className="w-6 h-6" />,
-                color: "bg-green-100 text-green-700",
-              },
-              {
-                title: "Kitchen Essentials",
-                desc: "Tools and equipment to make whole food plant-based cooking easy, enjoyable, and efficient.",
-                icon: <Star className="w-6 h-6" />,
-                color: "bg-orange-100 text-orange-700",
-              },
-              {
-                title: "Educational Resources",
-                desc: "Books, courses, and guides to deepen your understanding of health, nutrition, and wellness.",
-                icon: <BookOpen className="w-6 h-6" />,
-                color: "bg-blue-100 text-blue-700",
-              },
-            ].map((product, i) => (
-              <motion.div
-                key={product.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-              >
-                <Card className="h-full border-border/60 hover:shadow-md transition-shadow group">
-                  <CardContent className="p-8 text-center">
-                    <div className={`w-14 h-14 rounded-xl ${product.color} flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform`}>
-                      {product.icon}
-                    </div>
-                    <h3 className="font-semibold text-foreground text-lg mb-3">{product.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-5">{product.desc}</p>
-                    <Button variant="outline" size="sm" className="gap-2" onClick={() => { import("sonner").then(m => m.toast.info("Product listings coming soon!")); }}>
-                      Browse
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+          {recommendedProducts.length === 0 ? (
+            <div className="text-center py-12">
+              <ShoppingBag className="w-12 h-12 text-muted-foreground/30 mx-auto mb-4" />
+              <p className="text-muted-foreground">Product recommendations coming soon.</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-3 gap-6">
+              {(recommendedProducts as any[]).map((product: any, i: number) => {
+                const buyUrl = product.affiliateUrl || product.defaultAffiliateUrl || product.productUrl || "#";
+                const colorClasses = ["bg-green-100 text-green-700", "bg-orange-100 text-orange-700", "bg-blue-100 text-blue-700"];
+                const color = colorClasses[i % colorClasses.length];
+                return (
+                  <motion.div
+                    key={product.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: i * 0.1 }}
+                  >
+                    <Card className="h-full border-border/60 hover:shadow-md transition-shadow group">
+                      <CardContent className="p-8 text-center">
+                        {product.imageUrl ? (
+                          <img src={product.imageUrl} alt={product.name} className="w-14 h-14 object-contain mx-auto mb-5 rounded-xl" />
+                        ) : (
+                          <div className={`w-14 h-14 rounded-xl ${color} flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform`}>
+                            <ShoppingBag className="w-6 h-6" />
+                          </div>
+                        )}
+                        <h3 className="font-semibold text-foreground text-lg mb-3">{product.name}</h3>
+                        <p className="text-sm text-muted-foreground mb-5">{product.shortDescription || product.description}</p>
+                        {buyUrl !== "#" ? (
+                          <a href={buyUrl} target="_blank" rel="noopener noreferrer">
+                            <Button variant="outline" size="sm" className="gap-2">
+                              Shop Now
+                              <ExternalLink className="w-4 h-4" />
+                            </Button>
+                          </a>
+                        ) : (
+                          <Button variant="outline" size="sm" className="gap-2" disabled>
+                            Coming Soon
+                          </Button>
+                        )}
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
 

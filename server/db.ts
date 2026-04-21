@@ -10,6 +10,8 @@ import {
   dripEnrollments, InsertDripEnrollment, dripSendLog, InsertDripSendLog,
   emailLog, InsertEmailLog,
   affiliateDripOverrides, InsertAffiliateDripOverride,
+  recommendedProducts, InsertRecommendedProduct,
+  affiliateProductLinks, InsertAffiliateProductLink,
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -723,4 +725,89 @@ export async function getAdminDripEmailStats(): Promise<Array<{
     opens: Number(r.opens),
     clicks: Number(r.clicks),
   }));
+}
+
+// ─── Recommended Products ────────────────────────────────────────────────────
+
+export async function getAllRecommendedProducts() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(recommendedProducts).orderBy(recommendedProducts.sortOrder, recommendedProducts.id);
+}
+
+export async function getPublishedRecommendedProducts() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(recommendedProducts)
+    .where(eq(recommendedProducts.isPublished, 1))
+    .orderBy(recommendedProducts.sortOrder, recommendedProducts.id);
+}
+
+export async function getRecommendedProductById(id: number) {
+  const db = await getDb();
+  if (!db) return null;
+  const rows = await db.select().from(recommendedProducts).where(eq(recommendedProducts.id, id)).limit(1);
+  return rows[0] ?? null;
+}
+
+export async function createRecommendedProduct(data: InsertRecommendedProduct) {
+  const db = await getDb();
+  if (!db) throw new Error("DB unavailable");
+  await db.insert(recommendedProducts).values(data);
+}
+
+export async function updateRecommendedProduct(id: number, data: Partial<InsertRecommendedProduct>) {
+  const db = await getDb();
+  if (!db) throw new Error("DB unavailable");
+  await db.update(recommendedProducts).set(data as any).where(eq(recommendedProducts.id, id));
+}
+
+export async function deleteRecommendedProduct(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("DB unavailable");
+  await db.delete(recommendedProducts).where(eq(recommendedProducts.id, id));
+}
+
+// ─── Affiliate Product Links ─────────────────────────────────────────────────
+
+/** Get all product link overrides for a given affiliate */
+export async function getAffiliateProductLinks(affiliateId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(affiliateProductLinks)
+    .where(eq(affiliateProductLinks.affiliateId, affiliateId));
+}
+
+/** Upsert an affiliate's link for a product */
+export async function upsertAffiliateProductLink(data: InsertAffiliateProductLink) {
+  const db = await getDb();
+  if (!db) throw new Error("DB unavailable");
+  const existing = await db.select({ id: affiliateProductLinks.id })
+    .from(affiliateProductLinks)
+    .where(
+      and(
+        eq(affiliateProductLinks.affiliateId, data.affiliateId),
+        eq(affiliateProductLinks.productId, data.productId)
+      )
+    ).limit(1);
+  if (existing.length > 0) {
+    await db.update(affiliateProductLinks)
+      .set({ affiliateUrl: data.affiliateUrl })
+      .where(eq(affiliateProductLinks.id, existing[0].id));
+  } else {
+    await db.insert(affiliateProductLinks).values(data);
+  }
+}
+
+/** Delete an affiliate's link for a product */
+export async function deleteAffiliateProductLink(affiliateId: number, productId: number) {
+  const db = await getDb();
+  if (!db) return;
+  await db.delete(affiliateProductLinks)
+    .where(
+      and(
+        eq(affiliateProductLinks.affiliateId, affiliateId),
+        eq(affiliateProductLinks.productId, productId)
+      )
+    );
 }

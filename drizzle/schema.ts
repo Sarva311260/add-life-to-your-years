@@ -444,3 +444,48 @@ export const emailClickEvents = mysqlTable("email_click_events", {
   userAgent: text("userAgent"),
 });
 export type EmailClickEvent = typeof emailClickEvents.$inferSelect;
+
+/**
+ * Recommended products — products shown on the main site's Recommended Products section.
+ * Each product can have a default affiliate link (Peter's) and optionally be part of
+ * a third-party affiliate programme so Brand Partners can enter their own links.
+ */
+export const recommendedProducts = mysqlTable("recommended_products", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  description: text("description").notNull(),
+  shortDescription: varchar("shortDescription", { length: 500 }),
+  /** CDN URL for product image */
+  imageUrl: varchar("imageUrl", { length: 512 }),
+  /** Product category for grouping/display */
+  category: varchar("category", { length: 64 }),
+  /** Whether this product is part of a third-party affiliate programme */
+  isAffiliate: int("isAffiliate").default(0).notNull(),
+  /** Peter's (owner's) default affiliate link for this product */
+  defaultAffiliateUrl: varchar("defaultAffiliateUrl", { length: 1024 }),
+  /** Whether the product is published and visible on the main site */
+  isPublished: int("isPublished").default(1).notNull(),
+  /** Display order */
+  sortOrder: int("sortOrder").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+export type RecommendedProduct = typeof recommendedProducts.$inferSelect;
+export type InsertRecommendedProduct = typeof recommendedProducts.$inferInsert;
+
+/**
+ * Affiliate product links — stores each Brand Partner's own affiliate link
+ * for a specific recommended product. Falls back to the product's defaultAffiliateUrl
+ * if no override is present.
+ */
+export const affiliateProductLinks = mysqlTable("affiliate_product_links", {
+  id: int("id").autoincrement().primaryKey(),
+  affiliateId: int("affiliateId").notNull(),
+  productId: int("productId").notNull(),
+  /** The affiliate's own link for this product */
+  affiliateUrl: varchar("affiliateUrl", { length: 1024 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+export type AffiliateProductLink = typeof affiliateProductLinks.$inferSelect;
+export type InsertAffiliateProductLink = typeof affiliateProductLinks.$inferInsert;
