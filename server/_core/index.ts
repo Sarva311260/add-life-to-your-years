@@ -9,6 +9,7 @@ import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { registerStripeWebhook } from "../stripeWebhook";
 import { registerTrackingRoutes } from "../trackingRoutes";
+import { registerStorageProxy } from "./storageProxy";
 import { getSessionCookieOptions } from "./cookies";
 import { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
 
@@ -38,6 +39,8 @@ async function startServer() {
   // This is critical for cookies with Secure flag behind HTTPS-terminating proxies.
   app.set('trust proxy', true);
   const server = createServer(app);
+  // Storage proxy for /manus-storage/* paths (must be before body parsers)
+  registerStorageProxy(app);
   // Stripe webhook must be registered BEFORE express.json() for raw body parsing
   registerStripeWebhook(app);
 
