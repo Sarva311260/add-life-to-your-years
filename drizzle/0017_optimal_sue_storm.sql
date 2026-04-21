@@ -1,0 +1,1 @@
+ALTER TABLE `affiliate_contacts` MODIFY COLUMN `reminderAt` int;

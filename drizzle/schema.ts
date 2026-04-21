@@ -505,6 +505,20 @@ export const affiliateContacts = mysqlTable("affiliate_contacts", {
   phone: varchar("phone", { length: 50 }),
   /** Optional notes about this contact */
   notes: text("notes"),
+  /** Address fields */
+  addressStreet: varchar("addressStreet", { length: 255 }),
+  addressCity: varchar("addressCity", { length: 100 }),
+  addressState: varchar("addressState", { length: 100 }),
+  addressPostcode: varchar("addressPostcode", { length: 20 }),
+  addressCountry: varchar("addressCountry", { length: 100 }),
+  /** Birthday (stored as date string YYYY-MM-DD) */
+  birthday: varchar("birthday", { length: 10 }),
+  /** Comma-separated tags e.g. "hot lead,follow up" */
+  tags: text("tags"),
+  /** Reminder date (UTC ms timestamp) */
+  reminderAt: int("reminderAt"),
+  /** Reminder note */
+  reminderNote: text("reminderNote"),
   /** How this contact was added: manual | csv | vcf | enquiry */
   source: varchar("source", { length: 20 }).notNull().default("manual"),
   /** If enrolled in a drip campaign, the sequence ID */

@@ -113,6 +113,20 @@
       "when": 1776756114392,
       "tag": "0015_dry_doomsday",
       "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "5",
+      "when": 1776758745965,
+      "tag": "0016_daffy_prowler",
+      "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "5",
+      "when": 1776759520040,
+      "tag": "0017_optimal_sue_storm",
+      "breakpoints": true
     }
   ]
 }

@@ -142,6 +142,15 @@ export const affiliateContactsRouter = router({
       email: z.string().email().optional().or(z.literal("")),
       phone: z.string().max(50).optional().or(z.literal("")),
       notes: z.string().max(2000).optional().or(z.literal("")),
+      addressStreet: z.string().max(255).optional().or(z.literal("")),
+      addressCity: z.string().max(100).optional().or(z.literal("")),
+      addressState: z.string().max(100).optional().or(z.literal("")),
+      addressPostcode: z.string().max(20).optional().or(z.literal("")),
+      addressCountry: z.string().max(100).optional().or(z.literal("")),
+      birthday: z.string().max(10).optional().or(z.literal("")),
+      tags: z.string().max(500).optional().or(z.literal("")),
+      reminderAt: z.number().optional(),
+      reminderNote: z.string().max(500).optional().or(z.literal("")),
       enrollSequenceId: z.number().optional(),
     }))
     .mutation(async ({ input }) => {
@@ -156,6 +165,15 @@ export const affiliateContactsRouter = router({
         email: input.email || null,
         phone: input.phone || null,
         notes: input.notes || null,
+        addressStreet: input.addressStreet || null,
+        addressCity: input.addressCity || null,
+        addressState: input.addressState || null,
+        addressPostcode: input.addressPostcode || null,
+        addressCountry: input.addressCountry || null,
+        birthday: input.birthday || null,
+        tags: input.tags || null,
+        reminderAt: input.reminderAt ?? null,
+        reminderNote: input.reminderNote || null,
         source: "manual",
         enrolledSequenceId: input.enrollSequenceId ?? null,
         enrolledAt: input.enrollSequenceId ? new Date() : null,
@@ -177,7 +195,7 @@ export const affiliateContactsRouter = router({
       return { success: true, id: contactId };
     }),
 
-  // ─── Update a contact ────────────────────────────────────────────────────
+  // ──  // ─── Update a contact ────────────────────────────────────────────
   update: publicProcedure
     .input(z.object({
       token: z.string(),
@@ -186,6 +204,15 @@ export const affiliateContactsRouter = router({
       email: z.string().email().optional().or(z.literal("")),
       phone: z.string().max(50).optional().or(z.literal("")),
       notes: z.string().max(2000).optional().or(z.literal("")),
+      addressStreet: z.string().max(255).optional().or(z.literal("")),
+      addressCity: z.string().max(100).optional().or(z.literal("")),
+      addressState: z.string().max(100).optional().or(z.literal("")),
+      addressPostcode: z.string().max(20).optional().or(z.literal("")),
+      addressCountry: z.string().max(100).optional().or(z.literal("")),
+      birthday: z.string().max(10).optional().or(z.literal("")),
+      tags: z.string().max(500).optional().or(z.literal("")),
+      reminderAt: z.number().nullable().optional(),
+      reminderNote: z.string().max(500).optional().or(z.literal("")),
     }))
     .mutation(async ({ input }) => {
       const payload = await verifyAffiliateToken(input.token);
@@ -195,6 +222,15 @@ export const affiliateContactsRouter = router({
       if (input.email !== undefined) data.email = input.email || null;
       if (input.phone !== undefined) data.phone = input.phone || null;
       if (input.notes !== undefined) data.notes = input.notes || null;
+      if (input.addressStreet !== undefined) data.addressStreet = input.addressStreet || null;
+      if (input.addressCity !== undefined) data.addressCity = input.addressCity || null;
+      if (input.addressState !== undefined) data.addressState = input.addressState || null;
+      if (input.addressPostcode !== undefined) data.addressPostcode = input.addressPostcode || null;
+      if (input.addressCountry !== undefined) data.addressCountry = input.addressCountry || null;
+      if (input.birthday !== undefined) data.birthday = input.birthday || null;
+      if (input.tags !== undefined) data.tags = input.tags || null;
+      if (input.reminderAt !== undefined) data.reminderAt = input.reminderAt;
+      if (input.reminderNote !== undefined) data.reminderNote = input.reminderNote || null;
       await updateAffiliateContact(input.id, payload.affiliateId, data as any);
       return { success: true };
     }),
