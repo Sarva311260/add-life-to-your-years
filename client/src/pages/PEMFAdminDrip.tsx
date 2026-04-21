@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import {
   Mail, Plus, Trash2, Edit2, Send, Users, ChevronDown, ChevronUp,
-  CheckCircle, AlertCircle, Loader2, ArrowLeft, Zap, Clock,
+  CheckCircle, AlertCircle, Loader2, ArrowLeft, Zap, Clock, Copy,
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
@@ -43,6 +43,11 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
 
   const deleteSeq = trpc.drip.adminDeleteSequence.useMutation({
     onSuccess: () => { utils.drip.adminGetSequences.invalidate(); toast.success("Sequence deleted."); },
+    onError: (e) => toast.error(e.message),
+  });
+
+  const copySeq = trpc.drip.adminCopySequence.useMutation({
+    onSuccess: (r) => { utils.drip.adminGetSequences.invalidate(); toast.success(`Campaign copied (${r.emailsCopied} emails). It's saved as a draft — edit and activate when ready.`); },
     onError: (e) => toast.error(e.message),
   });
 
@@ -196,6 +201,15 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
                         onClick={() => toggleSeqActive.mutate({ adminToken, id: seq.id, isActive: !seq.isActive })}
                       >
                         {seq.isActive ? "Pause" : "Activate"}
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        title="Copy campaign"
+                        onClick={() => copySeq.mutate({ adminToken, id: seq.id })}
+                        disabled={copySeq.isPending}
+                      >
+                        {copySeq.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Copy className="w-4 h-4" />}
                       </Button>
                       <Button
                         variant="ghost"

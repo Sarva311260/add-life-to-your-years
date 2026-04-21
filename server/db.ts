@@ -12,6 +12,7 @@ import {
   affiliateDripOverrides, InsertAffiliateDripOverride,
   recommendedProducts, InsertRecommendedProduct,
   affiliateProductLinks, InsertAffiliateProductLink,
+  affiliateContacts, InsertAffiliateContact,
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -810,4 +811,49 @@ export async function deleteAffiliateProductLink(affiliateId: number, productId:
         eq(affiliateProductLinks.productId, productId)
       )
     );
+}
+
+// ─── Affiliate Contacts helpers ───────────────────────────────────────────────
+
+/** Get all contacts for an affiliate, ordered by most recent */
+export async function getAffiliateContacts(affiliateId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  return db.select().from(affiliateContacts)
+    .where(eq(affiliateContacts.affiliateId, affiliateId))
+    .orderBy(desc(affiliateContacts.createdAt));
+}
+
+/** Create a single contact */
+export async function createAffiliateContact(data: InsertAffiliateContact): Promise<number> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.insert(affiliateContacts).values(data);
+  return result[0].insertId;
+}
+
+/** Bulk insert contacts (for CSV/vCard import) */
+export async function bulkCreateAffiliateContacts(data: InsertAffiliateContact[]): Promise<number> {
+  if (data.length === 0) return 0;
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.insert(affiliateContacts).values(data);
+  return data.length;
+}
+
+/** Update a contact */
+export async function updateAffiliateContact(id: number, affiliateId: number, data: Partial<InsertAffiliateContact>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(affiliateContacts)
+    .set(data)
+    .where(and(eq(affiliateContacts.id, id), eq(affiliateContacts.affiliateId, affiliateId)));
+}
+
+/** Delete a contact */
+export async function deleteAffiliateContact(id: number, affiliateId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.delete(affiliateContacts)
+    .where(and(eq(affiliateContacts.id, id), eq(affiliateContacts.affiliateId, affiliateId)));
 }

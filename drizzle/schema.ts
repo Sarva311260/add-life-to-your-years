@@ -489,3 +489,30 @@ export const affiliateProductLinks = mysqlTable("affiliate_product_links", {
 });
 export type AffiliateProductLink = typeof affiliateProductLinks.$inferSelect;
 export type InsertAffiliateProductLink = typeof affiliateProductLinks.$inferInsert;
+
+/**
+ * Affiliate Contacts — manually added or imported contacts for each Brand Partner.
+ * Separate from pemfEnquiries (which are inbound form submissions).
+ */
+export const affiliateContacts = mysqlTable("affiliate_contacts", {
+  id: int("id").autoincrement().primaryKey(),
+  affiliateId: int("affiliateId").notNull(),
+  /** Contact's full name */
+  name: varchar("name", { length: 255 }).notNull(),
+  /** Contact's email address */
+  email: varchar("email", { length: 320 }),
+  /** Contact's phone number */
+  phone: varchar("phone", { length: 50 }),
+  /** Optional notes about this contact */
+  notes: text("notes"),
+  /** How this contact was added: manual | csv | vcf | enquiry */
+  source: varchar("source", { length: 20 }).notNull().default("manual"),
+  /** If enrolled in a drip campaign, the sequence ID */
+  enrolledSequenceId: int("enrolledSequenceId"),
+  /** When the contact was enrolled in the campaign */
+  enrolledAt: timestamp("enrolledAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+export type AffiliateContact = typeof affiliateContacts.$inferSelect;
+export type InsertAffiliateContact = typeof affiliateContacts.$inferInsert;

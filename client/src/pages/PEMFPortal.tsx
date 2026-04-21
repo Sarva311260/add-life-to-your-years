@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import AffiliateContacts from "./AffiliateContacts";
 import { Input } from "@/components/ui/input";
 import RichTextEditor from "@/components/RichTextEditor";
 
@@ -160,7 +161,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
   );
 
   // Drip overrides
-  const [activeTab, setActiveTab] = useState<"dashboard" | "campaigns" | "products">("dashboard");
+  const [activeTab, setActiveTab] = useState<"dashboard" | "campaigns" | "products" | "contacts">("dashboard");
   const { data: dripSequences = [], refetch: refetchDrip } = trpc.drip.affiliateGetDripOverrides.useQuery(
     { token },
     { enabled: !!token && activeTab === "campaigns", retry: false }
@@ -336,6 +337,16 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
             >
               My Product Links
             </button>
+            <button
+              onClick={() => setActiveTab("contacts")}
+              className={`px-5 py-3 text-sm font-medium border-b-2 transition-colors flex items-center gap-1.5 ${
+                activeTab === "contacts"
+                  ? "border-emerald-400 text-emerald-400"
+                  : "border-transparent text-gray-400 hover:text-white"
+              }`}
+            >
+              My Contacts
+            </button>
           </div>
         </div>
       </div>
@@ -490,6 +501,11 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
               </div>
             )}
           </div>
+        )}
+
+        {/* ─── CONTACTS TAB ─── */}
+        {activeTab === "contacts" && (
+          <AffiliateContacts token={token} />
         )}
 
         {/* ─── DASHBOARD TAB ─── */}

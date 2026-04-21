@@ -462,6 +462,32 @@ export const dripCampaignRouter = router({
       }
       return { success: true, leadName: enrollment.leadName };
     }),
+
+  // ─── ADMIN: Copy a sequence with all its emails ───────────────────────────
+  adminCopySequence: publicProcedure
+    .input(z.object({ adminToken: z.string(), id: z.number() }))
+    .mutation(async ({ input }) => {
+      if (!await verifyAdminToken(input.adminToken)) throw new TRPCError({ code: "UNAUTHORIZED" });
+      const sequences = await getAllDripSequences();
+      const original = sequences.find(s => s.id === input.id);
+      if (!original) throw new TRPCError({ code: "NOT_FOUND", message: "Sequence not found." });
+      const newId = await createDripSequence({
+        name: `${original.name} (Copy)`,
+        description: original.description ?? null,
+        isActive: 0,
+      });
+      const emails = await getDripEmailsBySequence(input.id);
+      for (const email of emails) {
+        await createDripEmail({
+          sequenceId: newId,
+          subject: email.subject,
+          body: email.body,
+          dayOffset: email.dayOffset,
+          sortOrder: email.sortOrder,
+        });
+      }
+      return { success: true, newId, emailsCopied: emails.length };
+    }),
 });
 
 /**
