@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book-content_dafb8493.md";
+const MD_CDN_URL = "/manus-storage/book-content_c89b792d.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -56,6 +56,7 @@ const chapters = [
   { id: "appendix-a", label: "Appendix A: Diet Comparison" },
   { id: "appendix-b", label: "Appendix B: Cold Showers" },
   { id: "appendix-c", label: "Appendix C: Off-Label Pharmaceuticals" },
+  { id: "wellness-blueprint", label: "Your Wellness Blueprint at a Glance" },
 ];
 
 // Map heading text to anchor IDs — longer keys first to prevent false prefix matches
@@ -101,6 +102,7 @@ const headingIdMap: Record<string, string> = {
   "John, Twelve Months Later": "john-12-months",
   "A Note on the Journey": "a-note",
   "Glossary": "glossary",
+  "Your Wellness Blueprint at a Glance": "wellness-blueprint",
   "Appendix C": "appendix-c",
   "Appendix B": "appendix-b",
   "Appendix A": "appendix-a",
