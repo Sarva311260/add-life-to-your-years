@@ -2,15 +2,74 @@
  * PEMFAdminProducts — Admin UI for managing Recommended Products
  * Shown inside the "Recommended Products" tab in PEMFAdmin.tsx
  */
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
-  ShoppingBag, Plus, Edit2, Trash2, Check, X, ExternalLink, Eye, EyeOff, Link2
+  ShoppingBag, Plus, Edit2, Trash2, Check, X, ExternalLink, Eye, EyeOff, Link2, Upload, ImageIcon
 } from "lucide-react";
+
+/** Reusable image upload widget */
+function ImageUploadField({
+  adminToken,
+  value,
+  onChange,
+}: {
+  adminToken: string;
+  value: string;
+  onChange: (url: string) => void;
+}) {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const uploadMutation = trpc.recommendedProducts.adminUploadImage.useMutation({
+    onSuccess: (data) => { onChange(data.url); toast.success("Image uploaded."); },
+    onError: (e) => toast.error("Upload failed: " + e.message),
+  });
+  const handleFile = (file: File) => {
+    if (!file.type.startsWith("image/")) { toast.error("Please select an image file."); return; }
+    if (file.size > 5 * 1024 * 1024) { toast.error("Image must be under 5 MB."); return; }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = (reader.result as string).split(",")[1];
+      uploadMutation.mutate({ adminToken, fileName: file.name, fileBase64: base64, mimeType: file.type });
+    };
+    reader.readAsDataURL(file);
+  };
+  return (
+    <div className="space-y-2">
+      <label className="text-emerald-300 text-xs font-medium block">Product Image</label>
+      <div className="flex gap-2 items-start">
+        <div className="w-16 h-16 rounded-lg bg-white/5 border border-emerald-700/30 flex items-center justify-center shrink-0 overflow-hidden">
+          {value ? (
+            <img src={value} alt="Product" className="w-full h-full object-contain" />
+          ) : (
+            <ImageIcon className="w-6 h-6 text-gray-600" />
+          )}
+        </div>
+        <div className="flex-1 space-y-1.5">
+          <Button
+            type="button" size="sm" variant="outline"
+            onClick={() => fileInputRef.current?.click()}
+            disabled={uploadMutation.isPending}
+            className="border-emerald-700/40 text-emerald-300 hover:text-white hover:bg-emerald-800/40 text-xs w-full"
+          >
+            <Upload className="w-3.5 h-3.5 mr-1.5" />
+            {uploadMutation.isPending ? "Uploading..." : "Upload Image"}
+          </Button>
+          <Input
+            value={value} onChange={e => onChange(e.target.value)}
+            placeholder="Or paste image URL"
+            className="bg-white/10 border-emerald-700/30 text-white placeholder-gray-500 text-xs h-7"
+          />
+        </div>
+      </div>
+      <input ref={fileInputRef} type="file" accept="image/*" className="hidden"
+        onChange={e => { const f = e.target.files?.[0]; if (f) handleFile(f); e.target.value = ""; }} />
+    </div>
+  );
+}
 
 interface Props {
   adminToken: string;
@@ -43,6 +102,7 @@ function ProductRow({
   const [description, setDescription] = useState(product.description);
   const [shortDescription, setShortDescription] = useState(product.shortDescription || "");
   const [category, setCategory] = useState(product.category || "");
+  const [imageUrl, setImageUrl] = useState(product.imageUrl || "");
   const [isAffiliate, setIsAffiliate] = useState(product.isAffiliate === 1);
   const [defaultAffiliateUrl, setDefaultAffiliateUrl] = useState(product.defaultAffiliateUrl || "");
   const [isPublished, setIsPublished] = useState(product.isPublished === 1);
@@ -70,6 +130,7 @@ function ProductRow({
       description,
       shortDescription: shortDescription || undefined,
       category: category || undefined,
+      imageUrl: imageUrl || undefined,
       isAffiliate,
       defaultAffiliateUrl: defaultAffiliateUrl || undefined,
       isPublished,
@@ -102,6 +163,7 @@ function ProductRow({
           <label className="text-emerald-300 text-xs font-medium block mb-1">Full Description</label>
           <Textarea value={description} onChange={e => setDescription(e.target.value)} rows={3} className="bg-white/10 border-emerald-700/30 text-white" />
         </div>
+        <ImageUploadField adminToken={adminToken} value={imageUrl} onChange={setImageUrl} />
 
         {/* Affiliate toggle */}
         <div className="flex items-center gap-3 pt-1">
@@ -142,6 +204,14 @@ function ProductRow({
 
   return (
     <div className="bg-white/5 border border-emerald-800/20 rounded-xl p-4 flex items-start gap-4">
+      {/* Thumbnail */}
+      <div className="w-12 h-12 rounded-lg bg-white/5 border border-emerald-800/20 flex items-center justify-center shrink-0 overflow-hidden">
+        {product.imageUrl ? (
+          <img src={product.imageUrl} alt={product.name} className="w-full h-full object-contain" />
+        ) : (
+          <ShoppingBag className="w-5 h-5 text-gray-600" />
+        )}
+      </div>
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 flex-wrap">
           <span className="text-white font-medium">{product.name}</span>
@@ -191,6 +261,7 @@ export default function PEMFAdminProducts({ adminToken }: Props) {
   const [description, setDescription] = useState("");
   const [shortDescription, setShortDescription] = useState("");
   const [category, setCategory] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [isAffiliate, setIsAffiliate] = useState(false);
   const [defaultAffiliateUrl, setDefaultAffiliateUrl] = useState("");
   const [isPublished, setIsPublished] = useState(true);
@@ -205,7 +276,7 @@ export default function PEMFAdminProducts({ adminToken }: Props) {
       toast.success("Product added.");
       setShowAdd(false);
       setName(""); setDescription(""); setShortDescription(""); setCategory("");
-      setIsAffiliate(false); setDefaultAffiliateUrl(""); setIsPublished(true);
+      setImageUrl(""); setIsAffiliate(false); setDefaultAffiliateUrl(""); setIsPublished(true);
       refetch();
     },
     onError: (e) => toast.error(e.message),
@@ -222,6 +293,7 @@ export default function PEMFAdminProducts({ adminToken }: Props) {
       description: description.trim(),
       shortDescription: shortDescription.trim() || undefined,
       category: category.trim() || undefined,
+      imageUrl: imageUrl.trim() || undefined,
       isAffiliate,
       defaultAffiliateUrl: defaultAffiliateUrl.trim() || undefined,
       isPublished,
@@ -273,7 +345,7 @@ export default function PEMFAdminProducts({ adminToken }: Props) {
             <label className="text-emerald-300 text-xs font-medium block mb-1">Full Description *</label>
             <Textarea value={description} onChange={e => setDescription(e.target.value)} rows={3} placeholder="Detailed description of the product and its benefits" className="bg-white/10 border-emerald-700/30 text-white placeholder-gray-500" />
           </div>
-
+          <ImageUploadField adminToken={adminToken} value={imageUrl} onChange={setImageUrl} />
           {/* Affiliate toggle */}
           <div className="flex items-center gap-3 pt-1">
             <button

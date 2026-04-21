@@ -83,6 +83,80 @@ const STATS = [
   { value: "100%", label: "Plant-Based" },
 ];
 
+function RichProductCard({ product, buyUrl, delay }: { product: any; buyUrl: string; delay: number }) {
+  const [expanded, setExpanded] = useState(false);
+  const accentBadgeColors = ["bg-emerald-100 text-emerald-700", "bg-amber-100 text-amber-700", "bg-sky-100 text-sky-700", "bg-violet-100 text-violet-700"];
+  const badgeColor = accentBadgeColors[Math.abs(product.name.charCodeAt(0)) % accentBadgeColors.length];
+  const hasFullDesc = product.description && product.description !== product.shortDescription && product.description.length > 0;
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay }}
+      className="h-full"
+    >
+      <Card className="h-full border-border/60 hover:shadow-lg transition-shadow group overflow-hidden flex flex-col">
+        {/* Product Image */}
+        <div className="relative bg-gradient-to-br from-green-50 to-emerald-50 flex items-center justify-center overflow-hidden" style={{ minHeight: 200 }}>
+          {product.imageUrl ? (
+            <img
+              src={product.imageUrl}
+              alt={product.name}
+              className="w-full object-contain"
+              style={{ maxHeight: 220 }}
+            />
+          ) : (
+            <div className="flex items-center justify-center w-full" style={{ height: 200 }}>
+              <ShoppingBag className="w-16 h-16 text-emerald-200" />
+            </div>
+          )}
+          {product.category && (
+            <span className={`absolute top-3 left-3 text-xs font-medium px-2.5 py-1 rounded-full ${badgeColor}`}>
+              {product.category}
+            </span>
+          )}
+        </div>
+        {/* Card Body */}
+        <CardContent className="p-6 flex flex-col flex-1">
+          <h3 className="font-semibold text-foreground text-lg mb-2 leading-snug">{product.name}</h3>
+          <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
+            {product.shortDescription || product.description}
+          </p>
+          {hasFullDesc && (
+            <div className="mb-4">
+              {expanded && (
+                <p className="text-sm text-muted-foreground leading-relaxed mb-2">{product.description}</p>
+              )}
+              <button
+                onClick={() => setExpanded(!expanded)}
+                className="text-xs text-primary font-medium flex items-center gap-1 hover:underline"
+              >
+                {expanded ? "Show less" : "Read more"}
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${expanded ? "rotate-180" : ""}`} />
+              </button>
+            </div>
+          )}
+          <div className="mt-auto pt-2">
+            {buyUrl !== "#" ? (
+              <a href={buyUrl} target="_blank" rel="noopener noreferrer" className="block">
+                <Button className="w-full gap-2 bg-primary hover:bg-primary/90">
+                  Shop Now
+                  <ExternalLink className="w-4 h-4" />
+                </Button>
+              </a>
+            ) : (
+              <Button variant="outline" className="w-full gap-2" disabled>
+                Coming Soon
+              </Button>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+}
+
 export default function Home() {
   const { user, loading, isAuthenticated, logout } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -484,45 +558,11 @@ export default function Home() {
               <p className="text-muted-foreground">Product recommendations coming soon.</p>
             </div>
           ) : (
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-8">
               {(recommendedProducts as any[]).map((product: any, i: number) => {
                 const buyUrl = product.affiliateUrl || product.defaultAffiliateUrl || product.productUrl || "#";
-                const colorClasses = ["bg-green-100 text-green-700", "bg-orange-100 text-orange-700", "bg-blue-100 text-blue-700"];
-                const color = colorClasses[i % colorClasses.length];
                 return (
-                  <motion.div
-                    key={product.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: i * 0.1 }}
-                  >
-                    <Card className="h-full border-border/60 hover:shadow-md transition-shadow group">
-                      <CardContent className="p-8 text-center">
-                        {product.imageUrl ? (
-                          <img src={product.imageUrl} alt={product.name} className="w-14 h-14 object-contain mx-auto mb-5 rounded-xl" />
-                        ) : (
-                          <div className={`w-14 h-14 rounded-xl ${color} flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform`}>
-                            <ShoppingBag className="w-6 h-6" />
-                          </div>
-                        )}
-                        <h3 className="font-semibold text-foreground text-lg mb-3">{product.name}</h3>
-                        <p className="text-sm text-muted-foreground mb-5">{product.shortDescription || product.description}</p>
-                        {buyUrl !== "#" ? (
-                          <a href={buyUrl} target="_blank" rel="noopener noreferrer">
-                            <Button variant="outline" size="sm" className="gap-2">
-                              Shop Now
-                              <ExternalLink className="w-4 h-4" />
-                            </Button>
-                          </a>
-                        ) : (
-                          <Button variant="outline" size="sm" className="gap-2" disabled>
-                            Coming Soon
-                          </Button>
-                        )}
-                      </CardContent>
-                    </Card>
-                  </motion.div>
+                  <RichProductCard key={product.id} product={product} buyUrl={buyUrl} delay={i * 0.1} />
                 );
               })}
             </div>

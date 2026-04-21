@@ -184,6 +184,27 @@ export const recommendedProductsRouter = router({
       return { success: true };
     }),
 
+  /** Admin: upload a product image to S3 and return the URL */
+  adminUploadImage: publicProcedure
+    .input(z.object({
+      adminToken: z.string(),
+      fileName: z.string().max(255),
+      fileBase64: z.string(),
+      mimeType: z.string().max(100),
+    }))
+    .mutation(async ({ input }) => {
+      if (!await verifyAdminToken(input.adminToken)) {
+        throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid admin session." });
+      }
+      const { storagePut } = await import("../storage");
+      const buffer = Buffer.from(input.fileBase64, "base64");
+      const suffix = Date.now().toString(36);
+      const safeFileName = input.fileName.replace(/[^a-zA-Z0-9._-]/g, "_");
+      const key = `recommended-products/${suffix}-${safeFileName}`;
+      const { url } = await storagePut(key, buffer, input.mimeType);
+      return { success: true, url };
+    }),
+
   /** Affiliate: remove their link for a product */
   removeMyLink: publicProcedure
     .input(z.object({
