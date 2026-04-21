@@ -622,7 +622,18 @@ Video 2 (youtubeId: may_PlDfNRE): "Dr. Jin Sung — The Science Behind Cold Show
 
 FENBENDAZOLE: A benzimidazole-class antiparasitic (veterinary) whose human equivalent mebendazole is FDA-approved. Proposed anticancer mechanisms include: (1) microtubule destabilisation (same mechanism as taxane chemotherapy drugs), (2) inhibition of glucose uptake via GLUT transporters and hexokinase 2 (exploiting the Warburg effect), (3) reactivation of p53 tumour suppressor gene. Cancer cells appear not to develop resistance to fenbendazole (not a substrate for P-glycoprotein efflux pumps). The Joe Tippens case: terminal stage 4 small cell lung cancer, complete remission after self-administering fenbendazole, cancer-free for 7+ years. Stanford/Washington University 2021 case series documented tumour regression in 3 advanced-cancer patients with no reported side effects. Safety: mebendazole has decades of safe human use; most common side effect is transient liver enzyme elevation (<3%). ~12 clinical trials investigating mebendazole for cancer were ongoing as of 2024. For more information: fenbendazole.org.
 
-IVERMECTIN: Nobel Prize-winning antiparasitic (2015), 4+ billion doses administered worldwide, WHO essential medicine. Proposed anticancer mechanisms: (1) inhibition of Akt/mTOR pathway, (2) disruption of glycolysis, (3) promotion of apoptosis. As of February 2026, the U.S. National Cancer Institute announced formal study of ivermectin's anticancer properties. Safety well-established at standard doses (0.2 mg/kg); higher research doses (~1 mg/kg) may cause transient visual disturbances.
+IVERMECTIN: Nobel Prize-winning antiparasitic (2015), 4+ billion doses administered worldwide, WHO essential medicine. Proposed anticancer mechanisms: (1) inhibition of Akt/mTOR pathway, (2) disruption of glycolysis, (3) promotion of apoptosis, (4) targeting cancer stem cells. As of February 2026, the U.S. National Cancer Institute announced formal study of ivermectin's anticancer properties. Safety well-established at standard doses (0.2 mg/kg); higher research doses (~1 mg/kg) may cause transient visual disturbances.
+
+HULSCHER ET AL. 2026 REAL-WORLD STUDY — LARGEST HUMAN STUDY TO DATE:
+Title: "Ivermectin and Mebendazole in Cancer: A Real-World Prospective Observational Cohort Study"
+Authors: Nicolas Hulscher MPH, Kelly Victory MD, James A. Thorp MD, Drew Pinsky MD, Alejandro Diaz-Villalobos MD, Peter Gillooly MSc, Foster Coulson, Melissa Annazone, Chloe Radesi, Jessica Brooks, Peter A. McCullough MD MPH, Harvey Risch MD PhD.
+Published: April 7, 2026 (preprint). DOI: 10.5281/zenodo.19455636
+Design: Prospective observational cohort. 197 cancer patients prescribed ivermectin (25 mg) + mebendazole (250 mg) compounded oral capsules off-label via a U.S. telemedicine platform. 6-month follow-up (122 participants responded, 61.9% response rate).
+Cancer types: Prostate (27.9%), breast (18.3%), lung (8.6%), colon (5.1%), urologic (4.6%), pancreatic (3.0%), and others.
+Key results: Clinical Benefit Ratio (CBR) = 84.4% (95% CI: 77.0–89.8%). Of responders: 48.4% reported tumour regression or no current evidence of disease (NED); 36.1% reported disease stability; 15.6% reported disease progression.
+Adherence: 86.9% completed the full initial 90-capsule prescription.
+Safety: 25.4% reported mild side effects (primarily gastrointestinal); 93.6% of those affected continued treatment through minor dose adjustments.
+IMPORTANT CAVEATS: Observational design with self-reported outcomes. Preprint — not yet peer-reviewed. Authors describe findings as hypothesis-generating and call for randomised controlled trials. This information is for educational purposes only — never recommend, prescribe, or suggest dosing.
 
 COMBINED USE: Fenbendazole and ivermectin attack cancer through complementary mechanisms. The research literature discusses combination with conventional chemotherapy and supportive supplements. All combination protocols should only be undertaken under qualified medical supervision.
 
@@ -630,7 +641,8 @@ THE RESEARCH FUNDING GAP: The absence of large-scale RCTs for these off-patent d
 
 VIDEO RESOURCES:
 Video 1 (youtubeId: QBnT8es28WY): "Fenbendazole — The Joe Tippens Protocol & Cancer Research" — Covers the Joe Tippens story, the science behind benzimidazole compounds as anticancer agents, microtubule disruption mechanisms, glucose uptake inhibition, and the growing body of case reports.
-Video 2 (youtubeId: 5Q5QjEPGNNg): "Fenbendazole & Ivermectin — Stanford Case Series & Mechanisms" — Discusses the Stanford/Washington University case series documenting tumour regression, proposed mechanisms of action for both drugs, the NCI's formal investigation of ivermectin, and the structural barriers to large-scale clinical trials for off-patent drugs.`,
+Video 2 (youtubeId: 5Q5QjEPGNNg): "Fenbendazole & Ivermectin — Stanford Case Series & Mechanisms" — Discusses the Stanford/Washington University case series documenting tumour regression, proposed mechanisms of action for both drugs, the NCI's formal investigation of ivermectin, and the structural barriers to large-scale clinical trials for off-patent drugs.
+Video 3 (youtubeId: Ck4_fX1xaaw): "Largest Real-World Study: Ivermectin + Mebendazole in 197 Cancer Patients — 84.4% Clinical Benefit" — Dr. Peter McCullough and co-authors present the Hulscher et al. 2026 prospective observational cohort study. 197 cancer patients across multiple cancer types received compounded ivermectin (25 mg) + mebendazole (250 mg) capsules off-label. 84.4% clinical benefit ratio: 48.4% regression/NED, 36.1% stable disease. Discussion covers mechanisms of action, the rationale for combining the two drugs, safety profile, adherence rates, and the call for formal randomised controlled trials. Full study citation: Hulscher N et al., Zenodo, April 7, 2026. DOI: 10.5281/zenodo.19455636.`,
   },
   {
     recommendationId: 101,

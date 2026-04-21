@@ -10,7 +10,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
 const MD_CDN_URL =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-content_7942cd24.md";
+  "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488485220/FkZHIFwhaAtbOXuE.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -219,6 +219,7 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
   "rec-appendix-off-label": [
     { youtubeId: "QBnT8es28WY", title: "Fenbendazole — The Joe Tippens Protocol & Cancer Research" },
     { youtubeId: "5Q5QjEPGNNg", title: "Fenbendazole & Ivermectin — Stanford Case Series & Mechanisms" },
+    { youtubeId: "Ck4_fX1xaaw", title: "Largest Real-World Study: Ivermectin + Mebendazole in 197 Cancer Patients — 84.4% Clinical Benefit" },
   ],
   "rec-appendix-diet": [
     { youtubeId: "Weg9GUnH24E", title: "What Humans Are Designed to Eat" },
