@@ -373,6 +373,22 @@ const RECOMMENDATIONS: RecommendationSection[] = [
       },
     ],
   },
+  {
+    id: "appendix-brazil-nuts",
+    number: 0,
+    title: "Appendix D: Brazil Nuts & Selenium",
+    description:
+      "One of the most remarkable nutritional findings in recent research — four Brazil nuts once a month and their extraordinary effects on cholesterol, inflammation, and selenium status.",
+    color: "bg-yellow-100 text-yellow-800 border-yellow-200",
+    videos: [
+      {
+        youtubeId: "yMy_R6tlAGA",
+        title: "Four Brazil Nuts Once a Month — The Cholesterol Study",
+        description:
+          "Dr. Michael Greger presents the 2013 clinical study showing a single serving of four Brazil nuts reduced LDL cholesterol by nearly 20 points within nine hours — with the effect persisting for 30 days. Covers selenium, thyroid health, immune function, and safe dosing.",
+      },
+    ],
+  },
 ];
 
 const PODCASTS: PodcastItem[] = [

@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book-content_b0e6eaf6.md";
+const MD_CDN_URL = "/manus-storage/book-content_f0a6a8bb.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -56,6 +56,7 @@ const chapters = [
   { id: "appendix-a", label: "Appendix A: Diet Comparison" },
   { id: "appendix-b", label: "Appendix B: Cold Showers" },
   { id: "appendix-c", label: "Appendix C: Off-Label Pharmaceuticals" },
+  { id: "appendix-d", label: "Appendix D: Brazil Nuts & Selenium" },
   { id: "wellness-blueprint", label: "Your Wellness Blueprint at a Glance" },
 ];
 
@@ -104,6 +105,7 @@ const headingIdMap: Record<string, string> = {
   "Glossary": "glossary",
   "Your Wellness Blueprint at a Glance": "wellness-blueprint",
   "Appendix C": "appendix-c",
+  "Appendix D": "appendix-d",
   "Appendix B": "appendix-b",
   "Appendix A": "appendix-a",
 };
