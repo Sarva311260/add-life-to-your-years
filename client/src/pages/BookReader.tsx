@@ -629,7 +629,11 @@ export default function BookReader() {
                             }
                           }
                           const el = document.getElementById(href.slice(1));
-                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          if (el) {
+                            const HEADER_OFFSET = 72;
+                            const elTop = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+                            window.scrollTo({ top: Math.max(0, elTop), behavior: 'smooth' });
+                          }
                         }
                       }}
                     >
@@ -761,7 +765,11 @@ export default function BookReader() {
                               }
                             }
                             const el = document.getElementById(href.slice(1));
-                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            if (el) {
+                              const HEADER_OFFSET = 72;
+                              const elTop = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+                              window.scrollTo({ top: Math.max(0, elTop), behavior: 'smooth' });
+                            }
                           }
                         }}
                       >
