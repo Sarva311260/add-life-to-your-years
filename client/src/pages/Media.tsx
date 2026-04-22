@@ -23,6 +23,12 @@ interface VideoItem {
   rumbleUrl?: string;
   title: string;
   description?: string;
+  researcher?: {
+    name: string;
+    credentials: string;
+    institution: string;
+    bio: string;
+  };
   recipe?: {
     title: string;
     prepNote?: string;
@@ -216,6 +222,13 @@ const RECOMMENDATIONS: RecommendationSection[] = [
       {
         youtubeId: "wY4vEBilWN4",
         title: "Vitamin B12 — Why It Matters & How to Supplement",
+        researcher: {
+          name: "Dr. Michael Greger, M.D., FACLM",
+          credentials: "Physician, Author & Founder of NutritionFacts.org",
+          institution: "American College of Lifestyle Medicine",
+          bio: "Dr. Greger is a physician, New York Times bestselling author (*How Not to Die*, *How Not to Age*), and internationally recognised speaker on nutrition, food safety, and public health. A founding Fellow of the American College of Lifestyle Medicine and graduate of Cornell University and Tufts University School of Medicine, he founded NutritionFacts.org — a non-profit, science-based resource that synthesises the latest peer-reviewed nutrition research into accessible, evidence-based guidance. All proceeds from his books are donated to charity.",
+        },
+        
         description:
           "The critical role of B12 in nerve function, energy, and DNA synthesis — and how to ensure you’re getting enough.",
       },
@@ -389,13 +402,27 @@ const RECOMMENDATIONS: RecommendationSection[] = [
       },
       {
         youtubeId: "NNZBljVptLs",
-        title: "Methylene Blue Deep Dive — Part 1: History, Mechanisms & Alzheimer’s",
+        title: "Methylene Blue Deep Dive — Part 1: History, Mechanisms & Alzheimer's",
+        researcher: {
+          name: "Dr. Francisco González-Lima, Ph.D.",
+          credentials: "George I. Sánchez Centennial Professor",
+          institution: "University of Texas at Austin",
+          bio: "Dr. González-Lima is one of the world’s leading neuroscientists in brain energy metabolism, cognitive enhancement, and photobiomodulation. He holds the George I. Sánchez Centennial Professorship at UT Austin, where he directs the Texas Consortium in Behavioral Neuroscience. His laboratory pioneered the use of methylene blue as a metabolic enhancer and neuroprotective agent, and his research on cytochrome c oxidase and Alzheimer’s disease prevention has been published in hundreds of peer-reviewed studies. He earned his Ph.D. from the University of Puerto Rico School of Medicine.",
+        },
+        
         description:
           "Dr. González-Lima traces Methylene Blue from its 1876 origins as a textile dye to Paul Ehrlich’s ‘magic bullet’ discovery. Covers how MB acts as an artificial electron cycler in the mitochondrial electron transport chain, the cytochrome oxidase connection to Alzheimer’s disease, and the critical dose-dependent warning — low doses boost energy and act as antioxidants; high doses become toxic pro-oxidants.",
       },
       {
         youtubeId: "nPLMK7jfP-E",
         title: "Methylene Blue Deep Dive — Part 2: FDA Uses, Cognitive Benefits & Safety",
+        researcher: {
+          name: "Dr. Francisco González-Lima, Ph.D.",
+          credentials: "George I. Sánchez Centennial Professor",
+          institution: "University of Texas at Austin",
+          bio: "Continuing from Part 1, Dr. González-Lima covers methylene blue’s FDA-approved medical applications, the evidence base for cognitive enhancement in healthy adults, its synergy with photobiomodulation (red/near-infrared light), and critical pharmaceutical grade safety guidance. His work has directly shaped how clinicians and researchers understand MB’s therapeutic window and its potential as a preventive intervention for neurodegenerative disease.",
+        },
+        
         description:
           "Part 2 covers MB’s WHO essential medicine status, its role as the only FDA-approved antidote for methemoglobinemia, clinical evidence for memory enhancement and prevention of vascular dementia, the critical SSRI/serotonin syndrome contraindication, purity grades (pharmaceutical USP vs laboratory vs aquarium — only USP grade is safe), and high-dose applications for UTIs and malaria.",
       },
@@ -412,6 +439,13 @@ const RECOMMENDATIONS: RecommendationSection[] = [
       {
         youtubeId: "yMy_R6tlAGA",
         title: "Four Brazil Nuts Once a Month — The Cholesterol Study",
+        researcher: {
+          name: "Dr. Michael Greger, M.D., FACLM",
+          credentials: "Physician, Author & Founder of NutritionFacts.org",
+          institution: "American College of Lifestyle Medicine",
+          bio: "Dr. Greger reviews the landmark clinical study showing that a single serving of Brazil nuts may lower LDL cholesterol faster than statin drugs — with effects lasting a full month. His channel NutritionFacts.org has over 1.4 million subscribers and covers thousands of nutrition studies with rigorous, referenced analysis.",
+        },
+        
         description:
           "Dr. Michael Greger presents the 2013 clinical study showing a single serving of four Brazil nuts reduced LDL cholesterol by nearly 20 points within nine hours — with the effect persisting for 30 days. Covers selenium, thyroid health, immune function, and safe dosing.",
       },
@@ -672,6 +706,19 @@ function VideoEmbed({ video }: { video: VideoItem }) {
           </Button>
         </a>
       </div>
+      {/* Researcher bio (if present) */}
+      {video.researcher && (
+        <div className="mt-3 rounded-lg border border-blue-200 bg-blue-50/40 p-4 space-y-1.5">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-base">🔬</span>
+            <div>
+              <p className="font-semibold text-blue-900 text-sm">{video.researcher.name}</p>
+              <p className="text-xs text-blue-700">{video.researcher.credentials} &middot; {video.researcher.institution}</p>
+            </div>
+          </div>
+          <p className="text-xs text-foreground/80 leading-relaxed">{video.researcher.bio}</p>
+        </div>
+      )}
       {/* Recipe card (if present) */}
       {video.recipe && (
         <div className="mt-3 rounded-lg border border-green-200 bg-green-50/50 p-4 space-y-3">
