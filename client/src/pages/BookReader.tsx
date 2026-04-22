@@ -127,7 +127,16 @@ function getHeadingId(children: React.ReactNode): string {
   };
   const text = extractText(children);
   for (const key of sortedHeadingKeys) {
-    if (text.includes(key)) return headingIdMap[key];
+    // Use word-boundary check: key must be at start/end of text or followed by non-alphanumeric
+    // This prevents "Appendix E" matching "Why This Appendix Exists" (E followed by 'x')
+    const idx = text.indexOf(key);
+    if (idx !== -1) {
+      const afterKey = text[idx + key.length];
+      // Valid match: key is at end of text, or followed by non-letter (colon, space, punctuation)
+      if (afterKey === undefined || !/[a-zA-Z]/.test(afterKey)) {
+        return headingIdMap[key];
+      }
+    }
   }
   return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
