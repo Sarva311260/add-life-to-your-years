@@ -239,6 +239,18 @@ const RECOMMENDATIONS: RecommendationSection[] = [
           "Why Vitamin D deficiency is epidemic, its role in immunity and bone health, and how to supplement correctly.",
       },
       {
+        youtubeId: "qiR4yBymtwY",
+        title: "Vitamin D3 — Dr. Michael Holick",
+        description:
+          "Dr. Michael Holick, the world's leading vitamin D researcher, explains the science behind vitamin D deficiency, optimal blood levels, supplementation strategies, and its role in cancer prevention, immune function, and bone health.",
+        researcher: {
+          name: "Dr. Michael F. Holick, Ph.D., M.D.",
+          credentials: "Professor of Medicine, Physiology & Biophysics",
+          institution: "Boston University Medical Center",
+          bio: "Dr. Holick is one of the world's foremost authorities on vitamin D, with over five decades of research in its biochemistry, physiology, metabolism, and photobiology. He holds a Ph.D. and M.D. from the University of Wisconsin-Madison and directs the Vitamin D, Skin, and Bone Research Laboratory at Boston University Medical Center. He has authored more than 400 peer-reviewed publications and 200 review articles, and his bestselling book The Vitamin D Solution has brought the science of vitamin D deficiency to a global audience. His research established the widespread prevalence of vitamin D deficiency and its links to bone disease, immune dysfunction, cardiovascular risk, and cancer.",
+        },
+      },
+      {
         youtubeId: "uxWARJ4s95Y",
         title: "Vitamin D3 — Part 2",
         description:
