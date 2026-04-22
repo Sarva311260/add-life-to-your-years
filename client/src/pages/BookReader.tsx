@@ -833,7 +833,7 @@ export default function BookReader() {
             window.scrollTo({ top: blueprintScrollPos, behavior: 'smooth' });
             setBlueprintScrollPos(null);
           }}
-          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white text-sm font-semibold px-4 py-3 rounded-full shadow-lg transition-all"
+          className="fixed bottom-4 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-6 sm:bottom-6 z-50 flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white text-sm font-semibold px-4 py-3 rounded-full shadow-lg transition-all whitespace-nowrap"
           title="Return to Your Wellness Blueprint at a Glance"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
