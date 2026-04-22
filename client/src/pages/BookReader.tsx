@@ -357,19 +357,25 @@ export default function BookReader() {
   const scrollToChapter = (id: string) => {
     setSidebarOpen(false);
     const HEADER_OFFSET = 72;
-    const doScroll = (instant = false) => {
+    // Scroll with stabilisation: keep retrying until the element position stops changing
+    // This handles long books where images load progressively and shift element positions
+    let lastTop = -1;
+    let attempts = 0;
+    const MAX_ATTEMPTS = 20; // up to ~2 seconds of retries
+    const tryScroll = () => {
       const element = document.getElementById(id);
-      if (!element) return false;
-      const elementTop = element.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
-      window.scrollTo({ top: Math.max(0, elementTop), behavior: instant ? 'instant' : 'smooth' });
-      return true;
+      if (!element) return;
+      const currentTop = Math.round(element.getBoundingClientRect().top + window.scrollY);
+      const scrollTarget = Math.max(0, currentTop - HEADER_OFFSET);
+      window.scrollTo({ top: scrollTarget, behavior: attempts === 0 ? 'smooth' : 'instant' });
+      attempts++;
+      if (attempts < MAX_ATTEMPTS && Math.abs(currentTop - lastTop) > 5) {
+        // Position is still changing — retry after 100ms
+        lastTop = currentTop;
+        setTimeout(tryScroll, 100);
+      }
     };
-    // First attempt immediately
-    if (!doScroll()) return;
-    // Second attempt after 400ms — allows images/lazy content to finish rendering
-    setTimeout(() => doScroll(true), 400);
-    // Third attempt after 900ms — for very long books with many images
-    setTimeout(() => doScroll(true), 900);
+    tryScroll();
   };
 
   // Wrap text renderer to highlight search matches
@@ -636,15 +642,20 @@ export default function BookReader() {
                             }
                             const targetId = href.slice(1);
                             const HEADER_OFFSET = 72;
-                            const doAnchorScroll2 = (instant = false) => {
+                            let lastAnchorTop = -1;
+                            let anchorAttempts = 0;
+                            const tryAnchorScroll = () => {
                               const el = document.getElementById(targetId);
                               if (!el) return;
-                              const elTop = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
-                              window.scrollTo({ top: Math.max(0, elTop), behavior: instant ? 'instant' : 'smooth' });
+                              const currentTop = Math.round(el.getBoundingClientRect().top + window.scrollY);
+                              window.scrollTo({ top: Math.max(0, currentTop - HEADER_OFFSET), behavior: anchorAttempts === 0 ? 'smooth' : 'instant' });
+                              anchorAttempts++;
+                              if (anchorAttempts < 20 && Math.abs(currentTop - lastAnchorTop) > 5) {
+                                lastAnchorTop = currentTop;
+                                setTimeout(tryAnchorScroll, 100);
+                              }
                             };
-                            doAnchorScroll2();
-                            setTimeout(() => doAnchorScroll2(true), 400);
-                            setTimeout(() => doAnchorScroll2(true), 900);
+                            tryAnchorScroll();
                         }
                       }}
                     >
@@ -777,15 +788,20 @@ export default function BookReader() {
                             }
                             const targetId = href.slice(1);
                             const HEADER_OFFSET = 72;
-                            const doAnchorScroll = (instant = false) => {
+                            let lastAnchorTop2 = -1;
+                            let anchorAttempts2 = 0;
+                            const tryAnchorScroll2 = () => {
                               const el = document.getElementById(targetId);
                               if (!el) return;
-                              const elTop = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
-                              window.scrollTo({ top: Math.max(0, elTop), behavior: instant ? 'instant' : 'smooth' });
+                              const currentTop = Math.round(el.getBoundingClientRect().top + window.scrollY);
+                              window.scrollTo({ top: Math.max(0, currentTop - HEADER_OFFSET), behavior: anchorAttempts2 === 0 ? 'smooth' : 'instant' });
+                              anchorAttempts2++;
+                              if (anchorAttempts2 < 20 && Math.abs(currentTop - lastAnchorTop2) > 5) {
+                                lastAnchorTop2 = currentTop;
+                                setTimeout(tryAnchorScroll2, 100);
+                              }
                             };
-                            doAnchorScroll();
-                            setTimeout(() => doAnchorScroll(true), 400);
-                            setTimeout(() => doAnchorScroll(true), 900);
+                            tryAnchorScroll2();
                         }
                         }}
                       >
