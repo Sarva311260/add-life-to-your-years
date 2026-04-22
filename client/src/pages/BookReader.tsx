@@ -881,7 +881,7 @@ export default function BookReader() {
               <X className="w-5 h-5" />
             </button>
             {videoModal.length > 1 && (
-              <div className="flex gap-2 px-4 pt-4 pb-2">
+              <div className="flex gap-2 px-4 pt-4 pb-2 sticky top-0 z-10 bg-stone-900">
                 {videoModal.map((video, idx) => (
                   <button
                     key={video.youtubeId}
