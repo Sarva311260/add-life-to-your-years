@@ -871,7 +871,7 @@ export default function BookReader() {
           onClick={() => { setVideoModal(null); setVideoIndex(0); }}
         >
           <div
-            className="relative w-full max-w-3xl bg-stone-900 rounded-xl overflow-hidden shadow-2xl"
+            className="relative w-full max-w-3xl bg-stone-900 rounded-xl shadow-2xl flex flex-col max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <button
