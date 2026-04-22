@@ -353,7 +353,10 @@ export default function BookReader() {
   const scrollToChapter = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      // Precise scroll: account for sticky header (~56px) plus 16px breathing room
+      const HEADER_OFFSET = 72;
+      const elementTop = element.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+      window.scrollTo({ top: Math.max(0, elementTop), behavior: "smooth" });
       setSidebarOpen(false);
     }
   };
@@ -650,10 +653,10 @@ export default function BookReader() {
                     <th className="px-4 py-3 font-semibold text-sm">{children}</th>
                   ),
                   td: ({ children }) => (
-                    <td className="px-4 py-3 border-t border-stone-100 text-stone-700 align-top">{children}</td>
+                    <td className="px-4 py-3 text-stone-700 align-top" style={{borderTop: '1px solid #e7e5e4', verticalAlign: 'top'}}>{children}</td>
                   ),
                   tr: ({ children }) => (
-                    <tr className="even:bg-stone-50 border-b border-stone-200 last:border-b-0">{children}</tr>
+                    <tr style={{borderBottom: '1px solid #d6d3d1'}}>{children}</tr>
                   ),
                   ul: ({ children }) => (
                     <div className="bg-stone-50 border border-stone-200 rounded-lg p-4 my-4">
@@ -773,10 +776,10 @@ export default function BookReader() {
                       <th className="px-4 py-3 font-semibold text-sm">{children}</th>
                     ),
                     td: ({ children }) => (
-                      <td className="px-4 py-3 border-t border-stone-100 text-stone-700 align-top">{children}</td>
+                      <td className="px-4 py-3 text-stone-700 align-top" style={{borderTop: '1px solid #e7e5e4', verticalAlign: 'top'}}>{children}</td>
                     ),
                     tr: ({ children }) => (
-                      <tr className="even:bg-stone-50 border-b border-stone-200 last:border-b-0">{children}</tr>
+                      <tr style={{borderBottom: '1px solid #d6d3d1'}}>{children}</tr>
                     ),
                   }}
                 >
