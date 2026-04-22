@@ -365,26 +365,17 @@ export default function BookReader() {
 
   const scrollToChapter = (id: string) => {
     setSidebarOpen(false);
-    const HEADER_OFFSET = 72;
-    // Scroll with stabilisation: keep retrying until the element position stops changing
-    // This handles long books where images load progressively and shift element positions
-    let lastTop = -1;
-    let attempts = 0;
-    const MAX_ATTEMPTS = 20; // up to ~2 seconds of retries
-    const tryScroll = () => {
+    const doScroll = (behavior: ScrollBehavior = 'smooth') => {
       const element = document.getElementById(id);
       if (!element) return;
-      const currentTop = Math.round(element.getBoundingClientRect().top + window.scrollY);
-      const scrollTarget = Math.max(0, currentTop - HEADER_OFFSET);
-      window.scrollTo({ top: scrollTarget, behavior: attempts === 0 ? 'smooth' : 'instant' });
-      attempts++;
-      if (attempts < MAX_ATTEMPTS && Math.abs(currentTop - lastTop) > 5) {
-        // Position is still changing — retry after 100ms
-        lastTop = currentTop;
-        setTimeout(tryScroll, 100);
-      }
+      // scrollIntoView respects CSS scroll-margin-top (scroll-mt-20 = 80px) natively
+      element.scrollIntoView({ behavior, block: 'start' });
     };
-    tryScroll();
+    doScroll('smooth');
+    // Retry after images load to correct position drift
+    setTimeout(() => doScroll('instant'), 500);
+    setTimeout(() => doScroll('instant'), 1200);
+    setTimeout(() => doScroll('instant'), 2000);
   };
 
   // Wrap text renderer to highlight search matches
@@ -596,7 +587,7 @@ export default function BookReader() {
                     return (
                       <h1
                         id={id}
-                        className="font-serif text-3xl font-bold text-stone-900 mt-12 mb-6 pb-3 border-b border-stone-200 scroll-mt-20"
+                        className="font-serif text-3xl font-bold text-stone-900 mt-12 mb-6 pb-3 border-b border-stone-200 scroll-mt-24"
                       >
                         {highlightQuery ? highlightText(
                           typeof children === "string" ? children :
@@ -611,7 +602,7 @@ export default function BookReader() {
                     return (
                       <h2
                         id={id}
-                        className="font-serif text-2xl font-bold text-stone-800 mt-10 mb-4 scroll-mt-20"
+                        className="font-serif text-2xl font-bold text-stone-800 mt-10 mb-4 scroll-mt-24"
                       >
                         {highlightQuery ? highlightText(
                           typeof children === "string" ? children :
@@ -650,21 +641,15 @@ export default function BookReader() {
                               }
                             }
                             const targetId = href.slice(1);
-                            const HEADER_OFFSET = 72;
-                            let lastAnchorTop = -1;
-                            let anchorAttempts = 0;
-                            const tryAnchorScroll = () => {
+                            const doAnchorScroll = (b: ScrollBehavior = 'smooth') => {
                               const el = document.getElementById(targetId);
                               if (!el) return;
-                              const currentTop = Math.round(el.getBoundingClientRect().top + window.scrollY);
-                              window.scrollTo({ top: Math.max(0, currentTop - HEADER_OFFSET), behavior: anchorAttempts === 0 ? 'smooth' : 'instant' });
-                              anchorAttempts++;
-                              if (anchorAttempts < 20 && Math.abs(currentTop - lastAnchorTop) > 5) {
-                                lastAnchorTop = currentTop;
-                                setTimeout(tryAnchorScroll, 100);
-                              }
+                              el.scrollIntoView({ behavior: b, block: 'start' });
                             };
-                            tryAnchorScroll();
+                            doAnchorScroll('smooth');
+                            setTimeout(() => doAnchorScroll('instant'), 500);
+                            setTimeout(() => doAnchorScroll('instant'), 1200);
+                            setTimeout(() => doAnchorScroll('instant'), 2000);
                         }
                       }}
                     >
@@ -766,7 +751,7 @@ export default function BookReader() {
                     h1: ({ children }) => {
                       const id = getHeadingId(children);
                       return (
-                        <h1 id={id} className="font-serif text-3xl font-bold text-stone-900 mt-12 mb-6 pb-3 border-b border-stone-200 scroll-mt-20">
+                        <h1 id={id} className="font-serif text-3xl font-bold text-stone-900 mt-12 mb-6 pb-3 border-b border-stone-200 scroll-mt-24">
                           {children}
                         </h1>
                       );
@@ -774,7 +759,7 @@ export default function BookReader() {
                     h2: ({ children }) => {
                       const id = getHeadingId(children);
                       return (
-                        <h2 id={id} className="font-serif text-2xl font-bold text-stone-800 mt-10 mb-4 scroll-mt-20">
+                        <h2 id={id} className="font-serif text-2xl font-bold text-stone-800 mt-10 mb-4 scroll-mt-24">
                           {children}
                         </h2>
                       );
@@ -796,21 +781,15 @@ export default function BookReader() {
                               }
                             }
                             const targetId = href.slice(1);
-                            const HEADER_OFFSET = 72;
-                            let lastAnchorTop2 = -1;
-                            let anchorAttempts2 = 0;
-                            const tryAnchorScroll2 = () => {
+                            const doAnchorScroll2 = (b: ScrollBehavior = 'smooth') => {
                               const el = document.getElementById(targetId);
                               if (!el) return;
-                              const currentTop = Math.round(el.getBoundingClientRect().top + window.scrollY);
-                              window.scrollTo({ top: Math.max(0, currentTop - HEADER_OFFSET), behavior: anchorAttempts2 === 0 ? 'smooth' : 'instant' });
-                              anchorAttempts2++;
-                              if (anchorAttempts2 < 20 && Math.abs(currentTop - lastAnchorTop2) > 5) {
-                                lastAnchorTop2 = currentTop;
-                                setTimeout(tryAnchorScroll2, 100);
-                              }
+                              el.scrollIntoView({ behavior: b, block: 'start' });
                             };
-                            tryAnchorScroll2();
+                            doAnchorScroll2('smooth');
+                            setTimeout(() => doAnchorScroll2('instant'), 500);
+                            setTimeout(() => doAnchorScroll2('instant'), 1200);
+                            setTimeout(() => doAnchorScroll2('instant'), 2000);
                         }
                         }}
                       >
