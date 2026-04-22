@@ -1004,6 +1004,20 @@ function VideoModal({
               <p className="text-xs text-muted-foreground">{activeVideo.description}</p>
             )}
 
+            {/* Researcher bio (if present) */}
+            {activeVideo.researcher && (
+              <div className="rounded-lg border border-blue-200 bg-blue-50/40 p-4 space-y-1.5">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-base">🔬</span>
+                  <div>
+                    <p className="font-semibold text-blue-900 text-sm">{activeVideo.researcher.name}</p>
+                    <p className="text-xs text-blue-700">{activeVideo.researcher.credentials} &middot; {activeVideo.researcher.institution}</p>
+                  </div>
+                </div>
+                <p className="text-xs text-foreground/80 leading-relaxed">{activeVideo.researcher.bio}</p>
+              </div>
+            )}
+
             {/* Video counter */}
             {rec.videos.length > 1 && (
               <p className="text-xs text-muted-foreground pt-1">
