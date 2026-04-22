@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book-content_c89b792d.md";
+const MD_CDN_URL = "/manus-storage/book-content_b0e6eaf6.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -605,6 +605,21 @@ export default function BookReader() {
                     }
                     return <p className="text-stone-700 leading-relaxed mb-4 text-base">{children}</p>;
                   },
+                  a: ({ href, children }) => (
+                    <a
+                      href={href}
+                      className="text-green-700 underline underline-offset-2 font-medium hover:text-green-900 transition-colors"
+                      onClick={(e) => {
+                        if (href && href.startsWith('#')) {
+                          e.preventDefault();
+                          const el = document.getElementById(href.slice(1));
+                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                      }}
+                    >
+                      {children}
+                    </a>
+                  ),
                   strong: ({ children }) => (
                     <strong className="font-semibold text-stone-900">{children}</strong>
                   ),
@@ -626,7 +641,7 @@ export default function BookReader() {
                     <th className="px-4 py-3 font-semibold text-sm">{children}</th>
                   ),
                   td: ({ children }) => (
-                    <td className="px-4 py-3 border-t border-stone-100 text-stone-700">{children}</td>
+                    <td className="px-4 py-3 border-t border-stone-100 text-stone-700 align-top">{children}</td>
                   ),
                   tr: ({ children }) => (
                     <tr className="even:bg-stone-50">{children}</tr>
@@ -715,6 +730,38 @@ export default function BookReader() {
                     },
                     p: ({ children }) => <p className="text-stone-700 leading-relaxed mb-4 text-base">{children}</p>,
                     strong: ({ children }) => <strong className="font-semibold text-stone-900">{children}</strong>,
+                    a: ({ href, children }) => (
+                      <a
+                        href={href}
+                        className="text-green-700 underline underline-offset-2 font-medium hover:text-green-900 transition-colors"
+                        onClick={(e) => {
+                          if (href && href.startsWith('#')) {
+                            e.preventDefault();
+                            const el = document.getElementById(href.slice(1));
+                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
+                        }}
+                      >
+                        {children}
+                      </a>
+                    ),
+                    table: ({ children }) => (
+                      <div className="overflow-x-auto my-6 rounded-lg border border-stone-200 shadow-sm">
+                        <table className="w-full text-sm text-left">{children}</table>
+                      </div>
+                    ),
+                    thead: ({ children }) => (
+                      <thead className="bg-green-700 text-white">{children}</thead>
+                    ),
+                    th: ({ children }) => (
+                      <th className="px-4 py-3 font-semibold text-sm">{children}</th>
+                    ),
+                    td: ({ children }) => (
+                      <td className="px-4 py-3 border-t border-stone-100 text-stone-700 align-top">{children}</td>
+                    ),
+                    tr: ({ children }) => (
+                      <tr className="even:bg-stone-50">{children}</tr>
+                    ),
                   }}
                 >
                   {bookContent.substring(bookContent.indexOf("\n# Glossary"))}
