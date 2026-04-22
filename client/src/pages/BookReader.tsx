@@ -656,7 +656,7 @@ export default function BookReader() {
                     <td className="px-4 py-3 text-stone-700 align-top" style={{borderTop: '1px solid #e7e5e4', verticalAlign: 'top'}}>{children}</td>
                   ),
                   tr: ({ children }) => (
-                    <tr style={{borderBottom: '1px solid #d6d3d1'}}>{children}</tr>
+                    <tr style={{borderBottom: '2px solid #a8a29e'}}>{children}</tr>
                   ),
                   ul: ({ children }) => (
                     <div className="bg-stone-50 border border-stone-200 rounded-lg p-4 my-4">
@@ -779,7 +779,7 @@ export default function BookReader() {
                       <td className="px-4 py-3 text-stone-700 align-top" style={{borderTop: '1px solid #e7e5e4', verticalAlign: 'top'}}>{children}</td>
                     ),
                     tr: ({ children }) => (
-                      <tr style={{borderBottom: '1px solid #d6d3d1'}}>{children}</tr>
+                      <tr style={{borderBottom: '2px solid #a8a29e'}}>{children}</tr>
                     ),
                   }}
                 >
