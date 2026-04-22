@@ -246,6 +246,7 @@ export default function BookReader() {
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
   const [videoModal, setVideoModal] = useState<VideoEntry[] | null>(null);
   const [videoIndex, setVideoIndex] = useState(0);
+  const [blueprintScrollPos, setBlueprintScrollPos] = useState<number | null>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -612,6 +613,14 @@ export default function BookReader() {
                       onClick={(e) => {
                         if (href && href.startsWith('#')) {
                           e.preventDefault();
+                          // If this link is inside the blueprint section, save scroll pos for return
+                          const blueprintEl = document.getElementById('wellness-blueprint');
+                          if (blueprintEl) {
+                            const bpTop = blueprintEl.getBoundingClientRect().top + window.scrollY;
+                            if (window.scrollY >= bpTop - 200) {
+                              setBlueprintScrollPos(window.scrollY);
+                            }
+                          }
                           const el = document.getElementById(href.slice(1));
                           if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }
@@ -644,7 +653,7 @@ export default function BookReader() {
                     <td className="px-4 py-3 border-t border-stone-100 text-stone-700 align-top">{children}</td>
                   ),
                   tr: ({ children }) => (
-                    <tr className="even:bg-stone-50">{children}</tr>
+                    <tr className="even:bg-stone-50 border-b border-stone-200 last:border-b-0">{children}</tr>
                   ),
                   ul: ({ children }) => (
                     <div className="bg-stone-50 border border-stone-200 rounded-lg p-4 my-4">
@@ -737,6 +746,13 @@ export default function BookReader() {
                         onClick={(e) => {
                           if (href && href.startsWith('#')) {
                             e.preventDefault();
+                            const blueprintEl = document.getElementById('wellness-blueprint');
+                            if (blueprintEl) {
+                              const bpTop = blueprintEl.getBoundingClientRect().top + window.scrollY;
+                              if (window.scrollY >= bpTop - 200) {
+                                setBlueprintScrollPos(window.scrollY);
+                              }
+                            }
                             const el = document.getElementById(href.slice(1));
                             if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                           }
@@ -760,7 +776,7 @@ export default function BookReader() {
                       <td className="px-4 py-3 border-t border-stone-100 text-stone-700 align-top">{children}</td>
                     ),
                     tr: ({ children }) => (
-                      <tr className="even:bg-stone-50">{children}</tr>
+                      <tr className="even:bg-stone-50 border-b border-stone-200 last:border-b-0">{children}</tr>
                     ),
                   }}
                 >
@@ -771,6 +787,22 @@ export default function BookReader() {
           )}
         </main>
       </div>
+      {/* Return to Blueprint floating button */}
+      {blueprintScrollPos !== null && (
+        <button
+          onClick={() => {
+            window.scrollTo({ top: blueprintScrollPos, behavior: 'smooth' });
+            setBlueprintScrollPos(null);
+          }}
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white text-sm font-semibold px-4 py-3 rounded-full shadow-lg transition-all"
+          title="Return to Your Wellness Blueprint at a Glance"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
+          </svg>
+          Return to Blueprint
+        </button>
+      )}
       {/* Zoom modal for infographics */}
       {zoomedImage && (
         <div
