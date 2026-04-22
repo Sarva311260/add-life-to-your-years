@@ -389,6 +389,15 @@ const RECOMMENDATIONS: RecommendationSection[] = [
       },
     ],
   },
+  {
+    id: "appendix-vitamin-d-microbiome",
+    number: 0,
+    title: "Appendix E: Vitamin D & the Gut Microbiome",
+    description:
+      "A 2026 Mayo Clinic study published in Cell Reports Medicine found that Vitamin D supplementation reshapes how the immune system responds to gut bacteria — with significant implications for IBD, Crohn's disease, and anyone seeking to optimise gut health.",
+    color: "bg-amber-100 text-amber-800 border-amber-200",
+    videos: [],
+  },
 ];
 
 const PODCASTS: PodcastItem[] = [
