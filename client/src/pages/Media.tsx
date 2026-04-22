@@ -1110,7 +1110,7 @@ export default function Media() {
       id: "recommendations",
       label: "Recommendations",
       icon: <BookOpen className="w-4 h-4" />,
-      count: RECOMMENDATIONS.length,
+      count: RECOMMENDATIONS.filter(r => r.number > 0).length,
     },
     {
       id: "podcasts",
@@ -1144,8 +1144,7 @@ export default function Media() {
               Learn, Watch &amp; Explore
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg mb-6">
-              Videos, podcasts, and resources grouped by each of the 17
-              Recommendations from the book. All free — no subscriptions.
+              Videos, podcasts, and resources grouped by each of the 17 Recommendations from the book. All free — no subscriptions.
             </p>
             <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
               <span className="flex items-center gap-1.5">
@@ -1155,7 +1154,7 @@ export default function Media() {
               </span>
               <span className="flex items-center gap-1.5">
                 <BookOpen className="w-4 h-4 text-green-600" />
-                <strong className="text-foreground">{RECOMMENDATIONS.length}</strong> recommendation
+                <strong className="text-foreground">{RECOMMENDATIONS.filter(r => r.number > 0).length}</strong> recommendation
                 sections
               </span>
             </div>
