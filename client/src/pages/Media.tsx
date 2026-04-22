@@ -159,7 +159,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-4",
-    number: 4,
+    number: 5,
     title: "Glycine",
     description:
       "The underappreciated amino acid that supports collagen synthesis, sleep quality, and metabolic health.",
@@ -175,7 +175,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-5",
-    number: 5,
+    number: 6,
     title: "Five Seeds of Life",
     description:
       "Five powerhouse seeds — flax, chia, hemp, pumpkin, and sesame — and why they should be part of your daily nutrition.",
@@ -190,8 +190,24 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
+    id: "rec-gut",
+    number: 7,
+    title: "Gut Health & Microbiome",
+    description:
+      "Your gut microbiome is the foundation of immune function, mood, and metabolic health. Learn how to nourish it with the right foods and habits.",
+    color: "bg-green-100 text-green-800 border-green-200",
+    videos: [
+      {
+        youtubeId: "ndqvqAOsFtQ",
+        title: "Gut Health & Microbiome — The Foundation of Immunity & Mood",
+        description:
+          "How your gut microbiome shapes immune function, mental health, and metabolic health — and how to nourish it with the right foods and habits.",
+      },
+    ],
+  },
+  {
     id: "rec-6",
-    number: 6,
+    number: 8,
     title: "Vitamin B12 & Vitamin D",
     description:
       "Two critical nutrients that are widely deficient — why they matter and how to supplement intelligently.",
@@ -219,7 +235,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-7",
-    number: 7,
+    number: 9,
     title: "Six Movements",
     description:
       "The six fundamental movement patterns every body needs — and how to build them into your daily life regardless of fitness level.",
@@ -235,7 +251,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-8",
-    number: 8,
+    number: 10,
     title: "Breathing",
     description:
       "Breathing is the only autonomic function we can consciously control. Learn how nasal breathing and breath work transform health.",
@@ -257,7 +273,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-9",
-    number: 9,
+    number: 11,
     title: "PEMF & Earthing",
     description:
       "Pulsed Electromagnetic Field therapy and grounding — how reconnecting with the Earth's electromagnetic field supports redox signalling and recovery.",
@@ -279,7 +295,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-10",
-    number: 10,
+    number: 12,
     title: "Meditation",
     description:
       "The neuroscience of meditation — how regular practice reshapes the brain, reduces cortisol, and builds emotional resilience.",
@@ -295,7 +311,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-11",
-    number: 11,
+    number: 13,
     title: "Time in Nature",
     description:
       "Why spending time in natural environments is a measurable health intervention — from forest bathing to sunlight exposure.",
@@ -311,7 +327,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-12",
-    number: 12,
+    number: 14,
     title: "Repairing Relationships",
     description:
       "Social connection is a primary determinant of longevity. Practical strategies for deepening relationships and reducing isolation.",
@@ -327,7 +343,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-13",
-    number: 13,
+    number: 15,
     title: "Second Income Stream",
     description:
       "Financial stress is a major driver of chronic disease. Building a second income stream reduces allostatic load and creates security.",
@@ -343,7 +359,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-14",
-    number: 14,
+    number: 16,
     title: "Your Environment",
     description:
       "How your home and work environment shapes your health — from air quality and toxin reduction to light and sound.",
@@ -359,7 +375,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-15",
-    number: 15,
+    number: 17,
     title: "Methylene Blue & Photobiomodulation",
     description:
       "Emerging therapies at the frontier of mitochondrial medicine — the science behind methylene blue and red/near-infrared light therapy.",
@@ -1094,7 +1110,7 @@ export default function Media() {
       id: "recommendations",
       label: "Recommendations",
       icon: <BookOpen className="w-4 h-4" />,
-      count: 15,
+      count: RECOMMENDATIONS.length,
     },
     {
       id: "podcasts",
@@ -1128,7 +1144,7 @@ export default function Media() {
               Learn, Watch &amp; Explore
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg mb-6">
-              Videos, podcasts, and resources grouped by each of the 15
+              Videos, podcasts, and resources grouped by each of the 17
               Recommendations from the book. All free — no subscriptions.
             </p>
             <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
@@ -1139,7 +1155,7 @@ export default function Media() {
               </span>
               <span className="flex items-center gap-1.5">
                 <BookOpen className="w-4 h-4 text-green-600" />
-                <strong className="text-foreground">15</strong> recommendation
+                <strong className="text-foreground">{RECOMMENDATIONS.length}</strong> recommendation
                 sections
               </span>
             </div>
@@ -1196,11 +1212,10 @@ export default function Media() {
                 <div className="flex items-center justify-between mb-8">
                   <div>
                     <h2 className="font-serif text-2xl font-bold text-foreground">
-                      The 15 Recommendations
+                      The 17 Recommendations
                     </h2>
                     <p className="text-sm text-muted-foreground mt-1">
-                      Videos linked directly from the book — one section per
-                      recommendation.
+                      Videos linked directly from the book — one section per recommendation.
                     </p>
                   </div>
                   <Link href="/book/read">
