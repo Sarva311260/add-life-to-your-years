@@ -355,14 +355,21 @@ export default function BookReader() {
   };
 
   const scrollToChapter = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      // Precise scroll: account for sticky header (~56px) plus 16px breathing room
-      const HEADER_OFFSET = 72;
+    setSidebarOpen(false);
+    const HEADER_OFFSET = 72;
+    const doScroll = (instant = false) => {
+      const element = document.getElementById(id);
+      if (!element) return false;
       const elementTop = element.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
-      window.scrollTo({ top: Math.max(0, elementTop), behavior: "smooth" });
-      setSidebarOpen(false);
-    }
+      window.scrollTo({ top: Math.max(0, elementTop), behavior: instant ? 'instant' : 'smooth' });
+      return true;
+    };
+    // First attempt immediately
+    if (!doScroll()) return;
+    // Second attempt after 400ms — allows images/lazy content to finish rendering
+    setTimeout(() => doScroll(true), 400);
+    // Third attempt after 900ms — for very long books with many images
+    setTimeout(() => doScroll(true), 900);
   };
 
   // Wrap text renderer to highlight search matches
@@ -619,21 +626,25 @@ export default function BookReader() {
                       className="text-green-700 underline underline-offset-2 font-medium hover:text-green-900 transition-colors"
                       onClick={(e) => {
                         if (href && href.startsWith('#')) {
-                          e.preventDefault();
-                          // If this link is inside the blueprint section, save scroll pos for return
-                          const blueprintEl = document.getElementById('wellness-blueprint');
-                          if (blueprintEl) {
-                            const bpTop = blueprintEl.getBoundingClientRect().top + window.scrollY;
-                            if (window.scrollY >= bpTop - 200) {
-                              setBlueprintScrollPos(window.scrollY);
+                            e.preventDefault();
+                            const blueprintEl = document.getElementById('wellness-blueprint');
+                            if (blueprintEl) {
+                              const bpTop = blueprintEl.getBoundingClientRect().top + window.scrollY;
+                              if (window.scrollY >= bpTop - 200) {
+                                setBlueprintScrollPos(window.scrollY);
+                              }
                             }
-                          }
-                          const el = document.getElementById(href.slice(1));
-                          if (el) {
+                            const targetId = href.slice(1);
                             const HEADER_OFFSET = 72;
-                            const elTop = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
-                            window.scrollTo({ top: Math.max(0, elTop), behavior: 'smooth' });
-                          }
+                            const doAnchorScroll2 = (instant = false) => {
+                              const el = document.getElementById(targetId);
+                              if (!el) return;
+                              const elTop = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+                              window.scrollTo({ top: Math.max(0, elTop), behavior: instant ? 'instant' : 'smooth' });
+                            };
+                            doAnchorScroll2();
+                            setTimeout(() => doAnchorScroll2(true), 400);
+                            setTimeout(() => doAnchorScroll2(true), 900);
                         }
                       }}
                     >
@@ -755,7 +766,7 @@ export default function BookReader() {
                         href={href}
                         className="text-green-700 underline underline-offset-2 font-medium hover:text-green-900 transition-colors"
                         onClick={(e) => {
-                          if (href && href.startsWith('#')) {
+                        if (href && href.startsWith('#')) {
                             e.preventDefault();
                             const blueprintEl = document.getElementById('wellness-blueprint');
                             if (blueprintEl) {
@@ -764,13 +775,18 @@ export default function BookReader() {
                                 setBlueprintScrollPos(window.scrollY);
                               }
                             }
-                            const el = document.getElementById(href.slice(1));
-                            if (el) {
-                              const HEADER_OFFSET = 72;
+                            const targetId = href.slice(1);
+                            const HEADER_OFFSET = 72;
+                            const doAnchorScroll = (instant = false) => {
+                              const el = document.getElementById(targetId);
+                              if (!el) return;
                               const elTop = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
-                              window.scrollTo({ top: Math.max(0, elTop), behavior: 'smooth' });
-                            }
-                          }
+                              window.scrollTo({ top: Math.max(0, elTop), behavior: instant ? 'instant' : 'smooth' });
+                            };
+                            doAnchorScroll();
+                            setTimeout(() => doAnchorScroll(true), 400);
+                            setTimeout(() => doAnchorScroll(true), 900);
+                        }
                         }}
                       >
                         {children}
