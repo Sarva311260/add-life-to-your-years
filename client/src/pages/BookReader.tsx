@@ -871,59 +871,63 @@ export default function BookReader() {
           onClick={() => { setVideoModal(null); setVideoIndex(0); }}
         >
           <div
-            className="relative w-full max-w-3xl bg-stone-900 rounded-xl shadow-2xl flex flex-col max-h-[90vh] overflow-y-auto"
+            className="relative w-full max-w-3xl bg-stone-900 rounded-xl shadow-2xl flex flex-col max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
-              onClick={() => { setVideoModal(null); setVideoIndex(0); }}
-            >
-              <X className="w-5 h-5" />
-            </button>
-            {videoModal.length > 1 && (
-              <div className="flex gap-2 px-4 pt-4 pb-2 sticky top-0 z-10 bg-stone-900">
+            {/* Fixed header: tab buttons + close button — never scrolls */}
+            <div className="shrink-0 flex items-center justify-between gap-2 px-4 pt-4 pb-2 border-b border-stone-700 bg-stone-900 rounded-t-xl">
+              <div className="flex gap-2 flex-wrap">
                 {videoModal.map((video, idx) => (
                   <button
-                    key={video.youtubeId}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    key={video.youtubeId || video.rumbleUrl}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                       idx === videoIndex
                         ? "bg-green-600 text-white"
                         : "bg-stone-700 text-stone-300 hover:bg-stone-600"
                     }`}
                     onClick={() => setVideoIndex(idx)}
                   >
-                    {video.title}
+                    {video.title.length > 35 ? video.title.substring(0, 35) + "…" : video.title}
                   </button>
                 ))}
               </div>
-            )}
-            <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-              <iframe
-                key={videoModal[videoIndex].youtubeId || videoModal[videoIndex].rumbleUrl}
-                className="absolute inset-0 w-full h-full"
-                src={
-                  videoModal[videoIndex].youtubeId
-                    ? `https://www.youtube.com/embed/${videoModal[videoIndex].youtubeId}?rel=0`
-                    : videoModal[videoIndex].rumbleUrl || ""
-                }
-                title={videoModal[videoIndex].title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              <button
+                className="shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+                onClick={() => { setVideoModal(null); setVideoIndex(0); }}
+              >
+                <X className="w-5 h-5" />
+              </button>
             </div>
-            {/* Researcher bio */}
-            {videoModal[videoIndex].researcher && (
-              <div className="mx-4 mb-4 mt-3 rounded-lg border border-blue-700/40 bg-blue-950/40 p-4 space-y-1.5">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-base">🔬</span>
-                  <div>
-                    <p className="font-semibold text-blue-200 text-sm">{videoModal[videoIndex].researcher!.name}</p>
-                    <p className="text-xs text-blue-400">{videoModal[videoIndex].researcher!.credentials} &middot; {videoModal[videoIndex].researcher!.institution}</p>
-                  </div>
-                </div>
-                <p className="text-xs text-stone-300 leading-relaxed">{videoModal[videoIndex].researcher!.bio}</p>
+            {/* Scrollable body: video + bio */}
+            <div className="overflow-y-auto flex-1">
+              <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                <iframe
+                  key={videoModal[videoIndex].youtubeId || videoModal[videoIndex].rumbleUrl}
+                  className="absolute inset-0 w-full h-full"
+                  src={
+                    videoModal[videoIndex].youtubeId
+                      ? `https://www.youtube.com/embed/${videoModal[videoIndex].youtubeId}?rel=0`
+                      : videoModal[videoIndex].rumbleUrl || ""
+                  }
+                  title={videoModal[videoIndex].title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
               </div>
-            )}
+              {/* Researcher bio */}
+              {videoModal[videoIndex].researcher && (
+                <div className="mx-4 mb-4 mt-3 rounded-lg border border-blue-700/40 bg-blue-950/40 p-4 space-y-1.5">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-base">🔬</span>
+                    <div>
+                      <p className="font-semibold text-blue-200 text-sm">{videoModal[videoIndex].researcher!.name}</p>
+                      <p className="text-xs text-blue-400">{videoModal[videoIndex].researcher!.credentials} &middot; {videoModal[videoIndex].researcher!.institution}</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-stone-300 leading-relaxed">{videoModal[videoIndex].researcher!.bio}</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}
