@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book-content_8dfbb3bb.md";
+const MD_CDN_URL = "/manus-storage/book-content_ccb8d5b4.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -225,7 +225,11 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
   "rec-14": [{ youtubeId: "rgQvqi6aYD8", title: "Repairing the Relationship" }],
   "rec-15": [{ youtubeId: "eD0N8wXjNSs", title: "Second Income Stream" }],
   "rec-16": [{ youtubeId: "foBnfBX4YKQ", title: "Your Environment" }],
-  "rec-17": [{ youtubeId: "KvASX2yp0zU", title: "Methylene Blue & Photobiomodulation" }],
+  "rec-17": [
+    { youtubeId: "KvASX2yp0zU", title: "Methylene Blue — Mitochondrial Medicine & Photobiomodulation" },
+    { youtubeId: "NNZBljVptLs", title: "Methylene Blue Deep Dive — Part 1: History, Mechanisms & Alzheimer’s" },
+    { youtubeId: "nPLMK7jfP-E", title: "Methylene Blue Deep Dive — Part 2: FDA Uses, Cognitive Benefits & Safety" },
+  ],
   "rec-appendix-cold-showers": [
     { youtubeId: "xTVMGyJ8cZU", title: "Cold Showers — Hormesis, Inflammation & Cognitive Benefits" },
     { youtubeId: "may_PlDfNRE", title: "The Science Behind Cold Showers — 5 Evidence-Based Benefits" },

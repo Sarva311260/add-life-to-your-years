@@ -371,6 +371,18 @@ const RECOMMENDATIONS: RecommendationSection[] = [
         description:
           "The science behind methylene blue and red/near-infrared light therapy at the frontier of mitochondrial medicine.",
       },
+      {
+        youtubeId: "NNZBljVptLs",
+        title: "Methylene Blue Deep Dive — Part 1: History, Mechanisms & Alzheimer’s",
+        description:
+          "Dr. González-Lima traces Methylene Blue from its 1876 origins as a textile dye to Paul Ehrlich’s ‘magic bullet’ discovery. Covers how MB acts as an artificial electron cycler in the mitochondrial electron transport chain, the cytochrome oxidase connection to Alzheimer’s disease, and the critical dose-dependent warning — low doses boost energy and act as antioxidants; high doses become toxic pro-oxidants.",
+      },
+      {
+        youtubeId: "nPLMK7jfP-E",
+        title: "Methylene Blue Deep Dive — Part 2: FDA Uses, Cognitive Benefits & Safety",
+        description:
+          "Part 2 covers MB’s WHO essential medicine status, its role as the only FDA-approved antidote for methemoglobinemia, clinical evidence for memory enhancement and prevention of vascular dementia, the critical SSRI/serotonin syndrome contraindication, purity grades (pharmaceutical USP vs laboratory vs aquarium — only USP grade is safe), and high-dose applications for UTIs and malaria.",
+      },
     ],
   },
   {
