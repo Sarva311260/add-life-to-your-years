@@ -23,12 +23,6 @@ interface VideoItem {
   rumbleUrl?: string;
   title: string;
   description?: string;
-  researcher?: {
-    name: string;
-    credentials: string;
-    institution: string;
-    bio: string;
-  };
   recipe?: {
     title: string;
     prepNote?: string;
@@ -165,7 +159,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-4",
-    number: 5,
+    number: 4,
     title: "Glycine",
     description:
       "The underappreciated amino acid that supports collagen synthesis, sleep quality, and metabolic health.",
@@ -181,7 +175,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-5",
-    number: 6,
+    number: 5,
     title: "Five Seeds of Life",
     description:
       "Five powerhouse seeds — flax, chia, hemp, pumpkin, and sesame — and why they should be part of your daily nutrition.",
@@ -196,24 +190,8 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-gut",
-    number: 7,
-    title: "Gut Health & Microbiome",
-    description:
-      "Your gut microbiome is the foundation of immune function, mood, and metabolic health. Learn how to nourish it with the right foods and habits.",
-    color: "bg-green-100 text-green-800 border-green-200",
-    videos: [
-      {
-        youtubeId: "ndqvqAOsFtQ",
-        title: "Gut Health & Microbiome — The Foundation of Immunity & Mood",
-        description:
-          "How your gut microbiome shapes immune function, mental health, and metabolic health — and how to nourish it with the right foods and habits.",
-      },
-    ],
-  },
-  {
     id: "rec-6",
-    number: 8,
+    number: 6,
     title: "Vitamin B12 & Vitamin D",
     description:
       "Two critical nutrients that are widely deficient — why they matter and how to supplement intelligently.",
@@ -222,13 +200,6 @@ const RECOMMENDATIONS: RecommendationSection[] = [
       {
         youtubeId: "wY4vEBilWN4",
         title: "Vitamin B12 — Why It Matters & How to Supplement",
-        researcher: {
-          name: "Dr. Michael Greger, M.D., FACLM",
-          credentials: "Physician, Author & Founder of NutritionFacts.org",
-          institution: "American College of Lifestyle Medicine",
-          bio: "Dr. Greger is a physician, New York Times bestselling author (*How Not to Die*, *How Not to Age*), and internationally recognised speaker on nutrition, food safety, and public health. A founding Fellow of the American College of Lifestyle Medicine and graduate of Cornell University and Tufts University School of Medicine, he founded NutritionFacts.org — a non-profit, science-based resource that synthesises the latest peer-reviewed nutrition research into accessible, evidence-based guidance. All proceeds from his books are donated to charity.",
-        },
-        
         description:
           "The critical role of B12 in nerve function, energy, and DNA synthesis — and how to ensure you’re getting enough.",
       },
@@ -237,18 +208,6 @@ const RECOMMENDATIONS: RecommendationSection[] = [
         title: "Vitamin D — The Sunshine Vitamin & Your Health",
         description:
           "Why Vitamin D deficiency is epidemic, its role in immunity and bone health, and how to supplement correctly.",
-      },
-      {
-        youtubeId: "qiR4yBymtwY",
-        title: "Vitamin D3 — Dr. Michael Holick",
-        description:
-          "Dr. Michael Holick, the world's leading vitamin D researcher, explains the science behind vitamin D deficiency, optimal blood levels, supplementation strategies, and its role in cancer prevention, immune function, and bone health.",
-        researcher: {
-          name: "Dr. Michael F. Holick, Ph.D., M.D.",
-          credentials: "Professor of Medicine, Physiology & Biophysics",
-          institution: "Boston University Medical Center",
-          bio: "Dr. Holick is one of the world's foremost authorities on vitamin D, with over five decades of research in its biochemistry, physiology, metabolism, and photobiology. He holds a Ph.D. and M.D. from the University of Wisconsin-Madison and directs the Vitamin D, Skin, and Bone Research Laboratory at Boston University Medical Center. He has authored more than 400 peer-reviewed publications and 200 review articles, and his bestselling book The Vitamin D Solution has brought the science of vitamin D deficiency to a global audience. His research established the widespread prevalence of vitamin D deficiency and its links to bone disease, immune dysfunction, cardiovascular risk, and cancer.",
-        },
       },
       {
         youtubeId: "uxWARJ4s95Y",
@@ -260,7 +219,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-7",
-    number: 9,
+    number: 7,
     title: "Six Movements",
     description:
       "The six fundamental movement patterns every body needs — and how to build them into your daily life regardless of fitness level.",
@@ -276,7 +235,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-8",
-    number: 10,
+    number: 8,
     title: "Breathing",
     description:
       "Breathing is the only autonomic function we can consciously control. Learn how nasal breathing and breath work transform health.",
@@ -298,7 +257,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-9",
-    number: 11,
+    number: 9,
     title: "PEMF & Earthing",
     description:
       "Pulsed Electromagnetic Field therapy and grounding — how reconnecting with the Earth's electromagnetic field supports redox signalling and recovery.",
@@ -320,7 +279,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-10",
-    number: 12,
+    number: 10,
     title: "Meditation",
     description:
       "The neuroscience of meditation — how regular practice reshapes the brain, reduces cortisol, and builds emotional resilience.",
@@ -336,7 +295,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-11",
-    number: 13,
+    number: 11,
     title: "Time in Nature",
     description:
       "Why spending time in natural environments is a measurable health intervention — from forest bathing to sunlight exposure.",
@@ -352,7 +311,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-12",
-    number: 14,
+    number: 12,
     title: "Repairing Relationships",
     description:
       "Social connection is a primary determinant of longevity. Practical strategies for deepening relationships and reducing isolation.",
@@ -368,7 +327,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-13",
-    number: 15,
+    number: 13,
     title: "Second Income Stream",
     description:
       "Financial stress is a major driver of chronic disease. Building a second income stream reduces allostatic load and creates security.",
@@ -384,7 +343,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-14",
-    number: 16,
+    number: 14,
     title: "Your Environment",
     description:
       "How your home and work environment shapes your health — from air quality and toxin reduction to light and sound.",
@@ -400,7 +359,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-15",
-    number: 17,
+    number: 15,
     title: "Methylene Blue & Photobiomodulation",
     description:
       "Emerging therapies at the frontier of mitochondrial medicine — the science behind methylene blue and red/near-infrared light therapy.",
@@ -411,32 +370,6 @@ const RECOMMENDATIONS: RecommendationSection[] = [
         title: "Methylene Blue — Mitochondrial Medicine & Photobiomodulation",
         description:
           "The science behind methylene blue and red/near-infrared light therapy at the frontier of mitochondrial medicine.",
-      },
-      {
-        youtubeId: "NNZBljVptLs",
-        title: "Methylene Blue Deep Dive — Part 1: History, Mechanisms & Alzheimer's",
-        researcher: {
-          name: "Dr. Francisco González-Lima, Ph.D.",
-          credentials: "George I. Sánchez Centennial Professor",
-          institution: "University of Texas at Austin",
-          bio: "Dr. González-Lima is one of the world’s leading neuroscientists in brain energy metabolism, cognitive enhancement, and photobiomodulation. He holds the George I. Sánchez Centennial Professorship at UT Austin, where he directs the Texas Consortium in Behavioral Neuroscience. His laboratory pioneered the use of methylene blue as a metabolic enhancer and neuroprotective agent, and his research on cytochrome c oxidase and Alzheimer’s disease prevention has been published in hundreds of peer-reviewed studies. He earned his Ph.D. from the University of Puerto Rico School of Medicine.",
-        },
-        
-        description:
-          "Dr. González-Lima traces Methylene Blue from its 1876 origins as a textile dye to Paul Ehrlich’s ‘magic bullet’ discovery. Covers how MB acts as an artificial electron cycler in the mitochondrial electron transport chain, the cytochrome oxidase connection to Alzheimer’s disease, and the critical dose-dependent warning — low doses boost energy and act as antioxidants; high doses become toxic pro-oxidants.",
-      },
-      {
-        youtubeId: "nPLMK7jfP-E",
-        title: "Methylene Blue Deep Dive — Part 2: FDA Uses, Cognitive Benefits & Safety",
-        researcher: {
-          name: "Dr. Francisco González-Lima, Ph.D.",
-          credentials: "George I. Sánchez Centennial Professor",
-          institution: "University of Texas at Austin",
-          bio: "Continuing from Part 1, Dr. González-Lima covers methylene blue’s FDA-approved medical applications, the evidence base for cognitive enhancement in healthy adults, its synergy with photobiomodulation (red/near-infrared light), and critical pharmaceutical grade safety guidance. His work has directly shaped how clinicians and researchers understand MB’s therapeutic window and its potential as a preventive intervention for neurodegenerative disease.",
-        },
-        
-        description:
-          "Part 2 covers MB’s WHO essential medicine status, its role as the only FDA-approved antidote for methemoglobinemia, clinical evidence for memory enhancement and prevention of vascular dementia, the critical SSRI/serotonin syndrome contraindication, purity grades (pharmaceutical USP vs laboratory vs aquarium — only USP grade is safe), and high-dose applications for UTIs and malaria.",
       },
     ],
   },
@@ -451,26 +384,10 @@ const RECOMMENDATIONS: RecommendationSection[] = [
       {
         youtubeId: "yMy_R6tlAGA",
         title: "Four Brazil Nuts Once a Month — The Cholesterol Study",
-        researcher: {
-          name: "Dr. Michael Greger, M.D., FACLM",
-          credentials: "Physician, Author & Founder of NutritionFacts.org",
-          institution: "American College of Lifestyle Medicine",
-          bio: "Dr. Greger reviews the landmark clinical study showing that a single serving of Brazil nuts may lower LDL cholesterol faster than statin drugs — with effects lasting a full month. His channel NutritionFacts.org has over 1.4 million subscribers and covers thousands of nutrition studies with rigorous, referenced analysis.",
-        },
-        
         description:
           "Dr. Michael Greger presents the 2013 clinical study showing a single serving of four Brazil nuts reduced LDL cholesterol by nearly 20 points within nine hours — with the effect persisting for 30 days. Covers selenium, thyroid health, immune function, and safe dosing.",
       },
     ],
-  },
-  {
-    id: "appendix-vitamin-d-microbiome",
-    number: 0,
-    title: "Appendix E: Vitamin D & the Gut Microbiome",
-    description:
-      "A 2026 Mayo Clinic study published in Cell Reports Medicine found that Vitamin D supplementation reshapes how the immune system responds to gut bacteria — with significant implications for IBD, Crohn's disease, and anyone seeking to optimise gut health.",
-    color: "bg-amber-100 text-amber-800 border-amber-200",
-    videos: [],
   },
 ];
 
@@ -718,19 +635,6 @@ function VideoEmbed({ video }: { video: VideoItem }) {
           </Button>
         </a>
       </div>
-      {/* Researcher bio (if present) */}
-      {video.researcher && (
-        <div className="mt-3 rounded-lg border border-blue-200 bg-blue-50/40 p-4 space-y-1.5">
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-base">🔬</span>
-            <div>
-              <p className="font-semibold text-blue-900 text-sm">{video.researcher.name}</p>
-              <p className="text-xs text-blue-700">{video.researcher.credentials} &middot; {video.researcher.institution}</p>
-            </div>
-          </div>
-          <p className="text-xs text-foreground/80 leading-relaxed">{video.researcher.bio}</p>
-        </div>
-      )}
       {/* Recipe card (if present) */}
       {video.recipe && (
         <div className="mt-3 rounded-lg border border-green-200 bg-green-50/50 p-4 space-y-3">
@@ -1016,20 +920,6 @@ function VideoModal({
               <p className="text-xs text-muted-foreground">{activeVideo.description}</p>
             )}
 
-            {/* Researcher bio (if present) */}
-            {activeVideo.researcher && (
-              <div className="rounded-lg border border-blue-200 bg-blue-50/40 p-4 space-y-1.5">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-base">🔬</span>
-                  <div>
-                    <p className="font-semibold text-blue-900 text-sm">{activeVideo.researcher.name}</p>
-                    <p className="text-xs text-blue-700">{activeVideo.researcher.credentials} &middot; {activeVideo.researcher.institution}</p>
-                  </div>
-                </div>
-                <p className="text-xs text-foreground/80 leading-relaxed">{activeVideo.researcher.bio}</p>
-              </div>
-            )}
-
             {/* Video counter */}
             {rec.videos.length > 1 && (
               <p className="text-xs text-muted-foreground pt-1">
@@ -1183,7 +1073,7 @@ export default function Media() {
       id: "recommendations",
       label: "Recommendations",
       icon: <BookOpen className="w-4 h-4" />,
-      count: RECOMMENDATIONS.filter(r => r.number > 0).length,
+      count: 15,
     },
     {
       id: "podcasts",
@@ -1217,7 +1107,8 @@ export default function Media() {
               Learn, Watch &amp; Explore
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg mb-6">
-              Videos, podcasts, and resources grouped by each of the 17 Recommendations from the book. All free — no subscriptions.
+              Videos, podcasts, and resources grouped by each of the 15
+              Recommendations from the book. All free — no subscriptions.
             </p>
             <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
               <span className="flex items-center gap-1.5">
@@ -1227,7 +1118,7 @@ export default function Media() {
               </span>
               <span className="flex items-center gap-1.5">
                 <BookOpen className="w-4 h-4 text-green-600" />
-                <strong className="text-foreground">{RECOMMENDATIONS.filter(r => r.number > 0).length}</strong> recommendation
+                <strong className="text-foreground">15</strong> recommendation
                 sections
               </span>
             </div>
@@ -1284,10 +1175,11 @@ export default function Media() {
                 <div className="flex items-center justify-between mb-8">
                   <div>
                     <h2 className="font-serif text-2xl font-bold text-foreground">
-                      The 17 Recommendations
+                      The 15 Recommendations
                     </h2>
                     <p className="text-sm text-muted-foreground mt-1">
-                      Videos linked directly from the book — one section per recommendation.
+                      Videos linked directly from the book — one section per
+                      recommendation.
                     </p>
                   </div>
                   <Link href="/book/read">

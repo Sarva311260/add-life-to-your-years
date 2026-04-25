@@ -27,6 +27,7 @@ import KnowledgeBase from "@/pages/KnowledgeBase";
 import PEMF from "@/pages/PEMF";
 import PEMFJoin from "@/pages/PEMFJoin";
 import PEMFAffiliate from "@/pages/PEMFAffiliate";
+import PEMFAffiliateHU from "@/pages/PEMFAffiliateHU";
 import PEMFPortal from "@/pages/PEMFPortal";
 import PEMFAdmin from "@/pages/PEMFAdmin";
 import PEMFAdminResources from "@/pages/PEMFAdminResources";
@@ -76,6 +77,7 @@ function Router() {
       <Route path={"/pemf/portal/resources"} component={PEMFResources} />
       <Route path={"/unsubscribe"} component={Unsubscribe} />
       <Route path={"/ref/:slug"} component={HomeAffiliate} />
+      <Route path={"/pemf/:slug/hu"} component={PEMFAffiliateHU} />
       <Route path={"/pemf/:slug"} component={PEMFAffiliate} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />

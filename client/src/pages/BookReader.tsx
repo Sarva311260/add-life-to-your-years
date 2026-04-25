@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book-content_ccb8d5b4.md";
+const MD_CDN_URL = "/manus-storage/book-content_f0a6a8bb.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -57,7 +57,6 @@ const chapters = [
   { id: "appendix-b", label: "Appendix B: Cold Showers" },
   { id: "appendix-c", label: "Appendix C: Off-Label Pharmaceuticals" },
   { id: "appendix-d", label: "Appendix D: Brazil Nuts & Selenium" },
-  { id: "appendix-e", label: "Appendix E: Vitamin D & the Gut Microbiome" },
   { id: "wellness-blueprint", label: "Your Wellness Blueprint at a Glance" },
 ];
 
@@ -107,7 +106,6 @@ const headingIdMap: Record<string, string> = {
   "Your Wellness Blueprint at a Glance": "wellness-blueprint",
   "Appendix C": "appendix-c",
   "Appendix D": "appendix-d",
-  "Appendix E": "appendix-e",
   "Appendix B": "appendix-b",
   "Appendix A": "appendix-a",
 };
@@ -127,16 +125,7 @@ function getHeadingId(children: React.ReactNode): string {
   };
   const text = extractText(children);
   for (const key of sortedHeadingKeys) {
-    // Use word-boundary check: key must be at start/end of text or followed by non-alphanumeric
-    // This prevents "Appendix E" matching "Why This Appendix Exists" (E followed by 'x')
-    const idx = text.indexOf(key);
-    if (idx !== -1) {
-      const afterKey = text[idx + key.length];
-      // Valid match: key is at end of text, or followed by non-letter (colon, space, punctuation)
-      if (afterKey === undefined || !/[a-zA-Z]/.test(afterKey)) {
-        return headingIdMap[key];
-      }
-    }
+    if (text.includes(key)) return headingIdMap[key];
   }
   return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
@@ -190,7 +179,7 @@ function buildSearchResults(content: string, query: string): SearchResult[] {
 }
 
 // Video entries for each recommendation (supports YouTube and Rumble)
-type VideoEntry = { youtubeId?: string; rumbleUrl?: string; title: string; researcher?: { name: string; credentials: string; institution: string; bio: string } };
+type VideoEntry = { youtubeId?: string; rumbleUrl?: string; title: string };
 const REC_VIDEOS: Record<string, VideoEntry[]> = {
   "rec-1": [
     { youtubeId: "wb7L3t0ejdI", title: "Whole Food Plant-Based Diet" },
@@ -206,8 +195,8 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
   "rec-6": [{ youtubeId: "YckoR3hLL9E", title: "Five Seeds of Life" }],
   "rec-7": [{ youtubeId: "ndqvqAOsFtQ", title: "Gut Health & Microbiome" }],
   "rec-8": [
-    { youtubeId: "wY4vEBilWN4", title: "Vitamin B12", researcher: { name: "Dr. Michael Greger, M.D., FACLM", credentials: "Physician, Author & Founder of NutritionFacts.org", institution: "American College of Lifestyle Medicine", bio: "Dr. Greger is a physician, New York Times bestselling author of How Not to Die, and founder of NutritionFacts.org — a non-profit science-based public health website. He is a Fellow of the American College of Lifestyle Medicine and a graduate of Cornell University and Tufts University School of Medicine." } },
-    { youtubeId: "qiR4yBymtwY", title: "Vitamin D3 — Dr. Michael Holick", researcher: { name: "Dr. Michael F. Holick, Ph.D., M.D.", credentials: "Professor of Medicine, Physiology & Biophysics", institution: "Boston University Medical Center", bio: "Dr. Holick is one of the world's foremost authorities on vitamin D, with over five decades of research in its biochemistry, physiology, metabolism, and photobiology. He holds a Ph.D. and M.D. from the University of Wisconsin-Madison and directs the Vitamin D, Skin, and Bone Research Laboratory at Boston University Medical Center. He has authored more than 400 peer-reviewed publications and 200 review articles, and his bestselling book The Vitamin D Solution has brought the science of vitamin D deficiency to a global audience. His research established the widespread prevalence of vitamin D deficiency and its links to bone disease, immune dysfunction, cardiovascular risk, and cancer." } },
+    { youtubeId: "wY4vEBilWN4", title: "Vitamin B12" },
+    { youtubeId: "qiR4yBymtwY", title: "Vitamin D3 — Dr. Michael Holick" },
     { youtubeId: "iotnggfP9Yk", title: "Vitamin D3" },
     { youtubeId: "uxWARJ4s95Y", title: "Vitamin D3 (Part 2)" },
   ],
@@ -225,11 +214,7 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
   "rec-14": [{ youtubeId: "rgQvqi6aYD8", title: "Repairing the Relationship" }],
   "rec-15": [{ youtubeId: "eD0N8wXjNSs", title: "Second Income Stream" }],
   "rec-16": [{ youtubeId: "foBnfBX4YKQ", title: "Your Environment" }],
-  "rec-17": [
-    { youtubeId: "KvASX2yp0zU", title: "Methylene Blue — Mitochondrial Medicine & Photobiomodulation" },
-    { youtubeId: "NNZBljVptLs", title: "Methylene Blue Deep Dive — Part 1: History, Mechanisms & Alzheimer's", researcher: { name: "Dr. Francisco González-Lima, Ph.D.", credentials: "George I. Sánchez Centennial Professor", institution: "University of Texas at Austin", bio: "Dr. González-Lima is one of the world's leading neuroscientists in brain energy metabolism, cognitive enhancement, and photobiomodulation. He holds the George I. Sánchez Centennial Professorship at UT Austin, where he directs the Texas Consortium in Behavioral Neuroscience. His laboratory pioneered the use of methylene blue as a metabolic enhancer and neuroprotective agent, and his research on cytochrome c oxidase and Alzheimer's disease prevention has been published in hundreds of peer-reviewed studies. He earned his Ph.D. from the University of Puerto Rico School of Medicine." } },
-    { youtubeId: "nPLMK7jfP-E", title: "Methylene Blue Deep Dive — Part 2: FDA Uses, Cognitive Benefits & Safety", researcher: { name: "Dr. Francisco González-Lima, Ph.D.", credentials: "George I. Sánchez Centennial Professor", institution: "University of Texas at Austin", bio: "Continuing from Part 1, Dr. González-Lima covers methylene blue's FDA-approved medical applications, the evidence base for cognitive enhancement in healthy adults, its synergy with photobiomodulation (red/near-infrared light), and critical pharmaceutical grade safety guidance. His work has directly shaped how clinicians and researchers understand MB's therapeutic window and its potential as a preventive intervention for neurodegenerative disease." } },
-  ],
+  "rec-17": [{ youtubeId: "KvASX2yp0zU", title: "Methylene Blue & Photobiomodulation" }],
   "rec-appendix-cold-showers": [
     { youtubeId: "xTVMGyJ8cZU", title: "Cold Showers — Hormesis, Inflammation & Cognitive Benefits" },
     { youtubeId: "may_PlDfNRE", title: "The Science Behind Cold Showers — 5 Evidence-Based Benefits" },
@@ -368,18 +353,14 @@ export default function BookReader() {
   };
 
   const scrollToChapter = (id: string) => {
-    setSidebarOpen(false);
-    const doScroll = (behavior: ScrollBehavior = 'smooth') => {
-      const element = document.getElementById(id);
-      if (!element) return;
-      // scrollIntoView respects CSS scroll-margin-top (scroll-mt-20 = 80px) natively
-      element.scrollIntoView({ behavior, block: 'start' });
-    };
-    doScroll('smooth');
-    // Retry after images load to correct position drift
-    setTimeout(() => doScroll('instant'), 500);
-    setTimeout(() => doScroll('instant'), 1200);
-    setTimeout(() => doScroll('instant'), 2000);
+    const element = document.getElementById(id);
+    if (element) {
+      // Precise scroll: account for sticky header (~56px) plus 16px breathing room
+      const HEADER_OFFSET = 72;
+      const elementTop = element.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+      window.scrollTo({ top: Math.max(0, elementTop), behavior: "smooth" });
+      setSidebarOpen(false);
+    }
   };
 
   // Wrap text renderer to highlight search matches
@@ -591,7 +572,7 @@ export default function BookReader() {
                     return (
                       <h1
                         id={id}
-                        className="font-serif text-3xl font-bold text-stone-900 mt-12 mb-6 pb-3 border-b border-stone-200 scroll-mt-24"
+                        className="font-serif text-3xl font-bold text-stone-900 mt-12 mb-6 pb-3 border-b border-stone-200 scroll-mt-20"
                       >
                         {highlightQuery ? highlightText(
                           typeof children === "string" ? children :
@@ -606,7 +587,7 @@ export default function BookReader() {
                     return (
                       <h2
                         id={id}
-                        className="font-serif text-2xl font-bold text-stone-800 mt-10 mb-4 scroll-mt-24"
+                        className="font-serif text-2xl font-bold text-stone-800 mt-10 mb-4 scroll-mt-20"
                       >
                         {highlightQuery ? highlightText(
                           typeof children === "string" ? children :
@@ -636,24 +617,17 @@ export default function BookReader() {
                       className="text-green-700 underline underline-offset-2 font-medium hover:text-green-900 transition-colors"
                       onClick={(e) => {
                         if (href && href.startsWith('#')) {
-                            e.preventDefault();
-                            const blueprintEl = document.getElementById('wellness-blueprint');
-                            if (blueprintEl) {
-                              const bpTop = blueprintEl.getBoundingClientRect().top + window.scrollY;
-                              if (window.scrollY >= bpTop - 200) {
-                                setBlueprintScrollPos(window.scrollY);
-                              }
+                          e.preventDefault();
+                          // If this link is inside the blueprint section, save scroll pos for return
+                          const blueprintEl = document.getElementById('wellness-blueprint');
+                          if (blueprintEl) {
+                            const bpTop = blueprintEl.getBoundingClientRect().top + window.scrollY;
+                            if (window.scrollY >= bpTop - 200) {
+                              setBlueprintScrollPos(window.scrollY);
                             }
-                            const targetId = href.slice(1);
-                            const doAnchorScroll = (b: ScrollBehavior = 'smooth') => {
-                              const el = document.getElementById(targetId);
-                              if (!el) return;
-                              el.scrollIntoView({ behavior: b, block: 'start' });
-                            };
-                            doAnchorScroll('smooth');
-                            setTimeout(() => doAnchorScroll('instant'), 500);
-                            setTimeout(() => doAnchorScroll('instant'), 1200);
-                            setTimeout(() => doAnchorScroll('instant'), 2000);
+                          }
+                          const el = document.getElementById(href.slice(1));
+                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }
                       }}
                     >
@@ -755,7 +729,7 @@ export default function BookReader() {
                     h1: ({ children }) => {
                       const id = getHeadingId(children);
                       return (
-                        <h1 id={id} className="font-serif text-3xl font-bold text-stone-900 mt-12 mb-6 pb-3 border-b border-stone-200 scroll-mt-24">
+                        <h1 id={id} className="font-serif text-3xl font-bold text-stone-900 mt-12 mb-6 pb-3 border-b border-stone-200 scroll-mt-20">
                           {children}
                         </h1>
                       );
@@ -763,7 +737,7 @@ export default function BookReader() {
                     h2: ({ children }) => {
                       const id = getHeadingId(children);
                       return (
-                        <h2 id={id} className="font-serif text-2xl font-bold text-stone-800 mt-10 mb-4 scroll-mt-24">
+                        <h2 id={id} className="font-serif text-2xl font-bold text-stone-800 mt-10 mb-4 scroll-mt-20">
                           {children}
                         </h2>
                       );
@@ -775,7 +749,7 @@ export default function BookReader() {
                         href={href}
                         className="text-green-700 underline underline-offset-2 font-medium hover:text-green-900 transition-colors"
                         onClick={(e) => {
-                        if (href && href.startsWith('#')) {
+                          if (href && href.startsWith('#')) {
                             e.preventDefault();
                             const blueprintEl = document.getElementById('wellness-blueprint');
                             if (blueprintEl) {
@@ -784,17 +758,9 @@ export default function BookReader() {
                                 setBlueprintScrollPos(window.scrollY);
                               }
                             }
-                            const targetId = href.slice(1);
-                            const doAnchorScroll2 = (b: ScrollBehavior = 'smooth') => {
-                              const el = document.getElementById(targetId);
-                              if (!el) return;
-                              el.scrollIntoView({ behavior: b, block: 'start' });
-                            };
-                            doAnchorScroll2('smooth');
-                            setTimeout(() => doAnchorScroll2('instant'), 500);
-                            setTimeout(() => doAnchorScroll2('instant'), 1200);
-                            setTimeout(() => doAnchorScroll2('instant'), 2000);
-                        }
+                            const el = document.getElementById(href.slice(1));
+                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
                         }}
                       >
                         {children}
@@ -833,7 +799,7 @@ export default function BookReader() {
             window.scrollTo({ top: blueprintScrollPos, behavior: 'smooth' });
             setBlueprintScrollPos(null);
           }}
-          className="fixed bottom-4 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-6 sm:bottom-6 z-50 flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white text-sm font-semibold px-4 py-3 rounded-full shadow-lg transition-all whitespace-nowrap"
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white text-sm font-semibold px-4 py-3 rounded-full shadow-lg transition-all"
           title="Return to Your Wellness Blueprint at a Glance"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -871,62 +837,45 @@ export default function BookReader() {
           onClick={() => { setVideoModal(null); setVideoIndex(0); }}
         >
           <div
-            className="relative w-full max-w-3xl bg-stone-900 rounded-xl shadow-2xl flex flex-col max-h-[90vh]"
+            className="relative w-full max-w-3xl bg-stone-900 rounded-xl overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Fixed header: tab buttons + close button — never scrolls */}
-            <div className="shrink-0 flex items-center justify-between gap-2 px-4 pt-4 pb-2 border-b border-stone-700 bg-stone-900 rounded-t-xl">
-              <div className="flex gap-2 flex-wrap">
+            <button
+              className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+              onClick={() => { setVideoModal(null); setVideoIndex(0); }}
+            >
+              <X className="w-5 h-5" />
+            </button>
+            {videoModal.length > 1 && (
+              <div className="flex gap-2 px-4 pt-4 pb-2">
                 {videoModal.map((video, idx) => (
                   <button
-                    key={video.youtubeId || video.rumbleUrl}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                    key={video.youtubeId}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                       idx === videoIndex
                         ? "bg-green-600 text-white"
                         : "bg-stone-700 text-stone-300 hover:bg-stone-600"
                     }`}
                     onClick={() => setVideoIndex(idx)}
                   >
-                    {video.title.length > 35 ? video.title.substring(0, 35) + "…" : video.title}
+                    {video.title}
                   </button>
                 ))}
               </div>
-              <button
-                className="shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
-                onClick={() => { setVideoModal(null); setVideoIndex(0); }}
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            {/* Scrollable body: video + bio */}
-            <div className="overflow-y-auto flex-1">
-              <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                <iframe
-                  key={videoModal[videoIndex].youtubeId || videoModal[videoIndex].rumbleUrl}
-                  className="absolute inset-0 w-full h-full"
-                  src={
-                    videoModal[videoIndex].youtubeId
-                      ? `https://www.youtube.com/embed/${videoModal[videoIndex].youtubeId}?rel=0`
-                      : videoModal[videoIndex].rumbleUrl || ""
-                  }
-                  title={videoModal[videoIndex].title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-              {/* Researcher bio */}
-              {videoModal[videoIndex].researcher && (
-                <div className="mx-4 mb-4 mt-3 rounded-lg border border-blue-700/40 bg-blue-950/40 p-4 space-y-1.5">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-base">🔬</span>
-                    <div>
-                      <p className="font-semibold text-blue-200 text-sm">{videoModal[videoIndex].researcher!.name}</p>
-                      <p className="text-xs text-blue-400">{videoModal[videoIndex].researcher!.credentials} &middot; {videoModal[videoIndex].researcher!.institution}</p>
-                    </div>
-                  </div>
-                  <p className="text-xs text-stone-300 leading-relaxed">{videoModal[videoIndex].researcher!.bio}</p>
-                </div>
-              )}
+            )}
+            <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+              <iframe
+                key={videoModal[videoIndex].youtubeId || videoModal[videoIndex].rumbleUrl}
+                className="absolute inset-0 w-full h-full"
+                src={
+                  videoModal[videoIndex].youtubeId
+                    ? `https://www.youtube.com/embed/${videoModal[videoIndex].youtubeId}?rel=0`
+                    : videoModal[videoIndex].rumbleUrl || ""
+                }
+                title={videoModal[videoIndex].title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             </div>
           </div>
         </div>

@@ -195,7 +195,7 @@ export const affiliateContactsRouter = router({
       return { success: true, id: contactId };
     }),
 
-  // ──  // ─── Update a contact ────────────────────────────────────────────
+  // ─── Update a contact ────────────────────────────────────────────────────
   update: publicProcedure
     .input(z.object({
       token: z.string(),
