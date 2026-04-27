@@ -238,9 +238,14 @@ function ProductRow({
         <button
           onClick={togglePublish}
           title={isPublished ? "Unpublish" : "Publish"}
-          className="text-gray-400 hover:text-white transition-colors"
+          className={`flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors ${
+            isPublished
+              ? "bg-emerald-900/40 text-emerald-300 hover:bg-red-900/40 hover:text-red-300"
+              : "bg-gray-700 text-gray-300 hover:bg-emerald-900/40 hover:text-emerald-300"
+          }`}
         >
-          {isPublished ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
+          {isPublished ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+          {isPublished ? "Live" : "Publish"}
         </button>
         <button onClick={() => setEditing(true)} className="text-gray-400 hover:text-emerald-400 transition-colors">
           <Edit2 className="w-4 h-4" />
