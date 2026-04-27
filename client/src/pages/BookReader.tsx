@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book-content_f0a6a8bb.md";
+const MD_CDN_URL = "/manus-storage/book-content_1bcee785.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -235,6 +235,22 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
 
 const SCROLL_STORAGE_KEY = "book-reader-scroll";
 
+// Product map: product ID → { name, defaultUrl }
+const PRODUCT_MAP: Record<number, { name: string; defaultUrl: string }> = {
+  1: { name: "MasterPeace Nano-Zeolite", defaultUrl: "https://mphcs.com/760a4938d9449080" },
+  30001: { name: "PEMF Therapy Devices", defaultUrl: "https://addlifetoyouryears.org/pemf" },
+};
+
+function getAffiliateCookie(): string | null {
+  const match = document.cookie.match(/(?:^|;\s*)affiliate_slug=([^;]+)/);
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
+function getProductUrl(productId: number, affiliateSlug: string | null): string {
+  if (affiliateSlug) return `/go/${affiliateSlug}/${productId}`;
+  return PRODUCT_MAP[productId]?.defaultUrl || "#";
+}
+
 export default function BookReader() {
   const [bookContent, setBookContent] = useState("");
   const [loading, setLoading] = useState(true);
@@ -249,6 +265,7 @@ export default function BookReader() {
   const [videoModal, setVideoModal] = useState<VideoEntry[] | null>(null);
   const [videoIndex, setVideoIndex] = useState(0);
   const [blueprintScrollPos, setBlueprintScrollPos] = useState<number | null>(null);
+  const [affiliateSlug] = useState<string | null>(() => getAffiliateCookie());
   const searchInputRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -611,29 +628,48 @@ export default function BookReader() {
                     }
                     return <p className="text-stone-700 leading-relaxed mb-4 text-base">{children}</p>;
                   },
-                  a: ({ href, children }) => (
-                    <a
-                      href={href}
-                      className="text-green-700 underline underline-offset-2 font-medium hover:text-green-900 transition-colors"
-                      onClick={(e) => {
-                        if (href && href.startsWith('#')) {
-                          e.preventDefault();
-                          // If this link is inside the blueprint section, save scroll pos for return
-                          const blueprintEl = document.getElementById('wellness-blueprint');
-                          if (blueprintEl) {
-                            const bpTop = blueprintEl.getBoundingClientRect().top + window.scrollY;
-                            if (window.scrollY >= bpTop - 200) {
-                              setBlueprintScrollPos(window.scrollY);
+                  a: ({ href, children }) => {
+                    // Intercept product: links and render a styled View Product button
+                    if (href && href.startsWith("product:")) {
+                      const productId = parseInt(href.replace("product:", ""), 10);
+                      const product = PRODUCT_MAP[productId];
+                      if (!product) return null;
+                      const url = getProductUrl(productId, affiliateSlug);
+                      return (
+                        <a
+                          href={url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-green-700 text-white text-sm font-medium rounded-lg hover:bg-green-800 no-underline my-2"
+                        >
+                          🛒 {typeof children === "string" ? children : product.name}
+                        </a>
+                      );
+                    }
+                    // Regular links with smooth scroll for hash links
+                    return (
+                      <a
+                        href={href}
+                        className="text-green-700 underline underline-offset-2 font-medium hover:text-green-900 transition-colors"
+                        onClick={(e) => {
+                          if (href && href.startsWith('#')) {
+                            e.preventDefault();
+                            const blueprintEl = document.getElementById('wellness-blueprint');
+                            if (blueprintEl) {
+                              const bpTop = blueprintEl.getBoundingClientRect().top + window.scrollY;
+                              if (window.scrollY >= bpTop - 200) {
+                                setBlueprintScrollPos(window.scrollY);
+                              }
                             }
+                            const el = document.getElementById(href.slice(1));
+                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                           }
-                          const el = document.getElementById(href.slice(1));
-                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }
-                      }}
-                    >
-                      {children}
-                    </a>
-                  ),
+                        }}
+                      >
+                        {children}
+                      </a>
+                    );
+                  },
                   strong: ({ children }) => (
                     <strong className="font-semibold text-stone-900">{children}</strong>
                   ),
