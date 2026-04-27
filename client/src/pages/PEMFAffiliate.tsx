@@ -515,6 +515,11 @@ export default function PEMFAffiliate() {
     { enabled: !!slug }
   );
 
+  const { data: dbProducts } = trpc.recommendedProducts.list.useQuery(
+    { affiliateSlug: slug },
+    { enabled: !!slug }
+  );
+
   const [selectedProduct, setSelectedProduct] = useState<number | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -927,6 +932,51 @@ export default function PEMFAffiliate() {
               </FadeIn>
             ))}
           </div>
+
+          {/* Dynamic products from admin backoffice */}
+          {dbProducts && dbProducts.length > 0 && (
+            <>
+              <FadeIn delay={0.2}>
+                <div className="mt-16 mb-10">
+                  <div className="w-full h-px bg-emerald-100 mb-10" />
+                  <div className="text-center mb-10">
+                    <p className="text-sm font-medium text-emerald-700 tracking-widest uppercase mb-3">Also Recommended</p>
+                    <h3 className="font-serif text-2xl md:text-3xl font-bold text-gray-900 mb-4">Additional Products</h3>
+                    <div className="w-16 h-0.5 bg-emerald-600 mx-auto" />
+                  </div>
+                </div>
+              </FadeIn>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {dbProducts.map((p: any, i: number) => (
+                  <FadeIn key={p.id} delay={i * 0.08}>
+                    <Card className="overflow-hidden border border-emerald-100 shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
+                      <CardContent className="p-0 flex flex-col h-full">
+                        {p.imageUrl && (
+                          <div className="bg-white flex items-center justify-center p-6 border-b border-emerald-50">
+                            <img src={p.imageUrl} alt={p.name} className="w-full h-40 object-contain" />
+                          </div>
+                        )}
+                        <div className="p-6 flex flex-col flex-1">
+                          <h4 className="font-serif text-lg font-bold text-gray-900 mb-2">{p.name}</h4>
+                          {p.description && <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1">{p.description}</p>}
+                          {(p.resolvedUrl || p.defaultAffiliateUrl || p.productUrl) && (
+                            <a
+                              href={p.resolvedUrl || p.defaultAffiliateUrl || p.productUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 text-sm font-medium text-emerald-700 hover:text-emerald-900 mt-auto"
+                            >
+                              View Product <ArrowRight className="w-3.5 h-3.5" />
+                            </a>
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </FadeIn>
+                ))}
+              </div>
+            </>
+          )}
 
           {/* Contact CTA — opens contact form modal */}
           <FadeIn delay={0.3}>
