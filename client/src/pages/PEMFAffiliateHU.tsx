@@ -26,6 +26,7 @@ import { toast } from "sonner";
 const PRODUCTS = [
   {
     name: "OlyLife THZ Tera-P90+",
+    deviceKey: "tera-p90",
     tagline: "Komplex PEMF Wellness Eszköz",
     description:
       "A P90+ zászlóshajó kombinálja a PEMF, terahertz és közeli infravörös technológiákat egy elegáns talpbetétes kialakításban, cserélhető pálca-kiegészítőkkel. Napi otthoni használatra tervezve, terápiás elektromágneses impulzusokat biztosít a Schumann-rezonancia frekvencián (7,83 Hz) — ugyanazon a frekvencián, mint a Föld természetes elektromágneses mezeje.",
@@ -68,7 +69,8 @@ const PRODUCTS = [
     },
   },
   {
-    name: "OlyLife Shaken Masszőr",
+    name: "OlyLife Shaken Massager",
+    deviceKey: "terahertz-wand",
     tagline: "7-az-1-ben Testformáló & Regeneráló",
     description:
       "Sokoldalú öves eszköz, amely kombinálja a PEMF terápiát ultrahangos, hőterápiás és vibrációs masszázzsal. A mag és derék területét célozza mélyszöveti stimulációhoz, keringéstámogatáshoz és izomregenerációhoz — ideális edzés utáni regenerációhoz és napi wellness karbantartáshoz.",
@@ -111,8 +113,9 @@ const PRODUCTS = [
     },
   },
   {
-    name: "OlyLife Galaxy G-One",
-    tagline: "Okos Szemmasszőr PEMF-fel",
+     name: "OlyLife Galaxy G-One",
+    deviceKey: "tera-grand",
+    tagline: "Okos Szemmaszk PEMF-fel",
     description:
       "Összecsukható okos szemmasszőr, amely integrálja a PEMF technológiát 7 szem-gondozási móddal. Digitális szemfáradtság, feszültségfejfájás és alvás-előkészítés enyhítésére tervezve — kombinálja a gyengéd elektromágneses stimulációt hő- és kompressziós terápiával kompakt, utazásbarát formában.",
     features: [
@@ -912,14 +915,25 @@ export default function PEMFAffiliateHU() {
                             </div>
                           ))}
                         </div>
-                        <Button
-                          variant="outline"
-                          className="w-fit border-emerald-300 text-emerald-700 hover:bg-emerald-50 hover:text-emerald-800 gap-2"
-                          onClick={() => setSelectedProduct(i)}
-                        >
-                          Részletek
-                          <ArrowRight className="w-4 h-4" />
-                        </Button>
+                        <div className="flex items-center gap-3 flex-wrap">
+                          <Button
+                            variant="outline"
+                            className="w-fit border-emerald-300 text-emerald-700 hover:bg-emerald-50 hover:text-emerald-800 gap-2"
+                            onClick={() => setSelectedProduct(i)}
+                          >
+                            Részletek
+                            <ArrowRight className="w-4 h-4" />
+                          </Button>
+                          <a
+                            href={`/go/${slug}/olylife/${product.deviceKey}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-medium transition-colors"
+                          >
+                            Rendelés
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </CardContent>

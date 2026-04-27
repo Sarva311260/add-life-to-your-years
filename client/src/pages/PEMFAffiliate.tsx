@@ -26,6 +26,7 @@ import { toast } from "sonner";
 const PRODUCTS = [
   {
     name: "OlyLife THZ Tera-P90+",
+    deviceKey: "tera-p90",
     tagline: "All-in-One PEMF Wellness Device",
     description:
       "The flagship P90+ combines PEMF, terahertz, and far-infrared technologies in an elegant foot-pad design with interchangeable wand attachments. Designed for daily home use, it delivers therapeutic electromagnetic pulses at the Schumann resonance frequency (7.83 Hz) — the same frequency as the Earth's natural electromagnetic field.",
@@ -69,6 +70,7 @@ const PRODUCTS = [
   },
   {
     name: "OlyLife Shaken Massager",
+    deviceKey: "terahertz-wand",
     tagline: "7-in-1 Body Shaping & Recovery",
     description:
       "A versatile belt-style device combining PEMF therapy with ultrasound, heat therapy, and vibration massage. Targets the core and waist area for deep tissue stimulation, circulation support, and muscle recovery — ideal for post-exercise recovery and daily wellness maintenance.",
@@ -112,6 +114,7 @@ const PRODUCTS = [
   },
   {
     name: "OlyLife Galaxy G-One",
+    deviceKey: "tera-grand",
     tagline: "Smart Eye Massager with PEMF",
     description:
       "A foldable smart eye massager integrating PEMF technology with 7 eye-care modes. Designed for relief from digital eye strain, tension headaches, and sleep preparation — combining gentle electromagnetic stimulation with heat and compression therapy in a compact, travel-friendly form.",
@@ -917,14 +920,25 @@ export default function PEMFAffiliate() {
                             </div>
                           ))}
                         </div>
-                        <Button
-                          variant="outline"
-                          className="w-fit border-emerald-300 text-emerald-700 hover:bg-emerald-50 hover:text-emerald-800 gap-2"
-                          onClick={() => setSelectedProduct(i)}
-                        >
-                          Learn More
-                          <ArrowRight className="w-4 h-4" />
-                        </Button>
+                        <div className="flex items-center gap-3 flex-wrap">
+                          <Button
+                            variant="outline"
+                            className="w-fit border-emerald-300 text-emerald-700 hover:bg-emerald-50 hover:text-emerald-800 gap-2"
+                            onClick={() => setSelectedProduct(i)}
+                          >
+                            Learn More
+                            <ArrowRight className="w-4 h-4" />
+                          </Button>
+                          <a
+                            href={`/go/${slug}/olylife/${product.deviceKey}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-medium transition-colors"
+                          >
+                            Order Now
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </CardContent>
@@ -961,7 +975,7 @@ export default function PEMFAffiliate() {
                           {p.description && <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1">{p.description}</p>}
                           {(p.resolvedUrl || p.defaultAffiliateUrl || p.productUrl) && (
                             <a
-                              href={p.resolvedUrl || p.defaultAffiliateUrl || p.productUrl}
+                              href={`/go/${slug}/${p.id}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="inline-flex items-center gap-2 text-sm font-medium text-emerald-700 hover:text-emerald-900 mt-auto"
