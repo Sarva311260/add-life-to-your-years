@@ -14,6 +14,7 @@ import {
   updateDripSendStatus, getDripEmailStats, getAdminDripEmailStats,
 } from "../db";
 import { Resend } from "resend";
+import { applyMergeTags } from "./mergeTags";
 
 const ADMIN_PASSWORD = process.env.PEMF_ADMIN_PASSWORD || "pemf-admin-2024";
 // Admin tokens are signed with the affiliate secret in pemfAffiliate.ts — must match
@@ -332,13 +333,20 @@ export const dripCampaignRouter = router({
       const affiliate = await getPemfAffiliateById(payload.affiliateId);
       if (!affiliate || !affiliate.isActive) throw new TRPCError({ code: "UNAUTHORIZED", message: "Account not found." });
 
+      // Apply merge tag substitution
+      const mergeCtx = {
+        prospect: { name: input.leadName, email: input.leadEmail },
+        affiliate: { id: affiliate.id, name: affiliate.name, email: affiliate.email, phone: affiliate.phone || undefined, slug: affiliate.slug || undefined },
+        origin: "https://addlifetoyouryears.org",
+      };
+      const { subject: mergedSubject, body: mergedBody } = await applyMergeTags(input.subject, input.body, mergeCtx);
       const resend = getResend();
       const result = await resend.emails.send({
         from: `${affiliate.name} via Add Life to Your Years <noreply@addlifetoyouryears.org>`,
         replyTo: affiliate.email,
         to: input.leadEmail,
-        subject: input.subject,
-        html: `<p>Hi ${input.leadName},</p>${input.body}<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;"><p style="font-size:12px;color:#9ca3af;">This email was sent by ${affiliate.name} via Add Life to Your Years. To reply, contact ${affiliate.email} directly.</p>`,
+        subject: mergedSubject,
+        html: `<p>Hi ${input.leadName},</p>${mergedBody}<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;"><p style="font-size:12px;color:#9ca3af;">This email was sent by ${affiliate.name} via Add Life to Your Years. To reply, contact ${affiliate.email} directly.</p>`,
       });
 
       await logEmail({
@@ -507,9 +515,16 @@ export async function processDripQueue(origin: string): Promise<{ sent: number; 
     const unsubLink = unsubscribeUrl(origin, enrollment.unsubscribeToken);
     // Check for affiliate override
     const override = await getAffiliateDripOverride(enrollment.affiliateId, dripEmail.id);
-    const emailSubject = override?.subject || dripEmail.subject;
-    const emailBodyRaw = override?.body || dripEmail.body;
-    const htmlBody = wrapWithUnsubscribe(emailBodyRaw, unsubLink, affiliate.name);
+    const rawSubject = override?.subject || dripEmail.subject;
+    const rawBody = override?.body || dripEmail.body;
+    // Apply merge tag substitution
+    const mergeCtx = {
+      prospect: { name: enrollment.leadName, email: enrollment.leadEmail },
+      affiliate: { id: affiliate.id, name: affiliate.name, email: affiliate.email, phone: affiliate.phone || undefined, slug: affiliate.slug || undefined },
+      origin,
+    };
+    const { subject: emailSubject, body: mergedBody } = await applyMergeTags(rawSubject, rawBody, mergeCtx);
+    const htmlBody = wrapWithUnsubscribe(mergedBody, unsubLink, affiliate.name);
 
     // Create send log entry first so we have the ID for tracking URLs
     const sendLog = await logDripSend({

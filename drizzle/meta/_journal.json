@@ -134,6 +134,13 @@
       "when": 1777371668023,
       "tag": "0018_dizzy_golden_guardian",
       "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "5",
+      "when": 1777375892617,
+      "tag": "0019_abandoned_jack_murdock",
+      "breakpoints": true
     }
   ]
 }

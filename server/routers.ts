@@ -24,6 +24,7 @@ import { pemfAffiliateRouter } from "./routers/pemfAffiliate";
 import { dripCampaignRouter } from "./routers/dripCampaign";
 import { recommendedProductsRouter } from "./routers/recommendedProducts";
 import { affiliateContactsRouter } from "./routers/affiliateContacts";
+import { mergeTagsRouter } from "./routers/mergeTags";
 import { adminProcedure } from "./_core/trpc";
 import { CONDITION_KNOWLEDGE } from "./conditionKnowledge";
 import { VIDEO_KNOWLEDGE } from "./videoKnowledge";
@@ -37,6 +38,7 @@ export const appRouter = router({
   drip: dripCampaignRouter,
   recommendedProducts: recommendedProductsRouter,
   affiliateContacts: affiliateContactsRouter,
+  mergeTags: mergeTagsRouter,
 
   knowledge: router({
     list: adminProcedure.query(() => {

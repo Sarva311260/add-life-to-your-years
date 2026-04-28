@@ -2,6 +2,7 @@ import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 import PEMFAdminDrip from "./PEMFAdminDrip";
+import PEMFAdminContentLibrary from "./PEMFAdminContentLibrary";
 import PEMFAdminProducts from "./PEMFAdminProducts";
 import {
   Leaf, Eye, EyeOff, ArrowRight, LogOut, Users, BarChart2,
@@ -297,7 +298,7 @@ function AffiliateRow({ affiliate, adminToken, onRefresh }: {
 }
 
 // ─── Admin Dashboard ──────────────────────────────────────────────────────────
-type AdminView = "affiliates" | "campaigns" | "products";
+type AdminView = "affiliates" | "campaigns" | "products" | "library";
 
 function AdminDashboard({ onLogout }: { onLogout: () => void }) {
   const adminToken = getAdminToken();
@@ -362,7 +363,7 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
       <div className="bg-[#0a2e1a]/80 border-b border-emerald-800/20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex gap-1">
-            {(["affiliates", "campaigns", "products"] as AdminView[]).map((view) => (
+            {(["affiliates", "campaigns", "products", "library"] as AdminView[]).map((view) => (
               <button
                 key={view}
                 onClick={() => setActiveView(view)}
@@ -372,7 +373,7 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
                     : "border-transparent text-gray-400 hover:text-white"
                 }`}
               >
-                  {view === "affiliates" ? "Brand Partners" : view === "campaigns" ? "Email Campaigns" : "Recommended Products"}
+                  {view === "affiliates" ? "Brand Partners" : view === "campaigns" ? "Email Campaigns" : view === "products" ? "Recommended Products" : "Content Library"}
               </button>
             ))}
           </div>
@@ -381,6 +382,11 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
 
       <div className="max-w-6xl mx-auto px-4 py-10 space-y-6">
         {/* Stats — only on affiliates tab */}
+        {activeView === "library" && (
+          <div className="bg-[#0d3b22]/60 border border-emerald-800/30 rounded-2xl p-6">
+            <PEMFAdminContentLibrary adminPassword={getAdminPassword()} />
+          </div>
+        )}
         {activeView === "products" && (
           <div className="bg-[#0d3b22]/60 border border-emerald-800/30 rounded-2xl p-6">
             <PEMFAdminProducts adminToken={adminToken} />

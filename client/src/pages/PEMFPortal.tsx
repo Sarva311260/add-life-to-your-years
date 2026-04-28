@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import AffiliateContacts from "./AffiliateContacts";
 import { Input } from "@/components/ui/input";
 import RichTextEditor from "@/components/RichTextEditor";
+import AffiliateCustomLinks from "./AffiliateCustomLinks";
 
 const TOKEN_KEY = "affiliate_token";
 
@@ -692,6 +693,9 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
           </div>
         </div>
 
+        {/* My Custom Tags & Links */}
+        <AffiliateCustomLinks token={token} />
+
         {/* Change Password */}
         <div className="bg-white/5 border border-emerald-800/30 rounded-2xl p-6">
           <button
@@ -865,6 +869,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
                   onChange={(html) => setEditingOverride(o => o ? { ...o, body: html } : null)}
                   placeholder="Email body..."
                   minHeight={280}
+                  token={token}
                 />
                 <p className="text-xs text-muted-foreground mt-1">
                   Use <code className="bg-muted px-1 rounded">{"{{leadName}}"}</code> for the prospect's name. An unsubscribe link is added automatically.
@@ -906,6 +911,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
               onChange={setEmailBody}
               placeholder="Your message..."
               minHeight={200}
+              token={token}
             />
           </div>
           <DialogFooter>

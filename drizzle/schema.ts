@@ -531,3 +531,83 @@ export const affiliateContacts = mysqlTable("affiliate_contacts", {
 });
 export type AffiliateContact = typeof affiliateContacts.$inferSelect;
 export type InsertAffiliateContact = typeof affiliateContacts.$inferInsert;
+
+/**
+ * CRM Merge Tags — admin-defined global tags available to all affiliates.
+ * e.g. {{pemf_link}}, {{redox_link}}, {{masterpeace_link}}
+ * scope: 'global' = available to all; 'system' = auto-resolved, not editable
+ */
+export const crmMergeTags = mysqlTable("crm_merge_tags", {
+  id: int("id").autoincrement().primaryKey(),
+  /** The tag key used in templates e.g. "pemf_link" → {{pemf_link}} */
+  tagKey: varchar("tagKey", { length: 100 }).notNull().unique(),
+  /** Human-readable label shown in the picker */
+  label: varchar("label", { length: 255 }).notNull(),
+  /** The default value (URL or text) — affiliates may override via affiliate_custom_links */
+  defaultValue: text("defaultValue"),
+  /** Category for grouping in the picker: 'link' | 'text' | 'asset' */
+  category: varchar("category", { length: 20 }).notNull().default("text"),
+  /** Short description shown in the picker */
+  description: varchar("description", { length: 512 }),
+  /** Display order */
+  sortOrder: int("sortOrder").default(0).notNull(),
+  /** Whether this tag is active */
+  isActive: int("isActive").default(1).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+export type CrmMergeTag = typeof crmMergeTags.$inferSelect;
+export type InsertCrmMergeTag = typeof crmMergeTags.$inferInsert;
+
+/**
+ * Affiliate Custom Links — each affiliate's own overrides or additions to merge tags.
+ * e.g. their personal booking link, Facebook group link, etc.
+ * If tagKey matches a global tag, it overrides the default for that affiliate.
+ * If tagKey is new, it creates an affiliate-only tag.
+ */
+export const affiliateCustomLinks = mysqlTable("affiliate_custom_links", {
+  id: int("id").autoincrement().primaryKey(),
+  affiliateId: int("affiliateId").notNull(),
+  /** The tag key — must be unique per affiliate */
+  tagKey: varchar("tagKey", { length: 100 }).notNull(),
+  /** Human-readable label */
+  label: varchar("label", { length: 255 }).notNull(),
+  /** The URL or text value */
+  value: text("value").notNull(),
+  /** Category: 'link' | 'text' */
+  category: varchar("category", { length: 20 }).notNull().default("link"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+export type AffiliateCustomLink = typeof affiliateCustomLinks.$inferSelect;
+export type InsertAffiliateCustomLink = typeof affiliateCustomLinks.$inferInsert;
+
+/**
+ * CRM Assets — shared video and document library for use in email campaigns.
+ * Admin manages this library; affiliates can reference assets via {{asset_key}} tags.
+ */
+export const crmAssets = mysqlTable("crm_assets", {
+  id: int("id").autoincrement().primaryKey(),
+  /** The tag key used in templates e.g. "video_redox" → {{video_redox}} */
+  tagKey: varchar("tagKey", { length: 100 }).notNull().unique(),
+  /** Human-readable title */
+  title: varchar("title", { length: 255 }).notNull(),
+  /** Asset type: 'video' | 'pdf' | 'image' | 'link' */
+  assetType: varchar("assetType", { length: 20 }).notNull().default("video"),
+  /** URL to the asset (YouTube, Vimeo, S3, or external URL) */
+  url: varchar("url", { length: 1024 }).notNull(),
+  /** Optional thumbnail URL */
+  thumbnailUrl: varchar("thumbnailUrl", { length: 1024 }),
+  /** Short description */
+  description: varchar("description", { length: 512 }),
+  /** When inserted into email, this is the HTML snippet generated */
+  embedHtml: text("embedHtml"),
+  /** Display order */
+  sortOrder: int("sortOrder").default(0).notNull(),
+  /** Whether this asset is active */
+  isActive: int("isActive").default(1).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+export type CrmAsset = typeof crmAssets.$inferSelect;
+export type InsertCrmAsset = typeof crmAssets.$inferInsert;

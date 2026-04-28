@@ -138,6 +138,7 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
             onChange={setBroadcastBody}
             placeholder="Email body..."
             minHeight={160}
+            adminPassword={adminToken}
           />
           <Button
             onClick={() => broadcast.mutate({ adminToken, subject: broadcastSubject, body: broadcastBody })}
@@ -363,6 +364,7 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
                 onChange={(html) => setEmailForm(f => ({ ...f, body: html }))}
                 placeholder="Email body... The affiliate's name and an unsubscribe link will be added automatically."
                 minHeight={240}
+                adminPassword={adminToken}
               />
               <p className="text-xs text-muted-foreground mt-1">
                 Available placeholders: <code className="bg-muted px-1 rounded">{"{{leadName}}"}</code> — the lead's first name.
