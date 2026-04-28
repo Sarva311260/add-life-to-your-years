@@ -513,14 +513,22 @@ export default function PEMFAffiliate() {
   const [, params] = useRoute("/pemf/:slug");
   const slug = params?.slug || "";
 
-  const { data: affiliate, isLoading, error } = trpc.pemfAffiliate.getBySlug.useQuery(
+  const { data: affiliateBySlug, isLoading: loadingBySlug } = trpc.pemfAffiliate.getBySlug.useQuery(
     { slug },
     { enabled: !!slug }
   );
+  const { data: defaultAffiliate, isLoading: loadingDefault } = trpc.pemfAffiliate.getDefaultAffiliate.useQuery(
+    undefined,
+    { enabled: !slug }
+  );
+
+  const isLoading = slug ? loadingBySlug : loadingDefault;
+  const affiliate = slug ? affiliateBySlug : defaultAffiliate;
+  const effectiveSlug = affiliate?.slug ?? slug;
 
   const { data: dbProducts } = trpc.recommendedProducts.list.useQuery(
-    { affiliateSlug: slug },
-    { enabled: !!slug }
+    { affiliateSlug: effectiveSlug },
+    { enabled: !!effectiveSlug }
   );
 
   const [selectedProduct, setSelectedProduct] = useState<number | null>(null);
@@ -577,8 +585,8 @@ export default function PEMFAffiliate() {
     );
   }
 
-  // Not found
-  if (!affiliate) {
+  // Not found (only when a specific slug was given and not found)
+  if (!isLoading && !affiliate) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center max-w-md px-4">
@@ -591,6 +599,8 @@ export default function PEMFAffiliate() {
       </div>
     );
   }
+
+  const aff = affiliate!;
 
   return (
     <div className="min-h-screen bg-white">
@@ -634,12 +644,12 @@ export default function PEMFAffiliate() {
           <div className="hidden sm:flex items-center gap-3 flex-shrink-0">
             <div className="text-right">
               <div className="text-white text-sm font-medium leading-tight">
-                {affiliate.name}
+                {aff.name}
                 <span className="text-emerald-300 font-normal"> — Brand Partner</span>
               </div>
               <div className="flex items-center justify-end gap-1 text-emerald-300/80 text-xs">
                 <Phone className="w-3 h-3" />
-                <span>{affiliate.phone}</span>
+                <span>{aff.phone}</span>
               </div>
             </div>
             <button
@@ -668,12 +678,12 @@ export default function PEMFAffiliate() {
             {/* Affiliate info on mobile */}
             <div className="pb-3 mb-2 border-b border-emerald-700/40">
               <div className="text-white text-sm font-medium">
-                {affiliate.name}
+                {aff.name}
                 <span className="text-emerald-300 font-normal"> — Brand Partner</span>
               </div>
               <div className="flex items-center gap-1 text-emerald-300/80 text-xs mt-0.5">
                 <Phone className="w-3 h-3" />
-                <span>{affiliate.phone}</span>
+                <span>{aff.phone}</span>
               </div>
             </div>
             <a href="#science" onClick={(e) => scrollToSection(e, 'science')} className="block text-emerald-200 hover:text-white py-2 text-sm">
@@ -1001,7 +1011,7 @@ export default function PEMFAffiliate() {
                 className="bg-emerald-700 hover:bg-emerald-800 text-white gap-2"
                 onClick={() => setContactOpen(true)}
               >
-                Get in Touch with {affiliate.name}
+                Get in Touch with {aff.name}
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </div>
@@ -1085,35 +1095,35 @@ export default function PEMFAffiliate() {
       <footer className="py-8 bg-emerald-900 text-emerald-200/70">
         <div className="container text-center space-y-4">
           {/* Social media icons */}
-          {(affiliate.facebook || affiliate.instagram || affiliate.linkedin || affiliate.tiktok || affiliate.youtube || affiliate.twitter) && (
+          {(aff.facebook || aff.instagram || aff.linkedin || aff.tiktok || aff.youtube || aff.twitter) && (
             <div className="flex items-center justify-center gap-4">
-              {affiliate.facebook && (
-                <a href={affiliate.facebook} target="_blank" rel="noreferrer" className="text-emerald-300/70 hover:text-emerald-300 transition-colors" title="Facebook">
+              {aff.facebook && (
+                <a href={aff.facebook} target="_blank" rel="noreferrer" className="text-emerald-300/70 hover:text-emerald-300 transition-colors" title="Facebook">
                   <Facebook className="w-5 h-5" />
                 </a>
               )}
-              {affiliate.instagram && (
-                <a href={affiliate.instagram} target="_blank" rel="noreferrer" className="text-emerald-300/70 hover:text-emerald-300 transition-colors" title="Instagram">
+              {aff.instagram && (
+                <a href={aff.instagram} target="_blank" rel="noreferrer" className="text-emerald-300/70 hover:text-emerald-300 transition-colors" title="Instagram">
                   <Instagram className="w-5 h-5" />
                 </a>
               )}
-              {affiliate.linkedin && (
-                <a href={affiliate.linkedin} target="_blank" rel="noreferrer" className="text-emerald-300/70 hover:text-emerald-300 transition-colors" title="LinkedIn">
+              {aff.linkedin && (
+                <a href={aff.linkedin} target="_blank" rel="noreferrer" className="text-emerald-300/70 hover:text-emerald-300 transition-colors" title="LinkedIn">
                   <Linkedin className="w-5 h-5" />
                 </a>
               )}
-              {affiliate.tiktok && (
-                <a href={affiliate.tiktok} target="_blank" rel="noreferrer" className="text-emerald-300/70 hover:text-emerald-300 transition-colors" title="TikTok">
+              {aff.tiktok && (
+                <a href={aff.tiktok} target="_blank" rel="noreferrer" className="text-emerald-300/70 hover:text-emerald-300 transition-colors" title="TikTok">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
                 </a>
               )}
-              {affiliate.youtube && (
-                <a href={affiliate.youtube} target="_blank" rel="noreferrer" className="text-emerald-300/70 hover:text-emerald-300 transition-colors" title="YouTube">
+              {aff.youtube && (
+                <a href={aff.youtube} target="_blank" rel="noreferrer" className="text-emerald-300/70 hover:text-emerald-300 transition-colors" title="YouTube">
                   <Youtube className="w-5 h-5" />
                 </a>
               )}
-              {affiliate.twitter && (
-                <a href={affiliate.twitter} target="_blank" rel="noreferrer" className="text-emerald-300/70 hover:text-emerald-300 transition-colors" title="X (Twitter)">
+              {aff.twitter && (
+                <a href={aff.twitter} target="_blank" rel="noreferrer" className="text-emerald-300/70 hover:text-emerald-300 transition-colors" title="X (Twitter)">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                 </a>
               )}
@@ -1147,7 +1157,7 @@ export default function PEMFAffiliate() {
         open={contactOpen}
         onClose={() => setContactOpen(false)}
         affiliateSlug={slug}
-        affiliateName={affiliate.name}
+        affiliateName={aff.name}
       />
     </div>
   );

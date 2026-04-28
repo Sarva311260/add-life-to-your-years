@@ -83,6 +83,7 @@ function Router() {
       <Route path={"/ref/:slug"} component={HomeAffiliate} />
       <Route path={"/pemf/:slug/hu"} component={PEMFAffiliateHU} />
       <Route path={"/pemf/:slug"} component={PEMFAffiliate} />
+      <Route path={"/redox"} component={RedoxAffiliate} />
       <Route path={"/redox/:slug"} component={RedoxAffiliate} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />

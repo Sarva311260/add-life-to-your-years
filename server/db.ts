@@ -402,6 +402,17 @@ export async function getAllPemfAffiliates() {
   return db.select().from(pemfAffiliates).orderBy(pemfAffiliates.createdAt);
 }
 
+/** Returns the owner/default affiliate — the first active record by creation date. */
+export async function getOwnerPemfAffiliate() {
+  const db = await getDb();
+  if (!db) return null;
+  const rows = await db.select().from(pemfAffiliates)
+    .where(eq(pemfAffiliates.isActive, 1))
+    .orderBy(pemfAffiliates.createdAt)
+    .limit(1);
+  return rows[0] || null;
+}
+
 export async function getPemfEnquiriesByAffiliate(affiliateId: number) {
   const db = await getDb();
   if (!db) return [];

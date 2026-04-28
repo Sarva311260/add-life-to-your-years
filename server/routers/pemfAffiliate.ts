@@ -12,6 +12,7 @@ import {
   createPemfEnquiry,
   updatePemfAffiliate,
   getAllPemfAffiliates,
+  getOwnerPemfAffiliate,
   getPemfEnquiriesByAffiliate,
   getEnquiryCountsByAffiliate,
   createPemfResource,
@@ -317,6 +318,29 @@ export const pemfAffiliateRouter = router({
       if (!affiliate || !affiliate.isActive) {
         return null;
       }
+      return {
+        id: affiliate.id,
+        name: affiliate.name,
+        phone: affiliate.phone,
+        slug: affiliate.slug,
+        facebook: affiliate.facebook,
+        instagram: affiliate.instagram,
+        linkedin: affiliate.linkedin,
+        tiktok: affiliate.tiktok,
+        youtube: affiliate.youtube,
+        twitter: affiliate.twitter,
+        aseaCartUrl: affiliate.aseaCartUrl,
+      };
+    }),
+
+  /**
+   * Returns the owner/default affiliate profile.
+   * Used when no affiliate slug is in the URL — pages fall back to the owner.
+   */
+  getDefaultAffiliate: publicProcedure
+    .query(async () => {
+      const affiliate = await getOwnerPemfAffiliate();
+      if (!affiliate) return null;
       return {
         id: affiliate.id,
         name: affiliate.name,
