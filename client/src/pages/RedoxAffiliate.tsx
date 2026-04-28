@@ -354,8 +354,29 @@ export default function RedoxAffiliate() {
         </div>
       </section>
 
+      {/* ── FEATURED VIDEO ───────────────────────────────────── */}
+      <section className="py-20 bg-[#0a0f1e]">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold mb-3">See the Science in Action</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Watch this short video to understand how Redox Signalling Molecules work and why ASEA is the only company to have stabilised them outside the body.
+            </p>
+          </div>
+          <div className="relative w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-cyan-500/10" style={{paddingTop: "56.25%"}}>
+            <iframe
+              src="https://www.youtube.com/embed/jsO6gw5RSX8"
+              title="Redox Signalling — The Science Behind ASEA"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full border-0"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ── EXPERT QUOTES ────────────────────────────────────── */}
-      <section className="py-16 bg-[#0a0f1e]">
+      <section className="py-16 bg-[#060c1a]">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-2xl font-bold text-center mb-10">What Health Experts Say</h2>
           <div className="grid md:grid-cols-3 gap-6">
