@@ -46,7 +46,51 @@ async function verifyAffiliateToken(token: string): Promise<number | null> {
   }
 }
 
+const OLYLIFE_LINKS: Record<string, string> = {
+  "tera-p90": "https://www.olylife.com/products/tera-p90",
+  "terahertz-wand": "https://www.olylife.com/products/terahertz-wand",
+  "tera-grand": "https://www.olylife.com/products/tera-grand",
+};
+
 export const recommendedProductsRouter = router({
+  /**
+   * Public: resolve the destination URL for a cloaked /go/ link.
+   * Used by the client-side GoRedirect page when the deployment proxy serves
+   * the SPA for /go/ paths instead of letting Express handle them server-side.
+   */
+  resolveLink: publicProcedure
+    .input(z.object({
+      affiliateSlug: z.string(),
+      productId: z.number().optional(),
+      deviceKey: z.string().optional(),
+    }))
+    .query(async ({ input }) => {
+      // OlyLife device link
+      if (input.deviceKey) {
+        const url = OLYLIFE_LINKS[input.deviceKey] ?? null;
+        return { url, affiliateSlug: input.affiliateSlug };
+      }
+      // DB product link
+      if (input.productId != null) {
+        const product = await getRecommendedProductById(input.productId);
+        if (!product || !product.isPublished) {
+          return { url: null, affiliateSlug: input.affiliateSlug };
+        }
+        let destinationUrl: string | null = null;
+        if (product.isAffiliate && input.affiliateSlug) {
+          const affiliate = await getPemfAffiliateBySlug(input.affiliateSlug);
+          if (affiliate) {
+            const links = await getAffiliateProductLinks(affiliate.id);
+            const myLink = links.find(l => l.productId === input.productId);
+            if (myLink?.affiliateUrl) destinationUrl = myLink.affiliateUrl;
+          }
+        }
+        if (!destinationUrl) destinationUrl = product.defaultAffiliateUrl ?? null;
+        return { url: destinationUrl, affiliateSlug: input.affiliateSlug };
+      }
+      return { url: null, affiliateSlug: input.affiliateSlug };
+    }),
+
   /** Public: list all published products, optionally resolving affiliate links by slug */
   list: publicProcedure
     .input(z.object({ affiliateSlug: z.string().optional() }).optional())
