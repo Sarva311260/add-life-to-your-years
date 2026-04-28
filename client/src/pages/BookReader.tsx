@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book-content_1bcee785.md";
+const MD_CDN_URL = "/manus-storage/book-content_6c0725aa.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -583,6 +583,7 @@ export default function BookReader() {
               </div>
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
+                urlTransform={(url) => url}
                 components={{
                   h1: ({ children }) => {
                     const id = getHeadingId(children);
@@ -761,6 +762,7 @@ export default function BookReader() {
               {bookContent && bookContent.indexOf("\n# Glossary") !== -1 && (
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm]}
+                  urlTransform={(url) => url}
                   components={{
                     h1: ({ children }) => {
                       const id = getHeadingId(children);
