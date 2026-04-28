@@ -160,9 +160,12 @@ export default function RedoxAffiliate() {
 
         <div className="relative max-w-6xl mx-auto px-4 py-20 md:py-28">
           <div className="flex flex-col items-center text-center">
-            <Badge className="mb-6 bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 px-4 py-1.5 text-sm font-medium">
+            <Badge className="mb-3 bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 px-4 py-1.5 text-sm font-medium">
               Presented by {affiliate.name}
             </Badge>
+            <p className="mb-7 text-cyan-200/60 text-xs font-semibold tracking-[0.2em] uppercase">
+              ASEA Brand Partner
+            </p>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
               The World's First{" "}
               <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
