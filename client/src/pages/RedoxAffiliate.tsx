@@ -392,6 +392,30 @@ export default function RedoxAffiliate() {
         </div>
       </section>
 
+      {/* ── RENU 28 VIDEO ─────────────────────────────────────── */}
+      <section className="py-20 bg-[#060c1a]">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 mb-4">
+              RENU 28 in Action
+            </span>
+            <h2 className="text-3xl font-bold mb-3">See RENU 28 Revitalising Redox Gel</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Watch how RENU 28 works at the cellular level to revitalise skin, accelerate recovery, and deliver visible results backed by clinical research.
+            </p>
+          </div>
+          <div className="relative w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-cyan-500/10" style={{paddingTop: "56.25%"}}>
+            <iframe
+              src="https://player.vimeo.com/video/793114922?autoplay=0&title=0&byline=0&portrait=0"
+              title="RENU 28 Revitalising Redox Gel"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full border-0"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ── FEATURED VIDEO ───────────────────────────────────── */}
       <section className="py-20 bg-[#0a0f1e]">
         <div className="max-w-4xl mx-auto px-4">
