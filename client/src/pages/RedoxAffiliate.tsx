@@ -21,7 +21,7 @@ import {
   ExternalLink, Phone, Mail, User, MessageSquare, Send,
   CheckCircle, ChevronDown, ChevronUp, ShoppingCart,
   Facebook, Instagram, Linkedin, Youtube,
-  ArrowRight, Zap, Star,
+  ArrowRight, Zap, Star, Share2, Copy, Check,
 } from "lucide-react";
 
 const ASEA_REDOX_IMAGE = "/manus-storage/asea-redox-bottles_b681b865.jpg";
@@ -97,6 +97,22 @@ export default function RedoxAffiliate() {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
   const [formSent, setFormSent] = useState(false);
   const [expandedQuote, setExpandedQuote] = useState<number | null>(null);
+  const [copied, setCopied] = useState(false);
+
+  const handleShare = () => {
+    const url = window.location.href;
+    const title = `Redox Signalling — Presented by ${aff.name}`;
+    const text = `Discover the world's first Redox Signalling supplement, recommended by ${aff.name}.`;
+    if (navigator.share) {
+      navigator.share({ title, text, url }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(url).then(() => {
+        setCopied(true);
+        toast.success("Link copied to clipboard!");
+        setTimeout(() => setCopied(false), 2000);
+      });
+    }
+  };
 
   const submitEnquiry = trpc.pemfAffiliate.submitEnquiry.useMutation({
     onSuccess: () => {
@@ -172,9 +188,19 @@ export default function RedoxAffiliate() {
 
         <div className="relative max-w-6xl mx-auto px-4 py-20 md:py-28">
           <div className="flex flex-col items-center text-center">
-            <Badge className="mb-3 bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 px-4 py-1.5 text-sm font-medium">
-              Presented by {aff.name}
-            </Badge>
+            <div className="flex items-center gap-3 mb-3">
+              <Badge className="bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 px-4 py-1.5 text-sm font-medium">
+                Presented by {aff.name}
+              </Badge>
+              <button
+                onClick={handleShare}
+                className="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold px-3 py-1.5 rounded-lg border border-white/20 transition-all"
+                title="Share this page"
+              >
+                {copied ? <Check className="w-3.5 h-3.5" /> : <Share2 className="w-3.5 h-3.5" />}
+                <span>{copied ? "Copied!" : "Share"}</span>
+              </button>
+            </div>
             <p className="mb-7 text-cyan-200/60 text-xs font-semibold tracking-[0.2em] uppercase">
               ASEA Brand Partner
             </p>
@@ -519,13 +545,22 @@ export default function RedoxAffiliate() {
             <p className="font-semibold text-white">{aff.name}</p>
             <p className="text-gray-500 text-sm">ASEA Brand Partner · Add Life To Your Years</p>
           </div>
-          {socials.length > 0 && (
-            <div className="flex gap-3">
-              {socials.map(s => (
-                <SocialIcon key={s.platform} platform={s.platform} url={s.url!} />
-              ))}
-            </div>
-          )}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handleShare}
+              className="inline-flex items-center gap-2 bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 text-sm font-semibold px-4 py-2 rounded-lg border border-cyan-500/30 transition-all"
+            >
+              {copied ? <Check className="w-4 h-4" /> : <Share2 className="w-4 h-4" />}
+              {copied ? "Copied!" : "Share This Page"}
+            </button>
+            {socials.length > 0 && (
+              <div className="flex gap-3">
+                {socials.map(s => (
+                  <SocialIcon key={s.platform} platform={s.platform} url={s.url!} />
+                ))}
+              </div>
+            )}
+          </div>
           <div className="text-center md:text-right">
             <p className="text-gray-600 text-xs">
               © {new Date().getFullYear()} Add Life To Your Years · All rights reserved
