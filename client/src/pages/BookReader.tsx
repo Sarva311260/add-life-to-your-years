@@ -371,13 +371,33 @@ export default function BookReader() {
 
   const scrollToChapter = (id: string) => {
     const element = document.getElementById(id);
-    if (element) {
-      // Precise scroll: account for sticky header (~56px) plus 16px breathing room
-      const HEADER_OFFSET = 72;
-      const elementTop = element.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
-      window.scrollTo({ top: Math.max(0, elementTop), behavior: "smooth" });
-      setSidebarOpen(false);
-    }
+    if (!element) return;
+    setSidebarOpen(false);
+    const HEADER_OFFSET = 72;
+
+    // First pass: instant scroll to approximate position
+    const doScroll = () => {
+      const top = element.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+      window.scrollTo({ top: Math.max(0, top), behavior: "instant" });
+    };
+
+    doScroll();
+
+    // Second pass: wait for lazy images above the target to finish loading,
+    // then re-scroll to the now-stable position.
+    // We observe the document body for size changes and re-scroll up to ~800ms.
+    let settled = false;
+    const resizeObserver = new ResizeObserver(() => {
+      if (settled) return;
+      doScroll();
+    });
+    resizeObserver.observe(document.body);
+    setTimeout(() => {
+      settled = true;
+      resizeObserver.disconnect();
+      // Final authoritative scroll after layout has stabilised
+      doScroll();
+    }, 800);
   };
 
   // Wrap text renderer to highlight search matches
