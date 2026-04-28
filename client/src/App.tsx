@@ -36,6 +36,7 @@ import PEMFResources from "@/pages/PEMFResources";
 import HomeAffiliate from "@/pages/HomeAffiliate";
 import Unsubscribe from "@/pages/Unsubscribe";
 import GoRedirect from "@/pages/GoRedirect";
+import RedoxAffiliate from "@/pages/RedoxAffiliate";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -82,6 +83,7 @@ function Router() {
       <Route path={"/ref/:slug"} component={HomeAffiliate} />
       <Route path={"/pemf/:slug/hu"} component={PEMFAffiliateHU} />
       <Route path={"/pemf/:slug"} component={PEMFAffiliate} />
+      <Route path={"/redox/:slug"} component={RedoxAffiliate} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

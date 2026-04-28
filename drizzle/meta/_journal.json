@@ -127,6 +127,13 @@
       "when": 1776759520040,
       "tag": "0017_optimal_sue_storm",
       "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "5",
+      "when": 1777371668023,
+      "tag": "0018_dizzy_golden_guardian",
+      "breakpoints": true
     }
   ]
 }

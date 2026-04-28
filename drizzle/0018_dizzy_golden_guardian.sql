@@ -1,0 +1,1 @@
+ALTER TABLE `pemf_affiliates` ADD `aseaCartUrl` varchar(1024);

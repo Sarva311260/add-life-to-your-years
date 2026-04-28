@@ -232,6 +232,7 @@ export const pemfAffiliateRouter = router({
         tiktok: affiliate.tiktok,
         youtube: affiliate.youtube,
         twitter: affiliate.twitter,
+        aseaCartUrl: affiliate.aseaCartUrl,
         enquiryCount: enquiries.length,
         recentEnquiries: enquiries.slice(-5).reverse().map(e => ({
           id: e.id,
@@ -262,6 +263,7 @@ export const pemfAffiliateRouter = router({
       tiktok: z.string().max(512).optional().nullable(),
       youtube: z.string().max(512).optional().nullable(),
       twitter: z.string().max(512).optional().nullable(),
+      aseaCartUrl: z.string().max(1024).optional().nullable(),
     }))
     .mutation(async ({ input }) => {
       const payload = await verifyAffiliateToken(input.token);
@@ -279,6 +281,7 @@ export const pemfAffiliateRouter = router({
       if (input.tiktok !== undefined) updates.tiktok = input.tiktok || null;
       if (input.youtube !== undefined) updates.youtube = input.youtube || null;
       if (input.twitter !== undefined) updates.twitter = input.twitter || null;
+      if (input.aseaCartUrl !== undefined) updates.aseaCartUrl = input.aseaCartUrl || null;
       if (input.email) {
         const emailLower = input.email.trim().toLowerCase();
         if (emailLower !== affiliate.email) {
@@ -325,6 +328,7 @@ export const pemfAffiliateRouter = router({
         tiktok: affiliate.tiktok,
         youtube: affiliate.youtube,
         twitter: affiliate.twitter,
+        aseaCartUrl: affiliate.aseaCartUrl,
       };
     }),
 

@@ -138,6 +138,8 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
   const [editTiktok, setEditTiktok] = useState("");
   const [editYoutube, setEditYoutube] = useState("");
   const [editTwitter, setEditTwitter] = useState("");
+  // ASEA cart URL
+  const [editAseaCartUrl, setEditAseaCartUrl] = useState("");
 
   // Password change
   const [currentPw, setCurrentPw] = useState("");
@@ -212,6 +214,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
       setEditTiktok(profile.tiktok || "");
       setEditYoutube(profile.youtube || "");
       setEditTwitter(profile.twitter || "");
+      setEditAseaCartUrl((profile as any).aseaCartUrl || "");
     }
   }, [profile]);
 
@@ -245,6 +248,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
       tiktok: editTiktok !== (profile?.tiktok || "") ? (editTiktok || null) : undefined,
       youtube: editYoutube !== (profile?.youtube || "") ? (editYoutube || null) : undefined,
       twitter: editTwitter !== (profile?.twitter || "") ? (editTwitter || null) : undefined,
+      aseaCartUrl: editAseaCartUrl !== ((profile as any)?.aseaCartUrl || "") ? (editAseaCartUrl || null) : undefined,
     });
   };
 
@@ -546,6 +550,22 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
                 </button>
               </div>
             </div>
+            {/* Redox page */}
+            <div>
+              <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5 font-medium">Redox Signalling Page</p>
+              <div className="flex items-center gap-3 bg-black/30 rounded-xl p-4">
+                <a href={`${window.location.origin}/redox/${profile?.slug}`} target="_blank" rel="noreferrer" className="text-emerald-400 text-sm flex-1 break-all hover:text-emerald-300 transition-colors">
+                  {`${window.location.origin}/redox/${profile?.slug}`}
+                </a>
+                <button
+                  onClick={() => { navigator.clipboard.writeText(`${window.location.origin}/redox/${profile?.slug}`); toast.success("Redox link copied!"); }}
+                  className="flex-shrink-0 bg-emerald-600 hover:bg-emerald-500 text-white p-2.5 rounded-lg transition-all"
+                  title="Copy Redox link"
+                >
+                  <Copy className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
             {/* Main site */}
             <div>
               <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5 font-medium">Main Website</p>
@@ -614,6 +634,27 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
                 )}
               </div>
             ))}
+          </div>
+
+          {/* ASEA Cart URL */}
+          <div className="mt-6 pt-6 border-t border-emerald-800/30">
+            <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5">ASEA Shopping Cart Link</p>
+            <p className="text-gray-500 text-xs mb-3">Paste your personal ASEA shopping cart URL here. It will be embedded on your Redox Signalling page so visitors can order directly from your store.</p>
+            {editMode ? (
+              <input
+                type="url"
+                value={editAseaCartUrl}
+                onChange={(e) => setEditAseaCartUrl(e.target.value)}
+                placeholder="https://www.myasealife.com/your-name/shop/..."
+                className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-3 py-2.5 text-white text-sm placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all"
+              />
+            ) : (
+              editAseaCartUrl ? (
+                <a href={editAseaCartUrl} target="_blank" rel="noreferrer" className="text-emerald-400 text-sm py-2.5 block hover:text-emerald-300 truncate">{editAseaCartUrl}</a>
+              ) : (
+                <p className="text-gray-600 text-sm py-2.5 italic">Not set — add your ASEA cart URL to activate the shop section on your Redox page.</p>
+              )
+            )}
           </div>
 
           {/* Social Media Links */}

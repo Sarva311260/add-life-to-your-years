@@ -228,9 +228,10 @@ export const pemfAffiliates = mysqlTable("pemf_affiliates", {
   tiktok: varchar("tiktok", { length: 512 }),
   youtube: varchar("youtube", { length: 512 }),
   twitter: varchar("twitter", { length: 512 }),
+  /** ASEA shopping cart URL for the Redox Signaling affiliate page */
+  aseaCartUrl: varchar("aseaCartUrl", { length: 1024 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
-
 export type PemfAffiliate = typeof pemfAffiliates.$inferSelect;
 export type InsertPemfAffiliate = typeof pemfAffiliates.$inferInsert;
 

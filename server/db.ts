@@ -389,6 +389,7 @@ export async function updatePemfAffiliate(id: number, data: Partial<{
   tiktok: string | null;
   youtube: string | null;
   twitter: string | null;
+  aseaCartUrl: string | null;
 }>) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
