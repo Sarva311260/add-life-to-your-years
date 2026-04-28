@@ -61,6 +61,36 @@ const EXPERT_QUOTES = [
     name: "Dr. Ahvie Herskowitz",
     title: "Clinical Professor of Medicine, University of California",
   },
+  {
+    quote: "The Redox Signaling process is remarkable because it is the process that allows us to regenerate tissue and maintain our normal function and capacities. This technology has the potential to spearhead the greatest advances in health we have ever seen.",
+    name: "Dr. Gary Samuelson",
+    title: "PhD Atomic Medical Physics",
+  },
+  {
+    quote: "I have been using ASEA Redox and RENU 28 for over 10 years, in my practice and for myself. My life has benefited greatly. I feel more youthful, I have more endurance, I sleep like I haven't slept in 25 years and all my discomfort has dramatically reduced. It has also benefited the lives of hundreds of my patients.",
+    name: "Dr. Aaron Kaufman",
+    title: "30 Years in Family Integrative Practice",
+  },
+  {
+    quote: "Without these cell signaling molecules we simply won't have immune protection from various bacteria. ASEA REDOX is the only dietary supplement that I know of that actually targets the cell itself — that gets inside the cell wall and acts with the mitochondria to affect the body.",
+    name: "Dr. Kurt Stickley, PhD",
+    title: "Organic Chemistry",
+  },
+  {
+    quote: "The amount of signaling molecules that we make is being diminished more and more with time. ASEA REDOX actually has the combinations of the oxidants and the reductants that the body makes. Therefore, with ASEA REDOX we are simply enhancing what the body is already doing naturally.",
+    name: "Dr. Stan Gardner, MD, CNS",
+    title: "Family Medicine",
+  },
+  {
+    quote: "Probably the most exciting technology is the application and supplementation of Redox Molecules to support our biology. They are critical. Every cell in our body needs the molecules for communication purposes. The more balanced they are, the more abundant they are, the healthier we are.",
+    name: "Dr. Robertson Ward, MD",
+    title: "Family Medicine",
+  },
+  {
+    quote: "ASEA Redox is a huge breakthrough, foundational for health. It helps the cells detect, protect, repair or replace. With these molecules we are amping up cellular communication — helping every cell in our body, and even the very DNA within those cells. We talk about the discovery of DNA and penicillin as huge breakthroughs. Now we have something that goes even deeper.",
+    name: "Dr. Maureen Hayes, M.D.",
+    title: "Anesthesiology & Pain Management",
+  },
 ];
 
 function SocialIcon({ platform, url }: { platform: string; url: string }) {
@@ -416,8 +446,9 @@ export default function RedoxAffiliate() {
       {/* ── EXPERT QUOTES ────────────────────────────────────── */}
       <section className="py-16 bg-[#060c1a]">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-center mb-10">What Health Experts Say</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <h2 className="text-2xl font-bold text-center mb-4">What Health Experts Say</h2>
+          <p className="text-center text-gray-400 text-sm mb-10">Sourced from <a href="https://discoverredox.com" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">discoverredox.com</a></p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {EXPERT_QUOTES.map((q, i) => (
               <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-6">
                 <div className="flex gap-1 mb-4">
