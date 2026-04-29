@@ -1,12 +1,189 @@
 import { useLocation } from "wouter";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
 import {
-  ShoppingBag, ExternalLink, Loader2, Leaf, Package,
+  ShoppingBag, ExternalLink, Loader2, Leaf, Package, Droplets, Sparkles, ShoppingCart, CheckCircle,
 } from "lucide-react";
+
+// Default ASEA cart links (used when no affiliate has set their own)
+const DEFAULT_ASEA_LINKS = {
+  redoxRetail: "https://shop.aseaglobal.com/info?cartSharingId=753IGA500A6853C&st=sc&sn=cl",
+  redoxSubscription: "https://shop.aseaglobal.com/info?cartSharingId=B0AC0A5SSA685CC&st=sc&sn=cl",
+  renu28Retail: "https://shop.aseaglobal.com/info?cartSharingId=GE3IHAES0AFH5CC&st=sc&sn=cl",
+  renu28Subscription: "https://shop.aseaglobal.com/info?cartSharingId=G539I1E00A6HECC&st=sc&sn=cl",
+};
+
+function getAffiliateCookieSlug(): string | null {
+  const match = document.cookie.match(/(?:^|;\s*)affiliate_slug=([^;]*)/);
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
+function AseaProductSection() {
+  const [affiliateSlug, setAffiliateSlug] = useState<string | null>(null);
+
+  useEffect(() => {
+    setAffiliateSlug(getAffiliateCookieSlug());
+  }, []);
+
+  const { data: affiliateBySlug } = trpc.pemfAffiliate.getBySlug.useQuery(
+    { slug: affiliateSlug! },
+    { enabled: !!affiliateSlug }
+  );
+  const { data: defaultAffiliate } = trpc.pemfAffiliate.getDefaultAffiliate.useQuery(
+    undefined,
+    { enabled: !affiliateSlug }
+  );
+
+  const aff = (affiliateSlug ? affiliateBySlug : defaultAffiliate) as any;
+
+  const links = {
+    redoxRetail: aff?.aseaRedoxRetailUrl || DEFAULT_ASEA_LINKS.redoxRetail,
+    redoxSubscription: aff?.aseaRedoxSubscriptionUrl || DEFAULT_ASEA_LINKS.redoxSubscription,
+    renu28Retail: aff?.aseaRenu28RetailUrl || DEFAULT_ASEA_LINKS.renu28Retail,
+    renu28Subscription: aff?.aseaRenu28SubscriptionUrl || DEFAULT_ASEA_LINKS.renu28Subscription,
+  };
+
+  return (
+    <section className="pb-16">
+      <div className="container max-w-5xl">
+        <div className="mb-8">
+          <Badge variant="secondary" className="mb-3 gap-1.5 px-3 py-1">
+            <Droplets className="w-3.5 h-3.5" />
+            ASEA Redox Signalling
+          </Badge>
+          <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-2">
+            ASEA REDOX &amp; RENU 28
+          </h2>
+          <p className="text-muted-foreground max-w-2xl">
+            The world's only Redox Signalling supplements — available as a one-time retail purchase or a
+            flexible subscription you can change, defer, or cancel at any time.
+          </p>
+        </div>
+
+        {/* Trust badges */}
+        <div className="flex flex-wrap gap-4 mb-8 text-sm text-muted-foreground">
+          <div className="flex items-center gap-1.5">
+            <CheckCircle className="w-4 h-4 text-primary" />
+            <span>Flexible subscription — change, defer or cancel anytime</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <CheckCircle className="w-4 h-4 text-primary" />
+            <span>100% money-back guarantee on empty bottles or tubes</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <CheckCircle className="w-4 h-4 text-primary" />
+            <span>Secure checkout through ASEA Global</span>
+          </div>
+        </div>
+
+        <div className="grid sm:grid-cols-2 gap-6">
+          {/* ASEA REDOX Retail */}
+          <Card className="flex flex-col">
+            <CardContent className="p-6 flex flex-col flex-1">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-9 h-9 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                  <Droplets className="w-4.5 h-4.5 text-blue-500" />
+                </div>
+                <div>
+                  <Badge variant="secondary" className="text-xs mb-0.5">Retail</Badge>
+                  <h3 className="font-semibold text-foreground text-sm">ASEA REDOX Supplement</h3>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground mb-5 flex-1">
+                Purchase at the standard retail price with no commitment. Perfect for trying ASEA REDOX for the first time.
+              </p>
+              <a href={links.redoxRetail} target="_blank" rel="noopener noreferrer">
+                <Button className="w-full gap-2">
+                  <ShoppingCart className="w-4 h-4" /> Buy Retail <ExternalLink className="w-3.5 h-3.5 ml-auto" />
+                </Button>
+              </a>
+            </CardContent>
+          </Card>
+
+          {/* ASEA REDOX Subscription */}
+          <Card className="flex flex-col border-primary/30 bg-primary/3">
+            <CardContent className="p-6 flex flex-col flex-1">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Droplets className="w-4.5 h-4.5 text-primary" />
+                </div>
+                <div>
+                  <Badge className="text-xs mb-0.5 bg-primary/10 text-primary border-primary/20">⭐ Best Value — Subscription</Badge>
+                  <h3 className="font-semibold text-foreground text-sm">ASEA REDOX Supplement</h3>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground mb-2 flex-1">
+                Save with a flexible subscription. Change quantity, defer a shipment, or cancel at any time — no lock-in.
+              </p>
+              <p className="text-xs text-primary mb-5">Flexible · Secure · Cancel anytime</p>
+              <a href={links.redoxSubscription} target="_blank" rel="noopener noreferrer">
+                <Button className="w-full gap-2">
+                  <ShoppingCart className="w-4 h-4" /> Subscribe &amp; Save <ExternalLink className="w-3.5 h-3.5 ml-auto" />
+                </Button>
+              </a>
+            </CardContent>
+          </Card>
+
+          {/* RENU 28 Retail */}
+          <Card className="flex flex-col">
+            <CardContent className="p-6 flex flex-col flex-1">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-9 h-9 rounded-lg bg-purple-500/10 flex items-center justify-center">
+                  <Sparkles className="w-4.5 h-4.5 text-purple-500" />
+                </div>
+                <div>
+                  <Badge variant="secondary" className="text-xs mb-0.5">Retail</Badge>
+                  <h3 className="font-semibold text-foreground text-sm">RENU 28 Revitalising Gel</h3>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground mb-5 flex-1">
+                Purchase at the standard retail price. Try the world's first Redox Signalling topical gel with no commitment.
+              </p>
+              <a href={links.renu28Retail} target="_blank" rel="noopener noreferrer">
+                <Button className="w-full gap-2">
+                  <ShoppingCart className="w-4 h-4" /> Buy Retail <ExternalLink className="w-3.5 h-3.5 ml-auto" />
+                </Button>
+              </a>
+            </CardContent>
+          </Card>
+
+          {/* RENU 28 Subscription */}
+          <Card className="flex flex-col border-purple-500/30 bg-purple-500/3">
+            <CardContent className="p-6 flex flex-col flex-1">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-9 h-9 rounded-lg bg-purple-500/10 flex items-center justify-center">
+                  <Sparkles className="w-4.5 h-4.5 text-purple-500" />
+                </div>
+                <div>
+                  <Badge className="text-xs mb-0.5 bg-purple-500/10 text-purple-600 border-purple-500/20">⭐ Best Value — Subscription</Badge>
+                  <h3 className="font-semibold text-foreground text-sm">RENU 28 Revitalising Gel</h3>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground mb-2 flex-1">
+                Save with a flexible subscription. Change, defer, or cancel anytime — fully secure checkout through ASEA Global.
+              </p>
+              <p className="text-xs text-purple-600 mb-5">Flexible · Secure · Cancel anytime</p>
+              <a href={links.renu28Subscription} target="_blank" rel="noopener noreferrer">
+                <Button className="w-full gap-2">
+                  <ShoppingCart className="w-4 h-4" /> Subscribe &amp; Save <ExternalLink className="w-3.5 h-3.5 ml-auto" />
+                </Button>
+              </a>
+            </CardContent>
+          </Card>
+        </div>
+
+        <p className="text-center text-xs text-muted-foreground mt-6">
+          All orders are processed securely through ASEA Global's official checkout.
+          100% money-back guarantee on empty bottles or tubes.
+        </p>
+      </div>
+    </section>
+  );
+}
 
 export default function Shop() {
   const [, navigate] = useLocation();
@@ -121,6 +298,9 @@ export default function Shop() {
           )}
         </div>
       </section>
+
+      {/* ASEA Products */}
+      <AseaProductSection />
 
       {/* Info section */}
       <section className="pb-16">

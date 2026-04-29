@@ -390,6 +390,10 @@ export async function updatePemfAffiliate(id: number, data: Partial<{
   youtube: string | null;
   twitter: string | null;
   aseaCartUrl: string | null;
+  aseaRedoxRetailUrl: string | null;
+  aseaRedoxSubscriptionUrl: string | null;
+  aseaRenu28RetailUrl: string | null;
+  aseaRenu28SubscriptionUrl: string | null;
 }>) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");

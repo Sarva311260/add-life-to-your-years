@@ -234,6 +234,10 @@ export const pemfAffiliateRouter = router({
         youtube: affiliate.youtube,
         twitter: affiliate.twitter,
         aseaCartUrl: affiliate.aseaCartUrl,
+        aseaRedoxRetailUrl: affiliate.aseaRedoxRetailUrl,
+        aseaRedoxSubscriptionUrl: affiliate.aseaRedoxSubscriptionUrl,
+        aseaRenu28RetailUrl: affiliate.aseaRenu28RetailUrl,
+        aseaRenu28SubscriptionUrl: affiliate.aseaRenu28SubscriptionUrl,
         enquiryCount: enquiries.length,
         recentEnquiries: enquiries.slice(-5).reverse().map(e => ({
           id: e.id,
@@ -265,6 +269,10 @@ export const pemfAffiliateRouter = router({
       youtube: z.string().max(512).optional().nullable(),
       twitter: z.string().max(512).optional().nullable(),
       aseaCartUrl: z.string().max(1024).optional().nullable(),
+      aseaRedoxRetailUrl: z.string().max(1024).optional().nullable(),
+      aseaRedoxSubscriptionUrl: z.string().max(1024).optional().nullable(),
+      aseaRenu28RetailUrl: z.string().max(1024).optional().nullable(),
+      aseaRenu28SubscriptionUrl: z.string().max(1024).optional().nullable(),
     }))
     .mutation(async ({ input }) => {
       const payload = await verifyAffiliateToken(input.token);
@@ -283,6 +291,10 @@ export const pemfAffiliateRouter = router({
       if (input.youtube !== undefined) updates.youtube = input.youtube || null;
       if (input.twitter !== undefined) updates.twitter = input.twitter || null;
       if (input.aseaCartUrl !== undefined) updates.aseaCartUrl = input.aseaCartUrl || null;
+      if (input.aseaRedoxRetailUrl !== undefined) updates.aseaRedoxRetailUrl = input.aseaRedoxRetailUrl || null;
+      if (input.aseaRedoxSubscriptionUrl !== undefined) updates.aseaRedoxSubscriptionUrl = input.aseaRedoxSubscriptionUrl || null;
+      if (input.aseaRenu28RetailUrl !== undefined) updates.aseaRenu28RetailUrl = input.aseaRenu28RetailUrl || null;
+      if (input.aseaRenu28SubscriptionUrl !== undefined) updates.aseaRenu28SubscriptionUrl = input.aseaRenu28SubscriptionUrl || null;
       if (input.email) {
         const emailLower = input.email.trim().toLowerCase();
         if (emailLower !== affiliate.email) {
@@ -330,6 +342,10 @@ export const pemfAffiliateRouter = router({
         youtube: affiliate.youtube,
         twitter: affiliate.twitter,
         aseaCartUrl: affiliate.aseaCartUrl,
+        aseaRedoxRetailUrl: affiliate.aseaRedoxRetailUrl,
+        aseaRedoxSubscriptionUrl: affiliate.aseaRedoxSubscriptionUrl,
+        aseaRenu28RetailUrl: affiliate.aseaRenu28RetailUrl,
+        aseaRenu28SubscriptionUrl: affiliate.aseaRenu28SubscriptionUrl,
       };
     }),
 
@@ -353,6 +369,10 @@ export const pemfAffiliateRouter = router({
         youtube: affiliate.youtube,
         twitter: affiliate.twitter,
         aseaCartUrl: affiliate.aseaCartUrl,
+        aseaRedoxRetailUrl: affiliate.aseaRedoxRetailUrl,
+        aseaRedoxSubscriptionUrl: affiliate.aseaRedoxSubscriptionUrl,
+        aseaRenu28RetailUrl: affiliate.aseaRenu28RetailUrl,
+        aseaRenu28SubscriptionUrl: affiliate.aseaRenu28SubscriptionUrl,
       };
     }),
 

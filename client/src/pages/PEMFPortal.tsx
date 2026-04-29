@@ -139,8 +139,11 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
   const [editTiktok, setEditTiktok] = useState("");
   const [editYoutube, setEditYoutube] = useState("");
   const [editTwitter, setEditTwitter] = useState("");
-  // ASEA cart URL
-  const [editAseaCartUrl, setEditAseaCartUrl] = useState("");
+  // ASEA cart URLs (4 separate links)
+  const [editAseaRedoxRetailUrl, setEditAseaRedoxRetailUrl] = useState("");
+  const [editAseaRedoxSubscriptionUrl, setEditAseaRedoxSubscriptionUrl] = useState("");
+  const [editAseaRenu28RetailUrl, setEditAseaRenu28RetailUrl] = useState("");
+  const [editAseaRenu28SubscriptionUrl, setEditAseaRenu28SubscriptionUrl] = useState("");
 
   // Password change
   const [currentPw, setCurrentPw] = useState("");
@@ -215,7 +218,10 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
       setEditTiktok(profile.tiktok || "");
       setEditYoutube(profile.youtube || "");
       setEditTwitter(profile.twitter || "");
-      setEditAseaCartUrl((profile as any).aseaCartUrl || "");
+      setEditAseaRedoxRetailUrl((profile as any).aseaRedoxRetailUrl || "");
+      setEditAseaRedoxSubscriptionUrl((profile as any).aseaRedoxSubscriptionUrl || "");
+      setEditAseaRenu28RetailUrl((profile as any).aseaRenu28RetailUrl || "");
+      setEditAseaRenu28SubscriptionUrl((profile as any).aseaRenu28SubscriptionUrl || "");
     }
   }, [profile]);
 
@@ -249,7 +255,10 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
       tiktok: editTiktok !== (profile?.tiktok || "") ? (editTiktok || null) : undefined,
       youtube: editYoutube !== (profile?.youtube || "") ? (editYoutube || null) : undefined,
       twitter: editTwitter !== (profile?.twitter || "") ? (editTwitter || null) : undefined,
-      aseaCartUrl: editAseaCartUrl !== ((profile as any)?.aseaCartUrl || "") ? (editAseaCartUrl || null) : undefined,
+      aseaRedoxRetailUrl: editAseaRedoxRetailUrl !== ((profile as any)?.aseaRedoxRetailUrl || "") ? (editAseaRedoxRetailUrl || null) : undefined,
+      aseaRedoxSubscriptionUrl: editAseaRedoxSubscriptionUrl !== ((profile as any)?.aseaRedoxSubscriptionUrl || "") ? (editAseaRedoxSubscriptionUrl || null) : undefined,
+      aseaRenu28RetailUrl: editAseaRenu28RetailUrl !== ((profile as any)?.aseaRenu28RetailUrl || "") ? (editAseaRenu28RetailUrl || null) : undefined,
+      aseaRenu28SubscriptionUrl: editAseaRenu28SubscriptionUrl !== ((profile as any)?.aseaRenu28SubscriptionUrl || "") ? (editAseaRenu28SubscriptionUrl || null) : undefined,
     });
   };
 
@@ -637,25 +646,37 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
             ))}
           </div>
 
-          {/* ASEA Cart URL */}
+          {/* ASEA Cart URLs — 4 links */}
           <div className="mt-6 pt-6 border-t border-emerald-800/30">
-            <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5">ASEA Shopping Cart Link</p>
-            <p className="text-gray-500 text-xs mb-3">Paste your personal ASEA shopping cart URL here. It will be embedded on your Redox Signalling page so visitors can order directly from your store.</p>
-            {editMode ? (
-              <input
-                type="url"
-                value={editAseaCartUrl}
-                onChange={(e) => setEditAseaCartUrl(e.target.value)}
-                placeholder="https://www.myasealife.com/your-name/shop/..."
-                className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-3 py-2.5 text-white text-sm placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all"
-              />
-            ) : (
-              editAseaCartUrl ? (
-                <a href={editAseaCartUrl} target="_blank" rel="noreferrer" className="text-emerald-400 text-sm py-2.5 block hover:text-emerald-300 truncate">{editAseaCartUrl}</a>
-              ) : (
-                <p className="text-gray-600 text-sm py-2.5 italic">Not set — add your ASEA cart URL to activate the shop section on your Redox page.</p>
-              )
-            )}
+            <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1">ASEA Shopping Cart Links</p>
+            <p className="text-gray-500 text-xs mb-4">Paste your 4 personal ASEA shopping cart URLs below. These will be used on your Redox Signalling page and product pages so visitors order directly through your store.</p>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {[
+                { label: "ASEA REDOX — Retail", value: editAseaRedoxRetailUrl, setter: setEditAseaRedoxRetailUrl, placeholder: "https://shop.aseaglobal.com/info?cartSharingId=..." },
+                { label: "ASEA REDOX — Subscription", value: editAseaRedoxSubscriptionUrl, setter: setEditAseaRedoxSubscriptionUrl, placeholder: "https://shop.aseaglobal.com/info?cartSharingId=..." },
+                { label: "RENU 28 — Retail", value: editAseaRenu28RetailUrl, setter: setEditAseaRenu28RetailUrl, placeholder: "https://shop.aseaglobal.com/info?cartSharingId=..." },
+                { label: "RENU 28 — Subscription", value: editAseaRenu28SubscriptionUrl, setter: setEditAseaRenu28SubscriptionUrl, placeholder: "https://shop.aseaglobal.com/info?cartSharingId=..." },
+              ].map(({ label, value, setter, placeholder }) => (
+                <div key={label}>
+                  <label className="block text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5">{label}</label>
+                  {editMode ? (
+                    <input
+                      type="url"
+                      value={value}
+                      onChange={(e) => setter(e.target.value)}
+                      placeholder={placeholder}
+                      className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-3 py-2.5 text-white text-sm placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all"
+                    />
+                  ) : (
+                    value ? (
+                      <a href={value} target="_blank" rel="noreferrer" className="text-emerald-400 text-sm py-2.5 block hover:text-emerald-300 truncate">{value}</a>
+                    ) : (
+                      <p className="text-gray-600 text-sm py-2.5 italic">Not set</p>
+                    )
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Social Media Links */}

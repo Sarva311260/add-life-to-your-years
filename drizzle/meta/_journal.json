@@ -141,6 +141,13 @@
       "when": 1777375892617,
       "tag": "0019_abandoned_jack_murdock",
       "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "5",
+      "when": 1777449514061,
+      "tag": "0020_rare_junta",
+      "breakpoints": true
     }
   ]
 }

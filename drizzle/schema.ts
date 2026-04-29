@@ -228,8 +228,12 @@ export const pemfAffiliates = mysqlTable("pemf_affiliates", {
   tiktok: varchar("tiktok", { length: 512 }),
   youtube: varchar("youtube", { length: 512 }),
   twitter: varchar("twitter", { length: 512 }),
-  /** ASEA shopping cart URL for the Redox Signaling affiliate page */
+  /** ASEA shopping cart URLs for the Redox Signaling affiliate page */
   aseaCartUrl: varchar("aseaCartUrl", { length: 1024 }),
+  aseaRedoxRetailUrl: varchar("aseaRedoxRetailUrl", { length: 1024 }),
+  aseaRedoxSubscriptionUrl: varchar("aseaRedoxSubscriptionUrl", { length: 1024 }),
+  aseaRenu28RetailUrl: varchar("aseaRenu28RetailUrl", { length: 1024 }),
+  aseaRenu28SubscriptionUrl: varchar("aseaRenu28SubscriptionUrl", { length: 1024 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 export type PemfAffiliate = typeof pemfAffiliates.$inferSelect;

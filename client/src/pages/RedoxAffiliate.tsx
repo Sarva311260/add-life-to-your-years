@@ -424,7 +424,7 @@ export default function RedoxAffiliate() {
                 Purchase at the standard retail price with no commitment. Perfect for trying ASEA REDOX for the first time.
               </p>
               <a
-                href="https://shop.aseaglobal.com/info?cartSharingId=753IGA500A6853C&st=sc&sn=cl"
+                href={(aff as any).aseaRedoxRetailUrl || "https://shop.aseaglobal.com/info?cartSharingId=753IGA500A6853C&st=sc&sn=cl"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-xl transition-all w-full"
@@ -452,7 +452,7 @@ export default function RedoxAffiliate() {
               </p>
               <p className="text-cyan-400 text-xs mb-6">Flexible · Secure · Cancel anytime</p>
               <a
-                href="https://shop.aseaglobal.com/info?cartSharingId=B0AC0A5SSA685CC&st=sc&sn=cl"
+                href={(aff as any).aseaRedoxSubscriptionUrl || "https://shop.aseaglobal.com/info?cartSharingId=B0AC0A5SSA685CC&st=sc&sn=cl"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-6 py-3 rounded-xl transition-all w-full shadow-lg shadow-cyan-500/20"
@@ -476,7 +476,7 @@ export default function RedoxAffiliate() {
                 Purchase at the standard retail price. Try the world's first Redox Signalling topical gel with no commitment.
               </p>
               <a
-                href="https://shop.aseaglobal.com/info?cartSharingId=GE3IHAES0AFH5CC&st=sc&sn=cl"
+                href={(aff as any).aseaRenu28RetailUrl || "https://shop.aseaglobal.com/info?cartSharingId=GE3IHAES0AFH5CC&st=sc&sn=cl"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-500 text-white font-semibold px-6 py-3 rounded-xl transition-all w-full"
@@ -504,7 +504,7 @@ export default function RedoxAffiliate() {
               </p>
               <p className="text-purple-400 text-xs mb-6">Flexible · Secure · Cancel anytime</p>
               <a
-                href="https://shop.aseaglobal.com/info?cartSharingId=G539I1E00A6HECC&st=sc&sn=cl"
+                href={(aff as any).aseaRenu28SubscriptionUrl || "https://shop.aseaglobal.com/info?cartSharingId=G539I1E00A6HECC&st=sc&sn=cl"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-400 hover:to-pink-500 text-white font-semibold px-6 py-3 rounded-xl transition-all w-full shadow-lg shadow-purple-500/20"
