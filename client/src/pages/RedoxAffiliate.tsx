@@ -370,55 +370,155 @@ export default function RedoxAffiliate() {
         </div>
       </section>
 
-      {/* ── SHOPPING CART ────────────────────────────────────── */}
+      {/* ── ORDER SECTION ────────────────────────────────────── */}
       <section id="shop" className="py-20 bg-[#060c1a]">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold mb-4">Ready to Order?</h2>
-            <p className="text-gray-400 max-w-xl mx-auto">
-              Order directly through {aff.name}'s personal ASEA store below.
-              Your purchase supports {aff.name.split(" ")[0]} and helps fund their wellness mission.
-            </p>
+        <div className="max-w-5xl mx-auto px-4">
+
+          {/* Hero image + intro */}
+          <div className="flex flex-col md:flex-row items-center gap-10 mb-16">
+            <div className="md:w-1/2">
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/asea-product-range-gwtzeZMEAEHknDg5kXB68A.webp"
+                alt="ASEA REDOX and RENU 28 product range"
+                className="w-full rounded-2xl object-contain"
+              />
+            </div>
+            <div className="md:w-1/2">
+              <h2 className="text-3xl font-bold mb-4">The ASEA Product Range</h2>
+              <p className="text-gray-300 leading-relaxed mb-4">
+                Choose how you'd like to experience the world's only Redox Signalling products. Whether you prefer
+                to try at retail price or lock in savings with a flexible subscription — the choice is yours.
+              </p>
+              <div className="bg-white/5 border border-white/10 rounded-xl p-4 space-y-2 text-sm text-gray-300">
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                  <span>Subscription plans are <strong className="text-white">fully flexible</strong> — change, defer or cancel anytime</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                  <span>Ordered through a <strong className="text-white">fully secure</strong> ASEA Global checkout</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                  <span><strong className="text-white">100% money-back guarantee</strong> on empty bottles or tubes</span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {aff.aseaCartUrl ? (
-            <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-              <div className="flex items-center gap-3 px-6 py-4 border-b border-white/10 bg-white/5">
-                <ShoppingCart className="w-5 h-5 text-cyan-400" />
-                <span className="font-semibold text-white">{aff.name}'s ASEA Store</span>
-                <a
-                  href={aff.aseaCartUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ml-auto text-xs text-cyan-400 hover:text-cyan-300 flex items-center gap-1"
-                >
-                  Open in new tab <ExternalLink className="w-3 h-3" />
-                </a>
+          {/* 4 purchase cards */}
+          <div className="grid sm:grid-cols-2 gap-6">
+
+            {/* ASEA REDOX Retail */}
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-7 flex flex-col">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-blue-500/15 flex items-center justify-center">
+                  <Droplets className="w-5 h-5 text-blue-400" />
+                </div>
+                <div>
+                  <Badge className="bg-blue-500/10 text-blue-300 border border-blue-500/30 text-xs">Retail</Badge>
+                  <h3 className="font-bold text-white mt-0.5">ASEA REDOX Supplement</h3>
+                </div>
               </div>
-              <div className="p-4">
-                <iframe
-                  src={aff.aseaCartUrl}
-                  title="ASEA Shopping Cart"
-                  className="w-full rounded-xl border-0"
-                  style={{ minHeight: "600px" }}
-                  loading="lazy"
-                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"
-                />
-              </div>
-            </div>
-          ) : (
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-10 text-center">
-              <ShoppingCart className="w-12 h-12 text-gray-600 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-300 mb-2">Store Coming Soon</h3>
-              <p className="text-gray-500 text-sm mb-6">
-                {aff.name} is setting up their personal ASEA store. In the meantime, reach out directly to place an order.
+              <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-1">
+                Purchase at the standard retail price with no commitment. Perfect for trying ASEA REDOX for the first time.
               </p>
-              <a href="#contact"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold px-6 py-3 rounded-xl transition-all">
-                Contact {aff.name.split(" ")[0]} <ArrowRight className="w-4 h-4" />
+              <a
+                href="https://shop.aseaglobal.com/info?cartSharingId=753IGA500A6853C&st=sc&sn=cl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-xl transition-all w-full"
+              >
+                <ShoppingCart className="w-4 h-4" /> Buy Retail <ExternalLink className="w-3.5 h-3.5 ml-auto" />
               </a>
             </div>
-          )}
+
+            {/* ASEA REDOX Subscription */}
+            <div className="bg-gradient-to-br from-cyan-500/10 to-blue-600/10 border border-cyan-500/30 rounded-2xl p-7 flex flex-col relative">
+              <div className="absolute -top-3 left-6">
+                <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">Best Value</span>
+              </div>
+              <div className="flex items-center gap-3 mb-4 mt-2">
+                <div className="w-10 h-10 rounded-xl bg-cyan-500/15 flex items-center justify-center">
+                  <Droplets className="w-5 h-5 text-cyan-400" />
+                </div>
+                <div>
+                  <Badge className="bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 text-xs">Subscription</Badge>
+                  <h3 className="font-bold text-white mt-0.5">ASEA REDOX Supplement</h3>
+                </div>
+              </div>
+              <p className="text-gray-300 text-sm leading-relaxed mb-2 flex-1">
+                Save with a flexible subscription. Change quantity, defer a shipment, or cancel at any time — no lock-in.
+              </p>
+              <p className="text-cyan-400 text-xs mb-6">Flexible · Secure · Cancel anytime</p>
+              <a
+                href="https://shop.aseaglobal.com/info?cartSharingId=B0AC0A5SSA685CC&st=sc&sn=cl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-6 py-3 rounded-xl transition-all w-full shadow-lg shadow-cyan-500/20"
+              >
+                <ShoppingCart className="w-4 h-4" /> Subscribe & Save <ExternalLink className="w-3.5 h-3.5 ml-auto" />
+              </a>
+            </div>
+
+            {/* RENU 28 Retail */}
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-7 flex flex-col">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-purple-500/15 flex items-center justify-center">
+                  <Sparkles className="w-5 h-5 text-purple-400" />
+                </div>
+                <div>
+                  <Badge className="bg-purple-500/10 text-purple-300 border border-purple-500/30 text-xs">Retail</Badge>
+                  <h3 className="font-bold text-white mt-0.5">RENU 28 Revitalising Gel</h3>
+                </div>
+              </div>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-1">
+                Purchase at the standard retail price. Try the world's first Redox Signalling topical gel with no commitment.
+              </p>
+              <a
+                href="https://shop.aseaglobal.com/info?cartSharingId=GE3IHAES0AFH5CC&st=sc&sn=cl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-500 text-white font-semibold px-6 py-3 rounded-xl transition-all w-full"
+              >
+                <ShoppingCart className="w-4 h-4" /> Buy Retail <ExternalLink className="w-3.5 h-3.5 ml-auto" />
+              </a>
+            </div>
+
+            {/* RENU 28 Subscription */}
+            <div className="bg-gradient-to-br from-purple-500/10 to-pink-600/10 border border-purple-500/30 rounded-2xl p-7 flex flex-col relative">
+              <div className="absolute -top-3 left-6">
+                <span className="bg-gradient-to-r from-purple-500 to-pink-600 text-white text-xs font-bold px-3 py-1 rounded-full">Best Value</span>
+              </div>
+              <div className="flex items-center gap-3 mb-4 mt-2">
+                <div className="w-10 h-10 rounded-xl bg-purple-500/15 flex items-center justify-center">
+                  <Sparkles className="w-5 h-5 text-purple-400" />
+                </div>
+                <div>
+                  <Badge className="bg-purple-500/10 text-purple-300 border border-purple-500/30 text-xs">Subscription</Badge>
+                  <h3 className="font-bold text-white mt-0.5">RENU 28 Revitalising Gel</h3>
+                </div>
+              </div>
+              <p className="text-gray-300 text-sm leading-relaxed mb-2 flex-1">
+                Save with a flexible subscription. Change, defer, or cancel anytime — fully secure checkout through ASEA Global.
+              </p>
+              <p className="text-purple-400 text-xs mb-6">Flexible · Secure · Cancel anytime</p>
+              <a
+                href="https://shop.aseaglobal.com/info?cartSharingId=G539I1E00A6HECC&st=sc&sn=cl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-400 hover:to-pink-500 text-white font-semibold px-6 py-3 rounded-xl transition-all w-full shadow-lg shadow-purple-500/20"
+              >
+                <ShoppingCart className="w-4 h-4" /> Subscribe & Save <ExternalLink className="w-3.5 h-3.5 ml-auto" />
+              </a>
+            </div>
+
+          </div>
+
+          <p className="text-center text-gray-500 text-xs mt-8">
+            All orders are processed securely through ASEA Global's official checkout.
+            100% money-back guarantee on empty bottles or tubes.
+          </p>
         </div>
       </section>
 
