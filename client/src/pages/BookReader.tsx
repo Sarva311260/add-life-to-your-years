@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book-content_23c60cd2.md";
+const MD_CDN_URL = "/manus-storage/book-content_00c5e3ae.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -242,14 +242,19 @@ const SCROLL_STORAGE_KEY = "book-reader-scroll";
 const PRODUCT_MAP: Record<number, { name: string; defaultUrl: string }> = {
   1: { name: "MasterPeace Nano-Zeolite", defaultUrl: "https://mphcs.com/760a4938d9449080" },
   30001: { name: "PEMF Therapy Devices", defaultUrl: "https://addlifetoyouryears.org/pemf" },
+  40001: { name: "ASEA REDOX & RENU 28", defaultUrl: "https://addlifetoyouryears.org/redox" },
 };
-
 function getAffiliateCookie(): string | null {
   const match = document.cookie.match(/(?:^|;\s*)affiliate_slug=([^;]+)/);
   return match ? decodeURIComponent(match[1]) : null;
 }
-
 function getProductUrl(productId: number, affiliateSlug: string | null): string {
+  // Redox page: route directly to /redox/:slug (or /redox for owner fallback)
+  if (productId === 40001) {
+    return affiliateSlug
+      ? `https://addlifetoyouryears.org/redox/${affiliateSlug}`
+      : "https://addlifetoyouryears.org/redox";
+  }
   if (affiliateSlug) return `/go/${affiliateSlug}/${productId}`;
   return PRODUCT_MAP[productId]?.defaultUrl || "#";
 }
