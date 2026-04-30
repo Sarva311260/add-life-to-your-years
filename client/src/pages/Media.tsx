@@ -120,7 +120,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-zeolite",
+    id: "rec-3",
     number: 3,
     title: "Cellular Detoxification with Nano-Zeolite",
     description:
@@ -142,7 +142,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-redox",
+    id: "rec-4",
     number: 4,
     title: "Redox Signalling & ASEA",
     description:
@@ -164,7 +164,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-3",
+    id: "rec-5",
     number: 5,
     title: "Sleep & Melatonin",
     description:
@@ -180,7 +180,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-4",
+    id: "rec-6",
     number: 6,
     title: "Glycine",
     description:
@@ -196,7 +196,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-5",
+    id: "rec-7",
     number: 7,
     title: "Five Seeds of Life",
     description:
@@ -212,7 +212,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-gut-health",
+    id: "rec-8",
     number: 8,
     title: "Gut Health & Microbiome",
     description:
@@ -234,7 +234,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-6",
+    id: "rec-9",
     number: 9,
     title: "Vitamin B12 & Vitamin D",
     description:
@@ -262,7 +262,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-7",
+    id: "rec-10",
     number: 10,
     title: "Six Movements",
     description:
@@ -278,7 +278,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-8",
+    id: "rec-11",
     number: 11,
     title: "Breathing",
     description:
@@ -300,7 +300,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-9",
+    id: "rec-12",
     number: 12,
     title: "PEMF & Earthing",
     description:
@@ -322,7 +322,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-10",
+    id: "rec-13",
     number: 13,
     title: "Meditation",
     description:
@@ -338,7 +338,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-11",
+    id: "rec-14",
     number: 14,
     title: "Time in Nature",
     description:
@@ -354,7 +354,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-12",
+    id: "rec-15",
     number: 15,
     title: "Repairing Relationships",
     description:
@@ -370,7 +370,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-13",
+    id: "rec-16",
     number: 16,
     title: "Second Income Stream",
     description:
@@ -386,7 +386,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-14",
+    id: "rec-17",
     number: 17,
     title: "Your Environment",
     description:
@@ -402,7 +402,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-15",
+    id: "rec-18",
     number: 18,
     title: "Methylene Blue & Photobiomodulation",
     description:
