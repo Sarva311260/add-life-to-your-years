@@ -23,6 +23,8 @@ const SYSTEM_TAGS = [
   { tag: "{{pemf_link}}", desc: "Your PEMF page URL" },
   { tag: "{{redox_link}}", desc: "Your Redox Signalling page URL" },
   { tag: "{{olylife_link}}", desc: "Your OlyLife page URL" },
+  { tag: "{{book_link}}", desc: "Your personalised book link" },
+  { tag: "{{assessment_link}}", desc: "Your personalised self-assessment link" },
   { tag: "{{unsubscribe_link}}", desc: "Unsubscribe link (auto-added)" },
 ];
 

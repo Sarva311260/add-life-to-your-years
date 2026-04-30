@@ -109,6 +109,8 @@ export async function resolveMergeTags(ctx: MergeContext): Promise<Record<string
     tags["pemf_link"] = slug ? `${origin}/pemf/${slug}` : `${origin}/pemf`;
     tags["redox_link"] = slug ? `${origin}/redox/${slug}` : `${origin}/redox`;
     tags["olylife_link"] = slug ? `${origin}/olylife/${slug}` : `${origin}/olylife`;
+    tags["book_link"] = slug ? `${origin}/book?ref=${slug}` : `${origin}/book`;
+    tags["assessment_link"] = slug ? `${origin}/evaluate?ref=${slug}` : `${origin}/evaluate`;
     tags["site_link"] = origin;
   }
 
@@ -195,6 +197,8 @@ export const mergeTagsRouter = router({
         { tagKey: "pemf_link", label: "Your PEMF Page Link", category: "system", description: "Your personalised PEMF page URL" },
         { tagKey: "redox_link", label: "Your Redox Page Link", category: "system", description: "Your personalised Redox/ASEA page URL" },
         { tagKey: "olylife_link", label: "Your OlyLife Page Link", category: "system", description: "Your personalised OlyLife page URL" },
+        { tagKey: "book_link", label: "Read the Book Link", category: "system", description: "Your personalised link to the book (tracks affiliate credit)" },
+        { tagKey: "assessment_link", label: "Self-Assessment Link", category: "system", description: "Your personalised link to the self-assessment" },
         { tagKey: "site_link", label: "Main Site Link", category: "system", description: "https://addlifetoyouryears.org" },
       ];
       return { systemTags, globalTags, customLinks, assets };
@@ -268,6 +272,8 @@ export const mergeTagsRouter = router({
         { tagKey: "pemf_link", label: "Affiliate PEMF Page Link", category: "system", description: "The affiliate's personalised PEMF page URL" },
         { tagKey: "redox_link", label: "Affiliate Redox Page Link", category: "system", description: "The affiliate's personalised Redox/ASEA page URL" },
         { tagKey: "olylife_link", label: "Affiliate OlyLife Page Link", category: "system", description: "The affiliate's personalised OlyLife page URL" },
+        { tagKey: "book_link", label: "Read the Book Link", category: "system", description: "The affiliate's personalised link to the book" },
+        { tagKey: "assessment_link", label: "Self-Assessment Link", category: "system", description: "The affiliate's personalised link to the self-assessment" },
         { tagKey: "site_link", label: "Main Site Link", category: "system", description: "https://addlifetoyouryears.org" },
       ];
       return { systemTags, globalTags, customLinks: [], assets };
