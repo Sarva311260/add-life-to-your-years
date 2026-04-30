@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book-content_f7b0ecf5.md";
+const MD_CDN_URL = "/manus-storage/book-content_dcda2b4e.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -192,10 +192,18 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
     { youtubeId: "KcYV0Wjx_2k", title: "Water & Hydration — The Science of Staying Hydrated" },
   ],
   "rec-3": [{ rumbleUrl: "https://rumble.com/embed/v6zz56g/", title: "Dr. Robert Young Speaks On MasterPeace" }, { rumbleUrl: "https://rumble.com/embed/v75is4o/", title: "Why Is MasterPeace So Powerful Yet Gentle?" }],
+  "rec-redox": [
+    { youtubeId: "kgu__VlGOYA", title: "The Science Behind ASEA Redox Signaling Molecules" },
+    { youtubeId: "3bBRuRmB_uI", title: "The Science Behind ASEA REDOX — Hunter Dean" },
+  ],
   "rec-4": [],
   "rec-5": [{ youtubeId: "tcwVfUAqWiY", title: "Sleep & Melatonin" }],
   "rec-6": [{ youtubeId: "o2Kc1Iaow40", title: "Glycine" }],
   "rec-7": [{ youtubeId: "YckoR3hLL9E", title: "Five Seeds of Life" }],
+  "rec-gut-health": [
+    { youtubeId: "xqtxzcI0maE", title: "How to Cultivate a Healthy Gut Microbiome with Food" },
+    { youtubeId: "A-0hBPTUvms", title: "The 4 Gut Bacteria That Keep You Young — Dr. William Li" },
+  ],
   "rec-8": [{ youtubeId: "ndqvqAOsFtQ", title: "Gut Health & Microbiome" }],
   "rec-9": [
     { youtubeId: "wY4vEBilWN4", title: "Vitamin B12" },

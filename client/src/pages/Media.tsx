@@ -142,8 +142,30 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "rec-3",
+    id: "rec-redox",
     number: 4,
+    title: "Redox Signalling & ASEA",
+    description:
+      "Redox signalling molecules are the body's most fundamental cellular messengers. ASEA REDOX is the only supplement in the world that contains stabilised, bioactive redox signalling molecules — identical to those produced naturally within your cells.",
+    color: "bg-blue-100 text-blue-800 border-blue-200",
+    videos: [
+      {
+        youtubeId: "kgu__VlGOYA",
+        title: "The Science Behind ASEA Redox Signaling Molecules",
+        description:
+          "An in-depth look at the science behind ASEA redox signalling molecules and how they support cellular health, gene expression, and vitality.",
+      },
+      {
+        youtubeId: "3bBRuRmB_uI",
+        title: "The Science Behind ASEA REDOX — Hunter Dean, VP Manufacturing",
+        description:
+          "ASEA's VP of manufacturing and operations explains the science behind the ASEA REDOX technology and how stabilised redox molecules are produced.",
+      },
+    ],
+  },
+  {
+    id: "rec-3",
+    number: 5,
     title: "Sleep & Melatonin",
     description:
       "Sleep is the body's most powerful repair mechanism. Learn how to optimise your sleep architecture and the role of melatonin.",
@@ -159,7 +181,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-4",
-    number: 4,
+    number: 6,
     title: "Glycine",
     description:
       "The underappreciated amino acid that supports collagen synthesis, sleep quality, and metabolic health.",
@@ -175,7 +197,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-5",
-    number: 5,
+    number: 7,
     title: "Five Seeds of Life",
     description:
       "Five powerhouse seeds — flax, chia, hemp, pumpkin, and sesame — and why they should be part of your daily nutrition.",
@@ -190,8 +212,30 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
+    id: "rec-gut-health",
+    number: 8,
+    title: "Gut Health & Microbiome",
+    description:
+      "The gut microbiome is the foundation of immunity, mood, and longevity. Supporting it with spermidine, probiotics, and prebiotic-rich foods activates autophagy and restores the microbial ecosystem depleted by modern life.",
+    color: "bg-lime-100 text-lime-800 border-lime-200",
+    videos: [
+      {
+        youtubeId: "xqtxzcI0maE",
+        title: "How to Cultivate a Healthy Gut Microbiome with Food",
+        description:
+          "Dr. Michael Greger explains how to cultivate a healthy gut microbiome through food choices — the foundation of long-term health and vitality.",
+      },
+      {
+        youtubeId: "A-0hBPTUvms",
+        title: "The 4 Gut Bacteria That Keep You Young — Dr. William Li",
+        description:
+          "Dr. William Li reveals the four key gut bacteria associated with longevity and how to support them through diet and lifestyle.",
+      },
+    ],
+  },
+  {
     id: "rec-6",
-    number: 6,
+    number: 9,
     title: "Vitamin B12 & Vitamin D",
     description:
       "Two critical nutrients that are widely deficient — why they matter and how to supplement intelligently.",
@@ -219,7 +263,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-7",
-    number: 7,
+    number: 10,
     title: "Six Movements",
     description:
       "The six fundamental movement patterns every body needs — and how to build them into your daily life regardless of fitness level.",
@@ -235,7 +279,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-8",
-    number: 8,
+    number: 11,
     title: "Breathing",
     description:
       "Breathing is the only autonomic function we can consciously control. Learn how nasal breathing and breath work transform health.",
@@ -257,7 +301,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-9",
-    number: 9,
+    number: 12,
     title: "PEMF & Earthing",
     description:
       "Pulsed Electromagnetic Field therapy and grounding — how reconnecting with the Earth's electromagnetic field supports redox signalling and recovery.",
@@ -279,7 +323,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-10",
-    number: 10,
+    number: 13,
     title: "Meditation",
     description:
       "The neuroscience of meditation — how regular practice reshapes the brain, reduces cortisol, and builds emotional resilience.",
@@ -295,7 +339,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-11",
-    number: 11,
+    number: 14,
     title: "Time in Nature",
     description:
       "Why spending time in natural environments is a measurable health intervention — from forest bathing to sunlight exposure.",
@@ -311,7 +355,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-12",
-    number: 12,
+    number: 15,
     title: "Repairing Relationships",
     description:
       "Social connection is a primary determinant of longevity. Practical strategies for deepening relationships and reducing isolation.",
@@ -327,7 +371,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-13",
-    number: 13,
+    number: 16,
     title: "Second Income Stream",
     description:
       "Financial stress is a major driver of chronic disease. Building a second income stream reduces allostatic load and creates security.",
@@ -343,7 +387,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-14",
-    number: 14,
+    number: 17,
     title: "Your Environment",
     description:
       "How your home and work environment shapes your health — from air quality and toxin reduction to light and sound.",
@@ -359,7 +403,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   },
   {
     id: "rec-15",
-    number: 15,
+    number: 18,
     title: "Methylene Blue & Photobiomodulation",
     description:
       "Emerging therapies at the frontier of mitochondrial medicine — the science behind methylene blue and red/near-infrared light therapy.",
