@@ -615,3 +615,22 @@ export const crmAssets = mysqlTable("crm_assets", {
 });
 export type CrmAsset = typeof crmAssets.$inferSelect;
 export type InsertCrmAsset = typeof crmAssets.$inferInsert;
+
+/**
+ * Email Templates — affiliate-owned reusable email templates.
+ * Each affiliate can create, edit, and delete their own templates.
+ */
+export const emailTemplates = mysqlTable("email_templates", {
+  id: int("id").autoincrement().primaryKey(),
+  affiliateId: int("affiliateId").notNull(),
+  /** Template name shown in the picker */
+  name: varchar("name", { length: 255 }).notNull(),
+  /** Email subject line (may contain merge tags) */
+  subject: varchar("subject", { length: 255 }).notNull(),
+  /** HTML body (may contain merge tags) */
+  body: text("body").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+export type EmailTemplate = typeof emailTemplates.$inferSelect;
+export type InsertEmailTemplate = typeof emailTemplates.$inferInsert;

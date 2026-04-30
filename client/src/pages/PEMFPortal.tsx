@@ -9,6 +9,7 @@ import {
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import AffiliateContacts from "./AffiliateContacts";
+import EmailTemplates from "./EmailTemplates";
 import { Input } from "@/components/ui/input";
 import RichTextEditor from "@/components/RichTextEditor";
 import AffiliateCustomLinks from "./AffiliateCustomLinks";
@@ -167,7 +168,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
   );
 
   // Drip overrides
-  const [activeTab, setActiveTab] = useState<"dashboard" | "campaigns" | "products" | "contacts">("dashboard");
+  const [activeTab, setActiveTab] = useState<"dashboard" | "campaigns" | "products" | "contacts" | "templates">("dashboard");
   const { data: dripSequences = [], refetch: refetchDrip } = trpc.drip.affiliateGetDripOverrides.useQuery(
     { token },
     { enabled: !!token && activeTab === "campaigns", retry: false }
@@ -361,6 +362,16 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
             >
               My Contacts
             </button>
+            <button
+              onClick={() => setActiveTab("templates")}
+              className={`px-5 py-3 text-sm font-medium border-b-2 transition-colors flex items-center gap-1.5 ${
+                activeTab === "templates"
+                  ? "border-emerald-400 text-emerald-400"
+                  : "border-transparent text-gray-400 hover:text-white"
+              }`}
+            >
+              <MailIcon className="w-3.5 h-3.5" /> Email Templates
+            </button>
           </div>
         </div>
       </div>
@@ -520,6 +531,10 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
         {/* ─── CONTACTS TAB ─── */}
         {activeTab === "contacts" && (
           <AffiliateContacts token={token} />
+        )}
+        {/* ─── EMAIL TEMPLATES TAB ─── */}
+        {activeTab === "templates" && (
+          <EmailTemplates token={token} />
         )}
 
         {/* ─── DASHBOARD TAB ─── */}

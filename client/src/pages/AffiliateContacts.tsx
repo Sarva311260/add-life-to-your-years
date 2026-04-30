@@ -2,9 +2,13 @@ import { useState, useRef } from "react";
 import { trpc } from "@/lib/trpc";
 import {
   UserPlus, Upload, FileText, Smartphone, ChevronDown, ChevronUp,
-  Trash2, Pencil, Check, X, Info, Bell, MapPin, Tag, Cake
+  Trash2, Pencil, Check, X, Info, Bell, MapPin, Tag, Cake, Send, Mail, History
 } from "lucide-react";
 import { toast } from "sonner";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import RichTextEditor from "@/components/RichTextEditor";
 
 interface Props { token: string; }
 type ImportMode = "manual" | "csv" | "vcf" | null;
@@ -235,6 +239,11 @@ export default function AffiliateContacts({ token }: Props) {
   const [openTutorial, setOpenTutorial] = useState<TutorialKey>(null);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [expandedId, setExpandedId] = useState<number | null>(null);
+  // ─── Email compose state ────────────────────────────────────────────────
+  const [emailContact, setEmailContact] = useState<{ id: number; name: string; email: string } | null>(null);
+  const [emailSubject, setEmailSubject] = useState("");
+  const [emailBody, setEmailBody] = useState("");
+  const [historyContactEmail, setHistoryContactEmail] = useState<string | null>(null);
   const [addForm, setAddForm] = useState<FormState>(emptyForm());
   const [editForm, setEditForm] = useState<FormState>(emptyForm());
   const [importSequenceId, setImportSequenceId] = useState<number | "">("");
@@ -286,6 +295,33 @@ export default function AffiliateContacts({ token }: Props) {
     onError: (e) => toast.error(e.message),
   });
 
+  // ─── Email queries & mutations ────────────────────────────────────────────
+  const { data: templates = [] } = trpc.emailTemplates.list.useQuery(
+    { token },
+    { enabled: !!token, retry: false }
+  );
+  const { data: emailHistory = [] } = trpc.emailTemplates.getContactHistory.useQuery(
+    { token, contactEmail: historyContactEmail! },
+    { enabled: !!token && !!historyContactEmail, retry: false }
+  );
+  const sendEmailMutation = trpc.drip.affiliateSendEmailToLead.useMutation({
+    onSuccess: () => {
+      toast.success("Email sent!");
+      setEmailContact(null);
+      setEmailSubject("");
+      setEmailBody("");
+    },
+    onError: (e) => toast.error(e.message),
+  });
+  const openEmailCompose = (c: { id: number; name: string; email: string }) => {
+    setEmailContact(c);
+    setEmailSubject("");
+    setEmailBody("");
+  };
+  const applyTemplate = (t: { subject: string; body: string }) => {
+    setEmailSubject(t.subject);
+    setEmailBody(t.body);
+  };
   const handleFileImport = async (file: File, type: "csv" | "vcf") => {
     const text = await file.text();
     const seq = importSequenceId ? Number(importSequenceId) : undefined;
@@ -346,7 +382,7 @@ export default function AffiliateContacts({ token }: Props) {
   const isOverdue = (c: typeof contacts[0]) => !!c.reminderAt && c.reminderAt < Date.now();
 
   return (
-    <div className="space-y-6">
+    <>
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
@@ -496,6 +532,18 @@ export default function AffiliateContacts({ token }: Props) {
                         className="p-1.5 text-gray-400 hover:text-blue-300 hover:bg-white/10 rounded transition-colors" title="View details">
                         {expandedId === c.id ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
                       </button>
+                      {c.email && (
+                        <button onClick={() => openEmailCompose({ id: c.id, name: c.name, email: c.email! })}
+                          className="p-1.5 text-gray-400 hover:text-sky-300 hover:bg-white/10 rounded transition-colors" title="Send email">
+                          <Send size={14} />
+                        </button>
+                      )}
+                      {c.email && (
+                        <button onClick={() => setHistoryContactEmail(historyContactEmail === c.email ? null : c.email!)}
+                          className="p-1.5 text-gray-400 hover:text-purple-300 hover:bg-white/10 rounded transition-colors" title="Email history">
+                          <History size={14} />
+                        </button>
+                      )}
                       <button onClick={() => startEdit(c)}
                         className="p-1.5 text-gray-400 hover:text-emerald-300 hover:bg-white/10 rounded transition-colors" title="Edit contact">
                         <Pencil size={14} />
@@ -542,12 +590,110 @@ export default function AffiliateContacts({ token }: Props) {
                       </div>
                     </div>
                   )}
+                  {/* Email history inline */}
+                  {historyContactEmail === c.email && c.email && (
+                    <div className="border-t border-white/10 px-4 py-3">
+                      <p className="text-purple-300 text-xs font-medium flex items-center gap-1 mb-2"><History size={11} /> Email History</p>
+                      {emailHistory.length === 0 ? (
+                        <p className="text-gray-500 text-xs">No emails sent to this contact yet.</p>
+                      ) : (
+                        <div className="space-y-2">
+                          {emailHistory.map((log: any) => (
+                            <div key={log.id} className="bg-white/5 rounded-lg px-3 py-2">
+                              <div className="flex items-center justify-between gap-2">
+                                <p className="text-white text-xs font-medium truncate">{log.subject}</p>
+                                <span className={`text-xs px-1.5 py-0.5 rounded-full shrink-0 ${
+                                  log.status === 'sent' ? 'bg-emerald-900/50 text-emerald-300' : 'bg-red-900/50 text-red-300'
+                                }`}>{log.status}</span>
+                              </div>
+                              <p className="text-gray-500 text-xs mt-0.5">{new Date(log.sentAt).toLocaleString()}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </>
               )}
             </div>
           ))}
         </div>
       )}
-    </div>
+
+    {/* ─── Email Compose Modal ─────────────────────────────────────────────── */}
+    <Dialog open={!!emailContact} onOpenChange={(o) => { if (!o) { setEmailContact(null); setEmailSubject(""); setEmailBody(""); } }}>
+      <DialogContent className="bg-[#0a2e1a] border border-emerald-700/30 text-white max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle className="text-white flex items-center gap-2">
+            <Mail size={16} className="text-emerald-400" />
+            Send Email to {emailContact?.name}
+          </DialogTitle>
+        </DialogHeader>
+        <div className="space-y-4 pt-2">
+          {/* Template picker */}
+          {templates.length > 0 && (
+            <div>
+              <label className="text-emerald-300 text-xs font-medium block mb-1">Load a template (optional)</label>
+              <select
+                onChange={e => {
+                  const t = templates.find((t: any) => t.id === Number(e.target.value));
+                  if (t) applyTemplate(t);
+                  e.target.value = "";
+                }}
+                defaultValue=""
+                className="w-full bg-white/10 border border-emerald-700/30 rounded-md px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              >
+                <option value="" disabled>— Select a template —</option>
+                {templates.map((t: any) => (
+                  <option key={t.id} value={t.id}>{t.name}</option>
+                ))}
+              </select>
+            </div>
+          )}
+          <div>
+            <label className="text-emerald-300 text-xs font-medium block mb-1">Subject</label>
+            <Input
+              value={emailSubject}
+              onChange={e => setEmailSubject(e.target.value)}
+              placeholder="Email subject"
+              className="bg-white/10 border-emerald-700/30 text-white placeholder:text-gray-500"
+            />
+          </div>
+          <div>
+            <label className="text-emerald-300 text-xs font-medium block mb-1">Message</label>
+            <RichTextEditor
+              value={emailBody}
+              onChange={v => setEmailBody(v)}
+              token={token}
+              placeholder="Write your message here. Use Insert to add personalised tags and video links."
+            />
+          </div>
+          <p className="text-gray-500 text-xs">Tags like <code className="text-emerald-400">{"{{first_name}}"}</code> will be replaced with the contact's details when sent.</p>
+          <div className="flex gap-2 justify-end pt-2">
+            <Button variant="ghost" onClick={() => setEmailContact(null)} className="text-gray-400 hover:text-white">
+              Cancel
+            </Button>
+            <Button
+              onClick={() => {
+                if (!emailContact?.email) return;
+                sendEmailMutation.mutate({
+                  token,
+                  leadEmail: emailContact.email,
+                  leadName: emailContact.name,
+                  subject: emailSubject,
+                  body: emailBody,
+                });
+              }}
+              disabled={!emailSubject || !emailBody || sendEmailMutation.isPending}
+              className="bg-emerald-600 hover:bg-emerald-500 text-white flex items-center gap-2"
+            >
+              <Send size={14} />
+              {sendEmailMutation.isPending ? "Sending…" : "Send Email"}
+            </Button>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+    </>
   );
 }

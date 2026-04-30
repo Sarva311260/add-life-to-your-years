@@ -25,6 +25,7 @@ import { dripCampaignRouter } from "./routers/dripCampaign";
 import { recommendedProductsRouter } from "./routers/recommendedProducts";
 import { affiliateContactsRouter } from "./routers/affiliateContacts";
 import { mergeTagsRouter } from "./routers/mergeTags";
+import { emailTemplatesRouter } from "./routers/emailTemplates";
 import { adminProcedure } from "./_core/trpc";
 import { CONDITION_KNOWLEDGE } from "./conditionKnowledge";
 import { VIDEO_KNOWLEDGE } from "./videoKnowledge";
@@ -39,6 +40,7 @@ export const appRouter = router({
   recommendedProducts: recommendedProductsRouter,
   affiliateContacts: affiliateContactsRouter,
   mergeTags: mergeTagsRouter,
+  emailTemplates: emailTemplatesRouter,
 
   knowledge: router({
     list: adminProcedure.query(() => {

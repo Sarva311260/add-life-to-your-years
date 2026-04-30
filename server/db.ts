@@ -13,6 +13,7 @@ import {
   recommendedProducts, InsertRecommendedProduct,
   affiliateProductLinks, InsertAffiliateProductLink,
   affiliateContacts, InsertAffiliateContact,
+  emailTemplates, InsertEmailTemplate,
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -872,4 +873,44 @@ export async function deleteAffiliateContact(id: number, affiliateId: number) {
   if (!db) throw new Error("Database not available");
   await db.delete(affiliateContacts)
     .where(and(eq(affiliateContacts.id, id), eq(affiliateContacts.affiliateId, affiliateId)));
+}
+
+// ---- Email Template helpers ----
+
+export async function getEmailTemplatesByAffiliate(affiliateId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  return db.select().from(emailTemplates)
+    .where(eq(emailTemplates.affiliateId, affiliateId))
+    .orderBy(desc(emailTemplates.updatedAt));
+}
+
+export async function createEmailTemplate(data: InsertEmailTemplate) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.insert(emailTemplates).values(data);
+  return result[0].insertId;
+}
+
+export async function updateEmailTemplate(id: number, affiliateId: number, data: Partial<InsertEmailTemplate>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(emailTemplates).set(data)
+    .where(and(eq(emailTemplates.id, id), eq(emailTemplates.affiliateId, affiliateId)));
+}
+
+export async function deleteEmailTemplate(id: number, affiliateId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.delete(emailTemplates)
+    .where(and(eq(emailTemplates.id, id), eq(emailTemplates.affiliateId, affiliateId)));
+}
+
+export async function getEmailLogByContact(affiliateId: number, toEmail: string) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  return db.select().from(emailLog)
+    .where(and(eq(emailLog.affiliateId, affiliateId), eq(emailLog.toEmail, toEmail)))
+    .orderBy(desc(emailLog.sentAt))
+    .limit(50);
 }
