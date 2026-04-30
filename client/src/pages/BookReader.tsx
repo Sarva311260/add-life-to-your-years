@@ -181,51 +181,71 @@ function buildSearchResults(content: string, query: string): SearchResult[] {
 }
 
 // Video entries for each recommendation (supports YouTube and Rumble)
+// Keys match the media# hash IDs used in book-content.md links
 type VideoEntry = { youtubeId?: string; rumbleUrl?: string; title: string };
 const REC_VIDEOS: Record<string, VideoEntry[]> = {
+  // Book Rec 1 → media#rec-1
   "rec-1": [
     { youtubeId: "wb7L3t0ejdI", title: "Whole Food Plant-Based Diet" },
     { youtubeId: "ztIZoaKTeqk", title: "Whole Food Plant-Based Living" },
   ],
+  // Book Rec 2 → media#rec-2
   "rec-2": [
     { youtubeId: "VRzjoIgHNb0", title: "Water & Hydration — Quality, Purity & Health" },
     { youtubeId: "KcYV0Wjx_2k", title: "Water & Hydration — The Science of Staying Hydrated" },
   ],
-  "rec-3": [{ rumbleUrl: "https://rumble.com/embed/v6zz56g/", title: "Dr. Robert Young Speaks On MasterPeace" }, { rumbleUrl: "https://rumble.com/embed/v75is4o/", title: "Why Is MasterPeace So Powerful Yet Gentle?" }],
+  // Book Rec 3 → media#rec-zeolite
+  "rec-zeolite": [
+    { rumbleUrl: "https://rumble.com/embed/v6zz56g/", title: "Dr. Robert Young Speaks On MasterPeace" },
+    { rumbleUrl: "https://rumble.com/embed/v75is4o/", title: "Why Is MasterPeace So Powerful Yet Gentle?" },
+  ],
+  // Book Rec 4 → media#rec-redox
   "rec-redox": [
     { youtubeId: "kgu__VlGOYA", title: "The Science Behind ASEA Redox Signaling Molecules" },
     { youtubeId: "3bBRuRmB_uI", title: "The Science Behind ASEA REDOX — Hunter Dean" },
   ],
-  "rec-4": [],
-  "rec-5": [{ youtubeId: "tcwVfUAqWiY", title: "Sleep & Melatonin" }],
-  "rec-6": [{ youtubeId: "o2Kc1Iaow40", title: "Glycine" }],
-  "rec-7": [{ youtubeId: "YckoR3hLL9E", title: "Five Seeds of Life" }],
+  // Book Rec 5 → media#rec-3
+  "rec-3": [{ youtubeId: "tcwVfUAqWiY", title: "Sleep & Melatonin" }],
+  // Book Rec 6 → media#rec-4
+  "rec-4": [{ youtubeId: "o2Kc1Iaow40", title: "Glycine" }],
+  // Book Rec 7 → media#rec-5
+  "rec-5": [{ youtubeId: "YckoR3hLL9E", title: "Five Seeds of Life" }],
+  // Book Rec 8 → media#rec-gut-health
   "rec-gut-health": [
     { youtubeId: "xqtxzcI0maE", title: "How to Cultivate a Healthy Gut Microbiome with Food" },
     { youtubeId: "A-0hBPTUvms", title: "The 4 Gut Bacteria That Keep You Young — Dr. William Li" },
   ],
-  "rec-8": [{ youtubeId: "ndqvqAOsFtQ", title: "Gut Health & Microbiome" }],
-  "rec-9": [
+  // Book Rec 9 → media#rec-6
+  "rec-6": [
     { youtubeId: "wY4vEBilWN4", title: "Vitamin B12" },
     { youtubeId: "qiR4yBymtwY", title: "Vitamin D3 — Dr. Michael Holick" },
     { youtubeId: "iotnggfP9Yk", title: "Vitamin D3" },
     { youtubeId: "uxWARJ4s95Y", title: "Vitamin D3 (Part 2)" },
   ],
-  "rec-10": [{ youtubeId: "qu3ixTQmpl0", title: "Six Movements" }],
-  "rec-11": [
+  // Book Rec 10 → media#rec-7
+  "rec-7": [{ youtubeId: "qu3ixTQmpl0", title: "Six Movements" }],
+  // Book Rec 11 → media#rec-8
+  "rec-8": [
     { youtubeId: "8vN08IuParo", title: "Bhramari Pranayama — Bee Breath" },
     { youtubeId: "QVoGbaq8xos", title: "Breathing — The Power of Conscious Breath" },
   ],
-  "rec-12": [
+  // Book Rec 12 → media#rec-9
+  "rec-9": [
     { youtubeId: "byinppKR9LY", title: "PEMF Therapy & Redox Signalling" },
     { youtubeId: "LKOli-nNALM", title: "PEMF & Earthing — Reconnecting with the Earth's Field" },
   ],
-  "rec-13": [{ youtubeId: "wXsxwIJnUJk", title: "Meditation" }],
-  "rec-14": [{ youtubeId: "UHv3SCUioQU", title: "Time in Nature" }],
-  "rec-15": [{ youtubeId: "rgQvqi6aYD8", title: "Repairing the Relationship" }],
-  "rec-16": [{ youtubeId: "eD0N8wXjNSs", title: "Second Income Stream" }],
-  "rec-17": [{ youtubeId: "foBnfBX4YKQ", title: "Your Environment" }],
-  "rec-18": [{ youtubeId: "KvASX2yp0zU", title: "Methylene Blue & Photobiomodulation" }],
+  // Book Rec 13 → media#rec-10
+  "rec-10": [{ youtubeId: "wXsxwIJnUJk", title: "Meditation" }],
+  // Book Rec 14 → media#rec-11
+  "rec-11": [{ youtubeId: "UHv3SCUioQU", title: "Time in Nature" }],
+  // Book Rec 15 → media#rec-12
+  "rec-12": [{ youtubeId: "rgQvqi6aYD8", title: "Repairing the Relationship" }],
+  // Book Rec 16 → media#rec-13
+  "rec-13": [{ youtubeId: "eD0N8wXjNSs", title: "Second Income Stream" }],
+  // Book Rec 17 → media#rec-14
+  "rec-14": [{ youtubeId: "foBnfBX4YKQ", title: "Your Environment" }],
+  // Book Rec 18 → media#rec-15
+  "rec-15": [{ youtubeId: "KvASX2yp0zU", title: "Methylene Blue & Photobiomodulation" }],
   "rec-appendix-cold-showers": [
     { youtubeId: "xTVMGyJ8cZU", title: "Cold Showers — Hormesis, Inflammation & Cognitive Benefits" },
     { youtubeId: "may_PlDfNRE", title: "The Science Behind Cold Showers — 5 Evidence-Based Benefits" },
