@@ -592,6 +592,38 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
                 </button>
               </div>
             </div>
+            {/* Book link */}
+            <div>
+              <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5 font-medium">Read the Book</p>
+              <div className="flex items-center gap-3 bg-black/30 rounded-xl p-4">
+                <a href={`${window.location.origin}/book?ref=${profile?.slug}`} target="_blank" rel="noreferrer" className="text-emerald-400 text-sm flex-1 break-all hover:text-emerald-300 transition-colors">
+                  {`${window.location.origin}/book?ref=${profile?.slug}`}
+                </a>
+                <button
+                  onClick={() => { navigator.clipboard.writeText(`${window.location.origin}/book?ref=${profile?.slug}`); toast.success("Book link copied!"); }}
+                  className="flex-shrink-0 bg-emerald-600 hover:bg-emerald-500 text-white p-2.5 rounded-lg transition-all"
+                  title="Copy book link"
+                >
+                  <Copy className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+            {/* Self-Assessment link */}
+            <div>
+              <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5 font-medium">Self-Assessment</p>
+              <div className="flex items-center gap-3 bg-black/30 rounded-xl p-4">
+                <a href={`${window.location.origin}/evaluate?ref=${profile?.slug}`} target="_blank" rel="noreferrer" className="text-emerald-400 text-sm flex-1 break-all hover:text-emerald-300 transition-colors">
+                  {`${window.location.origin}/evaluate?ref=${profile?.slug}`}
+                </a>
+                <button
+                  onClick={() => { navigator.clipboard.writeText(`${window.location.origin}/evaluate?ref=${profile?.slug}`); toast.success("Self-assessment link copied!"); }}
+                  className="flex-shrink-0 bg-emerald-600 hover:bg-emerald-500 text-white p-2.5 rounded-lg transition-all"
+                  title="Copy self-assessment link"
+                >
+                  <Copy className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
