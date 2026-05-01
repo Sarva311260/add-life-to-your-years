@@ -34,10 +34,18 @@ export default function ConsultSession() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
+  // Poll until the async greeting arrives from the server
+  const [greetingReady, setGreetingReady] = useState(false);
+
   // Fetch existing consultation data
   const { data: consultation, isLoading: loadingConsultation } = trpc.consult.getById.useQuery(
     { id: consultationId },
-    { enabled: isAuthenticated && consultationId > 0 }
+    {
+      enabled: isAuthenticated && consultationId > 0,
+      // Poll every 2 s until the AI greeting message arrives (generated async on server)
+      refetchInterval: greetingReady ? false : 2000,
+      refetchIntervalInBackground: true,
+    }
   );
 
   // Local messages state (initialized from server data)
@@ -47,14 +55,16 @@ export default function ConsultSession() {
 
   useEffect(() => {
     if (consultation) {
-      setMessages(
-        consultation.messages.map((m) => ({
-          role: m.role,
-          content: m.content,
-        }))
-      );
+      const visibleMessages = consultation.messages
+        .filter((m) => m.role !== "system")
+        .map((m) => ({ role: m.role, content: m.content }));
+      setMessages(visibleMessages);
       setCurrentPhase(consultation.currentPhase);
       setIsComplete(consultation.status === "completed");
+      // Stop polling once the greeting has arrived
+      if (visibleMessages.some((m) => m.role === "assistant")) {
+        setGreetingReady(true);
+      }
     }
   }, [consultation]);
 
@@ -242,6 +252,21 @@ export default function ConsultSession() {
                   )}
                 </div>
               ))}
+
+              {/* Waiting for async greeting from server */}
+              {!greetingReady && messages.length === 0 && (
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 shrink-0 mt-1 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Leaf className="w-4 h-4 text-primary" />
+                  </div>
+                  <div className="rounded-lg bg-muted px-4 py-2.5">
+                    <div className="flex items-center gap-2 text-muted-foreground text-sm">
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Preparing your personalised consultation...
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {sendMutation.isPending && (
                 <div className="flex items-start gap-3">
