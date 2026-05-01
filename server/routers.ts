@@ -327,6 +327,15 @@ export const appRouter = router({
       <p style="font-size:15px;color:#374151;line-height:1.6;margin:0 0 24px;">
         Thank you for completing your wellness self-evaluation! Your personalised results are ready.
       </p>
+      <!-- Consult CTA - TOP -->
+      <div style="background:linear-gradient(135deg,#064e3b,#0f766e);border-radius:12px;padding:28px;text-align:center;margin:0 0 28px;">
+        <p style="color:#a7f3d0;font-size:12px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;margin:0 0 8px;">✨ AI-Assisted · Free · Instant</p>
+        <h2 style="color:#ffffff;font-size:20px;margin:0 0 12px;font-family:Georgia,serif;">Get Your Free Personalised Consultation</h2>
+        <p style="color:#d1fae5;font-size:14px;line-height:1.6;margin:0 0 20px;">
+          Based on your evaluation results, the book <em>Add Life to Your Years</em>, and our extensive wellness knowledge base — our AI wellness consultant will give you instant, personalised guidance tailored specifically to your scores.
+        </p>
+        <a href="${consultLink}" style="display:inline-block;background:#ffffff;color:#064e3b;text-decoration:none;padding:14px 28px;border-radius:8px;font-size:15px;font-weight:bold;">Start Your Free AI Consultation</a>
+      </div>
       <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:20px;margin:0 0 24px;text-align:center;">
         <p style="font-size:28px;font-weight:bold;color:#065f46;margin:0 0 4px;">${Math.round(overallScore)}%</p>
         <p style="font-size:14px;color:#047857;margin:0;">Overall Wellness Score — ${scoreLevelLabel}</p>
@@ -334,7 +343,7 @@ export const appRouter = router({
       <div style="text-align:center;margin:0 0 32px;">
         <a href="${resultsLink}" style="display:inline-block;background:#065f46;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:bold;">View Your Full Results</a>
       </div>
-      <!-- Consult CTA -->
+      <!-- Consult CTA - BOTTOM -->
       <div style="background:linear-gradient(135deg,#064e3b,#0f766e);border-radius:12px;padding:28px;text-align:center;margin:0 0 24px;">
         <p style="color:#a7f3d0;font-size:12px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;margin:0 0 8px;">✨ AI-Assisted · Free · Instant</p>
         <h2 style="color:#ffffff;font-size:20px;margin:0 0 12px;font-family:Georgia,serif;">Get Your Free Personalised Consultation</h2>
@@ -485,6 +494,15 @@ export const appRouter = router({
       <p style="font-size:15px;color:#374151;line-height:1.6;margin:0 0 24px;">
         Thank you for completing your wellness self-evaluation! Your personalised results are ready.
       </p>
+      <!-- Consult CTA - TOP -->
+      <div style="background:linear-gradient(135deg,#064e3b,#0f766e);border-radius:12px;padding:28px;text-align:center;margin:0 0 28px;">
+        <p style="color:#a7f3d0;font-size:12px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;margin:0 0 8px;">\u2728 AI-Assisted \u00b7 Free \u00b7 Instant</p>
+        <h2 style="color:#ffffff;font-size:20px;margin:0 0 12px;font-family:Georgia,serif;">Get Your Free Personalised Consultation</h2>
+        <p style="color:#d1fae5;font-size:14px;line-height:1.6;margin:0 0 20px;">
+          Based on your evaluation results, the book <em>Add Life to Your Years</em>, and our extensive wellness knowledge base \u2014 our AI wellness consultant will give you instant, personalised guidance tailored specifically to your scores.
+        </p>
+        <a href="${consultLink}" style="display:inline-block;background:#ffffff;color:#064e3b;text-decoration:none;padding:14px 28px;border-radius:8px;font-size:15px;font-weight:bold;">Start Your Free AI Consultation</a>
+      </div>
       <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:20px;margin:0 0 24px;text-align:center;">
         <p style="font-size:28px;font-weight:bold;color:#065f46;margin:0 0 4px;">${Math.round(overallScore)}%</p>
         <p style="font-size:14px;color:#047857;margin:0;">Overall Wellness Score \u2014 ${scoreLevelLabel}</p>
@@ -492,6 +510,7 @@ export const appRouter = router({
       <div style="text-align:center;margin:0 0 32px;">
         <a href="${resultsLink}" style="display:inline-block;background:#065f46;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:bold;">View Your Full Results</a>
       </div>
+      <!-- Consult CTA - BOTTOM -->
       <div style="background:linear-gradient(135deg,#064e3b,#0f766e);border-radius:12px;padding:28px;text-align:center;margin:0 0 24px;">
         <p style="color:#a7f3d0;font-size:12px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;margin:0 0 8px;">\u2728 AI-Assisted \u00b7 Free \u00b7 Instant</p>
         <h2 style="color:#ffffff;font-size:20px;margin:0 0 12px;font-family:Georgia,serif;">Get Your Free Personalised Consultation</h2>
