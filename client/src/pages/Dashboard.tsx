@@ -6,8 +6,10 @@ import { trpc } from "@/lib/trpc";
 import { CATEGORIES, getScoreLevel, getScoreLevelLabel } from "@shared/questionnaire";
 import {
   ArrowLeft, ArrowRight, TrendingUp, TrendingDown, Minus,
-  Leaf, Calendar, BarChart3, Target, Loader2, LogOut, User, BookOpen
+  Leaf, Calendar, BarChart3, Target, Loader2, LogOut, User, BookOpen, Mail
 } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
 import { Link, useLocation } from "wouter";
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
@@ -23,6 +25,19 @@ export default function Dashboard() {
   const { user, isAuthenticated, loading: authLoading, logout } = useAuth();
   const isOwner = user?.role === "admin";
   const [, navigate] = useLocation();
+  const [testEmailSending, setTestEmailSending] = useState(false);
+  const testEmailMutation = trpc.evaluation.sendTestResultsEmail.useMutation();
+  const handleSendTestEmail = async () => {
+    setTestEmailSending(true);
+    try {
+      const result = await testEmailMutation.mutateAsync({ origin: window.location.origin });
+      toast.success(`Test results email sent to ${result.sentTo}`);
+    } catch (err: any) {
+      toast.error(err?.message || "Failed to send test email");
+    } finally {
+      setTestEmailSending(false);
+    }
+  };
 
   const { data: evaluations, isLoading } = trpc.evaluation.history.useQuery(undefined, {
     enabled: isAuthenticated,
@@ -336,6 +351,28 @@ export default function Dashboard() {
               </CardContent>
             </Card>
           </>
+        )}
+
+        {/* Admin: Test Results Email */}
+        {isOwner && (
+          <div className="mt-6 p-4 border border-dashed border-amber-400 rounded-lg bg-amber-50 dark:bg-amber-950/20">
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <p className="text-sm font-semibold text-amber-800 dark:text-amber-300">Admin Test Tool</p>
+                <p className="text-xs text-amber-700 dark:text-amber-400 mt-0.5">Send yourself a test results email using your latest evaluation data.</p>
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleSendTestEmail}
+                disabled={testEmailSending}
+                className="border-amber-400 text-amber-800 hover:bg-amber-100 dark:text-amber-300 shrink-0"
+              >
+                {testEmailSending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Mail className="w-4 h-4 mr-2" />}
+                Send Test Email
+              </Button>
+            </div>
+          </div>
         )}
       </div>
     </div>
