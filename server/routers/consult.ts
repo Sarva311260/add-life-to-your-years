@@ -93,56 +93,47 @@ export const consultRouter = router({
         }
       }
 
+      // Generate a brief greeting using a minimal prompt (no heavy knowledge base) for speed
+      // The full knowledge base is loaded on the first sendMessage call instead
+      const greetingSystemPrompt = `You are a warm, professional AI wellness consultant for the "Add Life to Your Years" programme by Sarva. Your role is to guide people through a personalised wellness consultation based on the book's 18 recommendations.
+
+${evaluationSummary ? `The user has completed a self-evaluation:\n${evaluationSummary}` : "The user has not yet completed a self-evaluation."}
+
+Consultation type: ${input.consultType === "full_review" ? "Complete Wellness Review" : `Specific conditions: ${input.selectedConditions?.join(", ")}`}
+
+Write a warm, personalised 2-3 sentence greeting that:
+1. Welcomes them by name if known
+2. Briefly acknowledges their evaluation results if available
+3. Invites them to share what they most want to improve
+Keep it concise and warm.`;
+
+      let greetingContent = "Welcome! I'm your AI wellness consultant. I'm here to provide personalised guidance based on your evaluation results and the wellness principles from *Add Life to Your Years*. What would you like to focus on today?";
+      try {
+        const greetingResp = await invokeLLM({
+          messages: [
+            { role: "system", content: greetingSystemPrompt },
+            {
+              role: "user",
+              content: input.consultType === "full_review"
+                ? "I'd like to do a complete personal wellness review."
+                : `I'd like help with: ${input.selectedConditions?.join(", ") || "my health concern"}.`,
+            },
+          ],
+        });
+        const raw = greetingResp.choices[0]?.message?.content;
+        if (typeof raw === "string" && raw.trim()) greetingContent = raw;
+      } catch (err) {
+        console.error("[Consult] Greeting generation failed, using fallback", err);
+      }
+      // Save a placeholder system prompt — the full one is built on first sendMessage
+      await addConsultMessage({ consultationId, role: "system", content: greetingSystemPrompt, phase: 1 });
+      await addConsultMessage({ consultationId, role: "assistant", content: greetingContent, phase: 1 });
+
       // Notify owner
       notifyOwner({
         title: "New Wellness Consultation Started",
         content: `${ctx.user.name || ctx.user.email || "A user"} has started a ${input.consultType === "full_review" ? "Complete Wellness Review" : `consultation for: ${input.selectedConditions?.join(", ")}`}.`,
       }).catch(() => {});
-
-      // Generate greeting asynchronously so the client navigates immediately (avoids LLM timeout)
-      setImmediate(async () => {
-        try {
-          const conditionKnowledgeContext = input.selectedConditions && input.selectedConditions.length > 0
-            ? formatMultipleConditions(input.selectedConditions)
-            : input.consultType === "full_review"
-            ? formatMultipleConditions(["sleep", "gut_health", "fatigue", "stress", "weight", "heart"])
-            : undefined;
-          const videoKnowledgeContext = formatAllVideoKnowledge();
-          const systemPrompt = buildConsultSystemPrompt(
-            1,
-            input.consultType,
-            input.selectedConditions,
-            evaluationSummary,
-            undefined,
-            undefined,
-            conditionKnowledgeContext,
-            videoKnowledgeContext,
-          );
-          const greetingResp = await invokeLLM({
-            messages: [
-              { role: "system", content: systemPrompt },
-              {
-                role: "user",
-                content: input.consultType === "full_review"
-                  ? "I'd like to do a complete personal wellness review."
-                  : `I'd like help with: ${input.selectedConditions?.join(", ") || "my health concern"}.`,
-              },
-            ],
-          });
-          const rawGreeting = greetingResp.choices[0]?.message?.content;
-          const greetingContent = (typeof rawGreeting === "string" ? rawGreeting : "") || "Welcome! I'm glad you're here. Tell me, what brings you to this wellness consultation today?";
-          await addConsultMessage({ consultationId, role: "system", content: systemPrompt, phase: 1 });
-          await addConsultMessage({ consultationId, role: "assistant", content: greetingContent, phase: 1 });
-        } catch (err) {
-          console.error("[Consult] Failed to generate greeting for consultation", consultationId, err);
-          await addConsultMessage({
-            consultationId,
-            role: "assistant",
-            content: "Welcome! I'm your AI wellness consultant. I'm here to provide personalised guidance based on your evaluation results and the wellness principles from *Add Life to Your Years*. What would you like to focus on today?",
-            phase: 1,
-          }).catch(() => {});
-        }
-      });
 
       return {
         consultationId,
