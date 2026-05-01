@@ -373,10 +373,17 @@ Keep it concise and warm.`;
         return null;
       }
       const messages = await getConsultMessages(input.id);
+      const visibleMessages = messages.filter((m) => m.role !== "system");
+      // If no messages exist (stuck consultation from failed greeting), inject a fallback greeting
+      if (visibleMessages.length === 0) {
+        const fallback = "Welcome back! I'm your AI wellness consultant. It looks like we got interrupted — let's continue your consultation. What would you like to focus on today?";
+        await addConsultMessage({ consultationId: input.id, role: "assistant", content: fallback, phase: 1 });
+        visibleMessages.push({ id: 0, consultationId: input.id, role: "assistant", content: fallback, phase: 1, createdAt: new Date() } as any);
+      }
       const report = await getConsultReport(input.id);
       return {
         ...consultation,
-        messages: messages.filter((m) => m.role !== "system"),
+        messages: visibleMessages,
         report,
       };
     }),
