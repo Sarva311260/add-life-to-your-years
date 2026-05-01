@@ -161,6 +161,8 @@ export const appRouter = router({
             weightKg: z.number().optional(),
             weightLbs: z.number().optional(),
           }).optional(),
+          affiliateSlug: z.string().optional(),
+          origin: z.string().optional(),
         })
       )
       .mutation(async ({ ctx, input }) => {
@@ -295,6 +297,74 @@ export const appRouter = router({
           }).catch((err) => {
             console.warn("[Notification] Failed to send first evaluation notification:", err);
           });
+        }
+
+        // Send automatic results email to the visitor (fire-and-forget)
+        const visitorEmail = ctx.user.email;
+        if (visitorEmail) {
+          const emailOrigin = input.origin || ctx.req.headers.origin || ctx.req.headers.referer?.replace(/\/[^/]*$/, '') || 'https://addlifetoyouryears.org';
+          const resultsLink = `${emailOrigin}/results/${evaluationId}`;
+          const consultLink = input.affiliateSlug
+            ? `${emailOrigin}/consult?ref=${encodeURIComponent(input.affiliateSlug)}`
+            : `${emailOrigin}/consult`;
+          const firstName = ctx.user.name?.split(' ')[0] || 'there';
+          const resendApiKey = process.env.RESEND_API_KEY;
+          if (resendApiKey) {
+            const emailHtml = `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f9fafb;font-family:Georgia,serif;">
+  <div style="max-width:600px;margin:0 auto;background:#ffffff;">
+    <!-- Header -->
+    <div style="background:linear-gradient(135deg,#064e3b,#065f46);padding:40px 32px;text-align:center;">
+      <h1 style="color:#ffffff;font-size:24px;margin:0 0 8px;font-family:Georgia,serif;">Add Life to Your Years</h1>
+      <p style="color:#a7f3d0;font-size:14px;margin:0;">Your Wellness Self-Evaluation Results</p>
+    </div>
+    <!-- Body -->
+    <div style="padding:32px;">
+      <p style="font-size:16px;color:#1f2937;margin:0 0 16px;">Hi ${firstName},</p>
+      <p style="font-size:15px;color:#374151;line-height:1.6;margin:0 0 24px;">
+        Thank you for completing your wellness self-evaluation! Your personalised results are ready.
+      </p>
+      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:20px;margin:0 0 24px;text-align:center;">
+        <p style="font-size:28px;font-weight:bold;color:#065f46;margin:0 0 4px;">${Math.round(overallScore)}%</p>
+        <p style="font-size:14px;color:#047857;margin:0;">Overall Wellness Score — ${scoreLevelLabel}</p>
+      </div>
+      <div style="text-align:center;margin:0 0 32px;">
+        <a href="${resultsLink}" style="display:inline-block;background:#065f46;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:bold;">View Your Full Results</a>
+      </div>
+      <!-- Consult CTA -->
+      <div style="background:linear-gradient(135deg,#064e3b,#0f766e);border-radius:12px;padding:28px;text-align:center;margin:0 0 24px;">
+        <p style="color:#a7f3d0;font-size:12px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;margin:0 0 8px;">✨ AI-Assisted · Free · Instant</p>
+        <h2 style="color:#ffffff;font-size:20px;margin:0 0 12px;font-family:Georgia,serif;">Get Your Free Personalised Consultation</h2>
+        <p style="color:#d1fae5;font-size:14px;line-height:1.6;margin:0 0 20px;">
+          Based on your evaluation results, the book <em>Add Life to Your Years</em>, and our extensive wellness knowledge base — our AI wellness consultant will give you instant, personalised guidance tailored specifically to your scores.
+        </p>
+        <a href="${consultLink}" style="display:inline-block;background:#ffffff;color:#064e3b;text-decoration:none;padding:14px 28px;border-radius:8px;font-size:15px;font-weight:bold;">Start Your Free AI Consultation</a>
+      </div>
+      <p style="font-size:13px;color:#6b7280;line-height:1.6;margin:0;">
+        This email was sent because you completed a wellness self-evaluation on Add Life to Your Years.
+      </p>
+    </div>
+    <!-- Footer -->
+    <div style="background:#f3f4f6;padding:20px 32px;text-align:center;border-top:1px solid #e5e7eb;">
+      <p style="font-size:12px;color:#9ca3af;margin:0;">© Add Life to Your Years · <a href="https://addlifetoyouryears.org" style="color:#059669;">addlifetoyouryears.org</a></p>
+    </div>
+  </div>
+</body>
+</html>`;
+            fetch('https://api.resend.com/emails', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${resendApiKey}` },
+              body: JSON.stringify({
+                from: 'Add Life to Your Years <noreply@addlifetoyouryears.org>',
+                to: [visitorEmail],
+                subject: `Your Wellness Results — ${Math.round(overallScore)}% (${scoreLevelLabel})`,
+                html: emailHtml,
+              }),
+            }).catch((err) => console.warn('[ResultsEmail] Failed to send results email:', err));
+          }
         }
 
         return { evaluationId, overallScore, cardiacFlag, bmi: bmi || null };

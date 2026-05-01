@@ -144,6 +144,10 @@ export default function Questionnaire() {
   const [demographics, setDemographics] = useState<Partial<Demographics>>(loadSavedDemographics);
   const [submitting, setSubmitting] = useState(false);
   const [showIncomplete, setShowIncomplete] = useState(false);
+  const affiliateSlug = (() => {
+    const match = document.cookie.match(/(?:^|;\s*)affiliate_slug=([^;]*)/);
+    return match ? decodeURIComponent(match[1]) : undefined;
+  })();
 
   const submitMutation = trpc.evaluation.submit.useMutation();
 
@@ -392,6 +396,8 @@ export default function Questionnaire() {
         responses,
         categoryScores: adjustedCategoryScores,
         demographics: demographics as Demographics,
+        affiliateSlug: affiliateSlug || undefined,
+        origin: window.location.origin,
       });
       // Clear saved data on successful submit
       localStorage.removeItem(STORAGE_KEY);

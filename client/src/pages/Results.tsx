@@ -4,15 +4,21 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getLoginUrl } from "@/const";
 import { trpc } from "@/lib/trpc";
 import { CATEGORIES, getScoreLevel, getScoreLevelLabel, getBMICategory } from "@shared/questionnaire";
+import { useState } from "react";
 import {
   ArrowLeft, AlertTriangle, CheckCircle2, ArrowRight,
-  Leaf, TrendingUp, Target, Loader2, FileText
+  Leaf, TrendingUp, Target, Loader2, FileText, MessageCircle, Sparkles
 } from "lucide-react";
 import { useLocation, useParams, Link } from "wouter";
 import {
   Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell
 } from "recharts";
+
+function getAffiliateCookie(): string | null {
+  const match = document.cookie.match(/(?:^|;\s*)affiliate_slug=([^;]*)/);
+  return match ? decodeURIComponent(match[1]) : null;
+}
 
 const PRIORITY_COLORS = {
   high: { bg: "bg-red-50", text: "text-red-700", border: "border-red-200", badge: "bg-red-100 text-red-700" },
@@ -33,6 +39,8 @@ export default function Results() {
   const evaluationId = parseInt(params.id || "0");
   const [, navigate] = useLocation();
   const { isAuthenticated } = useAuth();
+  const [affiliateSlug] = useState<string | null>(() => getAffiliateCookie());
+  const consultUrl = affiliateSlug ? `/consult?ref=${encodeURIComponent(affiliateSlug)}` : "/consult";
 
   const { data: evaluation, isLoading: evalLoading } = trpc.evaluation.getById.useQuery(
     { id: evaluationId },
@@ -368,6 +376,26 @@ export default function Results() {
               })}
             </div>
           )}
+        </div>
+
+        {/* Free AI Consult CTA */}
+        <div className="my-10 rounded-2xl bg-gradient-to-br from-emerald-900 to-teal-800 p-8 text-center shadow-lg">
+          <div className="flex justify-center mb-4">
+            <div className="flex items-center gap-2 bg-emerald-700/50 text-emerald-200 text-xs font-semibold px-3 py-1.5 rounded-full">
+              <Sparkles className="w-3.5 h-3.5" />
+              AI-Assisted &middot; Free &middot; Instant
+            </div>
+          </div>
+          <h2 className="text-2xl font-bold text-white mb-3">Get Your Free Personalised Consultation</h2>
+          <p className="text-emerald-100 text-sm max-w-xl mx-auto mb-6">
+            Based on your evaluation results, the book <em>Add Life to Your Years</em>, and our extensive wellness knowledge base &mdash; our AI wellness consultant will give you instant, personalised guidance tailored specifically to your scores.
+          </p>
+          <Link href={consultUrl}>
+            <Button size="lg" className="bg-white text-emerald-900 hover:bg-emerald-50 font-semibold gap-2 px-8">
+              <MessageCircle className="w-5 h-5" />
+              Start Your Free AI Consultation
+            </Button>
+          </Link>
         </div>
 
         {/* Actions */}
