@@ -358,6 +358,109 @@ export default function Home() {
         </div>
       </section>
 
+      {/* About the Author / Resume Section */}
+      <section id="about-author" className="py-20 bg-white">
+        <div className="container max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="text-center mb-12">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6">
+                <User className="w-4 h-4" />
+                About the Author
+              </span>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Peter Sarva Keller
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                Wellness Coach &middot; Plant-Based Nutrition Specialist &middot; Holistic Health Practitioner
+              </p>
+            </div>
+
+            {/* Bio */}
+            <div className="mb-12">
+              <p className="text-lg leading-relaxed mb-5 text-muted-foreground">
+                Peter Sarva Keller is a seasoned wellness coach with over two decades of hands-on experience spanning plant-based culinary arts, holistic health coaching, water purification technology, and advanced energy medicine. Drawing on a rich background that bridges Vedic dietary traditions, functional nutrition, and cutting-edge bioenergetic therapies, Sarva brings a uniquely integrative approach to individual wellness.
+              </p>
+              <p className="text-lg leading-relaxed text-muted-foreground">
+                As the author of the <em>Add Life to Your Years</em> book and the founder of the wellness ecosystem built around it, he has developed a comprehensive 18-step framework grounded in whole-food plant-based principles, empowering clients to take measurable, lasting control of their health.
+              </p>
+            </div>
+
+            {/* Core Competencies */}
+            <div className="mb-12">
+              <h3 className="font-serif text-2xl font-bold text-foreground mb-6">Core Competencies</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  { area: "Nutrition & Diet", detail: "Whole food plant-based, vegetarian & vegan culinary arts, product formulation" },
+                  { area: "Energy Medicine", detail: "PEMF therapy (Papimi device, Olylife International), redox signalling, earthing" },
+                  { area: "Water & Detoxification", detail: "Water filtration and treatment, cellular detox protocols" },
+                  { area: "Coaching & Education", detail: "Freelance wellness coaching, self-evaluation frameworks, lifestyle transformation" },
+                  { area: "Network Marketing", detail: "Health product distribution, brand partnership, caf\u00e9 management" },
+                  { area: "Bioenergetics", detail: "ASEA redox signalling, PEMF therapy, cellular health optimisation" },
+                ].map((item) => (
+                  <div key={item.area} className="bg-green-50/60 rounded-xl p-5 border border-green-100">
+                    <h4 className="font-semibold text-foreground mb-2 text-sm uppercase tracking-wide">{item.area}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Experience Timeline */}
+            <div className="mb-12">
+              <h3 className="font-serif text-2xl font-bold text-foreground mb-6">Professional Experience</h3>
+              <div className="space-y-6">
+                {[
+                  { period: "2016 \u2013 Present", role: "Freelance Wellness Coach", org: "Independent Practice", desc: "Provides personalised one-on-one wellness coaching delivering the Add Life to Your Years programme \u2014 an 18-recommendation whole food plant-based wellness framework \u2014 supported by a self-evaluation platform, AI-assisted consultation tools, and a comprehensive educational book." },
+                  { period: "Ongoing", role: "Platinum Brand Partner", org: "ASEA Global", desc: "Achieved Platinum-level partnership with ASEA Global, a leading company in redox signalling technology. Educates clients on the science of cellular health and redox signalling molecules." },
+                  { period: "2010 \u2013 2012", role: "Guest Chef", org: "Madre Tierra Health Resort, Vilcabamba, Ecuador", desc: "Served as guest chef at one of South America's premier holistic health retreats, preparing plant-based cuisine aligned with the resort's detoxification and rejuvenation programmes." },
+                  { period: "2004 \u2013 2009", role: "Director", org: "ECOSmart Australasia", desc: "Directed operations for a water filtration and treatment company, overseeing product sourcing, client consultations, and distribution of residential and commercial water purification systems." },
+                  { period: "2006 / Current", role: "Certified PEMF Practitioner", org: "Papimi Device \u00b7 Olylife International", desc: "Certified operator of the Papimi PEMF therapy device since 2006. Currently practises with Olylife International PEMF technology, supporting clients with pain management, cellular regeneration, and energetic rebalancing." },
+                  { period: "2001 \u2013 2004", role: "Product Formulator", org: "Health Food Industry", desc: "Formulated a range of health food products including the Wunderbar energy bars, applying expertise in whole-food ingredients, nutritional balance, and natural flavour profiles." },
+                  { period: "1999 \u2013 2001", role: "Owner & Operator", org: "Jagannath's Caf\u00e9, Kuranda QLD", desc: "Founded and operated a vegetarian caf\u00e9 in the Kuranda rainforest village, serving a community-focused menu rooted in Vedic culinary traditions." },
+                  { period: "1983 \u2013 1989", role: "Head Cook & Vegetarian/Vegan Chef", org: "Hare Krishna Temple, Sydney", desc: "Served as Head Cook preparing large-scale vegetarian and vegan meals in accordance with Vedic dietary principles. This foundational role established a lifelong commitment to plant-based nutrition." },
+                ].map((item) => (
+                  <div key={item.role} className="flex gap-5">
+                    <div className="flex flex-col items-center">
+                      <div className="w-3 h-3 rounded-full bg-primary mt-1.5 shrink-0" />
+                      <div className="w-0.5 bg-border flex-1 mt-2" />
+                    </div>
+                    <div className="pb-6">
+                      <span className="text-xs font-medium text-primary uppercase tracking-wide">{item.period}</span>
+                      <h4 className="font-semibold text-foreground mt-0.5">{item.role}</h4>
+                      <p className="text-sm text-muted-foreground font-medium mb-1">{item.org}</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Certifications */}
+            <div className="bg-green-50/60 rounded-2xl p-8 border border-green-100">
+              <h3 className="font-serif text-2xl font-bold text-foreground mb-5">Certifications & Partnerships</h3>
+              <ul className="space-y-3">
+                {[
+                  "Certified PEMF Practitioner \u2014 Papimi Device (2006) & Olylife International (current)",
+                  "Platinum Brand Partner \u2014 ASEA Global (Redox Signalling Technology)",
+                  "Top Performer \u2014 Sunrider International (Whole-food Nutrition)",
+                  "Extensive self-directed study in plant-based nutrition, functional medicine, naturopathy, and holistic lifestyle coaching",
+                ].map((cert) => (
+                  <li key={cert} className="flex items-start gap-3 text-sm text-muted-foreground">
+                    <Star className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                    <span>{cert}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* 8 Health Factors */}
       <section className="py-20 bg-white">
         <div className="container">
