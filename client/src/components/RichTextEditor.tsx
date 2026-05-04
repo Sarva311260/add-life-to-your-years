@@ -356,29 +356,36 @@ export default function RichTextEditor({
                           const ytMatch = a.url && a.url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]{11})/);
                           const ytId = ytMatch ? ytMatch[1] : null;
                           const AssetIcon = a.assetType === "video" ? Video : a.assetType === "pdf" ? FileText : a.assetType === "image" ? Image : Link2;
+                          // Use YouTube thumbnail, custom thumbnailUrl, or fall back to icon
+                          const thumbSrc = ytId
+                            ? `https://img.youtube.com/vi/${ytId}/mqdefault.jpg`
+                            : a.thumbnailUrl || null;
+                          // Asset title: DB column is 'title', not 'label'
+                          const assetTitle = a.title || a.label || a.tagKey;
                           return (
                             <button
                               key={a.id}
                               type="button"
-                              onMouseDown={(e) => { e.preventDefault(); insertTag("{{asset_" + a.assetKey + "}}"); }}
+                              onMouseDown={(e) => { e.preventDefault(); insertTag("{{asset_" + a.tagKey + "}}"); }}
                               className="w-full flex items-start gap-2 px-2 py-2 rounded-lg hover:bg-emerald-50 text-left transition-colors border border-transparent hover:border-emerald-100"
                             >
                               {/* Thumbnail or icon */}
                               <div className="flex-shrink-0 w-16 h-10 rounded overflow-hidden bg-gray-100 flex items-center justify-center">
-                                {ytId ? (
+                                {thumbSrc ? (
                                   <img
-                                    src={`https://img.youtube.com/vi/${ytId}/mqdefault.jpg`}
-                                    alt={a.label}
+                                    src={thumbSrc}
+                                    alt={assetTitle}
                                     className="w-full h-full object-cover"
+                                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                                   />
                                 ) : (
                                   <AssetIcon className="w-5 h-5 text-gray-400" />
                                 )}
                               </div>
                               <div className="flex-1 min-w-0">
-                                <p className="text-gray-800 text-xs font-semibold leading-tight">{a.label}</p>
+                                <p className="text-gray-800 text-xs font-semibold leading-tight">{assetTitle}</p>
                                 {a.description && <p className="text-gray-500 text-xs mt-0.5 line-clamp-2 leading-tight">{a.description}</p>}
-                                <code className="text-emerald-600 text-[10px] font-mono mt-0.5 block">{"{{asset_" + a.assetKey + "}}"}  </code>
+                                <code className="text-emerald-600 text-[10px] font-mono mt-0.5 block">{"{{asset_" + a.tagKey + "}}"}  </code>
                               </div>
                             </button>
                           );
