@@ -14,6 +14,7 @@ import {
   affiliateProductLinks, InsertAffiliateProductLink,
   affiliateContacts, InsertAffiliateContact,
   emailTemplates, InsertEmailTemplate,
+  emailOpenEvents, emailClickEvents,
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -913,4 +914,58 @@ export async function getEmailLogByContact(affiliateId: number, toEmail: string)
     .where(and(eq(emailLog.affiliateId, affiliateId), eq(emailLog.toEmail, toEmail)))
     .orderBy(desc(emailLog.sentAt))
     .limit(50);
+}
+
+// ---- Email Tracking helpers ----
+
+/**
+ * Get all open events for a specific prospect email + affiliate combination.
+ * Covers both drip emails (dripSendLogId set) and manual emails (emailLogId set).
+ */
+export async function getEmailOpensByContact(affiliateId: number, prospectEmail: string) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(emailOpenEvents)
+    .where(and(
+      eq(emailOpenEvents.affiliateId, affiliateId),
+      eq(emailOpenEvents.prospectEmail, prospectEmail),
+    ))
+    .orderBy(desc(emailOpenEvents.openedAt));
+}
+
+/**
+ * Get all click events for a specific prospect email + affiliate combination.
+ * Covers both drip emails (dripSendLogId set) and manual emails (emailLogId set).
+ */
+export async function getEmailClicksByContact(affiliateId: number, prospectEmail: string) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(emailClickEvents)
+    .where(and(
+      eq(emailClickEvents.affiliateId, affiliateId),
+      eq(emailClickEvents.prospectEmail, prospectEmail),
+    ))
+    .orderBy(desc(emailClickEvents.clickedAt));
+}
+
+/**
+ * Get open events for a specific email_log entry (manual email).
+ */
+export async function getEmailOpensByLogId(emailLogId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(emailOpenEvents)
+    .where(eq(emailOpenEvents.emailLogId, emailLogId))
+    .orderBy(desc(emailOpenEvents.openedAt));
+}
+
+/**
+ * Get click events for a specific email_log entry (manual email).
+ */
+export async function getEmailClicksByLogId(emailLogId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(emailClickEvents)
+    .where(eq(emailClickEvents.emailLogId, emailLogId))
+    .orderBy(desc(emailClickEvents.clickedAt));
 }

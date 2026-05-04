@@ -424,10 +424,12 @@ export type InsertAffiliateDripOverride = typeof affiliateDripOverrides.$inferIn
  */
 export const emailOpenEvents = mysqlTable("email_open_events", {
   id: int("id").autoincrement().primaryKey(),
-  /** The drip send log entry this open belongs to */
-  dripSendLogId: int("dripSendLogId").notNull(),
+  /** The drip send log entry this open belongs to (null for manual emails) */
+  dripSendLogId: int("dripSendLogId"),
+  /** The email_log entry this open belongs to (null for drip emails) */
+  emailLogId: int("emailLogId"),
   affiliateId: int("affiliateId").notNull(),
-  dripEmailId: int("dripEmailId").notNull(),
+  dripEmailId: int("dripEmailId"),
   prospectEmail: varchar("prospectEmail", { length: 320 }),
   openedAt: timestamp("openedAt").defaultNow().notNull(),
   userAgent: text("userAgent"),
@@ -439,9 +441,12 @@ export type EmailOpenEvent = typeof emailOpenEvents.$inferSelect;
  */
 export const emailClickEvents = mysqlTable("email_click_events", {
   id: int("id").autoincrement().primaryKey(),
-  dripSendLogId: int("dripSendLogId").notNull(),
+  /** The drip send log entry this click belongs to (null for manual emails) */
+  dripSendLogId: int("dripSendLogId"),
+  /** The email_log entry this click belongs to (null for drip emails) */
+  emailLogId: int("emailLogId"),
   affiliateId: int("affiliateId").notNull(),
-  dripEmailId: int("dripEmailId").notNull(),
+  dripEmailId: int("dripEmailId"),
   prospectEmail: varchar("prospectEmail", { length: 320 }),
   /** The original destination URL */
   targetUrl: text("targetUrl").notNull(),

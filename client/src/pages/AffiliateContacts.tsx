@@ -305,6 +305,10 @@ export default function AffiliateContacts({ token }: Props) {
     { token, contactEmail: historyContactEmail! },
     { enabled: !!token && !!historyContactEmail, retry: false }
   );
+  const { data: contactTracking } = trpc.emailTemplates.getContactTracking.useQuery(
+    { token, contactEmail: historyContactEmail! },
+    { enabled: !!token && !!historyContactEmail, retry: false }
+  );
   const sendEmailMutation = trpc.drip.affiliateSendEmailToLead.useMutation({
     onSuccess: () => {
       toast.success("Email sent!");
@@ -608,17 +612,64 @@ export default function AffiliateContacts({ token }: Props) {
                         <p className="text-gray-500 text-xs">No emails sent to this contact yet.</p>
                       ) : (
                         <div className="space-y-2">
-                          {emailHistory.map((log: any) => (
-                            <div key={log.id} className="bg-white/5 rounded-lg px-3 py-2">
-                              <div className="flex items-center justify-between gap-2">
-                                <p className="text-white text-xs font-medium truncate">{log.subject}</p>
-                                <span className={`text-xs px-1.5 py-0.5 rounded-full shrink-0 ${
-                                  log.status === 'sent' ? 'bg-emerald-900/50 text-emerald-300' : 'bg-red-900/50 text-red-300'
-                                }`}>{log.status}</span>
+                          {emailHistory.map((log: any) => {
+                            // Count opens and clicks for this specific log entry
+                            const logOpens = (contactTracking?.opens || []).filter((o: any) => o.emailLogId === log.id || o.dripSendLogId === log.id);
+                            const logClicks = (contactTracking?.clicks || []).filter((cl: any) => cl.emailLogId === log.id || cl.dripSendLogId === log.id);
+                            // Deduplicate clicked URLs
+                            const uniqueUrls = Array.from(new Set(logClicks.map((cl: any) => cl.targetUrl as string)));
+                            return (
+                              <div key={log.id} className="bg-white/5 rounded-lg px-3 py-2">
+                                <div className="flex items-center justify-between gap-2">
+                                  <p className="text-white text-xs font-medium truncate">{log.subject}</p>
+                                  <span className={`text-xs px-1.5 py-0.5 rounded-full shrink-0 ${
+                                    log.status === 'sent' ? 'bg-emerald-900/50 text-emerald-300' : 'bg-red-900/50 text-red-300'
+                                  }`}>{log.status}</span>
+                                </div>
+                                <p className="text-gray-500 text-xs mt-0.5">{new Date(log.sentAt).toLocaleString()}</p>
+                                {/* Open & click indicators */}
+                                <div className="flex flex-wrap items-center gap-2 mt-1.5">
+                                  {logOpens.length > 0 ? (
+                                    <span className="inline-flex items-center gap-1 text-xs bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded-full">
+                                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                      Opened {logOpens.length}×
+                                    </span>
+                                  ) : (
+                                    <span className="inline-flex items-center gap-1 text-xs text-gray-600">
+                                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                                      Not opened
+                                    </span>
+                                  )}
+                                  {logClicks.length > 0 && (
+                                    <span className="inline-flex items-center gap-1 text-xs bg-amber-900/40 text-amber-300 px-2 py-0.5 rounded-full">
+                                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                                      {logClicks.length} click{logClicks.length !== 1 ? 's' : ''}
+                                    </span>
+                                  )}
+                                </div>
+                                {/* Link-level click detail */}
+                                {uniqueUrls.length > 0 && (
+                                  <div className="mt-1.5 space-y-0.5">
+                                    <p className="text-gray-500 text-xs font-medium">Links clicked:</p>
+                                    {uniqueUrls.map((url: string) => {
+                                      const count = logClicks.filter((cl: any) => cl.targetUrl === url).length;
+                                      let label = url;
+                                      try { label = new URL(url).hostname + new URL(url).pathname; } catch {}
+                                      return (
+                                        <div key={url} className="flex items-center gap-1.5">
+                                          <span className="text-amber-400 text-xs bg-amber-900/30 px-1.5 py-0.5 rounded shrink-0">{count}×</span>
+                                          <a href={url} target="_blank" rel="noopener noreferrer"
+                                            className="text-xs text-blue-400 hover:text-blue-300 truncate max-w-[200px]" title={url}>
+                                            {label}
+                                          </a>
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
+                                )}
                               </div>
-                              <p className="text-gray-500 text-xs mt-0.5">{new Date(log.sentAt).toLocaleString()}</p>
-                            </div>
-                          ))}
+                            );
+                          })}
                         </div>
                       )}
                     </div>
@@ -692,6 +743,7 @@ export default function AffiliateContacts({ token }: Props) {
                   leadName: emailContact.name,
                   subject: emailSubject,
                   body: emailBody,
+                  origin: window.location.origin,
                 });
               }}
               disabled={!emailSubject || !emailBody || sendEmailMutation.isPending}

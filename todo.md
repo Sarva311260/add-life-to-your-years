@@ -386,3 +386,11 @@
 - [x] PEMFAdminContentLibrary.tsx: Added HelpTip tooltips to Global Merge Tags and Asset Library section headings
 - [x] PEMFAdminDrip.tsx: Added HelpTip tooltips to Email Campaigns heading, Broadcast section, and Drip Sequences section
 - [x] Dashboard.tsx: Added HelpTip tooltips to Progress Over Time and Evaluation History card titles
+
+## Email Tracking Visibility (CRM)
+
+- [ ] Tracking: Add tracking pixel + link wrapping to manually sent one-off emails (affiliate→lead via Contacts tab)
+- [ ] Tracking: Store emailLogId in email_open_events and email_click_events so manual email events can be linked back
+- [ ] Backend: Add tRPC procedure to fetch per-contact open/click events (both drip and manual) by prospect email + affiliateId
+- [ ] UI: Show open/click indicators in per-contact email history panel (e.g. "Opened 2× · Clicked 1 link")
+- [ ] UI: Show link-level click detail in email history (which URL/video was clicked, when)

@@ -9,8 +9,9 @@ const TRACKING_PIXEL = Buffer.from(
 );
 
 export function registerTrackingRoutes(app: Express) {
-  // ── Open tracking pixel ────────────────────────────────────────────────────
-  // URL: /track/open?t=<sendLogId>&a=<affiliateId>&e=<dripEmailId>&p=<email>
+  // ── Open tracking pixel ────────────────────────────────────────────────────────────────────────────
+  // URL: /track/open?t=<id>&a=<affiliateId>&e=<dripEmailId>&p=<email>[&m=1]
+  // m=1: t is emailLogId (manual email); otherwise t is dripSendLogId
   app.get("/track/open", async (req: Request, res: Response) => {
     // Always return the pixel immediately — never block on DB
     res.set({
@@ -23,30 +24,42 @@ export function registerTrackingRoutes(app: Express) {
 
     // Record open asynchronously
     try {
-      const sendLogId = parseInt(req.query.t as string);
+      const id = parseInt(req.query.t as string);
       const affiliateId = parseInt(req.query.a as string);
       const dripEmailId = parseInt(req.query.e as string);
       const prospectEmail = (req.query.p as string) || null;
+      const isManual = req.query.m === "1";
       const userAgent = req.headers["user-agent"] || null;
 
-      if (!isNaN(sendLogId) && !isNaN(affiliateId) && !isNaN(dripEmailId)) {
+      if (!isNaN(id) && !isNaN(affiliateId)) {
         const db = await getDb();
         if (!db) return;
-        await db.insert(emailOpenEvents).values({
-          dripSendLogId: sendLogId,
-          affiliateId,
-          dripEmailId,
-          prospectEmail,
-          userAgent,
-        });
+        if (isManual) {
+          await db.insert(emailOpenEvents).values({
+            emailLogId: id,
+            dripSendLogId: null,
+            affiliateId,
+            dripEmailId: null,
+            prospectEmail,
+            userAgent,
+          });
+        } else {
+          await db.insert(emailOpenEvents).values({
+            dripSendLogId: id,
+            emailLogId: null,
+            affiliateId,
+            dripEmailId: isNaN(dripEmailId) ? null : dripEmailId,
+            prospectEmail,
+            userAgent,
+          });
+        }
       }
     } catch (err) {
       console.warn("[Tracking] Failed to record open:", err);
     }
-  });
-
-  // ── Click tracking redirect ────────────────────────────────────────────────
-  // URL: /track/click?t=<sendLogId>&a=<affiliateId>&e=<dripEmailId>&p=<email>&u=<encodedUrl>
+  });  // ── Click tracking redirect ────────────────────────────────────────────────────────────────────────────
+  // URL: /track/click?t=<id>&a=<affiliateId>&e=<dripEmailId>&p=<email>&u=<encodedUrl>[&m=1]
+  // m=1: t is emailLogId (manual email); otherwise t is dripSendLogId
   app.get("/track/click", async (req: Request, res: Response) => {
     const targetUrl = req.query.u ? decodeURIComponent(req.query.u as string) : null;
 
@@ -59,23 +72,37 @@ export function registerTrackingRoutes(app: Express) {
 
     // Record click asynchronously
     try {
-      const sendLogId = parseInt(req.query.t as string);
+      const id = parseInt(req.query.t as string);
       const affiliateId = parseInt(req.query.a as string);
       const dripEmailId = parseInt(req.query.e as string);
       const prospectEmail = (req.query.p as string) || null;
+      const isManual = req.query.m === "1";
       const userAgent = req.headers["user-agent"] || null;
 
-      if (!isNaN(sendLogId) && !isNaN(affiliateId) && !isNaN(dripEmailId) && targetUrl) {
+      if (!isNaN(id) && !isNaN(affiliateId) && targetUrl) {
         const db2 = await getDb();
         if (!db2) return;
-        await db2.insert(emailClickEvents).values({
-          dripSendLogId: sendLogId,
-          affiliateId,
-          dripEmailId,
-          prospectEmail,
-          targetUrl,
-          userAgent,
-        });
+        if (isManual) {
+          await db2.insert(emailClickEvents).values({
+            emailLogId: id,
+            dripSendLogId: null,
+            affiliateId,
+            dripEmailId: null,
+            prospectEmail,
+            targetUrl,
+            userAgent,
+          });
+        } else {
+          await db2.insert(emailClickEvents).values({
+            dripSendLogId: id,
+            emailLogId: null,
+            affiliateId,
+            dripEmailId: isNaN(dripEmailId) ? null : dripEmailId,
+            prospectEmail,
+            targetUrl,
+            userAgent,
+          });
+        }
       }
     } catch (err) {
       console.warn("[Tracking] Failed to record click:", err);

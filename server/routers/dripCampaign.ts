@@ -326,6 +326,8 @@ export const dripCampaignRouter = router({
       leadName: z.string(),
       subject: z.string().min(1).max(255),
       body: z.string().min(1),
+      /** Frontend origin for building tracking URLs */
+      origin: z.string().optional(),
     }))
     .mutation(async ({ input }) => {
       const payload = await verifyAffiliateToken(input.token);
@@ -333,32 +335,60 @@ export const dripCampaignRouter = router({
       const affiliate = await getPemfAffiliateById(payload.affiliateId);
       if (!affiliate || !affiliate.isActive) throw new TRPCError({ code: "UNAUTHORIZED", message: "Account not found." });
 
+      const trackingOrigin = input.origin || "https://addlifetoyouryears.org";
+
       // Apply merge tag substitution
       const mergeCtx = {
         prospect: { name: input.leadName, email: input.leadEmail },
         affiliate: { id: affiliate.id, name: affiliate.name, email: affiliate.email, phone: affiliate.phone || undefined, slug: affiliate.slug || undefined },
-        origin: "https://addlifetoyouryears.org",
+        origin: trackingOrigin,
       };
       const { subject: mergedSubject, body: mergedBody } = await applyMergeTags(input.subject, input.body, mergeCtx);
-      const resend = getResend();
-      const result = await resend.emails.send({
-        from: `${affiliate.name} via Add Life to Your Years <noreply@addlifetoyouryears.org>`,
-        replyTo: affiliate.email,
-        to: input.leadEmail,
-        subject: mergedSubject,
-        html: `<p>Hi ${input.leadName},</p>${mergedBody}<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;"><p style="font-size:12px;color:#9ca3af;">This email was sent by ${affiliate.name} via Add Life to Your Years. To reply, contact ${affiliate.email} directly.</p>`,
-      });
 
-      await logEmail({
+      // First log the email to get an ID we can embed in tracking URLs
+      const emailLogId = await logEmail({
         type: "affiliate_to_lead",
         affiliateId: affiliate.id,
         toEmail: input.leadEmail,
         toName: input.leadName,
         subject: input.subject,
         body: input.body,
-        resendId: result.data?.id || null,
+        resendId: null,
         status: "sent",
       });
+
+      // Build base HTML
+      const baseHtml = `<p>Hi ${input.leadName},</p>${mergedBody}<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;"><p style="font-size:12px;color:#9ca3af;">This email was sent by ${affiliate.name} via Add Life to Your Years. To reply, contact ${affiliate.email} directly.</p>`;
+
+      // Inject tracking pixel (m=1 flag marks this as a manual email)
+      const pixelUrl = `${trackingOrigin}/track/open?t=${emailLogId}&a=${affiliate.id}&e=0&p=${encodeURIComponent(input.leadEmail)}&m=1`;
+      const pixel = `<img src="${pixelUrl}" width="1" height="1" style="display:none;" alt="" />`;
+
+      // Wrap all links with click tracking
+      const hrefRegex = /href="(https?:\/\/[^"]+)"/g;
+      const trackedHtml = (baseHtml + pixel).replace(hrefRegex, (match, url) => {
+        if (url.includes('/unsubscribe') || url.includes('/track/')) return match;
+        const trackUrl = `${trackingOrigin}/track/click?t=${emailLogId}&a=${affiliate.id}&e=0&p=${encodeURIComponent(input.leadEmail)}&u=${encodeURIComponent(url)}&m=1`;
+        return `href="${trackUrl}"`;
+      });
+
+      const resend = getResend();
+      const result = await resend.emails.send({
+        from: `${affiliate.name} via Add Life to Your Years <noreply@addlifetoyouryears.org>`,
+        replyTo: affiliate.email,
+        to: input.leadEmail,
+        subject: mergedSubject,
+        html: trackedHtml,
+      });
+
+      // Update the log entry with the Resend message ID if available
+      if (result.data?.id) {
+        const { getDb } = await import("../db");
+        const { emailLog: emailLogTable } = await import("../../drizzle/schema");
+        const { eq } = await import("drizzle-orm");
+        const db = await getDb();
+        if (db) await db.update(emailLogTable).set({ resendId: result.data.id }).where(eq(emailLogTable.id, emailLogId));
+      }
 
       return { success: true };
     }),

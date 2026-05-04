@@ -10,6 +10,10 @@ import {
   deleteEmailTemplate,
   getEmailLogByContact,
   getPemfAffiliateById,
+  getEmailOpensByContact,
+  getEmailClicksByContact,
+  getEmailOpensByLogId,
+  getEmailClicksByLogId,
 } from "../db";
 
 const AFFILIATE_JWT_SECRET = new TextEncoder().encode(ENV.cookieSecret + "_affiliate");
@@ -94,5 +98,38 @@ export const emailTemplatesRouter = router({
       const payload = await verifyAffiliateToken(input.token);
       if (!payload) throw new TRPCError({ code: "UNAUTHORIZED" });
       return getEmailLogByContact(payload.affiliateId, input.contactEmail);
+    }),
+
+  // ─── Get open/click tracking events for a specific contact email ───────────
+  // Returns all opens and clicks for this contact, plus per-log-entry breakdowns
+  getContactTracking: publicProcedure
+    .input(z.object({
+      token: z.string(),
+      contactEmail: z.string().email(),
+    }))
+    .query(async ({ input }) => {
+      const payload = await verifyAffiliateToken(input.token);
+      if (!payload) throw new TRPCError({ code: "UNAUTHORIZED" });
+      const [opens, clicks] = await Promise.all([
+        getEmailOpensByContact(payload.affiliateId, input.contactEmail),
+        getEmailClicksByContact(payload.affiliateId, input.contactEmail),
+      ]);
+      return { opens, clicks };
+    }),
+
+  // ─── Get open/click events for a specific email log entry ────────────────
+  getLogEntryTracking: publicProcedure
+    .input(z.object({
+      token: z.string(),
+      emailLogId: z.number(),
+    }))
+    .query(async ({ input }) => {
+      const payload = await verifyAffiliateToken(input.token);
+      if (!payload) throw new TRPCError({ code: "UNAUTHORIZED" });
+      const [opens, clicks] = await Promise.all([
+        getEmailOpensByLogId(input.emailLogId),
+        getEmailClicksByLogId(input.emailLogId),
+      ]);
+      return { opens, clicks };
     }),
 });
