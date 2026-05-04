@@ -20,6 +20,7 @@ import {
 import {
   Tag, Plus, Pencil, Trash2, Video, FileText, Link2, Image, ToggleLeft, ToggleRight, BookOpen,
 } from "lucide-react";
+import HelpTip from "@/components/HelpTip";
 
 interface Props {
   adminPassword: string;
@@ -72,7 +73,7 @@ function MergeTagsSection({ adminPassword }: Props) {
     <div>
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-white font-semibold text-lg">Global Merge Tags</h3>
+          <h3 className="text-white font-semibold text-lg flex items-center gap-2">Global Merge Tags <HelpTip text="Custom tags shared with all affiliates. Affiliates can insert these into their email templates using the Insert picker. Use {{tag_key}} syntax." /></h3>
           <p className="text-gray-400 text-sm mt-0.5">Custom tags available to all affiliates in their emails. Use <code className="text-emerald-400">{"{{tag_key}}"}</code> in email subject or body.</p>
         </div>
         <Button onClick={openNew} size="sm" className="bg-emerald-600 hover:bg-emerald-500 text-white gap-1.5">
@@ -279,7 +280,7 @@ function AssetLibrarySection({ adminPassword }: Props) {
     <div>
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-white font-semibold text-lg">Asset Library</h3>
+          <h3 className="text-white font-semibold text-lg flex items-center gap-2">Asset Library <HelpTip text="Shared videos, PDFs, and links that affiliates can insert into their emails. Each asset gets a tag key so affiliates can insert it with one click." /></h3>
           <p className="text-gray-400 text-sm mt-0.5">Shared videos, PDFs, and links. Insert into emails using <code className="text-emerald-400">{"{{tag_key}}"}</code>.</p>
         </div>
         <Button onClick={openNew} size="sm" className="bg-blue-600 hover:bg-blue-500 text-white gap-1.5">

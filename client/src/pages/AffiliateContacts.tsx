@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import RichTextEditor from "@/components/RichTextEditor";
+import HelpTip from "@/components/HelpTip";
 
 interface Props { token: string; }
 type ImportMode = "manual" | "csv" | "vcf" | null;
@@ -386,22 +387,31 @@ export default function AffiliateContacts({ token }: Props) {
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h2 className="text-white text-xl font-semibold">My Contacts</h2>
+          <h2 className="text-white text-xl font-semibold flex items-center gap-2">My Contacts <HelpTip text="Your personal contact list. Add prospects manually or import from your phone or email app. You can email contacts directly or add them to a drip campaign." /></h2>
           <p className="text-gray-400 text-sm mt-0.5">{contacts.length} contact{contacts.length !== 1 ? "s" : ""} total</p>
         </div>
         <div className="flex gap-2 flex-wrap">
-          <button onClick={() => { setImportMode(importMode === "manual" ? null : "manual"); setAddForm(emptyForm()); }}
-            className="flex items-center gap-2 px-3 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-sm font-medium transition-colors">
-            <UserPlus size={15} /> Add Contact
-          </button>
-          <button onClick={() => setImportMode(importMode === "csv" ? null : "csv")}
-            className="flex items-center gap-2 px-3 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg text-sm font-medium transition-colors">
-            <FileText size={15} /> CSV Import
-          </button>
-          <button onClick={() => setImportMode(importMode === "vcf" ? null : "vcf")}
-            className="flex items-center gap-2 px-3 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg text-sm font-medium transition-colors">
-            <Smartphone size={15} /> Phone Import
-          </button>
+          <span className="inline-flex items-center gap-1">
+            <button onClick={() => { setImportMode(importMode === "manual" ? null : "manual"); setAddForm(emptyForm()); }}
+              className="flex items-center gap-2 px-3 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-sm font-medium transition-colors">
+              <UserPlus size={15} /> Add Contact
+            </button>
+            <HelpTip text="Add a single contact by entering their name, email, and phone number manually." />
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <button onClick={() => setImportMode(importMode === "csv" ? null : "csv")}
+              className="flex items-center gap-2 px-3 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg text-sm font-medium transition-colors">
+              <FileText size={15} /> CSV Import
+            </button>
+            <HelpTip text="Import many contacts at once from a CSV file exported from Gmail, Outlook, or Apple Contacts." />
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <button onClick={() => setImportMode(importMode === "vcf" ? null : "vcf")}
+              className="flex items-center gap-2 px-3 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg text-sm font-medium transition-colors">
+              <Smartphone size={15} /> Phone Import
+            </button>
+            <HelpTip text="Import contacts from your phone using a vCard (.vcf) file exported from your phone's Contacts app." />
+          </span>
         </div>
       </div>
 

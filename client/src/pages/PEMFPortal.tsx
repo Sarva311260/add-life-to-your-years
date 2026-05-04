@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import HelpTip from "@/components/HelpTip";
 import AffiliateContacts from "./AffiliateContacts";
 import EmailTemplates from "./EmailTemplates";
 import { Input } from "@/components/ui/input";
@@ -330,7 +331,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
                   : "border-transparent text-gray-400 hover:text-white"
               }`}
             >
-              Dashboard
+              Dashboard <HelpTip text="Your overview: personalised referral links, profile details, leads, and quick stats." side="bottom" size={12} className="ml-1" />
             </button>
             <button
               onClick={() => setActiveTab("campaigns")}
@@ -340,7 +341,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
                   : "border-transparent text-gray-400 hover:text-white"
               }`}
             >
-              <MailIcon className="w-3.5 h-3.5" /> My Campaigns
+              <MailIcon className="w-3.5 h-3.5" /> My Campaigns <HelpTip text="Create and manage automated email sequences sent to your leads over time." side="bottom" size={12} className="ml-1" />
             </button>
             <button
               onClick={() => setActiveTab("products")}
@@ -350,7 +351,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
                   : "border-transparent text-gray-400 hover:text-white"
               }`}
             >
-              My Product Links
+              My Product Links <HelpTip text="Set your personal affiliate shopping cart links for ASEA, OlyLife, and other products." side="bottom" size={12} className="ml-1" />
             </button>
             <button
               onClick={() => setActiveTab("contacts")}
@@ -360,7 +361,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
                   : "border-transparent text-gray-400 hover:text-white"
               }`}
             >
-              My Contacts
+              My Contacts <HelpTip text="Manage your leads and prospects. Add manually, import from CSV or phone, and send emails." side="bottom" size={12} className="ml-1" />
             </button>
             <button
               onClick={() => setActiveTab("templates")}
@@ -370,7 +371,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
                   : "border-transparent text-gray-400 hover:text-white"
               }`}
             >
-              <MailIcon className="w-3.5 h-3.5" /> Email Templates
+              <MailIcon className="w-3.5 h-3.5" /> Email Templates <HelpTip text="Create reusable email templates with personalisation tags. Use them when sending emails to contacts." side="bottom" size={12} className="ml-1" />
             </button>
           </div>
         </div>
@@ -560,7 +561,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
         <div className="bg-white/5 border border-emerald-800/30 rounded-2xl p-6">
           <div className="flex items-center gap-2 mb-4">
             <Link2 className="w-5 h-5 text-emerald-400" />
-            <h2 className="text-white font-semibold">Your Personalised Links</h2>
+            <h2 className="text-white font-semibold flex items-center gap-2">Your Personalised Links <HelpTip text="These are your unique referral links. Share them with prospects — any leads who sign up through your links will be tracked to you automatically." /></h2>
           </div>
           <div className="space-y-3">
             {/* PEMF page */}
@@ -577,7 +578,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
             </div>
             {/* Redox page */}
             <div>
-              <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5 font-medium">Redox Signalling Page</p>
+              <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5 font-medium flex items-center gap-1">Redox Signalling Page <HelpTip text="Share this link to introduce prospects to ASEA Redox Signalling products. Any purchase is credited to you." size={12} /></p>
               <div className="flex items-center gap-3 bg-black/30 rounded-xl p-4">
                 <a href={`${window.location.origin}/redox/${profile?.slug}`} target="_blank" rel="noreferrer" className="text-emerald-400 text-sm flex-1 break-all hover:text-emerald-300 transition-colors">
                   {`${window.location.origin}/redox/${profile?.slug}`}
@@ -593,7 +594,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
             </div>
             {/* Main site */}
             <div>
-              <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5 font-medium">Main Website</p>
+              <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5 font-medium flex items-center gap-1">Main Website <HelpTip text="Your personalised link to the main Add Life to Your Years site. Any visitor who arrives through this link will be tracked as your lead." size={12} /></p>
               <div className="flex items-center gap-3 bg-black/30 rounded-xl p-4">
                 <a href={mainSiteLink} target="_blank" rel="noreferrer" className="text-emerald-400 text-sm flex-1 break-all hover:text-emerald-300 transition-colors">
                   {mainSiteLink}
@@ -609,7 +610,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
             </div>
             {/* Book link */}
             <div>
-              <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5 font-medium">Read the Book</p>
+              <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5 font-medium flex items-center gap-1">Read the Book <HelpTip text="Share this link so prospects can read the book online. Your affiliate credit is tracked automatically." size={12} /></p>
               <div className="flex items-center gap-3 bg-black/30 rounded-xl p-4">
                 <a href={`${window.location.origin}/book?ref=${profile?.slug}`} target="_blank" rel="noreferrer" className="text-emerald-400 text-sm flex-1 break-all hover:text-emerald-300 transition-colors">
                   {`${window.location.origin}/book?ref=${profile?.slug}`}
@@ -625,7 +626,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
             </div>
             {/* Self-Assessment link */}
             <div>
-              <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5 font-medium">Self-Assessment</p>
+              <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5 font-medium flex items-center gap-1">Self-Assessment <HelpTip text="Share this link to invite prospects to take the wellness self-evaluation. Their results and consultation will be linked to you." size={12} /></p>
               <div className="flex items-center gap-3 bg-black/30 rounded-xl p-4">
                 <a href={`${window.location.origin}/evaluate?ref=${profile?.slug}`} target="_blank" rel="noreferrer" className="text-emerald-400 text-sm flex-1 break-all hover:text-emerald-300 transition-colors">
                   {`${window.location.origin}/evaluate?ref=${profile?.slug}`}
@@ -647,7 +648,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-2">
               <User className="w-5 h-5 text-emerald-400" />
-              <h2 className="text-white font-semibold">Profile Details</h2>
+              <h2 className="text-white font-semibold flex items-center gap-2">Profile Details <HelpTip text="Your public-facing contact details. These appear on your personalised PEMF and Redox pages." /></h2>
             </div>
             {!editMode ? (
               <button onClick={() => setEditMode(true)} className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 text-sm transition-colors">
@@ -772,7 +773,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
           >
             <div className="flex items-center gap-2">
               <Lock className="w-5 h-5 text-emerald-400" />
-              <h2 className="text-white font-semibold">Change Password</h2>
+              <h2 className="text-white font-semibold flex items-center gap-2">Change Password <HelpTip text="Update your partner portal login password. Use a strong password you don't use elsewhere." /></h2>
             </div>
             {showPasswordForm ? <ChevronUp className="w-5 h-5 text-gray-400" /> : <ChevronDown className="w-5 h-5 text-gray-400" />}
           </button>
@@ -835,7 +836,7 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
           >
             <div className="flex items-center gap-2">
               <BarChart2 className="w-5 h-5 text-emerald-400" />
-              <h2 className="text-white font-semibold">My Leads</h2>
+              <h2 className="text-white font-semibold flex items-center gap-2">My Leads <HelpTip text="Everyone who has visited the site through your referral links. Click a lead to send them an email or add them to a campaign." /></h2>
               {allEnquiries && (
                 <span className="bg-emerald-600/30 text-emerald-300 text-xs px-2 py-0.5 rounded-full">{allEnquiries.length}</span>
               )}

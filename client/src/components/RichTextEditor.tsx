@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { trpc } from "@/lib/trpc";
+import HelpTip from "@/components/HelpTip";
 
 const SYSTEM_TAGS = [
   { tag: "{{first_name}}", desc: "Prospect's first name" },
@@ -282,7 +283,15 @@ export default function RichTextEditor({
                             : "text-gray-500 hover:text-gray-700"
                         }`}
                       >
-                        {tab === "system" ? "System" : tab === "global" ? "Global" : tab === "mine" ? "My Tags" : "Assets"}
+                        {tab === "system" ? (
+                          <span className="flex items-center justify-center gap-1">System <HelpTip text="Built-in tags like recipient name, date, and your referral link. Automatically filled in for each email." size={11} /></span>
+                        ) : tab === "global" ? (
+                          <span className="flex items-center justify-center gap-1">Global <HelpTip text="Tags set by the admin and shared with all affiliates — e.g. standard product descriptions or promo lines." size={11} /></span>
+                        ) : tab === "mine" ? (
+                          <span className="flex items-center justify-center gap-1">My Tags <HelpTip text="Your own personal tags — e.g. your testimonial, phone number, or custom message. Manage them in My Email Tags & Links." size={11} /></span>
+                        ) : (
+                          <span className="flex items-center justify-center gap-1">Assets <HelpTip text="Videos, PDFs, and links provided by the admin. Insert them into your email as clickable thumbnails or buttons." size={11} /></span>
+                        )}
                       </button>
                     ))}
                   </div>

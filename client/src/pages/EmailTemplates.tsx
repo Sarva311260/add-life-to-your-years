@@ -5,6 +5,7 @@ import { Plus, Pencil, Trash2, X, Check, FileText, ChevronDown, ChevronUp } from
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import RichTextEditor from "@/components/RichTextEditor";
+import HelpTip from "@/components/HelpTip";
 
 interface Props { token: string; }
 
@@ -71,17 +72,20 @@ export default function EmailTemplates({ token }: Props) {
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h2 className="text-white text-xl font-semibold">Email Templates</h2>
+          <h2 className="text-white text-xl font-semibold flex items-center gap-2">Email Templates <HelpTip text="Create reusable email templates with personalised tags. Save time by writing your message once and reusing it whenever you send emails to contacts." /></h2>
           <p className="text-gray-400 text-sm mt-0.5">
             Create reusable email templates with personalised tags. Use them when sending emails to your contacts.
           </p>
         </div>
-        <Button
-          onClick={() => { setShowCreate(!showCreate); setForm(emptyForm()); }}
-          className="bg-emerald-600 hover:bg-emerald-500 text-white flex items-center gap-2"
-        >
-          <Plus size={15} /> New Template
-        </Button>
+        <span className="inline-flex items-center gap-1">
+          <Button
+            onClick={() => { setShowCreate(!showCreate); setForm(emptyForm()); }}
+            className="bg-emerald-600 hover:bg-emerald-500 text-white flex items-center gap-2"
+          >
+            <Plus size={15} /> New Template
+          </Button>
+          <HelpTip text="Create a new email template. Give it a name, subject line, and body. Use the Insert button to add personalised tags like the recipient's name or your referral links." />
+        </span>
       </div>
 
       {/* Create form */}

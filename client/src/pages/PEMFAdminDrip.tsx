@@ -15,6 +15,7 @@ import {
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 import { Link } from "wouter";
+import HelpTip from "@/components/HelpTip";
 
 interface Props {
   adminToken: string;
@@ -101,7 +102,7 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white">Email Campaigns</h2>
+          <h2 className="text-2xl font-bold text-white flex items-center gap-2">Email Campaigns <HelpTip text="Manage drip sequences (automated email series) and broadcast emails to all affiliates. Use 'Process Queue Now' to manually trigger pending emails." /></h2>
           <p className="text-emerald-300/70 mt-1">Manage drip sequences, broadcast emails, and view email logs.</p>
         </div>
         <Button
@@ -120,6 +121,7 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
           <h3 className="text-lg font-semibold text-white flex items-center gap-2">
             <Users className="w-5 h-5 text-emerald-400" />
             Broadcast to All Affiliates
+            <HelpTip text="Send a one-time email to all active affiliates at once. Useful for announcements, product updates, or training materials." />
           </h3>
           {broadcastResult && (
             <div className="flex items-center gap-3 p-3 rounded-lg bg-emerald-900/40 border border-emerald-700/40 text-emerald-300 text-sm">
@@ -156,6 +158,7 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
           <h3 className="text-lg font-semibold text-white flex items-center gap-2">
             <Mail className="w-5 h-5 text-emerald-400" />
             Drip Sequences
+            <HelpTip text="Automated email series sent to contacts over time. Create a sequence, add emails with delays, and affiliates can enrol their contacts into it." />
           </h3>
           <Button size="sm" onClick={() => setShowNewSeq(true)} className="gap-2">
             <Plus className="w-4 h-4" />

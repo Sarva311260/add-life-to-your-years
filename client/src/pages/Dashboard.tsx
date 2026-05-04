@@ -11,6 +11,7 @@ import {
 import { useState } from "react";
 import { toast } from "sonner";
 import { Link, useLocation } from "wouter";
+import HelpTip from "@/components/HelpTip";
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Legend
@@ -264,6 +265,7 @@ export default function Dashboard() {
                   <CardTitle className="text-lg flex items-center gap-2">
                     <BarChart3 className="w-5 h-5 text-primary" />
                     Progress Over Time
+                    <HelpTip text="Your overall wellness score and each category score plotted over time. More evaluations = more data points on this chart." />
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -306,6 +308,7 @@ export default function Dashboard() {
                 <CardTitle className="text-lg flex items-center gap-2">
                   <Calendar className="w-5 h-5 text-primary" />
                   Evaluation History
+                  <HelpTip text="All your past wellness self-evaluations. Click 'View Results' to see the full breakdown for any evaluation." />
                 </CardTitle>
               </CardHeader>
               <CardContent>

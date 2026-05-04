@@ -2,6 +2,7 @@ import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 import { Link2, Plus, Trash2, Tag, ChevronDown, ChevronUp, Copy, Info } from "lucide-react";
+import HelpTip from "@/components/HelpTip";
 
 interface Props {
   token: string;
@@ -66,7 +67,7 @@ export default function AffiliateCustomLinks({ token }: Props) {
       >
         <div className="flex items-center gap-2">
           <Tag className="w-5 h-5 text-emerald-400" />
-          <h2 className="text-white font-semibold">My Email Tags &amp; Links</h2>
+          <h2 className="text-white font-semibold flex items-center gap-2">My Email Tags &amp; Links <HelpTip text="Create your own personalised tags (e.g. your booking link, Facebook group URL, or a custom message) and insert them into any email template." /></h2>
         </div>
         {expanded ? <ChevronUp className="w-5 h-5 text-gray-400" /> : <ChevronDown className="w-5 h-5 text-gray-400" />}
       </button>
@@ -133,7 +134,7 @@ export default function AffiliateCustomLinks({ token }: Props) {
             )}
 
             <div className="bg-white/5 border border-emerald-800/20 rounded-xl p-4 space-y-3">
-              <p className="text-emerald-300/70 text-xs uppercase tracking-wider">Add New Tag</p>
+              <p className="text-emerald-300/70 text-xs uppercase tracking-wider flex items-center gap-1">Add New Tag <HelpTip text="Give your tag a label (e.g. 'My Booking Link'), a tag name (used in templates as {{my_booking_link}}), and the URL or text value it should insert." size={11} /></p>
               <div className="grid sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-gray-400 text-xs mb-1">Label (e.g. "My Booking Link")</label>
