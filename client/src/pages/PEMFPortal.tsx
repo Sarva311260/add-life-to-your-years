@@ -4,7 +4,8 @@ import { toast } from "sonner";
 import {
   Leaf, Eye, EyeOff, ArrowRight, LogOut, User, Phone, Mail,
   BarChart2, Link2, Copy, Edit2, Check, X, Lock, ChevronDown, ChevronUp, BookOpen,
-  Send, Loader2, Zap, Mail as MailIcon, Settings
+  Send, Loader2, Zap, Mail as MailIcon, Settings,
+  Users, Globe, TrendingUp, Gift, Star, ShieldCheck
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -49,6 +50,7 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0a2e1a] via-[#0d3b22] to-[#0a2e1a] flex flex-col">
+      {/* Header */}
       <header className="bg-[#0a2e1a]/95 backdrop-blur-md border-b border-emerald-800/30">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -59,14 +61,105 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
         </div>
       </header>
 
-      <div className="flex-1 flex items-center justify-center px-4 py-16">
+      {/* Hero Overview */}
+      <div className="border-b border-emerald-800/30 bg-[#0a2e1a]/60">
+        <div className="max-w-5xl mx-auto px-6 py-14 text-center">
+          <div className="inline-flex items-center gap-2 bg-emerald-600/20 border border-emerald-500/30 rounded-full px-4 py-1.5 text-emerald-300 text-xs font-medium uppercase tracking-wider mb-6">
+            <Star className="w-3.5 h-3.5" /> Brand Partner Programme
+          </div>
+          <h1 className="text-4xl md:text-5xl font-serif text-white mb-5 leading-tight">
+            Share Wellness.<br />
+            <span className="text-emerald-400">Build a Business You Believe In.</span>
+          </h1>
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+            The <strong className="text-white">Add Life to Your Years</strong> Brand Partner Programme gives you everything you need to share life-changing wellness products and content — and earn income doing it. Your personal portal puts your referral links, email marketing tools, and lead management all in one place.
+          </p>
+
+          {/* Benefits grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-left mb-10">
+            <div className="bg-white/5 border border-emerald-800/30 rounded-xl p-5 flex gap-4">
+              <div className="w-10 h-10 bg-emerald-600/20 rounded-lg flex items-center justify-center shrink-0">
+                <Globe className="w-5 h-5 text-emerald-400" />
+              </div>
+              <div>
+                <h3 className="text-white font-semibold text-sm mb-1">Your Own Referral Links</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">Get personalised URLs for the main site, the book, the self-assessment, and ASEA/Redox products. Every visitor who arrives through your link is tracked to you — no time limit.</p>
+              </div>
+            </div>
+            <div className="bg-white/5 border border-emerald-800/30 rounded-xl p-5 flex gap-4">
+              <div className="w-10 h-10 bg-emerald-600/20 rounded-lg flex items-center justify-center shrink-0">
+                <Users className="w-5 h-5 text-emerald-400" />
+              </div>
+              <div>
+                <h3 className="text-white font-semibold text-sm mb-1">Lead Management</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">See everyone who has visited through your links. Add contacts manually or import from your phone or email app. Set follow-up reminders and track your pipeline.</p>
+              </div>
+            </div>
+            <div className="bg-white/5 border border-emerald-800/30 rounded-xl p-5 flex gap-4">
+              <div className="w-10 h-10 bg-emerald-600/20 rounded-lg flex items-center justify-center shrink-0">
+                <MailIcon className="w-5 h-5 text-emerald-400" />
+              </div>
+              <div>
+                <h3 className="text-white font-semibold text-sm mb-1">Email Marketing Tools</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">Create reusable email templates with personalised tags. Enrol contacts into automated drip campaigns. Send one-click emails directly from your contact list.</p>
+              </div>
+            </div>
+            <div className="bg-white/5 border border-emerald-800/30 rounded-xl p-5 flex gap-4">
+              <div className="w-10 h-10 bg-emerald-600/20 rounded-lg flex items-center justify-center shrink-0">
+                <BookOpen className="w-5 h-5 text-emerald-400" />
+              </div>
+              <div>
+                <h3 className="text-white font-semibold text-sm mb-1">Ready-Made Content</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">Access a library of videos, PDFs, email scripts, and landing pages — all pre-built and ready to share. Insert them into your emails with a single click.</p>
+              </div>
+            </div>
+            <div className="bg-white/5 border border-emerald-800/30 rounded-xl p-5 flex gap-4">
+              <div className="w-10 h-10 bg-emerald-600/20 rounded-lg flex items-center justify-center shrink-0">
+                <TrendingUp className="w-5 h-5 text-emerald-400" />
+              </div>
+              <div>
+                <h3 className="text-white font-semibold text-sm mb-1">Track Your Results</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">See your enquiry stats at a glance — how many leads came from each page, which campaigns are performing, and who is engaging with your content.</p>
+              </div>
+            </div>
+            <div className="bg-white/5 border border-emerald-800/30 rounded-xl p-5 flex gap-4">
+              <div className="w-10 h-10 bg-emerald-600/20 rounded-lg flex items-center justify-center shrink-0">
+                <ShieldCheck className="w-5 h-5 text-emerald-400" />
+              </div>
+              <div>
+                <h3 className="text-white font-semibold text-sm mb-1">Backed by Real Science</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">You are sharing products and a wellness framework grounded in evidence — PEMF therapy, Redox Signalling, and the <em>Add Life to Your Years</em> book. Products you can stand behind with confidence.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="#login"
+              className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-8 py-3.5 rounded-xl transition-all"
+            >
+              Sign In to Your Portal <ArrowRight className="w-5 h-5" />
+            </a>
+            <a
+              href="/pemf/join"
+              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-medium px-8 py-3.5 rounded-xl transition-all border border-white/20"
+            >
+              <Gift className="w-5 h-5 text-emerald-400" /> Become a Partner
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Login Form */}
+      <div id="login" className="flex-1 flex items-center justify-center px-4 py-16">
         <div className="w-full max-w-md">
           <div className="text-center mb-10">
             <div className="w-16 h-16 bg-emerald-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
               <User className="w-8 h-8 text-emerald-400" />
             </div>
-            <h1 className="text-3xl font-serif text-white mb-2">Partner Login</h1>
-            <p className="text-gray-400">Sign in to manage your PEMF brand partner account.</p>
+            <h2 className="text-3xl font-serif text-white mb-2">Partner Login</h2>
+            <p className="text-gray-400">Sign in to access your partner dashboard.</p>
           </div>
 
           <form onSubmit={handleSubmit} className="bg-white/5 backdrop-blur-sm border border-emerald-800/30 rounded-2xl p-8 space-y-5">

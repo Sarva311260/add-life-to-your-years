@@ -373,3 +373,16 @@
 - [ ] Bug fix: Affiliate enquiry email notification not delivered to affiliate's registered email — investigate and fix
 - [x] Resource hub: Add Vimeo video embedding support alongside YouTube in affiliate portal
 - [x] Admin resources: Add search bar with live filtering by title, description, or category
+
+## Site-wide HelpTip Tooltip System
+
+- [x] HelpTip component created at client/src/components/HelpTip.tsx (reusable shadcn Tooltip wrapper with question mark icon)
+- [x] PEMFPortal.tsx: Added HelpTip tooltips to all tab nav buttons (Dashboard, Contacts, Templates, Tags, Campaigns, Resources)
+- [x] PEMFPortal.tsx: Added HelpTip tooltips to dashboard section headings (Personalised Links, Redox/Main/Book/Self-Assessment links, Profile Details, Change Password, My Leads)
+- [x] RichTextEditor.tsx: Added HelpTip tooltips to Insert picker tab buttons (System, Global, My Tags, Assets)
+- [x] AffiliateContacts.tsx: Added HelpTip tooltips to My Contacts heading, Add Contact, CSV Import, Phone Import buttons
+- [x] EmailTemplates.tsx: Added HelpTip tooltips to Email Templates heading and New Template button
+- [x] AffiliateCustomLinks.tsx: Added HelpTip tooltips to My Email Tags & Links heading and Add New Tag section
+- [x] PEMFAdminContentLibrary.tsx: Added HelpTip tooltips to Global Merge Tags and Asset Library section headings
+- [x] PEMFAdminDrip.tsx: Added HelpTip tooltips to Email Campaigns heading, Broadcast section, and Drip Sequences section
+- [x] Dashboard.tsx: Added HelpTip tooltips to Progress Over Time and Evaluation History card titles
