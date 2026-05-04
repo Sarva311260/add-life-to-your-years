@@ -8,7 +8,7 @@ import { useEffect, useCallback, useState, useRef } from "react";
 import {
   Bold, Italic, Underline as UnderlineIcon, Link as LinkIcon,
   List, ListOrdered, AlignLeft, AlignCenter, AlignRight,
-  Undo, Redo, Unlink, Tag, ChevronDown,
+  Undo, Redo, Unlink, Tag, ChevronDown, Video, FileText, Link2, Image,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -342,20 +342,38 @@ export default function RichTextEditor({
                     {tagTab === "assets" && (
                       assets.length === 0
                         ? <p className="text-center text-gray-400 text-xs py-4">No assets in library yet</p>
-                        : (assets as any[]).map((a: any) => (
-                          <button
-                            key={a.id}
-                            type="button"
-                            onMouseDown={(e) => { e.preventDefault(); insertTag("{{asset_" + a.assetKey + "}}"); }}
-                            className="w-full flex items-start gap-2 px-2 py-1.5 rounded-lg hover:bg-emerald-50 text-left transition-colors"
-                          >
-                            <code className="text-emerald-600 text-xs font-mono flex-shrink-0 mt-0.5">{"{{asset_" + a.assetKey + "}}"}</code>
-                            <div>
-                              <p className="text-gray-700 text-xs font-medium">{a.label}</p>
-                              <p className="text-gray-400 text-xs">{a.assetType}</p>
-                            </div>
-                          </button>
-                        ))
+                        : (assets as any[]).map((a: any) => {
+                          // Extract YouTube video ID for thumbnail
+                          const ytMatch = a.url && a.url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]{11})/);
+                          const ytId = ytMatch ? ytMatch[1] : null;
+                          const AssetIcon = a.assetType === "video" ? Video : a.assetType === "pdf" ? FileText : a.assetType === "image" ? Image : Link2;
+                          return (
+                            <button
+                              key={a.id}
+                              type="button"
+                              onMouseDown={(e) => { e.preventDefault(); insertTag("{{asset_" + a.assetKey + "}}"); }}
+                              className="w-full flex items-start gap-2 px-2 py-2 rounded-lg hover:bg-emerald-50 text-left transition-colors border border-transparent hover:border-emerald-100"
+                            >
+                              {/* Thumbnail or icon */}
+                              <div className="flex-shrink-0 w-16 h-10 rounded overflow-hidden bg-gray-100 flex items-center justify-center">
+                                {ytId ? (
+                                  <img
+                                    src={`https://img.youtube.com/vi/${ytId}/mqdefault.jpg`}
+                                    alt={a.label}
+                                    className="w-full h-full object-cover"
+                                  />
+                                ) : (
+                                  <AssetIcon className="w-5 h-5 text-gray-400" />
+                                )}
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-gray-800 text-xs font-semibold leading-tight">{a.label}</p>
+                                {a.description && <p className="text-gray-500 text-xs mt-0.5 line-clamp-2 leading-tight">{a.description}</p>}
+                                <code className="text-emerald-600 text-[10px] font-mono mt-0.5 block">{"{{asset_" + a.assetKey + "}}"}  </code>
+                              </div>
+                            </button>
+                          );
+                        })
                     )}
                   </div>
 
