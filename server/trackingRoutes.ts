@@ -9,10 +9,12 @@ const TRACKING_PIXEL = Buffer.from(
 );
 
 export function registerTrackingRoutes(app: Express) {
+  // Routes registered under /api/track/ to ensure they are NEVER intercepted by the SPA catch-all.
+  // The SPA catch-all only skips /api/ paths, so this is the most reliable prefix.
   // ── Open tracking pixel ────────────────────────────────────────────────────────────────────────────
-  // URL: /track/open?t=<id>&a=<affiliateId>&e=<dripEmailId>&p=<email>[&m=1]
+  // URL: /api/track/open?t=<id>&a=<affiliateId>&e=<dripEmailId>&p=<email>[&m=1]
   // m=1: t is emailLogId (manual email); otherwise t is dripSendLogId
-  app.get("/track/open", async (req: Request, res: Response) => {
+  app.get("/api/track/open", async (req: Request, res: Response) => {
     // Always return the pixel immediately — never block on DB
     res.set({
       "Content-Type": "image/gif",
@@ -57,10 +59,11 @@ export function registerTrackingRoutes(app: Express) {
     } catch (err) {
       console.warn("[Tracking] Failed to record open:", err);
     }
-  });  // ── Click tracking redirect ────────────────────────────────────────────────────────────────────────────
-  // URL: /track/click?t=<id>&a=<affiliateId>&e=<dripEmailId>&p=<email>&u=<encodedUrl>[&m=1]
+  });
+  // ── Click tracking redirect ────────────────────────────────────────────────────────────────────────────
+  // URL: /api/track/click?t=<id>&a=<affiliateId>&e=<dripEmailId>&p=<email>&u=<encodedUrl>[&m=1]
   // m=1: t is emailLogId (manual email); otherwise t is dripSendLogId
-  app.get("/track/click", async (req: Request, res: Response) => {
+  app.get("/api/track/click", async (req: Request, res: Response) => {
     const targetUrl = req.query.u ? decodeURIComponent(req.query.u as string) : null;
 
     // Redirect immediately

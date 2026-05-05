@@ -66,7 +66,7 @@ function unsubscribeUrl(origin: string, token: string): string {
 
 /** Inject a tracking pixel into an HTML email body */
 function injectTrackingPixel(html: string, origin: string, sendLogId: number, affiliateId: number, dripEmailId: number, prospectEmail: string): string {
-  const pixelUrl = `${origin}/track/open?t=${sendLogId}&a=${affiliateId}&e=${dripEmailId}&p=${encodeURIComponent(prospectEmail)}`;
+  const pixelUrl = `${origin}/api/track/open?t=${sendLogId}&a=${affiliateId}&e=${dripEmailId}&p=${encodeURIComponent(prospectEmail)}`;
   const pixel = `<img src="${pixelUrl}" width="1" height="1" style="display:none;" alt="" />`;
   return html + pixel;
 }
@@ -77,7 +77,7 @@ function wrapLinksWithTracking(html: string, origin: string, sendLogId: number, 
   return html.replace(hrefRegex, (match, url) => {
     // Don't wrap unsubscribe links or already-wrapped tracking links
     if (url.includes('/unsubscribe') || url.includes('/track/')) return match;
-    const trackUrl = `${origin}/track/click?t=${sendLogId}&a=${affiliateId}&e=${dripEmailId}&p=${encodeURIComponent(prospectEmail)}&u=${encodeURIComponent(url)}`;
+    const trackUrl = `${origin}/api/track/click?t=${sendLogId}&a=${affiliateId}&e=${dripEmailId}&p=${encodeURIComponent(prospectEmail)}&u=${encodeURIComponent(url)}`;
     return `href="${trackUrl}"`;
   });
 }
@@ -361,14 +361,14 @@ export const dripCampaignRouter = router({
       const baseHtml = `${mergedBody}<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;"><p style="font-size:12px;color:#9ca3af;">This email was sent by ${affiliate.name} via Add Life to Your Years. To reply, contact ${affiliate.email} directly.</p>`;
 
       // Inject tracking pixel (m=1 flag marks this as a manual email)
-      const pixelUrl = `${trackingOrigin}/track/open?t=${emailLogId}&a=${affiliate.id}&e=0&p=${encodeURIComponent(input.leadEmail)}&m=1`;
+      const pixelUrl = `${trackingOrigin}/api/track/open?t=${emailLogId}&a=${affiliate.id}&e=0&p=${encodeURIComponent(input.leadEmail)}&m=1`;
       const pixel = `<img src="${pixelUrl}" width="1" height="1" style="display:none;" alt="" />`;
 
       // Wrap all links with click tracking
       const hrefRegex = /href="(https?:\/\/[^"]+)"/g;
       const trackedHtml = (baseHtml + pixel).replace(hrefRegex, (match, url) => {
         if (url.includes('/unsubscribe') || url.includes('/track/')) return match;
-        const trackUrl = `${trackingOrigin}/track/click?t=${emailLogId}&a=${affiliate.id}&e=0&p=${encodeURIComponent(input.leadEmail)}&u=${encodeURIComponent(url)}&m=1`;
+        const trackUrl = `${trackingOrigin}/api/track/click?t=${emailLogId}&a=${affiliate.id}&e=0&p=${encodeURIComponent(input.leadEmail)}&u=${encodeURIComponent(url)}&m=1`;
         return `href="${trackUrl}"`;
       });
 
