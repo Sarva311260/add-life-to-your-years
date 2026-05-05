@@ -43,8 +43,8 @@ export async function setupVite(app: Express, server: Server) {
   app.use(vite.middlewares);
   app.use("*", async (req, res, next) => {
     const url = req.originalUrl;
-    // Let server-side Express routes handle /go/ (affiliate link cloaking)
-    if (url.startsWith("/go/")) {
+    // Let server-side Express routes handle /go/ (affiliate link cloaking) and /track/ (email tracking)
+    if (url.startsWith("/go/") || url.startsWith("/track/")) {
       return next();
     }
     try {
@@ -93,8 +93,8 @@ export function serveStatic(app: Express) {
   // fall through to index.html if the file doesn't exist
   app.use("*", (req, res, next) => {
     const url = req.originalUrl;
-    // Let server-side Express routes handle /go/ (affiliate link cloaking)
-    if (url.startsWith("/go/")) {
+    // Let server-side Express routes handle /go/ (affiliate link cloaking) and /track/ (email tracking)
+    if (url.startsWith("/go/") || url.startsWith("/track/")) {
       return next();
     }
     if (url.startsWith("/pemf")) {
