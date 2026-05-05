@@ -357,8 +357,8 @@ export const dripCampaignRouter = router({
         status: "sent",
       });
 
-      // Build base HTML
-      const baseHtml = `<p>Hi ${input.leadName},</p>${mergedBody}<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;"><p style="font-size:12px;color:#9ca3af;">This email was sent by ${affiliate.name} via Add Life to Your Years. To reply, contact ${affiliate.email} directly.</p>`;
+      // Build base HTML — no auto-inserted greeting; the affiliate writes the full email body
+      const baseHtml = `${mergedBody}<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;"><p style="font-size:12px;color:#9ca3af;">This email was sent by ${affiliate.name} via Add Life to Your Years. To reply, contact ${affiliate.email} directly.</p>`;
 
       // Inject tracking pixel (m=1 flag marks this as a manual email)
       const pixelUrl = `${trackingOrigin}/track/open?t=${emailLogId}&a=${affiliate.id}&e=0&p=${encodeURIComponent(input.leadEmail)}&m=1`;

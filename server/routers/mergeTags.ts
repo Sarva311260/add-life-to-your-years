@@ -131,17 +131,25 @@ export async function resolveMergeTags(ctx: MergeContext): Promise<Record<string
   }
 
   // 4. Asset tags — generate HTML snippets
+  // Assets are inserted by affiliates as {{asset_tagKey}} (with the "asset_" prefix).
+  // We store the resolved HTML under BOTH the raw tagKey and the "asset_" prefixed key
+  // so both {{video_water_1}} and {{asset_video_water_1}} resolve correctly.
   const assets = await getAllCrmAssets();
   for (const asset of assets) {
+    let html: string;
     if (asset.embedHtml) {
-      tags[asset.tagKey] = asset.embedHtml;
+      html = asset.embedHtml;
     } else if (asset.assetType === "video") {
-      tags[asset.tagKey] = `<a href="${asset.url}" style="display:inline-block;background:#0ea5e9;color:white;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:bold;">▶ Watch: ${asset.title}</a>`;
+      html = `<a href="${asset.url}" style="display:inline-block;background:#0ea5e9;color:white;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:bold;">▶ Watch: ${asset.title}</a>`;
     } else if (asset.assetType === "pdf") {
-      tags[asset.tagKey] = `<a href="${asset.url}" style="display:inline-block;background:#6366f1;color:white;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:bold;">📄 Download: ${asset.title}</a>`;
+      html = `<a href="${asset.url}" style="display:inline-block;background:#6366f1;color:white;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:bold;">📄 Download: ${asset.title}</a>`;
     } else {
-      tags[asset.tagKey] = `<a href="${asset.url}">${asset.title}</a>`;
+      html = `<a href="${asset.url}">${asset.title}</a>`;
     }
+    // Register under raw tagKey (e.g. video_water_1)
+    tags[asset.tagKey] = html;
+    // Also register under asset_ prefix (e.g. asset_video_water_1) — this is what the Insert picker inserts
+    tags[`asset_${asset.tagKey}`] = html;
   }
 
   return tags;
