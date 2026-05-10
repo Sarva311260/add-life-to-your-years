@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book-content_1e0e2683.md";
+const MD_CDN_URL = "/manus-storage/book-content_2e86a0fe.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -107,6 +107,8 @@ const headingIdMap: Record<string, string> = {
   "A Note on the Journey": "a-note",
   "Glossary": "glossary",
   "Your Wellness Blueprint at a Glance": "wellness-blueprint",
+  "Why This Appendix Exists": "why-this-appendix-exists",
+  "Appendix Strategies": "appendix-strategies",
   "Appendix C": "appendix-c",
   "Appendix E": "appendix-e",
   "Appendix D": "appendix-d",
