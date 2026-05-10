@@ -20,6 +20,7 @@ import { motion } from "framer-motion";
 const PRODUCTS = [
   {
     name: "OlyLife THZ Tera-P90+",
+    price: "US$1,500",
     tagline: "All-in-One PEMF Wellness Device",
     description:
       "The flagship P90+ combines PEMF, terahertz, and far-infrared technologies in an elegant foot-pad design with interchangeable wand attachments. Designed for daily home use, it delivers therapeutic electromagnetic pulses at the Schumann resonance frequency (7.83 Hz) — the same frequency as the Earth's natural electromagnetic field.",
@@ -64,6 +65,7 @@ const PRODUCTS = [
   },
   {
     name: "OlyLife Shaken Massager",
+    price: "US$1,000",
     tagline: "7-in-1 Body Shaping & Recovery",
     description:
       "A versatile belt-style device combining PEMF therapy with ultrasound, heat therapy, and vibration massage. Targets the core and waist area for deep tissue stimulation, circulation support, and muscle recovery — ideal for post-exercise recovery and daily wellness maintenance.",
@@ -107,6 +109,7 @@ const PRODUCTS = [
   },
   {
     name: "OlyLife Galaxy G-One",
+    price: "US$500",
     tagline: "Smart Eye Massager with PEMF",
     description:
       "A foldable smart eye massager integrating PEMF technology with 7 eye-care modes. Designed for relief from digital eye strain, tension headaches, and sleep preparation — combining gentle electromagnetic stimulation with heat and compression therapy in a compact, travel-friendly form.",
@@ -229,9 +232,16 @@ function ProductDetailModal({
     <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
       <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto bg-white">
         <DialogHeader>
-          <DialogTitle className="font-serif text-2xl text-gray-900 pr-6">
-            {product.name}
-          </DialogTitle>
+          <div className="flex items-start justify-between gap-4 pr-6">
+            <DialogTitle className="font-serif text-2xl text-gray-900">
+              {product.name}
+            </DialogTitle>
+            {product.price && (
+              <span className="shrink-0 text-xl font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-1">
+                {product.price}
+              </span>
+            )}
+          </div>
           <DialogDescription className="text-emerald-700 font-medium">
             {d.subtitle}
           </DialogDescription>

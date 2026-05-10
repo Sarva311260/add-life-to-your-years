@@ -26,6 +26,7 @@ import { toast } from "sonner";
 const PRODUCTS = [
   {
     name: "OlyLife THZ Tera-P90+",
+    price: "US$1 500",
     deviceKey: "tera-p90",
     tagline: "Komplex PEMF Wellness Eszköz",
     description:
@@ -70,6 +71,7 @@ const PRODUCTS = [
   },
   {
     name: "OlyLife Shaken Massager",
+    price: "US$1 000",
     deviceKey: "terahertz-wand",
     tagline: "7-az-1-ben Testformáló & Regeneráló",
     description:
@@ -114,6 +116,7 @@ const PRODUCTS = [
   },
   {
      name: "OlyLife Galaxy G-One",
+    price: "US$500",
     deviceKey: "tera-grand",
     tagline: "Okos Szemmaszk PEMF-fel",
     description:
@@ -213,7 +216,16 @@ function ProductDetailModal({
     <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
       <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto bg-white">
         <DialogHeader>
-          <DialogTitle className="font-serif text-2xl text-gray-900 pr-6">{product.name}</DialogTitle>
+          <div className="flex items-start justify-between gap-4 pr-6">
+            <DialogTitle className="font-serif text-2xl text-gray-900">
+              {product.name}
+            </DialogTitle>
+            {product.price && (
+              <span className="shrink-0 text-xl font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-1">
+                {product.price}
+              </span>
+            )}
+          </div>
           <DialogDescription className="text-emerald-700 font-medium">{d.subtitle}</DialogDescription>
         </DialogHeader>
         <div className="flex justify-center py-4 bg-gray-50 rounded-lg mb-4">
