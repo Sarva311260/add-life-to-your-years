@@ -669,6 +669,22 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
                 </button>
               </div>
             </div>
+            {/* Hungarian PEMF page */}
+            <div>
+              <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5 font-medium flex items-center gap-1">PEMF Therapy Page (Hungarian) <HelpTip text="Your personalised Hungarian-language PEMF page. Share this with Hungarian-speaking prospects — leads are tracked to you automatically." size={12} /></p>
+              <div className="flex items-center gap-3 bg-black/30 rounded-xl p-4">
+                <a href={`${window.location.origin}/pemf/${profile?.slug}/hu`} target="_blank" rel="noreferrer" className="text-emerald-400 text-sm flex-1 break-all hover:text-emerald-300 transition-colors">
+                  {`${window.location.origin}/pemf/${profile?.slug}/hu`}
+                </a>
+                <button
+                  onClick={() => { navigator.clipboard.writeText(`${window.location.origin}/pemf/${profile?.slug}/hu`); toast.success("Hungarian PEMF link copied!"); }}
+                  className="flex-shrink-0 bg-emerald-600 hover:bg-emerald-500 text-white p-2.5 rounded-lg transition-all"
+                  title="Copy Hungarian PEMF link"
+                >
+                  <Copy className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
             {/* Redox page */}
             <div>
               <p className="text-emerald-300/70 text-xs uppercase tracking-wider mb-1.5 font-medium flex items-center gap-1">Redox Signalling Page <HelpTip text="Share this link to introduce prospects to ASEA Redox Signalling products. Any purchase is credited to you." size={12} /></p>
