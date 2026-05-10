@@ -418,6 +418,96 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
+    id: "rec-appendix-diet",
+    number: 0,
+    title: "Appendix A: Diet Comparison",
+    description:
+      "What does the evidence actually say about how humans are designed to eat? A rigorous comparison of the major dietary approaches — ketogenic, Mediterranean, and whole food plant-based — and what the science shows about each.",
+    color: "bg-lime-100 text-lime-800 border-lime-200",
+    videos: [
+      {
+        youtubeId: "Weg9GUnH24E",
+        title: "What Humans Are Designed to Eat",
+        description:
+          "An evidence-based look at human dietary evolution and what the research says about our optimal diet.",
+      },
+      {
+        youtubeId: "nEjuZsP8o7g",
+        title: "The Ketogenic Diet — Is It Healthy?",
+        description:
+          "A balanced scientific review of the ketogenic diet — what the evidence supports and what it does not.",
+      },
+      {
+        youtubeId: "MJVSD0hggZE",
+        title: "The Ketogenic Diet is a Scam",
+        description:
+          "A critical examination of the claims made for the ketogenic diet against the peer-reviewed evidence.",
+      },
+      {
+        youtubeId: "uVGpTLMN6w4",
+        title: "Mediterranean Diet vs Whole Food Plant-Based",
+        description:
+          "A direct comparison of the two most evidence-backed dietary patterns for cardiovascular health and longevity.",
+      },
+      {
+        youtubeId: "dpyz-AumCUk",
+        title: "Is a Plant-Based Diet Always Healthy?",
+        description:
+          "The critical difference between vegan and whole food plant-based diets — why the distinction matters for health outcomes.",
+      },
+    ],
+  },
+  {
+    id: "appendix-cold-showers",
+    number: 0,
+    title: "Appendix B: Cold Showers",
+    description:
+      "The science behind ending your shower with 30–60 seconds of cold water. The landmark Dutch RCT (3,018 participants) showed a 29% reduction in sickness absence — and 91% of participants chose to continue after the trial.",
+    color: "bg-cyan-100 text-cyan-800 border-cyan-200",
+    videos: [
+      {
+        youtubeId: "xTVMGyJ8cZU",
+        title: "Cold Showers — Hormesis, Inflammation & Cognitive Benefits",
+        description:
+          "The science of hormesis, norepinephrine release, immune function, and mood benefits from cold water exposure. Covers the Dutch RCT and practical protocol.",
+      },
+      {
+        youtubeId: "may_PlDfNRE",
+        title: "The Science Behind Cold Showers — 5 Evidence-Based Benefits",
+        description:
+          "Dr. Jin Sung presents five evidence-based benefits of cold showers including inflammation reduction, metabolic health, and cognitive performance.",
+      },
+    ],
+  },
+  {
+    id: "appendix-off-label",
+    number: 0,
+    title: "Appendix C: Off-Label Pharmaceuticals",
+    description:
+      "Fenbendazole and ivermectin — two antiparasitic drugs being studied for anticancer activity. The Joe Tippens story, the Stanford case series, and the landmark 2026 Hulscher et al. study showing 84.4% clinical benefit ratio in 197 cancer patients.",
+    color: "bg-purple-100 text-purple-800 border-purple-200",
+    videos: [
+      {
+        youtubeId: "QBnT8es28WY",
+        title: "Fenbendazole — The Joe Tippens Protocol & Cancer Research",
+        description:
+          "The story of Joe Tippens, whose terminal stage 4 lung cancer went into complete remission after self-administering fenbendazole. Covers the proposed anticancer mechanisms and the Stanford case series.",
+      },
+      {
+        youtubeId: "5Q5QjEPGNNg",
+        title: "Fenbendazole & Ivermectin — Stanford Case Series & Mechanisms",
+        description:
+          "The Stanford case series and proposed mechanisms of fenbendazole and ivermectin against cancer cells — microtubule disruption, glucose uptake inhibition, and p53 reactivation.",
+      },
+      {
+        youtubeId: "Ck4_fX1xaaw",
+        title: "Largest Real-World Study: Ivermectin + Mebendazole in 197 Cancer Patients — 84.4% Clinical Benefit",
+        description:
+          "The Hulscher et al. 2026 study of 197 cancer patients treated with ivermectin and mebendazole: 35.2% tumour regression, 26.2% stable disease, 23.0% improved quality of life — 84.4% overall clinical benefit ratio.",
+      },
+    ],
+  },
+  {
     id: "appendix-brazil-nuts",
     number: 0,
     title: "Appendix D: Brazil Nuts & Selenium",
@@ -784,7 +874,9 @@ function RecommendationCard({
             <div
               className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 font-bold text-sm ${rec.color}`}
             >
-              {rec.number}
+              {rec.number === 0
+                ? (rec.title.match(/Appendix ([A-E])/)?.[1] ?? "")
+                : rec.number}
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
@@ -860,7 +952,7 @@ function RecommendationCard({
                         className="gap-2 text-xs w-fit"
                       >
                         <BookOpen className="w-3.5 h-3.5" />
-                        Read Recommendation {rec.number} in the Book
+                        Read {rec.number === 0 ? rec.title.match(/Appendix [A-E]/)?.[0] ?? "Appendix" : `Recommendation ${rec.number}`} in the Book
                       </Button>
                     </Link>
                   </div>
@@ -925,10 +1017,12 @@ function VideoModal({
               <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 font-bold text-xs ${rec.color}`}
               >
-                {rec.number}
+                {rec.number === 0
+                  ? (rec.title.match(/Appendix ([A-E])/)?.[1] ?? "")
+                  : rec.number}
               </div>
               <div>
-                <p className="text-xs text-muted-foreground">Recommendation {rec.number}</p>
+                <p className="text-xs text-muted-foreground">{rec.number === 0 ? rec.title.match(/Appendix [A-E]/)?.[0] ?? "Appendix" : `Recommendation ${rec.number}`}</p>
                 <h3 className="font-semibold text-foreground text-sm">{rec.title}</h3>
               </div>
             </div>
@@ -1096,7 +1190,7 @@ export default function Media() {
     const hash = window.location.hash.replace("#", "");
     const params = new URLSearchParams(window.location.search);
     const from = params.get("from");
-    if (hash && hash.startsWith("rec-")) {
+    if (hash && (hash.startsWith("rec-") || hash.startsWith("appendix-"))) {
       const matched = RECOMMENDATIONS.find((r) => r.id === hash);
       if (matched && matched.videos.length > 0) {
         setActiveTab("recommendations");
@@ -1133,7 +1227,7 @@ export default function Media() {
       id: "recommendations",
       label: "Recommendations",
       icon: <BookOpen className="w-4 h-4" />,
-      count: 15,
+      count: 18,
     },
     {
       id: "podcasts",
@@ -1167,7 +1261,7 @@ export default function Media() {
               Learn, Watch &amp; Explore
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg mb-6">
-              Videos, podcasts, and resources grouped by each of the 15
+              Videos, podcasts, and resources grouped by each of the 18
               Recommendations from the book. All free — no subscriptions.
             </p>
             <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
@@ -1297,7 +1391,7 @@ export default function Media() {
                             </h3>
                             <p className="text-sm text-muted-foreground max-w-md">
                               We are curating a selection of podcast episodes
-                              that explore the science behind the 15
+                              that explore the science behind the 18
                               Recommendations. Check back soon.
                             </p>
                           </div>
