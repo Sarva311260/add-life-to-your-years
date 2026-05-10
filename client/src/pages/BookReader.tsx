@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book-content_f36a8305.md";
+const MD_CDN_URL = "/manus-storage/book-content_1e0e2683.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -58,6 +58,7 @@ const chapters = [
   { id: "appendix-b", label: "Appendix B: Cold Showers" },
   { id: "appendix-c", label: "Appendix C: Off-Label Pharmaceuticals" },
   { id: "appendix-d", label: "Appendix D: Brazil Nuts & Selenium" },
+  { id: "appendix-e", label: "Appendix E: Floor Lying — The 5-Minute Protocol" },
   { id: "wellness-blueprint", label: "Your Wellness Blueprint at a Glance" },
 ];
 
@@ -107,6 +108,7 @@ const headingIdMap: Record<string, string> = {
   "Glossary": "glossary",
   "Your Wellness Blueprint at a Glance": "wellness-blueprint",
   "Appendix C": "appendix-c",
+  "Appendix E": "appendix-e",
   "Appendix D": "appendix-d",
   "Appendix B": "appendix-b",
   "Appendix A": "appendix-a",
@@ -254,6 +256,9 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
     { youtubeId: "QBnT8es28WY", title: "Fenbendazole — The Joe Tippens Protocol & Cancer Research" },
     { youtubeId: "5Q5QjEPGNNg", title: "Fenbendazole & Ivermectin — Stanford Case Series & Mechanisms" },
     { youtubeId: "Ck4_fX1xaaw", title: "Largest Real-World Study: Ivermectin + Mebendazole in 197 Cancer Patients — 84.4% Clinical Benefit" },
+  ],
+  "rec-appendix-floor-lying": [
+    { youtubeId: "YcmpJZrdqiI", title: "Floor Lying — The 5-Minute Protocol for Spinal Decompression and Postural Restoration" },
   ],
   "rec-appendix-diet": [
     { youtubeId: "Weg9GUnH24E", title: "What Humans Are Designed to Eat" },

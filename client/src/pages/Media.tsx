@@ -433,6 +433,22 @@ const RECOMMENDATIONS: RecommendationSection[] = [
       },
     ],
   },
+  {
+    id: "appendix-floor-lying",
+    number: 0,
+    title: "Appendix E: Floor Lying — The 5-Minute Protocol",
+    description:
+      "A free, equipment-free daily practice that simultaneously decompresses the spine, lengthens the psoas, releases suboccipital tension, resets the autonomic nervous system, and restores diaphragmatic breathing — in just five minutes on a hard floor.",
+    color: "bg-sky-100 text-sky-800 border-sky-200",
+    videos: [
+      {
+        youtubeId: "YcmpJZrdqiI",
+        title: "Floor Lying — The 5-Minute Protocol for Spinal Decompression & Postural Restoration",
+        description:
+          "Covers the five physiological mechanisms of floor lying: spinal disc rehydration, suboccipital muscle release, psoas lengthening, autonomic nervous system reset, and diaphragmatic breathing restoration. Includes the step-by-step protocol and the science of why a hard surface is essential.",
+      },
+    ],
+  },
 ];
 
 const PODCASTS: PodcastItem[] = [
@@ -440,7 +456,7 @@ const PODCASTS: PodcastItem[] = [
     title: "Podcast episodes coming soon",
     host: "",
     description:
-      "We are curating a selection of podcast episodes that explore the science behind the 15 Recommendations. Check back soon.",
+      "We are curating a selection of podcast episodes that explore the science behind the 18 Recommendations. Check back soon.",
     comingSoon: true,
   },
 ];
@@ -1219,7 +1235,7 @@ export default function Media() {
                 <div className="flex items-center justify-between mb-8">
                   <div>
                     <h2 className="font-serif text-2xl font-bold text-foreground">
-                      The 15 Recommendations
+                      The 18 Recommendations
                     </h2>
                     <p className="text-sm text-muted-foreground mt-1">
                       Videos linked directly from the book — one section per

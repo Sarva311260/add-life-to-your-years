@@ -645,6 +645,47 @@ Video 2 (youtubeId: 5Q5QjEPGNNg): "Fenbendazole & Ivermectin — Stanford Case S
 Video 3 (youtubeId: Ck4_fX1xaaw): "Largest Real-World Study: Ivermectin + Mebendazole in 197 Cancer Patients — 84.4% Clinical Benefit" — Dr. Peter McCullough and co-authors present the Hulscher et al. 2026 prospective observational cohort study. 197 cancer patients across multiple cancer types received compounded ivermectin (25 mg) + mebendazole (250 mg) capsules off-label. 84.4% clinical benefit ratio: 48.4% regression/NED, 36.1% stable disease. Discussion covers mechanisms of action, the rationale for combining the two drugs, safety profile, adherence rates, and the call for formal randomised controlled trials. Full study citation: Hulscher N et al., Zenodo, April 7, 2026. DOI: 10.5281/zenodo.19455636.`,
   },
   {
+    recommendationId: 102,
+    recommendationTitle: "Appendix E: Floor Lying — The 5-Minute Protocol",
+    insights: `VIDEO INSIGHTS FOR APPENDIX E: FLOOR LYING — THE 5-MINUTE PROTOCOL
+
+Source Video: "Floor Lying — The 5-Minute Protocol for Spinal Decompression & Postural Restoration" (YouTube: YcmpJZrdqiI)
+
+Core Concept: Floor lying is a free, equipment-free daily practice that simultaneously addresses five interconnected physiological mechanisms — spinal decompression, suboccipital release, psoas lengthening, autonomic nervous system reset, and diaphragmatic breathing restoration — in just five minutes on a hard floor.
+
+The Five Physiological Mechanisms:
+
+1. Spinal Disc Rehydration & Decompression
+Intervertebral discs are avascular — they receive nutrients and water through a process of compression and decompression. Modern life keeps the spine in sustained compression (sitting, standing, carrying loads) with insufficient decompression time. Lying flat on a hard surface allows the discs to absorb fluid and nutrients, restoring disc height and cushioning. This is particularly important for the lumbar and cervical regions where compression-related degeneration is most common.
+
+2. Suboccipital Muscle Release
+The suboccipital muscles (the small muscles at the base of the skull) are among the most chronically overloaded muscles in the body. Forward head posture — driven by screen use, desk work, and phone use — places up to 27 kg of additional load on the cervical spine at a 45-degree forward angle. Floor lying with the back of the skull resting on the floor gently tractors the cervical spine, releasing suboccipital tension and reducing the load on the C1–C2 vertebrae. This can alleviate headaches, neck pain, and referred tension into the shoulders.
+
+3. Psoas Lengthening
+The psoas major is the only muscle that connects the lumbar spine to the femur. Prolonged sitting keeps the psoas in a chronically shortened state, pulling the lumbar spine into anterior tilt and contributing to lower back pain, hip flexor tightness, and altered gait. Floor lying in a supine position with legs extended allows gravity to gently lengthen the psoas over time. For individuals with significant psoas tightness, beginning with knees bent and feet flat on the floor is recommended before progressing to full leg extension.
+
+4. Autonomic Nervous System Reset
+The prone and supine positions on a firm surface activate the parasympathetic nervous system (rest-and-digest) and downregulate the sympathetic nervous system (fight-or-flight). This is mediated in part through proprioceptive input from the posterior body surface and through the mechanical unloading of the spine. Five minutes of floor lying can measurably reduce cortisol reactivity and heart rate variability markers associated with chronic stress. This makes it a particularly valuable practice for individuals with anxiety, adrenal fatigue, or chronic stress-related conditions.
+
+5. Diaphragmatic Breathing Restoration
+Modern posture — rounded shoulders, forward head, compressed thorax — mechanically restricts diaphragmatic excursion. The diaphragm is designed to move 8–10 cm with each breath; in poor postural alignment, this is often reduced to 2–3 cm. Floor lying opens the thoracic cavity, removes the mechanical restriction on the diaphragm, and allows the practitioner to re-learn full diaphragmatic breathing. This improves oxygenation, reduces accessory muscle tension in the neck and shoulders, and supports vagal tone.
+
+The Protocol:
+- Duration: 5 minutes minimum; 10–20 minutes for deeper benefit
+- Surface: Hard floor only (carpet acceptable; mattress or sofa ineffective — the firm surface is essential for the mechanical benefits)
+- Position: Supine (on back), arms slightly away from the body, palms facing up, legs extended or knees bent with feet flat
+- Frequency: Daily, ideally in the morning before the spine is loaded by the day's activities
+- Progression: Begin with 5 minutes and increase gradually; some individuals experience temporary discomfort as the spine adjusts
+
+Why a Hard Surface is Essential:
+The therapeutic mechanism depends on the reaction force from a firm surface. A soft surface conforms to the body's existing posture, providing no corrective input. The hard floor provides a consistent, flat reference plane that the spine must adapt to — this is the corrective force that drives the five mechanisms above.
+
+Clinical Applications:
+Floor lying is particularly beneficial for: chronic lower back pain, neck pain and cervicogenic headaches, forward head posture, thoracic kyphosis, hip flexor tightness, chronic stress and anxiety, poor sleep quality, and post-exercise recovery. It complements other interventions in the book, particularly the movement and breathing recommendations.
+
+Key Insight: This is one of the most cost-effective and accessible interventions available. It requires no equipment, no training, no financial investment, and only five minutes per day. The barrier to entry is simply the willingness to lie on the floor — yet the physiological benefits address multiple root causes of chronic musculoskeletal and nervous system dysfunction simultaneously.`,
+  },
+  {
     recommendationId: 101,
     recommendationTitle: "Cellular Detoxification with Nano-Zeolite",
     insights: `VIDEO INSIGHTS FOR RECOMMENDATION 3: CELLULAR DETOXIFICATION WITH NANO-ZEOLITE

@@ -122,7 +122,24 @@ export const appRouter = router({
         };
       });
 
-      return [...videoEntries, ...conditionEntries];
+      // PEMF product & affiliate portal knowledge entries
+      const pemfEntries = [
+        {
+          id: "pemf-products-pricing",
+          type: "condition" as const,
+          title: "PEMF Products & Pricing",
+          content: [
+            "OVERVIEW:\nThe Add Life to Your Years programme offers three OlyLife PEMF (Pulsed Electromagnetic Field) therapy devices. These are available for purchase through your personalised affiliate page.",
+            "PRODUCTS & PRICES:\n- OlyLife THZ Tera-P90+: US$1,500 — The flagship full-body PEMF mat with terahertz frequency technology. Suitable for whole-body sessions.",
+            "- OlyLife Shaken Massager: US$1,000 — A portable handheld PEMF device for targeted therapy. Ideal for localised pain relief and recovery.",
+            "- OlyLife Galaxy G-One: US$500 — An entry-level PEMF device, great for those new to PEMF therapy.",
+            "HOW TO SHARE:\nEach brand partner has a personalised PEMF page in both English and Hungarian. The English page is at: https://addlifetoyouryears.org/pemf/{your-slug} and the Hungarian page is at: https://addlifetoyouryears.org/pemf/{your-slug}/hu. Both pages show the three products with descriptions and prices. Visitors can click 'More Info' on any product to see full details and pricing.",
+            "AFFILIATE PORTAL:\nBrand partners manage their leads, email campaigns, and personalised links from the Brand Partner Portal at: https://addlifetoyouryears.org/pemf/portal. The portal includes links to both the English and Hungarian PEMF pages, the Redox Signalling page, the main website, the book, and the self-assessment.",
+          ].join("\n\n"),
+        },
+      ];
+
+      return [...videoEntries, ...conditionEntries, ...pemfEntries];
     }),
   }),
 
