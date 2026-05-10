@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book-content_2e86a0fe.md";
+const MD_CDN_URL = "/manus-storage/book-content_0820c737.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
