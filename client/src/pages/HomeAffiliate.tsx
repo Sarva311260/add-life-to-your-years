@@ -409,7 +409,7 @@ export default function HomeAffiliate() {
                     />
                   </Link>
                   <div className="absolute -bottom-3 -right-3 bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md z-10">
-                    226 Pages
+                    270 Pages
                   </div>
                 </div>
               </div>
