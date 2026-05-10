@@ -26,6 +26,7 @@ import { toast } from "sonner";
 const PRODUCTS = [
   {
     name: "OlyLife THZ Tera-P90+",
+    price: "US$1,500",
     deviceKey: "tera-p90",
     tagline: "All-in-One PEMF Wellness Device",
     description:
@@ -70,6 +71,7 @@ const PRODUCTS = [
   },
   {
     name: "OlyLife Shaken Massager",
+    price: "US$1,000",
     deviceKey: "terahertz-wand",
     tagline: "7-in-1 Body Shaping & Recovery",
     description:
@@ -114,6 +116,7 @@ const PRODUCTS = [
   },
   {
     name: "OlyLife Galaxy G-One",
+    price: "US$500",
     deviceKey: "tera-grand",
     tagline: "Smart Eye Massager with PEMF",
     description:
@@ -213,7 +216,16 @@ function ProductDetailModal({
     <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
       <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto bg-white">
         <DialogHeader>
-          <DialogTitle className="font-serif text-2xl text-gray-900 pr-6">{product.name}</DialogTitle>
+          <div className="flex items-start justify-between gap-4 pr-6">
+            <DialogTitle className="font-serif text-2xl text-gray-900">
+              {product.name}
+            </DialogTitle>
+            {product.price && (
+              <span className="shrink-0 text-xl font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-1">
+                {product.price}
+              </span>
+            )}
+          </div>
           <DialogDescription className="text-emerald-700 font-medium">{d.subtitle}</DialogDescription>
         </DialogHeader>
         <div className="flex justify-center py-4 bg-gray-50 rounded-lg mb-4">
@@ -939,15 +951,7 @@ export default function PEMFAffiliate() {
                             Learn More
                             <ArrowRight className="w-4 h-4" />
                           </Button>
-                          <a
-                            href={`/go/${slug}/olylife/${product.deviceKey}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-medium transition-colors"
-                          >
-                            Order Now
-                            <ExternalLink className="w-3.5 h-3.5" />
-                          </a>
+
                         </div>
                       </div>
                     </div>
