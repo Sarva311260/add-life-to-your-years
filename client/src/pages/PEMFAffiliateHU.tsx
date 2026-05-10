@@ -936,15 +936,6 @@ export default function PEMFAffiliateHU() {
                             Részletek
                             <ArrowRight className="w-4 h-4" />
                           </Button>
-                          <a
-                            href={`/go/${slug}/olylife/${product.deviceKey}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-medium transition-colors"
-                          >
-                            Rendelés
-                            <ExternalLink className="w-3.5 h-3.5" />
-                          </a>
                         </div>
                       </div>
                     </div>
