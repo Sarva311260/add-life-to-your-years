@@ -1288,8 +1288,8 @@ export default function Media() {
               </span>
               <span className="flex items-center gap-1.5">
                 <BookOpen className="w-4 h-4 text-green-600" />
-                <strong className="text-foreground">15</strong> recommendation
-                sections
+                <strong className="text-foreground">{RECOMMENDATIONS.length}</strong>{" "}
+                section{RECOMMENDATIONS.length !== 1 ? "s" : ""}
               </span>
             </div>
           </motion.div>
