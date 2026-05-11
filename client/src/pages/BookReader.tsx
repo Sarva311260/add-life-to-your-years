@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book-content_0820c737.md";
+const MD_CDN_URL = "/manus-storage/book-content_4c3124f2.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -59,6 +59,7 @@ const chapters = [
   { id: "appendix-c", label: "Appendix C: Off-Label Pharmaceuticals" },
   { id: "appendix-d", label: "Appendix D: Brazil Nuts & Selenium" },
   { id: "appendix-e", label: "Appendix E: Floor Lying — The 5-Minute Protocol" },
+  { id: "appendix-f", label: "Appendix F: The Fiber That Calms You" },
   { id: "wellness-blueprint", label: "Your Wellness Blueprint at a Glance" },
 ];
 
@@ -109,6 +110,7 @@ const headingIdMap: Record<string, string> = {
   "Your Wellness Blueprint at a Glance": "wellness-blueprint",
   "Why This Appendix Exists": "why-this-appendix-exists",
   "Appendix Strategies": "appendix-strategies",
+  "Appendix F": "appendix-f",
   "Appendix C": "appendix-c",
   "Appendix E": "appendix-e",
   "Appendix D": "appendix-d",
@@ -261,6 +263,9 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
   ],
   "rec-appendix-floor-lying": [
     { youtubeId: "YcmpJZrdqiI", title: "Floor Lying — The 5-Minute Protocol for Spinal Decompression and Postural Restoration" },
+  ],
+  "rec-appendix-gut-brain": [
+    { youtubeId: "Hywi0rDLtJA", title: "The Fiber That Calms You — Feeding Your Gut to Heal Your Mind" },
   ],
   "rec-appendix-diet": [
     { youtubeId: "Weg9GUnH24E", title: "What Humans Are Designed to Eat" },

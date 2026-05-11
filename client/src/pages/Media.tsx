@@ -539,6 +539,22 @@ const RECOMMENDATIONS: RecommendationSection[] = [
       },
     ],
   },
+  {
+    id: "appendix-gut-brain",
+    number: 0,
+    title: "Appendix F: The Fiber That Calms You",
+    description:
+      "The gut manufactures more neurotransmitters than the brain itself. This appendix explores the gut-brain axis — how specific gut bacteria synthesise GABA, how prebiotic fibre and butyrate maintain the intestinal barrier, and how a fibre-rich whole-food diet can calm the nervous system from the inside out.",
+    color: "bg-green-100 text-green-800 border-green-200",
+    videos: [
+      {
+        youtubeId: "Hywi0rDLtJA",
+        title: "The Fiber That Calms You — Feeding Your Gut to Heal Your Mind",
+        description:
+          "Covers the gut-brain axis, GABA production by Lactobacillus and Bifidobacterium, the vagus nerve as a communication highway, the critical difference between prebiotics and probiotics, butyrate and intestinal barrier integrity, leaky gut and neuroinflammation, polyphenols, and the practical dietary protocol for rebuilding your gut microbiome.",
+      },
+    ],
+  },
 ];
 
 const PODCASTS: PodcastItem[] = [
