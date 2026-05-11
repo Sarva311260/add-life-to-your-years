@@ -544,7 +544,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     number: 0,
     title: "Appendix F: The Fiber That Calms You",
     description:
-      "The gut manufactures more neurotransmitters than the brain itself. This appendix explores the gut-brain axis — how specific gut bacteria synthesise GABA, how prebiotic fibre and butyrate maintain the intestinal barrier, and how a fibre-rich whole-food diet can calm the nervous system from the inside out.",
+      "The gut manufactures more neurotransmitters than the brain itself. This appendix explores the gut-brain axis — how specific gut bacteria synthesise GABA, how prebiotic fibre and butyrate maintain the intestinal barrier, and why extra virgin olive oil is not recommended despite its polyphenol content due to its endothelial-impairing effects.",
     color: "bg-green-100 text-green-800 border-green-200",
     videos: [
       {
