@@ -1,0 +1,46 @@
+{
+  "query": "SELECT id, name, category, shortDescription, description, imageUrl, defaultAffiliateUrl, isAffiliate, isPublished, sortOrder FROM recommended_products ORDER BY sortOrder, id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute SELECT id, name, category, shortDescription, description, imageUrl, defaultAffiliateUrl, isAffiliate, isPublished, sortOrder FROM recommended_products ORDER BY sortOrder, id;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "MasterPeace Zeolite",
+      "category": "Supplements",
+      "shortDescription": "Premium zeolite supplement for cellular detox",
+      "description": "MasterPeace is a nano-sized zeolite supplement that supports cellular detoxification and overall wellness.",
+      "imageUrl": "https://masterpeacebyhcs.com/public/img/3_MP_bottles2C_digital2C_transparent_background.svg",
+      "defaultAffiliateUrl": "https://mphcs.com/760a4938d9449080",
+      "isAffiliate": "1",
+      "isPublished": "1",
+      "sortOrder": "0"
+    },
+    {
+      "id": "30001",
+      "name": "PEMF Therapy devices",
+      "category": "Devices",
+      "shortDescription": "PEMF + Terahertz + Far Infrared. Multiple wand attachments included. Schumann resonance frequency (7.83 Hz) Adjustable timer and intensity.",
+      "description": "Pulsed Electromagnetic Field (PEMF) therapy uses externally applied electromagnetic pulses to stimulate cellular repair and regeneration. The technology has been used in clinical medicine since the 1970s — it was first approved by the FDA in 1979 for the treatment of non-union bone fractures, and has since accumulated a substantial evidence base across a range of applications.",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/p90plus-clean_87a41dc7.jpg",
+      "defaultAffiliateUrl": "https://addlifetoyouryears.org/pemf/peter-keller",
+      "isAffiliate": "1",
+      "isPublished": "1",
+      "sortOrder": "0"
+    },
+    {
+      "id": "40001",
+      "name": "ASEA REDOX & RENU 28",
+      "category": "Supplements",
+      "shortDescription": "The world's only Redox Signalling supplement and topical gel — supporting cellular health, immunity, and vitality from the inside out.",
+      "description": "ASEA REDOX Supplement is the world's only supplement containing Redox Signalling Molecules native to the human body. These molecules support cellular health, immune function, cardiovascular health, hormonal balance, and healthy inflammatory response. RENU 28 is the world's first Redox Signalling topical gel, clinically proven to improve skin texture, elasticity, and cellular renewal.",
+      "imageUrl": "/manus-storage/asea-product-range_079ad432.png",
+      "defaultAffiliateUrl": "https://addlifetoyouryears.org/redox/peter-keller",
+      "isAffiliate": "1",
+      "isPublished": "1",
+      "sortOrder": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tcategory\tshortDescription\tdescription\timageUrl\tdefaultAffiliateUrl\tisAffiliate\tisPublished\tsortOrder\n1\tMasterPeace Zeolite\tSupplements\tPremium zeolite supplement for cellular detox\tMasterPeace is a nano-sized zeolite supplement that supports cellular detoxification and overall wellness.\thttps://masterpeacebyhcs.com/public/img/3_MP_bottles2C_digital2C_transparent_background.svg\thttps://mphcs.com/760a4938d9449080\t1\t1\t0\n30001\tPEMF Therapy devices\tDevices\tPEMF + Terahertz + Far Infrared. Multiple wand attachments included. Schumann resonance frequency (7.83 Hz) Adjustable timer and intensity.\tPulsed Electromagnetic Field (PEMF) therapy uses externally applied electromagnetic pulses to stimulate cellular repair and regeneration. The technology has been used in clinical medicine since the 1970s — it was first approved by the FDA in 1979 for the treatment of non-union bone fractures, and has since accumulated a substantial evidence base across a range of applications.\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/p90plus-clean_87a41dc7.jpg\thttps://addlifetoyouryears.org/pemf/peter-keller\t1\t1\t0\n40001\tASEA REDOX & RENU 28\tSupplements\tThe world's only Redox Signalling supplement and topical gel — supporting cellular health, immunity, and vitality from the inside out.\tASEA REDOX Supplement is the world's only supplement containing Redox Signalling Molecules native to the human body. These molecules support cellular health, immune function, cardiovascular health, hormonal balance, and healthy inflammatory response. RENU 28 is the world's first Redox Signalling topical gel, clinically proven to improve skin texture, elasticity, and cellular renewal.\t/manus-storage/asea-product-range_079ad432.png\thttps://addlifetoyouryears.org/redox/peter-keller\t1\t1\t1\n",
+  "stderr": "",
+  "execution_time_ms": 1732
+}

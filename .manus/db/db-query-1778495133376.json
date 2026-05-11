@@ -1,0 +1,31 @@
+{
+  "query": "SELECT id, name, category, defaultAffiliateUrl, imageUrl FROM recommended_products ORDER BY sortOrder, id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute SELECT id, name, category, defaultAffiliateUrl, imageUrl FROM recommended_products ORDER BY sortOrder, id;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "MasterPeace Zeolite",
+      "category": "Supplements",
+      "defaultAffiliateUrl": "https://mphcs.com/760a4938d9449080",
+      "imageUrl": "https://masterpeacebyhcs.com/public/img/3_MP_bottles2C_digital2C_transparent_background.svg"
+    },
+    {
+      "id": "30001",
+      "name": "PEMF Therapy devices",
+      "category": "Devices",
+      "defaultAffiliateUrl": "https://addlifetoyouryears.org/pemf/peter-keller",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/p90plus-clean_87a41dc7.jpg"
+    },
+    {
+      "id": "40001",
+      "name": "ASEA REDOX & RENU 28",
+      "category": "Supplements",
+      "defaultAffiliateUrl": "https://addlifetoyouryears.org/redox/peter-keller",
+      "imageUrl": "/manus-storage/asea-product-range_079ad432.png"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tcategory\tdefaultAffiliateUrl\timageUrl\n1\tMasterPeace Zeolite\tSupplements\thttps://mphcs.com/760a4938d9449080\thttps://masterpeacebyhcs.com/public/img/3_MP_bottles2C_digital2C_transparent_background.svg\n30001\tPEMF Therapy devices\tDevices\thttps://addlifetoyouryears.org/pemf/peter-keller\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/p90plus-clean_87a41dc7.jpg\n40001\tASEA REDOX & RENU 28\tSupplements\thttps://addlifetoyouryears.org/redox/peter-keller\t/manus-storage/asea-product-range_079ad432.png\n",
+  "stderr": "",
+  "execution_time_ms": 1777
+}

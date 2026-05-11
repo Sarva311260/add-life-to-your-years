@@ -6,7 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
 import {
-  ShoppingBag, ExternalLink, Loader2, Leaf, Package, Droplets, Sparkles, ShoppingCart, CheckCircle,
+  ShoppingBag, ExternalLink, Loader2, Leaf, Droplets, Sparkles,
+  ShoppingCart, CheckCircle, Zap, Package,
 } from "lucide-react";
 
 // Default ASEA cart links (used when no affiliate has set their own)
@@ -22,13 +23,14 @@ function getAffiliateCookieSlug(): string | null {
   return match ? decodeURIComponent(match[1]) : null;
 }
 
-function AseaProductSection() {
-  const [affiliateSlug, setAffiliateSlug] = useState<string | null>(null);
+function useAffiliateSlug() {
+  const [slug, setSlug] = useState<string | null>(null);
+  useEffect(() => { setSlug(getAffiliateCookieSlug()); }, []);
+  return slug;
+}
 
-  useEffect(() => {
-    setAffiliateSlug(getAffiliateCookieSlug());
-  }, []);
-
+// ─── ASEA Section ──────────────────────────────────────────────────────────────
+function AseaProductSection({ affiliateSlug }: { affiliateSlug: string | null }) {
   const { data: affiliateBySlug } = trpc.pemfAffiliate.getBySlug.useQuery(
     { slug: affiliateSlug! },
     { enabled: !!affiliateSlug }
@@ -39,7 +41,6 @@ function AseaProductSection() {
   );
 
   const aff = (affiliateSlug ? affiliateBySlug : defaultAffiliate) as any;
-
   const links = {
     redoxRetail: aff?.aseaRedoxRetailUrl || DEFAULT_ASEA_LINKS.redoxRetail,
     redoxSubscription: aff?.aseaRedoxSubscriptionUrl || DEFAULT_ASEA_LINKS.redoxSubscription,
@@ -48,12 +49,12 @@ function AseaProductSection() {
   };
 
   return (
-    <section className="pb-16">
+    <section className="py-12 border-t border-border/50">
       <div className="container max-w-5xl">
         <div className="mb-8">
           <Badge variant="secondary" className="mb-3 gap-1.5 px-3 py-1">
             <Droplets className="w-3.5 h-3.5" />
-            ASEA Redox Signalling
+            Redox Signalling
           </Badge>
           <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-2">
             ASEA REDOX &amp; RENU 28
@@ -64,7 +65,6 @@ function AseaProductSection() {
           </p>
         </div>
 
-        {/* Trust badges */}
         <div className="flex flex-wrap gap-4 mb-8 text-sm text-muted-foreground">
           <div className="flex items-center gap-1.5">
             <CheckCircle className="w-4 h-4 text-primary" />
@@ -81,7 +81,6 @@ function AseaProductSection() {
         </div>
 
         <div className="grid sm:grid-cols-2 gap-6">
-          {/* ASEA REDOX Retail */}
           <Card className="flex flex-col">
             <CardContent className="p-6 flex flex-col flex-1">
               <div className="flex items-center gap-3 mb-3">
@@ -104,7 +103,6 @@ function AseaProductSection() {
             </CardContent>
           </Card>
 
-          {/* ASEA REDOX Subscription */}
           <Card className="flex flex-col border-primary/30 bg-primary/3">
             <CardContent className="p-6 flex flex-col flex-1">
               <div className="flex items-center gap-3 mb-3">
@@ -128,7 +126,6 @@ function AseaProductSection() {
             </CardContent>
           </Card>
 
-          {/* RENU 28 Retail */}
           <Card className="flex flex-col">
             <CardContent className="p-6 flex flex-col flex-1">
               <div className="flex items-center gap-3 mb-3">
@@ -151,7 +148,6 @@ function AseaProductSection() {
             </CardContent>
           </Card>
 
-          {/* RENU 28 Subscription */}
           <Card className="flex flex-col border-purple-500/30 bg-purple-500/3">
             <CardContent className="p-6 flex flex-col flex-1">
               <div className="flex items-center gap-3 mb-3">
@@ -185,9 +181,85 @@ function AseaProductSection() {
   );
 }
 
+// ─── Generic Product Card ──────────────────────────────────────────────────────
+function ProductCard({
+  product,
+  ctaLabel,
+  ctaIcon,
+}: {
+  product: {
+    id: number;
+    name: string;
+    category: string | null;
+    shortDescription: string | null;
+    description: string;
+    imageUrl: string | null;
+    defaultAffiliateUrl: string | null;
+    resolvedUrl?: string | null;
+  };
+  ctaLabel: string;
+  ctaIcon?: React.ReactNode;
+}) {
+  const purchaseUrl = product.resolvedUrl ?? product.defaultAffiliateUrl;
+  return (
+    <Card className="group overflow-hidden flex flex-col transition-all hover:shadow-lg hover:border-primary/30">
+      {product.imageUrl && (
+        <div className="h-52 overflow-hidden bg-muted flex items-center justify-center p-4">
+          <img
+            src={product.imageUrl}
+            alt={product.name}
+            className="max-h-full max-w-full object-contain transition-transform group-hover:scale-105"
+          />
+        </div>
+      )}
+      <CardContent className="p-5 flex flex-col flex-1">
+        {product.category && (
+          <Badge variant="secondary" className="mb-2 text-xs w-fit">
+            {product.category}
+          </Badge>
+        )}
+        <h3 className="font-serif text-lg font-semibold text-foreground mb-1">
+          {product.name}
+        </h3>
+        {product.shortDescription && (
+          <p className="text-sm text-muted-foreground mb-4 flex-1 line-clamp-3">
+            {product.shortDescription}
+          </p>
+        )}
+        <div className="mt-auto pt-3">
+          {purchaseUrl ? (
+            <a href={purchaseUrl} target="_blank" rel="noopener noreferrer" className="block">
+              <Button className="w-full gap-2">
+                {ctaIcon}
+                {ctaLabel}
+                <ExternalLink className="w-3.5 h-3.5 ml-auto" />
+              </Button>
+            </a>
+          ) : (
+            <Button className="w-full" variant="outline" disabled>
+              Coming Soon
+            </Button>
+          )}
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+// ─── Main Shop Page ────────────────────────────────────────────────────────────
 export default function Shop() {
   const [, navigate] = useLocation();
-  const { data: products, isLoading } = trpc.shop.list.useQuery();
+  const affiliateSlug = useAffiliateSlug();
+
+  const { data: products, isLoading } = trpc.recommendedProducts.list.useQuery(
+    affiliateSlug ? { affiliateSlug } : undefined
+  );
+
+  // Split products by category
+  const pemfProducts = products?.filter(p => p.category === "Devices") ?? [];
+  const supplementProducts = products?.filter(
+    p => p.category === "Supplements" && !p.name.toLowerCase().includes("asea")
+  ) ?? [];
 
   return (
     <div className="min-h-screen bg-background">
@@ -211,98 +283,78 @@ export default function Shop() {
         </div>
       </section>
 
-      {/* Products */}
-      <section className="pb-20">
-        <div className="container max-w-5xl">
-          {isLoading && (
-            <div className="flex items-center justify-center py-20">
-              <Loader2 className="w-8 h-8 text-primary animate-spin" />
-            </div>
-          )}
+      {isLoading && (
+        <div className="flex items-center justify-center py-20">
+          <Loader2 className="w-8 h-8 text-primary animate-spin" />
+        </div>
+      )}
 
-          {!isLoading && (!products || products.length === 0) && (
-            <div className="text-center py-20">
-              <Package className="w-16 h-16 text-muted-foreground/20 mx-auto mb-4" />
-              <h2 className="font-serif text-xl font-semibold text-foreground mb-2">
-                Coming Soon
+      {/* PEMF Devices */}
+      {!isLoading && pemfProducts.length > 0 && (
+        <section className="pb-12">
+          <div className="container max-w-5xl">
+            <div className="mb-8">
+              <Badge variant="secondary" className="mb-3 gap-1.5 px-3 py-1">
+                <Zap className="w-3.5 h-3.5" />
+                PEMF Therapy
+              </Badge>
+              <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-2">
+                OlyLife PEMF Devices
               </h2>
-              <p className="text-muted-foreground max-w-md mx-auto mb-6">
-                We're carefully curating a selection of wellness products that align with the
-                recommendations in the book. Check back soon!
+              <p className="text-muted-foreground max-w-2xl">
+                Pulsed Electromagnetic Field therapy devices combining PEMF, terahertz, and far-infrared
+                technologies for daily home use. Enquire via your personalised affiliate page.
               </p>
-              <Button variant="outline" onClick={() => navigate("/book")} className="gap-2">
-                <Leaf className="w-4 h-4" />
-                Read the Book
-              </Button>
             </div>
-          )}
-
-          {products && products.length > 0 && (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.map((product) => (
-                <Card
-                  key={product.id}
-                  className="group overflow-hidden transition-all hover:shadow-lg hover:border-primary/30"
-                >
-                  {product.imageUrl && (
-                    <div className="aspect-[4/3] overflow-hidden bg-muted">
-                      <img
-                        src={product.imageUrl}
-                        alt={product.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  )}
-                  <CardContent className="p-5">
-                    {product.category && (
-                      <Badge variant="secondary" className="mb-2 text-xs">
-                        {product.category}
-                      </Badge>
-                    )}
-                    <h3 className="font-serif text-lg font-semibold text-foreground mb-1">
-                      {product.name}
-                    </h3>
-                    {product.shortDescription && (
-                      <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
-                        {product.shortDescription}
-                      </p>
-                    )}
-                    <div className="flex items-center justify-between mt-3">
-                      <span className="text-lg font-semibold text-foreground">
-                        ${(product.priceInCents / 100).toFixed(2)}{" "}
-                        <span className="text-xs font-normal text-muted-foreground">
-                          {product.currency}
-                        </span>
-                      </span>
-                      {product.purchaseUrl ? (
-                        <a
-                          href={product.purchaseUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Button size="sm" className="gap-2">
-                            Buy Now
-                            <ExternalLink className="w-3.5 h-3.5" />
-                          </Button>
-                        </a>
-                      ) : (
-                        <Button size="sm" variant="outline" disabled>
-                          Coming Soon
-                        </Button>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
+              {pemfProducts.map(p => (
+                <ProductCard
+                  key={p.id}
+                  product={p as any}
+                  ctaLabel="Enquire / Order"
+                  ctaIcon={<Zap className="w-4 h-4" />}
+                />
               ))}
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
+
+      {/* Supplements (non-ASEA) */}
+      {!isLoading && supplementProducts.length > 0 && (
+        <section className="py-12 border-t border-border/50">
+          <div className="container max-w-5xl">
+            <div className="mb-8">
+              <Badge variant="secondary" className="mb-3 gap-1.5 px-3 py-1">
+                <Leaf className="w-3.5 h-3.5" />
+                Supplements
+              </Badge>
+              <h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-2">
+                Recommended Supplements
+              </h2>
+              <p className="text-muted-foreground max-w-2xl">
+                Targeted nutritional supplements chosen for their evidence base and alignment with
+                the book's recommendations.
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {supplementProducts.map(p => (
+                <ProductCard
+                  key={p.id}
+                  product={p as any}
+                  ctaLabel="Order Now"
+                  ctaIcon={<Package className="w-4 h-4" />}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ASEA Products */}
-      <AseaProductSection />
+      <AseaProductSection affiliateSlug={affiliateSlug} />
 
-      {/* Info section */}
+      {/* Why These Products */}
       <section className="pb-16">
         <div className="container max-w-3xl">
           <Card className="bg-primary/5 border-primary/10">
