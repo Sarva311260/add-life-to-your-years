@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO crm_assets (tagKey, title, assetType, url, thumbnailUrl, description, embedHtml, sortOrder, isActive)\nVALUES (\n  'video_pemf_3',\n  'PEMF — Real Results (Vimeo)',\n  'video',\n  'https://vimeo.com/1098381990',\n  '',\n  'PEMF OlyLife product video — real patient results and testimonials. Embed on PEMF pages.',\n  '<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/1098381990?h=72a0b30a8e\" width=\"640\" height=\"360\" frameborder=\"0\" referrerpolicy=\"strict-origin-when-cross-origin\" allow=\"autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share\" allowfullscreen></iframe>',\n  122,\n  1\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute INSERT INTO crm_assets (tagKey, title, assetType, url, thumbnailUrl, description, embedHtml, sortOrder, isActive)\nVALUES (\n  'video_pemf_3',\n  'PEMF — Real Results (Vimeo)',\n  'video',\n  'https://vimeo.com/1098381990',\n  '',\n  'PEMF OlyLife product video — real patient results and testimonials. Embed on PEMF pages.',\n  '<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/1098381990?h=72a0b30a8e\" width=\"640\" height=\"360\" frameborder=\"0\" referrerpolicy=\"strict-origin-when-cross-origin\" allow=\"autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share\" allowfullscreen></iframe>',\n  122,\n  1\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1798
+}

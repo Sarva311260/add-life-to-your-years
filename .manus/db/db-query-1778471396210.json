@@ -1,0 +1,290 @@
+{
+  "query": "SELECT id, tagKey, title, assetType, url, description FROM crm_assets ORDER BY sortOrder, id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute SELECT id, tagKey, title, assetType, url, description FROM crm_assets ORDER BY sortOrder, id;",
+  "rows": [
+    {
+      "id": "1",
+      "tagKey": "video_wfpb_1",
+      "title": "Rec 1 — Whole Food Plant-Based Diet",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=wb7L3t0ejdI",
+      "description": "Recommendation 1: Whole Food Plant-Based Diet"
+    },
+    {
+      "id": "2",
+      "tagKey": "video_wfpb_2",
+      "title": "Rec 1 — Whole Food Plant-Based Living",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=ztIZoaKTeqk",
+      "description": "Recommendation 1: Whole Food Plant-Based Diet"
+    },
+    {
+      "id": "3",
+      "tagKey": "video_water_1",
+      "title": "Rec 2 — Water & Hydration: Quality, Purity & Health",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=VRzjoIgHNb0",
+      "description": "Recommendation 2: Water & Hydration"
+    },
+    {
+      "id": "4",
+      "tagKey": "video_water_2",
+      "title": "Rec 2 — Water & Hydration: The Science of Staying Hydrated",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=KcYV0Wjx_2k",
+      "description": "Recommendation 2: Water & Hydration"
+    },
+    {
+      "id": "5",
+      "tagKey": "video_masterpeace_1",
+      "title": "Rec 3 — Dr. Robert Young Speaks On MasterPeace",
+      "assetType": "video",
+      "url": "https://rumble.com/v6zz56g",
+      "description": "Recommendation 3: MasterPeace Zeolite"
+    },
+    {
+      "id": "6",
+      "tagKey": "video_masterpeace_2",
+      "title": "Rec 3 — Why Is MasterPeace So Powerful Yet Gentle?",
+      "assetType": "video",
+      "url": "https://rumble.com/v75is4o",
+      "description": "Recommendation 3: MasterPeace Zeolite"
+    },
+    {
+      "id": "7",
+      "tagKey": "video_sleep_1",
+      "title": "Rec 5 — Sleep & Melatonin",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=tcwVfUAqWiY",
+      "description": "Recommendation 5: Sleep & Melatonin"
+    },
+    {
+      "id": "8",
+      "tagKey": "video_glycine_1",
+      "title": "Rec 6 — Glycine",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=o2Kc1Iaow40",
+      "description": "Recommendation 6: Glycine"
+    },
+    {
+      "id": "9",
+      "tagKey": "video_seeds_1",
+      "title": "Rec 7 — Five Seeds of Life",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=YckoR3hLL9E",
+      "description": "Recommendation 7: Five Seeds of Life"
+    },
+    {
+      "id": "10",
+      "tagKey": "video_gut_1",
+      "title": "Rec 8 — Gut Health & Microbiome",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=ndqvqAOsFtQ",
+      "description": "Recommendation 8: Gut Health & Microbiome"
+    },
+    {
+      "id": "11",
+      "tagKey": "video_b12_1",
+      "title": "Rec 9 — Vitamin B12",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=wY4vEBilWN4",
+      "description": "Recommendation 9: Vitamin B12 & Vitamin D"
+    },
+    {
+      "id": "12",
+      "tagKey": "video_d3_1",
+      "title": "Rec 9 — Vitamin D3 (Dr. Michael Holick)",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=qiR4yBymtwY",
+      "description": "Recommendation 9: Vitamin B12 & Vitamin D"
+    },
+    {
+      "id": "13",
+      "tagKey": "video_d3_2",
+      "title": "Rec 9 — Vitamin D3",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=iotnggfP9Yk",
+      "description": "Recommendation 9: Vitamin B12 & Vitamin D"
+    },
+    {
+      "id": "14",
+      "tagKey": "video_d3_3",
+      "title": "Rec 9 — Vitamin D3 (Part 2)",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=uxWARJ4s95Y",
+      "description": "Recommendation 9: Vitamin B12 & Vitamin D"
+    },
+    {
+      "id": "15",
+      "tagKey": "video_movement_1",
+      "title": "Rec 10 — Six Movements",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=qu3ixTQmpl0",
+      "description": "Recommendation 10: Six Movements"
+    },
+    {
+      "id": "16",
+      "tagKey": "video_breathing_1",
+      "title": "Rec 11 — Bhramari Pranayama (Bee Breath)",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=8vN08IuParo",
+      "description": "Recommendation 11: Breathing"
+    },
+    {
+      "id": "17",
+      "tagKey": "video_breathing_2",
+      "title": "Rec 11 — Breathing: The Power of Conscious Breath",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=QVoGbaq8xos",
+      "description": "Recommendation 11: Breathing"
+    },
+    {
+      "id": "18",
+      "tagKey": "video_pemf_1",
+      "title": "Rec 12 — PEMF Therapy & Redox Signalling",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=byinppKR9LY",
+      "description": "Recommendation 12: PEMF & Earthing"
+    },
+    {
+      "id": "19",
+      "tagKey": "video_pemf_2",
+      "title": "Rec 12 — PEMF & Earthing: Reconnecting with the Earth's Field",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=LKOli-nNALM",
+      "description": "Recommendation 12: PEMF & Earthing"
+    },
+    {
+      "id": "20",
+      "tagKey": "video_meditation_1",
+      "title": "Rec 13 — Meditation",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=wXsxwIJnUJk",
+      "description": "Recommendation 13: Meditation"
+    },
+    {
+      "id": "21",
+      "tagKey": "video_nature_1",
+      "title": "Rec 14 — Time in Nature",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=UHv3SCUioQU",
+      "description": "Recommendation 14: Time in Nature"
+    },
+    {
+      "id": "22",
+      "tagKey": "video_relationship_1",
+      "title": "Rec 15 — Repairing the Relationship",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=rgQvqi6aYD8",
+      "description": "Recommendation 15: Repairing the Relationship"
+    },
+    {
+      "id": "23",
+      "tagKey": "video_income_1",
+      "title": "Rec 16 — Second Income Stream",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=eD0N8wXjNSs",
+      "description": "Recommendation 16: Second Income Stream"
+    },
+    {
+      "id": "24",
+      "tagKey": "video_environment_1",
+      "title": "Rec 17 — Your Environment",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=foBnfBX4YKQ",
+      "description": "Recommendation 17: Your Environment"
+    },
+    {
+      "id": "25",
+      "tagKey": "video_methylene_1",
+      "title": "Rec 18 — Methylene Blue & Photobiomodulation",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=KvASX2yp0zU",
+      "description": "Recommendation 18: Methylene Blue & Photobiomodulation"
+    },
+    {
+      "id": "26",
+      "tagKey": "video_cold_shower_1",
+      "title": "Appendix — Cold Showers: Hormesis, Inflammation & Cognitive Benefits",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=xTVMGyJ8cZU",
+      "description": "Appendix: The Science of Cold Showers"
+    },
+    {
+      "id": "27",
+      "tagKey": "video_cold_shower_2",
+      "title": "Appendix — Cold Showers: 5 Evidence-Based Benefits",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=may_PlDfNRE",
+      "description": "Appendix: The Science of Cold Showers"
+    },
+    {
+      "id": "28",
+      "tagKey": "video_fenbendazole_1",
+      "title": "Appendix — Fenbendazole: The Joe Tippens Protocol & Cancer Research",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=QBnT8es28WY",
+      "description": "Appendix: Off-Label Cancer Research"
+    },
+    {
+      "id": "29",
+      "tagKey": "video_fenbendazole_2",
+      "title": "Appendix — Fenbendazole & Ivermectin: Stanford Case Series",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=5Q5QjEPGNNg",
+      "description": "Appendix: Off-Label Cancer Research"
+    },
+    {
+      "id": "30",
+      "tagKey": "video_ivermectin_1",
+      "title": "Appendix — Ivermectin + Mebendazole: Real-World Study (197 Cancer Patients)",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=Ck4_fX1xaaw",
+      "description": "Appendix: Off-Label Cancer Research"
+    },
+    {
+      "id": "31",
+      "tagKey": "video_diet_1",
+      "title": "Appendix — What Humans Are Designed to Eat",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=Weg9GUnH24E",
+      "description": "Appendix: Diet Comparison Videos"
+    },
+    {
+      "id": "32",
+      "tagKey": "video_diet_2",
+      "title": "Appendix — The Ketogenic Diet: Is It Healthy?",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=nEjuZsP8o7g",
+      "description": "Appendix: Diet Comparison Videos"
+    },
+    {
+      "id": "33",
+      "tagKey": "video_diet_3",
+      "title": "Appendix — The Ketogenic Diet is a Scam",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=MJVSD0hggZE",
+      "description": "Appendix: Diet Comparison Videos"
+    },
+    {
+      "id": "34",
+      "tagKey": "video_diet_4",
+      "title": "Appendix — Mediterranean Diet vs WFPB",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=uVGpTLMN6w4",
+      "description": "Appendix: Diet Comparison Videos"
+    },
+    {
+      "id": "35",
+      "tagKey": "video_diet_5",
+      "title": "Appendix — Is a Plant-Based Diet Always Healthy?",
+      "assetType": "video",
+      "url": "https://www.youtube.com/watch?v=dpyz-AumCUk",
+      "description": "Appendix: Diet Comparison Videos"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttagKey\ttitle\tassetType\turl\tdescription\n1\tvideo_wfpb_1\tRec 1 — Whole Food Plant-Based Diet\tvideo\thttps://www.youtube.com/watch?v=wb7L3t0ejdI\tRecommendation 1: Whole Food Plant-Based Diet\n2\tvideo_wfpb_2\tRec 1 — Whole Food Plant-Based Living\tvideo\thttps://www.youtube.com/watch?v=ztIZoaKTeqk\tRecommendation 1: Whole Food Plant-Based Diet\n3\tvideo_water_1\tRec 2 — Water & Hydration: Quality, Purity & Health\tvideo\thttps://www.youtube.com/watch?v=VRzjoIgHNb0\tRecommendation 2: Water & Hydration\n4\tvideo_water_2\tRec 2 — Water & Hydration: The Science of Staying Hydrated\tvideo\thttps://www.youtube.com/watch?v=KcYV0Wjx_2k\tRecommendation 2: Water & Hydration\n5\tvideo_masterpeace_1\tRec 3 — Dr. Robert Young Speaks On MasterPeace\tvideo\thttps://rumble.com/v6zz56g\tRecommendation 3: MasterPeace Zeolite\n6\tvideo_masterpeace_2\tRec 3 — Why Is MasterPeace So Powerful Yet Gentle?\tvideo\thttps://rumble.com/v75is4o\tRecommendation 3: MasterPeace Zeolite\n7\tvideo_sleep_1\tRec 5 — Sleep & Melatonin\tvideo\thttps://www.youtube.com/watch?v=tcwVfUAqWiY\tRecommendation 5: Sleep & Melatonin\n8\tvideo_glycine_1\tRec 6 — Glycine\tvideo\thttps://www.youtube.com/watch?v=o2Kc1Iaow40\tRecommendation 6: Glycine\n9\tvideo_seeds_1\tRec 7 — Five Seeds of Life\tvideo\thttps://www.youtube.com/watch?v=YckoR3hLL9E\tRecommendation 7: Five Seeds of Life\n10\tvideo_gut_1\tRec 8 — Gut Health & Microbiome\tvideo\thttps://www.youtube.com/watch?v=ndqvqAOsFtQ\tRecommendation 8: Gut Health & Microbiome\n11\tvideo_b12_1\tRec 9 — Vitamin B12\tvideo\thttps://www.youtube.com/watch?v=wY4vEBilWN4\tRecommendation 9: Vitamin B12 & Vitamin D\n12\tvideo_d3_1\tRec 9 — Vitamin D3 (Dr. Michael Holick)\tvideo\thttps://www.youtube.com/watch?v=qiR4yBymtwY\tRecommendation 9: Vitamin B12 & Vitamin D\n13\tvideo_d3_2\tRec 9 — Vitamin D3\tvideo\thttps://www.youtube.com/watch?v=iotnggfP9Yk\tRecommendation 9: Vitamin B12 & Vitamin D\n14\tvideo_d3_3\tRec 9 — Vitamin D3 (Part 2)\tvideo\thttps://www.youtube.com/watch?v=uxWARJ4s95Y\tRecommendation 9: Vitamin B12 & Vitamin D\n15\tvideo_movement_1\tRec 10 — Six Movements\tvideo\thttps://www.youtube.com/watch?v=qu3ixTQmpl0\tRecommendation 10: Six Movements\n16\tvideo_breathing_1\tRec 11 — Bhramari Pranayama (Bee Breath)\tvideo\thttps://www.youtube.com/watch?v=8vN08IuParo\tRecommendation 11: Breathing\n17\tvideo_breathing_2\tRec 11 — Breathing: The Power of Conscious Breath\tvideo\thttps://www.youtube.com/watch?v=QVoGbaq8xos\tRecommendation 11: Breathing\n18\tvideo_pemf_1\tRec 12 — PEMF Therapy & Redox Signalling\tvideo\thttps://www.youtube.com/watch?v=byinppKR9LY\tRecommendation 12: PEMF & Earthing\n19\tvideo_pemf_2\tRec 12 — PEMF & Earthing: Reconnecting with the Earth's Field\tvideo\thttps://www.youtube.com/watch?v=LKOli-nNALM\tRecommendation 12: PEMF & Earthing\n20\tvideo_meditation_1\tRec 13 — Meditation\tvideo\thttps://www.youtube.com/watch?v=wXsxwIJnUJk\tRecommendation 13: Meditation\n21\tvideo_nature_1\tRec 14 — Time in Nature\tvideo\thttps://www.youtube.com/watch?v=UHv3SCUioQU\tRecommendation 14: Time in Nature\n22\tvideo_relationship_1\tRec 15 — Repairing the Relationship\tvideo\thttps://www.youtube.com/watch?v=rgQvqi6aYD8\tRecommendation 15: Repairing the Relationship\n23\tvideo_income_1\tRec 16 — Second Income Stream\tvideo\thttps://www.youtube.com/watch?v=eD0N8wXjNSs\tRecommendation 16: Second Income Stream\n24\tvideo_environment_1\tRec 17 — Your Environment\tvideo\thttps://www.youtube.com/watch?v=foBnfBX4YKQ\tRecommendation 17: Your Environment\n25\tvideo_methylene_1\tRec 18 — Methylene Blue & Photobiomodulation\tvideo\thttps://www.youtube.com/watch?v=KvASX2yp0zU\tRecommendation 18: Methylene Blue & Photobiomodulation\n26\tvideo_cold_shower_1\tAppendix — Cold Showers: Hormesis, Inflammation & Cognitive Benefits\tvideo\thttps://www.youtube.com/watch?v=xTVMGyJ8cZU\tAppendix: The Science of Cold Showers\n27\tvideo_cold_shower_2\tAppendix — Cold Showers: 5 Evidence-Based Benefits\tvideo\thttps://www.youtube.com/watch?v=may_PlDfNRE\tAppendix: The Science of Cold Showers\n28\tvideo_fenbendazole_1\tAppendix — Fenbendazole: The Joe Tippens Protocol & Cancer Research\tvideo\thttps://www.youtube.com/watch?v=QBnT8es28WY\tAppendix: Off-Label Cancer Research\n29\tvideo_fenbendazole_2\tAppendix — Fenbendazole & Ivermectin: Stanford Case Series\tvideo\thttps://www.youtube.com/watch?v=5Q5QjEPGNNg\tAppendix: Off-Label Cancer Research\n30\tvideo_ivermectin_1\tAppendix — Ivermectin + Mebendazole: Real-World Study (197 Cancer Patients)\tvideo\thttps://www.youtube.com/watch?v=Ck4_fX1xaaw\tAppendix: Off-Label Cancer Research\n31\tvideo_diet_1\tAppendix — What Humans Are Designed to Eat\tvideo\thttps://www.youtube.com/watch?v=Weg9GUnH24E\tAppendix: Diet Comparison Videos\n32\tvideo_diet_2\tAppendix — The Ketogenic Diet: Is It Healthy?\tvideo\thttps://www.youtube.com/watch?v=nEjuZsP8o7g\tAppendix: Diet Comparison Videos\n33\tvideo_diet_3\tAppendix — The Ketogenic Diet is a Scam\tvideo\thttps://www.youtube.com/watch?v=MJVSD0hggZE\tAppendix: Diet Comparison Videos\n34\tvideo_diet_4\tAppendix — Mediterranean Diet vs WFPB\tvideo\thttps://www.youtube.com/watch?v=uVGpTLMN6w4\tAppendix: Diet Comparison Videos\n35\tvideo_diet_5\tAppendix — Is a Plant-Based Diet Always Healthy?\tvideo\thttps://www.youtube.com/watch?v=dpyz-AumCUk\tAppendix: Diet Comparison Videos\n",
+  "stderr": "",
+  "execution_time_ms": 1764
+}

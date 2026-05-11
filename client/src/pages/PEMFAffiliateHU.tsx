@@ -860,6 +860,20 @@ export default function PEMFAffiliateHU() {
               />
             </div>
           </FadeIn>
+
+          <FadeIn delay={0.2}>
+            <div className="mt-10 relative rounded-xl overflow-hidden shadow-xl bg-black aspect-video">
+              <iframe
+                src="https://player.vimeo.com/video/1098381990?h=72a0b30a8e"
+                className="absolute inset-0 w-full h-full"
+                frameBorder="0"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                allowFullScreen
+                title="PEMF Terápia — Valós Eredmények"
+              />
+            </div>
+          </FadeIn>
         </div>
       </section>
 

@@ -1,0 +1,22 @@
+{
+  "query": "SELECT id, tagKey, title, sortOrder FROM crm_assets WHERE id IN (18, 19);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute SELECT id, tagKey, title, sortOrder FROM crm_assets WHERE id IN (18, 19);",
+  "rows": [
+    {
+      "id": "18",
+      "tagKey": "video_pemf_1",
+      "title": "Rec 12 — PEMF Therapy & Redox Signalling",
+      "sortOrder": "120"
+    },
+    {
+      "id": "19",
+      "tagKey": "video_pemf_2",
+      "title": "Rec 12 — PEMF & Earthing: Reconnecting with the Earth's Field",
+      "sortOrder": "121"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttagKey\ttitle\tsortOrder\n18\tvideo_pemf_1\tRec 12 — PEMF Therapy & Redox Signalling\t120\n19\tvideo_pemf_2\tRec 12 — PEMF & Earthing: Reconnecting with the Earth's Field\t121\n",
+  "stderr": "",
+  "execution_time_ms": 1772
+}
