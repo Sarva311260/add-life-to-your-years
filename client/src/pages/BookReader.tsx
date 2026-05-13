@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book-content_46d11caa.md";
+const MD_CDN_URL = "/manus-storage/book-content_a32d3c3b.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -60,6 +60,7 @@ const chapters = [
   { id: "appendix-d", label: "Appendix D: Brazil Nuts & Selenium" },
   { id: "appendix-e", label: "Appendix E: Floor Lying — The 5-Minute Protocol" },
   { id: "appendix-f", label: "Appendix F: The Fiber That Calms You" },
+  { id: "appendix-g", label: "Appendix G: Blackstrap Molasses" },
   { id: "wellness-blueprint", label: "Your Wellness Blueprint at a Glance" },
 ];
 
@@ -110,6 +111,7 @@ const headingIdMap: Record<string, string> = {
   "Your Wellness Blueprint at a Glance": "wellness-blueprint",
   "Why This Appendix Exists": "why-this-appendix-exists",
   "Appendix Strategies": "appendix-strategies",
+  "Appendix G": "appendix-g",
   "Appendix F": "appendix-f",
   "Appendix C": "appendix-c",
   "Appendix E": "appendix-e",
@@ -266,6 +268,10 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
   ],
   "rec-appendix-gut-brain": [
     { youtubeId: "Hywi0rDLtJA", title: "The Fiber That Calms You — Feeding Your Gut to Heal Your Mind" },
+  ],
+  "rec-appendix-blackstrap-molasses": [
+    { youtubeId: "IqRo8gGbFuo", title: "Blackstrap Molasses — Dr. Eric Berg" },
+    { youtubeId: "dtSeM5mb41o", title: "Blackstrap Molasses for Sleep and Blood Sugar" },
   ],
   "rec-appendix-diet": [
     { youtubeId: "Weg9GUnH24E", title: "What Humans Are Designed to Eat" },

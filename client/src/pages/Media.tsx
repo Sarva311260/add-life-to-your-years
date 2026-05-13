@@ -555,6 +555,28 @@ const RECOMMENDATIONS: RecommendationSection[] = [
       },
     ],
   },
+  {
+    id: "appendix-blackstrap-molasses",
+    number: 0,
+    title: "Appendix G: Blackstrap Molasses — Nature's Mineral Chest",
+    description:
+      "Blackstrap molasses is the mineral-dense syrup left after sugar is refined from sugarcane. This appendix covers its remarkable nutrient profile (iron, magnesium, potassium, calcium, manganese), its use for iron deficiency and energy, and its specific role in stabilising blood sugar overnight to prevent the cortisol-driven awakenings that disrupt deep sleep.",
+    color: "bg-amber-100 text-amber-800 border-amber-200",
+    videos: [
+      {
+        youtubeId: "IqRo8gGbFuo",
+        title: "Blackstrap Molasses — Dr. Eric Berg",
+        description:
+          "Dr. Eric Berg covers the nutritional profile of blackstrap molasses, its role in replenishing iron and other essential minerals, and why it is one of the most overlooked whole-food supplements available.",
+      },
+      {
+        youtubeId: "dtSeM5mb41o",
+        title: "Blackstrap Molasses for Sleep and Blood Sugar",
+        description:
+          "Covers the link between nocturnal hypoglycaemia and 2–3 AM awakenings, how molasses provides slow-burning fuel to prevent cortisol-driven sleep disruption, and the practical sleep protocol including the warm mineral milk and ginger molasses tea recipes.",
+      },
+    ],
+  },
 ];
 
 const PODCASTS: PodcastItem[] = [
