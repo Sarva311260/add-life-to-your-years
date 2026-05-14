@@ -164,9 +164,9 @@ export default function Book() {
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   For years, people asked him to write a concise book drawing on his decades of accumulated experience. He spent the last three years doing further research into the latest science on health, wellness, and longevity. This book is the result.
                 </p>
-                <Link href="/about" className="inline-flex items-center gap-1 text-sm text-primary font-medium mt-3 hover:underline">
+                <a href="/#about-author" className="inline-flex items-center gap-1 text-sm text-primary font-medium mt-3 hover:underline">
                   Read full bio →
-                </Link>
+                </a>
               </div>
             </motion.div>
           </motion.div>
