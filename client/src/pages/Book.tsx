@@ -15,7 +15,8 @@ const CONTENTS = [
   "Part Two: The 8 Factors of Health and Disease",
   "Part Three: Wellness Strategies (Chapters 5–14)",
   "Part Four: John's Path Forward — A Healing Story",
-  "All 15 Recommendations with Clinical Evidence (incl. Methylene Blue)",
+  "All 18 Recommendations with Clinical Evidence (incl. Methylene Blue)",
+  "Appendices A–G: Diet, Cold Showers, Off-Label Pharmaceuticals, Brazil Nuts, Floor Lying, Gut-Brain Axis & Blackstrap Molasses",
   "Chapter Notes and References",
   "Glossary — 42 Key Terms Defined",
 ];
