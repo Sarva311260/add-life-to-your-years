@@ -51,8 +51,8 @@ export default function SiteNav() {
           {isAuthenticated ? (
             <div className="flex items-center gap-1.5">
               <Link href="/dashboard">
-                <Button variant="outline" size="sm" className="gap-1.5 text-xs h-8 px-3">
-                  <User className="w-3.5 h-3.5" />
+                <Button variant="outline" size="sm" className="gap-1.5 text-xs h-8 px-3 text-gray-800 border-gray-400 font-semibold">
+                  <User className="w-3.5 h-3.5 text-gray-800" />
                   <span className="max-w-[80px] truncate">{user?.name || "Account"}</span>
                 </Button>
               </Link>
