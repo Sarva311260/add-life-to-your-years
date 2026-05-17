@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book-content_8b3fc6ec.md";
+const MD_CDN_URL = "/manus-storage/book-content_3ededa58.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -61,6 +61,7 @@ const chapters = [
   { id: "appendix-e", label: "Appendix E: Floor Lying — The 5-Minute Protocol" },
   { id: "appendix-f", label: "Appendix F: The Fiber That Calms You" },
   { id: "appendix-g", label: "Appendix G: Blackstrap Molasses" },
+  { id: "appendix-h", label: "Appendix H: Coherence Breathing" },
   { id: "wellness-blueprint", label: "Your Wellness Blueprint at a Glance" },
 ];
 
@@ -111,6 +112,7 @@ const headingIdMap: Record<string, string> = {
   "Your Wellness Blueprint at a Glance": "wellness-blueprint",
   "Why This Appendix Exists": "why-this-appendix-exists",
   "Appendix Strategies": "appendix-strategies",
+  "Appendix H": "appendix-h",
   "Appendix G": "appendix-g",
   "Appendix F": "appendix-f",
   "Appendix C": "appendix-c",
@@ -268,6 +270,9 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
   ],
   "rec-appendix-gut-brain": [
     { youtubeId: "Hywi0rDLtJA", title: "The Fiber That Calms You — Feeding Your Gut to Heal Your Mind" },
+  ],
+  "rec-appendix-coherence-breathing": [
+    { youtubeId: "vCf2GWI4dfw", title: "Coherence Breathing — The 10-Second Cycle That Rewires Your Nervous System" },
   ],
   "rec-appendix-blackstrap-molasses": [
     { youtubeId: "IqRo8gGbFuo", title: "Blackstrap Molasses — Dr. Eric Berg" },

@@ -573,12 +573,27 @@ const RECOMMENDATIONS: RecommendationSection[] = [
         youtubeId: "dtSeM5mb41o",
         title: "Blackstrap Molasses for Sleep and Blood Sugar",
         description:
-          "Covers the link between nocturnal hypoglycaemia and 2–3 AM awakenings, how molasses provides slow-burning fuel to prevent cortisol-driven sleep disruption, and the practical sleep protocol including the warm mineral milk and ginger molasses tea recipes.",
+           "Covers the link between nocturnal hypoglycaemia and 2–3 AM awakenings, how molasses provides slow-burning fuel to prevent cortisol-driven sleep disruption, and the practical sleep protocol including the warm mineral milk and ginger molasses tea recipes.",
+      },
+    ],
+  },
+  {
+    id: "appendix-coherence-breathing",
+    number: 0,
+    title: "Appendix H: Coherence Breathing — The 10-Second Cycle That Rewires Your Nervous System",
+    description:
+      "Coherence Breathing (5-second inhale / 5-second exhale at 6 breaths per minute) is one of the most evidence-backed practices for increasing HRV, strengthening vagal tone, lowering blood pressure, protecting telomeres, and improving deep sleep. This appendix explains the baroreflex resonance mechanism and the precise protocol for daily practice.",
+    color: "bg-sky-100 text-sky-800 border-sky-200",
+    videos: [
+      {
+        youtubeId: "vCf2GWI4dfw",
+        title: "Coherence Breathing — The 10-Second Cycle That Rewires Your Nervous System",
+        description:
+          "Covers the science of baroreflex resonance, vagal tone, HRV as a longevity biomarker, telomere protection via cortisol reduction, glymphatic brain detoxification during deep sleep, and the precise 5-second inhale / 5-second exhale protocol with morning and evening timing guidance.",
       },
     ],
   },
 ];
-
 const PODCASTS: PodcastItem[] = [
   {
     title: "Podcast episodes coming soon",
