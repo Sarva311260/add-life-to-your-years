@@ -1,0 +1,26 @@
+{
+  "query": "SELECT id, slug, SUBSTRING(content, 1, 500) as content_preview FROM blog_posts LIMIT 2;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute SELECT id, slug, SUBSTRING(content, 1, 500) as content_preview FROM blog_posts LIMIT 2;",
+  "rows": [
+    {
+      "id": "1",
+      "slug": "navigating-the-diet-landscape",
+      "content_preview": "# Supplementary Guide: Navigating the Diet Landscape — A Critical Comparison"
+    },
+    {
+      "id": "2",
+      "slug": "science-of-cold-showers",
+      "content_preview": "# Supplementary Guide: The Science of Cold Showers — What the Evidence Actually Shows"
+    }
+  ],
+  "messages": [
+    "## Why This Guide Exists",
+    "Walk into any bookshop, scroll through any health podcast, or open any social media feed and you will encounter a bewildering array of competing dietary philosophies, each claiming to be the path to optimal health, longevity, and vitality. Keto. Carnivore. Mediterranean. Paleo. Vegan. The noise is deafening, and for someone genuinely trying to improve their health, it can be paralysing.",
+    "This ",
+    "## Why This Guide Exists",
+    "Cold showers have become one of the most discussed wellness practices of the past decade. Social media influencers, biohacking podcasts, and breathwork gurus have elevated cold water exposure to near-mythical status, claiming it can cure depression, burn fat, supercharge the immune system, and add years to your life. As with most wellness trends, the truth is more nuanced than the hea"
+  ],
+  "stdout": "id\tslug\tcontent_preview\n1\tnavigating-the-diet-landscape\t# Supplementary Guide: Navigating the Diet Landscape — A Critical Comparison\n\n## Why This Guide Exists\n\nWalk into any bookshop, scroll through any health podcast, or open any social media feed and you will encounter a bewildering array of competing dietary philosophies, each claiming to be the path to optimal health, longevity, and vitality. Keto. Carnivore. Mediterranean. Paleo. Vegan. The noise is deafening, and for someone genuinely trying to improve their health, it can be paralysing.\n\nThis \n2\tscience-of-cold-showers\t# Supplementary Guide: The Science of Cold Showers — What the Evidence Actually Shows\n\n## Why This Guide Exists\n\nCold showers have become one of the most discussed wellness practices of the past decade. Social media influencers, biohacking podcasts, and breathwork gurus have elevated cold water exposure to near-mythical status, claiming it can cure depression, burn fat, supercharge the immune system, and add years to your life. As with most wellness trends, the truth is more nuanced than the hea\n",
+  "stderr": "",
+  "execution_time_ms": 1836
+}

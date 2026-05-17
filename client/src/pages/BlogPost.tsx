@@ -135,7 +135,7 @@ export default function BlogPost() {
         </div>
       )}
 
-      <article className="max-w-3xl mx-auto px-4 pb-24" style={{ marginTop: post.coverImageUrl ? "-4rem" : "6rem" }}>
+      <article className="max-w-3xl mx-auto px-4 pb-24" style={{ marginTop: post.coverImageUrl ? "-2rem" : "6rem", paddingTop: post.coverImageUrl ? "2.5rem" : "0" }}>
 
         {/* Back link (no cover image fallback) */}
         {!post.coverImageUrl && (
@@ -203,7 +203,7 @@ export default function BlogPost() {
           prose-table:text-sm prose-th:text-white prose-th:bg-[#1a2e1c] prose-td:text-gray-300 prose-td:border-[#1f3520] prose-th:border-[#1f3520]
           prose-hr:border-[#1f3520] prose-hr:my-10
           prose-code:text-[#4ade80] prose-code:bg-[#0f2410] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded">
-          <Streamdown>{post.content}</Streamdown>
+          <Streamdown>{post.content.replace(/^#\s+.+\n?/, "")}</Streamdown>
         </div>
 
         {/* Author bio card */}
