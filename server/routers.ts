@@ -27,6 +27,7 @@ import { affiliateContactsRouter } from "./routers/affiliateContacts";
 import { mergeTagsRouter } from "./routers/mergeTags";
 import { emailTemplatesRouter } from "./routers/emailTemplates";
 import { blogRouter } from "./routers/blog";
+import { newsletterRouter } from "./routers/newsletter";
 import { adminProcedure } from "./_core/trpc";
 import { CONDITION_KNOWLEDGE } from "./conditionKnowledge";
 import { VIDEO_KNOWLEDGE } from "./videoKnowledge";
@@ -43,6 +44,7 @@ export const appRouter = router({
   mergeTags: mergeTagsRouter,
   emailTemplates: emailTemplatesRouter,
   blog: blogRouter,
+  newsletter: newsletterRouter,
 
   knowledge: router({
     list: adminProcedure.query(() => {

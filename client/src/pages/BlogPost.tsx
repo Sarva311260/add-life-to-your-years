@@ -4,6 +4,7 @@ import SiteNav from "@/components/SiteNav";
 import SEO from "@/components/SEO";
 import { Streamdown } from "streamdown";
 import { Calendar, ArrowLeft, BookOpen, Clock, User } from "lucide-react";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 const AUTHOR_PHOTO = "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/sarva_0909cc87.jpg";
 
@@ -226,6 +227,9 @@ export default function BlogPost() {
             </Link>
           </div>
         </div>
+
+        {/* Newsletter signup */}
+        <NewsletterSignup sourceSlug={post.slug} />
 
         {/* Related posts */}
         {related.length > 0 && (
