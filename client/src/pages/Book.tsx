@@ -18,7 +18,7 @@ const CONTENTS = [
   "Part Three: Wellness Strategies (Chapters 5–14)",
   "Part Four: John's Path Forward — A Healing Story",
   "All 18 Recommendations with Clinical Evidence (incl. Methylene Blue)",
-  "Appendices A–G: Diet, Cold Showers, Off-Label Pharmaceuticals, Brazil Nuts, Floor Lying, Gut-Brain Axis & Blackstrap Molasses",
+  "Appendices A–I: Diet, Cold Showers, Off-Label Pharmaceuticals, Brazil Nuts, Floor Lying, Gut-Brain Axis, Blackstrap Molasses, Coherence Breathing & Lavender Oil",
   "Chapter Notes and References",
   "Glossary — 42 Key Terms Defined",
 ];

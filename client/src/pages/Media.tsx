@@ -593,6 +593,22 @@ const RECOMMENDATIONS: RecommendationSection[] = [
       },
     ],
   },
+  {
+    id: "appendix-lavender-oil",
+    number: 0,
+    title: "Appendix I: Lavender Oil — Nature's Answer to Anxiety",
+    description:
+      "Oral Silexan (pharmaceutical-grade lavender oil, 80 mg/day) has been shown in randomised controlled trials to be as effective as lorazepam (a benzodiazepine) for Generalised Anxiety Disorder — without dependence, tolerance, or withdrawal. This appendix covers the amygdala anxiety mechanism, how linalool and linalyl acetate modulate GABA-A receptors and reduce amygdala hyperactivity, the landmark Woelk & Schläfke (2010) trial, and the practical 80 mg/day protocol.",
+    color: "bg-purple-100 text-purple-800 border-purple-200",
+    videos: [
+      {
+        youtubeId: "q3kXbYMgBnE",
+        title: "Lavender Oil — Nature's Answer to Anxiety",
+        description:
+          "Dr. Eric Berg explains how Silexan (oral lavender oil) compares to benzodiazepines for anxiety, the GABA mechanism, the clinical trial evidence, and why the pharmaceutical-grade extract is essential for therapeutic effect.",
+      },
+    ],
+  },
 ];
 const PODCASTS: PodcastItem[] = [
   {
