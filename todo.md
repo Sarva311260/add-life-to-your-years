@@ -398,31 +398,31 @@
 ## Blog, Supplementary Guides Rename & SEO
 
 ### Rename Appendices → Supplementary Guides
-- [ ] Replace all "Appendix A/B/.../I" headings in book-content.md with "Supplementary Guide: [Topic]"
-- [ ] Update BookReader.tsx chapter list labels
-- [ ] Update BookReader.tsx headingIdMap keys
-- [ ] Update Media.tsx RECOMMENDATIONS titles
-- [ ] Update Book.tsx CONTENTS array text
-- [ ] Update Wellness Blueprint table header and row labels in book-content.md
-- [ ] Update Blueprint intro text to "eight supplementary guides"
-- [ ] Upload updated book-content.md to CDN and update MD_CDN_URL
+- [x] Replace all "Appendix A/B/.*.md with "Supplementary Guide: [Topic]"
+- [x] Update BookReader.tsx chapter list labels
+- [x] Update BookReader.tsx headingIdMap keys
+- [x] Update Media.tsx RECOMMENDATIONS titles
+- [x] Update Book.tsx CONTENTS array text
+- [x] Update Wellness Blueprint table header and row labels in book-content.md
+- [x] Update Blueprint intro text to "eight supplementary guides"
+- [x] Upload updated book-content.md to CDN and update MD_CDN_URL
 
 ### Blog System
-- [ ] Add blog_posts table to drizzle/schema.ts
-- [ ] Run migration SQL via webdev_execute_sql
-- [ ] Add blog tRPC procedures: blog.list, blog.getBySlug, blog.create (admin), blog.update (admin)
-- [ ] Create /blog index page (BlogIndex.tsx)
-- [ ] Create /blog/:slug post page (BlogPost.tsx)
-- [ ] Register /blog and /blog/:slug routes in App.tsx
-- [ ] Add "Blog" link to main navigation
-- [ ] Seed all 9 existing guides (A–I) as blog posts
+- [x] Add blog_posts table to drizzle/schema.ts
+- [x] Run migration SQL via webdev_execute_sql
+- [x] Add blog tRPC procedures: blog.list, blog.getBySlug, blog.create (admin), blog.update (admin)
+- [x] Create /blog index page (BlogIndex.tsx)
+- [x] Create /blog/:slug post page (BlogPost.tsx)
+- [x] Register /blog and /blog/:slug routes in App.tsx
+- [x] Add "Blog" link to main navigation
+- [x] Seed all 9 existing guides (A–I) as blog posts
 
 ### SEO
-- [ ] Install react-helmet-async
-- [ ] Add SEO component with title, description, og:image, og:url, canonical
-- [ ] Add SEO tags to every page
-- [ ] Add JSON-LD structured data (WebSite, Book, BlogPosting schemas)
-- [ ] Generate sitemap.xml via server endpoint
-- [ ] Add/update robots.txt
-- [ ] Add default og:image for social sharing
-- [ ] Ensure all page titles follow "[Page Title] | Add Life to Your Years" pattern
+- [x] Install react-helmet-async
+- [x] Add SEO component with title, description, og:image, og:url, canonical
+- [x] Add SEO tags to every page
+- [x] Add JSON-LD structured data (WebSite, Book, BlogPosting schemas)
+- [x] Generate sitemap.xml via server endpoint
+- [x] Add/update robots.txt
+- [x] Add default og:image for social sharing
+- [x] Ensure all page titles follow "[Page Title] | Add Life to Your Years" pattern

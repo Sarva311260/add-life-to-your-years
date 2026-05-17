@@ -48,134 +48,14 @@ const MEDIA_VIDEO_MAP: Record<string, { youtubeId: string; title: string }[]> = 
   ],
 };
 
-// Extract anchor ID from a media page URL
-function extractMediaAnchor(href: string): string | null {
-  try {
-    const url = new URL(href, window.location.origin);
-    if (url.pathname === "/media" && url.hash) return url.hash.slice(1);
-  } catch {
-    if (href.startsWith("/media#")) return href.slice(7);
-    if (href.includes("/media#")) return href.slice(href.indexOf("/media#") + 7);
-  }
-  return null;
+// Strip the first H1 from content (already shown as page title)
+function stripFirstH1(raw: string): string {
+  return raw
+    .replace(/\r\n/g, "\n")
+    .replace(/\r/g, "\n")
+    .replace(/^#\s+.+\n?/, "");
 }
 
-// Transform blog post markdown:
-// 1. Strip the first H1 (already shown as page title)
-// 2. Replace QR code blockquote sections with a special video embed placeholder
-function transformBlogContent(raw: string): string {
-  // Normalise line endings (DB may return CRLF)
-  let content = raw.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
-
-  // Strip first H1
-  content = content.replace(/^#\s+.+\n?/, "");
-
-  // Replace QR code image links inside blockquotes with a video placeholder
-  // Actual format in DB:
-  // > [![Watch: Title](https://addlifetoyouryears.org/manus-storage/qr-...png)](https://addlifetoyouryears.org/media#appendix-lavender-oil)
-  // We match the outer link destination to extract the anchor
-  content = content.replace(
-    />\s*\[!\[[^\]]*\]\([^)]+\)\]\([^)]*[/#]([a-z0-9_-]+)\)/g,
-    (_match, anchor) => {
-      // Only replace if we have a video mapping for this anchor
-      if (MEDIA_VIDEO_MAP[anchor]) return `<!--VIDEO:${anchor}-->`;
-      return _match; // leave unchanged if no video mapping
-    }
-  );
-
-  // Remove the bold text lines that follow QR codes (e.g. > **Watch: Cold Shower Videos (2 Videos)**)
-  content = content.replace(/^>\s*\*\*Watch:[^*]*\*\*\s*$/gm, "");
-
-  // Remove Watch: section headings (## Watch: ...)
-  content = content.replace(/^##\s+Watch:[^\n]*\n?/gm, "");
-
-  // Remove blockquote lines that say "Tap the QR code..."
-  content = content.replace(/^>\s*Tap the QR code[^\n]*\n?/gm, "");
-
-  // Clean up empty blockquote lines (> with nothing after)
-  content = content.replace(/^>\s*$/gm, "");
-
-  return content;
-}
-
-// Split content on <!--VIDEO:anchor--> placeholders so we can render embeds inline
-type ContentPart =
-  | { type: "markdown"; text: string }
-  | { type: "video"; anchor: string };
-
-function splitContentParts(content: string): ContentPart[] {
-  const parts: ContentPart[] = [];
-  const regex = /<!--VIDEO:([a-z0-9_-]+)-->/g;
-  let lastIndex = 0;
-  let match: RegExpExecArray | null;
-
-  while ((match = regex.exec(content)) !== null) {
-    if (match.index > lastIndex) {
-      parts.push({ type: "markdown", text: content.slice(lastIndex, match.index) });
-    }
-    parts.push({ type: "video", anchor: match[1] });
-    lastIndex = match.index + match[0].length;
-  }
-
-  if (lastIndex < content.length) {
-    parts.push({ type: "markdown", text: content.slice(lastIndex) });
-  }
-
-  return parts;
-}
-
-// Inline video player component
-function InlineVideoPlayer({ anchor }: { anchor: string }) {
-  const videos = MEDIA_VIDEO_MAP[anchor];
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  if (!videos || videos.length === 0) return null;
-
-  const current = videos[activeIndex];
-
-  return (
-    <div className="my-10 rounded-2xl overflow-hidden border border-[#1f3520] bg-[#0f2410]">
-      {/* Video title bar */}
-      <div className="flex items-center gap-2 px-4 py-3 border-b border-[#1f3520]">
-        <Play className="w-4 h-4 text-[#4ade80] flex-shrink-0" />
-        <span className="text-white font-semibold text-sm truncate">{current.title}</span>
-      </div>
-
-      {/* 16:9 iframe */}
-      <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-        <iframe
-          key={current.youtubeId}
-          className="absolute inset-0 w-full h-full"
-          src={`https://www.youtube.com/embed/${current.youtubeId}?rel=0`}
-          title={current.title}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          loading="lazy"
-        />
-      </div>
-
-      {/* Playlist tabs (only when multiple videos) */}
-      {videos.length > 1 && (
-        <div className="px-4 py-3 border-t border-[#1f3520] flex flex-wrap gap-2">
-          {videos.map((v, i) => (
-            <button
-              key={v.youtubeId}
-              onClick={() => setActiveIndex(i)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                i === activeIndex
-                  ? "bg-[#4ade80] text-[#0a1a0c]"
-                  : "bg-[#1a2e1c] text-gray-300 hover:bg-[#1f3520] hover:text-white"
-              }`}
-            >
-              <Play className="w-3 h-3" />
-              {i + 1}. {v.title.length > 45 ? v.title.slice(0, 45) + "…" : v.title}
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
 
 // Standalone video section rendered from DB videoIds field
 function VideoSection({ videos }: { videos: { youtubeId: string; title: string }[] }) {
@@ -342,9 +222,8 @@ export default function BlogPost() {
     postVideos = MEDIA_VIDEO_MAP[post.bookAnchorId] ?? [];
   }
 
-  // Transform content: strip H1 and remove all QR code / Watch sections from markdown
-  const transformed = transformBlogContent(post.content);
-  const parts = splitContentParts(transformed);
+  // Strip the leading H1 (already shown as the page title above)
+  const transformed = stripFirstH1(post.content);
 
   return (
     <>
@@ -448,13 +327,9 @@ export default function BlogPost() {
           </div>
 
           {/* Main content */}
-          {parts.map((part, i) =>
-            part.type === "video" ? null : (
-              <div key={`md-${i}`} className={proseClasses}>
-                <Streamdown>{part.text}</Streamdown>
-              </div>
-            )
-          )}
+          <div className={proseClasses}>
+            <Streamdown>{transformed}</Streamdown>
+          </div>
 
           {/* Video section — rendered from DB videoIds field */}
           {postVideos.length > 0 && (

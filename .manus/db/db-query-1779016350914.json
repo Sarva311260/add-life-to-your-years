@@ -1,0 +1,34 @@
+{
+  "query": "SELECT slug, SUBSTRING(content, LOCATE('Watch', content) - 50, 400) as watch_section FROM blog_posts WHERE content LIKE '%Watch%' LIMIT 3;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute SELECT slug, SUBSTRING(content, LOCATE('Watch', content) - 50, 400) as watch_section FROM blog_posts WHERE content LIKE '%Watch%' LIMIT 3;",
+  "rows": [
+    {
+      "slug": "navigating-the-diet-landscape",
+      "watch_section": "ttps://pubmed.ncbi.nlm.nih.gov/11434797/"
+    },
+    {
+      "slug": "science-of-cold-showers",
+      "watch_section": "kes less time than brewing a cup of tea."
+    },
+    {
+      "slug": "off-label-pharmaceuticals-fenbendazole-ivermectin",
+      "watch_section": " ivermectin. Scan the QR code or tap the image to watch directly."
+    }
+  ],
+  "messages": [
+    "---",
+    "## Watch: Diet Comparison Videos",
+    "The following videos provide the scientific evidence and expert commentary behind this appendix. Scan any QR code or tap the image to watch directly.",
+    "> [![Watch: Diet Comparison Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-appendix-diet-1_165d2cd6.png)](https://addlifetoy",
+    "---",
+    "## Watch: Cold Shower Videos",
+    "The following videos provide accessible introductions to the science of cold showers. Scan the QR code or tap the image to watch directly.",
+    "> [![Watch: Cold Shower Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-appendix-cold-showers_087f3db0.png)](https://addlifetoyouryears.org/",
+    "> [![Watch: Off-Label Pharmaceuticals Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-appendix-off-label_bfbdd5fd.png)](https://addlifetoyouryears.org/media#appendix-off-label)",
+    "> **Watch: Fenbendazole & Ivermectin Videos (3 Videos)**",
+    "> Tap the QR code or image above to watch all three vide"
+  ],
+  "stdout": "slug\twatch_section\nnavigating-the-diet-landscape\tttps://pubmed.ncbi.nlm.nih.gov/11434797/\n\n---\n\n## Watch: Diet Comparison Videos\n\nThe following videos provide the scientific evidence and expert commentary behind this appendix. Scan any QR code or tap the image to watch directly.\n\n> [![Watch: Diet Comparison Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-appendix-diet-1_165d2cd6.png)](https://addlifetoy\nscience-of-cold-showers\tkes less time than brewing a cup of tea.\n\n---\n\n## Watch: Cold Shower Videos\n\nThe following videos provide accessible introductions to the science of cold showers. Scan the QR code or tap the image to watch directly.\n\n> [![Watch: Cold Shower Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-appendix-cold-showers_087f3db0.png)](https://addlifetoyouryears.org/\noff-label-pharmaceuticals-fenbendazole-ivermectin\t ivermectin. Scan the QR code or tap the image to watch directly.\n\n> [![Watch: Off-Label Pharmaceuticals Videos](https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/qr-appendix-off-label_bfbdd5fd.png)](https://addlifetoyouryears.org/media#appendix-off-label)\n> **Watch: Fenbendazole & Ivermectin Videos (3 Videos)**\n> Tap the QR code or image above to watch all three vide\n",
+  "stderr": "",
+  "execution_time_ms": 1779
+}
