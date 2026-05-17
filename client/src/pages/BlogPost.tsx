@@ -1,10 +1,10 @@
 import { useParams, Link } from "wouter";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
 import SEO from "@/components/SEO";
 import { Streamdown } from "streamdown";
-import { Calendar, ArrowLeft, BookOpen, Clock, User, X, Play, Loader2 } from "lucide-react";
+import { Calendar, ArrowLeft, BookOpen, Clock, User, Play } from "lucide-react";
 import NewsletterSignup from "@/components/NewsletterSignup";
 
 const AUTHOR_PHOTO = "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/sarva_0909cc87.jpg";
@@ -18,35 +18,220 @@ const MEDIA_VIDEO_MAP: Record<string, { youtubeId: string; title: string }[]> = 
     { youtubeId: "uVGpTLMN6w4", title: "Mediterranean Diet vs WFPB" },
     { youtubeId: "dpyz-AumCUk", title: "Is a Plant-Based Diet Always Healthy?" },
   ],
-  "rec-appendix-cold-showers": [
+  "appendix-cold-showers": [
     { youtubeId: "xTVMGyJ8cZU", title: "Cold Showers — Hormesis, Inflammation & Cognitive Benefits" },
     { youtubeId: "may_PlDfNRE", title: "The Science Behind Cold Showers — 5 Evidence-Based Benefits" },
   ],
-  "rec-appendix-off-label": [
+  "appendix-off-label": [
     { youtubeId: "QBnT8es28WY", title: "Fenbendazole — The Joe Tippens Protocol & Cancer Research" },
     { youtubeId: "5Q5QjEPGNNg", title: "Fenbendazole & Ivermectin — Stanford Case Series & Mechanisms" },
     { youtubeId: "Ck4_fX1xaaw", title: "Largest Real-World Study: Ivermectin + Mebendazole in 197 Cancer Patients" },
   ],
-  "rec-appendix-brazil-nuts": [
+  "appendix-brazil-nuts": [
     { youtubeId: "YckoR3hLL9E", title: "Five Seeds of Life — Brazil Nuts & Selenium" },
   ],
-  "rec-appendix-floor-lying": [
+  "appendix-floor-lying": [
     { youtubeId: "YcmpJZrdqiI", title: "Floor Lying — The 5-Minute Protocol for Spinal Decompression" },
   ],
-  "rec-appendix-gut-brain": [
+  "appendix-gut-brain": [
     { youtubeId: "Hywi0rDLtJA", title: "The Fiber That Calms You — Feeding Your Gut to Heal Your Mind" },
   ],
-  "rec-appendix-blackstrap-molasses": [
+  "appendix-blackstrap-molasses": [
     { youtubeId: "IqRo8gGbFuo", title: "Blackstrap Molasses — Dr. Eric Berg" },
     { youtubeId: "dtSeM5mb41o", title: "Blackstrap Molasses for Sleep and Blood Sugar" },
   ],
-  "rec-appendix-coherence-breathing": [
+  "appendix-coherence-breathing": [
     { youtubeId: "vCf2GWI4dfw", title: "Coherence Breathing — The 10-Second Cycle That Rewires Your Nervous System" },
   ],
-  "rec-appendix-lavender-oil": [
+  "appendix-lavender-oil": [
     { youtubeId: "q3kXbYMgBnE", title: "Lavender Oil — Nature's Answer to Anxiety" },
   ],
 };
+
+// Extract anchor ID from a media page URL
+function extractMediaAnchor(href: string): string | null {
+  try {
+    const url = new URL(href, window.location.origin);
+    if (url.pathname === "/media" && url.hash) return url.hash.slice(1);
+  } catch {
+    if (href.startsWith("/media#")) return href.slice(7);
+    if (href.includes("/media#")) return href.slice(href.indexOf("/media#") + 7);
+  }
+  return null;
+}
+
+// Transform blog post markdown:
+// 1. Strip the first H1 (already shown as page title)
+// 2. Replace QR code blockquote sections with a special video embed placeholder
+function transformBlogContent(raw: string): string {
+  // Normalise line endings (DB may return CRLF)
+  let content = raw.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+
+  // Strip first H1
+  content = content.replace(/^#\s+.+\n?/, "");
+
+  // Replace QR code image links inside blockquotes with a video placeholder
+  // Actual format in DB:
+  // > [![Watch: Title](https://addlifetoyouryears.org/manus-storage/qr-...png)](https://addlifetoyouryears.org/media#appendix-lavender-oil)
+  // We match the outer link destination to extract the anchor
+  content = content.replace(
+    />\s*\[!\[[^\]]*\]\([^)]+\)\]\([^)]*[/#]([a-z0-9_-]+)\)/g,
+    (_match, anchor) => {
+      // Only replace if we have a video mapping for this anchor
+      if (MEDIA_VIDEO_MAP[anchor]) return `<!--VIDEO:${anchor}-->`;
+      return _match; // leave unchanged if no video mapping
+    }
+  );
+
+  // Remove the bold text lines that follow QR codes (e.g. > **Watch: Cold Shower Videos (2 Videos)**)
+  content = content.replace(/^>\s*\*\*Watch:[^*]*\*\*\s*$/gm, "");
+
+  // Remove Watch: section headings (## Watch: ...)
+  content = content.replace(/^##\s+Watch:[^\n]*\n?/gm, "");
+
+  // Remove blockquote lines that say "Tap the QR code..."
+  content = content.replace(/^>\s*Tap the QR code[^\n]*\n?/gm, "");
+
+  // Clean up empty blockquote lines (> with nothing after)
+  content = content.replace(/^>\s*$/gm, "");
+
+  return content;
+}
+
+// Split content on <!--VIDEO:anchor--> placeholders so we can render embeds inline
+type ContentPart =
+  | { type: "markdown"; text: string }
+  | { type: "video"; anchor: string };
+
+function splitContentParts(content: string): ContentPart[] {
+  const parts: ContentPart[] = [];
+  const regex = /<!--VIDEO:([a-z0-9_-]+)-->/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(content)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push({ type: "markdown", text: content.slice(lastIndex, match.index) });
+    }
+    parts.push({ type: "video", anchor: match[1] });
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (lastIndex < content.length) {
+    parts.push({ type: "markdown", text: content.slice(lastIndex) });
+  }
+
+  return parts;
+}
+
+// Inline video player component
+function InlineVideoPlayer({ anchor }: { anchor: string }) {
+  const videos = MEDIA_VIDEO_MAP[anchor];
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  if (!videos || videos.length === 0) return null;
+
+  const current = videos[activeIndex];
+
+  return (
+    <div className="my-10 rounded-2xl overflow-hidden border border-[#1f3520] bg-[#0f2410]">
+      {/* Video title bar */}
+      <div className="flex items-center gap-2 px-4 py-3 border-b border-[#1f3520]">
+        <Play className="w-4 h-4 text-[#4ade80] flex-shrink-0" />
+        <span className="text-white font-semibold text-sm truncate">{current.title}</span>
+      </div>
+
+      {/* 16:9 iframe */}
+      <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+        <iframe
+          key={current.youtubeId}
+          className="absolute inset-0 w-full h-full"
+          src={`https://www.youtube.com/embed/${current.youtubeId}?rel=0`}
+          title={current.title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          loading="lazy"
+        />
+      </div>
+
+      {/* Playlist tabs (only when multiple videos) */}
+      {videos.length > 1 && (
+        <div className="px-4 py-3 border-t border-[#1f3520] flex flex-wrap gap-2">
+          {videos.map((v, i) => (
+            <button
+              key={v.youtubeId}
+              onClick={() => setActiveIndex(i)}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                i === activeIndex
+                  ? "bg-[#4ade80] text-[#0a1a0c]"
+                  : "bg-[#1a2e1c] text-gray-300 hover:bg-[#1f3520] hover:text-white"
+              }`}
+            >
+              <Play className="w-3 h-3" />
+              {i + 1}. {v.title.length > 45 ? v.title.slice(0, 45) + "…" : v.title}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Standalone video section rendered from DB videoIds field
+function VideoSection({ videos }: { videos: { youtubeId: string; title: string }[] }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const current = videos[activeIndex];
+
+  return (
+    <div className="my-10 rounded-2xl overflow-hidden border border-[#1f3520] bg-[#0f2410]">
+      {/* Header */}
+      <div className="flex items-center gap-2 px-4 py-3 border-b border-[#1f3520]">
+        <Play className="w-4 h-4 text-[#4ade80] flex-shrink-0" />
+        <span className="text-white font-semibold text-sm">
+          {videos.length > 1 ? `Watch (${videos.length} videos)` : "Watch"}
+        </span>
+      </div>
+
+      {/* Video title */}
+      <div className="px-4 pt-3 pb-1">
+        <p className="text-gray-300 text-sm font-medium">{current.title}</p>
+      </div>
+
+      {/* 16:9 iframe */}
+      <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+        <iframe
+          key={current.youtubeId}
+          className="absolute inset-0 w-full h-full"
+          src={`https://www.youtube.com/embed/${current.youtubeId}?rel=0`}
+          title={current.title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          loading="lazy"
+        />
+      </div>
+
+      {/* Playlist tabs */}
+      {videos.length > 1 && (
+        <div className="px-4 py-3 border-t border-[#1f3520] flex flex-wrap gap-2">
+          {videos.map((v, i) => (
+            <button
+              key={v.youtubeId}
+              onClick={() => setActiveIndex(i)}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                i === activeIndex
+                  ? "bg-[#4ade80] text-[#0a1a0c]"
+                  : "bg-[#1a2e1c] text-gray-300 hover:bg-[#1f3520] hover:text-white"
+              }`}
+            >
+              <Play className="w-3 h-3" />
+              {i + 1}. {v.title.length > 45 ? v.title.slice(0, 45) + "\u2026" : v.title}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 function tagColor(tag: string): string {
   const map: Record<string, string> = {
@@ -61,6 +246,7 @@ function tagColor(tag: string): string {
     "Movement": "bg-teal-900/60 text-teal-300 border border-teal-700/40",
     "Gut Health": "bg-lime-900/60 text-lime-300 border border-lime-700/40",
     "Breathing": "bg-cyan-900/60 text-cyan-300 border border-cyan-700/40",
+    "Natural Remedies": "bg-emerald-900/60 text-emerald-300 border border-emerald-700/40",
   };
   return map[tag] || "bg-gray-800/60 text-gray-300 border border-gray-700/40";
 }
@@ -70,106 +256,22 @@ function readingTime(content: string): number {
   return Math.max(1, Math.round(words / 200));
 }
 
-// Extract anchor ID from a media page URL like https://...addlifetoyouryears.org/media#rec-appendix-diet
-function extractMediaAnchor(href: string): string | null {
-  try {
-    const url = new URL(href, window.location.origin);
-    if (url.pathname === "/media" && url.hash) {
-      return url.hash.slice(1); // strip leading #
-    }
-  } catch {
-    // relative URL
-    if (href.startsWith("/media#")) return href.slice(7);
-    if (href.includes("/media#")) {
-      const idx = href.indexOf("/media#");
-      return href.slice(idx + 7);
-    }
-  }
-  return null;
-}
-
-interface VideoModalProps {
-  videos: { youtubeId: string; title: string }[];
-  onClose: () => void;
-}
-
-function VideoModal({ videos, onClose }: VideoModalProps) {
-  const [index, setIndex] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const video = videos[index];
-
-  // Close on Escape key
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [onClose]);
-
-  // Prevent body scroll while modal is open
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = ""; };
-  }, []);
-
-  return (
-    <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/85 backdrop-blur-sm p-4"
-      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
-    >
-      <div className="relative w-full max-w-4xl bg-[#0a1a0c] rounded-2xl overflow-hidden border border-[#1f3520] shadow-2xl">
-        {/* Header */}
-        <div className="flex items-center justify-between px-5 py-3 border-b border-[#1f3520]">
-          <p className="text-white font-semibold text-sm truncate pr-4">{video.title}</p>
-          <button
-            onClick={onClose}
-            className="flex-shrink-0 p-1.5 rounded-full text-gray-400 hover:text-white hover:bg-[#1f3520] transition-colors"
-            aria-label="Close video"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        </div>
-
-        {/* Video */}
-        <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-          {loading && (
-            <div className="absolute inset-0 flex items-center justify-center bg-[#0a1a0c]">
-              <Loader2 className="w-10 h-10 text-[#4ade80] animate-spin" />
-            </div>
-          )}
-          <iframe
-            key={video.youtubeId}
-            className="absolute inset-0 w-full h-full"
-            src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&rel=0`}
-            title={video.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            onLoad={() => setLoading(false)}
-          />
-        </div>
-
-        {/* Playlist navigation (if multiple videos) */}
-        {videos.length > 1 && (
-          <div className="px-5 py-3 border-t border-[#1f3520] flex gap-2 overflow-x-auto">
-            {videos.map((v, i) => (
-              <button
-                key={v.youtubeId}
-                onClick={() => { setIndex(i); setLoading(true); }}
-                className={`flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
-                  i === index
-                    ? "bg-[#4ade80] text-[#0a1a0c]"
-                    : "bg-[#1a2e1c] text-gray-300 hover:bg-[#1f3520] hover:text-white"
-                }`}
-              >
-                <Play className="w-3 h-3" />
-                {i + 1}. {v.title.length > 40 ? v.title.slice(0, 40) + "…" : v.title}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
+const proseClasses = `prose prose-invert prose-green max-w-none
+  prose-headings:text-white prose-headings:font-bold
+  prose-h1:text-3xl prose-h1:mt-12 prose-h1:mb-5
+  prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:border-b prose-h2:border-[#1f3520] prose-h2:pb-2
+  prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-[#4ade80]
+  prose-p:text-gray-300 prose-p:leading-[1.85] prose-p:mb-5 prose-p:text-[1.05rem]
+  prose-strong:text-white prose-strong:font-semibold
+  prose-a:text-[#4ade80] prose-a:no-underline hover:prose-a:underline
+  prose-blockquote:border-l-4 prose-blockquote:border-[#4ade80] prose-blockquote:bg-[#0f2410] prose-blockquote:rounded-r-xl prose-blockquote:py-3 prose-blockquote:px-5 prose-blockquote:not-italic
+  prose-blockquote:text-gray-200 prose-blockquote:text-[1.05rem]
+  prose-li:text-gray-300 prose-li:leading-relaxed prose-li:mb-1
+  prose-ul:my-5 prose-ol:my-5
+  prose-table:text-sm prose-th:text-white prose-th:bg-[#1a2e1c] prose-td:text-gray-300 prose-td:border-[#1f3520] prose-th:border-[#1f3520]
+  prose-hr:border-[#1f3520] prose-hr:my-10
+  prose-code:text-[#4ade80] prose-code:bg-[#0f2410] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+  prose-img:hidden`;
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -177,42 +279,6 @@ export default function BlogPost() {
     enabled: !!slug,
   });
   const { data: allPosts } = trpc.blog.list.useQuery();
-
-  const [videoQueue, setVideoQueue] = useState<{ youtubeId: string; title: string }[] | null>(null);
-  const savedScrollRef = useRef<number>(0);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  // Intercept clicks on media page links inside the rendered markdown
-  useEffect(() => {
-    if (!contentRef.current) return;
-    const container = contentRef.current;
-
-    const handleClick = (e: MouseEvent) => {
-      const target = (e.target as HTMLElement).closest("a");
-      if (!target) return;
-      const href = target.getAttribute("href") || "";
-      const anchor = extractMediaAnchor(href);
-      if (!anchor) return;
-      const videos = MEDIA_VIDEO_MAP[anchor];
-      if (!videos || videos.length === 0) return;
-
-      e.preventDefault();
-      e.stopPropagation();
-      savedScrollRef.current = window.scrollY;
-      setVideoQueue(videos);
-    };
-
-    container.addEventListener("click", handleClick);
-    return () => container.removeEventListener("click", handleClick);
-  }, [post]);
-
-  const closeVideo = () => {
-    setVideoQueue(null);
-    // Restore scroll position after modal closes
-    requestAnimationFrame(() => {
-      window.scrollTo({ top: savedScrollRef.current, behavior: "instant" });
-    });
-  };
 
   if (isLoading) {
     return (
@@ -250,9 +316,7 @@ export default function BlogPost() {
 
   const tags = post.tags ? post.tags.split(",").map((t) => t.trim()).filter(Boolean) : [];
   const date = new Date(post.publishedAt).toLocaleDateString("en-AU", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+    year: "numeric", month: "long", day: "numeric",
   });
   const mins = readingTime(post.content);
 
@@ -261,220 +325,227 @@ export default function BlogPost() {
     .filter((p) => p.slug !== post.slug && p.tags && tags.some((t) => p.tags?.includes(t)))
     .slice(0, 3);
 
+  // Parse video IDs from the database field, with fallback to MEDIA_VIDEO_MAP
+  type VideoEntry = { youtubeId: string; title: string };
+  let postVideos: VideoEntry[] = [];
+  try {
+    const raw = (post as Record<string, unknown>).videoIds as string | null | undefined;
+    if (raw && typeof raw === 'string' && raw.trim().startsWith("[")) {
+      const parsed = JSON.parse(raw.trim()) as VideoEntry[];
+      if (Array.isArray(parsed) && parsed.length > 0) postVideos = parsed;
+    }
+  } catch {
+    postVideos = [];
+  }
+  // Fallback: use MEDIA_VIDEO_MAP keyed by bookAnchorId
+  if (postVideos.length === 0 && post.bookAnchorId) {
+    postVideos = MEDIA_VIDEO_MAP[post.bookAnchorId] ?? [];
+  }
+
+  // Transform content: strip H1 and remove all QR code / Watch sections from markdown
+  const transformed = transformBlogContent(post.content);
+  const parts = splitContentParts(transformed);
+
   return (
     <>
-    <SEO
-      title={post.title}
-      description={post.excerpt}
-      ogImage={post.coverImageUrl ?? undefined}
-      canonicalPath={`/blog/${post.slug}`}
-      keywords={post.tags ?? undefined}
-      publishedAt={new Date(post.publishedAt).toISOString()}
-      jsonLd={{
-        "@context": "https://schema.org",
-        "@type": "Article",
-        headline: post.title,
-        description: post.excerpt,
-        image: post.coverImageUrl,
-        datePublished: new Date(post.publishedAt).toISOString(),
-        author: { "@type": "Person", name: "Sarva Keller" },
-        publisher: {
-          "@type": "Organization",
-          name: "Add Life to Your Years",
-          url: "https://www.addlifetoyouryears.org"
-        },
-        url: `https://www.addlifetoyouryears.org/blog/${post.slug}`
-      }}
-    />
+      <SEO
+        title={post.title}
+        description={post.excerpt}
+        ogImage={post.coverImageUrl ?? undefined}
+        canonicalPath={`/blog/${post.slug}`}
+        keywords={post.tags ?? undefined}
+        publishedAt={new Date(post.publishedAt).toISOString()}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: post.title,
+          description: post.excerpt,
+          image: post.coverImageUrl,
+          datePublished: new Date(post.publishedAt).toISOString(),
+          author: { "@type": "Person", name: "Sarva Keller" },
+          publisher: {
+            "@type": "Organization",
+            name: "Add Life to Your Years",
+            url: "https://www.addlifetoyouryears.org"
+          },
+          url: `https://www.addlifetoyouryears.org/blog/${post.slug}`
+        }}
+      />
 
-    {/* Inline video modal */}
-    {videoQueue && <VideoModal videos={videoQueue} onClose={closeVideo} />}
+      <div className="min-h-screen bg-[#0a1a0c] text-white">
+        <SiteNav />
 
-    <div className="min-h-screen bg-[#0a1a0c] text-white">
-      <SiteNav />
+        {/* Hero image */}
+        {post.coverImageUrl && (
+          <div className="relative w-full h-[55vh] min-h-[340px] max-h-[520px] overflow-hidden">
+            <img
+              src={post.coverImageUrl}
+              alt={post.title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a1a0c] via-[#0a1a0c]/40 to-transparent" />
+            <div className="absolute top-6 left-6">
+              <Link href="/blog">
+                <button className="inline-flex items-center gap-1.5 text-white/80 hover:text-white text-sm bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full transition-colors border border-white/20">
+                  <ArrowLeft className="w-3.5 h-3.5" /> All Guides
+                </button>
+              </Link>
+            </div>
+          </div>
+        )}
 
-      {/* Hero image — full width, tall */}
-      {post.coverImageUrl && (
-        <div className="relative w-full h-[55vh] min-h-[340px] max-h-[520px] overflow-hidden">
-          <img
-            src={post.coverImageUrl}
-            alt={post.title}
-            className="w-full h-full object-cover"
-          />
-          {/* gradient overlay so text is readable */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a1a0c] via-[#0a1a0c]/40 to-transparent" />
-
-          {/* Back link overlaid on image */}
-          <div className="absolute top-6 left-6">
+        <article
+          className="max-w-3xl mx-auto px-4 pb-24"
+          style={{ marginTop: post.coverImageUrl ? "-2rem" : "6rem", paddingTop: post.coverImageUrl ? "2.5rem" : "0" }}
+        >
+          {!post.coverImageUrl && (
             <Link href="/blog">
-              <button className="inline-flex items-center gap-1.5 text-white/80 hover:text-white text-sm bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full transition-colors border border-white/20">
-                <ArrowLeft className="w-3.5 h-3.5" /> All Guides
+              <button className="inline-flex items-center gap-1.5 text-gray-400 hover:text-[#4ade80] text-sm mb-8 transition-colors">
+                <ArrowLeft className="w-4 h-4" /> The Wellness Files
               </button>
             </Link>
-          </div>
-        </div>
-      )}
-
-      <article className="max-w-3xl mx-auto px-4 pb-24" style={{ marginTop: post.coverImageUrl ? "-2rem" : "6rem", paddingTop: post.coverImageUrl ? "2.5rem" : "0" }}>
-
-        {/* Back link (no cover image fallback) */}
-        {!post.coverImageUrl && (
-          <Link href="/blog">
-            <button className="inline-flex items-center gap-1.5 text-gray-400 hover:text-[#4ade80] text-sm mb-8 transition-colors">
-              <ArrowLeft className="w-4 h-4" /> The Wellness Files
-            </button>
-          </Link>
-        )}
-
-        {/* Tags */}
-        {tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-5">
-            {tags.map((tag) => (
-              <span key={tag} className={`text-xs font-semibold px-3 py-1 rounded-full ${tagColor(tag)}`}>
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
-
-        {/* Title */}
-        <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-4 text-white">
-          {post.title}
-        </h1>
-
-        {/* Excerpt */}
-        <p className="text-lg text-gray-300 leading-relaxed mb-6 border-l-2 border-[#4ade80]/50 pl-4">
-          {post.excerpt}
-        </p>
-
-        {/* Meta row */}
-        <div className="flex flex-wrap items-center gap-4 text-gray-400 text-sm mb-10 pb-6 border-b border-[#1f3520]">
-          <span className="flex items-center gap-1.5">
-            <Calendar className="w-4 h-4 text-[#4ade80]/70" />
-            {date}
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Clock className="w-4 h-4 text-[#4ade80]/70" />
-            {mins} min read
-          </span>
-          {post.bookAnchorId && (
-            <Link href={`/book/read#${post.bookAnchorId}`}>
-              <span className="flex items-center gap-1.5 text-[#4ade80] hover:underline cursor-pointer">
-                <BookOpen className="w-4 h-4" />
-                Read in the book
-              </span>
-            </Link>
           )}
-        </div>
 
-        {/* Main content — ref used to intercept video link clicks */}
-        <div
-          ref={contentRef}
-          className="prose prose-invert prose-green max-w-none
-            prose-headings:text-white prose-headings:font-bold
-            prose-h1:text-3xl prose-h1:mt-12 prose-h1:mb-5
-            prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:border-b prose-h2:border-[#1f3520] prose-h2:pb-2
-            prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-[#4ade80]
-            prose-p:text-gray-300 prose-p:leading-[1.85] prose-p:mb-5 prose-p:text-[1.05rem]
-            prose-strong:text-white prose-strong:font-semibold
-            prose-a:text-[#4ade80] prose-a:no-underline hover:prose-a:underline
-            prose-blockquote:border-l-4 prose-blockquote:border-[#4ade80] prose-blockquote:bg-[#0f2410] prose-blockquote:rounded-r-xl prose-blockquote:py-3 prose-blockquote:px-5 prose-blockquote:not-italic
-            prose-blockquote:text-gray-200 prose-blockquote:text-[1.05rem]
-            prose-li:text-gray-300 prose-li:leading-relaxed prose-li:mb-1
-            prose-ul:my-5 prose-ol:my-5
-            prose-table:text-sm prose-th:text-white prose-th:bg-[#1a2e1c] prose-td:text-gray-300 prose-td:border-[#1f3520] prose-th:border-[#1f3520]
-            prose-hr:border-[#1f3520] prose-hr:my-10
-            prose-code:text-[#4ade80] prose-code:bg-[#0f2410] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded"
-        >
-          <Streamdown>{post.content.replace(/^#\s+.+\n?/, "")}</Streamdown>
-        </div>
-
-        {/* Author bio card */}
-        <div className="mt-14 p-6 bg-[#0f2410] rounded-2xl border border-[#1f3520] flex gap-5 items-start">
-          <img
-            src={AUTHOR_PHOTO}
-            alt="Sarva Keller"
-            className="w-16 h-16 rounded-full object-cover flex-shrink-0 border-2 border-[#4ade80]/30"
-          />
-          <div>
-            <div className="flex items-center gap-2 mb-1">
-              <User className="w-4 h-4 text-[#4ade80]" />
-              <span className="font-semibold text-white">Sarva Keller</span>
-              <span className="text-xs text-gray-500">· Wellness Coach & Author</span>
+          {/* Tags */}
+          {tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-5">
+              {tags.map((tag) => (
+                <span key={tag} className={`text-xs font-semibold px-3 py-1 rounded-full ${tagColor(tag)}`}>
+                  {tag}
+                </span>
+              ))}
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Author of <em>Add Life to Your Years</em> and founder of a whole-food, plant-based wellness ecosystem. Sarva has developed an 18-step evidence-based framework empowering clients to take measurable, lasting control of their health.
-            </p>
-            <Link href="/book">
-              <span className="text-[#4ade80] text-xs hover:underline mt-2 inline-block">View the book →</span>
-            </Link>
+          )}
+
+          {/* Title */}
+          <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-4 text-white">
+            {post.title}
+          </h1>
+
+          {/* Excerpt */}
+          <p className="text-lg text-gray-300 leading-relaxed mb-6 border-l-2 border-[#4ade80]/50 pl-4">
+            {post.excerpt}
+          </p>
+
+          {/* Meta row */}
+          <div className="flex flex-wrap items-center gap-4 text-gray-400 text-sm mb-10 pb-6 border-b border-[#1f3520]">
+            <span className="flex items-center gap-1.5">
+              <Calendar className="w-4 h-4 text-[#4ade80]/70" />
+              {date}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Clock className="w-4 h-4 text-[#4ade80]/70" />
+              {mins} min read
+            </span>
+            {post.bookAnchorId && (
+              <Link href={`/book/read#${post.bookAnchorId}`}>
+                <span className="flex items-center gap-1.5 text-[#4ade80] hover:underline cursor-pointer">
+                  <BookOpen className="w-4 h-4" />
+                  Read in the book
+                </span>
+              </Link>
+            )}
           </div>
-        </div>
 
-        {/* Newsletter signup */}
-        <NewsletterSignup sourceSlug={post.slug} />
+          {/* Main content */}
+          {parts.map((part, i) =>
+            part.type === "video" ? null : (
+              <div key={`md-${i}`} className={proseClasses}>
+                <Streamdown>{part.text}</Streamdown>
+              </div>
+            )
+          )}
 
-        {/* Related posts */}
-        {related.length > 0 && (
-          <div className="mt-14">
-            <h2 className="text-xl font-bold mb-6 text-white">You might also enjoy</h2>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {related.map((r) => {
-                const rTags = r.tags ? r.tags.split(",").map((t) => t.trim()).filter(Boolean) : [];
-                return (
-                  <Link key={r.slug} href={`/blog/${r.slug}`}>
-                    <div className="group bg-[#0f2410] rounded-xl border border-[#1f3520] overflow-hidden hover:border-[#4ade80]/40 transition-colors cursor-pointer">
-                      {r.coverImageUrl && (
-                        <div className="h-32 overflow-hidden">
-                          <img
-                            src={r.coverImageUrl}
-                            alt={r.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                          />
-                        </div>
-                      )}
-                      <div className="p-4">
-                        {rTags[0] && (
-                          <span className={`text-xs font-semibold px-2 py-0.5 rounded-full mb-2 inline-block ${tagColor(rTags[0])}`}>
-                            {rTags[0]}
-                          </span>
+          {/* Video section — rendered from DB videoIds field */}
+          {postVideos.length > 0 && (
+            <VideoSection videos={postVideos} />
+          )}
+
+          {/* Author bio card */}
+          <div className="mt-14 p-6 bg-[#0f2410] rounded-2xl border border-[#1f3520] flex gap-5 items-start">
+            <img
+              src={AUTHOR_PHOTO}
+              alt="Sarva Keller"
+              className="w-16 h-16 rounded-full object-cover flex-shrink-0 border-2 border-[#4ade80]/30"
+            />
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <User className="w-4 h-4 text-[#4ade80]" />
+                <span className="font-semibold text-white">Sarva Keller</span>
+                <span className="text-xs text-gray-500">· Wellness Coach & Author</span>
+              </div>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Author of <em>Add Life to Your Years</em> and founder of a whole-food, plant-based wellness ecosystem. Sarva has developed an 18-step evidence-based framework empowering clients to take measurable, lasting control of their health.
+              </p>
+              <Link href="/book">
+                <span className="text-[#4ade80] text-xs hover:underline mt-2 inline-block">View the book →</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Newsletter signup */}
+          <NewsletterSignup sourceSlug={post.slug} />
+
+          {/* Related posts */}
+          {related.length > 0 && (
+            <div className="mt-14">
+              <h2 className="text-xl font-bold mb-6 text-white">You might also enjoy</h2>
+              <div className="grid gap-4 sm:grid-cols-3">
+                {related.map((r) => {
+                  const rTags = r.tags ? r.tags.split(",").map((t) => t.trim()).filter(Boolean) : [];
+                  return (
+                    <Link key={r.slug} href={`/blog/${r.slug}`}>
+                      <div className="group bg-[#0f2410] rounded-xl border border-[#1f3520] overflow-hidden hover:border-[#4ade80]/40 transition-colors cursor-pointer">
+                        {r.coverImageUrl && (
+                          <div className="h-32 overflow-hidden">
+                            <img
+                              src={r.coverImageUrl}
+                              alt={r.title}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                          </div>
                         )}
-                        <p className="text-sm font-semibold text-white leading-snug group-hover:text-[#4ade80] transition-colors line-clamp-2">
-                          {r.title}
-                        </p>
+                        <div className="p-4">
+                          {rTags[0] && (
+                            <span className={`text-xs font-semibold px-2 py-0.5 rounded-full mb-2 inline-block ${tagColor(rTags[0])}`}>
+                              {rTags[0]}
+                            </span>
+                          )}
+                          <p className="text-sm font-semibold text-white leading-snug group-hover:text-[#4ade80] transition-colors">
+                            {r.title}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                );
-              })}
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Bottom CTA */}
-        <div className="mt-14 pt-8 border-t border-[#1f3520]">
-          <div className="bg-gradient-to-br from-[#0f2410] to-[#1a3a1c] rounded-2xl p-8 text-center border border-[#2a4a2c]">
-            <h3 className="text-xl font-bold mb-2">Ready to transform your health?</h3>
-            <p className="text-gray-400 text-sm mb-6 max-w-md mx-auto">
-              This guide is part of <em>Add Life to Your Years</em> — a comprehensive, evidence-based guide covering 8 health factors and 18 actionable recommendations.
+          {/* Bottom CTA */}
+          <div className="mt-16 p-8 bg-gradient-to-br from-[#0f2410] to-[#0a1a0c] rounded-2xl border border-[#1f3520] text-center">
+            <h3 className="text-xl font-bold text-white mb-2">Ready to transform your health?</h3>
+            <p className="text-gray-400 text-sm mb-6">
+              This guide is part of <em>Add Life to Your Years</em> — a comprehensive,
+              evidence-based guide covering 8 health factors and 18 actionable recommendations.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/book/read">
-                <button className="px-6 py-3 bg-[#4ade80] text-[#0a1a0c] font-bold rounded-xl hover:bg-[#22c55e] transition-colors text-sm">
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link href="/book">
+                <button className="inline-flex items-center gap-2 bg-[#4ade80] text-[#0a1a0c] font-semibold px-6 py-3 rounded-xl hover:bg-[#22c55e] transition-colors">
+                  <BookOpen className="w-4 h-4" />
                   Read the Full Book
                 </button>
               </Link>
-              <Link href="/questionnaire">
-                <button className="px-6 py-3 border border-[#4ade80]/40 text-[#4ade80] font-semibold rounded-xl hover:bg-[#1f3520] transition-colors text-sm">
+              <Link href="/self-evaluation">
+                <button className="inline-flex items-center gap-2 border border-[#4ade80]/50 text-[#4ade80] font-semibold px-6 py-3 rounded-xl hover:bg-[#4ade80]/10 transition-colors">
                   Take the Self-Assessment
                 </button>
               </Link>
             </div>
           </div>
-        </div>
-
-      </article>
-    </div>
+        </article>
+      </div>
     </>
   );
 }

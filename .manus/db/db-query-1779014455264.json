@@ -1,0 +1,37 @@
+{
+  "query": "SELECT SUBSTRING(content, LOCATE('Watch', content) - 50, 600) as watch_section FROM blog_posts WHERE slug = 'lavender-oil-silexan-anxiety';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute SELECT SUBSTRING(content, LOCATE('Watch', content) - 50, 600) as watch_section FROM blog_posts WHERE slug = 'lavender-oil-silexan-anxiety';",
+  "rows": [
+    {
+      "watch_section": "I Evidence Synthesis*. 2018;16(11):2109–2117."
+    },
+    {
+      "watch_section": "## Watch: Lavender Oil — Nature's Answer to Anxiety"
+    },
+    {
+      "watch_section": "> [![Watch: Lavender Oil — Nature's Answer to Anxiety](https://addlifetoyouryears.org/manus-storage/qr-appendix-lavender-oil_d39838b1.png)](https://addlifetoyouryears.org/media#appendix-lavender-oil)"
+    },
+    {
+      "watch_section": ">"
+    },
+    {
+      "watch_section": "> **Watch: Lavender Oil — Nature's Answer to Anxiety**"
+    },
+    {
+      "watch_section": ">"
+    },
+    {
+      "watch_section": "> Tap the QR code or image above to watch the full video — covering the amygdala anxiety mechanism, how Silexan compares to benzodiazepines, the clinical trial evidence, and the 80 mg/day protocol."
+    },
+    {
+      "watch_section": "---"
+    },
+    {
+      "watch_section": "# Your Wellness Blueprint at a Glance"
+    }
+  ],
+  "messages": [],
+  "stdout": "watch_section\nI Evidence Synthesis*. 2018;16(11):2109–2117.\n\n## Watch: Lavender Oil — Nature's Answer to Anxiety\n\n> [![Watch: Lavender Oil — Nature's Answer to Anxiety](https://addlifetoyouryears.org/manus-storage/qr-appendix-lavender-oil_d39838b1.png)](https://addlifetoyouryears.org/media#appendix-lavender-oil)\n>\n> **Watch: Lavender Oil — Nature's Answer to Anxiety**\n>\n> Tap the QR code or image above to watch the full video — covering the amygdala anxiety mechanism, how Silexan compares to benzodiazepines, the clinical trial evidence, and the 80 mg/day protocol.\n\n---\n\n# Your Wellness Blueprint at a Glance\n",
+  "stderr": "",
+  "execution_time_ms": 2024
+}

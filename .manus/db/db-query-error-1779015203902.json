@@ -1,0 +1,8 @@
+{
+  "query": "SELECT slug, book_anchor_id, video_ids FROM blog_posts WHERE slug = 'lavender-oil-silexan-anxiety';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute SELECT slug, book_anchor_id, video_ids FROM blog_posts WHERE slug = 'lavender-oil-silexan-anxiety';",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'book_anchor_id' in 'field list'"
+  ]
+}

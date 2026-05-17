@@ -1,0 +1,9 @@
+{
+  "query": "ALTER TABLE blog_posts ADD COLUMN video_ids TEXT NULL COMMENT 'JSON array of {youtubeId, title} objects';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute ALTER TABLE blog_posts ADD COLUMN video_ids TEXT NULL COMMENT 'JSON array of {youtubeId, title} objects';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1957
+}

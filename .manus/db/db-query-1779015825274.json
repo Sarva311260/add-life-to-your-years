@@ -1,0 +1,55 @@
+{
+  "query": "SELECT id, slug, LEFT(video_ids, 60) as video_ids_preview FROM blog_posts ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute SELECT id, slug, LEFT(video_ids, 60) as video_ids_preview FROM blog_posts ORDER BY id;",
+  "rows": [
+    {
+      "id": "1",
+      "slug": "navigating-the-diet-landscape",
+      "video_ids_preview": "[{\"youtubeId\":\"Weg9GUnH24E\",\"title\":\"What Humans Are Designe"
+    },
+    {
+      "id": "2",
+      "slug": "science-of-cold-showers",
+      "video_ids_preview": "[{\"youtubeId\":\"xTVMGyJ8cZU\",\"title\":\"Cold Showers — Hormesis"
+    },
+    {
+      "id": "3",
+      "slug": "off-label-pharmaceuticals-fenbendazole-ivermectin",
+      "video_ids_preview": "[{\"youtubeId\":\"QBnT8es28WY\",\"title\":\"Fenbendazole — The Joe "
+    },
+    {
+      "id": "4",
+      "slug": "brazil-nuts-selenium",
+      "video_ids_preview": "[{\"youtubeId\":\"YckoR3hLL9E\",\"title\":\"Five Seeds of Life — Br"
+    },
+    {
+      "id": "5",
+      "slug": "floor-lying-the-five-minute-protocol",
+      "video_ids_preview": "[{\"youtubeId\":\"YcmpJZrdqiI\",\"title\":\"Floor Lying — The 5-Min"
+    },
+    {
+      "id": "6",
+      "slug": "fiber-gut-brain-axis-anxiety",
+      "video_ids_preview": "[{\"youtubeId\":\"Hywi0rDLtJA\",\"title\":\"The Fiber That Calms Yo"
+    },
+    {
+      "id": "7",
+      "slug": "blackstrap-molasses-natures-mineral-chest",
+      "video_ids_preview": "[{\"youtubeId\":\"IqRo8gGbFuo\",\"title\":\"Blackstrap Molasses — D"
+    },
+    {
+      "id": "8",
+      "slug": "coherence-breathing-ten-second-cycle",
+      "video_ids_preview": "[{\"youtubeId\":\"vCf2GWI4dfw\",\"title\":\"Coherence Breathing — T"
+    },
+    {
+      "id": "9",
+      "slug": "lavender-oil-silexan-anxiety",
+      "video_ids_preview": "[{\"youtubeId\":\"q3kXbYMgBnE\",\"title\":\"Lavender Oil — An Answe"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tslug\tvideo_ids_preview\n1\tnavigating-the-diet-landscape\t[{\"youtubeId\":\"Weg9GUnH24E\",\"title\":\"What Humans Are Designe\n2\tscience-of-cold-showers\t[{\"youtubeId\":\"xTVMGyJ8cZU\",\"title\":\"Cold Showers — Hormesis\n3\toff-label-pharmaceuticals-fenbendazole-ivermectin\t[{\"youtubeId\":\"QBnT8es28WY\",\"title\":\"Fenbendazole — The Joe \n4\tbrazil-nuts-selenium\t[{\"youtubeId\":\"YckoR3hLL9E\",\"title\":\"Five Seeds of Life — Br\n5\tfloor-lying-the-five-minute-protocol\t[{\"youtubeId\":\"YcmpJZrdqiI\",\"title\":\"Floor Lying — The 5-Min\n6\tfiber-gut-brain-axis-anxiety\t[{\"youtubeId\":\"Hywi0rDLtJA\",\"title\":\"The Fiber That Calms Yo\n7\tblackstrap-molasses-natures-mineral-chest\t[{\"youtubeId\":\"IqRo8gGbFuo\",\"title\":\"Blackstrap Molasses — D\n8\tcoherence-breathing-ten-second-cycle\t[{\"youtubeId\":\"vCf2GWI4dfw\",\"title\":\"Coherence Breathing — T\n9\tlavender-oil-silexan-anxiety\t[{\"youtubeId\":\"q3kXbYMgBnE\",\"title\":\"Lavender Oil — An Answe\n",
+  "stderr": "",
+  "execution_time_ms": 1744
+}

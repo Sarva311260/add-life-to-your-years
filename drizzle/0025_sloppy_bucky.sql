@@ -1,0 +1,1 @@
+ALTER TABLE `blog_posts` ADD `video_ids` text DEFAULT ('') NOT NULL;

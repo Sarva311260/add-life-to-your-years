@@ -659,6 +659,8 @@ export const blogPosts = mysqlTable("blog_posts", {
   coverImageUrl: varchar("coverImageUrl", { length: 1024 }).default("").notNull(),
   /** Anchor ID in the book reader, e.g. "appendix-i" */
   bookAnchorId: varchar("bookAnchorId", { length: 128 }).default("").notNull(),
+  /** JSON array of {youtubeId, title} objects for inline video embeds */
+  videoIds: text("video_ids").default("").notNull(),
   /** Whether the post is visible to the public */
   published: tinyint("published").default(1).notNull(),
   /** Publication date (can be backdated) */
