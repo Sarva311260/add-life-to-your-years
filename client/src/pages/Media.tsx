@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import SEO from "@/components/SEO";
 import SiteNav from "@/components/SiteNav";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -420,7 +421,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   {
     id: "rec-appendix-diet",
     number: 0,
-    title: "Appendix A: Diet Comparison",
+    title: "Navigating the Diet Landscape",
     description:
       "What does the evidence actually say about how humans are designed to eat? A rigorous comparison of the major dietary approaches — ketogenic, Mediterranean, and whole food plant-based — and what the science shows about each.",
     color: "bg-lime-100 text-lime-800 border-lime-200",
@@ -460,7 +461,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   {
     id: "appendix-cold-showers",
     number: 0,
-    title: "Appendix B: Cold Showers",
+    title: "Cold Showers",
     description:
       "The science behind ending your shower with 30–60 seconds of cold water. The landmark Dutch RCT (3,018 participants) showed a 29% reduction in sickness absence — and 91% of participants chose to continue after the trial.",
     color: "bg-cyan-100 text-cyan-800 border-cyan-200",
@@ -482,7 +483,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   {
     id: "appendix-off-label",
     number: 0,
-    title: "Appendix C: Off-Label Pharmaceuticals",
+    title: "Off-Label Pharmaceuticals",
     description:
       "Fenbendazole and ivermectin — two antiparasitic drugs being studied for anticancer activity. The Joe Tippens story, the Stanford case series, and the landmark 2026 Hulscher et al. study showing 84.4% clinical benefit ratio in 197 cancer patients.",
     color: "bg-purple-100 text-purple-800 border-purple-200",
@@ -510,7 +511,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   {
     id: "appendix-brazil-nuts",
     number: 0,
-    title: "Appendix D: Brazil Nuts & Selenium",
+    title: "Brazil Nuts & Selenium",
     description:
       "One of the most remarkable nutritional findings in recent research — four Brazil nuts once a month and their extraordinary effects on cholesterol, inflammation, and selenium status.",
     color: "bg-yellow-100 text-yellow-800 border-yellow-200",
@@ -526,7 +527,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   {
     id: "appendix-floor-lying",
     number: 0,
-    title: "Appendix E: Floor Lying — The 5-Minute Protocol",
+    title: "Floor Lying — The 5-Minute Protocol",
     description:
       "A free, equipment-free daily practice that simultaneously decompresses the spine, lengthens the psoas, releases suboccipital tension, resets the autonomic nervous system, and restores diaphragmatic breathing — in just five minutes on a hard floor.",
     color: "bg-sky-100 text-sky-800 border-sky-200",
@@ -542,7 +543,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   {
     id: "appendix-gut-brain",
     number: 0,
-    title: "Appendix F: The Fiber That Calms You",
+    title: "The Fiber That Calms You",
     description:
       "The gut manufactures more neurotransmitters than the brain itself. This appendix explores the gut-brain axis — how specific gut bacteria synthesise GABA, how prebiotic fibre and butyrate maintain the intestinal barrier, and why extra virgin olive oil is not recommended despite its polyphenol content due to its endothelial-impairing effects.",
     color: "bg-green-100 text-green-800 border-green-200",
@@ -558,7 +559,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   {
     id: "appendix-blackstrap-molasses",
     number: 0,
-    title: "Appendix G: Blackstrap Molasses — Nature's Mineral Chest",
+    title: "Blackstrap Molasses — Nature's Mineral Chest",
     description:
       "Blackstrap molasses is the mineral-dense syrup left after sugar is refined from sugarcane. This appendix covers its remarkable nutrient profile (iron, magnesium, potassium, calcium, manganese), its use for iron deficiency and energy, and its specific role in stabilising blood sugar overnight to prevent the cortisol-driven awakenings that disrupt deep sleep.",
     color: "bg-amber-100 text-amber-800 border-amber-200",
@@ -580,7 +581,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   {
     id: "appendix-coherence-breathing",
     number: 0,
-    title: "Appendix H: Coherence Breathing — The 10-Second Cycle That Rewires Your Nervous System",
+    title: "Coherence Breathing — The 10-Second Cycle That Rewires Your Nervous System",
     description:
       "Coherence Breathing (5-second inhale / 5-second exhale at 6 breaths per minute) is one of the most evidence-backed practices for increasing HRV, strengthening vagal tone, lowering blood pressure, protecting telomeres, and improving deep sleep. This appendix explains the baroreflex resonance mechanism and the precise protocol for daily practice.",
     color: "bg-sky-100 text-sky-800 border-sky-200",
@@ -596,7 +597,7 @@ const RECOMMENDATIONS: RecommendationSection[] = [
   {
     id: "appendix-lavender-oil",
     number: 0,
-    title: "Appendix I: Lavender Oil — Nature's Answer to Anxiety",
+    title: "Lavender Oil — Nature's Answer to Anxiety",
     description:
       "Oral Silexan (pharmaceutical-grade lavender oil, 80 mg/day) has been shown in randomised controlled trials to be as effective as lorazepam (a benzodiazepine) for Generalised Anxiety Disorder — without dependence, tolerance, or withdrawal. This appendix covers the amygdala anxiety mechanism, how linalool and linalyl acetate modulate GABA-A receptors and reduce amygdala hyperactivity, the landmark Woelk & Schläfke (2010) trial, and the practical 80 mg/day protocol.",
     color: "bg-purple-100 text-purple-800 border-purple-200",
@@ -1312,6 +1313,13 @@ export default function Media() {
   ];
 
   return (
+    <>
+    <SEO
+      title="Media Library — Videos & Supplementary Guides"
+      description="Watch evidence-based wellness videos and explore supplementary guides on nutrition, sleep, mental health, movement and more."
+      canonicalPath="/media"
+      keywords="wellness videos, health education, supplementary guides, nutrition, sleep, mental health"
+    />
     <div className="min-h-screen bg-background">
       <SiteNav />
       {/* Hero */}
@@ -1565,5 +1573,6 @@ export default function Media() {
         <VideoModal rec={modalRec} onClose={handleCloseModal} />
       )}
     </div>
+    </>
   );
 }

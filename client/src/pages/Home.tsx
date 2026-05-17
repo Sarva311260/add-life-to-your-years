@@ -1,4 +1,5 @@
 import { useAuth } from "@/_core/hooks/useAuth";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -176,6 +177,24 @@ export default function Home() {
   }, []);
 
   return (
+    <>
+    <SEO
+      title="Proven Strategies for Health, Wellness & Vitality"
+      description="Assess your wellbeing across 8 key factors, uncover your strengths, and receive personalised, evidence-based recommendations to add life to your years."
+      canonicalPath="/"
+      jsonLd={{
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "Add Life to Your Years",
+        url: "https://www.addlifetoyouryears.org",
+        description: "Proven, evidence-based strategies for health, wellness and vitality.",
+        potentialAction: {
+          "@type": "SearchAction",
+          target: "https://www.addlifetoyouryears.org/blog?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }}
+    />
     <div className="min-h-screen flex flex-col bg-background">
       {/* Navigation */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-transparent"}`}>
@@ -806,5 +825,6 @@ export default function Home() {
         </div>
       </footer>
     </div>
+    </>
   );
 }
