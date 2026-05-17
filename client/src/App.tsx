@@ -37,6 +37,8 @@ import HomeAffiliate from "@/pages/HomeAffiliate";
 import Unsubscribe from "@/pages/Unsubscribe";
 import GoRedirect from "@/pages/GoRedirect";
 import RedoxAffiliate from "@/pages/RedoxAffiliate";
+import BlogIndex from "@/pages/BlogIndex";
+import BlogPost from "@/pages/BlogPost";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -77,6 +79,8 @@ function Router() {
       <Route path={"/pemf/admin/resources"} component={PEMFAdminResources} />
       <Route path={"/pemf/admin/campaigns"} component={PEMFAdminCampaigns} />
       <Route path={"/pemf/portal/resources"} component={PEMFResources} />
+      <Route path={"/blog"} component={BlogIndex} />
+      <Route path={"/blog/:slug"} component={BlogPost} />
       <Route path={"/unsubscribe"} component={Unsubscribe} />
       <Route path={"/go/:affiliateSlug/olylife/:deviceKey"} component={GoRedirect} />
       <Route path={"/go/:affiliateSlug/:productId"} component={GoRedirect} />

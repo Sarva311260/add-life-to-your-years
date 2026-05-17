@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, json, decimal } from "drizzle-orm/mysql-core";
+import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, json, decimal, tinyint } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -639,3 +639,49 @@ export const emailTemplates = mysqlTable("email_templates", {
 });
 export type EmailTemplate = typeof emailTemplates.$inferSelect;
 export type InsertEmailTemplate = typeof emailTemplates.$inferInsert;
+
+/**
+ * Blog posts — each post is a Supplementary Guide published as a blog article.
+ */
+export const blogPosts = mysqlTable("blog_posts", {
+  id: int("id").autoincrement().primaryKey(),
+  /** URL-friendly slug, e.g. "lavender-oil-anxiety" */
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
+  /** Display title */
+  title: varchar("title", { length: 512 }).notNull(),
+  /** One-sentence excerpt for cards and meta descriptions */
+  excerpt: text("excerpt").notNull(),
+  /** Full markdown content */
+  content: text("content").notNull(),
+  /** Comma-separated tags, e.g. "Mental Wellness,Sleep,Anxiety" */
+  tags: varchar("tags", { length: 512 }).default("").notNull(),
+  /** CDN URL of the cover/hero image */
+  coverImageUrl: varchar("coverImageUrl", { length: 1024 }).default("").notNull(),
+  /** Anchor ID in the book reader, e.g. "appendix-i" */
+  bookAnchorId: varchar("bookAnchorId", { length: 128 }).default("").notNull(),
+  /** JSON array of {youtubeId, title} objects for inline video embeds */
+  videoIds: text("video_ids").default("").notNull(),
+  /** Whether the post is visible to the public */
+  published: tinyint("published").default(1).notNull(),
+  /** Publication date (can be backdated) */
+  publishedAt: timestamp("publishedAt").defaultNow().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type BlogPost = typeof blogPosts.$inferSelect;
+export type InsertBlogPost = typeof blogPosts.$inferInsert;
+
+// ─── Newsletter Subscribers ───────────────────────────────────────────────────
+export const newsletterSubscribers = mysqlTable("newsletter_subscribers", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  /** Optional: which blog post they signed up from */
+  sourceSlug: varchar("sourceSlug", { length: 256 }).default("").notNull(),
+  /** Whether they confirmed (future double-opt-in support) */
+  confirmed: tinyint("confirmed").default(1).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type NewsletterSubscriber = typeof newsletterSubscribers.$inferSelect;
+export type InsertNewsletterSubscriber = typeof newsletterSubscribers.$inferInsert;

@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Disallow private/admin paths
+Disallow: /dashboard
+Disallow: /api/
+Disallow: /pemf/admin
+Disallow: /knowledge-base
+Disallow: /results/
+Disallow: /report/
+
+# Sitemap
+Sitemap: https://www.addlifetoyouryears.org/sitemap.xml
