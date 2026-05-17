@@ -1,12 +1,52 @@
 import { useParams, Link } from "wouter";
+import { useEffect, useRef, useState } from "react";
 import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
 import SEO from "@/components/SEO";
 import { Streamdown } from "streamdown";
-import { Calendar, ArrowLeft, BookOpen, Clock, User } from "lucide-react";
+import { Calendar, ArrowLeft, BookOpen, Clock, User, X, Play, Loader2 } from "lucide-react";
 import NewsletterSignup from "@/components/NewsletterSignup";
 
 const AUTHOR_PHOTO = "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/sarva_0909cc87.jpg";
+
+// Map from media page anchor → array of YouTube IDs + titles
+const MEDIA_VIDEO_MAP: Record<string, { youtubeId: string; title: string }[]> = {
+  "rec-appendix-diet": [
+    { youtubeId: "Weg9GUnH24E", title: "What Humans Are Designed to Eat" },
+    { youtubeId: "nEjuZsP8o7g", title: "The Ketogenic Diet — Is It Healthy?" },
+    { youtubeId: "MJVSD0hggZE", title: "The Ketogenic Diet is a Scam" },
+    { youtubeId: "uVGpTLMN6w4", title: "Mediterranean Diet vs WFPB" },
+    { youtubeId: "dpyz-AumCUk", title: "Is a Plant-Based Diet Always Healthy?" },
+  ],
+  "rec-appendix-cold-showers": [
+    { youtubeId: "xTVMGyJ8cZU", title: "Cold Showers — Hormesis, Inflammation & Cognitive Benefits" },
+    { youtubeId: "may_PlDfNRE", title: "The Science Behind Cold Showers — 5 Evidence-Based Benefits" },
+  ],
+  "rec-appendix-off-label": [
+    { youtubeId: "QBnT8es28WY", title: "Fenbendazole — The Joe Tippens Protocol & Cancer Research" },
+    { youtubeId: "5Q5QjEPGNNg", title: "Fenbendazole & Ivermectin — Stanford Case Series & Mechanisms" },
+    { youtubeId: "Ck4_fX1xaaw", title: "Largest Real-World Study: Ivermectin + Mebendazole in 197 Cancer Patients" },
+  ],
+  "rec-appendix-brazil-nuts": [
+    { youtubeId: "YckoR3hLL9E", title: "Five Seeds of Life — Brazil Nuts & Selenium" },
+  ],
+  "rec-appendix-floor-lying": [
+    { youtubeId: "YcmpJZrdqiI", title: "Floor Lying — The 5-Minute Protocol for Spinal Decompression" },
+  ],
+  "rec-appendix-gut-brain": [
+    { youtubeId: "Hywi0rDLtJA", title: "The Fiber That Calms You — Feeding Your Gut to Heal Your Mind" },
+  ],
+  "rec-appendix-blackstrap-molasses": [
+    { youtubeId: "IqRo8gGbFuo", title: "Blackstrap Molasses — Dr. Eric Berg" },
+    { youtubeId: "dtSeM5mb41o", title: "Blackstrap Molasses for Sleep and Blood Sugar" },
+  ],
+  "rec-appendix-coherence-breathing": [
+    { youtubeId: "vCf2GWI4dfw", title: "Coherence Breathing — The 10-Second Cycle That Rewires Your Nervous System" },
+  ],
+  "rec-appendix-lavender-oil": [
+    { youtubeId: "q3kXbYMgBnE", title: "Lavender Oil — Nature's Answer to Anxiety" },
+  ],
+};
 
 function tagColor(tag: string): string {
   const map: Record<string, string> = {
@@ -30,12 +70,149 @@ function readingTime(content: string): number {
   return Math.max(1, Math.round(words / 200));
 }
 
+// Extract anchor ID from a media page URL like https://...addlifetoyouryears.org/media#rec-appendix-diet
+function extractMediaAnchor(href: string): string | null {
+  try {
+    const url = new URL(href, window.location.origin);
+    if (url.pathname === "/media" && url.hash) {
+      return url.hash.slice(1); // strip leading #
+    }
+  } catch {
+    // relative URL
+    if (href.startsWith("/media#")) return href.slice(7);
+    if (href.includes("/media#")) {
+      const idx = href.indexOf("/media#");
+      return href.slice(idx + 7);
+    }
+  }
+  return null;
+}
+
+interface VideoModalProps {
+  videos: { youtubeId: string; title: string }[];
+  onClose: () => void;
+}
+
+function VideoModal({ videos, onClose }: VideoModalProps) {
+  const [index, setIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const video = videos[index];
+
+  // Close on Escape key
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [onClose]);
+
+  // Prevent body scroll while modal is open
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
+  }, []);
+
+  return (
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/85 backdrop-blur-sm p-4"
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+    >
+      <div className="relative w-full max-w-4xl bg-[#0a1a0c] rounded-2xl overflow-hidden border border-[#1f3520] shadow-2xl">
+        {/* Header */}
+        <div className="flex items-center justify-between px-5 py-3 border-b border-[#1f3520]">
+          <p className="text-white font-semibold text-sm truncate pr-4">{video.title}</p>
+          <button
+            onClick={onClose}
+            className="flex-shrink-0 p-1.5 rounded-full text-gray-400 hover:text-white hover:bg-[#1f3520] transition-colors"
+            aria-label="Close video"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Video */}
+        <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+          {loading && (
+            <div className="absolute inset-0 flex items-center justify-center bg-[#0a1a0c]">
+              <Loader2 className="w-10 h-10 text-[#4ade80] animate-spin" />
+            </div>
+          )}
+          <iframe
+            key={video.youtubeId}
+            className="absolute inset-0 w-full h-full"
+            src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&rel=0`}
+            title={video.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            onLoad={() => setLoading(false)}
+          />
+        </div>
+
+        {/* Playlist navigation (if multiple videos) */}
+        {videos.length > 1 && (
+          <div className="px-5 py-3 border-t border-[#1f3520] flex gap-2 overflow-x-auto">
+            {videos.map((v, i) => (
+              <button
+                key={v.youtubeId}
+                onClick={() => { setIndex(i); setLoading(true); }}
+                className={`flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
+                  i === index
+                    ? "bg-[#4ade80] text-[#0a1a0c]"
+                    : "bg-[#1a2e1c] text-gray-300 hover:bg-[#1f3520] hover:text-white"
+                }`}
+              >
+                <Play className="w-3 h-3" />
+                {i + 1}. {v.title.length > 40 ? v.title.slice(0, 40) + "…" : v.title}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
   const { data: post, isLoading } = trpc.blog.getBySlug.useQuery({ slug: slug ?? "" }, {
     enabled: !!slug,
   });
   const { data: allPosts } = trpc.blog.list.useQuery();
+
+  const [videoQueue, setVideoQueue] = useState<{ youtubeId: string; title: string }[] | null>(null);
+  const savedScrollRef = useRef<number>(0);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  // Intercept clicks on media page links inside the rendered markdown
+  useEffect(() => {
+    if (!contentRef.current) return;
+    const container = contentRef.current;
+
+    const handleClick = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement).closest("a");
+      if (!target) return;
+      const href = target.getAttribute("href") || "";
+      const anchor = extractMediaAnchor(href);
+      if (!anchor) return;
+      const videos = MEDIA_VIDEO_MAP[anchor];
+      if (!videos || videos.length === 0) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+      savedScrollRef.current = window.scrollY;
+      setVideoQueue(videos);
+    };
+
+    container.addEventListener("click", handleClick);
+    return () => container.removeEventListener("click", handleClick);
+  }, [post]);
+
+  const closeVideo = () => {
+    setVideoQueue(null);
+    // Restore scroll position after modal closes
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: savedScrollRef.current, behavior: "instant" });
+    });
+  };
 
   if (isLoading) {
     return (
@@ -110,6 +287,9 @@ export default function BlogPost() {
       }}
     />
 
+    {/* Inline video modal */}
+    {videoQueue && <VideoModal videos={videoQueue} onClose={closeVideo} />}
+
     <div className="min-h-screen bg-[#0a1a0c] text-white">
       <SiteNav />
 
@@ -141,7 +321,7 @@ export default function BlogPost() {
         {!post.coverImageUrl && (
           <Link href="/blog">
             <button className="inline-flex items-center gap-1.5 text-gray-400 hover:text-[#4ade80] text-sm mb-8 transition-colors">
-              <ArrowLeft className="w-4 h-4" /> All Supplementary Guides
+              <ArrowLeft className="w-4 h-4" /> The Wellness Files
             </button>
           </Link>
         )}
@@ -187,22 +367,25 @@ export default function BlogPost() {
           )}
         </div>
 
-        {/* Main content */}
-        <div className="prose prose-invert prose-green max-w-none
-          prose-headings:text-white prose-headings:font-bold
-          prose-h1:text-3xl prose-h1:mt-12 prose-h1:mb-5
-          prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:border-b prose-h2:border-[#1f3520] prose-h2:pb-2
-          prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-[#4ade80]
-          prose-p:text-gray-300 prose-p:leading-[1.85] prose-p:mb-5 prose-p:text-[1.05rem]
-          prose-strong:text-white prose-strong:font-semibold
-          prose-a:text-[#4ade80] prose-a:no-underline hover:prose-a:underline
-          prose-blockquote:border-l-4 prose-blockquote:border-[#4ade80] prose-blockquote:bg-[#0f2410] prose-blockquote:rounded-r-xl prose-blockquote:py-3 prose-blockquote:px-5 prose-blockquote:not-italic
-          prose-blockquote:text-gray-200 prose-blockquote:text-[1.05rem]
-          prose-li:text-gray-300 prose-li:leading-relaxed prose-li:mb-1
-          prose-ul:my-5 prose-ol:my-5
-          prose-table:text-sm prose-th:text-white prose-th:bg-[#1a2e1c] prose-td:text-gray-300 prose-td:border-[#1f3520] prose-th:border-[#1f3520]
-          prose-hr:border-[#1f3520] prose-hr:my-10
-          prose-code:text-[#4ade80] prose-code:bg-[#0f2410] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded">
+        {/* Main content — ref used to intercept video link clicks */}
+        <div
+          ref={contentRef}
+          className="prose prose-invert prose-green max-w-none
+            prose-headings:text-white prose-headings:font-bold
+            prose-h1:text-3xl prose-h1:mt-12 prose-h1:mb-5
+            prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:border-b prose-h2:border-[#1f3520] prose-h2:pb-2
+            prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-[#4ade80]
+            prose-p:text-gray-300 prose-p:leading-[1.85] prose-p:mb-5 prose-p:text-[1.05rem]
+            prose-strong:text-white prose-strong:font-semibold
+            prose-a:text-[#4ade80] prose-a:no-underline hover:prose-a:underline
+            prose-blockquote:border-l-4 prose-blockquote:border-[#4ade80] prose-blockquote:bg-[#0f2410] prose-blockquote:rounded-r-xl prose-blockquote:py-3 prose-blockquote:px-5 prose-blockquote:not-italic
+            prose-blockquote:text-gray-200 prose-blockquote:text-[1.05rem]
+            prose-li:text-gray-300 prose-li:leading-relaxed prose-li:mb-1
+            prose-ul:my-5 prose-ol:my-5
+            prose-table:text-sm prose-th:text-white prose-th:bg-[#1a2e1c] prose-td:text-gray-300 prose-td:border-[#1f3520] prose-th:border-[#1f3520]
+            prose-hr:border-[#1f3520] prose-hr:my-10
+            prose-code:text-[#4ade80] prose-code:bg-[#0f2410] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded"
+        >
           <Streamdown>{post.content.replace(/^#\s+.+\n?/, "")}</Streamdown>
         </div>
 
