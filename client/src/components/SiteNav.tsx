@@ -8,84 +8,74 @@ import { getLoginUrl } from "@/const";
 
 /**
  * SiteNav — shared top navigation bar for all non-home pages.
- * Uses a solid light background (no scroll-based transparency) since
- * these pages don't have a full-bleed hero image behind the header.
+ * Solid white background. Switches to hamburger at <lg to avoid overflow.
  */
 export default function SiteNav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isAuthenticated, user, logout } = useAuth();
   const [currentLocation] = useLocation();
 
+  const linkClass =
+    "text-xs font-medium text-gray-700 hover:text-gray-900 transition-colors whitespace-nowrap";
+
   return (
     <header className="sticky top-0 left-0 right-0 z-50 bg-white shadow-sm border-b border-gray-200">
-      <div className="container flex items-center justify-between h-16">
+      <div className="container flex items-center justify-between h-14">
         {/* Logo / Home */}
-        <Link href="/" className="flex items-center gap-2">
-          <Leaf className="w-6 h-6 text-primary" />
-          <span className="font-serif text-base font-semibold text-gray-900 hidden sm:block">
+        <Link href="/" className="flex items-center gap-1.5 shrink-0">
+          <Leaf className="w-5 h-5 text-primary" />
+          <span className="font-serif text-sm font-semibold text-gray-900 hidden sm:block">
             Add Life to Your Years
           </span>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-5">
-          <Link href="/" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
-            Home
-          </Link>
-          <Link href="/book" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
-            The Book
-          </Link>
-          <Link href="/media" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
-            Media
-          </Link>
-          <Link href="/blog" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
-            The Wellness Files
-          </Link>
-          <Link href="/consult" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
-            Consult
-          </Link>
-          <Link href="/shop" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
-            Shop
-          </Link>
-          <Link href="/contact" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
-            Contact
-          </Link>
+        {/* Desktop Nav — visible at lg+ */}
+        <nav className="hidden lg:flex items-center gap-4 flex-1 justify-center">
+          <Link href="/" className={linkClass}>Home</Link>
+          <Link href="/book" className={linkClass}>The Book</Link>
+          <Link href="/media" className={linkClass}>Media</Link>
+          <Link href="/blog" className={linkClass}>The Wellness Files</Link>
+          <Link href="/consult" className={linkClass}>Consult</Link>
+          <Link href="/shop" className={linkClass}>Shop</Link>
+          <Link href="/contact" className={linkClass}>Contact</Link>
           {isAuthenticated && (
             <>
-              <Link href="/dashboard" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
-                Dashboard
-              </Link>
-              <Link href="/questionnaire" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
-                Self-Evaluation
-              </Link>
+              <Link href="/dashboard" className={linkClass}>Dashboard</Link>
+              <Link href="/questionnaire" className={linkClass}>Self-Evaluation</Link>
             </>
           )}
         </nav>
 
         {/* Auth buttons (desktop) */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-2 shrink-0">
           {isAuthenticated ? (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5">
               <Link href="/dashboard">
-                <Button variant="outline" size="sm" className="gap-2">
-                  <User className="w-4 h-4" />
-                  {user?.name || "Dashboard"}
+                <Button variant="outline" size="sm" className="gap-1.5 text-xs h-8 px-3">
+                  <User className="w-3.5 h-3.5" />
+                  <span className="max-w-[80px] truncate">{user?.name || "Account"}</span>
                 </Button>
               </Link>
-              <Button variant="ghost" size="sm" onClick={() => logout()} className="gap-2 text-gray-600">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => logout()}
+                className="gap-1.5 text-gray-600 h-8 w-8 p-0"
+                title="Sign out"
+              >
                 <LogOut className="w-4 h-4" />
               </Button>
             </div>
           ) : (
             <a href={getLoginUrl(currentLocation)}>
-              <Button size="sm">Sign In or Register</Button>
+              <Button size="sm" className="text-xs h-8 px-3">Sign In</Button>
             </a>
           )}
         </div>
 
-        {/* Mobile menu toggle */}
+        {/* Mobile / tablet menu toggle — visible below lg */}
         <button
-          className="md:hidden p-2 text-gray-900"
+          className="lg:hidden p-2 text-gray-900"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -93,38 +83,46 @@ export default function SiteNav() {
         </button>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile / tablet Nav */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-border/40"
+            className="lg:hidden bg-white border-t border-gray-200"
           >
             <nav className="container py-4 flex flex-col gap-3">
-              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Home</Link>
-              <Link href="/book" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">The Book</Link>
-              <Link href="/media" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Media</Link>
-              <Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">The Wellness Files</Link>
-              <Link href="/consult" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Consult</Link>
-              <Link href="/shop" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Shop</Link>
-              <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Contact</Link>
+              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-gray-700 py-1.5">Home</Link>
+              <Link href="/book" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-gray-700 py-1.5">The Book</Link>
+              <Link href="/media" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-gray-700 py-1.5">Media</Link>
+              <Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-gray-700 py-1.5">The Wellness Files</Link>
+              <Link href="/consult" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-gray-700 py-1.5">Consult</Link>
+              <Link href="/shop" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-gray-700 py-1.5">Shop</Link>
+              <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-gray-700 py-1.5">Contact</Link>
               {isAuthenticated && (
                 <>
-                  <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Dashboard</Link>
-                  <Link href="/questionnaire" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Self-Evaluation</Link>
+                  <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-gray-700 py-1.5">Dashboard</Link>
+                  <Link href="/questionnaire" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-gray-700 py-1.5">Self-Evaluation</Link>
                 </>
               )}
-              {isAuthenticated ? (
-                <Button variant="outline" size="sm" onClick={() => { logout(); setMobileMenuOpen(false); }}>
-                  Sign Out
-                </Button>
-              ) : (
-                <a href={getLoginUrl(currentLocation)}>
-                  <Button size="sm" className="w-full">Sign In or Register</Button>
-                </a>
-              )}
+              <div className="pt-2 border-t border-gray-100">
+                {isAuthenticated ? (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full text-gray-700"
+                    onClick={() => { logout(); setMobileMenuOpen(false); }}
+                  >
+                    <LogOut className="w-4 h-4 mr-2" />
+                    Sign Out
+                  </Button>
+                ) : (
+                  <a href={getLoginUrl(currentLocation)} className="block">
+                    <Button size="sm" className="w-full">Sign In or Register</Button>
+                  </a>
+                )}
+              </div>
             </nav>
           </motion.div>
         )}
