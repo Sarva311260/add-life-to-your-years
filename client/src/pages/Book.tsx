@@ -1,5 +1,4 @@
 import { useState } from "react";
-import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -19,7 +18,7 @@ const CONTENTS = [
   "Part Three: Wellness Strategies (Chapters 5–14)",
   "Part Four: John's Path Forward — A Healing Story",
   "All 18 Recommendations with Clinical Evidence (incl. Methylene Blue)",
-  "9 Supplementary Guides: Diet, Cold Showers, Off-Label Pharmaceuticals, Brazil Nuts, Floor Lying, Gut-Brain Axis, Blackstrap Molasses, Coherence Breathing & Lavender Oil",
+  "Appendices A–G: Diet, Cold Showers, Off-Label Pharmaceuticals, Brazil Nuts, Floor Lying, Gut-Brain Axis & Blackstrap Molasses",
   "Chapter Notes and References",
   "Glossary — 42 Key Terms Defined",
 ];
@@ -151,23 +150,6 @@ export default function Book() {
   const [bioOpen, setBioOpen] = useState(false);
 
   return (
-    <>
-    <SEO
-      title="The Book — Add Life to Your Years"
-      description="Read the full evidence-based book on health, wellness and vitality. Covers 8 health factors, 18 recommendations, and 9 supplementary guides."
-      canonicalPath="/book"
-      keywords="wellness book, health strategies, evidence-based health, plant-based, PEMF, longevity"
-      jsonLd={{
-        "@context": "https://schema.org",
-        "@type": "Book",
-        name: "Add Life to Your Years",
-        url: "https://www.addlifetoyouryears.org/book",
-        description: "A comprehensive, evidence-based guide to health, wellness and vitality.",
-        author: { "@type": "Person", name: "Sarva" },
-        genre: "Health & Wellness",
-        inLanguage: "en"
-      }}
-    />
     <div className="min-h-screen bg-background">
       <AuthorBioModal open={bioOpen} onClose={() => setBioOpen(false)} />
 
@@ -322,6 +304,5 @@ export default function Book() {
         </div>
       </section>
     </div>
-    </>
   );
 }

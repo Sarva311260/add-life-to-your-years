@@ -1,5 +1,4 @@
 import { useAuth } from "@/_core/hooks/useAuth";
-import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -177,48 +176,29 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-    <SEO
-      title="Proven Strategies for Health, Wellness & Vitality"
-      description="Assess your wellbeing across 8 key factors, uncover your strengths, and receive personalised, evidence-based recommendations to add life to your years."
-      canonicalPath="/"
-      jsonLd={{
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        name: "Add Life to Your Years",
-        url: "https://www.addlifetoyouryears.org",
-        description: "Proven, evidence-based strategies for health, wellness and vitality.",
-        potentialAction: {
-          "@type": "SearchAction",
-          target: "https://www.addlifetoyouryears.org/blog?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
-      }}
-    />
     <div className="min-h-screen flex flex-col bg-background">
       {/* Navigation */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-transparent"}`}>
         <div className="container flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2">
             <Leaf className="w-7 h-7 text-primary" />
-            <span className={`font-serif text-lg font-semibold ${scrolled ? "text-foreground" : "text-white"}`}>Add Life to Your Years</span>
+            <span className={`font-serif text-lg font-semibold ${scrolled ? "text-gray-900" : "text-white"}`}>Add Life to Your Years</span>
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
-            <a href="#about" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>About</a>
-            <Link href="/book" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>The Book</Link>
-            <a href="#coaching" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Coaching</a>
-            <a href="#products" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Products</a>
-            <Link href="/media" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Media</Link>
-            <Link href="/blog" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>The Wellness Files</Link>
-            <Link href="/consult" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Consult</Link>
-            <Link href="/shop" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Shop</Link>
-            <Link href="/contact" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Contact</Link>
+            <a href="#about" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>About</a>
+            <Link href="/book" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>The Book</Link>
+            <a href="#coaching" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>Coaching</a>
+            <a href="#products" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>Products</a>
+            <Link href="/media" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>Media</Link>
+            <Link href="/consult" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>Consult</Link>
+            <Link href="/shop" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>Shop</Link>
+            <Link href="/contact" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>Contact</Link>
             {isAuthenticated && (
               <>
-                <Link href="/dashboard" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Dashboard</Link>
-                <Link href="/questionnaire" className={`text-sm font-medium transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/90 hover:text-white"}`}>Self-Evaluation</Link>
+                <Link href="/dashboard" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>Dashboard</Link>
+                <Link href="/questionnaire" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>Self-Evaluation</Link>
               </>
             )}
           </nav>
@@ -232,7 +212,7 @@ export default function Home() {
                     {user?.name || "Dashboard"}
                   </Button>
                 </Link>
-                <Button variant="ghost" size="sm" onClick={() => logout()} className={`gap-2 ${!scrolled ? "text-white/80 hover:text-white hover:bg-white/10" : "text-muted-foreground"}`}>
+                <Button variant="ghost" size="sm" onClick={() => logout()} className={`gap-2 ${!scrolled ? "text-white/80 hover:text-white hover:bg-white/10" : "text-gray-500 hover:text-gray-700"}`}>
                   <LogOut className="w-4 h-4" />
                 </Button>
               </div>
@@ -264,7 +244,6 @@ export default function Home() {
                 <a href="#coaching" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Coaching</a>
                 <a href="#products" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Products</a>
                 <Link href="/media" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Media</Link>
-                <Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">The Wellness Files</Link>
                 <Link href="/consult" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Consult</Link>
                 <Link href="/shop" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Shop</Link>
                 <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Contact</Link>
@@ -290,11 +269,11 @@ export default function Home() {
         {/* Splash background image */}
         <div className="absolute inset-0">
           <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/hero-bg-8s4f8HstJuU4KXx9arLMxR.png"
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/homepage_splash_hero-k75ERSHXrCb53wbbii2uGm.webp"
             alt=""
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
         </div>
 
         <div className="container relative">
@@ -760,7 +739,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 text-white relative overflow-hidden" style={{backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/cta-bg-NkZTqNMm25Gcqhf822ZMmM.png)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+      <section className="py-20 text-white relative overflow-hidden" style={{backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/ready_transform_bg-Q4CU3Hf2Uy3VYbPxmZD7sh.webp)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
         <div className="absolute inset-0 bg-black/30" />
         <div className="container text-center relative z-10">
           <motion.div
@@ -808,7 +787,6 @@ export default function Home() {
                 <li><a href="#coaching" className="hover:text-white transition-colors">Coaching</a></li>
                 <li><a href="#products" className="hover:text-white transition-colors">Products</a></li>
                 <li><Link href="/media" className="hover:text-white transition-colors">Media</Link></li>
-                <li><Link href="/blog" className="hover:text-white transition-colors">The Wellness Files</Link></li>
                 <li><Link href="/consult" className="hover:text-white transition-colors">Consult</Link></li>
                 <li><Link href="/shop" className="hover:text-white transition-colors">Shop</Link></li>
                 <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
@@ -828,6 +806,5 @@ export default function Home() {
         </div>
       </footer>
     </div>
-    </>
   );
 }

@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book-content_349292f2.md";
+const MD_CDN_URL = "/manus-storage/book-content_3ededa58.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -54,15 +54,14 @@ const chapters = [
   { id: "john-12-months", label: "John, Twelve Months Later" },
   { id: "a-note", label: "A Note on the Journey" },
   { id: "glossary", label: "Glossary" },
-  { id: "appendix-a", label: "Supplementary Guide: Diet Comparison" },
-  { id: "appendix-b", label: "Supplementary Guide: Cold Showers" },
-  { id: "appendix-c", label: "Supplementary Guide: Off-Label Pharmaceuticals" },
-  { id: "appendix-d", label: "Supplementary Guide: Brazil Nuts & Selenium" },
-  { id: "appendix-e", label: "Supplementary Guide: Floor Lying — The 5-Minute Protocol" },
-  { id: "appendix-f", label: "Supplementary Guide: The Fiber That Calms You" },
-  { id: "appendix-g", label: "Supplementary Guide: Blackstrap Molasses" },
-  { id: "appendix-h", label: "Supplementary Guide: Coherence Breathing" },
-  { id: "appendix-i", label: "Supplementary Guide: Lavender Oil" },
+  { id: "appendix-a", label: "Appendix A: Diet Comparison" },
+  { id: "appendix-b", label: "Appendix B: Cold Showers" },
+  { id: "appendix-c", label: "Appendix C: Off-Label Pharmaceuticals" },
+  { id: "appendix-d", label: "Appendix D: Brazil Nuts & Selenium" },
+  { id: "appendix-e", label: "Appendix E: Floor Lying — The 5-Minute Protocol" },
+  { id: "appendix-f", label: "Appendix F: The Fiber That Calms You" },
+  { id: "appendix-g", label: "Appendix G: Blackstrap Molasses" },
+  { id: "appendix-h", label: "Appendix H: Coherence Breathing" },
   { id: "wellness-blueprint", label: "Your Wellness Blueprint at a Glance" },
 ];
 
@@ -111,16 +110,16 @@ const headingIdMap: Record<string, string> = {
   "A Note on the Journey": "a-note",
   "Glossary": "glossary",
   "Your Wellness Blueprint at a Glance": "wellness-blueprint",
-  "Supplementary Guide: Navigating the Diet Landscape": "appendix-a",
-  "Supplementary Guide: The Science of Cold Showers": "appendix-b",
-  "Supplementary Guide: Off-Label Pharmaceuticals": "appendix-c",
-  "Supplementary Guide: Brazil Nuts and Selenium": "appendix-d",
-  "Supplementary Guide: The Floor as Medicine": "appendix-e",
-  "Supplementary Guide: The Fiber That Calms You": "appendix-f",
-  "Supplementary Guide: Blackstrap Molasses": "appendix-g",
-  "Supplementary Guide: Coherence Breathing": "appendix-h",
-  "Supplementary Guide: Lavender Oil": "appendix-i",
-  "Supplementary Guides": "appendix-strategies",
+  "Why This Appendix Exists": "why-this-appendix-exists",
+  "Appendix Strategies": "appendix-strategies",
+  "Appendix H": "appendix-h",
+  "Appendix G": "appendix-g",
+  "Appendix F": "appendix-f",
+  "Appendix C": "appendix-c",
+  "Appendix E": "appendix-e",
+  "Appendix D": "appendix-d",
+  "Appendix B": "appendix-b",
+  "Appendix A": "appendix-a",
 };
 
 // Sort keys by length descending so longer keys match first
@@ -274,9 +273,6 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
   ],
   "rec-appendix-coherence-breathing": [
     { youtubeId: "vCf2GWI4dfw", title: "Coherence Breathing — The 10-Second Cycle That Rewires Your Nervous System" },
-  ],
-  "rec-appendix-lavender-oil": [
-    { youtubeId: "q3kXbYMgBnE", title: "Lavender Oil — Nature's Answer to Anxiety" },
   ],
   "rec-appendix-blackstrap-molasses": [
     { youtubeId: "IqRo8gGbFuo", title: "Blackstrap Molasses — Dr. Eric Berg" },

@@ -38,9 +38,6 @@ export default function SiteNav() {
           <Link href="/media" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Media
           </Link>
-          <Link href="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-            The Wellness Files
-          </Link>
           <Link href="/consult" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Consult
           </Link>
@@ -106,7 +103,6 @@ export default function SiteNav() {
               <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Home</Link>
               <Link href="/book" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">The Book</Link>
               <Link href="/media" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Media</Link>
-              <Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">The Wellness Files</Link>
               <Link href="/consult" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Consult</Link>
               <Link href="/shop" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Shop</Link>
               <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Contact</Link>

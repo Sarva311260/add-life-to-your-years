@@ -91,41 +91,6 @@ async function startServer() {
   // URL cloaking for affiliate product links (/go/:affiliateSlug/:productId)
   registerCloakRoutes(app);
 
-  // Dynamic sitemap.xml
-  app.get("/sitemap.xml", async (_req, res) => {
-    try {
-      const { getDb } = await import("../db");
-      const { blogPosts } = await import("../../drizzle/schema");
-      const { eq, desc } = await import("drizzle-orm");
-      const db = await getDb();
-      const posts = db
-        ? await db.select({ slug: blogPosts.slug, updatedAt: blogPosts.updatedAt }).from(blogPosts).where(eq(blogPosts.published, 1)).orderBy(desc(blogPosts.updatedAt))
-        : [];
-      const base = "https://www.addlifetoyouryears.org";
-      const staticPages = [
-        { url: "/", priority: "1.0", changefreq: "weekly" },
-        { url: "/book", priority: "0.9", changefreq: "monthly" },
-        { url: "/blog", priority: "0.9", changefreq: "weekly" },
-        { url: "/media", priority: "0.8", changefreq: "weekly" },
-        { url: "/questionnaire", priority: "0.8", changefreq: "monthly" },
-        { url: "/shop", priority: "0.7", changefreq: "weekly" },
-        { url: "/consult", priority: "0.7", changefreq: "monthly" },
-        { url: "/contact", priority: "0.6", changefreq: "yearly" },
-      ];
-      const today = new Date().toISOString().split("T")[0];
-      const urls = [
-        ...staticPages.map(p => `  <url><loc>${base}${p.url}</loc><lastmod>${today}</lastmod><changefreq>${p.changefreq}</changefreq><priority>${p.priority}</priority></url>`),
-        ...posts.map(p => `  <url><loc>${base}/blog/${p.slug}</loc><lastmod>${p.updatedAt.toISOString().split("T")[0]}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`),
-      ];
-      const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>`;
-      res.header("Content-Type", "application/xml");
-      res.send(xml);
-    } catch (err) {
-      console.error("[sitemap] error:", err);
-      res.status(500).send("Error generating sitemap");
-    }
-  });
-
   // tRPC API
   app.use(
     "/api/trpc",
