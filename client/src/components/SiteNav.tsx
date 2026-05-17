@@ -17,7 +17,7 @@ export default function SiteNav() {
   const [currentLocation] = useLocation();
 
   return (
-    <header className="sticky top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-border/40">
+    <header className="sticky top-0 left-0 right-0 z-50 bg-white shadow-sm border-b border-gray-200">
       <div className="container flex items-center justify-between h-16">
         {/* Logo / Home */}
         <Link href="/" className="flex items-center gap-2">
