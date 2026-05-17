@@ -22,40 +22,40 @@ export default function SiteNav() {
         {/* Logo / Home */}
         <Link href="/" className="flex items-center gap-2">
           <Leaf className="w-6 h-6 text-primary" />
-          <span className="font-serif text-base font-semibold text-foreground hidden sm:block">
+          <span className="font-serif text-base font-semibold text-gray-900 hidden sm:block">
             Add Life to Your Years
           </span>
         </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-5">
-          <Link href="/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="/" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
             Home
           </Link>
-          <Link href="/book" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="/book" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
             The Book
           </Link>
-          <Link href="/media" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="/media" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
             Media
           </Link>
-          <Link href="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="/blog" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
             The Wellness Files
           </Link>
-          <Link href="/consult" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="/consult" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
             Consult
           </Link>
-          <Link href="/shop" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="/shop" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
             Shop
           </Link>
-          <Link href="/contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="/contact" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
             Contact
           </Link>
           {isAuthenticated && (
             <>
-              <Link href="/dashboard" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              <Link href="/dashboard" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
                 Dashboard
               </Link>
-              <Link href="/questionnaire" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              <Link href="/questionnaire" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
                 Self-Evaluation
               </Link>
             </>
@@ -72,7 +72,7 @@ export default function SiteNav() {
                   {user?.name || "Dashboard"}
                 </Button>
               </Link>
-              <Button variant="ghost" size="sm" onClick={() => logout()} className="gap-2 text-muted-foreground">
+              <Button variant="ghost" size="sm" onClick={() => logout()} className="gap-2 text-gray-600">
                 <LogOut className="w-4 h-4" />
               </Button>
             </div>
@@ -85,7 +85,7 @@ export default function SiteNav() {
 
         {/* Mobile menu toggle */}
         <button
-          className="md:hidden p-2 text-foreground"
+          className="md:hidden p-2 text-gray-900"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
