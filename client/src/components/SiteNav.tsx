@@ -30,7 +30,7 @@ export default function SiteNav() {
         </Link>
 
         {/* Desktop Nav — visible at lg+ */}
-        <nav className="hidden lg:flex items-center gap-4 flex-1 justify-center">
+        <nav className="hidden xl:flex items-center gap-4 flex-1 justify-center">
           <Link href="/" className={linkClass}>Home</Link>
           <Link href="/book" className={linkClass}>The Book</Link>
           <Link href="/media" className={linkClass}>Media</Link>
@@ -47,7 +47,7 @@ export default function SiteNav() {
         </nav>
 
         {/* Auth buttons (desktop) */}
-        <div className="hidden lg:flex items-center gap-2 shrink-0">
+        <div className="hidden xl:flex items-center gap-2 shrink-0">
           {isAuthenticated ? (
             <div className="flex items-center gap-1.5">
               <Link href="/dashboard">
@@ -75,7 +75,7 @@ export default function SiteNav() {
 
         {/* Mobile / tablet menu toggle — visible below lg */}
         <button
-          className="lg:hidden p-2 text-gray-900"
+          className="xl:hidden p-2 text-gray-900"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -90,7 +90,7 @@ export default function SiteNav() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t border-gray-200"
+            className="xl:hidden bg-white border-t border-gray-200"
           >
             <nav className="container py-4 flex flex-col gap-3">
               <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-gray-700 py-1.5">Home</Link>

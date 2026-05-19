@@ -205,7 +205,7 @@ export default function Home() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden xl:flex items-center gap-6">
             <a href="#about" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>About</a>
             <Link href="/book" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>The Book</Link>
             <a href="#coaching" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>Coaching</a>
@@ -223,7 +223,7 @@ export default function Home() {
             )}
           </nav>
 
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden xl:flex items-center gap-3">
             {isAuthenticated ? (
               <div className="flex items-center gap-3">
                 <Link href="/dashboard">
@@ -244,7 +244,7 @@ export default function Home() {
           </div>
 
           {/* Mobile menu toggle */}
-          <button className="md:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          <button className="xl:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
@@ -256,7 +256,7 @@ export default function Home() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white border-t"
+              className="xl:hidden bg-white border-t"
             >
               <nav className="container py-4 flex flex-col gap-3">
                 <a href="#about" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">About</a>
