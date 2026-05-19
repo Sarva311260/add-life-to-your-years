@@ -6,6 +6,7 @@ import SEO from "@/components/SEO";
 import { Streamdown } from "streamdown";
 import { Calendar, ArrowLeft, BookOpen, Clock, User, Play } from "lucide-react";
 import NewsletterSignup from "@/components/NewsletterSignup";
+import ShareButtons from "@/components/ShareButtons";
 
 const AUTHOR_PHOTO = "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/sarva_0909cc87.jpg";
 
@@ -336,8 +337,17 @@ export default function BlogPost() {
             <VideoSection videos={postVideos} />
           )}
 
+          {/* Share buttons */}
+          <div className="mt-10 pt-8 border-t border-[#1f3520]">
+            <ShareButtons
+              title={post.title}
+              description={post.excerpt ?? undefined}
+              label="Share this article:"
+            />
+          </div>
+
           {/* Author bio card */}
-          <div className="mt-14 p-6 bg-[#0f2410] rounded-2xl border border-[#1f3520] flex gap-5 items-start">
+          <div className="mt-10 p-6 bg-[#0f2410] rounded-2xl border border-[#1f3520] flex gap-5 items-start">
             <img
               src={AUTHOR_PHOTO}
               alt="Sarva Keller"

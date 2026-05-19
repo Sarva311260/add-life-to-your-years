@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+      content="width=device-width, initial-scale=1.0" />
     <!-- Fallback title/meta for crawlers that don't execute JS (overridden per-page by react-helmet-async) -->
     <title>Add Life to Your Years | Health, Wellness &amp; Vitality</title>
     <meta name="description" content="Proven, evidence-based strategies for health, wellness and vitality. Assess your wellbeing across 8 key factors and receive personalised recommendations." />
@@ -22,6 +22,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QTVN2F68BE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QTVN2F68BE', {
+        page_path: window.location.pathname,
+        anonymize_ip: true
+      });
+    </script>
   </head>
 
   <body>

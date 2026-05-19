@@ -40,6 +40,14 @@ async function startServer() {
   // This is critical for cookies with Secure flag behind HTTPS-terminating proxies.
   app.set('trust proxy', true);
   const server = createServer(app);
+  // Redirect non-www to www for canonical URL consistency (SEO)
+  app.use((req, res, next) => {
+    const host = req.hostname;
+    if (host && !host.startsWith('www.') && !host.includes('localhost') && !host.includes('manus.computer')) {
+      return res.redirect(301, `${req.protocol}://www.${host}${req.originalUrl}`);
+    }
+    next();
+  });
   // Storage proxy for /manus-storage/* paths (must be before body parsers)
   registerStorageProxy(app);
   // Stripe webhook must be registered BEFORE express.json() for raw body parsing
