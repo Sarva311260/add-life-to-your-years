@@ -244,7 +244,11 @@ export default function Home() {
           </div>
 
           {/* Mobile menu toggle */}
-          <button className="xl:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          <button
+            className="xl:hidden p-2 rounded-lg bg-white/90 text-gray-900 shadow-sm"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
