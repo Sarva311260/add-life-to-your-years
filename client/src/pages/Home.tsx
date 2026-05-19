@@ -294,8 +294,12 @@ export default function Home() {
         {/* Splash background image */}
         <div className="absolute inset-0">
           <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/hero-bg-8s4f8HstJuU4KXx9arLMxR.png"
+            src="/manus-storage/hero-bg_f28c1a34.webp"
             alt=""
+            width={1920}
+            height={1080}
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50" />
@@ -328,7 +332,7 @@ export default function Home() {
                   </Button>
                 </Link>
                 <a href="#about">
-                  <Button variant="outline" size="lg" className="gap-2 text-base px-8 py-6 border-white/70 text-white hover:bg-white/20 hover:text-white bg-transparent">
+                  <Button variant="outline" size="lg" className="gap-2 text-base px-8 py-6 border-white text-white hover:bg-white/20 hover:text-white bg-transparent">
                     Learn More
                     <ChevronDown className="w-5 h-5" />
                   </Button>
@@ -508,6 +512,7 @@ export default function Home() {
                   transition={{ duration: 0.4, delay: i * 0.05 }}
                 >
                   <DialogTrigger asChild>
+                    <button className="w-full text-left" aria-label={`Learn more about ${cat.name}`}>
                     <Card className="h-full hover:shadow-md transition-shadow border-border/60 group cursor-pointer">
                       <CardContent className="p-6">
                         <div className={`w-12 h-12 rounded-xl ${cat.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
@@ -517,6 +522,7 @@ export default function Home() {
                         <p className="text-sm text-muted-foreground">{cat.desc}</p>
                       </CardContent>
                     </Card>
+                    </button>
                   </DialogTrigger>
                 </motion.div>
                 <DialogContent className="sm:max-w-lg">
@@ -571,7 +577,7 @@ export default function Home() {
                 <div className="relative bg-gradient-to-br from-primary/10 to-emerald-100 rounded-2xl p-6 md:p-10 inline-block">
                   <Link href="/book">
                     <img
-                      src="https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/book-cover-sarva-keller_87f4edbe.png"
+                      src="/manus-storage/book-cover_22986510.webp"
                       alt="Add Life to Your Years book cover"
                       className="w-56 md:w-72 rounded-lg shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-300 cursor-pointer block"
                     />
@@ -764,7 +770,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 text-white relative overflow-hidden" style={{backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/cta-bg-NkZTqNMm25Gcqhf822ZMmM.png)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+      <section className="py-20 text-white relative overflow-hidden" style={{backgroundImage: 'url(/manus-storage/cta-bg_6daa03ec.webp)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
         <div className="absolute inset-0 bg-black/30" />
         <div className="container text-center relative z-10">
           <motion.div
@@ -805,7 +811,7 @@ export default function Home() {
               </p>
             </div>
             <div>
-              <h4 className="font-semibold text-white mb-4">Quick Links</h4>
+              <h3 className="font-semibold text-white mb-4">Quick Links</h3>
               <ul className="space-y-2 text-sm">
                 <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
                 <li><a href="#book" className="hover:text-white transition-colors">The Book</a></li>
@@ -819,7 +825,7 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-white mb-4">Get Started</h4>
+              <h3 className="font-semibold text-white mb-4">Get Started</h3>
               <ul className="space-y-2 text-sm">
                 <li><Link href="/questionnaire" className="hover:text-white transition-colors">Self-Evaluation</Link></li>
                 <li><Link href="/dashboard" className="hover:text-white transition-colors">Dashboard</Link></li>
