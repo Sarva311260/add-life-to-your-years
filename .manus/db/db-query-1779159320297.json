@@ -1,0 +1,64 @@
+{
+  "query": "SELECT id, slug, LEFT(title, 40) as title, tags FROM blog_posts ORDER BY id LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute SELECT id, slug, LEFT(title, 40) as title, tags FROM blog_posts ORDER BY id LIMIT 10;",
+  "rows": [
+    {
+      "id": "1",
+      "slug": "navigating-the-diet-landscape",
+      "title": "Navigating the Diet Landscape — A Critic",
+      "tags": "Nutrition,Diet,Evidence-Based"
+    },
+    {
+      "id": "2",
+      "slug": "science-of-cold-showers",
+      "title": "The Science of Cold Showers — What the E",
+      "tags": "Cold Therapy,Resilience,Immune Health"
+    },
+    {
+      "id": "3",
+      "slug": "off-label-pharmaceuticals-fenbendazole-ivermectin",
+      "title": "Off-Label Pharmaceuticals",
+      "tags": "Pharmaceuticals,Cancer,Research"
+    },
+    {
+      "id": "4",
+      "slug": "brazil-nuts-selenium",
+      "title": "Brazil Nuts and Selenium — One of the Mo",
+      "tags": "Nutrition,Minerals,Heart Health"
+    },
+    {
+      "id": "5",
+      "slug": "floor-lying-the-five-minute-protocol",
+      "title": "The Floor as Medicine — Five Minutes Tha",
+      "tags": "Movement,Posture,Back Health"
+    },
+    {
+      "id": "6",
+      "slug": "fiber-gut-brain-axis-anxiety",
+      "title": "The Fiber That Calms You — Feeding Your ",
+      "tags": "Gut Health,Mental Wellness,Anxiety,Nutrition"
+    },
+    {
+      "id": "7",
+      "slug": "blackstrap-molasses-natures-mineral-chest",
+      "title": "Blackstrap Molasses — Nature's Mineral C",
+      "tags": "Minerals,Sleep,Iron,Nutrition"
+    },
+    {
+      "id": "8",
+      "slug": "coherence-breathing-ten-second-cycle",
+      "title": "Coherence Breathing — The 10-Second Cycl",
+      "tags": "Breathing,Mental Wellness,Sleep,Stress"
+    },
+    {
+      "id": "9",
+      "slug": "lavender-oil-silexan-anxiety",
+      "title": "Lavender Oil — Nature's Answer to Anxiet",
+      "tags": "Mental Wellness,Anxiety,Sleep,Natural Remedies"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tslug\ttitle\ttags\n1\tnavigating-the-diet-landscape\tNavigating the Diet Landscape — A Critic\tNutrition,Diet,Evidence-Based\n2\tscience-of-cold-showers\tThe Science of Cold Showers — What the E\tCold Therapy,Resilience,Immune Health\n3\toff-label-pharmaceuticals-fenbendazole-ivermectin\tOff-Label Pharmaceuticals\tPharmaceuticals,Cancer,Research\n4\tbrazil-nuts-selenium\tBrazil Nuts and Selenium — One of the Mo\tNutrition,Minerals,Heart Health\n5\tfloor-lying-the-five-minute-protocol\tThe Floor as Medicine — Five Minutes Tha\tMovement,Posture,Back Health\n6\tfiber-gut-brain-axis-anxiety\tThe Fiber That Calms You — Feeding Your \tGut Health,Mental Wellness,Anxiety,Nutrition\n7\tblackstrap-molasses-natures-mineral-chest\tBlackstrap Molasses — Nature's Mineral C\tMinerals,Sleep,Iron,Nutrition\n8\tcoherence-breathing-ten-second-cycle\tCoherence Breathing — The 10-Second Cycl\tBreathing,Mental Wellness,Sleep,Stress\n9\tlavender-oil-silexan-anxiety\tLavender Oil — Nature's Answer to Anxiet\tMental Wellness,Anxiety,Sleep,Natural Remedies\n",
+  "stderr": "",
+  "execution_time_ms": 2843
+}

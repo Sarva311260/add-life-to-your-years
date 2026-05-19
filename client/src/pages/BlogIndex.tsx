@@ -72,7 +72,7 @@ export default function BlogIndex() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((post) => {
-              const tags = post.tags ? post.tags.split(",").map((t) => t.trim()).filter(Boolean) : [];
+              const tags = post.tags ? post.tags.split(",").map((t: string) => t.trim()).filter(Boolean) : [];
               const date = new Date(post.publishedAt).toLocaleDateString("en-AU", {
                 year: "numeric",
                 month: "long",
@@ -98,7 +98,7 @@ export default function BlogIndex() {
                       {/* Tags */}
                       {tags.length > 0 && (
                         <div className="flex flex-wrap gap-1.5 mb-3">
-                          {tags.slice(0, 3).map((tag) => (
+                          {tags.slice(0, 3).map((tag: string) => (
                             <span
                               key={tag}
                               className={`text-xs font-medium px-2 py-0.5 rounded-full ${tagColor(tag)}`}

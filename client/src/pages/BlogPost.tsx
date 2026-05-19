@@ -195,7 +195,7 @@ export default function BlogPost() {
     );
   }
 
-  const tags = post.tags ? post.tags.split(",").map((t) => t.trim()).filter(Boolean) : [];
+  const tags = post.tags ? post.tags.split(",").map((t: string) => t.trim()).filter(Boolean) : [];
   const date = new Date(post.publishedAt).toLocaleDateString("en-AU", {
     year: "numeric", month: "long", day: "numeric",
   });
@@ -203,7 +203,7 @@ export default function BlogPost() {
 
   // Related posts: same tags, exclude current
   const related = (allPosts ?? [])
-    .filter((p) => p.slug !== post.slug && p.tags && tags.some((t) => p.tags?.includes(t)))
+    .filter((p) => p.slug !== post.slug && p.tags && tags.some((t: string) => p.tags?.includes(t)))
     .slice(0, 3);
 
   // Parse video IDs from the database field, with fallback to MEDIA_VIDEO_MAP

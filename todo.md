@@ -426,3 +426,5 @@
 - [x] Add/update robots.txt
 - [x] Add default og:image for social sharing
 - [x] Ensure all page titles follow "[Page Title] | Add Life to Your Years" pattern
+- [x] Add smooth scrolling globally (html { scroll-behavior: smooth } in index.css)
+- [x] Fix TypeScript implicit any errors in BlogPost.tsx and BlogIndex.tsx (t/tag parameters)
