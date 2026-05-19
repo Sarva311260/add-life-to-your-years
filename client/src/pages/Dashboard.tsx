@@ -1,4 +1,5 @@
 import { useAuth } from "@/_core/hooks/useAuth";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getLoginUrl } from "@/const";
@@ -47,6 +48,13 @@ export default function Dashboard() {
   if (authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-green-50/30 to-white">
+      <SEO
+        title="Your Wellness Dashboard"
+        description="Track your wellness progress, view your self-evaluation results, and access personalised recommendations across the 8 factors of health."
+      canonicalPath="/dashboard"
+      keywords="wellness dashboard, health tracking, self-evaluation results"
+      noindex={true}
+      />
         <Loader2 className="w-8 h-8 animate-spin text-primary" />
       </div>
     );

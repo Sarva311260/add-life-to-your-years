@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -327,6 +328,13 @@ export default function PEMF() {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title="PEMF Therapy — Pulsed Electromagnetic Field Technology"
+        description="Discover PEMF therapy and how pulsed electromagnetic field technology supports cellular health, recovery, and vitality."
+      canonicalPath="/pemf"
+      keywords="PEMF therapy, pulsed electromagnetic field, cellular health, PEMF technology"
+      jsonLd={{"@context":"https://schema.org","@type":"MedicalWebPage","name":"PEMF Therapy","url":"https://www.addlifetoyouryears.org/pemf","description":"Discover PEMF therapy and how pulsed electromagnetic field technology supports cellular health, recovery, and vitality."}}
+      />
          {/* ── Standalone PEMF Header ──────────────────────── */}
       <header ref={headerRef} className="sticky top-0 left-0 right-0 z-50 bg-emerald-900/95 backdrop-blur-md shadow-sm border-b border-emerald-700/40">
         <div className="container flex items-center justify-between h-14">

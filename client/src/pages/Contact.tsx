@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 import { Leaf, ArrowLeft, Mail, MessageCircle, MapPin } from "lucide-react";
@@ -39,6 +40,12 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Contact Us"
+        description="Get in touch with the Add Life to Your Years team. We'd love to hear from you — whether you have questions about the book, coaching, or wellness products."
+      canonicalPath="/contact"
+      keywords="contact wellness coach, get in touch, wellness enquiry"
+      />
       {/* Header */}
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border/50">
         <div className="container flex items-center justify-between h-16">

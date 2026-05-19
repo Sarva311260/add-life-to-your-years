@@ -23,6 +23,8 @@ interface SEOProps {
   jsonLd?: object;
   /** If true, use the title as-is without appending site name */
   titleOverride?: boolean;
+  /** If true, adds noindex,nofollow robots meta tag — use for private/authenticated pages */
+  noindex?: boolean;
 }
 
 export default function SEO({
@@ -34,6 +36,7 @@ export default function SEO({
   keywords,
   jsonLd,
   titleOverride = false,
+  noindex = false,
 }: SEOProps) {
   const pageTitle = title
     ? titleOverride
@@ -50,6 +53,7 @@ export default function SEO({
       {/* Basic */}
       <title>{pageTitle}</title>
       <meta name="description" content={description} />
+      {noindex && <meta name="robots" content="noindex,nofollow" />}
       {keywords && <meta name="keywords" content={keywords} />}
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 

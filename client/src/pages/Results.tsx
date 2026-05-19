@@ -1,4 +1,5 @@
 import { useAuth } from "@/_core/hooks/useAuth";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getLoginUrl } from "@/const";
@@ -57,6 +58,13 @@ export default function Results() {
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-green-50/30 to-white">
+      <SEO
+        title="Your Wellness Results"
+        description="View your personalised wellness evaluation results and evidence-based recommendations across the 8 factors of health."
+      canonicalPath="/results"
+      keywords="wellness results, health evaluation, personalised recommendations"
+      noindex={true}
+      />
         <Card className="max-w-md w-full mx-4">
           <CardContent className="p-8 text-center">
             <Leaf className="w-12 h-12 text-primary mx-auto mb-4" />

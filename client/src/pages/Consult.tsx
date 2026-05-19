@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SEO from "@/components/SEO";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -106,6 +107,13 @@ export default function Consult() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Book a Wellness Consultation"
+        description="Schedule a personalised 1-on-1 wellness consultation with Sarva. Evidence-based guidance on plant-based nutrition, lifestyle, and the 8 factors of health."
+      canonicalPath="/consult"
+      keywords="wellness consultation, plant-based nutrition coaching, health coaching, book consultation"
+      jsonLd={{"@context":"https://schema.org","@type":"Service","name":"Wellness Consultation","provider":{"@type":"Person","name":"Sarva","url":"https://www.addlifetoyouryears.org"},"description":"Personalised 1-on-1 wellness consultation covering plant-based nutrition, lifestyle, and the 8 factors of health.","url":"https://www.addlifetoyouryears.org/consult"}}
+      />
       <SiteNav />
 
       {/* Hero */}

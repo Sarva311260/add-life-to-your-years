@@ -1,4 +1,5 @@
 import { useAuth } from "@/_core/hooks/useAuth";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -451,6 +452,13 @@ export default function Questionnaire() {
   if (authLoading || retryingAuth) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-green-50/30 to-white flex items-center justify-center">
+      <SEO
+        title="Start Your Wellness Self-Evaluation"
+        description="Complete the 52-question self-evaluation to assess your wellbeing across 8 key factors and receive personalised, evidence-based recommendations."
+      canonicalPath="/questionnaire"
+      keywords="wellness self-evaluation, health assessment, wellbeing questionnaire"
+      noindex={true}
+      />
         <div className="text-center">
           <Loader2 className="w-8 h-8 animate-spin text-primary mx-auto mb-4" />
           <p className="text-muted-foreground">Loading...</p>

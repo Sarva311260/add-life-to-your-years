@@ -1,4 +1,5 @@
 import { useLocation } from "wouter";
+import SEO from "@/components/SEO";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -263,6 +264,13 @@ export default function Shop() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Wellness Products & Supplements"
+        description="Explore evidence-based wellness products and supplements recommended by Sarva — supporting your journey across the 8 factors of health."
+      canonicalPath="/shop"
+      keywords="wellness products, plant-based supplements, health products, ASEA, PEMF"
+      jsonLd={{"@context":"https://schema.org","@type":"Store","name":"Add Life to Your Years Shop","url":"https://www.addlifetoyouryears.org/shop","description":"Evidence-based wellness products and supplements."}}
+      />
       <SiteNav />
 
       {/* Hero */}
