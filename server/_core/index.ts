@@ -41,9 +41,25 @@ async function startServer() {
   app.set('trust proxy', true);
   const server = createServer(app);
   // Redirect non-www to www for canonical URL consistency (SEO)
+  // Only redirect page requests — skip API, storage, tracking, and OAuth paths
+  // so that JavaScript fetch() calls are never redirected to www (which has no
+  // valid SSL cert on the Cloud Run subdomain).
   app.use((req, res, next) => {
     const host = req.hostname;
-    if (host && !host.startsWith('www.') && !host.includes('localhost') && !host.includes('manus.computer')) {
+    const path = req.path;
+    const isInternalPath =
+      path.startsWith('/api/') ||
+      path.startsWith('/manus-storage/') ||
+      path.startsWith('/go/') ||
+      path.startsWith('/sitemap') ||
+      path.startsWith('/robots');
+    if (
+      host &&
+      !host.startsWith('www.') &&
+      !host.includes('localhost') &&
+      !host.includes('manus.computer') &&
+      !isInternalPath
+    ) {
       return res.redirect(301, `${req.protocol}://www.${host}${req.originalUrl}`);
     }
     next();

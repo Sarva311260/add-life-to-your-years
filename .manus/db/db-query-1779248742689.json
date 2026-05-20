@@ -1,0 +1,59 @@
+{
+  "query": "SELECT id, name, slug, isActive, email FROM pemf_affiliates ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute SELECT id, name, slug, isActive, email FROM pemf_affiliates ORDER BY id;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Test Partner",
+      "slug": "test-partner",
+      "isActive": "0",
+      "email": "test@example.com"
+    },
+    {
+      "id": "2",
+      "name": "Peter Keller",
+      "slug": "peter-keller",
+      "isActive": "1",
+      "email": "sarva1960@gmail.com"
+    },
+    {
+      "id": "3",
+      "name": "Darren Orr",
+      "slug": "darren-orr",
+      "isActive": "1",
+      "email": "cosmicjuggler@protonmail.com"
+    },
+    {
+      "id": "30001",
+      "name": "Adrian Roberts",
+      "slug": "adrian-roberts",
+      "isActive": "1",
+      "email": "gokulpro@gmail.com"
+    },
+    {
+      "id": "60001",
+      "name": "Sal Cockroft",
+      "slug": "sal-cockroft",
+      "isActive": "1",
+      "email": "salcockroft@mail.com"
+    },
+    {
+      "id": "90001",
+      "name": "Ian Wilbur-Smith",
+      "slug": "grounded",
+      "isActive": "1",
+      "email": "groundedlove63@gmail.com"
+    },
+    {
+      "id": "120001",
+      "name": "Yamuna Sztraka",
+      "slug": "biotune",
+      "isActive": "1",
+      "email": "yamunaluna@gmail.com"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tisActive\temail\n1\tTest Partner\ttest-partner\t0\ttest@example.com\n2\tPeter Keller\tpeter-keller\t1\tsarva1960@gmail.com\n3\tDarren Orr\tdarren-orr\t1\tcosmicjuggler@protonmail.com\n30001\tAdrian Roberts\tadrian-roberts\t1\tgokulpro@gmail.com\n60001\tSal Cockroft\tsal-cockroft\t1\tsalcockroft@mail.com\n90001\tIan Wilbur-Smith\tgrounded\t1\tgroundedlove63@gmail.com\n120001\tYamuna Sztraka\tbiotune\t1\tyamunaluna@gmail.com\n",
+  "stderr": "",
+  "execution_time_ms": 1849
+}

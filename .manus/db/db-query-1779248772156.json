@@ -1,0 +1,19 @@
+{
+  "query": "SELECT id, name, slug, isActive, email, passwordHash IS NOT NULL as hasPassword, lastLoginAt FROM pemf_affiliates WHERE slug = 'peter-keller';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway05.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 9Zz9zDgtu3MMxvL.275fa4de3573 --database 2Y96gvwURj9QkkDN4hXary --execute SELECT id, name, slug, isActive, email, passwordHash IS NOT NULL as hasPassword, lastLoginAt FROM pemf_affiliates WHERE slug = 'peter-keller';",
+  "rows": [
+    {
+      "id": "2",
+      "name": "Peter Keller",
+      "slug": "peter-keller",
+      "isActive": "1",
+      "email": "sarva1960@gmail.com",
+      "hasPassword": "1",
+      "lastLoginAt": "2026-05-15 08:17:35"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tisActive\temail\thasPassword\tlastLoginAt\n2\tPeter Keller\tpeter-keller\t1\tsarva1960@gmail.com\t1\t2026-05-15 08:17:35\n",
+  "stderr": "",
+  "execution_time_ms": 1878
+}
