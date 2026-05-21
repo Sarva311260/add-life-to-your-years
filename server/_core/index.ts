@@ -81,6 +81,35 @@ async function startServer() {
       rawCookieHeader: req.headers.cookie || '(none)',
     });
   });
+  // Health check endpoint — used by UptimeRobot to verify the full server stack
+  // (Express + database) is working, not just that the static HTML file loads.
+  app.get('/api/health', async (_req, res) => {
+    const start = Date.now();
+    try {
+      const { getDb } = await import('../db');
+      const db = await getDb();
+      // Run a lightweight DB ping — select 1 is the standard health check query
+      if (db) {
+        await db.execute('SELECT 1');
+      }
+      res.json({
+        status: 'ok',
+        db: db ? 'ok' : 'unavailable',
+        latency_ms: Date.now() - start,
+        timestamp: new Date().toISOString(),
+      });
+    } catch (err) {
+      console.error('[health] check failed:', err);
+      res.status(503).json({
+        status: 'error',
+        db: 'error',
+        message: err instanceof Error ? err.message : 'unknown error',
+        latency_ms: Date.now() - start,
+        timestamp: new Date().toISOString(),
+      });
+    }
+  });
+
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
