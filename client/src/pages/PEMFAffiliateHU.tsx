@@ -1038,6 +1038,27 @@ export default function PEMFAffiliateHU() {
         </div>
       </section>
 
+      {/* ── Új Videó ──────────────────────────────────────────── */}
+      <section className="py-16 bg-gray-50">
+        <div className="container max-w-4xl">
+          <div className="text-center mb-8">
+            <p className="text-sm font-medium text-emerald-700 tracking-widest uppercase mb-3">Nézze Meg</p>
+            <h2 className="font-serif text-2xl md:text-3xl font-bold text-gray-900 mb-4">Tudjon Meg Többet</h2>
+            <div className="w-16 h-0.5 bg-emerald-600 mx-auto" />
+          </div>
+          <div className="relative rounded-xl overflow-hidden shadow-xl bg-black aspect-video">
+            <iframe
+              src="https://player.vimeo.com/video/1194307428?h=b58c79fb93"
+              className="absolute inset-0 w-full h-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+              allowFullScreen
+              title="PEMF Terápia — Tudjon Meg Többet"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ── Jogi Nyilatkozat ──────────────────────────────────── */}
       <section className="py-10 bg-white border-t border-gray-100">
         <div className="container max-w-4xl">

@@ -552,7 +552,7 @@ export default function PEMF() {
           <FadeIn delay={0.1}>
             <div className="relative rounded-xl overflow-hidden shadow-xl bg-black aspect-video">
               <iframe
-                src="https://player.vimeo.com/video/1087945115?h=f74d1d4ce7"
+                src="https://player.vimeo.com/video/1194307428?h=b58c79fb93"
                 className="absolute inset-0 w-full h-full"
                 frameBorder="0"
                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
