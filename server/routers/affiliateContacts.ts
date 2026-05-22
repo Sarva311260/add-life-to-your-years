@@ -9,12 +9,25 @@ import {
   bulkCreateAffiliateContacts,
   updateAffiliateContact,
   deleteAffiliateContact,
+  deleteAffiliateContactAdmin,
+  getAllAffiliateContactsAdmin,
   getPemfAffiliateById,
+  getAllPemfAffiliates,
   getAllDripSequences,
   createDripEnrollment,
 } from "../db";
 
 const AFFILIATE_JWT_SECRET = new TextEncoder().encode(ENV.cookieSecret + "_affiliate");
+const ADMIN_JWT_SECRET = new TextEncoder().encode(ENV.cookieSecret + "_affiliate");
+
+async function verifyAdminToken(token: string): Promise<boolean> {
+  try {
+    const { payload } = await jwtVerify(token, ADMIN_JWT_SECRET);
+    return payload.type === "pemf_admin";
+  } catch {
+    return false;
+  }
+}
 
 async function verifyAffiliateToken(token: string): Promise<{ affiliateId: number } | null> {
   try {
@@ -350,6 +363,148 @@ export const affiliateContactsRouter = router({
     .query(async ({ input }) => {
       const payload = await verifyAffiliateToken(input.token);
       if (!payload) throw new TRPCError({ code: "UNAUTHORIZED" });
+      const sequences = await getAllDripSequences();
+      return sequences.filter(s => s.isActive).map(s => ({ id: s.id, name: s.name }));
+    }),
+
+  // ─── ADMIN: List all contacts (optionally by affiliate) ──────────────────
+  adminList: publicProcedure
+    .input(z.object({ adminToken: z.string(), affiliateId: z.number().optional() }))
+    .query(async ({ input }) => {
+      if (!await verifyAdminToken(input.adminToken)) throw new TRPCError({ code: "UNAUTHORIZED" });
+      return getAllAffiliateContactsAdmin(input.affiliateId);
+    }),
+
+  // ─── ADMIN: List all affiliates (for filter dropdown) ────────────────────
+  adminListAffiliates: publicProcedure
+    .input(z.object({ adminToken: z.string() }))
+    .query(async ({ input }) => {
+      if (!await verifyAdminToken(input.adminToken)) throw new TRPCError({ code: "UNAUTHORIZED" });
+      const affiliates = await getAllPemfAffiliates();
+      return affiliates.map(a => ({ id: a.id, name: a.name, email: a.email }));
+    }),
+
+  // ─── ADMIN: Add a contact for a specific affiliate ───────────────────────
+  adminAdd: publicProcedure
+    .input(z.object({
+      adminToken: z.string(),
+      affiliateId: z.number(),
+      name: z.string().min(1),
+      email: z.string().email().optional().or(z.literal("")),
+      phone: z.string().optional().or(z.literal("")),
+      notes: z.string().optional().or(z.literal("")),
+      enrollSequenceId: z.number().optional(),
+    }))
+    .mutation(async ({ input }) => {
+      if (!await verifyAdminToken(input.adminToken)) throw new TRPCError({ code: "UNAUTHORIZED" });
+      const id = await createAffiliateContact({
+        affiliateId: input.affiliateId,
+        name: input.name,
+        email: input.email || null,
+        phone: input.phone || null,
+        notes: input.notes || null,
+        source: "manual",
+        enrolledSequenceId: input.enrollSequenceId ?? null,
+        enrolledAt: input.enrollSequenceId ? new Date() : null,
+      });
+      if (input.enrollSequenceId && input.email) {
+        await createDripEnrollment({
+          sequenceId: input.enrollSequenceId,
+          enquiryId: 0,
+          affiliateId: input.affiliateId,
+          leadEmail: input.email,
+          leadName: input.name,
+          unsubscribeToken: generateToken(),
+          status: "active",
+        });
+      }
+      return { success: true, id };
+    }),
+
+  // ─── ADMIN: Delete any contact ───────────────────────────────────────────
+  adminDelete: publicProcedure
+    .input(z.object({ adminToken: z.string(), id: z.number() }))
+    .mutation(async ({ input }) => {
+      if (!await verifyAdminToken(input.adminToken)) throw new TRPCError({ code: "UNAUTHORIZED" });
+      await deleteAffiliateContactAdmin(input.id);
+      return { success: true };
+    }),
+
+  // ─── ADMIN: Import CSV for a specific affiliate ───────────────────────────
+  adminImportCsv: publicProcedure
+    .input(z.object({
+      adminToken: z.string(),
+      affiliateId: z.number(),
+      csvText: z.string().max(5_000_000),
+      enrollSequenceId: z.number().optional(),
+    }))
+    .mutation(async ({ input }) => {
+      if (!await verifyAdminToken(input.adminToken)) throw new TRPCError({ code: "UNAUTHORIZED" });
+      const parsed = parseCsv(input.csvText);
+      if (parsed.length === 0) throw new TRPCError({ code: "BAD_REQUEST", message: "No contacts found in CSV file." });
+      const now = new Date();
+      const rows = parsed.map(c => ({
+        affiliateId: input.affiliateId,
+        name: c.name, email: c.email || null, phone: c.phone || null,
+        notes: c.notes || null, source: "csv" as const,
+        enrolledSequenceId: input.enrollSequenceId ?? null,
+        enrolledAt: input.enrollSequenceId ? now : null,
+      }));
+      const count = await bulkCreateAffiliateContacts(rows);
+      if (input.enrollSequenceId) {
+        for (const c of parsed) {
+          if (c.email) {
+            await createDripEnrollment({
+              sequenceId: input.enrollSequenceId!, enquiryId: 0,
+              affiliateId: input.affiliateId, leadEmail: c.email, leadName: c.name,
+              unsubscribeToken: generateToken(), status: "active",
+            });
+          }
+        }
+      }
+      return { success: true, imported: count };
+    }),
+
+  // ─── ADMIN: Import VCF for a specific affiliate ───────────────────────────
+  adminImportVcf: publicProcedure
+    .input(z.object({
+      adminToken: z.string(),
+      affiliateId: z.number(),
+      vcfText: z.string().max(5_000_000),
+      enrollSequenceId: z.number().optional(),
+    }))
+    .mutation(async ({ input }) => {
+      if (!await verifyAdminToken(input.adminToken)) throw new TRPCError({ code: "UNAUTHORIZED" });
+      const parsed = parseVcf(input.vcfText);
+      if (parsed.length === 0) throw new TRPCError({ code: "BAD_REQUEST", message: "No contacts found in vCard file." });
+      const now = new Date();
+      const rows = parsed.map(c => ({
+        affiliateId: input.affiliateId,
+        name: c.name, email: c.email || null, phone: c.phone || null,
+        notes: c.notes || null, source: "vcf" as const,
+        enrolledSequenceId: input.enrollSequenceId ?? null,
+        enrolledAt: input.enrollSequenceId ? now : null,
+      }));
+      const count = await bulkCreateAffiliateContacts(rows);
+      if (input.enrollSequenceId) {
+        for (const c of parsed) {
+          if (c.email) {
+            await createDripEnrollment({
+              sequenceId: input.enrollSequenceId!, enquiryId: 0,
+              affiliateId: input.affiliateId, leadEmail: c.email, leadName: c.name,
+              unsubscribeToken: generateToken(), status: "active",
+            });
+          }
+        }
+      }
+      return { success: true, imported: count };
+    }),
+
+  // ─── ADMIN: Get sequences ────────────────────────────────────────────────
+  adminGetSequences: publicProcedure
+    .input(z.object({ adminToken: z.string() }))
+    .query(async ({ input }) => {
+      if (!await verifyAdminToken(input.adminToken)) throw new TRPCError({ code: "UNAUTHORIZED" });
       const sequences = await getAllDripSequences();
       return sequences.filter(s => s.isActive).map(s => ({ id: s.id, name: s.name }));
     }),

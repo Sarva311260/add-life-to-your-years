@@ -241,7 +241,7 @@ function InsertPicker({
   }, [onClose]);
 
   const globalTags = resolved?.globalTags || [];
-  const myTags = resolved?.myTags || [];
+  const myTags = (resolved as any)?.myTags || (resolved as any)?.customLinks || [];
   const assets = resolved?.assets || [];
 
   return (
@@ -284,7 +284,7 @@ function InsertPicker({
         )}
         {tab === "assets" && (assets.length === 0
           ? <p className="text-white/40 text-xs px-3 py-4 text-center">No assets yet</p>
-          : assets.map((a: { id: number; tagKey: string; title?: string; label?: string; description?: string; assetType?: string; url?: string; thumbnailUrl?: string }) => {
+          : assets.map((a: { id: number; tagKey: string; title?: string; label?: string; description?: string | null; assetType?: string; url?: string; thumbnailUrl?: string | null }) => {
             const ytMatch = a.url && a.url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]{11})/);
             const ytId = ytMatch ? ytMatch[1] : null;
             const thumbSrc = ytId ? `https://img.youtube.com/vi/${ytId}/mqdefault.jpg` : a.thumbnailUrl || null;

@@ -969,3 +969,21 @@ export async function getEmailClicksByLogId(emailLogId: number) {
     .where(eq(emailClickEvents.emailLogId, emailLogId))
     .orderBy(desc(emailClickEvents.clickedAt));
 }
+
+/** Admin: Get all contacts (optionally filtered by affiliateId) */
+export async function getAllAffiliateContactsAdmin(affiliateId?: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const query = db.select().from(affiliateContacts);
+  if (affiliateId) {
+    return query.where(eq(affiliateContacts.affiliateId, affiliateId)).orderBy(desc(affiliateContacts.createdAt));
+  }
+  return query.orderBy(desc(affiliateContacts.createdAt));
+}
+
+/** Admin: Delete any contact regardless of affiliateId */
+export async function deleteAffiliateContactAdmin(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.delete(affiliateContacts).where(eq(affiliateContacts.id, id));
+}
