@@ -23,7 +23,7 @@ export default function SiteNav() {
       <div className="container flex items-center justify-between h-14">
         {/* Logo / Home */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
-          <img src="/manus-storage/logo-favicon_d30c3a72.png" alt="Add Life to Your Years" className="w-9 h-9 object-contain" />
+          <img src="/manus-storage/logo-favicon_d30c3a72.png" alt="Add Life to Your Years" className="w-9 h-9 object-contain rounded-full border-2 border-primary/60 p-0.5 bg-white/80" />
           <span className="font-serif text-sm font-semibold text-gray-900 hidden sm:block">
             Add Life to Your Years
           </span>

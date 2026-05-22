@@ -122,7 +122,7 @@ export default function HomeAffiliate() {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-transparent"}`}>
         <div className="container flex items-center justify-between h-16">
           <Link href={`/ref/${slug}`} className="flex items-center gap-2">
-            <img src="/manus-storage/logo-favicon_d30c3a72.png" alt="Add Life to Your Years" className="w-10 h-10 object-contain" />
+            <img src="/manus-storage/logo-favicon_d30c3a72.png" alt="Add Life to Your Years" className="w-10 h-10 object-contain rounded-full border-2 border-primary/60 p-0.5 bg-white/80" />
             <span className={`font-serif text-lg font-semibold ${scrolled ? "text-foreground" : "text-white"}`}>Add Life to Your Years</span>
           </Link>
 
