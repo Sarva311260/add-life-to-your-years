@@ -16,10 +16,10 @@ export default function SiteNav() {
   const [currentLocation] = useLocation();
 
   const linkClass =
-    "text-xs font-medium text-gray-700 hover:text-gray-900 transition-colors whitespace-nowrap";
+    "text-xs font-medium text-gray-700 hover:text-green-700 transition-colors whitespace-nowrap relative after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-green-700 after:transition-all hover:after:w-full";
 
   return (
-    <header className="sticky top-0 left-0 right-0 z-50 bg-white shadow-sm border-b border-gray-200">
+    <header className="sticky top-0 left-0 right-0 z-50 bg-white/85 backdrop-blur-md shadow-md border-b border-white/40">
       <div className="container flex items-center justify-between h-14">
         {/* Logo / Home */}
         <Link href="/" className="flex items-center gap-1.5 shrink-0">
