@@ -397,6 +397,7 @@ export const affiliateContactsRouter = router({
       email: z.string().email().optional().or(z.literal("")),
       phone: z.string().optional().or(z.literal("")),
       notes: z.string().optional().or(z.literal("")),
+      category: z.string().max(100).optional().or(z.literal("")),
       enrollSequenceId: z.number().optional(),
     }))
     .mutation(async ({ input }) => {
@@ -407,6 +408,7 @@ export const affiliateContactsRouter = router({
         email: input.email || null,
         phone: input.phone || null,
         notes: input.notes || null,
+        category: input.category || "General",
         source: "manual",
         enrolledSequenceId: input.enrollSequenceId ?? null,
         enrolledAt: input.enrollSequenceId ? new Date() : null,

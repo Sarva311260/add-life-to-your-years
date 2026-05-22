@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import PEMFAdminDrip from "./PEMFAdminDrip";
 import PEMFAdminContentLibrary from "./PEMFAdminContentLibrary";
 import PEMFAdminProducts from "./PEMFAdminProducts";
+import AdminContacts from "./AdminContacts";
 import {
   Leaf, Eye, EyeOff, ArrowRight, LogOut, Users, BarChart2,
   ToggleLeft, ToggleRight, Edit2, Lock, Check, X, ChevronDown, ChevronUp,
@@ -298,7 +299,7 @@ function AffiliateRow({ affiliate, adminToken, onRefresh }: {
 }
 
 // ─── Admin Dashboard ──────────────────────────────────────────────────────────
-type AdminView = "affiliates" | "campaigns" | "products" | "library";
+type AdminView = "affiliates" | "campaigns" | "contacts" | "products" | "library";
 
 function AdminDashboard({ onLogout }: { onLogout: () => void }) {
   const adminToken = getAdminToken();
@@ -363,7 +364,7 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
       <div className="bg-[#0a2e1a]/80 border-b border-emerald-800/20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex gap-1">
-            {(["affiliates", "campaigns", "products", "library"] as AdminView[]).map((view) => (
+            {(["affiliates", "campaigns", "contacts", "products", "library"] as AdminView[]).map((view) => (
               <button
                 key={view}
                 onClick={() => setActiveView(view)}
@@ -373,7 +374,7 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
                     : "border-transparent text-gray-400 hover:text-white"
                 }`}
               >
-                  {view === "affiliates" ? "Brand Partners" : view === "campaigns" ? "Email Campaigns" : view === "products" ? "Recommended Products" : "Content Library"}
+                  {view === "affiliates" ? "Brand Partners" : view === "campaigns" ? "Email Campaigns" : view === "contacts" ? "Contacts" : view === "products" ? "Recommended Products" : "Content Library"}
               </button>
             ))}
           </div>
@@ -395,6 +396,11 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
         {activeView === "campaigns" && (
           <div className="bg-[#0d3b22]/60 border border-emerald-800/30 rounded-2xl p-6">
             <PEMFAdminDrip adminToken={adminToken} />
+          </div>
+        )}
+        {activeView === "contacts" && (
+          <div className="bg-[#0d3b22]/60 border border-emerald-800/30 rounded-2xl p-6">
+            <AdminContacts adminToken={adminToken} />
           </div>
         )}
         {activeView === "affiliates" && (

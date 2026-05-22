@@ -109,6 +109,7 @@ function TagInput({ value, onChange }: { value: string; onChange: (v: string) =>
 // ─── Contact form (used for both Add and Edit) ────────────────────────────────
 interface FormState {
   name: string; email: string; phone: string; notes: string;
+  category: string;
   addressStreet: string; addressCity: string; addressState: string;
   addressPostcode: string; addressCountry: string;
   birthday: string; tags: string;
@@ -116,7 +117,7 @@ interface FormState {
   enrollSequenceId: number | "";
 }
 const emptyForm = (): FormState => ({
-  name: "", email: "", phone: "", notes: "",
+  name: "", email: "", phone: "", notes: "", category: "General",
   addressStreet: "", addressCity: "", addressState: "", addressPostcode: "", addressCountry: "",
   birthday: "", tags: "", reminderAt: "", reminderNote: "", enrollSequenceId: "",
 });
@@ -149,6 +150,13 @@ function ContactForm({
 
       {/* Basic */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="text-emerald-300 text-xs font-medium block mb-1">Category</label>
+          <select value={form.category} onChange={e => setForm({ ...form, category: e.target.value })}
+            className="w-full bg-white/10 border border-emerald-700/30 rounded-md px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500">
+            {["General", "Affiliate", "ASEA Lead", "Zeolite Lead"].map(c => <option key={c} value={c}>{c}</option>)}
+          </select>
+        </div>
         <div className="md:col-span-2">
           <label className="text-emerald-300 text-xs font-medium block mb-1">Full Name *</label>
           <input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} required placeholder="Jane Smith"
@@ -263,6 +271,7 @@ export default function AffiliateContacts({ token }: Props) {
     email: f.email || undefined,
     phone: f.phone || undefined,
     notes: f.notes || undefined,
+    category: f.category || "General",
     addressStreet: f.addressStreet || undefined,
     addressCity: f.addressCity || undefined,
     addressState: f.addressState || undefined,
@@ -339,6 +348,7 @@ export default function AffiliateContacts({ token }: Props) {
     setExpandedId(null);
     setEditForm({
       name: c.name, email: c.email || "", phone: c.phone || "", notes: c.notes || "",
+      category: (c as any).category || "General",
       addressStreet: c.addressStreet || "", addressCity: c.addressCity || "",
       addressState: c.addressState || "", addressPostcode: c.addressPostcode || "",
       addressCountry: c.addressCountry || "",

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import SEO from "@/components/SEO";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
@@ -14,15 +14,112 @@ import { toast } from "sonner";
 import {
   Leaf, ClipboardCheck, Stethoscope, ArrowRight, ArrowLeft,
   Shield, Heart, Brain, Sparkles, CheckCircle2, AlertCircle, Loader2,
+  Search, X, BookOpen, ChevronUp, ChevronDown,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 type Step = "choose" | "conditions" | "prerequisite" | "starting";
 
+const KB_CDN_URL = "/manus-storage/book-content-fixed_71e77e20.md";
+
+// Map heading text to anchor IDs (same as BookReader)
+const kbHeadingIdMap: Record<string, string> = {
+  "Recommendation 10": "rec-10", "Recommendation 11": "rec-11", "Recommendation 12": "rec-12",
+  "Recommendation 13": "rec-13", "Recommendation 14": "rec-14", "Recommendation 15": "rec-15",
+  "Recommendation 16": "rec-16", "Recommendation 17": "rec-17", "Recommendation 18": "rec-18",
+  "Recommendation 1": "rec-1", "Recommendation 2": "rec-2", "Recommendation 3": "rec-3",
+  "Recommendation 4": "rec-4", "Recommendation 5": "rec-5", "Recommendation 6": "rec-6",
+  "Recommendation 7": "rec-7", "Recommendation 8": "rec-8", "Recommendation 9": "rec-9",
+  "Chapter 10": "chapter-10", "Chapter 11": "chapter-11", "Chapter 12": "chapter-12",
+  "Chapter 13": "chapter-13", "Chapter 14": "chapter-14",
+  "Chapter 1": "chapter-1", "Chapter 2": "chapter-2", "Chapter 3": "chapter-3",
+  "Chapter 4": "chapter-4", "Chapter 5": "chapter-5", "Chapter 6": "chapter-6",
+  "Chapter 7": "chapter-7", "Chapter 8": "chapter-8", "Chapter 9": "chapter-9",
+  "Introduction": "introduction", "Part One": "part-one", "Part Two": "part-two",
+  "Part Three": "part-three", "Part Four": "part-four", "Conclusion": "conclusion",
+  "Glossary": "glossary", "Your Wellness Blueprint at a Glance": "wellness-blueprint",
+};
+const kbSortedKeys = Object.keys(kbHeadingIdMap).sort((a, b) => b.length - a.length);
+
+interface KbSearchResult {
+  lineIndex: number;
+  context: string;
+  heading: string;
+  chapterId: string;
+}
+
+function buildKbResults(content: string, query: string): KbSearchResult[] {
+  if (!query || query.length < 2) return [];
+  const lines = content.split("\n");
+  const results: KbSearchResult[] = [];
+  const lowerQuery = query.toLowerCase();
+  let lastHeading = "Introduction";
+  let lastChapterId = "introduction";
+  lines.forEach((line, idx) => {
+    if (/^#{1,3}\s/.test(line)) {
+      const headingText = line.replace(/^#+\s*/, "").replace(/[*_`>]/g, "").trim();
+      let matchedId = headingText.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+      for (const key of kbSortedKeys) {
+        if (headingText.includes(key)) { matchedId = kbHeadingIdMap[key]; break; }
+      }
+      lastHeading = headingText;
+      lastChapterId = matchedId;
+    }
+    if (line.toLowerCase().includes(lowerQuery)) {
+      const contextStart = Math.max(0, idx - 1);
+      const contextLines = lines.slice(contextStart, idx + 2)
+        .map(l => l.replace(/^#+\s*/, "").replace(/[*_`>]/g, "").trim())
+        .filter(Boolean).join(" ");
+      results.push({
+        lineIndex: idx,
+        context: contextLines.slice(0, 130) + (contextLines.length > 130 ? "…" : ""),
+        heading: lastHeading,
+        chapterId: lastChapterId,
+      });
+    }
+  });
+  return results.slice(0, 40);
+}
+
 export default function Consult() {
   const { isAuthenticated, user } = useAuth();
   const [, navigate] = useLocation();
   const [step, setStep] = useState<Step>("choose");
+
+  // Knowledge base search state
+  const [kbSearchOpen, setKbSearchOpen] = useState(false);
+  const [kbQuery, setKbQuery] = useState("");
+  const [kbResults, setKbResults] = useState<KbSearchResult[]>([]);
+  const [kbContent, setKbContent] = useState("");
+  const [kbLoading, setKbLoading] = useState(false);
+  const kbInputRef = useRef<HTMLInputElement>(null);
+
+  // Lazy-load knowledge base content when search is opened
+  const loadKbContent = () => {
+    if (kbContent || kbLoading) return;
+    setKbLoading(true);
+    fetch(KB_CDN_URL)
+      .then(r => r.text())
+      .then(text => { setKbContent(text); setKbLoading(false); })
+      .catch(() => setKbLoading(false));
+  };
+
+  const handleKbSearch = () => {
+    if (!kbContent) return;
+    setKbResults(buildKbResults(kbContent, kbQuery));
+  };
+
+  const openKbSearch = () => {
+    setKbSearchOpen(true);
+    loadKbContent();
+    setTimeout(() => kbInputRef.current?.focus(), 100);
+  };
+
+  const closeKbSearch = () => {
+    setKbSearchOpen(false);
+    setKbQuery("");
+    setKbResults([]);
+  };
   const [consultType, setConsultType] = useState<"full_review" | "specific_conditions" | null>(null);
   const [selectedConditions, setSelectedConditions] = useState<string[]>([]);
   const [otherCondition, setOtherCondition] = useState("");
@@ -115,6 +212,90 @@ export default function Consult() {
       jsonLd={{"@context":"https://schema.org","@type":"Service","name":"Wellness Consultation","provider":{"@type":"Person","name":"Sarva","url":"https://www.addlifetoyouryears.org"},"description":"Personalised 1-on-1 wellness consultation covering plant-based nutrition, lifestyle, and the 8 factors of health.","url":"https://www.addlifetoyouryears.org/consult"}}
       />
       <SiteNav />
+
+      {/* Knowledge Base Search Bar */}
+      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-border shadow-sm">
+        <div className="container max-w-4xl">
+          {!kbSearchOpen ? (
+            <div className="flex items-center justify-between py-2">
+              <p className="text-xs text-muted-foreground hidden sm:block">
+                <BookOpen className="w-3.5 h-3.5 inline mr-1" />
+                Knowledge base search — find any topic from the book
+              </p>
+              <Button
+                variant="outline"
+                size="sm"
+                className="gap-2 text-muted-foreground ml-auto"
+                onClick={openKbSearch}
+              >
+                <Search className="w-3.5 h-3.5" />
+                Search knowledge base
+                <span className="text-xs opacity-50 hidden sm:inline">Ctrl+K</span>
+              </Button>
+            </div>
+          ) : (
+            <div className="relative">
+              <div className="flex items-center gap-2 py-2">
+                <Search className="w-4 h-4 text-muted-foreground shrink-0" />
+                <Input
+                  ref={kbInputRef}
+                  value={kbQuery}
+                  onChange={e => setKbQuery(e.target.value)}
+                  onKeyDown={e => {
+                    if (e.key === "Enter") handleKbSearch();
+                    if (e.key === "Escape") closeKbSearch();
+                  }}
+                  placeholder={kbLoading ? "Loading knowledge base…" : "Search the knowledge base… (Enter to search)"}
+                  disabled={kbLoading}
+                  className="flex-1 h-8 text-sm border-0 shadow-none focus-visible:ring-0 bg-transparent"
+                />
+                {kbResults.length > 0 && (
+                  <span className="text-xs text-muted-foreground shrink-0 whitespace-nowrap">
+                    {kbResults.length} result{kbResults.length !== 1 ? "s" : ""}
+                  </span>
+                )}
+                {kbQuery && (
+                  <Button variant="ghost" size="sm" className="h-7 px-2 text-xs" onClick={handleKbSearch}>
+                    Search
+                  </Button>
+                )}
+                <Button variant="ghost" size="icon" className="h-7 w-7 text-muted-foreground" onClick={closeKbSearch}>
+                  <X className="h-3 w-3" />
+                </Button>
+              </div>
+
+              {/* Results dropdown */}
+              {kbResults.length > 0 && (
+                <div className="absolute top-full left-0 right-0 bg-white border border-border rounded-b-lg shadow-lg z-50 max-h-72 overflow-y-auto">
+                  {kbResults.map((result, i) => (
+                    <a
+                      key={i}
+                      href={`/book/read#${result.chapterId}`}
+                      className="block px-4 py-2.5 hover:bg-primary/5 border-b border-border/50 last:border-0 group"
+                      onClick={closeKbSearch}
+                    >
+                      <div className="flex items-center gap-1.5 mb-0.5">
+                        <span className="text-xs font-semibold text-primary group-hover:text-primary/80 truncate">
+                          {result.heading}
+                        </span>
+                        <span className="text-xs text-muted-foreground shrink-0">→</span>
+                        <span className="text-xs text-muted-foreground shrink-0">Open in book</span>
+                      </div>
+                      <p className="text-xs text-muted-foreground truncate">{result.context}</p>
+                    </a>
+                  ))}
+                </div>
+              )}
+
+              {kbQuery.length >= 2 && kbResults.length === 0 && !kbLoading && kbContent && (
+                <div className="absolute top-full left-0 right-0 bg-white border border-border rounded-b-lg shadow-lg z-50 px-4 py-3">
+                  <p className="text-xs text-muted-foreground">No results found for "{kbQuery}"</p>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
 
       {/* Hero */}
       <section className="relative py-16 md:py-24 overflow-hidden">

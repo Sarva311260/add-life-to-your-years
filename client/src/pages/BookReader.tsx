@@ -164,6 +164,8 @@ interface SearchResult {
   lineText: string;
   context: string;
   matchIndex: number;
+  heading: string;
+  chapterId: string;
 }
 
 function buildSearchResults(content: string, query: string): SearchResult[] {
@@ -171,9 +173,21 @@ function buildSearchResults(content: string, query: string): SearchResult[] {
   const lines = content.split("\n");
   const results: SearchResult[] = [];
   const lowerQuery = query.toLowerCase();
+  let lastHeading = "Introduction";
+  let lastChapterId = "introduction";
   lines.forEach((line, idx) => {
+    // Track the nearest heading above this line
+    if (/^#{1,3}\s/.test(line)) {
+      const headingText = line.replace(/^#+\s*/, "").replace(/[*_`>]/g, "").trim();
+      // Try to match to a known chapter ID
+      let matchedId = headingText.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+      for (const key of sortedHeadingKeys) {
+        if (headingText.includes(key)) { matchedId = headingIdMap[key]; break; }
+      }
+      lastHeading = headingText;
+      lastChapterId = matchedId;
+    }
     if (line.toLowerCase().includes(lowerQuery)) {
-      // Get surrounding context (strip markdown markers)
       const clean = line.replace(/^#+\s*/, "").replace(/[*_`>]/g, "");
       const contextStart = Math.max(0, idx - 1);
       const contextLines = lines.slice(contextStart, idx + 2)
@@ -185,10 +199,12 @@ function buildSearchResults(content: string, query: string): SearchResult[] {
         lineText: clean,
         context: contextLines.slice(0, 120) + (contextLines.length > 120 ? "…" : ""),
         matchIndex: results.length,
+        heading: lastHeading,
+        chapterId: lastChapterId,
       });
     }
   });
-  return results.slice(0, 50); // cap at 50 results
+  return results.slice(0, 50);
 }
 
 // Video entries for each recommendation (supports YouTube and Rumble)
@@ -582,18 +598,26 @@ export default function BookReader() {
             {searchResults.map((result, i) => (
               <button
                 key={i}
-                className="w-full text-left px-4 py-2.5 hover:bg-stone-50 border-b border-stone-100 last:border-0"
+                className="w-full text-left px-4 py-2.5 hover:bg-amber-50 border-b border-stone-100 last:border-0 group"
                 onClick={() => {
                   setCurrentResultIndex(i);
-                  const highlights = document.querySelectorAll(".search-highlight");
-                  // Find the i-th group of highlights
-                  if (highlights[i]) {
-                    highlights[i].scrollIntoView({ behavior: "smooth", block: "center" });
-                  }
+                  // First scroll to the chapter section
+                  scrollToChapter(result.chapterId);
+                  // Then after a short delay scroll to the specific highlight
+                  setTimeout(() => {
+                    const highlights = document.querySelectorAll(".search-highlight");
+                    if (highlights[i]) {
+                      highlights[i].scrollIntoView({ behavior: "smooth", block: "center" });
+                    }
+                  }, 300);
                   setSearchOpen(false);
                 }}
               >
-                <p className="text-xs text-stone-500 mb-0.5 truncate">{result.context}</p>
+                <div className="flex items-center gap-1.5 mb-0.5">
+                  <span className="text-xs font-semibold text-green-700 group-hover:text-green-800 truncate">{result.heading}</span>
+                  <span className="text-xs text-stone-400 shrink-0">→</span>
+                </div>
+                <p className="text-xs text-stone-500 truncate">{result.context}</p>
               </button>
             ))}
           </div>

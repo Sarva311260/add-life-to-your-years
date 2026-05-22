@@ -105,6 +105,7 @@ export default function AdminContacts({ adminToken }: Props) {
   const [formEmail, setFormEmail] = useState("");
   const [formPhone, setFormPhone] = useState("");
   const [formNotes, setFormNotes] = useState("");
+  const [formCategory, setFormCategory] = useState("General");
   const [formAffiliate, setFormAffiliate] = useState<number | "">(affiliates[0]?.id || "");
   const [formEnroll, setFormEnroll] = useState<number | "">("");
   const [enrollImport, setEnrollImport] = useState<number | "">("");
@@ -121,7 +122,7 @@ export default function AdminContacts({ adminToken }: Props) {
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   function resetForm() {
-    setFormName(""); setFormEmail(""); setFormPhone(""); setFormNotes(""); setFormEnroll("");
+    setFormName(""); setFormEmail(""); setFormPhone(""); setFormNotes(""); setFormCategory("General"); setFormEnroll("");
   }
 
   function handleCsvFile(e: React.ChangeEvent<HTMLInputElement>) {
@@ -221,6 +222,13 @@ export default function AdminContacts({ adminToken }: Props) {
               </select>
             </div>
             <div>
+              <label className="text-white/60 text-xs mb-1 block">Category</label>
+              <select value={formCategory} onChange={e => setFormCategory(e.target.value)}
+                className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500">
+                {["General", "Affiliate", "ASEA Lead", "Zeolite Lead"].map(c => <option key={c} value={c}>{c}</option>)}
+              </select>
+            </div>
+            <div>
               <label className="text-white/60 text-xs mb-1 block">Full Name *</label>
               <Input value={formName} onChange={e => setFormName(e.target.value)} placeholder="Jane Smith"
                 className="bg-white/10 border-emerald-700/30 text-white placeholder:text-white/30 text-sm" />
@@ -261,6 +269,7 @@ export default function AdminContacts({ adminToken }: Props) {
                 email: formEmail.trim() || undefined,
                 phone: formPhone.trim() || undefined,
                 notes: formNotes.trim() || undefined,
+                category: formCategory || undefined,
                 enrollSequenceId: formEnroll ? Number(formEnroll) : undefined,
               })}>
               {addMutation.isPending ? "Adding…" : "Add Contact"}
@@ -392,7 +401,12 @@ export default function AdminContacts({ adminToken }: Props) {
                     <div className="min-w-0">
                       <p className="text-white font-medium text-sm truncate">{c.name}</p>
                       <p className="text-white/40 text-xs truncate">{c.email || c.phone || "No contact info"}</p>
-                      {affiliate && <p className="text-emerald-400/60 text-xs">{affiliate.name}</p>}
+                      <div className="flex items-center gap-2">
+                        {affiliate && <p className="text-emerald-400/60 text-xs">{affiliate.name}</p>}
+                        {c.category && c.category !== "General" && (
+                          <span className="text-xs bg-emerald-900/40 text-emerald-300 px-1.5 py-0.5 rounded-full">{c.category}</span>
+                        )}
+                      </div>
                     </div>
                   </button>
                   <div className="flex items-center gap-1.5 flex-shrink-0">
