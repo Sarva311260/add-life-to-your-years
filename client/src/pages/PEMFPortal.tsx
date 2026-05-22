@@ -13,7 +13,7 @@ import HelpTip from "@/components/HelpTip";
 import AffiliateContacts from "./AffiliateContacts";
 import EmailTemplates from "./EmailTemplates";
 import { Input } from "@/components/ui/input";
-import RichTextEditor from "@/components/RichTextEditor";
+import BlockEmailBuilder from "@/components/BlockEmailBuilder";
 import AffiliateCustomLinks from "./AffiliateCustomLinks";
 
 const TOKEN_KEY = "affiliate_token";
@@ -1042,11 +1042,9 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
               </div>
               <div>
                 <label className="text-sm font-medium mb-1 block">Body</label>
-                <RichTextEditor
+                <BlockEmailBuilder
                   value={editingOverride.body}
                   onChange={(html) => setEditingOverride(o => o ? { ...o, body: html } : null)}
-                  placeholder="Email body..."
-                  minHeight={280}
                   token={token}
                 />
                 <p className="text-xs text-muted-foreground mt-1">
@@ -1084,11 +1082,9 @@ function DashboardScreen({ onLogout }: { onLogout: () => void }) {
               value={emailSubject}
               onChange={e => setEmailSubject(e.target.value)}
             />
-            <RichTextEditor
+            <BlockEmailBuilder
               value={emailBody}
               onChange={setEmailBody}
-              placeholder="Your message..."
-              minHeight={200}
               token={token}
             />
           </div>

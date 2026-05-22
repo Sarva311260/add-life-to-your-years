@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import RichTextEditor from "@/components/RichTextEditor";
+import BlockEmailBuilder from "@/components/BlockEmailBuilder";
 import HelpTip from "@/components/HelpTip";
 
 interface Props { token: string; }
@@ -722,11 +722,10 @@ export default function AffiliateContacts({ token }: Props) {
           </div>
           <div>
             <label className="text-emerald-300 text-xs font-medium block mb-1">Message</label>
-            <RichTextEditor
+            <BlockEmailBuilder
               value={emailBody}
               onChange={v => setEmailBody(v)}
               token={token}
-              placeholder="Write your message here. Use Insert to add personalised tags and video links."
             />
           </div>
           <p className="text-gray-500 text-xs">Tags like <code className="text-emerald-400">{"{{first_name}}"}</code> will be replaced with the contact's details when sent.</p>

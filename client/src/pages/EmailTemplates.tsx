@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { Plus, Pencil, Trash2, X, Check, FileText, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import RichTextEditor from "@/components/RichTextEditor";
+import BlockEmailBuilder from "@/components/BlockEmailBuilder";
 import HelpTip from "@/components/HelpTip";
 
 interface Props { token: string; }
@@ -114,11 +114,10 @@ export default function EmailTemplates({ token }: Props) {
           </div>
           <div>
             <label className="text-emerald-300 text-xs font-medium block mb-1">Email Body</label>
-            <RichTextEditor
+            <BlockEmailBuilder
               value={form.body}
               onChange={v => setForm(f => ({ ...f, body: v }))}
               token={token}
-              placeholder="Write your email here. Use the Insert button to add personalised tags and video links."
             />
           </div>
           <div className="flex gap-2 justify-end">
@@ -175,7 +174,7 @@ export default function EmailTemplates({ token }: Props) {
                   </div>
                   <div>
                     <label className="text-emerald-300 text-xs font-medium block mb-1">Email Body</label>
-                    <RichTextEditor
+                    <BlockEmailBuilder
                       value={editForm.body}
                       onChange={v => setEditForm(f => ({ ...f, body: v }))}
                       token={token}

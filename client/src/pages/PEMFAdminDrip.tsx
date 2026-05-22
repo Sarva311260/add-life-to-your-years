@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import RichTextEditor from "@/components/RichTextEditor";
+import BlockEmailBuilder from "@/components/BlockEmailBuilder";
 import { Badge } from "@/components/ui/badge";
 import {
   Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter,
@@ -135,11 +135,9 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
             onChange={e => setBroadcastSubject(e.target.value)}
             className="bg-white/10 border-emerald-700/40 text-white placeholder:text-emerald-300/40"
           />
-          <RichTextEditor
+          <BlockEmailBuilder
             value={broadcastBody}
             onChange={setBroadcastBody}
-            placeholder="Email body..."
-            minHeight={160}
             adminPassword={adminToken}
           />
           <Button
@@ -362,11 +360,9 @@ export default function PEMFAdminDrip({ adminToken }: Props) {
             </div>
             <div>
               <label className="text-sm font-medium text-foreground mb-1 block">Body</label>
-              <RichTextEditor
+              <BlockEmailBuilder
                 value={emailForm.body}
                 onChange={(html) => setEmailForm(f => ({ ...f, body: html }))}
-                placeholder="Email body... The affiliate's name and an unsubscribe link will be added automatically."
-                minHeight={240}
                 adminPassword={adminToken}
               />
               <p className="text-xs text-muted-foreground mt-1">
