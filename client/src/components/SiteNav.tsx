@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Leaf, Menu, X, User, LogOut } from "lucide-react";
+import { Menu, X, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAuth } from "@/_core/hooks/useAuth";
@@ -22,8 +22,8 @@ export default function SiteNav() {
     <header className="sticky top-0 left-0 right-0 z-50 bg-white/85 backdrop-blur-md shadow-md border-b border-white/40">
       <div className="container flex items-center justify-between h-14">
         {/* Logo / Home */}
-        <Link href="/" className="flex items-center gap-1.5 shrink-0">
-          <Leaf className="w-5 h-5 text-primary" />
+        <Link href="/" className="flex items-center gap-2 shrink-0">
+          <img src="/manus-storage/logo-favicon_d30c3a72.png" alt="Add Life to Your Years" className="w-9 h-9 object-contain" />
           <span className="font-serif text-sm font-semibold text-gray-900 hidden sm:block">
             Add Life to Your Years
           </span>

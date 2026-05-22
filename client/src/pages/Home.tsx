@@ -200,7 +200,7 @@ export default function Home() {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-transparent"}`}>
         <div className="container flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2">
-            <Leaf className="w-7 h-7 text-primary" />
+            <img src="/manus-storage/logo-favicon_d30c3a72.png" alt="Add Life to Your Years" className="w-10 h-10 object-contain" />
             <span className={`font-serif text-lg font-semibold ${scrolled ? "text-gray-900" : "text-white"}`}>Add Life to Your Years</span>
           </Link>
 
@@ -802,7 +802,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <Leaf className="w-5 h-5 text-primary" />
+                <img src="/manus-storage/logo-favicon_d30c3a72.png" alt="Add Life to Your Years" className="w-8 h-8 object-contain" />
                 <span className="font-serif font-semibold text-white">Add Life to Your Years</span>
               </div>
               <p className="text-sm leading-relaxed">

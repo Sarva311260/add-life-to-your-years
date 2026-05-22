@@ -175,7 +175,7 @@ export default function Book() {
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border/50">
         <div className="container flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2">
-            <Leaf className="w-5 h-5 text-primary" />
+            <img src="/manus-storage/logo-favicon_d30c3a72.png" alt="Add Life to Your Years" className="w-8 h-8 object-contain" />
             <span className="font-serif font-semibold text-foreground">Add Life to Your Years</span>
           </Link>
           <Link href="/">

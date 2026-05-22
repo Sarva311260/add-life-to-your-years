@@ -51,7 +51,7 @@ export default function Report() {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-green-50/30 to-white">
         <Card className="max-w-md w-full mx-4">
           <CardContent className="p-8 text-center">
-            <Leaf className="w-12 h-12 text-primary mx-auto mb-4" />
+            <img src="/manus-storage/logo-favicon_d30c3a72.png" alt="Add Life to Your Years" className="w-16 h-16 object-contain mx-auto mb-4" />
             <h2 className="text-xl font-bold mb-2">Sign In or Register</h2>
             <p className="text-muted-foreground mb-6">Please sign in or create a free account to view your evaluation report.</p>
             <a href={getLoginUrl(`/report/${evaluationId}`)}>
@@ -135,7 +135,7 @@ export default function Report() {
         {/* Report Header */}
         <div className="text-center mb-8 border-b border-border/50 pb-8">
           <div className="flex items-center justify-center gap-2 mb-3">
-            <Leaf className="w-8 h-8 text-primary" />
+            <img src="/manus-storage/logo-favicon_d30c3a72.png" alt="Add Life to Your Years" className="w-12 h-12 object-contain" />
             <h1 className="font-serif text-3xl font-bold text-foreground">Wellness Evaluation Report</h1>
           </div>
           <p className="text-muted-foreground">

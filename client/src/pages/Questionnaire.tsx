@@ -472,8 +472,8 @@ export default function Questionnaire() {
       <div className="min-h-screen bg-gradient-to-b from-green-50/30 to-white flex items-center justify-center p-4">
         <Card className="max-w-md w-full">
           <CardContent className="pt-8 pb-8 text-center">
-            <div className="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-6">
-              <Leaf className="w-8 h-8" />
+            <div className="w-16 h-16 flex items-center justify-center mx-auto mb-6">
+              <img src="/manus-storage/logo-favicon_d30c3a72.png" alt="Add Life to Your Years" className="w-16 h-16 object-contain" />
             </div>
             <h2 className="text-2xl font-bold mb-3">Sign In to Start Your Evaluation</h2>
             <p className="text-muted-foreground mb-2">
@@ -542,7 +542,7 @@ export default function Questionnaire() {
                 </button>
               )}
               <div className="flex items-center gap-2">
-                <Leaf className="w-4 h-4 text-primary" />
+                <img src="/manus-storage/logo-favicon_d30c3a72.png" alt="" className="w-4 h-4 object-contain" />
                 <span className="font-medium">{completedSteps}/{totalSteps} completed</span>
               </div>
             </div>
