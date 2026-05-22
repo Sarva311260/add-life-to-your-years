@@ -245,7 +245,7 @@ function InsertPicker({
   const assets = resolved?.assets || [];
 
   return (
-    <div ref={ref} className="absolute z-50 top-full left-0 mt-1 w-80 bg-[#1a2e1f] border border-emerald-800/40 rounded-xl shadow-2xl overflow-hidden">
+    <div ref={ref} className="absolute z-50 top-full right-0 mt-1 w-80 bg-[#1a2e1f] border border-emerald-800/40 rounded-xl shadow-2xl overflow-hidden">
       <div className="flex border-b border-white/10">
         {(["system", "global", "mine", "assets"] as const).map(t => (
           <button key={t} type="button" onClick={() => setTab(t)}
