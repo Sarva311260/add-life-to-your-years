@@ -164,7 +164,7 @@ export default function AdminContacts({ adminToken }: Props) {
   // The admin can see contacts but to send email we need to use the affiliate's token.
   // We'll add an adminSendEmail procedure to dripCampaign router.
 
-  const affiliateMap = new Map<number, { id: number; name: string; email: string }>(affiliates.map(a => [a.id, a]));
+  const affiliateMap = new Map<number, { id: number; name: string; email: string }>(affiliates.map((a: { id: number; name: string; email: string }) => [a.id, a] as [number, { id: number; name: string; email: string }]));
 
   return (
     <div className="space-y-6">
@@ -183,7 +183,7 @@ export default function AdminContacts({ adminToken }: Props) {
             className="bg-white/10 border border-emerald-800/30 rounded-lg px-3 py-1.5 text-white text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
           >
             <option value="">All brand partners</option>
-            {affiliates.map(a => <option key={a.id} value={a.id}>{a.name}</option>)}
+            {affiliates.map((a: { id: number; name: string; email: string }) => <option key={a.id} value={a.id}>{a.name}</option>)}
           </select>
         </div>
       </div>
@@ -217,7 +217,7 @@ export default function AdminContacts({ adminToken }: Props) {
               <select value={formAffiliate} onChange={e => setFormAffiliate(e.target.value ? Number(e.target.value) : "")}
                 className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500">
                 <option value="">Select brand partner…</option>
-                {affiliates.map(a => <option key={a.id} value={a.id}>{a.name}</option>)}
+                {affiliates.map((a: { id: number; name: string; email: string }) => <option key={a.id} value={a.id}>{a.name}</option>)}
               </select>
             </div>
             <div>
@@ -246,7 +246,7 @@ export default function AdminContacts({ adminToken }: Props) {
                 <select value={formEnroll} onChange={e => setFormEnroll(e.target.value ? Number(e.target.value) : "")}
                   className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500">
                   <option value="">No sequence</option>
-                  {sequences.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+                  {sequences.map((s: { id: number; name: string }) => <option key={s.id} value={s.id}>{s.name}</option>)}
                 </select>
               </div>
             )}
@@ -284,7 +284,7 @@ export default function AdminContacts({ adminToken }: Props) {
               <select value={importAffiliate} onChange={e => setImportAffiliate(e.target.value ? Number(e.target.value) : "")}
                 className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500">
                 <option value="">Select brand partner…</option>
-                {affiliates.map(a => <option key={a.id} value={a.id}>{a.name}</option>)}
+                {affiliates.map((a: { id: number; name: string; email: string }) => <option key={a.id} value={a.id}>{a.name}</option>)}
               </select>
             </div>
             {sequences.length > 0 && (
@@ -331,7 +331,7 @@ export default function AdminContacts({ adminToken }: Props) {
               <select value={importAffiliate} onChange={e => setImportAffiliate(e.target.value ? Number(e.target.value) : "")}
                 className="w-full bg-white/10 border border-emerald-700/30 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500">
                 <option value="">Select brand partner…</option>
-                {affiliates.map(a => <option key={a.id} value={a.id}>{a.name}</option>)}
+                {affiliates.map((a: { id: number; name: string; email: string }) => <option key={a.id} value={a.id}>{a.name}</option>)}
               </select>
             </div>
             {sequences.length > 0 && (
