@@ -164,6 +164,7 @@ export const affiliateContactsRouter = router({
       tags: z.string().max(500).optional().or(z.literal("")),
       reminderAt: z.number().optional(),
       reminderNote: z.string().max(500).optional().or(z.literal("")),
+      category: z.string().max(100).optional().or(z.literal("")),
       enrollSequenceId: z.number().optional(),
     }))
     .mutation(async ({ input }) => {
@@ -187,6 +188,7 @@ export const affiliateContactsRouter = router({
         tags: input.tags || null,
         reminderAt: input.reminderAt ?? null,
         reminderNote: input.reminderNote || null,
+        category: input.category || "General",
         source: "manual",
         enrolledSequenceId: input.enrollSequenceId ?? null,
         enrolledAt: input.enrollSequenceId ? new Date() : null,
@@ -226,6 +228,7 @@ export const affiliateContactsRouter = router({
       tags: z.string().max(500).optional().or(z.literal("")),
       reminderAt: z.number().nullable().optional(),
       reminderNote: z.string().max(500).optional().or(z.literal("")),
+      category: z.string().max(100).optional().or(z.literal("")),
     }))
     .mutation(async ({ input }) => {
       const payload = await verifyAffiliateToken(input.token);
@@ -244,6 +247,7 @@ export const affiliateContactsRouter = router({
       if (input.tags !== undefined) data.tags = input.tags || null;
       if (input.reminderAt !== undefined) data.reminderAt = input.reminderAt;
       if (input.reminderNote !== undefined) data.reminderNote = input.reminderNote || null;
+      if (input.category !== undefined) data.category = input.category || "General";
       await updateAffiliateContact(input.id, payload.affiliateId, data as any);
       return { success: true };
     }),

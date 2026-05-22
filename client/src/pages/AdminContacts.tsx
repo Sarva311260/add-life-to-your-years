@@ -79,23 +79,23 @@ export default function AdminContacts({ adminToken }: Props) {
   // Mutations
   const addMutation = trpc.affiliateContacts.adminAdd.useMutation({
     onSuccess: () => { utils.affiliateContacts.adminList.invalidate(); toast.success("Contact added"); setImportMode(null); resetForm(); },
-    onError: (e) => toast.error(e.message || "Failed to add contact"),
+    onError: (e: { message?: string }) => toast.error(e.message || "Failed to add contact"),
   });
   const deleteMutation = trpc.affiliateContacts.adminDelete.useMutation({
     onSuccess: () => { utils.affiliateContacts.adminList.invalidate(); toast.success("Contact deleted"); },
-    onError: (e) => toast.error(e.message || "Failed to delete contact"),
+    onError: (e: { message?: string }) => toast.error(e.message || "Failed to delete contact"),
   });
   const csvMutation = trpc.affiliateContacts.adminImportCsv.useMutation({
-    onSuccess: (d) => { utils.affiliateContacts.adminList.invalidate(); toast.success(`Imported ${d.imported} contacts`); setImportMode(null); },
-    onError: (e) => toast.error(e.message || "CSV import failed"),
+    onSuccess: (d) => { utils.affiliateContacts.invalidate(); toast.success(`Imported ${d.imported} contacts`); setImportMode(null); },
+    onError: (e: { message?: string }) => toast.error(e.message || "CSV import failed"),
   });
   const vcfMutation = trpc.affiliateContacts.adminImportVcf.useMutation({
-    onSuccess: (d) => { utils.affiliateContacts.adminList.invalidate(); toast.success(`Imported ${d.imported} contacts`); setImportMode(null); },
-    onError: (e) => toast.error(e.message || "vCard import failed"),
+    onSuccess: (d: { imported: number }) => { utils.affiliateContacts.invalidate(); toast.success(`Imported ${d.imported} contacts`); setImportMode(null); },
+    onError: (e: { message?: string }) => toast.error(e.message || "vCard import failed"),
   });
   const sendEmailMutation = trpc.drip.affiliateSendEmailToLead.useMutation({
     onSuccess: () => { toast.success("Email sent"); setEmailContact(null); setEmailSubject(""); setEmailBody(""); },
-    onError: (e) => toast.error(e.message || "Failed to send email"),
+    onError: (e: { message?: string }) => toast.error(e.message || "Failed to send email"),
   });
 
   // Form state

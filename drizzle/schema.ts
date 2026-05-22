@@ -529,6 +529,8 @@ export const affiliateContacts = mysqlTable("affiliate_contacts", {
   reminderAt: int("reminderAt"),
   /** Reminder note */
   reminderNote: text("reminderNote"),
+  /** Contact category e.g. Affiliate, ASEA Lead, Zeolite Lead, PEMF Lead, General */
+  category: varchar("category", { length: 100 }).default("General"),
   /** How this contact was added: manual | csv | vcf | enquiry */
   source: varchar("source", { length: 20 }).notNull().default("manual"),
   /** If enrolled in a drip campaign, the sequence ID */
