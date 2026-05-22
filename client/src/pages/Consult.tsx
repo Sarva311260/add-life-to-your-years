@@ -569,7 +569,7 @@ export default function Consult() {
                 <Heart className="w-8 h-8 text-primary mx-auto mb-3" />
                 <h3 className="font-semibold text-foreground mb-1">Holistic Approach</h3>
                 <p className="text-sm text-muted-foreground">
-                  Based on 8 health factors and 17 evidence-based recommendations
+                  Based on 8 health factors and 18 evidence-based recommendations
                 </p>
               </div>
               <div className="text-center p-6">
