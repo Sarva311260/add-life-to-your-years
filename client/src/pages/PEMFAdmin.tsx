@@ -400,7 +400,7 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
         )}
         {activeView === "contacts" && (
           <div className="bg-[#0d3b22]/60 border border-emerald-800/30 rounded-2xl p-6">
-            <AdminContacts adminToken={adminToken} />
+            <AdminContacts adminToken={adminToken} adminPassword={getAdminPassword()} />
           </div>
         )}
         {activeView === "affiliates" && (

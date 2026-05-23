@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import BlockEmailBuilder from "@/components/BlockEmailBuilder";
 
-interface Props { adminToken: string; }
+interface Props { adminToken: string; adminPassword?: string; }
 type ImportMode = "manual" | "csv" | "vcf" | null;
 
 const TUTORIALS = {
@@ -61,7 +61,7 @@ const TUTORIALS = {
   },
 };
 
-export default function AdminContacts({ adminToken }: Props) {
+export default function AdminContacts({ adminToken, adminPassword }: Props) {
   const utils = trpc.useUtils();
 
   // Filter
@@ -465,7 +465,7 @@ export default function AdminContacts({ adminToken }: Props) {
               <BlockEmailBuilder
                 value={emailBody}
                 onChange={setEmailBody}
-                adminPassword={adminToken}
+                adminPassword={adminPassword || adminToken}
               />
             </div>
             <p className="text-white/30 text-xs">
