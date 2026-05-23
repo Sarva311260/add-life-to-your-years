@@ -595,22 +595,6 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     ],
   },
   {
-    id: "appendix-mitochondria",
-    number: 0,
-    title: "Mitochondrial Health — Five Evidence-Based Strategies to Restore Cellular Energy",
-    description:
-      "Every cell in your body runs on energy produced by mitochondria. This appendix presents five evidence-based strategies — exercise (HIIT, Zone 2, resistance), sleep and mitophagy, morning light and circadian alignment, Urolithin A from pomegranates, and time-restricted eating — that activate the molecular pathways responsible for mitochondrial renewal.",
-    color: "bg-orange-100 text-orange-800 border-orange-200",
-    videos: [
-      {
-        youtubeId: "71VCkTZYRrQ",
-        title: "Mitochondrial Health — 5 Ways to Improve Cellular Energy — Dr. William Li",
-        description:
-          "Dr. William Li covers the five evidence-based strategies for mitochondrial health: exercise (HIIT for biogenesis, Zone 2 for efficiency, resistance for density), sleep and the PINK1/Parkin mitophagy pathway, morning light and circadian-mitochondrial synchrony, Urolithin A from pomegranates as a mitophagy activator, and time-restricted eating to trigger AMPK and mitochondrial quality control.",
-      },
-    ],
-  },
-  {
     id: "appendix-lavender-oil",
     number: 0,
     title: "Lavender Oil — Nature's Answer to Anxiety",
@@ -623,6 +607,22 @@ const RECOMMENDATIONS: RecommendationSection[] = [
         title: "Lavender Oil — Nature's Answer to Anxiety",
         description:
           "Dr. Eric Berg explains how Silexan (oral lavender oil) compares to benzodiazepines for anxiety, the GABA mechanism, the clinical trial evidence, and why the pharmaceutical-grade extract is essential for therapeutic effect.",
+      },
+    ],
+  },
+  {
+    id: "appendix-mitochondria",
+    number: 0,
+    title: "Mitochondrial Health — Five Evidence-Based Strategies to Restore Cellular Energy",
+    description:
+      "Every cell in your body runs on energy produced by mitochondria. This guide presents five evidence-based strategies — exercise (HIIT, Zone 2, resistance), sleep and mitophagy, morning light and circadian alignment, Urolithin A from pomegranates, and time-restricted eating — that activate the molecular pathways responsible for mitochondrial renewal.",
+    color: "bg-orange-100 text-orange-800 border-orange-200",
+    videos: [
+      {
+        youtubeId: "71VCkTZYRrQ",
+        title: "Mitochondrial Health — 5 Ways to Improve Cellular Energy — Dr. William Li",
+        description:
+          "Dr. William Li covers the five evidence-based strategies for mitochondrial health: exercise (HIIT for biogenesis, Zone 2 for efficiency, resistance for density), sleep and the PINK1/Parkin mitophagy pathway, morning light and circadian-mitochondrial synchrony, Urolithin A from pomegranates as a mitophagy activator, and time-restricted eating to trigger AMPK and mitochondrial quality control.",
       },
     ],
   },
