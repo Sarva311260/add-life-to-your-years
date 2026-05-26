@@ -15,8 +15,15 @@ import { createRequire } from "module";
 
 const execFileAsync = promisify(execFile);
 
-/** Get the ffmpeg binary path — prefer ffmpeg-static, fall back to system ffmpeg */
+/** Get the ffmpeg binary path — prefer @ffmpeg-installer, then ffmpeg-static, then system */
 function getFfmpegPath(): string {
+  try {
+    const require = createRequire(import.meta.url);
+    const { path: p } = require("@ffmpeg-installer/ffmpeg") as { path: string };
+    if (p) return p;
+  } catch {
+    // fall through
+  }
   try {
     const require = createRequire(import.meta.url);
     const p = require("ffmpeg-static") as string;

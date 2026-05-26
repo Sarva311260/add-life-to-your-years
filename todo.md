@@ -428,3 +428,6 @@
 - [x] Ensure all page titles follow "[Page Title] | Add Life to Your Years" pattern
 - [x] Add smooth scrolling globally (html { scroll-behavior: smooth } in index.css)
 - [x] Fix TypeScript implicit any errors in BlogPost.tsx and BlogIndex.tsx (t/tag parameters)
+- [x] Fix YouTube token persistence: schema column name mismatch (updated_at vs updatedAt) — fixed to match actual DB column
+- [x] Fix video generation: getFfmpegPath now uses @ffmpeg-installer/ffmpeg (bundled binary) instead of ffmpeg-static (missing in production)
+- [x] Update ElevenLabs API key after account upgrade
