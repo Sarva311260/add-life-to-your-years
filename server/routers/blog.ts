@@ -304,7 +304,7 @@ export const blogRouter = router({
   /** Get the YouTube OAuth authorisation URL (admin only) */
   getYouTubeAuthUrl: protectedProcedure.query(async ({ ctx }) => {
     if (ctx.user.role !== "admin") throw new TRPCError({ code: "FORBIDDEN" });
-    return { url: getAuthUrl(), isAuthorised: hasValidTokens() };
+    return { url: getAuthUrl(), isAuthorised: await hasValidTokens() };
   }),
 
   /** Publish the post's video to YouTube (admin only) */

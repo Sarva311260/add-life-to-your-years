@@ -15,7 +15,7 @@ export function registerYouTubeRoutes(app: Express) {
     try {
       const oauth2Client = getOAuth2Client();
       const { tokens } = await oauth2Client.getToken(code);
-      saveTokens(tokens);
+      await saveTokens(tokens);
       console.log("[YouTube] OAuth tokens saved successfully");
       // Redirect back to the admin panel with success flag
       res.redirect("/pemf/admin?youtube=authorised");

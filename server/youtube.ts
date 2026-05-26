@@ -1,6 +1,7 @@
 /**
  * YouTube Data API v3 helpers
  * Handles OAuth2 token management and video uploads.
+ * Tokens are stored in the database (system_settings table) for persistence across deployments.
  */
 import { google } from "googleapis";
 import { ENV } from "./_core/env";
@@ -25,40 +26,78 @@ export function getAuthUrl(): string {
   const oauth2Client = getOAuth2Client();
   return oauth2Client.generateAuthUrl({
     access_type: "offline",
-    scope: ["https://www.googleapis.com/auth/youtube.upload", "https://www.googleapis.com/auth/youtube"],
+    scope: [
+      "https://www.googleapis.com/auth/youtube.upload",
+      "https://www.googleapis.com/auth/youtube",
+    ],
     prompt: "consent", // force refresh token on every auth
   });
 }
 
-// ─── Token persistence (stored in a local JSON file on the server) ────────────
-// In production this persists across restarts because the file lives in the
-// container's writable layer. For a more robust solution, store in DB.
+// ─── Token persistence (stored in DB system_settings table) ──────────────────
+const YOUTUBE_TOKEN_KEY = "youtube_oauth_tokens";
 
-const TOKEN_FILE = path.join(os.homedir(), ".youtube_tokens.json");
-
-export function saveTokens(tokens: object) {
-  fs.writeFileSync(TOKEN_FILE, JSON.stringify(tokens, null, 2));
-}
-
-export function loadTokens(): Record<string, string> | null {
+export async function saveTokens(tokens: object): Promise<void> {
   try {
-    if (!fs.existsSync(TOKEN_FILE)) return null;
-    return JSON.parse(fs.readFileSync(TOKEN_FILE, "utf-8"));
-  } catch {
-    return null;
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    if (!db) throw new Error("No DB");
+    // Use raw execute since system_settings is not in Drizzle schema
+    await (db as unknown as { execute: (sql: string, params: unknown[]) => Promise<unknown> }).execute(
+      "INSERT INTO system_settings (`key`, value, updated_at) VALUES (?, ?, NOW()) ON DUPLICATE KEY UPDATE value = VALUES(value), updated_at = NOW()",
+      [YOUTUBE_TOKEN_KEY, JSON.stringify(tokens)]
+    );
+    console.log("[YouTube] Tokens saved to database");
+  } catch (err) {
+    console.error("[YouTube] Failed to save tokens to DB, falling back to file:", err);
+    const TOKEN_FILE = path.join(os.homedir(), ".youtube_tokens.json");
+    fs.writeFileSync(TOKEN_FILE, JSON.stringify(tokens, null, 2));
   }
 }
 
-export function hasValidTokens(): boolean {
-  const tokens = loadTokens();
+export async function loadTokens(): Promise<Record<string, string> | null> {
+  try {
+    const { getDb } = await import("./db");
+    const db = await getDb();
+    if (!db) throw new Error("No DB");
+    const result = await (db as unknown as { execute: (sql: string, params: unknown[]) => Promise<unknown> }).execute(
+      "SELECT value FROM system_settings WHERE `key` = ?",
+      [YOUTUBE_TOKEN_KEY]
+    );
+    // MySQL2 returns [rows, fields]
+    const rows = Array.isArray(result) ? result[0] : result;
+    const row = Array.isArray(rows) ? rows[0] : null;
+    if (!row || !(row as Record<string, string>).value) return null;
+    return JSON.parse((row as Record<string, string>).value);
+  } catch {
+    // Fallback to file
+    try {
+      const TOKEN_FILE = path.join(os.homedir(), ".youtube_tokens.json");
+      if (!fs.existsSync(TOKEN_FILE)) return null;
+      return JSON.parse(fs.readFileSync(TOKEN_FILE, "utf-8"));
+    } catch {
+      return null;
+    }
+  }
+}
+
+export async function hasValidTokens(): Promise<boolean> {
+  const tokens = await loadTokens();
   return !!(tokens?.refresh_token);
 }
 
 export async function getAuthedClient() {
-  const tokens = loadTokens();
-  if (!tokens?.refresh_token) throw new Error("YouTube not authorised. Please authorise first.");
+  const tokens = await loadTokens();
+  if (!tokens?.refresh_token) {
+    throw new Error("YouTube not authorised. Please connect YouTube first.");
+  }
   const oauth2Client = getOAuth2Client();
   oauth2Client.setCredentials(tokens);
+  // Auto-save refreshed tokens
+  oauth2Client.on("tokens", (newTokens) => {
+    const merged = { ...tokens, ...newTokens };
+    saveTokens(merged).catch(console.error);
+  });
   return oauth2Client;
 }
 
@@ -83,10 +122,18 @@ export async function uploadVideoToYouTube({
 
   await new Promise<void>((resolve, reject) => {
     const file = fs.createWriteStream(tmpFile);
-    https.get(videoUrl, (res) => {
+    const request = https.get(videoUrl, (res) => {
+      if (res.statusCode && res.statusCode >= 400) {
+        reject(new Error(`Failed to download video: HTTP ${res.statusCode}`));
+        return;
+      }
       res.pipe(file);
-      file.on("finish", () => { file.close(); resolve(); });
-    }).on("error", (err) => {
+      file.on("finish", () => {
+        file.close();
+        resolve();
+      });
+    });
+    request.on("error", (err) => {
       fs.unlink(tmpFile, () => {});
       reject(err);
     });
@@ -118,7 +165,6 @@ export async function uploadVideoToYouTube({
     if (!videoId) throw new Error("YouTube did not return a video ID");
     return videoId;
   } finally {
-    // Clean up temp file
     fs.unlink(tmpFile, () => {});
   }
 }
