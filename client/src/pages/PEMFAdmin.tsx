@@ -392,7 +392,7 @@ function VideoStatusPoller({ postId, onDone }: { postId: number; onDone: () => v
   if (data.status === "error") {
     return (
       <div className="mt-2 text-xs text-red-400 flex items-center gap-1">
-        <X className="w-3.5 h-3.5" /> Video generation failed: {data.videoError || "Unknown error"}
+        <X className="w-3.5 h-3.5" /> YouTube upload failed: {data.videoError || "Unknown error"}
       </div>
     );
   }
@@ -436,9 +436,9 @@ function BlogPostsPanel() {
     onSuccess: (_data, variables) => {
       // Add to pending set — poller will detect when done
       setPendingVideoIds(prev => new Set(prev).add(variables.id));
-      toast.info("Video generation started — this takes 1-3 minutes. Progress shown below.");
+      toast.info("Uploading to YouTube — this takes 2-5 minutes depending on audio length. Progress shown below.");
     },
-    onError: (e) => toast.error(e.message || "Video generation failed"),
+    onError: (e) => toast.error(e.message || "YouTube upload failed"),
   });
 
   if (isLoading) {
@@ -576,7 +576,7 @@ function BlogPostsPanel() {
                         )}
                       </button>
                     )}
-                    {/* Generate Video button */}
+                    {/* Publish to YouTube button (audio upload) */}
                     <button
                       onClick={() => generateVideo.mutate({ id: post.id })}
                       disabled={isGeneratingAudio || isGeneratingVideo}
@@ -589,16 +589,16 @@ function BlogPostsPanel() {
                       }`}
                     >
                       {isGeneratingVideo ? (
-                        <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Making video…</>
+                        <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Uploading…</>
                       ) : postVideoUrl ? (
-                        <><RefreshCw className="w-3.5 h-3.5" /> Redo Video</>
+                        <><RefreshCw className="w-3.5 h-3.5" /> Re-upload to YouTube</>
                       ) : (
-                        <><Video className="w-3.5 h-3.5" /> Generate Video</>
+                        <><Youtube className="w-3.5 h-3.5" /> Upload to YouTube</>
                       )}
                     </button>
                   </div>
                 </div>
-                {/* Video generation progress bar — uses async poller when job is running in background */}
+                {/* YouTube upload progress — polls every 5s until done */}
                 {isVideoJobPending && (
                   <VideoStatusPoller
                     postId={post.id}
@@ -609,7 +609,7 @@ function BlogPostsPanel() {
                         return next;
                       });
                       utils2.blog.listAll.invalidate();
-                      toast.success("Video ready!");
+                      toast.success("Published to YouTube!");
                     }}
                   />
                 )}

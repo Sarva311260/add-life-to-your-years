@@ -345,9 +345,10 @@ export const blogRouter = router({
     }),
 
   /**
-   * Start async video generation for a blog post (admin only).
-   * Returns immediately with { started: true } — the actual ffmpeg work
-   * runs in the background. Poll getVideoStatus to check progress.
+   * Publish a blog post's audio directly to YouTube as a video.
+   * Uses the full-length audio (audioUrl) + cover image as thumbnail.
+   * No ffmpeg encoding — YouTube handles all processing.
+   * Returns immediately with { started: true } — poll getVideoStatus for completion.
    */
   generateVideo: protectedProcedure
     .input(z.object({ id: z.number().int() }))
@@ -358,22 +359,69 @@ export const blogRouter = router({
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
 
-      // Validate post exists and has a cover image before kicking off the job
       const [post] = await db.select().from(blogPosts).where(eq(blogPosts.id, input.id)).limit(1);
       if (!post) throw new TRPCError({ code: "NOT_FOUND" });
-      if (!post.coverImageUrl) {
-        throw new TRPCError({ code: "BAD_REQUEST", message: "Post has no cover image — add a hero image first" });
+      if (!post.audioUrl) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "No audio generated yet — generate audio first" });
       }
 
       // If already pending, don't start a second job
       if (post.videoStatus === "pending") {
-        return { started: false, message: "Video generation already in progress" };
+        return { started: false, message: "Upload already in progress" };
       }
 
-      // Fire and forget — do NOT await this
-      runVideoGenerationJob(input.id).catch((err) => {
-        console.error("[generateVideo] Unhandled job error for post", input.id, err);
-      });
+      // Mark as pending immediately
+      await db.update(blogPosts)
+        .set({ videoStatus: "pending", videoError: null })
+        .where(eq(blogPosts.id, input.id));
+
+      // Fire and forget — upload audio to YouTube in background
+      (async () => {
+        try {
+          const description = [
+            post.excerpt ?? "",
+            "",
+            `Read the full article: https://addlifetoyouryears.org/blog/${post.slug}`,
+            "",
+            "Add Life to Your Years — evidence-based health, wellness and vitality.",
+            "Subscribe: https://www.youtube.com/@addlifetoyouryears",
+            "Website: https://addlifetoyouryears.org",
+          ].join("\n");
+          const tags = post.tags
+            ? post.tags.split(",").map((t: string) => t.trim()).filter(Boolean)
+            : ["wellness", "health", "plant-based", "vitality", "longevity"];
+
+          const videoId = await uploadVideoToYouTube({
+            audioUrl: post.audioUrl!,
+            thumbnailUrl: post.coverImageUrl ?? undefined,
+            title: post.title,
+            description,
+            tags,
+          });
+
+          const db2 = await getDb();
+          if (db2) {
+            await db2.update(blogPosts)
+              .set({
+                youtubeVideoId: videoId,
+                videoUrl: `https://www.youtube.com/watch?v=${videoId}`,
+                videoStatus: "done",
+                videoError: null,
+              })
+              .where(eq(blogPosts.id, input.id));
+          }
+          console.log(`[generateVideo] Published to YouTube: ${videoId}`);
+        } catch (err) {
+          const msg = err instanceof Error ? err.message : String(err);
+          console.error(`[generateVideo] Upload failed for post ${input.id}:`, msg);
+          const db2 = await getDb();
+          if (db2) {
+            await db2.update(blogPosts)
+              .set({ videoStatus: "error", videoError: msg })
+              .where(eq(blogPosts.id, input.id));
+          }
+        }
+      })();
 
       return { started: true };
     }),
@@ -413,7 +461,7 @@ export const blogRouter = router({
     return { url: getAuthUrl(), isAuthorised: await hasValidTokens() };
   }),
 
-  /** Publish the post's video to YouTube (admin only) */
+  /** Re-publish the post's audio to YouTube (admin only, for retries) */
   publishToYouTube: protectedProcedure
     .input(z.object({ id: z.number().int() }))
     .mutation(async ({ ctx, input }) => {
@@ -423,9 +471,8 @@ export const blogRouter = router({
 
       const [post] = await db.select().from(blogPosts).where(eq(blogPosts.id, input.id)).limit(1);
       if (!post) throw new TRPCError({ code: "NOT_FOUND" });
-      if (!post.videoUrl) throw new TRPCError({ code: "BAD_REQUEST", message: "No video generated yet. Generate a video first." });
+      if (!post.audioUrl) throw new TRPCError({ code: "BAD_REQUEST", message: "No audio generated yet. Generate audio first." });
 
-      // Build description from excerpt + site link
       const description = [
         post.excerpt ?? "",
         "",
@@ -436,20 +483,21 @@ export const blogRouter = router({
         "Website: https://addlifetoyouryears.org",
       ].join("\n");
 
-      // Parse tags from comma-separated string
       const tags = post.tags
         ? post.tags.split(",").map((t: string) => t.trim()).filter(Boolean)
         : ["wellness", "health", "plant-based", "vitality", "longevity"];
 
       const videoId = await uploadVideoToYouTube({
-        videoUrl: post.videoUrl,
+        audioUrl: post.audioUrl,
+        thumbnailUrl: post.coverImageUrl ?? undefined,
         title: post.title,
         description,
         tags,
       });
 
-      // Save YouTube video ID to the post
-      await db.update(blogPosts).set({ youtubeVideoId: videoId }).where(eq(blogPosts.id, input.id));
+      await db.update(blogPosts)
+        .set({ youtubeVideoId: videoId, videoUrl: `https://www.youtube.com/watch?v=${videoId}`, videoStatus: "done" })
+        .where(eq(blogPosts.id, input.id));
 
       return { videoId, youtubeUrl: `https://www.youtube.com/watch?v=${videoId}` };
     }),
