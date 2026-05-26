@@ -431,3 +431,4 @@
 - [x] Fix YouTube token persistence: schema column name mismatch (updated_at vs updatedAt) — fixed to match actual DB column
 - [x] Fix video generation: getFfmpegPath now uses @ffmpeg-installer/ffmpeg (bundled binary) instead of ffmpeg-static (missing in production)
 - [x] Update ElevenLabs API key after account upgrade
+- [ ] Fix YouTube channel banner — text is getting cut off on the right side (banner image needs to be redesigned so all text fits within YouTube's safe zone for all screen sizes)

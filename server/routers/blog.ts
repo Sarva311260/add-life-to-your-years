@@ -66,6 +66,132 @@ function stripMarkdown(md: string): string {
     .trim();
 }
 
+/**
+ * Background video generation job — runs entirely outside the HTTP request lifecycle.
+ * Saves status to DB so the frontend can poll for completion.
+ */
+async function runVideoGenerationJob(postId: number): Promise<void> {
+  const db = await getDb();
+  if (!db) {
+    console.error("[VideoJob] getDb() returned null for post", postId);
+    return;
+  }
+
+  try {
+    // Mark as pending
+    await db.update(blogPosts)
+      .set({ videoStatus: "pending", videoError: null })
+      .where(eq(blogPosts.id, postId));
+
+    // Fetch post
+    const [post] = await db.select().from(blogPosts).where(eq(blogPosts.id, postId)).limit(1);
+    if (!post) throw new Error("Post not found");
+    if (!post.coverImageUrl) throw new Error("Post has no cover image — add a hero image first");
+
+    console.log(`[VideoJob] Starting video generation for post ${postId}: "${post.title}"`);
+
+    // Ensure audio exists (generate if missing)
+    let audioUrl = post.audioUrl;
+    if (!audioUrl) {
+      const apiKey = process.env.ELEVENLABS_API_KEY;
+      if (!apiKey) throw new Error("ElevenLabs API key not configured");
+      const cleanText = `${post.title}.\n\n${stripMarkdown(post.content)}`;
+      console.log(`[VideoJob] Generating audio for post ${postId}...`);
+      const resp = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${ELEVENLABS_VOICE_ID}`, {
+        method: "POST",
+        headers: { "xi-api-key": apiKey, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          text: cleanText,
+          model_id: ELEVENLABS_MODEL,
+          voice_settings: { stability: 0.5, similarity_boost: 0.75, style: 0.0, use_speaker_boost: true },
+        }),
+      });
+      if (!resp.ok) {
+        const errText = await resp.text();
+        throw new Error(`ElevenLabs error ${resp.status}: ${errText.substring(0, 200)}`);
+      }
+      const audioBuffer = Buffer.from(await resp.arrayBuffer());
+      const audioKey = `blog-audio/${post.slug}-${Date.now()}.mp3`;
+      const { url } = await storagePut(audioKey, audioBuffer, "audio/mpeg");
+      audioUrl = url;
+      await db.update(blogPosts).set({ audioUrl }).where(eq(blogPosts.id, postId));
+      console.log(`[VideoJob] Audio generated and saved for post ${postId}`);
+    }
+
+    // Download hero image
+    console.log(`[VideoJob] Downloading cover image for post ${postId}...`);
+    const imgResp = await fetch(post.coverImageUrl);
+    if (!imgResp.ok) throw new Error("Failed to download cover image");
+    const imgBuffer = Buffer.from(await imgResp.arrayBuffer());
+    const imgExt = post.coverImageUrl.match(/\.(jpe?g|png|webp)/i)?.[1] ?? "jpg";
+
+    // Download audio
+    console.log(`[VideoJob] Downloading audio for post ${postId}...`);
+    const audResp = await fetch(audioUrl);
+    if (!audResp.ok) throw new Error("Failed to download audio");
+    const audBuffer = Buffer.from(await audResp.arrayBuffer());
+
+    // Write temp files
+    const tmpDir = await mkdtemp(join(tmpdir(), "blog-video-"));
+    const imgPath = join(tmpDir, `cover.${imgExt}`);
+    const audPath = join(tmpDir, "audio.mp3");
+    const outPath = join(tmpDir, "output.mp4");
+
+    try {
+      await writeFile(imgPath, imgBuffer);
+      await writeFile(audPath, audBuffer);
+
+      // Run ffmpeg: static image + audio → MP4 (H.264 + AAC, 1080p max, YouTube-compatible)
+      const ffmpeg = getFfmpegPath();
+      console.log(`[VideoJob] Running ffmpeg for post ${postId} using binary: ${ffmpeg}`);
+      await execFileAsync(ffmpeg, [
+        "-loop", "1",
+        "-i", imgPath,
+        "-i", audPath,
+        "-c:v", "libx264",
+        "-tune", "stillimage",
+        "-c:a", "aac",
+        "-b:a", "192k",
+        "-pix_fmt", "yuv420p",
+        "-vf", "scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2:black",
+        "-shortest",
+        "-movflags", "+faststart",
+        "-y",
+        outPath,
+      ], { timeout: 600_000 }); // 10 min max
+
+      // Upload to S3
+      console.log(`[VideoJob] Uploading video to S3 for post ${postId}...`);
+      const videoBuffer = await readFile(outPath);
+      const videoKey = `blog-video/${post.slug}-${Date.now()}.mp4`;
+      const { url: videoUrl } = await storagePut(videoKey, videoBuffer, "video/mp4");
+
+      // Save URL + mark done
+      await db.update(blogPosts)
+        .set({ videoUrl, videoStatus: "done", videoError: null })
+        .where(eq(blogPosts.id, postId));
+
+      console.log(`[VideoJob] Video generation complete for post ${postId}: ${videoUrl}`);
+    } finally {
+      // Cleanup temp files
+      await Promise.allSettled([unlink(imgPath), unlink(audPath), unlink(outPath)]);
+    }
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error(`[VideoJob] Video generation failed for post ${postId}:`, msg);
+    try {
+      const db2 = await getDb();
+      if (db2) {
+        await db2.update(blogPosts)
+          .set({ videoStatus: "error", videoError: msg })
+          .where(eq(blogPosts.id, postId));
+      }
+    } catch (dbErr) {
+      console.error("[VideoJob] Failed to save error status to DB:", dbErr);
+    }
+  }
+}
+
 export const blogRouter = router({
   /** List all published posts (public) */
   list: publicProcedure.query(async () => {
@@ -211,7 +337,11 @@ export const blogRouter = router({
       return { success: true, audioUrl: url };
     }),
 
-  /** Generate video for a blog post: hero image + ElevenLabs audio → MP4 (admin only) */
+  /**
+   * Start async video generation for a blog post (admin only).
+   * Returns immediately with { started: true } — the actual ffmpeg work
+   * runs in the background. Poll getVideoStatus to check progress.
+   */
   generateVideo: protectedProcedure
     .input(z.object({ id: z.number().int() }))
     .mutation(async ({ ctx, input }) => {
@@ -221,91 +351,53 @@ export const blogRouter = router({
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
 
-      // Fetch the post
+      // Validate post exists and has a cover image before kicking off the job
       const [post] = await db.select().from(blogPosts).where(eq(blogPosts.id, input.id)).limit(1);
       if (!post) throw new TRPCError({ code: "NOT_FOUND" });
       if (!post.coverImageUrl) {
         throw new TRPCError({ code: "BAD_REQUEST", message: "Post has no cover image — add a hero image first" });
       }
 
-      // Ensure audio exists (generate if missing)
-      let audioUrl = post.audioUrl;
-      if (!audioUrl) {
-        const apiKey = process.env.ELEVENLABS_API_KEY;
-        if (!apiKey) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "ElevenLabs API key not configured" });
-        const cleanText = `${post.title}.\n\n${stripMarkdown(post.content)}`;
-        const resp = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${ELEVENLABS_VOICE_ID}`, {
-          method: "POST",
-          headers: { "xi-api-key": apiKey, "Content-Type": "application/json" },
-          body: JSON.stringify({
-            text: cleanText,
-            model_id: ELEVENLABS_MODEL,
-            voice_settings: { stability: 0.5, similarity_boost: 0.75, style: 0.0, use_speaker_boost: true },
-          }),
-        });
-        if (!resp.ok) {
-          const errText = await resp.text();
-          throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: `ElevenLabs error ${resp.status}: ${errText.substring(0, 200)}` });
-        }
-        const audioBuffer = Buffer.from(await resp.arrayBuffer());
-        const audioKey = `blog-audio/${post.slug}-${Date.now()}.mp3`;
-        const { url } = await storagePut(audioKey, audioBuffer, "audio/mpeg");
-        audioUrl = url;
-        await db.update(blogPosts).set({ audioUrl }).where(eq(blogPosts.id, input.id));
+      // If already pending, don't start a second job
+      if (post.videoStatus === "pending") {
+        return { started: false, message: "Video generation already in progress" };
       }
 
-      // Download hero image
-      const imgResp = await fetch(post.coverImageUrl);
-      if (!imgResp.ok) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Failed to download cover image" });
-      const imgBuffer = Buffer.from(await imgResp.arrayBuffer());
-      const imgExt = post.coverImageUrl.match(/\.(jpe?g|png|webp)/i)?.[1] ?? "jpg";
+      // Fire and forget — do NOT await this
+      runVideoGenerationJob(input.id).catch((err) => {
+        console.error("[generateVideo] Unhandled job error for post", input.id, err);
+      });
 
-      // Download audio
-      const audResp = await fetch(audioUrl);
-      if (!audResp.ok) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Failed to download audio" });
-      const audBuffer = Buffer.from(await audResp.arrayBuffer());
+      return { started: true };
+    }),
 
-      // Write temp files
-      const tmpDir = await mkdtemp(join(tmpdir(), "blog-video-"));
-      const imgPath = join(tmpDir, `cover.${imgExt}`);
-      const audPath = join(tmpDir, "audio.mp3");
-      const outPath = join(tmpDir, "output.mp4");
-
-      try {
-        await writeFile(imgPath, imgBuffer);
-        await writeFile(audPath, audBuffer);
-
-        // Run ffmpeg: static image + audio → MP4 (H.264 + AAC, 1080p max, YouTube-compatible)
-        const ffmpeg = getFfmpegPath();
-        await execFileAsync(ffmpeg, [
-          "-loop", "1",
-          "-i", imgPath,
-          "-i", audPath,
-          "-c:v", "libx264",
-          "-tune", "stillimage",
-          "-c:a", "aac",
-          "-b:a", "192k",
-          "-pix_fmt", "yuv420p",
-          "-vf", "scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2:black",
-          "-shortest",
-          "-movflags", "+faststart",
-          "-y",
-          outPath,
-        ], { timeout: 600_000 }); // 10 min max
-
-        // Upload to S3
-        const videoBuffer = await readFile(outPath);
-        const videoKey = `blog-video/${post.slug}-${Date.now()}.mp4`;
-        const { url: videoUrl } = await storagePut(videoKey, videoBuffer, "video/mp4");
-
-        // Save URL to database
-        await db.update(blogPosts).set({ videoUrl }).where(eq(blogPosts.id, input.id));
-
-        return { success: true, videoUrl };
-      } finally {
-        // Cleanup temp files
-        await Promise.allSettled([unlink(imgPath), unlink(audPath), unlink(outPath)]);
+  /**
+   * Poll the video generation status for a post (admin only).
+   * Returns: status ('pending' | 'done' | 'error' | ''), videoUrl, videoError
+   */
+  getVideoStatus: protectedProcedure
+    .input(z.object({ id: z.number().int() }))
+    .query(async ({ ctx, input }) => {
+      if (ctx.user.role !== "admin") {
+        throw new TRPCError({ code: "FORBIDDEN" });
       }
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+      const [post] = await db
+        .select({
+          videoStatus: blogPosts.videoStatus,
+          videoUrl: blogPosts.videoUrl,
+          videoError: blogPosts.videoError,
+        })
+        .from(blogPosts)
+        .where(eq(blogPosts.id, input.id))
+        .limit(1);
+      if (!post) throw new TRPCError({ code: "NOT_FOUND" });
+      return {
+        status: post.videoStatus ?? "",
+        videoUrl: post.videoUrl ?? "",
+        videoError: post.videoError ?? null,
+      };
     }),
 
   /** Get the YouTube OAuth authorisation URL (admin only) */

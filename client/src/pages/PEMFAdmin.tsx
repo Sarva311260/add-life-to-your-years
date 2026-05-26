@@ -371,6 +371,36 @@ function VideoProgressBar({ isActive }: { isActive: boolean }) {
 }
 
 // ─── Blog Posts Panel ────────────────────────────────────────────────────────
+/**
+ * Per-post video status poller.
+ * Polls getVideoStatus every 5s while status is 'pending', stops when done/error.
+ */
+function VideoStatusPoller({ postId, onDone }: { postId: number; onDone: () => void }) {
+  const { data } = trpc.blog.getVideoStatus.useQuery(
+    { id: postId },
+    { refetchInterval: 5000, enabled: true }
+  );
+
+  useEffect(() => {
+    if (data?.status === "done" || data?.status === "error") {
+      onDone();
+    }
+  }, [data?.status, onDone]);
+
+  if (!data || data.status === "" || data.status === "done") return null;
+
+  if (data.status === "error") {
+    return (
+      <div className="mt-2 text-xs text-red-400 flex items-center gap-1">
+        <X className="w-3.5 h-3.5" /> Video generation failed: {data.videoError || "Unknown error"}
+      </div>
+    );
+  }
+
+  // pending
+  return <VideoProgressBar isActive={true} />;
+}
+
 function BlogPostsPanel() {
   // YouTube auth status
   const utils2 = trpc.useUtils();
@@ -392,6 +422,9 @@ function BlogPostsPanel() {
   });
 
   const { data: posts, isLoading } = trpc.blog.listAll.useQuery();
+  // Track which post IDs are currently generating video (pending)
+  const [pendingVideoIds, setPendingVideoIds] = useState<Set<number>>(new Set());
+
   const generateAudio = trpc.blog.generateAudio.useMutation({
     onSuccess: () => {
       utils2.blog.listAll.invalidate();
@@ -400,9 +433,10 @@ function BlogPostsPanel() {
     onError: (e) => toast.error(e.message || "Audio generation failed"),
   });
   const generateVideo = trpc.blog.generateVideo.useMutation({
-    onSuccess: () => {
-      utils2.blog.listAll.invalidate();
-      toast.success("Video generated successfully!");
+    onSuccess: (_data, variables) => {
+      // Add to pending set — poller will detect when done
+      setPendingVideoIds(prev => new Set(prev).add(variables.id));
+      toast.info("Video generation started — this takes 1-3 minutes. Progress shown below.");
     },
     onError: (e) => toast.error(e.message || "Video generation failed"),
   });
@@ -460,7 +494,8 @@ function BlogPostsPanel() {
         <div className="space-y-3">
           {postList.map((post) => {
             const isGeneratingAudio = generateAudio.isPending && generateAudio.variables?.id === post.id;
-            const isGeneratingVideo = generateVideo.isPending && generateVideo.variables?.id === post.id;
+            const isVideoJobPending = pendingVideoIds.has(post.id);
+            const isGeneratingVideo = (generateVideo.isPending && generateVideo.variables?.id === post.id) || isVideoJobPending;
             const isPublishingYT = publishToYouTube.isPending && publishToYouTube.variables?.id === post.id;
             const postVideoUrl = (post as Record<string, unknown>).videoUrl as string | undefined;
             const postYoutubeId = (post as Record<string, unknown>).youtubeVideoId as string | undefined;
@@ -563,8 +598,24 @@ function BlogPostsPanel() {
                     </button>
                   </div>
                 </div>
-                {/* Video generation progress bar */}
-                <VideoProgressBar isActive={isGeneratingVideo} />
+                {/* Video generation progress bar — uses async poller when job is running in background */}
+                {isVideoJobPending && (
+                  <VideoStatusPoller
+                    postId={post.id}
+                    onDone={() => {
+                      setPendingVideoIds(prev => {
+                        const next = new Set(prev);
+                        next.delete(post.id);
+                        return next;
+                      });
+                      utils2.blog.listAll.invalidate();
+                      toast.success("Video ready!");
+                    }}
+                  />
+                )}
+                {!isVideoJobPending && generateVideo.isPending && generateVideo.variables?.id === post.id && (
+                  <VideoProgressBar isActive={true} />
+                )}
                 {/* Inline video preview */}
                 {postVideoUrl && (
                   <div className="mt-3 flex items-center gap-2">
