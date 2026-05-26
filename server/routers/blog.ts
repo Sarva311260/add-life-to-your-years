@@ -4,6 +4,39 @@ import { getDb } from "../db";
 import { blogPosts } from "../../drizzle/schema";
 import { eq, desc } from "drizzle-orm";
 import { TRPCError } from "@trpc/server";
+import { storagePut } from "../storage";
+
+// Charlie voice ID on ElevenLabs
+const ELEVENLABS_VOICE_ID = "IKne3meq5aSn9XLyUdCD";
+const ELEVENLABS_MODEL = "eleven_turbo_v2_5";
+
+/** Strip Markdown formatting so ElevenLabs reads clean prose */
+function stripMarkdown(md: string): string {
+  return md
+    // Remove headings
+    .replace(/^#{1,6}\s+/gm, "")
+    // Remove bold/italic
+    .replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, "$1")
+    // Remove inline code
+    .replace(/`[^`]+`/g, "")
+    // Remove code blocks
+    .replace(/```[\s\S]*?```/g, "")
+    // Remove links but keep text
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    // Remove images
+    .replace(/!\[[^\]]*\]\([^)]+\)/g, "")
+    // Remove horizontal rules
+    .replace(/^[-*_]{3,}\s*$/gm, "")
+    // Remove blockquote markers
+    .replace(/^>\s*/gm, "")
+    // Remove table separators
+    .replace(/^[|\s-]+$/gm, "")
+    // Remove table pipes
+    .replace(/\|/g, " ")
+    // Collapse multiple blank lines
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
 
 export const blogRouter = router({
   /** List all published posts (public) */
@@ -41,6 +74,20 @@ export const blogRouter = router({
       return post ?? null;
     }),
 
+  /** List ALL posts including drafts (admin only) */
+  listAll: protectedProcedure.query(async ({ ctx }) => {
+    if (ctx.user.role !== "admin") {
+      throw new TRPCError({ code: "FORBIDDEN" });
+    }
+    const db = await getDb();
+    if (!db) return [];
+    const posts = await db
+      .select()
+      .from(blogPosts)
+      .orderBy(desc(blogPosts.publishedAt));
+    return posts;
+  }),
+
   /** Create a new post (admin only) */
   create: protectedProcedure
     .input(
@@ -75,6 +122,65 @@ export const blogRouter = router({
         publishedAt,
       });
       return { success: true };
+    }),
+
+  /** Generate audio for a blog post using ElevenLabs TTS (admin only) */
+  generateAudio: protectedProcedure
+    .input(z.object({ id: z.number().int() }))
+    .mutation(async ({ ctx, input }) => {
+      if (ctx.user.role !== "admin") {
+        throw new TRPCError({ code: "FORBIDDEN" });
+      }
+      const apiKey = process.env.ELEVENLABS_API_KEY;
+      if (!apiKey) {
+        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "ElevenLabs API key not configured" });
+      }
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+
+      // Fetch the post
+      const [post] = await db.select().from(blogPosts).where(eq(blogPosts.id, input.id)).limit(1);
+      if (!post) throw new TRPCError({ code: "NOT_FOUND" });
+
+      // Build clean text: title + content
+      const cleanText = `${post.title}.\n\n${stripMarkdown(post.content)}`;
+
+      // Call ElevenLabs TTS
+      const resp = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${ELEVENLABS_VOICE_ID}`, {
+        method: "POST",
+        headers: {
+          "xi-api-key": apiKey,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          text: cleanText,
+          model_id: ELEVENLABS_MODEL,
+          voice_settings: {
+            stability: 0.5,
+            similarity_boost: 0.75,
+            style: 0.0,
+            use_speaker_boost: true,
+          },
+        }),
+      });
+
+      if (!resp.ok) {
+        const errText = await resp.text();
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: `ElevenLabs error ${resp.status}: ${errText.substring(0, 200)}`,
+        });
+      }
+
+      // Upload to S3
+      const audioBuffer = Buffer.from(await resp.arrayBuffer());
+      const fileKey = `blog-audio/${post.slug}-${Date.now()}.mp3`;
+      const { url } = await storagePut(fileKey, audioBuffer, "audio/mpeg");
+
+      // Save URL to database
+      await db.update(blogPosts).set({ audioUrl: url }).where(eq(blogPosts.id, input.id));
+
+      return { success: true, audioUrl: url };
     }),
 
   /** Update an existing post (admin only) */

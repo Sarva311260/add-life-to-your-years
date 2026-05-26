@@ -4,7 +4,7 @@ import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
 import SEO from "@/components/SEO";
 import { Streamdown } from "streamdown";
-import { Calendar, ArrowLeft, BookOpen, Clock, User, Play } from "lucide-react";
+import { Calendar, ArrowLeft, BookOpen, Clock, User, Play, Headphones } from "lucide-react";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import ShareButtons from "@/components/ShareButtons";
 
@@ -326,6 +326,24 @@ export default function BlogPost() {
               </Link>
             )}
           </div>
+
+          {/* Audio player — shown when audioUrl is available */}
+          {Boolean((post as Record<string, unknown>).audioUrl) && (
+            <div className="mb-8 p-4 bg-[#0f2410] border border-[#1f3520] rounded-2xl flex items-center gap-4">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#4ade80]/10 flex items-center justify-center">
+                <Headphones className="w-5 h-5 text-[#4ade80]" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-white text-sm font-semibold mb-1">Listen to this article</p>
+                <audio
+                  controls
+                  src={(post as Record<string, unknown>).audioUrl as string}
+                  className="w-full h-8"
+                  style={{ colorScheme: "dark" }}
+                />
+              </div>
+            </div>
+          )}
 
           {/* Main content */}
           <div className={proseClasses}>

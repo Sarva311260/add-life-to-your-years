@@ -1,0 +1,1 @@
+ALTER TABLE `blog_posts` ADD `audioUrl` varchar(1024) DEFAULT '' NOT NULL;

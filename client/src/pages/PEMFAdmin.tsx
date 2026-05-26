@@ -8,7 +8,7 @@ import AdminContacts from "./AdminContacts";
 import {
   Leaf, Eye, EyeOff, ArrowRight, LogOut, Users, BarChart2,
   ToggleLeft, ToggleRight, Edit2, Lock, Check, X, ChevronDown, ChevronUp,
-  Mail, Phone, Link2, Copy, Search, BookOpen, Send, Loader2
+  Mail, Phone, Link2, Copy, Search, BookOpen, Send, Loader2, Headphones, RefreshCw
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -298,8 +298,104 @@ function AffiliateRow({ affiliate, adminToken, onRefresh }: {
   );
 }
 
+// ─── Blog Posts Panel ────────────────────────────────────────────────────────
+function BlogPostsPanel() {
+  const utils = trpc.useUtils();
+  const { data: posts, isLoading } = trpc.blog.listAll.useQuery();
+  const generateAudio = trpc.blog.generateAudio.useMutation({
+    onSuccess: () => {
+      utils.blog.listAll.invalidate();
+      toast.success("Audio generated successfully!");
+    },
+    onError: (e) => toast.error(e.message || "Audio generation failed"),
+  });
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center py-16">
+        <Loader2 className="w-6 h-6 text-emerald-400 animate-spin" />
+        <span className="ml-2 text-gray-400">Loading posts…</span>
+      </div>
+    );
+  }
+
+  const postList = posts ?? [];
+
+  return (
+    <div>
+      <div className="flex items-center gap-2 mb-5">
+        <BookOpen className="w-5 h-5 text-emerald-400" />
+        <h2 className="text-white font-semibold text-lg">Blog Posts</h2>
+        <span className="ml-auto text-gray-400 text-sm">{postList.length} posts</span>
+      </div>
+      {postList.length === 0 ? (
+        <div className="text-center py-12 text-gray-500">No blog posts found.</div>
+      ) : (
+        <div className="space-y-3">
+          {postList.map((post) => {
+            const isGenerating = generateAudio.isPending && generateAudio.variables?.id === post.id;
+            return (
+              <div key={post.id} className="bg-white/5 border border-emerald-800/30 rounded-xl p-4 flex items-start gap-4">
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                      post.published ? "bg-emerald-900/50 text-emerald-300" : "bg-gray-700 text-gray-400"
+                    }`}>
+                      {post.published ? "Published" : "Draft"}
+                    </span>
+                    <span className="text-gray-500 text-xs">
+                      {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString() : ""}
+                    </span>
+                  </div>
+                  <p className="text-white font-medium truncate">{post.title}</p>
+                  <p className="text-gray-400 text-sm truncate mt-0.5">{post.excerpt}</p>
+                  {post.audioUrl && (
+                    <div className="mt-2 flex items-center gap-2">
+                      <Headphones className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+                      <audio controls src={post.audioUrl} className="h-7" style={{ maxWidth: "260px" }} />
+                    </div>
+                  )}
+                </div>
+                <div className="flex flex-col items-end gap-2 flex-shrink-0">
+                  <a
+                    href={`/blog/${post.slug}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xs text-emerald-400 hover:text-emerald-300 transition-colors"
+                  >
+                    View →
+                  </a>
+                  <button
+                    onClick={() => generateAudio.mutate({ id: post.id })}
+                    disabled={isGenerating}
+                    className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg font-medium transition-colors ${
+                      isGenerating
+                        ? "bg-emerald-900/40 text-emerald-500 cursor-not-allowed"
+                        : post.audioUrl
+                        ? "bg-emerald-800/60 hover:bg-emerald-700/60 text-emerald-300"
+                        : "bg-emerald-600 hover:bg-emerald-500 text-white"
+                    }`}
+                  >
+                    {isGenerating ? (
+                      <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Generating…</>
+                    ) : post.audioUrl ? (
+                      <><RefreshCw className="w-3.5 h-3.5" /> Regenerate</>
+                    ) : (
+                      <><Headphones className="w-3.5 h-3.5" /> Generate Audio</>
+                    )}
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── Admin Dashboard ──────────────────────────────────────────────────────────
-type AdminView = "affiliates" | "campaigns" | "contacts" | "products" | "library";
+type AdminView = "affiliates" | "campaigns" | "contacts" | "products" | "library" | "blog";
 
 function AdminDashboard({ onLogout }: { onLogout: () => void }) {
   const adminToken = getAdminToken();
@@ -364,7 +460,7 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
       <div className="bg-[#0a2e1a]/80 border-b border-emerald-800/20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex gap-1">
-            {(["affiliates", "campaigns", "contacts", "products", "library"] as AdminView[]).map((view) => (
+            {(["affiliates", "campaigns", "contacts", "products", "library", "blog"] as AdminView[]).map((view) => (
               <button
                 key={view}
                 onClick={() => setActiveView(view)}
@@ -374,7 +470,7 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
                     : "border-transparent text-gray-400 hover:text-white"
                 }`}
               >
-                  {view === "affiliates" ? "Brand Partners" : view === "campaigns" ? "Email Campaigns" : view === "contacts" ? "Contacts" : view === "products" ? "Recommended Products" : "Content Library"}
+                  {view === "affiliates" ? "Brand Partners" : view === "campaigns" ? "Email Campaigns" : view === "contacts" ? "Contacts" : view === "products" ? "Recommended Products" : view === "library" ? "Content Library" : "Blog Posts"}
               </button>
             ))}
           </div>
@@ -383,6 +479,11 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
 
       <div className="max-w-6xl mx-auto px-4 py-10 space-y-6">
         {/* Stats — only on affiliates tab */}
+        {activeView === "blog" && (
+          <div className="bg-[#0d3b22]/60 border border-emerald-800/30 rounded-2xl p-6">
+            <BlogPostsPanel />
+          </div>
+        )}
         {activeView === "library" && (
           <div className="bg-[#0d3b22]/60 border border-emerald-800/30 rounded-2xl p-6">
             <PEMFAdminContentLibrary adminPassword={getAdminPassword()} />
