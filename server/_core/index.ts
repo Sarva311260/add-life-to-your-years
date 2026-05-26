@@ -11,6 +11,7 @@ import { registerStripeWebhook } from "../stripeWebhook";
 import { registerTrackingRoutes } from "../trackingRoutes";
 import { registerCloakRoutes } from "../cloakRoutes";
 import { registerYouTubeRoutes } from "../youtubeRoutes";
+import { processVideoQueueHandler } from "../videoQueueHandler";
 import { registerStorageProxy } from "./storageProxy";
 import { getSessionCookieOptions } from "./cookies";
 import { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
@@ -157,6 +158,9 @@ async function startServer() {
       res.status(500).send("Error generating sitemap");
     }
   });
+
+  // Heartbeat: video generation queue processor (runs every 60s via Manus cron)
+  app.post("/api/scheduled/process-video-queue", processVideoQueueHandler);
 
   // tRPC API
   app.use(
