@@ -370,65 +370,14 @@ export const blogRouter = router({
         return { started: false, message: "Upload already in progress" };
       }
 
-      // Mark as pending immediately
+      // Mark as pending — Heartbeat queue (every 60s) will pick this up and process it
+      // Tick 1: encode MP4 with ffmpeg ultrafast (~15s)
+      // Tick 2: stream MP4 from S3 to YouTube
       await db.update(blogPosts)
-        .set({ videoStatus: "pending", videoError: null })
+        .set({ videoStatus: "pending", videoError: null, videoMp4Url: null })
         .where(eq(blogPosts.id, input.id));
 
-      // Fire and forget — upload audio to YouTube in background
-      (async () => {
-        try {
-          const description = [
-            post.excerpt ?? "",
-            "",
-            `Read the full article: https://addlifetoyouryears.org/blog/${post.slug}`,
-            "",
-            "Add Life to Your Years — evidence-based health, wellness and vitality.",
-            "Subscribe: https://www.youtube.com/@addlifetoyouryears",
-            "Website: https://addlifetoyouryears.org",
-          ].join("\n");
-          const tags = post.tags
-            ? post.tags.split(",").map((t: string) => t.trim()).filter(Boolean)
-            : ["wellness", "health", "plant-based", "vitality", "longevity"];
-
-          // Two-tick approach: this inline path is only used if videoMp4Url is already set
-          // (normally the Heartbeat queue handles encoding + upload)
-          if (!post.videoMp4Url) {
-            throw new Error("MP4 not yet encoded — Heartbeat queue will handle this");
-          }
-          const videoId = await uploadVideoToYouTube({
-            videoMp4Url: post.videoMp4Url,
-            thumbnailUrl: post.coverImageUrl ?? undefined,
-            title: post.title,
-            description,
-            tags,
-          });
-
-          const db2 = await getDb();
-          if (db2) {
-            await db2.update(blogPosts)
-              .set({
-                youtubeVideoId: videoId,
-                videoUrl: `https://www.youtube.com/watch?v=${videoId}`,
-                videoStatus: "done",
-                videoError: null,
-              })
-              .where(eq(blogPosts.id, input.id));
-          }
-          console.log(`[generateVideo] Published to YouTube: ${videoId}`);
-        } catch (err) {
-          const msg = err instanceof Error ? err.message : String(err);
-          console.error(`[generateVideo] Upload failed for post ${input.id}:`, msg);
-          const db2 = await getDb();
-          if (db2) {
-            await db2.update(blogPosts)
-              .set({ videoStatus: "error", videoError: msg })
-              .where(eq(blogPosts.id, input.id));
-          }
-        }
-      })();
-
-      return { started: true };
+      return { started: true, message: "Upload queued — the Heartbeat cron will process it within 60 seconds" };
     }),
 
   /**
