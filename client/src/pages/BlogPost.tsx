@@ -4,7 +4,7 @@ import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
 import SEO from "@/components/SEO";
 import { Streamdown } from "streamdown";
-import { Calendar, ArrowLeft, BookOpen, Clock, User, Play, Headphones } from "lucide-react";
+import { Calendar, ArrowLeft, BookOpen, Clock, User, Play, Headphones, Video } from "lucide-react";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import ShareButtons from "@/components/ShareButtons";
 
@@ -342,6 +342,28 @@ export default function BlogPost() {
                   style={{ colorScheme: "dark" }}
                 />
               </div>
+            </div>
+          )}
+
+          {/* Video player — shown when videoUrl is available */}
+          {Boolean((post as Record<string, unknown>).videoUrl) && (
+            <div className="mb-8 p-4 bg-[#0a1a2e] border border-[#1a3050] rounded-2xl">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
+                  <Video className="w-5 h-5 text-blue-400" />
+                </div>
+                <div>
+                  <p className="text-white text-sm font-semibold">Watch this article</p>
+                  <p className="text-gray-400 text-xs">Video version of this post</p>
+                </div>
+              </div>
+              <video
+                controls
+                src={(post as Record<string, unknown>).videoUrl as string}
+                className="w-full rounded-xl"
+                style={{ maxHeight: "480px" }}
+                poster={post.coverImageUrl || undefined}
+              />
             </div>
           )}
 

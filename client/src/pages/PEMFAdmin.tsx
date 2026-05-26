@@ -8,7 +8,7 @@ import AdminContacts from "./AdminContacts";
 import {
   Leaf, Eye, EyeOff, ArrowRight, LogOut, Users, BarChart2,
   ToggleLeft, ToggleRight, Edit2, Lock, Check, X, ChevronDown, ChevronUp,
-  Mail, Phone, Link2, Copy, Search, BookOpen, Send, Loader2, Headphones, RefreshCw
+  Mail, Phone, Link2, Copy, Search, BookOpen, Send, Loader2, Headphones, RefreshCw, Video
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -309,6 +309,13 @@ function BlogPostsPanel() {
     },
     onError: (e) => toast.error(e.message || "Audio generation failed"),
   });
+  const generateVideo = trpc.blog.generateVideo.useMutation({
+    onSuccess: () => {
+      utils.blog.listAll.invalidate();
+      toast.success("Video generated successfully!");
+    },
+    onError: (e) => toast.error(e.message || "Video generation failed"),
+  });
 
   if (isLoading) {
     return (
@@ -333,58 +340,104 @@ function BlogPostsPanel() {
       ) : (
         <div className="space-y-3">
           {postList.map((post) => {
-            const isGenerating = generateAudio.isPending && generateAudio.variables?.id === post.id;
+            const isGeneratingAudio = generateAudio.isPending && generateAudio.variables?.id === post.id;
+            const isGeneratingVideo = generateVideo.isPending && generateVideo.variables?.id === post.id;
+            const postVideoUrl = (post as Record<string, unknown>).videoUrl as string | undefined;
             return (
-              <div key={post.id} className="bg-white/5 border border-emerald-800/30 rounded-xl p-4 flex items-start gap-4">
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
-                      post.published ? "bg-emerald-900/50 text-emerald-300" : "bg-gray-700 text-gray-400"
-                    }`}>
-                      {post.published ? "Published" : "Draft"}
-                    </span>
-                    <span className="text-gray-500 text-xs">
-                      {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString() : ""}
-                    </span>
-                  </div>
-                  <p className="text-white font-medium truncate">{post.title}</p>
-                  <p className="text-gray-400 text-sm truncate mt-0.5">{post.excerpt}</p>
-                  {post.audioUrl && (
-                    <div className="mt-2 flex items-center gap-2">
-                      <Headphones className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
-                      <audio controls src={post.audioUrl} className="h-7" style={{ maxWidth: "260px" }} />
+              <div key={post.id} className="bg-white/5 border border-emerald-800/30 rounded-xl p-4">
+                <div className="flex items-start gap-4">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                        post.published ? "bg-emerald-900/50 text-emerald-300" : "bg-gray-700 text-gray-400"
+                      }`}>
+                        {post.published ? "Published" : "Draft"}
+                      </span>
+                      <span className="text-gray-500 text-xs">
+                        {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString() : ""}
+                      </span>
                     </div>
-                  )}
-                </div>
-                <div className="flex flex-col items-end gap-2 flex-shrink-0">
-                  <a
-                    href={`/blog/${post.slug}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-xs text-emerald-400 hover:text-emerald-300 transition-colors"
-                  >
-                    View →
-                  </a>
-                  <button
-                    onClick={() => generateAudio.mutate({ id: post.id })}
-                    disabled={isGenerating}
-                    className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg font-medium transition-colors ${
-                      isGenerating
-                        ? "bg-emerald-900/40 text-emerald-500 cursor-not-allowed"
-                        : post.audioUrl
-                        ? "bg-emerald-800/60 hover:bg-emerald-700/60 text-emerald-300"
-                        : "bg-emerald-600 hover:bg-emerald-500 text-white"
-                    }`}
-                  >
-                    {isGenerating ? (
-                      <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Generating…</>
-                    ) : post.audioUrl ? (
-                      <><RefreshCw className="w-3.5 h-3.5" /> Regenerate</>
-                    ) : (
-                      <><Headphones className="w-3.5 h-3.5" /> Generate Audio</>
+                    <p className="text-white font-medium truncate">{post.title}</p>
+                    <p className="text-gray-400 text-sm truncate mt-0.5">{post.excerpt}</p>
+                    {post.audioUrl && (
+                      <div className="mt-2 flex items-center gap-2">
+                        <Headphones className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+                        <audio controls src={post.audioUrl} className="h-7" style={{ maxWidth: "260px" }} />
+                      </div>
                     )}
-                  </button>
+                  </div>
+                  <div className="flex flex-col items-end gap-2 flex-shrink-0">
+                    <a
+                      href={`/blog/${post.slug}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-xs text-emerald-400 hover:text-emerald-300 transition-colors"
+                    >
+                      View →
+                    </a>
+                    {/* Generate Audio button */}
+                    <button
+                      onClick={() => generateAudio.mutate({ id: post.id })}
+                      disabled={isGeneratingAudio || isGeneratingVideo}
+                      className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg font-medium transition-colors ${
+                        isGeneratingAudio
+                          ? "bg-emerald-900/40 text-emerald-500 cursor-not-allowed"
+                          : post.audioUrl
+                          ? "bg-emerald-800/60 hover:bg-emerald-700/60 text-emerald-300"
+                          : "bg-emerald-600 hover:bg-emerald-500 text-white"
+                      }`}
+                    >
+                      {isGeneratingAudio ? (
+                        <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Generating…</>
+                      ) : post.audioUrl ? (
+                        <><RefreshCw className="w-3.5 h-3.5" /> Redo Audio</>
+                      ) : (
+                        <><Headphones className="w-3.5 h-3.5" /> Generate Audio</>
+                      )}
+                    </button>
+                    {/* Generate Video button */}
+                    <button
+                      onClick={() => generateVideo.mutate({ id: post.id })}
+                      disabled={isGeneratingAudio || isGeneratingVideo}
+                      className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg font-medium transition-colors ${
+                        isGeneratingVideo
+                          ? "bg-blue-900/40 text-blue-400 cursor-not-allowed"
+                          : postVideoUrl
+                          ? "bg-blue-800/60 hover:bg-blue-700/60 text-blue-300"
+                          : "bg-blue-600 hover:bg-blue-500 text-white"
+                      }`}
+                    >
+                      {isGeneratingVideo ? (
+                        <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Making video…</>
+                      ) : postVideoUrl ? (
+                        <><RefreshCw className="w-3.5 h-3.5" /> Redo Video</>
+                      ) : (
+                        <><Video className="w-3.5 h-3.5" /> Generate Video</>
+                      )}
+                    </button>
+                  </div>
                 </div>
+                {/* Inline video preview */}
+                {postVideoUrl && (
+                  <div className="mt-3 flex items-center gap-2">
+                    <Video className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" />
+                    <video
+                      controls
+                      src={postVideoUrl}
+                      className="rounded-lg"
+                      style={{ maxWidth: "320px", maxHeight: "180px" }}
+                    />
+                    <a
+                      href={postVideoUrl}
+                      download
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-xs text-blue-400 hover:text-blue-300 transition-colors ml-1"
+                    >
+                      Download ↓
+                    </a>
+                  </div>
+                )}
               </div>
             );
           })}

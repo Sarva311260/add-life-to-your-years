@@ -665,6 +665,8 @@ export const blogPosts = mysqlTable("blog_posts", {
   videoIds: text("video_ids").default("").notNull(),
   /** S3 URL of the generated audio MP3 (null = no audio yet) */
   audioUrl: varchar("audioUrl", { length: 1024 }).default("").notNull(),
+  /** S3 URL of the generated video MP4 (hero image + audio) */
+  videoUrl: varchar("videoUrl", { length: 1024 }).default("").notNull(),
   /** Whether the post is visible to the public */
   published: tinyint("published").default(1).notNull(),
   /** Publication date (can be backdated) */
