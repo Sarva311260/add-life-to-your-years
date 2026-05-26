@@ -1,0 +1,1 @@
+ALTER TABLE `blog_posts` ADD `youtubeVideoId` varchar(64) DEFAULT '' NOT NULL;

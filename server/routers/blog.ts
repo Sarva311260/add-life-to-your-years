@@ -5,6 +5,7 @@ import { blogPosts } from "../../drizzle/schema";
 import { eq, desc } from "drizzle-orm";
 import { TRPCError } from "@trpc/server";
 import { storagePut } from "../storage";
+import { getAuthUrl, hasValidTokens, uploadVideoToYouTube } from "../youtube";
 import { execFile } from "child_process";
 import { promisify } from "util";
 import { writeFile, readFile, unlink, mkdtemp } from "fs/promises";
@@ -298,6 +299,53 @@ export const blogRouter = router({
         // Cleanup temp files
         await Promise.allSettled([unlink(imgPath), unlink(audPath), unlink(outPath)]);
       }
+    }),
+
+  /** Get the YouTube OAuth authorisation URL (admin only) */
+  getYouTubeAuthUrl: protectedProcedure.query(async ({ ctx }) => {
+    if (ctx.user.role !== "admin") throw new TRPCError({ code: "FORBIDDEN" });
+    return { url: getAuthUrl(), isAuthorised: hasValidTokens() };
+  }),
+
+  /** Publish the post's video to YouTube (admin only) */
+  publishToYouTube: protectedProcedure
+    .input(z.object({ id: z.number().int() }))
+    .mutation(async ({ ctx, input }) => {
+      if (ctx.user.role !== "admin") throw new TRPCError({ code: "FORBIDDEN" });
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+
+      const [post] = await db.select().from(blogPosts).where(eq(blogPosts.id, input.id)).limit(1);
+      if (!post) throw new TRPCError({ code: "NOT_FOUND" });
+      if (!post.videoUrl) throw new TRPCError({ code: "BAD_REQUEST", message: "No video generated yet. Generate a video first." });
+
+      // Build description from excerpt + site link
+      const description = [
+        post.excerpt ?? "",
+        "",
+        `Read the full article: https://addlifetoyouryears.org/blog/${post.slug}`,
+        "",
+        "Add Life to Your Years — evidence-based health, wellness and vitality.",
+        "Subscribe: https://www.youtube.com/@addlifetoyouryears",
+        "Website: https://addlifetoyouryears.org",
+      ].join("\n");
+
+      // Parse tags from comma-separated string
+      const tags = post.tags
+        ? post.tags.split(",").map((t: string) => t.trim()).filter(Boolean)
+        : ["wellness", "health", "plant-based", "vitality", "longevity"];
+
+      const videoId = await uploadVideoToYouTube({
+        videoUrl: post.videoUrl,
+        title: post.title,
+        description,
+        tags,
+      });
+
+      // Save YouTube video ID to the post
+      await db.update(blogPosts).set({ youtubeVideoId: videoId }).where(eq(blogPosts.id, input.id));
+
+      return { videoId, youtubeUrl: `https://www.youtube.com/watch?v=${videoId}` };
     }),
 
   /** Update an existing post (admin only) */

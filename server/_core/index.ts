@@ -10,6 +10,7 @@ import { serveStatic, setupVite } from "./vite";
 import { registerStripeWebhook } from "../stripeWebhook";
 import { registerTrackingRoutes } from "../trackingRoutes";
 import { registerCloakRoutes } from "../cloakRoutes";
+import { registerYouTubeRoutes } from "../youtubeRoutes";
 import { registerStorageProxy } from "./storageProxy";
 import { getSessionCookieOptions } from "./cookies";
 import { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
@@ -119,6 +120,8 @@ async function startServer() {
   registerTrackingRoutes(app);
   // URL cloaking for affiliate product links (/go/:affiliateSlug/:productId)
   registerCloakRoutes(app);
+  // YouTube OAuth callback (/api/youtube/callback)
+  registerYouTubeRoutes(app);
 
   // Dynamic sitemap.xml
   app.get("/sitemap.xml", async (_req, res) => {

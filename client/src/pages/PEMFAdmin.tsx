@@ -8,7 +8,7 @@ import AdminContacts from "./AdminContacts";
 import {
   Leaf, Eye, EyeOff, ArrowRight, LogOut, Users, BarChart2,
   ToggleLeft, ToggleRight, Edit2, Lock, Check, X, ChevronDown, ChevronUp,
-  Mail, Phone, Link2, Copy, Search, BookOpen, Send, Loader2, Headphones, RefreshCw, Video
+  Mail, Phone, Link2, Copy, Search, BookOpen, Send, Loader2, Headphones, RefreshCw, Video, Youtube, ExternalLink
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -372,18 +372,36 @@ function VideoProgressBar({ isActive }: { isActive: boolean }) {
 
 // ─── Blog Posts Panel ────────────────────────────────────────────────────────
 function BlogPostsPanel() {
-  const utils = trpc.useUtils();
+  // YouTube auth status
+  const utils2 = trpc.useUtils();
+  const { data: ytData } = trpc.blog.getYouTubeAuthUrl.useQuery();
+  const isYouTubeAuthorised = ytData?.isAuthorised ?? false;
+  const publishToYouTube = trpc.blog.publishToYouTube.useMutation({
+    onSuccess: (data) => {
+      utils2.blog.listAll.invalidate();
+      toast.success(
+        <span>
+          Published to YouTube!{" "}
+          <a href={data.youtubeUrl} target="_blank" rel="noreferrer" className="underline">
+            Watch now
+          </a>
+        </span>
+      );
+    },
+    onError: (e) => toast.error(e.message || "YouTube publish failed"),
+  });
+
   const { data: posts, isLoading } = trpc.blog.listAll.useQuery();
   const generateAudio = trpc.blog.generateAudio.useMutation({
     onSuccess: () => {
-      utils.blog.listAll.invalidate();
+      utils2.blog.listAll.invalidate();
       toast.success("Audio generated successfully!");
     },
     onError: (e) => toast.error(e.message || "Audio generation failed"),
   });
   const generateVideo = trpc.blog.generateVideo.useMutation({
     onSuccess: () => {
-      utils.blog.listAll.invalidate();
+      utils2.blog.listAll.invalidate();
       toast.success("Video generated successfully!");
     },
     onError: (e) => toast.error(e.message || "Video generation failed"),
@@ -407,6 +425,35 @@ function BlogPostsPanel() {
         <h2 className="text-white font-semibold text-lg">Blog Posts</h2>
         <span className="ml-auto text-gray-400 text-sm">{postList.length} posts</span>
       </div>
+      {/* YouTube authorisation banner */}
+      {!isYouTubeAuthorised ? (
+        <div className="mb-4 flex items-center gap-3 bg-red-950/40 border border-red-800/40 rounded-xl px-4 py-3">
+          <Youtube className="w-5 h-5 text-red-400 flex-shrink-0" />
+          <div className="flex-1">
+            <p className="text-red-300 text-sm font-medium">YouTube not connected</p>
+            <p className="text-red-400/70 text-xs">Authorise once to enable one-click publishing</p>
+          </div>
+          <a
+            href={ytData?.url ?? "#"}
+            className="flex items-center gap-1.5 text-xs px-3 py-1.5 bg-red-700 hover:bg-red-600 text-white rounded-lg font-medium transition-colors"
+          >
+            <Youtube className="w-3.5 h-3.5" /> Connect YouTube
+          </a>
+        </div>
+      ) : (
+        <div className="mb-4 flex items-center gap-2 bg-emerald-950/30 border border-emerald-800/30 rounded-xl px-4 py-2.5">
+          <Youtube className="w-4 h-4 text-emerald-400" />
+          <span className="text-emerald-300 text-sm">YouTube connected</span>
+          <a
+            href="https://studio.youtube.com"
+            target="_blank"
+            rel="noreferrer"
+            className="ml-auto text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1"
+          >
+            YouTube Studio <ExternalLink className="w-3 h-3" />
+          </a>
+        </div>
+      )}
       {postList.length === 0 ? (
         <div className="text-center py-12 text-gray-500">No blog posts found.</div>
       ) : (
@@ -414,7 +461,9 @@ function BlogPostsPanel() {
           {postList.map((post) => {
             const isGeneratingAudio = generateAudio.isPending && generateAudio.variables?.id === post.id;
             const isGeneratingVideo = generateVideo.isPending && generateVideo.variables?.id === post.id;
+            const isPublishingYT = publishToYouTube.isPending && publishToYouTube.variables?.id === post.id;
             const postVideoUrl = (post as Record<string, unknown>).videoUrl as string | undefined;
+            const postYoutubeId = (post as Record<string, unknown>).youtubeVideoId as string | undefined;
             return (
               <div key={post.id} className="bg-white/5 border border-emerald-800/30 rounded-xl p-4">
                 <div className="flex items-start gap-4">
@@ -467,6 +516,31 @@ function BlogPostsPanel() {
                         <><Headphones className="w-3.5 h-3.5" /> Generate Audio</>
                       )}
                     </button>
+                    {/* Publish to YouTube button — only shown when video exists */}
+                    {postVideoUrl && (
+                      <button
+                        onClick={() => publishToYouTube.mutate({ id: post.id })}
+                        disabled={!isYouTubeAuthorised || isPublishingYT || isGeneratingVideo}
+                        title={!isYouTubeAuthorised ? "Connect YouTube first" : undefined}
+                        className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg font-medium transition-colors ${
+                          isPublishingYT
+                            ? "bg-red-900/40 text-red-400 cursor-not-allowed"
+                            : !isYouTubeAuthorised
+                            ? "bg-gray-700/40 text-gray-500 cursor-not-allowed"
+                            : postYoutubeId
+                            ? "bg-red-800/60 hover:bg-red-700/60 text-red-300"
+                            : "bg-red-600 hover:bg-red-500 text-white"
+                        }`}
+                      >
+                        {isPublishingYT ? (
+                          <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Uploading…</>
+                        ) : postYoutubeId ? (
+                          <><RefreshCw className="w-3.5 h-3.5" /> Re-publish YT</>
+                        ) : (
+                          <><Youtube className="w-3.5 h-3.5" /> Publish to YouTube</>
+                        )}
+                      </button>
+                    )}
                     {/* Generate Video button */}
                     <button
                       onClick={() => generateVideo.mutate({ id: post.id })}
@@ -509,6 +583,20 @@ function BlogPostsPanel() {
                       className="text-xs text-blue-400 hover:text-blue-300 transition-colors ml-1"
                     >
                       Download ↓
+                    </a>
+                  </div>
+                )}
+                {/* YouTube live link */}
+                {postYoutubeId && (
+                  <div className="mt-2 flex items-center gap-2">
+                    <Youtube className="w-3.5 h-3.5 text-red-400 flex-shrink-0" />
+                    <a
+                      href={`https://www.youtube.com/watch?v=${postYoutubeId}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-xs text-red-400 hover:text-red-300 flex items-center gap-1"
+                    >
+                      Watch on YouTube <ExternalLink className="w-3 h-3" />
                     </a>
                   </div>
                 )}
