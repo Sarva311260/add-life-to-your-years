@@ -671,6 +671,8 @@ export const blogPosts = mysqlTable("blog_posts", {
   videoStatus: varchar("videoStatus", { length: 32 }).default("").notNull(),
   /** Error message if video generation failed */
   videoError: text("videoError"),
+  /** S3 URL of the encoded MP4 (ready to upload to YouTube) — set after Tick 1 encoding */
+  videoMp4Url: text("video_mp4_url"),
   /** YouTube video ID after publishing (e.g. dQw4w9WgXcQ) */
   youtubeVideoId: varchar("youtubeVideoId", { length: 64 }).default("").notNull(),
   /** Whether the post is visible to the public */

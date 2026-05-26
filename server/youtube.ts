@@ -124,11 +124,10 @@ function streamFromUrl(url: string): Promise<NodeJS.ReadableStream> {
 // ─── Upload ───────────────────────────────────────────────────────────────────
 
 /**
- * Upload an audio file (MP3) directly to YouTube by streaming from its URL.
+ * Upload an MP4 video to YouTube by streaming from its S3 URL.
  * No temp file download — streams directly from S3 to YouTube API.
- * YouTube accepts audio-only uploads and displays the cover image as a static thumbnail.
  *
- * @param audioUrl      Public URL of the MP3 file (from S3)
+ * @param videoMp4Url   Public S3 URL of the encoded MP4 file
  * @param thumbnailUrl  Public URL of the cover image (JPEG/PNG/WebP)
  * @param title         Video title
  * @param description   Video description
@@ -136,13 +135,13 @@ function streamFromUrl(url: string): Promise<NodeJS.ReadableStream> {
  * @returns YouTube video ID
  */
 export async function uploadVideoToYouTube({
-  audioUrl,
+  videoMp4Url,
   thumbnailUrl,
   title,
   description,
   tags,
 }: {
-  audioUrl: string;
+  videoMp4Url: string;
   thumbnailUrl?: string;
   title: string;
   description: string;
@@ -151,10 +150,10 @@ export async function uploadVideoToYouTube({
   const auth = await getAuthedClient();
   const youtube = google.youtube({ version: "v3", auth });
 
-  console.log(`[YouTube] Streaming audio upload from ${audioUrl}...`);
+  console.log(`[YouTube] Streaming MP4 upload from ${videoMp4Url}...`);
 
-  // Stream audio directly from S3 URL to YouTube — no temp file needed
-  const audioStream = await streamFromUrl(audioUrl);
+  // Stream MP4 directly from S3 URL to YouTube — no temp file needed
+  const videoStream = await streamFromUrl(videoMp4Url);
 
   const response = await youtube.videos.insert({
     part: ["snippet", "status"],
@@ -172,8 +171,8 @@ export async function uploadVideoToYouTube({
       },
     },
     media: {
-      mimeType: "audio/mpeg",
-      body: audioStream,
+      mimeType: "video/mp4",
+      body: videoStream,
     },
   });
 
