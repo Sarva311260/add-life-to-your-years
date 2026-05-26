@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 import PEMFAdminDrip from "./PEMFAdminDrip";
@@ -298,6 +298,78 @@ function AffiliateRow({ affiliate, adminToken, onRefresh }: {
   );
 }
 
+// ─── Video Progress Bar ─────────────────────────────────────────────────────
+/**
+ * Animated progress bar with estimated time remaining.
+ * Simulates progress: fast at first, slows near the end until the mutation resolves.
+ */
+function VideoProgressBar({ isActive }: { isActive: boolean }) {
+  const [progress, setProgress] = useState(0);
+  const [elapsed, setElapsed] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const startTimeRef = useRef<number>(0);
+
+  // Estimated total duration in seconds (generous upper bound)
+  const ESTIMATED_SECONDS = 120;
+
+  useEffect(() => {
+    if (isActive) {
+      setProgress(0);
+      setElapsed(0);
+      startTimeRef.current = Date.now();
+      intervalRef.current = setInterval(() => {
+        const secs = (Date.now() - startTimeRef.current) / 1000;
+        setElapsed(Math.floor(secs));
+        // Ease-out curve: progress approaches 95% asymptotically
+        const pct = 95 * (1 - Math.exp(-secs / (ESTIMATED_SECONDS * 0.45)));
+        setProgress(Math.min(pct, 95));
+      }, 500);
+    } else {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (progress > 0) {
+        // Snap to 100% on completion
+        setProgress(100);
+        const t = setTimeout(() => { setProgress(0); setElapsed(0); }, 800);
+        return () => clearTimeout(t);
+      }
+    }
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isActive]);
+
+  if (!isActive && progress === 0) return null;
+
+  const remaining = Math.max(0, ESTIMATED_SECONDS - elapsed);
+  const mins = Math.floor(remaining / 60);
+  const secs = remaining % 60;
+  const timeLabel = progress >= 100
+    ? "Done!"
+    : mins > 0
+    ? `~${mins}m ${secs}s remaining`
+    : `~${secs}s remaining`;
+
+  return (
+    <div className="mt-3 px-1">
+      <div className="flex justify-between items-center mb-1">
+        <span className="text-xs text-blue-300 font-medium">
+          {progress >= 100 ? "Video ready!" : "Generating video…"}
+        </span>
+        <span className="text-xs text-gray-400">{timeLabel}</span>
+      </div>
+      <div className="w-full bg-blue-950/60 rounded-full h-2 overflow-hidden">
+        <div
+          className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-blue-400"
+          style={{ width: `${progress}%`, transition: "width 0.5s ease-out" }}
+        />
+      </div>
+      <div className="flex justify-between mt-0.5">
+        <span className="text-xs text-gray-500">{Math.round(progress)}%</span>
+        <span className="text-xs text-gray-500">{elapsed}s elapsed</span>
+      </div>
+    </div>
+  );
+}
+
 // ─── Blog Posts Panel ────────────────────────────────────────────────────────
 function BlogPostsPanel() {
   const utils = trpc.useUtils();
@@ -417,6 +489,8 @@ function BlogPostsPanel() {
                     </button>
                   </div>
                 </div>
+                {/* Video generation progress bar */}
+                <VideoProgressBar isActive={isGeneratingVideo} />
                 {/* Inline video preview */}
                 {postVideoUrl && (
                   <div className="mt-3 flex items-center gap-2">
