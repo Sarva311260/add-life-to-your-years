@@ -281,7 +281,7 @@ export default function BlogPost() {
           {!post.coverImageUrl && (
             <Link href="/blog">
               <button className="inline-flex items-center gap-1.5 text-gray-400 hover:text-[#4ade80] text-sm mb-8 transition-colors">
-                <ArrowLeft className="w-4 h-4" /> The Wellness Files
+                <ArrowLeft className="w-4 h-4" /> Weekly Blogs
               </button>
             </Link>
           )}

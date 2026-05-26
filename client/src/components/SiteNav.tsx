@@ -34,7 +34,7 @@ export default function SiteNav() {
           <Link href="/" className={linkClass}>Home</Link>
           <Link href="/book" className={linkClass}>The Book</Link>
           <Link href="/media" className={linkClass}>Media</Link>
-          <Link href="/blog" className={linkClass}>The Wellness Files</Link>
+          <Link href="/blog" className={linkClass}>Weekly Blogs</Link>
           <Link href="/consult" className={linkClass}>Consult</Link>
           <Link href="/shop" className={linkClass}>Shop</Link>
           <Link href="/contact" className={linkClass}>Contact</Link>
@@ -96,7 +96,7 @@ export default function SiteNav() {
               <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-gray-700 py-1.5">Home</Link>
               <Link href="/book" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-gray-700 py-1.5">The Book</Link>
               <Link href="/media" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-gray-700 py-1.5">Media</Link>
-              <Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-gray-700 py-1.5">The Wellness Files</Link>
+              <Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-gray-700 py-1.5">Weekly Blogs</Link>
               <Link href="/consult" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-gray-700 py-1.5">Consult</Link>
               <Link href="/shop" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-gray-700 py-1.5">Shop</Link>
               <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-gray-700 py-1.5">Contact</Link>

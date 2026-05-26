@@ -28,14 +28,14 @@ export default function BlogIndex() {
   return (
     <>
     <SEO
-      title="The Wellness Files — Evidence-Based Wellness Articles"
+      title="Weekly Blogs — Add Life to Your Years"
       description="Deep-dive research articles on specific wellness strategies — nutrition, sleep, mental health, movement and more. Grounded in peer-reviewed evidence."
       canonicalPath="/blog"
       keywords="wellness guides, evidence-based health, nutrition research, sleep science, mental wellness, natural remedies"
       jsonLd={{
         "@context": "https://schema.org",
         "@type": "Blog",
-        name: "The Wellness Files",
+        name: "Weekly Blogs",
         url: "https://www.addlifetoyouryears.org/blog",
         description: "Evidence-based wellness articles from Add Life to Your Years."
       }}
@@ -49,7 +49,7 @@ export default function BlogIndex() {
           Evidence-Based Insights
         </p>
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          The Wellness Files
+          Weekly Blogs
         </h1>
         <p className="text-gray-300 max-w-2xl mx-auto text-lg">
           Deep-dive research articles on specific wellness strategies — each one grounded in peer-reviewed evidence and drawn directly from the book.

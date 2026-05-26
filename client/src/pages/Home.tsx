@@ -211,7 +211,7 @@ export default function Home() {
             <a href="#coaching" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>Coaching</a>
             <a href="#products" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>Products</a>
             <Link href="/media" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>Media</Link>
-            <Link href="/blog" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>The Wellness Files</Link>
+            <Link href="/blog" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>Weekly Blogs</Link>
             <Link href="/consult" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>Consult</Link>
             <Link href="/shop" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>Shop</Link>
             <Link href="/contact" className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-600 hover:text-gray-900" : "text-white/90 hover:text-white"}`}>Contact</Link>
@@ -268,7 +268,7 @@ export default function Home() {
                 <a href="#coaching" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Coaching</a>
                 <a href="#products" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Products</a>
                 <Link href="/media" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Media</Link>
-                <Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">The Wellness Files</Link>
+                <Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Weekly Blogs</Link>
                 <Link href="/consult" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Consult</Link>
                 <Link href="/shop" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Shop</Link>
                 <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium py-2">Contact</Link>
@@ -818,7 +818,7 @@ export default function Home() {
                 <li><a href="#coaching" className="hover:text-white transition-colors">Coaching</a></li>
                 <li><a href="#products" className="hover:text-white transition-colors">Products</a></li>
                 <li><Link href="/media" className="hover:text-white transition-colors">Media</Link></li>
-                <li><Link href="/blog" className="hover:text-white transition-colors">The Wellness Files</Link></li>
+                <li><Link href="/blog" className="hover:text-white transition-colors">Weekly Blogs</Link></li>
                 <li><Link href="/consult" className="hover:text-white transition-colors">Consult</Link></li>
                 <li><Link href="/shop" className="hover:text-white transition-colors">Shop</Link></li>
                 <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
