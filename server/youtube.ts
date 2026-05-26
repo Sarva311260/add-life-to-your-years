@@ -9,6 +9,9 @@ import fs from "fs";
 import path from "path";
 import os from "os";
 import https from "https";
+import { eq } from "drizzle-orm";
+import { getDb } from "./db";
+import { systemSettings } from "../drizzle/schema";
 
 // ─── OAuth2 client ────────────────────────────────────────────────────────────
 
@@ -38,12 +41,14 @@ export function getAuthUrl(): string {
 const YOUTUBE_TOKEN_KEY = "youtube_oauth_tokens";
 
 export async function saveTokens(tokens: object): Promise<void> {
+  console.log("[YouTube] Attempting to save tokens to DB...");
+  const db = await getDb();
+  if (!db) {
+    console.error("[YouTube] saveTokens: getDb() returned null — cannot save tokens");
+    throw new Error("Database connection unavailable");
+  }
+  const value = JSON.stringify(tokens);
   try {
-    const { getDb } = await import("./db");
-    const { systemSettings } = await import("../drizzle/schema");
-    const db = await getDb();
-    if (!db) throw new Error("No DB connection");
-    const value = JSON.stringify(tokens);
     await db
       .insert(systemSettings)
       .values({ key: YOUTUBE_TOKEN_KEY, value })
@@ -56,18 +61,21 @@ export async function saveTokens(tokens: object): Promise<void> {
 }
 
 export async function loadTokens(): Promise<Record<string, string> | null> {
+  const db = await getDb();
+  if (!db) {
+    console.error("[YouTube] loadTokens: getDb() returned null");
+    return null;
+  }
   try {
-    const { getDb } = await import("./db");
-    const { systemSettings } = await import("../drizzle/schema");
-    const { eq } = await import("drizzle-orm");
-    const db = await getDb();
-    if (!db) throw new Error("No DB connection");
     const rows = await db
       .select()
       .from(systemSettings)
       .where(eq(systemSettings.key, YOUTUBE_TOKEN_KEY))
       .limit(1);
-    if (!rows.length || !rows[0].value) return null;
+    if (!rows.length || !rows[0].value) {
+      console.log("[YouTube] No tokens found in DB");
+      return null;
+    }
     return JSON.parse(rows[0].value);
   } catch (err) {
     console.error("[YouTube] Failed to load tokens from DB:", err);
