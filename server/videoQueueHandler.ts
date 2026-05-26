@@ -171,6 +171,8 @@ export async function processVideoQueueHandler(req: Request, res: Response): Pro
       // ultrafast preset — ~15 seconds for any audio length
       const ffmpeg = getFfmpegPath();
       console.log(`[VideoQueue] TICK 1: Encoding MP4 (ultrafast) for post ${post.id}...`);
+      // -r 1 = 1 frame per second (still image video) — encodes ~30x faster than 30fps
+      // For a 27-min audio: ~30s on sandbox, ~90s on Cloud Run 1vCPU — within 2min Heartbeat limit
       await execFileAsync(ffmpeg, [
         "-loop", "1",
         "-i", imgPath,
@@ -178,6 +180,7 @@ export async function processVideoQueueHandler(req: Request, res: Response): Pro
         "-c:v", "libx264",
         "-preset", "ultrafast",
         "-tune", "stillimage",
+        "-r", "1",
         "-c:a", "aac",
         "-b:a", "128k",
         "-pix_fmt", "yuv420p",
@@ -186,7 +189,7 @@ export async function processVideoQueueHandler(req: Request, res: Response): Pro
         "-movflags", "+faststart",
         "-y",
         outPath,
-      ], { timeout: 90_000 }); // 90s max — well within 2min Heartbeat limit
+      ], { timeout: 110_000 }); // 110s max — within 2min Heartbeat limit
 
       console.log(`[VideoQueue] TICK 1: Uploading MP4 to S3 for post ${post.id}...`);
       const videoBuffer = await readFile(outPath);
