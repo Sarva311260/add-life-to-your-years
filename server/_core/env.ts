@@ -12,4 +12,5 @@ export const ENV = {
   googleClientId: process.env.GOOGLE_CLIENT_ID ?? "",
   googleClientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
   elevenLabsApiKey: process.env.ELEVENLABS_API_KEY ?? "",
+  workerSecret: process.env.WORKER_SECRET ?? "altyyy-worker-secret-2026",
 };

@@ -11,6 +11,7 @@ import { registerStripeWebhook } from "../stripeWebhook";
 import { registerTrackingRoutes } from "../trackingRoutes";
 import { registerCloakRoutes } from "../cloakRoutes";
 import { registerYouTubeRoutes } from "../youtubeRoutes";
+import { registerWorkerRoutes } from "../workerRoutes";
 import { processVideoQueueHandler } from "../videoQueueHandler";
 import { registerStorageProxy } from "./storageProxy";
 import { getSessionCookieOptions } from "./cookies";
@@ -123,6 +124,8 @@ async function startServer() {
   registerCloakRoutes(app);
   // YouTube OAuth callback (/api/youtube/callback)
   registerYouTubeRoutes(app);
+  // Local video worker API (authenticated with WORKER_SECRET)
+  registerWorkerRoutes(app);
 
   // Dynamic sitemap.xml
   app.get("/sitemap.xml", async (_req, res) => {

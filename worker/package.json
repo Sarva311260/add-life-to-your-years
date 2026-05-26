@@ -1,0 +1,12 @@
+{
+  "name": "altyyy-video-worker",
+  "version": "1.0.0",
+  "description": "Local video worker for Add Life to Your Years — encodes and uploads videos to YouTube",
+  "type": "module",
+  "scripts": {
+    "start": "node video-worker.mjs"
+  },
+  "dependencies": {
+    "googleapis": "^172.0.0"
+  }
+}
