@@ -90,12 +90,17 @@ export async function processVideoQueueHandler(req: Request, res: Response): Pro
     .where(and(eq(blogPosts.id, post.id), eq(blogPosts.videoStatus, "pending")));
 
   try {
-    // Ensure audio exists
-    let audioUrl = post.audioUrl;
-    if (!audioUrl) {
+    // Generate a short intro audio for the video (~2-3 min, NOT the full article)
+    let videoAudioUrl: string;
+    {
       const apiKey = process.env.ELEVENLABS_API_KEY;
       if (!apiKey) throw new Error("ElevenLabs API key not configured");
-      const cleanText = `${post.title}.\n\n${stripMarkdown(post.content)}`;
+      const fullText = stripMarkdown(post.content);
+      const MAX_VIDEO_CHARS = 1500;
+      const introText = fullText.length > MAX_VIDEO_CHARS
+        ? fullText.substring(0, MAX_VIDEO_CHARS).replace(/\s+\S*$/, "") + "...\n\nVisit addlifetoyouryears.org to read the full article."
+        : fullText;
+      const cleanText = `${post.title}.\n\n${introText}`;
       console.log(`[VideoQueue] Generating audio for post ${post.id}...`);
       const resp = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${ELEVENLABS_VOICE_ID}`, {
         method: "POST",
@@ -111,20 +116,19 @@ export async function processVideoQueueHandler(req: Request, res: Response): Pro
         throw new Error(`ElevenLabs error ${resp.status}: ${errText.substring(0, 200)}`);
       }
       const audioBuffer = Buffer.from(await resp.arrayBuffer());
-      const audioKey = `blog-audio/${post.slug}-${Date.now()}.mp3`;
-      const { url } = await storagePut(audioKey, audioBuffer, "audio/mpeg");
-      audioUrl = url;
-      await db.update(blogPosts).set({ audioUrl }).where(eq(blogPosts.id, post.id));
-      console.log(`[VideoQueue] Audio saved for post ${post.id}`);
+      const videoAudioKey = `blog-video-audio/${post.slug}-${Date.now()}.mp3`;
+      const { url } = await storagePut(videoAudioKey, audioBuffer, "audio/mpeg");
+      videoAudioUrl = url;
+      console.log(`[VideoQueue] Video audio generated for post ${post.id}`);
     }
 
     if (!post.coverImageUrl) throw new Error("Post has no cover image");
 
-    // Download image and audio
+    // Download image and video audio
     console.log(`[VideoQueue] Downloading assets for post ${post.id}...`);
     const [imgResp, audResp] = await Promise.all([
       fetch(post.coverImageUrl),
-      fetch(audioUrl),
+      fetch(videoAudioUrl),
     ]);
     if (!imgResp.ok) throw new Error("Failed to download cover image");
     if (!audResp.ok) throw new Error("Failed to download audio");

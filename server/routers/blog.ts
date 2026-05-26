@@ -91,12 +91,20 @@ async function runVideoGenerationJob(postId: number): Promise<void> {
     console.log(`[VideoJob] Starting video generation for post ${postId}: "${post.title}"`);
 
     // Ensure audio exists (generate if missing)
-    let audioUrl = post.audioUrl;
-    if (!audioUrl) {
+    // For VIDEO we use a short intro (~2-3 min) — NOT the full article audio
+    // The full-length audio (post.audioUrl) is kept separate for the audio player
+    let videoAudioUrl: string;
+    {
       const apiKey = process.env.ELEVENLABS_API_KEY;
       if (!apiKey) throw new Error("ElevenLabs API key not configured");
-      const cleanText = `${post.title}.\n\n${stripMarkdown(post.content)}`;
-      console.log(`[VideoJob] Generating audio for post ${postId}...`);
+      const fullText = stripMarkdown(post.content);
+      // Cap at 1500 chars ≈ 2-3 minutes of speech — ideal for a YouTube teaser
+      const MAX_VIDEO_CHARS = 1500;
+      const introText = fullText.length > MAX_VIDEO_CHARS
+        ? fullText.substring(0, MAX_VIDEO_CHARS).replace(/\s+\S*$/, "") + "...\n\nVisit addlifetoyouryears.org to read the full article."
+        : fullText;
+      const cleanText = `${post.title}.\n\n${introText}`;
+      console.log(`[VideoJob] Generating video audio for post ${postId} (${cleanText.length} chars)...`);
       const resp = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${ELEVENLABS_VOICE_ID}`, {
         method: "POST",
         headers: { "xi-api-key": apiKey, "Content-Type": "application/json" },
@@ -111,11 +119,10 @@ async function runVideoGenerationJob(postId: number): Promise<void> {
         throw new Error(`ElevenLabs error ${resp.status}: ${errText.substring(0, 200)}`);
       }
       const audioBuffer = Buffer.from(await resp.arrayBuffer());
-      const audioKey = `blog-audio/${post.slug}-${Date.now()}.mp3`;
-      const { url } = await storagePut(audioKey, audioBuffer, "audio/mpeg");
-      audioUrl = url;
-      await db.update(blogPosts).set({ audioUrl }).where(eq(blogPosts.id, postId));
-      console.log(`[VideoJob] Audio generated and saved for post ${postId}`);
+      const videoAudioKey = `blog-video-audio/${post.slug}-${Date.now()}.mp3`;
+      const { url } = await storagePut(videoAudioKey, audioBuffer, "audio/mpeg");
+      videoAudioUrl = url;
+      console.log(`[VideoJob] Video audio generated for post ${postId}`);
     }
 
     // Download hero image
@@ -125,9 +132,9 @@ async function runVideoGenerationJob(postId: number): Promise<void> {
     const imgBuffer = Buffer.from(await imgResp.arrayBuffer());
     const imgExt = post.coverImageUrl.match(/\.(jpe?g|png|webp)/i)?.[1] ?? "jpg";
 
-    // Download audio
-    console.log(`[VideoJob] Downloading audio for post ${postId}...`);
-    const audResp = await fetch(audioUrl);
+    // Download video audio (short intro version)
+    console.log(`[VideoJob] Downloading video audio for post ${postId}...`);
+    const audResp = await fetch(videoAudioUrl);
     if (!audResp.ok) throw new Error("Failed to download audio");
     const audBuffer = Buffer.from(await audResp.arrayBuffer());
 
