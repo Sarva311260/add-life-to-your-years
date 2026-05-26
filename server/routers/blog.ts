@@ -391,8 +391,13 @@ export const blogRouter = router({
             ? post.tags.split(",").map((t: string) => t.trim()).filter(Boolean)
             : ["wellness", "health", "plant-based", "vitality", "longevity"];
 
+          // Two-tick approach: this inline path is only used if videoMp4Url is already set
+          // (normally the Heartbeat queue handles encoding + upload)
+          if (!post.videoMp4Url) {
+            throw new Error("MP4 not yet encoded — Heartbeat queue will handle this");
+          }
           const videoId = await uploadVideoToYouTube({
-            audioUrl: post.audioUrl!,
+            videoMp4Url: post.videoMp4Url,
             thumbnailUrl: post.coverImageUrl ?? undefined,
             title: post.title,
             description,
@@ -487,8 +492,11 @@ export const blogRouter = router({
         ? post.tags.split(",").map((t: string) => t.trim()).filter(Boolean)
         : ["wellness", "health", "plant-based", "vitality", "longevity"];
 
+      if (!post.videoMp4Url) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "MP4 not yet encoded — wait for the Heartbeat queue to finish encoding first" });
+      }
       const videoId = await uploadVideoToYouTube({
-        audioUrl: post.audioUrl,
+        videoMp4Url: post.videoMp4Url,
         thumbnailUrl: post.coverImageUrl ?? undefined,
         title: post.title,
         description,
