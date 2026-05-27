@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book_content_updated_91734ec4.md";
+const MD_CDN_URL = "/manus-storage/book_content_updated_1e3b33f5.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -64,6 +64,7 @@ const chapters = [
   { id: "appendix-h", label: "Supplementary Guide: Coherence Breathing" },
   { id: "appendix-i", label: "Supplementary Guide: Lavender Oil" },
   { id: "appendix-j", label: "Supplementary Guide: Mitochondrial Health" },
+  { id: "appendix-k", label: "Supplementary Guide: Gallbladder Health" },
   { id: "wellness-blueprint", label: "Your Wellness Blueprint at a Glance" },
 ];
 
@@ -122,6 +123,7 @@ const headingIdMap: Record<string, string> = {
   "Supplementary Guide: Coherence Breathing": "appendix-h",
   "Supplementary Guide: Lavender Oil": "appendix-i",
   "Supplementary Guide: Mitochondrial Health": "appendix-j",
+  "Supplementary Guide: Gallbladder Health": "appendix-k",
   "Supplementary Guides": "appendix-strategies",
 };
 
@@ -302,6 +304,9 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
   ],
   "rec-appendix-mitochondria": [
     { youtubeId: "71VCkTZYRrQ", title: "Mitochondrial Health — 5 Ways to Improve Cellular Energy — Dr. William Li" },
+  ],
+  "rec-appendix-gallbladder": [
+    { youtubeId: "6dwMEBE3G_4", title: "Gallbladder Health — The Five-Step Protocol for Optimal Bile Flow" },
   ],
   "rec-appendix-diet": [
     { youtubeId: "Weg9GUnH24E", title: "What Humans Are Designed to Eat" },

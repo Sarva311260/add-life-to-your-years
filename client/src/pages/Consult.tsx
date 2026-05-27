@@ -20,7 +20,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 type Step = "choose" | "conditions" | "prerequisite" | "starting";
 
-const KB_CDN_URL = "/manus-storage/book_content_updated_91734ec4.md";
+const KB_CDN_URL = "/manus-storage/book_content_updated_1e3b33f5.md";
 
 // Map heading text to anchor IDs (same as BookReader)
 const kbHeadingIdMap: Record<string, string> = {
@@ -39,6 +39,7 @@ const kbHeadingIdMap: Record<string, string> = {
   "Part Three": "part-three", "Part Four": "part-four", "Conclusion": "conclusion",
   "Glossary": "glossary", "Your Wellness Blueprint at a Glance": "wellness-blueprint",
   "Supplementary Guide: Mitochondrial Health": "appendix-j",
+  "Supplementary Guide: Gallbladder Health": "appendix-k",
 };
 const kbSortedKeys = Object.keys(kbHeadingIdMap).sort((a, b) => b.length - a.length);
 

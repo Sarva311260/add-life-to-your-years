@@ -626,6 +626,22 @@ const RECOMMENDATIONS: RecommendationSection[] = [
       },
     ],
   },
+  {
+    id: "appendix-k",
+    number: 0,
+    title: "Gallbladder Health — The Five-Step Protocol for Optimal Bile Flow",
+    description:
+      "The gallbladder stores and releases bile — the liver's digestive fluid essential for fat absorption, fat-soluble vitamin uptake (A, D, E, K), and toxin excretion. This guide presents a five-step evidence-based protocol for optimising bile flow, preventing bile stasis, and reducing gallstone risk through targeted nutrition and lifestyle changes.",
+    color: "bg-yellow-100 text-yellow-800 border-yellow-200",
+    videos: [
+      {
+        youtubeId: "6dwMEBE3G_4",
+        title: "Gallbladder Health — The Five-Step Protocol for Optimal Bile Flow",
+        description:
+          "A practical walkthrough of the five-step protocol for optimising bile flow: thinning bile with taurine, phosphatidylcholine, and magnesium; stimulating bile release with bitters and cholagogues (artichoke, ginger, turmeric); supporting liver bile production with vitamin C, B vitamins, and milk thistle; reducing inflammation and staying hydrated; and restoring parasympathetic nervous system control over gallbladder contraction.",
+      },
+    ],
+  },
 ];
 const PODCASTS: PodcastItem[] = [
   {
