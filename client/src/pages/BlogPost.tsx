@@ -47,6 +47,12 @@ const MEDIA_VIDEO_MAP: Record<string, { youtubeId: string; title: string }[]> = 
   "appendix-lavender-oil": [
     { youtubeId: "q3kXbYMgBnE", title: "Lavender Oil — Nature's Answer to Anxiety" },
   ],
+  "appendix-j": [
+    { youtubeId: "71VCkTZYRrQ", title: "Mitochondrial Health — 5 Ways to Improve Cellular Energy — Dr. William Li" },
+  ],
+  "appendix-k": [
+    { youtubeId: "6dwMEBE3G_4", title: "Gallbladder Health — The Five-Step Protocol for Optimal Bile Flow" },
+  ],
 };
 
 // Strip the first H1 from content (already shown as page title)
