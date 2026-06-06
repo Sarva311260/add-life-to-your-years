@@ -71,7 +71,23 @@
 
 ---
 
-## Last Session — 6 June 2026
+## Last Session — 6 June 2026 (Session 2)
+
+**What was done:**
+1. Confirmed session memory system is fully in place for all three projects
+2. Bhakti Hub — session-notes.md and workflow-rules.md created, pushed to GitHub, Project Instruction added
+3. Would You Like to Know — session-notes.md and workflow-rules.md created, pushed to GitHub, new Manus Project folder created, Project Instruction added
+4. Add Life to Your Years — Project Instruction added to Manus Project folder (reads session-notes.md at start of every session)
+5. All three GitHub repos confirmed private and backed up
+
+**Pending:**
+- Supplementary Guide L not yet started (15-PGDH research ready at /tmp/15pgdh_cartilage_research.pdf)
+- Video worker on son's Windows PC not yet fully tested
+- Manus support ticket open re: migrating web apps from Tasks to Project folders
+
+---
+
+## Previous Session — 6 June 2026 (Session 1)
 
 **What was done:**
 1. Published Supplementary Guide K — Gallbladder Health (YouTube: 6dwMEBE3G_4)
