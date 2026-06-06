@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book_content_updated_1e3b33f5.md";
+const MD_CDN_URL = "/manus-storage/book_content_guide_m_9d4f739f.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -65,6 +65,8 @@ const chapters = [
   { id: "appendix-i", label: "Supplementary Guide: Lavender Oil" },
   { id: "appendix-j", label: "Supplementary Guide: Mitochondrial Health" },
   { id: "appendix-k", label: "Supplementary Guide: Gallbladder Health" },
+  { id: "appendix-l", label: "Supplementary Guide: Cartilage Regeneration" },
+  { id: "appendix-m", label: "Supplementary Guide: Schisandra & Liver Regeneration" },
   { id: "wellness-blueprint", label: "Your Wellness Blueprint at a Glance" },
 ];
 
@@ -124,6 +126,8 @@ const headingIdMap: Record<string, string> = {
   "Supplementary Guide: Lavender Oil": "appendix-i",
   "Supplementary Guide: Mitochondrial Health": "appendix-j",
   "Supplementary Guide: Gallbladder Health": "appendix-k",
+  "Supplementary Guide L: Cartilage Regeneration": "appendix-l",
+  "Supplementary Guide M: Schisandra & Liver Regeneration": "appendix-m",
   "Supplementary Guides": "appendix-strategies",
 };
 
@@ -307,6 +311,12 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
   ],
   "rec-appendix-gallbladder": [
     { youtubeId: "6dwMEBE3G_4", title: "Gallbladder Health — The Five-Step Protocol for Optimal Bile Flow" },
+  ],
+  "rec-appendix-cartilage": [
+    { youtubeId: "Fpy-v-WPBUE", title: "Cartilage Regeneration — The 15-PGDH Discovery" },
+  ],
+  "rec-appendix-schisandra": [
+    { youtubeId: "zrgNga8U2VM", title: "Schisandra — Liver Regeneration Explained" },
   ],
   "rec-appendix-diet": [
     { youtubeId: "Weg9GUnH24E", title: "What Humans Are Designed to Eat" },

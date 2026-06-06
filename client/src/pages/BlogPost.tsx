@@ -53,6 +53,12 @@ const MEDIA_VIDEO_MAP: Record<string, { youtubeId: string; title: string }[]> = 
   "appendix-k": [
     { youtubeId: "6dwMEBE3G_4", title: "Gallbladder Health — The Five-Step Protocol for Optimal Bile Flow" },
   ],
+  "appendix-l": [
+    { youtubeId: "Fpy-v-WPBUE", title: "Cartilage Regeneration — The 15-PGDH Discovery" },
+  ],
+  "appendix-m": [
+    { youtubeId: "zrgNga8U2VM", title: "Schisandra — Liver Regeneration Explained" },
+  ],
 };
 
 // Strip the first H1 from content (already shown as page title)

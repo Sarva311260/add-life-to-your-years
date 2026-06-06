@@ -20,7 +20,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 type Step = "choose" | "conditions" | "prerequisite" | "starting";
 
-const KB_CDN_URL = "/manus-storage/book_content_updated_1e3b33f5.md";
+const KB_CDN_URL = "/manus-storage/book_content_guide_m_9d4f739f.md";
 
 // Map heading text to anchor IDs (same as BookReader)
 const kbHeadingIdMap: Record<string, string> = {
@@ -40,6 +40,8 @@ const kbHeadingIdMap: Record<string, string> = {
   "Glossary": "glossary", "Your Wellness Blueprint at a Glance": "wellness-blueprint",
   "Supplementary Guide: Mitochondrial Health": "appendix-j",
   "Supplementary Guide: Gallbladder Health": "appendix-k",
+  "Supplementary Guide L: Cartilage Regeneration": "appendix-l",
+  "Supplementary Guide M: Schisandra & Liver Regeneration": "appendix-m",
 };
 const kbSortedKeys = Object.keys(kbHeadingIdMap).sort((a, b) => b.length - a.length);
 

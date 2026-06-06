@@ -642,6 +642,38 @@ const RECOMMENDATIONS: RecommendationSection[] = [
       },
     ],
   },
+  {
+    id: "appendix-m",
+    number: 0,
+    title: "Schisandra — The Five-Flavour Berry That Regenerates Your Liver",
+    description:
+      "Schisandra (wu wei zi) is one of the most thoroughly researched hepatoprotective plants in the world. It boosts and recycles glutathione — the liver's master antioxidant — reverses fatty liver through AMPK/PPARα activation, stabilises the stress-liver axis as an adaptogen, and supports mitochondrial energy. A human RCT showed significant ALT/AST reduction and visible fatty liver improvement without lifestyle changes.",
+    color: "bg-red-100 text-red-800 border-red-200",
+    videos: [
+      {
+        youtubeId: "zrgNga8U2VM",
+        title: "Schisandra — Liver Regeneration Explained",
+        description:
+          "A clear explanation of how Schisandra boosts and recycles glutathione, reverses fatty liver, stabilises the stress-liver axis, and supports mitochondrial energy production. Includes the human RCT showing significant ALT/AST reduction and fatty liver improvement.",
+      },
+    ],
+  },
+  {
+    id: "appendix-l",
+    number: 0,
+    title: "Cartilage Regeneration — The 15-PGDH Discovery and What You Can Do Now",
+    description:
+      "Stanford Medicine identified 15-PGDH as a master regulator of cartilage ageing. When this enzyme is blocked, PGE2 accumulates to youthful levels and cartilage cells switch back to a regenerative mode — producing actual hyaline cartilage. This guide explains the discovery and the whole-food-based strategies (jackfruit, quercetin, resveratrol, green tea, omega-3s, vitamin C) that may support the same pathway.",
+    color: "bg-teal-100 text-teal-800 border-teal-200",
+    videos: [
+      {
+        youtubeId: "Fpy-v-WPBUE",
+        title: "Cartilage Regeneration — The 15-PGDH Discovery",
+        description:
+          "A clear explanation of the Stanford research on 15-PGDH, how cartilage cells are reprogrammed to regenerate actual hyaline cartilage, and what whole-food-based strategies may support the same biological pathway.",
+      },
+    ],
+  },
 ];
 const PODCASTS: PodcastItem[] = [
   {
