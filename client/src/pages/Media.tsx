@@ -680,6 +680,22 @@ const RECOMMENDATIONS: RecommendationSection[] = [
       },
     ],
   },
+  {
+    id: "appendix-n",
+    number: 0,
+    title: "Apigenin — The Flavonoid in Parsley That Blocks Oestrogen, Burns Fat, and Protects the Ageing Brain",
+    description:
+      "Apigenin is one of the most pharmacologically active plant flavonoids under scientific investigation. It blocks aromatase (testosterone→oestrogen conversion), activates AMPK (the fat-burning master switch), suppresses inflammatory SASP secretions from ageing cells, and crosses the blood-brain barrier to upregulate BDNF. Found in flat-leaf parsley, chamomile, celery, and artichokes.",
+    color: "bg-lime-100 text-lime-800 border-lime-200",
+    videos: [
+      {
+        youtubeId: "YMZxaTPy1NU",
+        title: "Apigenin: The Parsley Compound That Blocks Oestrogen, Burns Fat & Protects Your Brain",
+        description:
+          "Covers four peer-reviewed mechanisms of apigenin: aromatase inhibition, AMPK activation, senomorphic SASP suppression in ageing cells, and BDNF upregulation for brain health. Practical protocol and dosing guidance included.",
+      },
+    ],
+  },
 ];
 const PODCASTS: PodcastItem[] = [
   {

@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book_content_guide_m_90700494.md";
+const MD_CDN_URL = "/manus-storage/book_content_guide_n_ba1a8f0d.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -67,6 +67,7 @@ const chapters = [
   { id: "appendix-k", label: "Supplementary Guide: Gallbladder Health" },
   { id: "appendix-l", label: "Supplementary Guide: Cartilage Regeneration" },
   { id: "appendix-m", label: "Supplementary Guide: Schisandra & Liver Regeneration" },
+  { id: "appendix-n", label: "Supplementary Guide: Apigenin & Parsley" },
   { id: "wellness-blueprint", label: "Your Wellness Blueprint at a Glance" },
 ];
 
@@ -128,6 +129,7 @@ const headingIdMap: Record<string, string> = {
   "Supplementary Guide: Gallbladder Health": "appendix-k",
   "Supplementary Guide L: Cartilage Regeneration": "appendix-l",
   "Supplementary Guide M: Schisandra & Liver Regeneration": "appendix-m",
+  "Supplementary Guide N: Apigenin — The Flavonoid in Parsley": "appendix-n",
   "Supplementary Guides": "appendix-strategies",
 };
 
@@ -321,6 +323,9 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
   ],
   "rec-appendix-schisandra": [
     { youtubeId: "zrgNga8U2VM", title: "Schisandra — Liver Regeneration Explained" },
+  ],
+  "rec-appendix-apigenin": [
+    { youtubeId: "YMZxaTPy1NU", title: "Apigenin: The Parsley Compound That Blocks Oestrogen, Burns Fat & Protects Your Brain" },
   ],
   "rec-appendix-diet": [
     { youtubeId: "Weg9GUnH24E", title: "What Humans Are Designed to Eat" },

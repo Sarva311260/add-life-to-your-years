@@ -20,7 +20,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 type Step = "choose" | "conditions" | "prerequisite" | "starting";
 
-const KB_CDN_URL = "/manus-storage/book_content_guide_m_90700494.md";
+const KB_CDN_URL = "/manus-storage/book_content_guide_n_ba1a8f0d.md";
 
 // Map heading text to anchor IDs (same as BookReader)
 const kbHeadingIdMap: Record<string, string> = {
@@ -42,6 +42,7 @@ const kbHeadingIdMap: Record<string, string> = {
   "Supplementary Guide: Gallbladder Health": "appendix-k",
   "Supplementary Guide L: Cartilage Regeneration": "appendix-l",
   "Supplementary Guide M: Schisandra & Liver Regeneration": "appendix-m",
+  "Supplementary Guide N: Apigenin — The Flavonoid in Parsley": "appendix-n",
 };
 const kbSortedKeys = Object.keys(kbHeadingIdMap).sort((a, b) => b.length - a.length);
 

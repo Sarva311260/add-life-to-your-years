@@ -29,7 +29,7 @@ const MEDIA_VIDEO_MAP: Record<string, { youtubeId: string; title: string }[]> = 
     { youtubeId: "Ck4_fX1xaaw", title: "Largest Real-World Study: Ivermectin + Mebendazole in 197 Cancer Patients" },
   ],
   "appendix-brazil-nuts": [
-    { youtubeId: "YckoR3hLL9E", title: "Five Seeds of Life — Brazil Nuts & Selenium" },
+    { youtubeId: "BOXGulIOGHA", title: "Two Surprising Benefits of Brazil Nuts" },
     { youtubeId: "EOixgw0p87A", title: "Brazil Nuts, Selenium & Thyroid Function — The T4 to T3 Connection" },
   ],
   "appendix-floor-lying": [
@@ -59,6 +59,9 @@ const MEDIA_VIDEO_MAP: Record<string, { youtubeId: string; title: string }[]> = 
   ],
   "appendix-m": [
     { youtubeId: "zrgNga8U2VM", title: "Schisandra — Liver Regeneration Explained" },
+  ],
+  "appendix-n": [
+    { youtubeId: "YMZxaTPy1NU", title: "Apigenin: The Parsley Compound That Blocks Oestrogen, Burns Fat & Protects Your Brain" },
   ],
 };
 
