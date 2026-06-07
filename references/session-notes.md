@@ -75,7 +75,25 @@
 
 ---
 
-## Last Session — 7 June 2026 (Final)
+## Last Session — 8 June 2026
+
+**What was done:**
+1. **Fixed and ran audio regeneration script** for all 14 blog posts
+   - Root cause: script used `audio_url` (snake_case) but DB column is `audioUrl` (camelCase)
+   - Fixed in `/home/ubuntu/wellness-coach-app/scripts/regenerate-audio.ts`
+   - 13/14 posts regenerated successfully with new double-title fix applied
+   - Post 90002 (Schisandra) failed due to ElevenLabs quota exhaustion (3,387 credits remaining, needed 4,233)
+   - All successful posts now have audio that reads the title once only (not twice)
+   - Checkpoint: eed8f06e
+
+**Pending:**
+- Schisandra audio (post 90002) needs regeneration when ElevenLabs quota resets
+- Video worker on son's Windows PC not yet fully tested
+- Manus support ticket open re: migrating web apps from Tasks to Project folders
+
+---
+
+## Previous Session — 7 June 2026 (Final)
 
 **What was done:**
 1. Published **Supplementary Guide L — Cartilage Regeneration (15-PGDH Discovery)**
