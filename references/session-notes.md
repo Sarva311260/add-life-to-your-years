@@ -42,7 +42,10 @@
 | J | Mitochondrial Health | mitochondrial-health-five-strategies | May 2026 |
 | K | Gallbladder Health | gallbladder-health-five-step-protocol | 7 Apr 2026 |
 
-**Next guide:** Supplementary Guide L
+| L | Cartilage Regeneration (15-PGDH) | cartilage-regeneration-15pgdh-protocol | 7 Jun 2026 |
+| M | Schisandra & Liver Regeneration | schisandra-liver-regeneration-five-flavour-berry | 7 Jun 2026 |
+
+**Next guide:** Supplementary Guide N
 
 ---
 
@@ -71,7 +74,32 @@
 
 ---
 
-## Last Session — 6 June 2026 (Session 2)
+## Last Session — 7 June 2026
+
+**What was done:**
+1. Published **Supplementary Guide L — Cartilage Regeneration (15-PGDH Discovery)**
+   - Based on Stanford research PDF + YouTube video (Fpy-v-WPBUE)
+   - Covers: 15-PGDH enzyme, PGE2, plant-based inhibitors (jackfruit, quercetin, resveratrol, EGCG), curcumin nuance, five-step protocol
+   - Live: https://addlifetoyouryears.org/blog/cartilage-regeneration-15pgdh-protocol
+2. Published **Supplementary Guide M — Schisandra & Liver Regeneration**
+   - Based on YouTube video (zrgNga8U2VM) + peer-reviewed research
+   - Covers: glutathione recycling, AMPK/PPARα, adaptogenic stress-liver axis, CYP3A4 caution, five-step protocol
+   - Live: https://addlifetoyouryears.org/blog/schisandra-liver-regeneration-five-flavour-berry
+3. Updated **Brazil Nut blog post (Guide D)** with new thyroid content
+   - Added second video (EOixgw0p87A) covering T4→T3 deiodinase, cortisol/reverse T3, RCT data, Thyroid Triad, revised dosing (1–2 nuts/week)
+   - Fixed broken first video: original (9Ld-L0QFnIY) was unavailable; replaced with confirmed-embeddable zIBEVeBDCNo
+   - Removed QR code images and plain YouTube links from all blog post content (database fix)
+   - Key lesson: always test video embeddability via YouTube oEmbed API before using
+4. Confirmed session memory system working across all three projects
+
+**Pending:**
+- Video worker on son's Windows PC not yet fully tested
+- Manus support ticket open re: migrating web apps from Tasks to Project folders
+- All three GitHub repos backed up and current
+
+---
+
+## Previous Session — 6 June 2026 (Session 2)
 
 **What was done:**
 1. Confirmed session memory system is fully in place for all three projects
