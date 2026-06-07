@@ -9,7 +9,7 @@ import SynergyInfographic from "@/components/SynergyInfographic";
 
 const PDF_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663488485220/2Y96gvwURj9QkkDN4hXary/AddLifeToYourYears-v6_abfc567f.pdf";
-const MD_CDN_URL = "/manus-storage/book_content_guide_m_9d4f739f.md";
+const MD_CDN_URL = "/manus-storage/book_content_guide_m_90700494.md";
 
 const chapters = [
   { id: "introduction", label: "Introduction" },
@@ -281,6 +281,10 @@ const REC_VIDEOS: Record<string, VideoEntry[]> = {
   "rec-17": [{ youtubeId: "foBnfBX4YKQ", title: "Your Environment" }],
   // Rec 18: Methylene Blue
   "rec-18": [{ youtubeId: "KvASX2yp0zU", title: "Methylene Blue & Photobiomodulation" }],
+  "rec-appendix-brazil-nuts": [
+    { youtubeId: "yMy_R6tlAGA", title: "Four Brazil Nuts Once a Month — The Cholesterol Study" },
+    { youtubeId: "EOixgw0p87A", title: "Brazil Nuts, Selenium & Thyroid Function — The T4 to T3 Connection" },
+  ],
   "rec-appendix-cold-showers": [
     { youtubeId: "xTVMGyJ8cZU", title: "Cold Showers — Hormesis, Inflammation & Cognitive Benefits" },
     { youtubeId: "may_PlDfNRE", title: "The Science Behind Cold Showers — 5 Evidence-Based Benefits" },

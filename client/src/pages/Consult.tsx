@@ -20,7 +20,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 type Step = "choose" | "conditions" | "prerequisite" | "starting";
 
-const KB_CDN_URL = "/manus-storage/book_content_guide_m_9d4f739f.md";
+const KB_CDN_URL = "/manus-storage/book_content_guide_m_90700494.md";
 
 // Map heading text to anchor IDs (same as BookReader)
 const kbHeadingIdMap: Record<string, string> = {

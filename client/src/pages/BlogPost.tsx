@@ -30,6 +30,7 @@ const MEDIA_VIDEO_MAP: Record<string, { youtubeId: string; title: string }[]> = 
   ],
   "appendix-brazil-nuts": [
     { youtubeId: "YckoR3hLL9E", title: "Five Seeds of Life — Brazil Nuts & Selenium" },
+    { youtubeId: "EOixgw0p87A", title: "Brazil Nuts, Selenium & Thyroid Function — The T4 to T3 Connection" },
   ],
   "appendix-floor-lying": [
     { youtubeId: "YcmpJZrdqiI", title: "Floor Lying — The 5-Minute Protocol for Spinal Decompression" },

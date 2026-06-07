@@ -513,14 +513,20 @@ const RECOMMENDATIONS: RecommendationSection[] = [
     number: 0,
     title: "Brazil Nuts & Selenium",
     description:
-      "One of the most remarkable nutritional findings in recent research — four Brazil nuts once a month and their extraordinary effects on cholesterol, inflammation, and selenium status.",
+      "One of the most remarkable nutritional findings in recent research. A single serving of Brazil nuts reduces LDL cholesterol within nine hours with effects lasting 30 days. The selenium in Brazil nuts also powers the deiodinase enzymes that convert inactive T4 to active T3 thyroid hormone — and an RCT showed 2 Brazil nuts equals a pharmaceutical selenium supplement.",
     color: "bg-yellow-100 text-yellow-800 border-yellow-200",
     videos: [
       {
         youtubeId: "yMy_R6tlAGA",
         title: "Four Brazil Nuts Once a Month — The Cholesterol Study",
         description:
-          "Dr. Michael Greger presents the 2013 clinical study showing a single serving of four Brazil nuts reduced LDL cholesterol by nearly 20 points within nine hours — with the effect persisting for 30 days. Covers selenium, thyroid health, immune function, and safe dosing.",
+          "The 2013 clinical study showing a single serving of four Brazil nuts reduced LDL cholesterol by nearly 20 points within nine hours — with the effect persisting for 30 days. Covers selenium, thyroid health, immune function, and safe dosing.",
+      },
+      {
+        youtubeId: "EOixgw0p87A",
+        title: "Brazil Nuts, Selenium & Thyroid Function — The T4 to T3 Connection",
+        description:
+          "How selenium-dependent deiodinase enzymes (DIO1/DIO2) convert inactive T4 to active T3 thyroid hormone. Why cortisol sabotages this conversion (producing reverse T3). The RCT showing 2 Brazil nuts equals a pharmaceutical selenium supplement. The Thyroid Triad: selenium + iodine + iron. Revised dosing: 1–2 nuts per week.",
       },
     ],
   },
