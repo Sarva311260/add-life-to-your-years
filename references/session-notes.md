@@ -44,8 +44,9 @@
 
 | L | Cartilage Regeneration (15-PGDH) | cartilage-regeneration-15pgdh-protocol | 7 Jun 2026 |
 | M | Schisandra & Liver Regeneration | schisandra-liver-regeneration-five-flavour-berry | 7 Jun 2026 |
+| N | Apigenin — The Flavonoid in Parsley | apigenin-parsley-flavonoid-protocol | 7 Jun 2026 |
 
-**Next guide:** Supplementary Guide N
+**Next guide:** Supplementary Guide O
 
 ---
 
@@ -74,7 +75,7 @@
 
 ---
 
-## Last Session — 7 June 2026
+## Last Session — 7 June 2026 (Final)
 
 **What was done:**
 1. Published **Supplementary Guide L — Cartilage Regeneration (15-PGDH Discovery)**
@@ -87,10 +88,14 @@
    - Live: https://addlifetoyouryears.org/blog/schisandra-liver-regeneration-five-flavour-berry
 3. Updated **Brazil Nut blog post (Guide D)** with new thyroid content
    - Added second video (EOixgw0p87A) covering T4→T3 deiodinase, cortisol/reverse T3, RCT data, Thyroid Triad, revised dosing (1–2 nuts/week)
-   - Fixed broken first video: original (9Ld-L0QFnIY) was unavailable; replaced with confirmed-embeddable zIBEVeBDCNo
+   - Fixed broken first video: replaced with confirmed-embeddable zIBEVeBDCNo
    - Removed QR code images and plain YouTube links from all blog post content (database fix)
-   - Key lesson: always test video embeddability via YouTube oEmbed API before using
-4. Confirmed session memory system working across all three projects
+   - **Key lesson:** Always test video embeddability via YouTube oEmbed API before using any video ID
+4. Published **Supplementary Guide N — Apigenin: The Flavonoid in Parsley**
+   - Based on YouTube video (YMZxaTPy1NU) — confirmed embeddable via oEmbed API
+   - Covers: aromatase inhibition (IC50 20μM), AMPK activation, senomorphic SASP suppression, BDNF upregulation, five-step protocol
+   - Live: https://addlifetoyouryears.org/blog/apigenin-parsley-flavonoid-protocol
+5. Confirmed session memory system working across all three projects (Add Life to Your Years, Bhakti Hub, Would You Like to Know)
 
 **Pending:**
 - Video worker on son's Windows PC not yet fully tested
