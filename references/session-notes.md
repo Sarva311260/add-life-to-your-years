@@ -11,7 +11,8 @@
 - **Owner:** Sarva Keller (Sarvadarshi Dasa), Wellness Coach & Author
 - **Tech stack:** React 19, Tailwind 4, tRPC 11, Express 4, Drizzle ORM, MySQL/TiDB, Stripe, ElevenLabs
 - **Design:** Dark green theme (#0a1f0a background), gold accents, Playfair Display + Inter fonts
-- **GitHub backup:** https://github.com/Sarva311260/add-life-to-your-years (private)
+- **GitHub backup (content):** https://github.com/Sarva311260/add-life-to-your-years (private) — book, blog posts, guides, session notes
+- **GitHub backup (source code):** https://github.com/Sarva311260/wellness-coach-app (private) — full app source code
 - **GitHub account:** Sarva311260
 - **Working Task name:** "WORKING TASK — Add Life to Your Years (Live Site)"
 
@@ -21,7 +22,8 @@
 
 - All live site work must be done from this Task — the database, Stripe keys, deployment pipeline, and all environment variables are connected here only
 - The Add Life to Your Years Project folder in Manus is for organisation only — it does not have the web app connected
-- After every checkpoint, push to GitHub: `cd /home/ubuntu/wellness-coach-app && git push github main`
+- After every checkpoint, push source code to GitHub: `cd /home/ubuntu/wellness-coach-app && git push github main`
+- After content changes (book/blog/guides), push content repo: `cd /tmp/altyy-github && git add -A && git commit -m "..." && git push origin main`
 - Publishing workflow: always follow `/home/ubuntu/skills/wellness-content-publisher/SKILL.md`
 
 ---
