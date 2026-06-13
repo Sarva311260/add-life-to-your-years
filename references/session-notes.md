@@ -28,27 +28,29 @@
 
 ---
 
-## Supplementary Guides Published (A–K)
+## Supplementary Guides Published (now numbered 1–15)
+
+**Note: All supplementary guides converted from letters to numbers on 13 June 2026.**
 
 | Guide | Topic | Blog Slug | Date |
 |---|---|---|---|
-| A | Navigating the Diet Landscape | navigating-diet-landscape | Jan 2024 |
-| B | The Science of Cold Showers | science-of-cold-showers | Feb 2024 |
-| C | Off-Label Pharmaceuticals | off-label-pharmaceuticals | Feb 2024 |
-| D | Brazil Nuts and Selenium | brazil-nuts-selenium | Mar 2024 |
-| E | The Floor as Medicine | floor-as-medicine | Mar 2024 |
-| F | The Fiber That Calms You | fiber-that-calms-you | Apr 2024 |
-| G | Blackstrap Molasses | blackstrap-molasses | Apr 2024 |
-| H | Coherence Breathing | coherence-breathing | May 2024 |
-| I | Lavender Oil | lavender-oil | May 2024 |
-| J | Mitochondrial Health | mitochondrial-health-five-strategies | May 2026 |
-| K | Gallbladder Health | gallbladder-health-five-step-protocol | 7 Apr 2026 |
+| 1 | Navigating the Diet Landscape | navigating-diet-landscape | Jan 2024 |
+| 2 | The Science of Cold Showers | science-of-cold-showers | Feb 2024 |
+| 3 | Off-Label Pharmaceuticals | off-label-pharmaceuticals | Feb 2024 |
+| 4 | Brazil Nuts and Selenium | brazil-nuts-selenium | Mar 2024 |
+| 5 | The Floor as Medicine | floor-as-medicine | Mar 2024 |
+| 6 | The Fiber That Calms You | fiber-that-calms-you | Apr 2024 |
+| 7 | Blackstrap Molasses | blackstrap-molasses | Apr 2024 |
+| 8 | Coherence Breathing | coherence-breathing | May 2024 |
+| 9 | Lavender Oil | lavender-oil | May 2024 |
+| 10 | Mitochondrial Health | mitochondrial-health-five-strategies | May 2026 |
+| 11 | Gallbladder Health | gallbladder-health-five-step-protocol | 7 Apr 2026 |
+| 12 | Cartilage Regeneration (15-PGDH) | cartilage-regeneration-15pgdh-protocol | 7 Jun 2026 |
+| 13 | Schisandra & Liver Regeneration | schisandra-liver-regeneration-five-flavour-berry | 7 Jun 2026 |
+| 14 | Apigenin — The Flavonoid in Parsley | apigenin-parsley-flavonoid-protocol | 7 Jun 2026 |
+| 15 | Natural Detox System (14-Day Protocol) | natural-detox-system-14-day-protocol | 13 Jun 2026 |
 
-| L | Cartilage Regeneration (15-PGDH) | cartilage-regeneration-15pgdh-protocol | 7 Jun 2026 |
-| M | Schisandra & Liver Regeneration | schisandra-liver-regeneration-five-flavour-berry | 7 Jun 2026 |
-| N | Apigenin — The Flavonoid in Parsley | apigenin-parsley-flavonoid-protocol | 7 Jun 2026 |
-
-**Next guide:** Supplementary Guide O
+**Next guide:** Supplementary Guide 16
 
 ---
 
@@ -99,12 +101,22 @@
    - "Read Full Book" floating button appears when arriving via shared link
    - Checkpoint: bae3d680
 5. **Home page reorder** — bio (About Sarva) moved just before Recommended Products section
-6. **8 Factor cards** — added green "Learn more →" pill button to each card (always visible on mobile)
+6. **8 Factor cards** — added green "Learn more →" pill button to each card (always visible on mobile); equal card heights fixed
    - Checkpoint: 99ea2257
+7. **Supplementary guides renumbered A→1 through N→14** everywhere: database, book CDN file, BookReader.tsx, Consult.tsx, Media.tsx, BlogPost.tsx
+   - Checkpoint: 0e781b6d
+8. **Published Supplementary Guide 15 — Natural Detox System** (YouTube: FPZsSEJxxqk)
+   - Blog post ID: 120001, slug: natural-detox-system-14-day-protocol
+   - Covers: detox water, moringa, turmeric+black pepper, barley tea, Epsom salt foot soaks
+   - 14-day protocol with measurable results at days 3, 7, and 14
+   - Checkpoint: 4482d38a
+9. **SEO improvements scheduled** for Thursday 19 June 2026 at 9am (schema markup, FAQ sections, meta optimisation)
+10. Source code pushed to GitHub: Sarva311260/wellness-coach-app
 
 **Pending:**
 - Posts 4–14 still have old female voice audio — regenerate via admin panel (Generate Audio button on each post)
 - Schisandra (post 90002) audio still pending (was quota-limited)
+- SEO: Article/Person schema, FAQ sections, meta title optimisation — scheduled for 19 June 2026
 - Video worker on son's Windows PC not yet fully tested
 - Manus support ticket open re: migrating web apps from Tasks to Project folders
 
