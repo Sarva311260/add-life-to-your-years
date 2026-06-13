@@ -75,7 +75,40 @@
 
 ---
 
-## Last Session — 8 June 2026
+## Last Session — 13 June 2026
+
+**What was done:**
+1. **Switched TTS voice to George** (`JBFqnCBsd6RMkjVDRZzb`) and stripped References section before TTS
+   - Updated `server/routers/blog.ts` — all new audio generated via admin panel now uses George's voice
+   - References section stripped from text before sending to ElevenLabs (saves credits)
+   - Posts 1–3 regenerated with George voice via script; posts 4–14 still have old female voice — to be regenerated manually via admin panel
+   - Checkpoint: 121f716d
+2. **Fixed "Read in the book" link** — changed to "Read the Book" pointing to `/book/read` (no anchor)
+   - Checkpoint: 06289efe
+3. **Fixed mobile sidebar ghost-tap bug** in BookReader
+   - Replaced overlay-based close with document-level `touchstart` listener added 400ms after open
+   - Checkpoint: ec8544f3
+4. **Added shareable section links** to BookReader
+   - URL hash updates as you scroll (silent `replaceState`)
+   - On page load with hash, scrolls to that section
+   - "Share this section" pill button on every h1/h2 heading
+   - On mobile: triggers native Web Share API (phone's built-in share sheet)
+   - On desktop: custom popover with Twitter/X, LinkedIn, WhatsApp, Email, Copy link
+   - "Read Full Book" floating button appears when arriving via shared link
+   - Checkpoint: bae3d680
+5. **Home page reorder** — bio (About Sarva) moved just before Recommended Products section
+6. **8 Factor cards** — added green "Learn more →" pill button to each card (always visible on mobile)
+   - Checkpoint: 99ea2257
+
+**Pending:**
+- Posts 4–14 still have old female voice audio — regenerate via admin panel (Generate Audio button on each post)
+- Schisandra (post 90002) audio still pending (was quota-limited)
+- Video worker on son's Windows PC not yet fully tested
+- Manus support ticket open re: migrating web apps from Tasks to Project folders
+
+---
+
+## Previous Session — 8 June 2026
 
 **What was done:**
 1. **Fixed and ran audio regeneration script** for all 14 blog posts
@@ -86,7 +119,7 @@
    - All successful posts now have audio that reads the title once only (not twice)
    - Checkpoint: eed8f06e
 
-**Pending:**
+**Pending (carried forward):**
 - Schisandra audio (post 90002) needs regeneration when ElevenLabs quota resets
 - Video worker on son's Windows PC not yet fully tested
 - Manus support ticket open re: migrating web apps from Tasks to Project folders
